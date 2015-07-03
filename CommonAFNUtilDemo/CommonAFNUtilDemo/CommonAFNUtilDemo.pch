@@ -1,0 +1,11 @@
+//
+//  CommonAFNUtilDemo.pch
+//  CommonAFNUtilDemo
+//
+//  Created by lichq on 6/25/15.
+//  Copyright (c) 2015 ciyouzen. All rights reserved.
+//
+
+#define API_BASE_Url(_Url_) [[@"http://121.40.82.169/drupal/api/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+
+#define kUID @"uid"
