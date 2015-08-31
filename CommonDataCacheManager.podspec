@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CommonDataCacheManager"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "a manager to make data cache."
   s.homepage     = "https://github.com/dvlproad/CommonAFNUtil"
   s.license      = "MIT"
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CommonAFNUtil.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/dvlproad/CommonAFNUtil.git", :tag => "0.0.2" }
   s.source_files  = "CommonDataCacheManager/**/*.{h,m}"
   s.frameworks = 'UIKit'
 
