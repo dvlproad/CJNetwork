@@ -7,7 +7,7 @@
 //
 
 #import "ResponseASIHandler.h"
-#import "NSString+Encoding.h"
+//#import "NSString+Encoding.h"
 
 @implementation ResponseASIHandler
 
@@ -19,11 +19,14 @@
 //并且：这里再进一步将错误信息的UI提示写到BaseViewController中,然后之后所有会调用网络请求的页面都要继承自这个BaseViewController。但尤其注意实际类中要添加[super onRequestFail:request];来操作super。否则无效。
 + (void)onFailure:(ASIHTTPRequest *)request callback:(id<WebServiceASIDelegate>)delegate{
     NSLog(@"======分割线======");
+    NSInteger errorCode = [[request error] code];
+    //NSError *error = request.error;
     NSString *errorMesg = [self getErrorMesgFromRequestErrorCode:request];
-    NSLog(@"errorMesg = %@", errorMesg);
+    NSLog(@"errorCode = %zd, errMesg = %@", errorCode, errorMesg); //[error description]、[error localizedDescription]、[error userInfo]
     
+    NSInteger statusCode = [request responseStatusCode];
     NSString *failMesg = [self getFailMesgFromRequestStatusCode:request];
-    NSLog(@"failMesg = %@", failMesg);
+    NSLog(@"statusCode = %zd, failMesg = %@", statusCode, failMesg);
     NSLog(@"======分割线======");
     
     if (delegate && [delegate respondsToSelector:@selector(onRequestFailure:)]) {
@@ -41,11 +44,13 @@
     NSInteger statusCode = [request responseStatusCode];
     NSLog(@"statusCode = %d", statusCode);
     NSString *response = [request responseString];
+    /*
     if (statusCode == 500) {
         response = NSLocalizedString(@"服务器内部错误", nil);//参照服务器状态码大全
     }else{
         response = [response Unicode_To_Chinese];
     }
+    */
     
     NSString *failMesg = [NSString stringWithFormat:@"%@", response];
     return failMesg;

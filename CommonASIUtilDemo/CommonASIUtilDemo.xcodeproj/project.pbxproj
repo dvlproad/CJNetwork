@@ -1,0 +1,774 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		80A70A3739F064A211186EBC /* libPods-CommonASIUtilDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E9BE11E4544EA3274EE8B1 /* libPods-CommonASIUtilDemoTests.a */; };
+		80FD31E41B940E800060A7FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD31E31B940E800060A7FB /* main.m */; };
+		80FD31E71B940E800060A7FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD31E61B940E800060A7FB /* AppDelegate.m */; };
+		80FD31EA1B940E800060A7FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD31E91B940E800060A7FB /* ViewController.m */; };
+		80FD31ED1B940E800060A7FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80FD31EB1B940E800060A7FB /* Main.storyboard */; };
+		80FD31EF1B940E800060A7FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80FD31EE1B940E800060A7FB /* Images.xcassets */; };
+		80FD31F21B940E800060A7FB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80FD31F01B940E800060A7FB /* LaunchScreen.xib */; };
+		80FD31FE1B940E800060A7FB /* CommonASIUtilDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD31FD1B940E800060A7FB /* CommonASIUtilDemoTests.m */; };
+		80FD320E1B9410E00060A7FB /* CurrentASIAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD32091B9410E00060A7FB /* CurrentASIAPI.m */; };
+		80FD320F1B9410E00060A7FB /* CurrentASIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD320B1B9410E00060A7FB /* CurrentASIRequest.m */; };
+		80FD32131B94112A0060A7FB /* LoginShareInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD32121B94112A0060A7FB /* LoginShareInfo.m */; };
+		80FD321A1B9411DE0060A7FB /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD32171B9411DE0060A7FB /* Login.m */; };
+		80FD321B1B9411DE0060A7FB /* LoginHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD32191B9411DE0060A7FB /* LoginHelper.m */; };
+		80FD321E1B9411F40060A7FB /* Login+Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD321D1B9411F40060A7FB /* Login+Event.m */; };
+		80FD32231B94136F0060A7FB /* ASIDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD32211B94136F0060A7FB /* ASIDemoViewController.m */; };
+		80FD32241B94136F0060A7FB /* ASIDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80FD32221B94136F0060A7FB /* ASIDemoViewController.xib */; };
+		80FD322E1B9413F20060A7FB /* ASI帮助文档.txt in Resources */ = {isa = PBXBuildFile; fileRef = 80FD32261B9413F20060A7FB /* ASI帮助文档.txt */; };
+		80FD322F1B9413F20060A7FB /* CommonASIInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD32281B9413F20060A7FB /* CommonASIInstance.m */; };
+		80FD32301B9413F20060A7FB /* CommonASIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD322A1B9413F20060A7FB /* CommonASIUtil.m */; };
+		80FD32311B9413F20060A7FB /* ResponseASIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD322C1B9413F20060A7FB /* ResponseASIHandler.m */; };
+		80FD323C1B9414090060A7FB /* CommonDataCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD32341B9414090060A7FB /* CommonDataCacheManager.m */; };
+		80FD323D1B9414090060A7FB /* NSData+Convert.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD32371B9414090060A7FB /* NSData+Convert.m */; };
+		80FD323E1B9414090060A7FB /* NSDictionary+Convert.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD32391B9414090060A7FB /* NSDictionary+Convert.m */; };
+		80FD323F1B9414090060A7FB /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD323B1B9414090060A7FB /* NSString+MD5.m */; };
+		80FD32431B9414270060A7FB /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD32421B9414270060A7FB /* AccountInfo.m */; };
+		80FD32471B9415230060A7FB /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD32461B9415230060A7FB /* NetworkManager.m */; };
+		80FD32531B941AE20060A7FB /* CommonHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD324C1B941AE20060A7FB /* CommonHUD.m */; };
+		80FD32541B941AE20060A7FB /* CommonWebUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD324F1B941AE20060A7FB /* CommonWebUtil.m */; };
+		80FD32551B941AE20060A7FB /* NetworkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD32521B941AE20060A7FB /* NetworkUtil.m */; };
+		96771A3C218E29245B083267 /* libPods-CommonASIUtilDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEDE386B1599795FA61ADC1 /* libPods-CommonASIUtilDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		80FD31F81B940E800060A7FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80FD31D61B940E800060A7FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80FD31DD1B940E800060A7FB;
+			remoteInfo = CommonASIUtilDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		178F326365A6197B8B1A4CA4 /* Pods-CommonASIUtilDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonASIUtilDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonASIUtilDemoTests/Pods-CommonASIUtilDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		41E9BE11E4544EA3274EE8B1 /* libPods-CommonASIUtilDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonASIUtilDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C696644FCAA2E586126501C /* Pods-CommonASIUtilDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonASIUtilDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonASIUtilDemoTests/Pods-CommonASIUtilDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		80FD31DE1B940E800060A7FB /* CommonASIUtilDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommonASIUtilDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		80FD31E21B940E800060A7FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80FD31E31B940E800060A7FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		80FD31E51B940E800060A7FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		80FD31E61B940E800060A7FB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		80FD31E81B940E800060A7FB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		80FD31E91B940E800060A7FB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		80FD31EC1B940E800060A7FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		80FD31EE1B940E800060A7FB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		80FD31F11B940E800060A7FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		80FD31F71B940E800060A7FB /* CommonASIUtilDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonASIUtilDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80FD31FC1B940E800060A7FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80FD31FD1B940E800060A7FB /* CommonASIUtilDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonASIUtilDemoTests.m; sourceTree = "<group>"; };
+		80FD32081B9410E00060A7FB /* CurrentASIAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentASIAPI.h; sourceTree = "<group>"; };
+		80FD32091B9410E00060A7FB /* CurrentASIAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentASIAPI.m; sourceTree = "<group>"; };
+		80FD320A1B9410E00060A7FB /* CurrentASIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentASIRequest.h; sourceTree = "<group>"; };
+		80FD320B1B9410E00060A7FB /* CurrentASIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentASIRequest.m; sourceTree = "<group>"; };
+		80FD32111B94112A0060A7FB /* LoginShareInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginShareInfo.h; path = ../../../CommonAFNUtilDemo/CommonAFNUtilDemo/Service/LoginShareInfo.h; sourceTree = "<group>"; };
+		80FD32121B94112A0060A7FB /* LoginShareInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginShareInfo.m; path = ../../../CommonAFNUtilDemo/CommonAFNUtilDemo/Service/LoginShareInfo.m; sourceTree = "<group>"; };
+		80FD32161B9411DE0060A7FB /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Login.h; path = ../../../../CommonAFNUtilDemo/CommonAFNUtilDemo/Controller/Login/Login.h; sourceTree = "<group>"; };
+		80FD32171B9411DE0060A7FB /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Login.m; path = ../../../../CommonAFNUtilDemo/CommonAFNUtilDemo/Controller/Login/Login.m; sourceTree = "<group>"; };
+		80FD32181B9411DE0060A7FB /* LoginHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginHelper.h; path = ../../../../CommonAFNUtilDemo/CommonAFNUtilDemo/Controller/Login/LoginHelper.h; sourceTree = "<group>"; };
+		80FD32191B9411DE0060A7FB /* LoginHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginHelper.m; path = ../../../../CommonAFNUtilDemo/CommonAFNUtilDemo/Controller/Login/LoginHelper.m; sourceTree = "<group>"; };
+		80FD321C1B9411F40060A7FB /* Login+Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Login+Event.h"; sourceTree = "<group>"; };
+		80FD321D1B9411F40060A7FB /* Login+Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Login+Event.m"; sourceTree = "<group>"; };
+		80FD32201B94136F0060A7FB /* ASIDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDemoViewController.h; sourceTree = "<group>"; };
+		80FD32211B94136F0060A7FB /* ASIDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDemoViewController.m; sourceTree = "<group>"; };
+		80FD32221B94136F0060A7FB /* ASIDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASIDemoViewController.xib; sourceTree = "<group>"; };
+		80FD32261B9413F20060A7FB /* ASI帮助文档.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ASI帮助文档.txt"; sourceTree = "<group>"; };
+		80FD32271B9413F20060A7FB /* CommonASIInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonASIInstance.h; sourceTree = "<group>"; };
+		80FD32281B9413F20060A7FB /* CommonASIInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonASIInstance.m; sourceTree = "<group>"; };
+		80FD32291B9413F20060A7FB /* CommonASIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonASIUtil.h; sourceTree = "<group>"; };
+		80FD322A1B9413F20060A7FB /* CommonASIUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonASIUtil.m; sourceTree = "<group>"; };
+		80FD322B1B9413F20060A7FB /* ResponseASIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseASIHandler.h; sourceTree = "<group>"; };
+		80FD322C1B9413F20060A7FB /* ResponseASIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseASIHandler.m; sourceTree = "<group>"; };
+		80FD322D1B9413F20060A7FB /* WebServiceASIDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceASIDelegate.h; sourceTree = "<group>"; };
+		80FD32331B9414090060A7FB /* CommonDataCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDataCacheManager.h; sourceTree = "<group>"; };
+		80FD32341B9414090060A7FB /* CommonDataCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonDataCacheManager.m; sourceTree = "<group>"; };
+		80FD32361B9414090060A7FB /* NSData+Convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Convert.h"; sourceTree = "<group>"; };
+		80FD32371B9414090060A7FB /* NSData+Convert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Convert.m"; sourceTree = "<group>"; };
+		80FD32381B9414090060A7FB /* NSDictionary+Convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Convert.h"; sourceTree = "<group>"; };
+		80FD32391B9414090060A7FB /* NSDictionary+Convert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Convert.m"; sourceTree = "<group>"; };
+		80FD323A1B9414090060A7FB /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		80FD323B1B9414090060A7FB /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		80FD32411B9414270060A7FB /* AccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfo.h; sourceTree = "<group>"; };
+		80FD32421B9414270060A7FB /* AccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfo.m; sourceTree = "<group>"; };
+		80FD32451B9415230060A7FB /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		80FD32461B9415230060A7FB /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		80FD32481B94171D0060A7FB /* CommonASIUtilDemo.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonASIUtilDemo.pch; sourceTree = "<group>"; };
+		80FD324B1B941AE20060A7FB /* CommonHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonHUD.h; sourceTree = "<group>"; };
+		80FD324C1B941AE20060A7FB /* CommonHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonHUD.m; sourceTree = "<group>"; };
+		80FD324E1B941AE20060A7FB /* CommonWebUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonWebUtil.h; sourceTree = "<group>"; };
+		80FD324F1B941AE20060A7FB /* CommonWebUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonWebUtil.m; sourceTree = "<group>"; };
+		80FD32511B941AE20060A7FB /* NetworkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtil.h; sourceTree = "<group>"; };
+		80FD32521B941AE20060A7FB /* NetworkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkUtil.m; sourceTree = "<group>"; };
+		AFEDE386B1599795FA61ADC1 /* libPods-CommonASIUtilDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonASIUtilDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBEA99B54F884C987E576FBD /* Pods-CommonASIUtilDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonASIUtilDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonASIUtilDemo/Pods-CommonASIUtilDemo.release.xcconfig"; sourceTree = "<group>"; };
+		E0850BFE1669F3C4B37BCAFD /* Pods-CommonASIUtilDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonASIUtilDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonASIUtilDemo/Pods-CommonASIUtilDemo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		80FD31DB1B940E800060A7FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96771A3C218E29245B083267 /* libPods-CommonASIUtilDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80FD31F41B940E800060A7FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80A70A3739F064A211186EBC /* libPods-CommonASIUtilDemoTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6318A5EF5056478E44B1F011 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E0850BFE1669F3C4B37BCAFD /* Pods-CommonASIUtilDemo.debug.xcconfig */,
+				DBEA99B54F884C987E576FBD /* Pods-CommonASIUtilDemo.release.xcconfig */,
+				4C696644FCAA2E586126501C /* Pods-CommonASIUtilDemoTests.debug.xcconfig */,
+				178F326365A6197B8B1A4CA4 /* Pods-CommonASIUtilDemoTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		80FD31D51B940E800060A7FB = {
+			isa = PBXGroup;
+			children = (
+				80FD31E01B940E800060A7FB /* CommonASIUtilDemo */,
+				80FD31FA1B940E800060A7FB /* CommonASIUtilDemoTests */,
+				80FD31DF1B940E800060A7FB /* Products */,
+				6318A5EF5056478E44B1F011 /* Pods */,
+				A92DAC49E91360326FDDF595 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		80FD31DF1B940E800060A7FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80FD31DE1B940E800060A7FB /* CommonASIUtilDemo.app */,
+				80FD31F71B940E800060A7FB /* CommonASIUtilDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80FD31E01B940E800060A7FB /* CommonASIUtilDemo */ = {
+			isa = PBXGroup;
+			children = (
+				80FD31E51B940E800060A7FB /* AppDelegate.h */,
+				80FD31E61B940E800060A7FB /* AppDelegate.m */,
+				80FD31E81B940E800060A7FB /* ViewController.h */,
+				80FD31E91B940E800060A7FB /* ViewController.m */,
+				80FD31EB1B940E800060A7FB /* Main.storyboard */,
+				80FD31EE1B940E800060A7FB /* Images.xcassets */,
+				80FD31F01B940E800060A7FB /* LaunchScreen.xib */,
+				80FD32491B941AE20060A7FB /* ServiceHelp */,
+				80FD32401B9414270060A7FB /* Database */,
+				80FD32321B9414090060A7FB /* CommonDataCacheManager */,
+				80FD32251B9413F20060A7FB /* CommonASIUtil */,
+				80FD32141B9411B70060A7FB /* Controller */,
+				80FD32071B9410E00060A7FB /* Service */,
+				80FD31E11B940E800060A7FB /* Supporting Files */,
+			);
+			path = CommonASIUtilDemo;
+			sourceTree = "<group>";
+		};
+		80FD31E11B940E800060A7FB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				80FD31E21B940E800060A7FB /* Info.plist */,
+				80FD32481B94171D0060A7FB /* CommonASIUtilDemo.pch */,
+				80FD31E31B940E800060A7FB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		80FD31FA1B940E800060A7FB /* CommonASIUtilDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				80FD31FD1B940E800060A7FB /* CommonASIUtilDemoTests.m */,
+				80FD31FB1B940E800060A7FB /* Supporting Files */,
+			);
+			path = CommonASIUtilDemoTests;
+			sourceTree = "<group>";
+		};
+		80FD31FB1B940E800060A7FB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				80FD31FC1B940E800060A7FB /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		80FD32071B9410E00060A7FB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				80FD32081B9410E00060A7FB /* CurrentASIAPI.h */,
+				80FD32091B9410E00060A7FB /* CurrentASIAPI.m */,
+				80FD320A1B9410E00060A7FB /* CurrentASIRequest.h */,
+				80FD320B1B9410E00060A7FB /* CurrentASIRequest.m */,
+				80FD32111B94112A0060A7FB /* LoginShareInfo.h */,
+				80FD32121B94112A0060A7FB /* LoginShareInfo.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		80FD32141B9411B70060A7FB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				80FD321F1B9413500060A7FB /* ASITest */,
+				80FD32151B9411B70060A7FB /* Login */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		80FD32151B9411B70060A7FB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				80FD32161B9411DE0060A7FB /* Login.h */,
+				80FD32171B9411DE0060A7FB /* Login.m */,
+				80FD321C1B9411F40060A7FB /* Login+Event.h */,
+				80FD321D1B9411F40060A7FB /* Login+Event.m */,
+				80FD32181B9411DE0060A7FB /* LoginHelper.h */,
+				80FD32191B9411DE0060A7FB /* LoginHelper.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		80FD321F1B9413500060A7FB /* ASITest */ = {
+			isa = PBXGroup;
+			children = (
+				80FD32201B94136F0060A7FB /* ASIDemoViewController.h */,
+				80FD32211B94136F0060A7FB /* ASIDemoViewController.m */,
+				80FD32221B94136F0060A7FB /* ASIDemoViewController.xib */,
+			);
+			path = ASITest;
+			sourceTree = "<group>";
+		};
+		80FD32251B9413F20060A7FB /* CommonASIUtil */ = {
+			isa = PBXGroup;
+			children = (
+				80FD32441B9415230060A7FB /* NetworkManager */,
+				80FD32261B9413F20060A7FB /* ASI帮助文档.txt */,
+				80FD32271B9413F20060A7FB /* CommonASIInstance.h */,
+				80FD32281B9413F20060A7FB /* CommonASIInstance.m */,
+				80FD32291B9413F20060A7FB /* CommonASIUtil.h */,
+				80FD322A1B9413F20060A7FB /* CommonASIUtil.m */,
+				80FD322B1B9413F20060A7FB /* ResponseASIHandler.h */,
+				80FD322C1B9413F20060A7FB /* ResponseASIHandler.m */,
+				80FD322D1B9413F20060A7FB /* WebServiceASIDelegate.h */,
+			);
+			name = CommonASIUtil;
+			path = ../../CommonASIUtil;
+			sourceTree = "<group>";
+		};
+		80FD32321B9414090060A7FB /* CommonDataCacheManager */ = {
+			isa = PBXGroup;
+			children = (
+				80FD32331B9414090060A7FB /* CommonDataCacheManager.h */,
+				80FD32341B9414090060A7FB /* CommonDataCacheManager.m */,
+				80FD32351B9414090060A7FB /* Librarys */,
+			);
+			name = CommonDataCacheManager;
+			path = ../../CommonDataCacheManager;
+			sourceTree = "<group>";
+		};
+		80FD32351B9414090060A7FB /* Librarys */ = {
+			isa = PBXGroup;
+			children = (
+				80FD32361B9414090060A7FB /* NSData+Convert.h */,
+				80FD32371B9414090060A7FB /* NSData+Convert.m */,
+				80FD32381B9414090060A7FB /* NSDictionary+Convert.h */,
+				80FD32391B9414090060A7FB /* NSDictionary+Convert.m */,
+				80FD323A1B9414090060A7FB /* NSString+MD5.h */,
+				80FD323B1B9414090060A7FB /* NSString+MD5.m */,
+			);
+			path = Librarys;
+			sourceTree = "<group>";
+		};
+		80FD32401B9414270060A7FB /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				80FD32411B9414270060A7FB /* AccountInfo.h */,
+				80FD32421B9414270060A7FB /* AccountInfo.m */,
+			);
+			name = Database;
+			path = ../../CommonAFNUtilDemo/CommonAFNUtilDemo/Database;
+			sourceTree = "<group>";
+		};
+		80FD32441B9415230060A7FB /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				80FD32451B9415230060A7FB /* NetworkManager.h */,
+				80FD32461B9415230060A7FB /* NetworkManager.m */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		80FD32491B941AE20060A7FB /* ServiceHelp */ = {
+			isa = PBXGroup;
+			children = (
+				80FD324A1B941AE20060A7FB /* CommonHUD */,
+				80FD324D1B941AE20060A7FB /* CommonWebUtil */,
+				80FD32501B941AE20060A7FB /* NetworkUtil */,
+			);
+			name = ServiceHelp;
+			path = ../../ServiceHelp;
+			sourceTree = "<group>";
+		};
+		80FD324A1B941AE20060A7FB /* CommonHUD */ = {
+			isa = PBXGroup;
+			children = (
+				80FD324B1B941AE20060A7FB /* CommonHUD.h */,
+				80FD324C1B941AE20060A7FB /* CommonHUD.m */,
+			);
+			path = CommonHUD;
+			sourceTree = "<group>";
+		};
+		80FD324D1B941AE20060A7FB /* CommonWebUtil */ = {
+			isa = PBXGroup;
+			children = (
+				80FD324E1B941AE20060A7FB /* CommonWebUtil.h */,
+				80FD324F1B941AE20060A7FB /* CommonWebUtil.m */,
+			);
+			path = CommonWebUtil;
+			sourceTree = "<group>";
+		};
+		80FD32501B941AE20060A7FB /* NetworkUtil */ = {
+			isa = PBXGroup;
+			children = (
+				80FD32511B941AE20060A7FB /* NetworkUtil.h */,
+				80FD32521B941AE20060A7FB /* NetworkUtil.m */,
+			);
+			path = NetworkUtil;
+			sourceTree = "<group>";
+		};
+		A92DAC49E91360326FDDF595 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFEDE386B1599795FA61ADC1 /* libPods-CommonASIUtilDemo.a */,
+				41E9BE11E4544EA3274EE8B1 /* libPods-CommonASIUtilDemoTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		80FD31DD1B940E800060A7FB /* CommonASIUtilDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80FD32011B940E800060A7FB /* Build configuration list for PBXNativeTarget "CommonASIUtilDemo" */;
+			buildPhases = (
+				54A494A01B39842573BA6A0A /* Check Pods Manifest.lock */,
+				80FD31DA1B940E800060A7FB /* Sources */,
+				80FD31DB1B940E800060A7FB /* Frameworks */,
+				80FD31DC1B940E800060A7FB /* Resources */,
+				4B7F3EFFE8DC7D7EF41378BE /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CommonASIUtilDemo;
+			productName = CommonASIUtilDemo;
+			productReference = 80FD31DE1B940E800060A7FB /* CommonASIUtilDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		80FD31F61B940E800060A7FB /* CommonASIUtilDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80FD32041B940E800060A7FB /* Build configuration list for PBXNativeTarget "CommonASIUtilDemoTests" */;
+			buildPhases = (
+				CA393FA69AAB2ECAA356881B /* Check Pods Manifest.lock */,
+				80FD31F31B940E800060A7FB /* Sources */,
+				80FD31F41B940E800060A7FB /* Frameworks */,
+				80FD31F51B940E800060A7FB /* Resources */,
+				A3382AD41154631A5754BE47 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80FD31F91B940E800060A7FB /* PBXTargetDependency */,
+			);
+			name = CommonASIUtilDemoTests;
+			productName = CommonASIUtilDemoTests;
+			productReference = 80FD31F71B940E800060A7FB /* CommonASIUtilDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		80FD31D61B940E800060A7FB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = ciyouzen;
+				TargetAttributes = {
+					80FD31DD1B940E800060A7FB = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					80FD31F61B940E800060A7FB = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 80FD31DD1B940E800060A7FB;
+					};
+				};
+			};
+			buildConfigurationList = 80FD31D91B940E800060A7FB /* Build configuration list for PBXProject "CommonASIUtilDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 80FD31D51B940E800060A7FB;
+			productRefGroup = 80FD31DF1B940E800060A7FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				80FD31DD1B940E800060A7FB /* CommonASIUtilDemo */,
+				80FD31F61B940E800060A7FB /* CommonASIUtilDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		80FD31DC1B940E800060A7FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80FD31ED1B940E800060A7FB /* Main.storyboard in Resources */,
+				80FD322E1B9413F20060A7FB /* ASI帮助文档.txt in Resources */,
+				80FD31F21B940E800060A7FB /* LaunchScreen.xib in Resources */,
+				80FD31EF1B940E800060A7FB /* Images.xcassets in Resources */,
+				80FD32241B94136F0060A7FB /* ASIDemoViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80FD31F51B940E800060A7FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4B7F3EFFE8DC7D7EF41378BE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommonASIUtilDemo/Pods-CommonASIUtilDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54A494A01B39842573BA6A0A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A3382AD41154631A5754BE47 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommonASIUtilDemoTests/Pods-CommonASIUtilDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA393FA69AAB2ECAA356881B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		80FD31DA1B940E800060A7FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80FD322F1B9413F20060A7FB /* CommonASIInstance.m in Sources */,
+				80FD321E1B9411F40060A7FB /* Login+Event.m in Sources */,
+				80FD320E1B9410E00060A7FB /* CurrentASIAPI.m in Sources */,
+				80FD323C1B9414090060A7FB /* CommonDataCacheManager.m in Sources */,
+				80FD323F1B9414090060A7FB /* NSString+MD5.m in Sources */,
+				80FD32541B941AE20060A7FB /* CommonWebUtil.m in Sources */,
+				80FD323E1B9414090060A7FB /* NSDictionary+Convert.m in Sources */,
+				80FD321B1B9411DE0060A7FB /* LoginHelper.m in Sources */,
+				80FD32131B94112A0060A7FB /* LoginShareInfo.m in Sources */,
+				80FD31EA1B940E800060A7FB /* ViewController.m in Sources */,
+				80FD321A1B9411DE0060A7FB /* Login.m in Sources */,
+				80FD31E71B940E800060A7FB /* AppDelegate.m in Sources */,
+				80FD32231B94136F0060A7FB /* ASIDemoViewController.m in Sources */,
+				80FD32531B941AE20060A7FB /* CommonHUD.m in Sources */,
+				80FD323D1B9414090060A7FB /* NSData+Convert.m in Sources */,
+				80FD32471B9415230060A7FB /* NetworkManager.m in Sources */,
+				80FD32551B941AE20060A7FB /* NetworkUtil.m in Sources */,
+				80FD320F1B9410E00060A7FB /* CurrentASIRequest.m in Sources */,
+				80FD32301B9413F20060A7FB /* CommonASIUtil.m in Sources */,
+				80FD32311B9413F20060A7FB /* ResponseASIHandler.m in Sources */,
+				80FD31E41B940E800060A7FB /* main.m in Sources */,
+				80FD32431B9414270060A7FB /* AccountInfo.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80FD31F31B940E800060A7FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80FD31FE1B940E800060A7FB /* CommonASIUtilDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		80FD31F91B940E800060A7FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80FD31DD1B940E800060A7FB /* CommonASIUtilDemo */;
+			targetProxy = 80FD31F81B940E800060A7FB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		80FD31EB1B940E800060A7FB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80FD31EC1B940E800060A7FB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		80FD31F01B940E800060A7FB /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80FD31F11B940E800060A7FB /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		80FD31FF1B940E800060A7FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		80FD32001B940E800060A7FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		80FD32021B940E800060A7FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0850BFE1669F3C4B37BCAFD /* Pods-CommonASIUtilDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/CommonASIUtilDemo/CommonASIUtilDemo.pch";
+				INFOPLIST_FILE = CommonASIUtilDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		80FD32031B940E800060A7FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBEA99B54F884C987E576FBD /* Pods-CommonASIUtilDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/CommonASIUtilDemo/CommonASIUtilDemo.pch";
+				INFOPLIST_FILE = CommonASIUtilDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		80FD32051B940E800060A7FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C696644FCAA2E586126501C /* Pods-CommonASIUtilDemoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CommonASIUtilDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CommonASIUtilDemo.app/CommonASIUtilDemo";
+			};
+			name = Debug;
+		};
+		80FD32061B940E800060A7FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 178F326365A6197B8B1A4CA4 /* Pods-CommonASIUtilDemoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CommonASIUtilDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CommonASIUtilDemo.app/CommonASIUtilDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		80FD31D91B940E800060A7FB /* Build configuration list for PBXProject "CommonASIUtilDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80FD31FF1B940E800060A7FB /* Debug */,
+				80FD32001B940E800060A7FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80FD32011B940E800060A7FB /* Build configuration list for PBXNativeTarget "CommonASIUtilDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80FD32021B940E800060A7FB /* Debug */,
+				80FD32031B940E800060A7FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80FD32041B940E800060A7FB /* Build configuration list for PBXNativeTarget "CommonASIUtilDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80FD32051B940E800060A7FB /* Debug */,
+				80FD32061B940E800060A7FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 80FD31D61B940E800060A7FB /* Project object */;
+}

@@ -23,6 +23,6 @@ Pod::Spec.new do |s|
   s.dependency 'AFNetworking', '~> 2.5.4'
   s.dependency 'MBProgressHUD', '~> 0.9.1'
   s.dependency 'SVProgressHUD', '~> 1.1.3'
-  s.dependency 'CommonDataCacheManager', '~> 0.0.1'
+  s.dependency 'CommonDataCacheManager', '~> 0.0.2'
 
 end

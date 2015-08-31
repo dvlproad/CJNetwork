@@ -8,15 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		801531841B78505B00B82127 /* CommonAFNInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 801531831B78505B00B82127 /* CommonAFNInstance.m */; };
-		801531871B78575D00B82127 /* CommonASIInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 801531861B78575D00B82127 /* CommonASIInstance.m */; };
 		8015318D1B785BAD00B82127 /* NSString+Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8015318C1B785BAD00B82127 /* NSString+Encoding.m */; };
-		801531901B7861B800B82127 /* CurrentASIAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8015318F1B7861B800B82127 /* CurrentASIAPI.m */; };
 		8015319D1B7864EE00B82127 /* CommonHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 801531941B7864ED00B82127 /* CommonHUD.m */; };
 		8015319E1B7864EE00B82127 /* CommonWebUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 801531971B7864ED00B82127 /* CommonWebUtil.m */; };
-		8015319F1B7864EE00B82127 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8015319A1B7864EE00B82127 /* NetworkManager.m */; };
 		801531A01B7864EE00B82127 /* NetworkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8015319C1B7864EE00B82127 /* NetworkUtil.m */; };
 		801531A21B7864F600B82127 /* AFN帮助文档.txt in Resources */ = {isa = PBXBuildFile; fileRef = 801531A11B7864F600B82127 /* AFN帮助文档.txt */; };
-		801531A41B78650200B82127 /* ASI帮助文档.txt in Resources */ = {isa = PBXBuildFile; fileRef = 801531A31B78650200B82127 /* ASI帮助文档.txt */; };
 		801531B11B78675400B82127 /* AFNDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 801531A81B78675400B82127 /* AFNDemoViewController.m */; };
 		801531B21B78675400B82127 /* AFNDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 801531A91B78675400B82127 /* AFNDemoViewController.xib */; };
 		801531B31B78675400B82127 /* Login+Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 801531AC1B78675400B82127 /* Login+Event.m */; };
@@ -40,10 +36,7 @@
 		808CBA7F1B733A1800EDFFB9 /* NSDictionary+Convert.m in Sources */ = {isa = PBXBuildFile; fileRef = 808CBA7A1B733A1800EDFFB9 /* NSDictionary+Convert.m */; };
 		808CBA801B733A1800EDFFB9 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 808CBA7C1B733A1800EDFFB9 /* NSString+MD5.m */; };
 		80E1942A1B7C92F2007907BF /* CurrentAFNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E194291B7C92F2007907BF /* CurrentAFNManager.m */; };
-		80E1942D1B7CA396007907BF /* CurrentASIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E1942C1B7CA396007907BF /* CurrentASIRequest.m */; };
 		80EB6EE71B6C986F008835A8 /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EB6EE61B6C986F008835A8 /* AccountInfo.m */; };
-		80FB9FEE1B7727FE00C30425 /* ResponseASIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FB9FED1B7727FE00C30425 /* ResponseASIHandler.m */; };
-		80FB9FF11B77281200C30425 /* CommonASIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FB9FF01B77281200C30425 /* CommonASIUtil.m */; };
 		E3F3C91D5CA02790F80271FC /* libPods-CommonAFNUtilDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F60122F35FBC7C45FE97E535 /* libPods-CommonAFNUtilDemo.a */; };
 		F887F2663BBE4D515DAD9052 /* libPods-CommonAFNUtilDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B8358D85A89326606B47AE /* libPods-CommonAFNUtilDemoTests.a */; };
 /* End PBXBuildFile section */
@@ -65,22 +58,15 @@
 		6A60E6E9ED04E9D32EC2762A /* Pods-CommonAFNUtilDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonAFNUtilDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonAFNUtilDemoTests/Pods-CommonAFNUtilDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		801531821B78505B00B82127 /* CommonAFNInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonAFNInstance.h; sourceTree = "<group>"; };
 		801531831B78505B00B82127 /* CommonAFNInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonAFNInstance.m; sourceTree = "<group>"; };
-		801531851B78575D00B82127 /* CommonASIInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonASIInstance.h; sourceTree = "<group>"; };
-		801531861B78575D00B82127 /* CommonASIInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonASIInstance.m; sourceTree = "<group>"; };
 		8015318B1B785BAD00B82127 /* NSString+Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Encoding.h"; path = "Library/NSString+Encoding.h"; sourceTree = "<group>"; };
 		8015318C1B785BAD00B82127 /* NSString+Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Encoding.m"; path = "Library/NSString+Encoding.m"; sourceTree = "<group>"; };
-		8015318E1B7861B800B82127 /* CurrentASIAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentASIAPI.h; sourceTree = "<group>"; };
-		8015318F1B7861B800B82127 /* CurrentASIAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentASIAPI.m; sourceTree = "<group>"; };
 		801531931B7864ED00B82127 /* CommonHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonHUD.h; sourceTree = "<group>"; };
 		801531941B7864ED00B82127 /* CommonHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonHUD.m; sourceTree = "<group>"; };
 		801531961B7864ED00B82127 /* CommonWebUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonWebUtil.h; sourceTree = "<group>"; };
 		801531971B7864ED00B82127 /* CommonWebUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonWebUtil.m; sourceTree = "<group>"; };
-		801531991B7864EE00B82127 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
-		8015319A1B7864EE00B82127 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		8015319B1B7864EE00B82127 /* NetworkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtil.h; sourceTree = "<group>"; };
 		8015319C1B7864EE00B82127 /* NetworkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkUtil.m; sourceTree = "<group>"; };
 		801531A11B7864F600B82127 /* AFN帮助文档.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "AFN帮助文档.txt"; sourceTree = "<group>"; };
-		801531A31B78650200B82127 /* ASI帮助文档.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ASI帮助文档.txt"; sourceTree = "<group>"; };
 		801531A71B78675400B82127 /* AFNDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNDemoViewController.h; sourceTree = "<group>"; };
 		801531A81B78675400B82127 /* AFNDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNDemoViewController.m; sourceTree = "<group>"; };
 		801531A91B78675400B82127 /* AFNDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AFNDemoViewController.xib; sourceTree = "<group>"; };
@@ -127,15 +113,8 @@
 		808CBA7C1B733A1800EDFFB9 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		80E194281B7C92F2007907BF /* CurrentAFNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentAFNManager.h; sourceTree = "<group>"; };
 		80E194291B7C92F2007907BF /* CurrentAFNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentAFNManager.m; sourceTree = "<group>"; };
-		80E1942B1B7CA396007907BF /* CurrentASIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentASIRequest.h; sourceTree = "<group>"; };
-		80E1942C1B7CA396007907BF /* CurrentASIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentASIRequest.m; sourceTree = "<group>"; };
 		80EB6EE51B6C986F008835A8 /* AccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfo.h; sourceTree = "<group>"; };
 		80EB6EE61B6C986F008835A8 /* AccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfo.m; sourceTree = "<group>"; };
-		80FB9FE91B7727DE00C30425 /* WebServiceASIDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceASIDelegate.h; sourceTree = "<group>"; };
-		80FB9FEC1B7727FE00C30425 /* ResponseASIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseASIHandler.h; sourceTree = "<group>"; };
-		80FB9FED1B7727FE00C30425 /* ResponseASIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseASIHandler.m; sourceTree = "<group>"; };
-		80FB9FEF1B77281200C30425 /* CommonASIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonASIUtil.h; sourceTree = "<group>"; };
-		80FB9FF01B77281200C30425 /* CommonASIUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonASIUtil.m; sourceTree = "<group>"; };
 		B6B9EC1952F284A948A311A7 /* Pods-CommonAFNUtilDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonAFNUtilDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonAFNUtilDemo/Pods-CommonAFNUtilDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		F60122F35FBC7C45FE97E535 /* libPods-CommonAFNUtilDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonAFNUtilDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -202,8 +181,6 @@
 		801531981B7864ED00B82127 /* NetworkUtil */ = {
 			isa = PBXGroup;
 			children = (
-				801531991B7864EE00B82127 /* NetworkManager.h */,
-				8015319A1B7864EE00B82127 /* NetworkManager.m */,
 				8015319B1B7864EE00B82127 /* NetworkUtil.h */,
 				8015319C1B7864EE00B82127 /* NetworkUtil.m */,
 			);
@@ -327,14 +304,9 @@
 				808CBA311B720C8E00EDFFB9 /* CurrentAFNAPI.m */,
 				80E194281B7C92F2007907BF /* CurrentAFNManager.h */,
 				80E194291B7C92F2007907BF /* CurrentAFNManager.m */,
-				8015318E1B7861B800B82127 /* CurrentASIAPI.h */,
-				8015318F1B7861B800B82127 /* CurrentASIAPI.m */,
-				80E1942B1B7CA396007907BF /* CurrentASIRequest.h */,
-				80E1942C1B7CA396007907BF /* CurrentASIRequest.m */,
 				808CBA321B720C8E00EDFFB9 /* LoginShareInfo.h */,
 				808CBA331B720C8E00EDFFB9 /* LoginShareInfo.m */,
 				801531911B7864ED00B82127 /* ServiceHelp */,
-				80FB9FE81B7727A100C30425 /* CommonASIUtil */,
 				808CBA731B733A1800EDFFB9 /* CommonDataCacheManager */,
 				808CBA441B72F73E00EDFFB9 /* CommonAFNUtil */,
 			);
@@ -388,22 +360,6 @@
 				80EB6EE61B6C986F008835A8 /* AccountInfo.m */,
 			);
 			path = Database;
-			sourceTree = "<group>";
-		};
-		80FB9FE81B7727A100C30425 /* CommonASIUtil */ = {
-			isa = PBXGroup;
-			children = (
-				80FB9FE91B7727DE00C30425 /* WebServiceASIDelegate.h */,
-				80FB9FEC1B7727FE00C30425 /* ResponseASIHandler.h */,
-				80FB9FED1B7727FE00C30425 /* ResponseASIHandler.m */,
-				801531851B78575D00B82127 /* CommonASIInstance.h */,
-				801531861B78575D00B82127 /* CommonASIInstance.m */,
-				80FB9FEF1B77281200C30425 /* CommonASIUtil.h */,
-				80FB9FF01B77281200C30425 /* CommonASIUtil.m */,
-				801531A31B78650200B82127 /* ASI帮助文档.txt */,
-			);
-			name = CommonASIUtil;
-			path = ../../../CommonASIUtil;
 			sourceTree = "<group>";
 		};
 		E2099FE015239AE9C8AED66E /* Pods */ = {
@@ -504,7 +460,6 @@
 				804F8FCC1B3BDF4E00AF11AA /* Main.storyboard in Resources */,
 				801531B21B78675400B82127 /* AFNDemoViewController.xib in Resources */,
 				807109E71B7E17E900F343F3 /* SocketDemoViewController.xib in Resources */,
-				801531A41B78650200B82127 /* ASI帮助文档.txt in Resources */,
 				801531A21B7864F600B82127 /* AFN帮助文档.txt in Resources */,
 				804F8FD11B3BDF4E00AF11AA /* LaunchScreen.xib in Resources */,
 				804F8FCE1B3BDF4E00AF11AA /* Images.xcassets in Resources */,
@@ -590,8 +545,6 @@
 			files = (
 				8015319D1B7864EE00B82127 /* CommonHUD.m in Sources */,
 				808CBA641B72F73E00EDFFB9 /* ResponseAFNHandler.m in Sources */,
-				8015319F1B7864EE00B82127 /* NetworkManager.m in Sources */,
-				801531871B78575D00B82127 /* CommonASIInstance.m in Sources */,
 				801531B51B78675400B82127 /* LoginHelper.m in Sources */,
 				808CBA7D1B733A1800EDFFB9 /* CommonDataCacheManager.m in Sources */,
 				808CBA5E1B72F73E00EDFFB9 /* CommonAFNUtil.m in Sources */,
@@ -599,18 +552,14 @@
 				808CBA801B733A1800EDFFB9 /* NSString+MD5.m in Sources */,
 				80EB6EE71B6C986F008835A8 /* AccountInfo.m in Sources */,
 				808CBA341B720C8E00EDFFB9 /* CurrentAFNAPI.m in Sources */,
-				80E1942D1B7CA396007907BF /* CurrentASIRequest.m in Sources */,
 				80E1942A1B7C92F2007907BF /* CurrentAFNManager.m in Sources */,
 				801531B31B78675400B82127 /* Login+Event.m in Sources */,
-				801531901B7861B800B82127 /* CurrentASIAPI.m in Sources */,
 				801531B41B78675400B82127 /* Login.m in Sources */,
 				808CBA7F1B733A1800EDFFB9 /* NSDictionary+Convert.m in Sources */,
 				807109E61B7E17E900F343F3 /* SocketDemoViewController.m in Sources */,
 				8015318D1B785BAD00B82127 /* NSString+Encoding.m in Sources */,
 				801531A01B7864EE00B82127 /* NetworkUtil.m in Sources */,
 				804F8FC61B3BDF4E00AF11AA /* AppDelegate.m in Sources */,
-				80FB9FF11B77281200C30425 /* CommonASIUtil.m in Sources */,
-				80FB9FEE1B7727FE00C30425 /* ResponseASIHandler.m in Sources */,
 				801531841B78505B00B82127 /* CommonAFNInstance.m in Sources */,
 				804F8FC31B3BDF4E00AF11AA /* main.m in Sources */,
 				801531B11B78675400B82127 /* AFNDemoViewController.m in Sources */,

@@ -1,0 +1,27 @@
+//
+//  CommonASIUtilDemo.pch
+//  CommonASIUtilDemo
+//
+//  Created by lichq on 8/31/15.
+//  Copyright (c) 2015 ciyouzen. All rights reserved.
+//
+
+
+//API路径
+#define Use_OutNet
+
+#ifdef Use_OutNet //外网
+#define API_BASE_Url_Health(_Url_) [NSURL URLWithString:[[@"http://121.40.82.169/drupal/api/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
+#define API_BASE_Url_LookHouse(_Url_) [[@"http://117.27.157.178:8081/shoujikanfang/d/r/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+#else
+#define API_BASE_Url_Health(_Url_) [NSURL URLWithString:[[@"http://10.167.145.101/drupal/api/" s
+#define API_BASE_Url_LookHouse(_Url_) [[@"http://192.168.18.203:9080/video/d/s/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+#endif
+
+#define API_BASE_Url(_Url_) [[@"http://121.40.82.169/drupal/api/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+#define API_BASE_Url_dingdang(_Url_) [[@"http://dingdang.baseoa.com:8080/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+
+
+#define Test_ImageUrl0   @"http://g.hiphotos.baidu.com/image/w%3D310/sign=6b019ccf9b25bc312b5d07996ede8de7/9e3df8dcd100baa18be50eba4510b912c9fc2ee1.jpg"
+#define Test_ImageUrl1  @"http://g.hiphotos.baidu.com/image/w%3D310/sign=6b019ccf9b25bc312b5d07996ede8de7/9e3df8dcd100baa18be50eba4510b912c9fc2ee1.jpg"
+#define Test_ImageUrl2  @"http://wenwen.soso.com/p/20090123/20090123170106-1490076742.jpg"//附使用AFNetworking下载图片时候，使用Test_ImageUrl0和Test_ImageUrl1都会出现在在成功，但图片显示参数错误的问题。原因可能是上面的两个地址中含有百分号%

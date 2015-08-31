@@ -7,6 +7,7 @@
 //
 
 #import "ResponseAFNHandler.h"
+//#import "NSString+Encoding.h"
 
 @implementation ResponseAFNHandler
 
@@ -26,12 +27,24 @@
 }
 
 + (void)onFailure:(AFHTTPRequestOperation *)operation callback:(id<WebServiceAFNDelegate>)delegate tag:(NSInteger)tag{
-    //if (DEBUG) {
-    if (1) {
-        NSInteger statusCode = operation.response.statusCode;
-        NSError *error = operation.error;
-        NSLog(@"statusCode = %zd, errMesg = %@", statusCode, error); //[error description]、[error localizedDescription]、[error userInfo]
-    }
+    NSLog(@"======分割线======");
+    NSInteger errorCode = operation.error.code;
+    NSError *error = operation.error;
+    NSLog(@"errorCode = %zd, errMesg = %@", errorCode, error); //[error description]、[error localizedDescription]、[error userInfo]
+    
+    
+    NSInteger statusCode = operation.response.statusCode;
+    NSString *response = operation.responseString;
+    /*
+     if (statusCode == 500) {
+     response = NSLocalizedString(@"服务器内部错误", nil);//参照服务器状态码大全
+     }else{
+     response = [response Unicode_To_Chinese];
+     }
+     */
+    NSString *failMesg = [NSString stringWithFormat:@"%@", response];
+    NSLog(@"statusCode = %zd, failMesg = %@", statusCode, failMesg);
+    NSLog(@"======分割线======");
     
     if (delegate && [delegate respondsToSelector:@selector(onRequestFailure:tag:)]) {
         [delegate onRequestFailure:operation tag:tag];
