@@ -111,6 +111,12 @@
     hud = nil;
 }
 
+- (void)onRequestFailure:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag failMesg:(NSString *)failMesg{
+    HUD.mode = MBProgressHUDModeText;
+    HUD.labelText = NSLocalizedString(@"登录失败", nil);
+    [HUD hide:YES afterDelay:1];
+}
+
 - (void)onRequestSuccess:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag responseObject:(id)responseObject{
     HUD.mode = MBProgressHUDModeText;
     HUD.labelText = NSLocalizedString(@"登录成功", nil);
@@ -122,11 +128,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)onRequestFailure:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag{
-    HUD.mode = MBProgressHUDModeText;
-    HUD.labelText = NSLocalizedString(@"登录失败", nil);
-    [HUD hide:YES afterDelay:1];
-}
 
 
 

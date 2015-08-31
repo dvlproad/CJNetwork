@@ -7,7 +7,8 @@
 //
 
 #import "ResponseAFNHandler.h"
-//#import "NSString+Encoding.h"
+#import "NSString+Encoding.h"
+#import "CommonHUD.h"
 
 @implementation ResponseAFNHandler
 
@@ -32,22 +33,22 @@
     NSError *error = operation.error;
     NSLog(@"errorCode = %zd, errMesg = %@", errorCode, error); //[error description]、[error localizedDescription]、[error userInfo]
     
-    
     NSInteger statusCode = operation.response.statusCode;
     NSString *response = operation.responseString;
-    /*
-     if (statusCode == 500) {
-     response = NSLocalizedString(@"服务器内部错误", nil);//参照服务器状态码大全
-     }else{
-     response = [response Unicode_To_Chinese];
-     }
-     */
+    if (statusCode == 500) {
+        response = NSLocalizedString(@"服务器内部错误", nil);//参照服务器状态码大全
+    }else{
+        response = [response Unicode_To_Chinese];
+    }
+    
     NSString *failMesg = [NSString stringWithFormat:@"%@", response];
     NSLog(@"statusCode = %zd, failMesg = %@", statusCode, failMesg);
     NSLog(@"======分割线======");
     
-    if (delegate && [delegate respondsToSelector:@selector(onRequestFailure:tag:)]) {
-        [delegate onRequestFailure:operation tag:tag];
+    if (delegate && [delegate respondsToSelector:@selector(onRequestFailure:tag:failMesg:)]) {
+        [delegate onRequestFailure:operation tag:tag failMesg:failMesg];
+    }else{
+        [CommonHUD hud_showErrorText:failMesg];
     }
 }
 

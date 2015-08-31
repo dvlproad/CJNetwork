@@ -17,7 +17,7 @@
     });
 }
 
-+ (void)hud_showText:(NSString *)text
++ (void)hud_showDoingText:(NSString *)text
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [SVProgressHUD showWithStatus:text maskType:SVProgressHUDMaskTypeClear];
@@ -30,6 +30,14 @@
         [SVProgressHUD showWithStatus:NSLocalizedString(@"加载中...", nil) maskType:SVProgressHUDMaskTypeClear];
     });
 }
+
++ (void)hud_showErrorText:(NSString *)text
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [SVProgressHUD showErrorWithStatus:text];
+    });
+}
+
 
 
 + (void)hud_showNoNetwork

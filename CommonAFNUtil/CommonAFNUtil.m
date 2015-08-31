@@ -271,7 +271,7 @@ typedef void(^onRequestFailureBlock)(AFHTTPRequestOperation *operation, NSError 
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [CommonHUD hud_showText:@"检查更新请求发生错误"];
+            [CommonHUD hud_showDoingText:@"检查更新请求发生错误"];
             failure();
         }];
     }

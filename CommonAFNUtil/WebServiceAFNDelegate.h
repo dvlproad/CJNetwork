@@ -13,6 +13,6 @@
 @required
 - (void)onRequestSuccess:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag responseObject:(id)responseObject;
 @optional
-- (void)onRequestFailure:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag;
+- (void)onRequestFailure:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag failMesg:(NSString *)failMesg;
 
 @end

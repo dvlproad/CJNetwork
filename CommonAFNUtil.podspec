@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CommonAFNUtil"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "easier to use AFN."
   s.homepage     = "https://github.com/dvlproad/CommonAFNUtil"
   s.license      = "MIT"
@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CommonAFNUtil.git", :tag => "0.0.21" }
-  s.source_files  = "CommonAFNUtil/**/*.{h,m}", "ServiceHelp/**/*.{h,m}"
+  s.source       = { :git => "https://github.com/dvlproad/CommonAFNUtil.git", :tag => "0.0.3" }
+  s.source_files  = "CommonAFNUtil/**/*.{h,m}"
   s.frameworks = 'UIKit'
 
   # s.library   = "iconv"
@@ -24,5 +24,10 @@ Pod::Spec.new do |s|
   s.dependency 'MBProgressHUD', '~> 0.9.1'
   s.dependency 'SVProgressHUD', '~> 1.1.3'
   s.dependency 'CommonDataCacheManager', '~> 0.0.2'
+
+
+  s.subspec 'ServiceHelp' do |ss|
+    ss.source_files = "ServiceHelp/**/*.{h,m}"
+  end
 
 end

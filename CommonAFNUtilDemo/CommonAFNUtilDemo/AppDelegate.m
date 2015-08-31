@@ -20,6 +20,18 @@
     // Override point for customization after application launch.
     
     [CommonAFNInstance shareCommonAFNInstance]; //主要用于开启网络监听
+    [self performSelector:@selector(tryAutoLogin) withObject:nil afterDelay:0.35f];
+    /*
+     如果启动就去检测 建议延时调用
+     eg:[self performSelector:@selector(login:) withObject:nil afterDelay:0.35f];
+     
+     由于检测网络有一定的延迟，所以如果启动app立即去检测调用[AFNetworkReachabilityManager sharedManager].networkReachabilityStatus 有可能得到的是status == AFNetworkReachabilityStatusUnknown;但是此时明明是有网的，建议在收到监听网络状态回调以后再取[AFNetworkReachabilityManager sharedManager].networkReachabilityStatus。
+     */
+    
+    return YES;
+}
+
+- (void)tryAutoLogin{
     //自动登录的功能
     NSString *name = [LoginHelper loginName];
     NSString *pasd = [LoginHelper loginPasd];
@@ -33,10 +45,8 @@
             NSLog(@"登录不了哦，再试试看！");
         }];
     }
-    
-    
-    return YES;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

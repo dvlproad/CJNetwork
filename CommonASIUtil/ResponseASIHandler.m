@@ -7,7 +7,8 @@
 //
 
 #import "ResponseASIHandler.h"
-//#import "NSString+Encoding.h"
+#import "NSString+Encoding.h"
+#import "CommonHUD.h"
 
 @implementation ResponseASIHandler
 
@@ -31,6 +32,8 @@
     
     if (delegate && [delegate respondsToSelector:@selector(onRequestFailure:)]) {
         [delegate onRequestFailure:request];
+    }else{
+        [CommonHUD hud_showErrorText:failMesg];
     }
 }
 
@@ -44,13 +47,11 @@
     NSInteger statusCode = [request responseStatusCode];
     NSLog(@"statusCode = %d", statusCode);
     NSString *response = [request responseString];
-    /*
     if (statusCode == 500) {
         response = NSLocalizedString(@"服务器内部错误", nil);//参照服务器状态码大全
     }else{
         response = [response Unicode_To_Chinese];
     }
-    */
     
     NSString *failMesg = [NSString stringWithFormat:@"%@", response];
     return failMesg;

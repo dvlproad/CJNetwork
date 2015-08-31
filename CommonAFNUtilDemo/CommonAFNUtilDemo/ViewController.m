@@ -82,7 +82,7 @@ static int apiTestCount = 0;
     NSLog(@"接口测试成功。。。%d", apiTestCount++);
 }
 
-- (void)onRequestFailure:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag{
+- (void)onRequestFailure:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag failMesg:(NSString *)failMesg{
     NSLog(@"接口测试失败。。。");
 }
 

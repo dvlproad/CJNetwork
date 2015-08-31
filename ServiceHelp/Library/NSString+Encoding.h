@@ -1,9 +1,9 @@
 //
 //  NSString+Encoding.h
-//  HealthyDiet
+//  CommonAFNUtilDemo
 //
-//  Created by lichq on 15/3/25.
-//  Copyright (c) 2015年 lichq. All rights reserved.
+//  Created by lichq on 8/6/15.
+//  Copyright (c) 2015 ciyouzen. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -11,8 +11,11 @@
 @interface CommonHUD : NSObject
 
 + (void)hud_dismiss;
-+ (void)hud_showText:(NSString *)text;
+
++ (void)hud_showDoingText:(NSString *)text;
 + (void)hud_showLoading;
+
++ (void)hud_showErrorText:(NSString *)text;
 + (void)hud_showNoNetwork;
 
 @end
