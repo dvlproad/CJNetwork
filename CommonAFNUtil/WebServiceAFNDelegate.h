@@ -10,8 +10,9 @@
 
 @protocol WebServiceAFNDelegate <NSObject>
 
-//@required
-- (void)onRequestSuccess:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag;
+@required
+- (void)onRequestSuccess:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag responseObject:(id)responseObject;
+@optional
 - (void)onRequestFailure:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag;
 
 @end

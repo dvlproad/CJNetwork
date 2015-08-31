@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CommonAFNUtil"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "easier to use AFN."
   s.homepage     = "https://github.com/dvlproad/CommonAFNUtil"
   s.license      = "MIT"
@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CommonAFNUtil.git", :tag => "0.0.1" }
-  s.source_files  = "CommonAFNUtil/**/*.{h,m}"
+  s.source       = { :git => "https://github.com/dvlproad/CommonAFNUtil.git", :tag => "0.0.2" }
+  s.source_files  = "CommonAFNUtil/**/*.{h,m}", "ServiceHelp/**/*.{h,m}"
   s.frameworks = 'UIKit'
 
   # s.library   = "iconv"
@@ -22,5 +22,7 @@ Pod::Spec.new do |s|
   # s.dependency "JSONKit", "~> 1.4"
   s.dependency 'AFNetworking', '~> 2.5.4'
   s.dependency 'MBProgressHUD', '~> 0.9.1'
+  s.dependency 'SVProgressHUD', '~> 1.1.3'
+  s.dependency 'CommonDataCacheManager', '~> 0.0.1'
 
 end

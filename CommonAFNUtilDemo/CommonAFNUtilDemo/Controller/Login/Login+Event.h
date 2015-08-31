@@ -7,7 +7,7 @@
 //
 
 #import "Login.h"
-#import "CommonAFNUtil.h"
+#import "CurrentAFNAPI.h"
 
 @interface Login (Event)<UITextFieldDelegate, MBProgressHUDDelegate, WebServiceAFNDelegate>
 

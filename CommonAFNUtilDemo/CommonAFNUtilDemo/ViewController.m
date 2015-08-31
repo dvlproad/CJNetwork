@@ -7,8 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "AFNDemoViewController.h"
 
-@interface ViewController ()
+static int apiTestCount = 0;
+
+@interface ViewController (){
+    NSString *trackViewUrl;
+}
 
 @end
 
@@ -18,6 +23,68 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+- (IBAction)goAFNTest:(id)sender{
+    AFNDemoViewController *vc = [[AFNDemoViewController alloc]initWithNibName:@"AFNDemoViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (IBAction)checkVersion:(id)sender{
+    [CommonAFNUtil checkVersionWithAPPID:@"587767923" success:^(BOOL isLastest, NSString *app_trackViewUrl) {
+        if (isLastest == NO) {
+            trackViewUrl = app_trackViewUrl;
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
+            alert.tag = 10000;
+            [alert show];
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本已是最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            alert.tag = 10001;
+            [alert show];
+        }
+        
+    } failure:^{
+        NSLog(@"网络检查失败");
+    }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag == 10000 && buttonIndex == 1) {
+        //[[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://itunes.apple.com"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+    }
+}
+
+- (IBAction)apiTest:(id)sender{ //测试多次发送返回几次结果
+    apiTestCount = 0;
+    
+    for (int i = 0; i < 10; i++) {
+        [self doAPITest];
+//        [NSThread detachNewThreadSelector:@selector(doAPITest) toTarget:self withObject:nil];
+    }
+}
+
+
+- (void)doAPITest{
+    NSString *Url = API_BASE_Url_LookHouse(@"buy/getHouseList");
+    NSDictionary *parameters = @{@"area": @"",
+                                 @"squareFrom": @"",
+                                 @"squareTo"  : @"",
+                                 @"amountForm": @"100",
+                                 @"amountTo"  : @"200",
+                                 @"searchConn": @""};
+    
+    AFHTTPRequestOperationManager *manager = [CurrentAFNManager manager_lookhouse];
+    [[CommonAFNInstance shareCommonAFNInstance] useManager_d:manager postRequestUrl:Url params:parameters delegate:self tag:10];
+}
+
+- (void)onRequestSuccess:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag responseObject:(id)responseObject{
+    NSLog(@"接口测试成功。。。%d", apiTestCount++);
+}
+
+- (void)onRequestFailure:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag{
+    NSLog(@"接口测试失败。。。");
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

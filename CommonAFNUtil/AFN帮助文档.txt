@@ -1,0 +1,82 @@
+
+问：在使用AFNetworking的POST方式连接WEB API时，报错："The operation couldn't e completed. (Cocoa error 3840)."
+答：这是一个JSON解析错误，一般来说出现这个错误很可能是因为你WEP API返回的JSON数据格式不正确造成的。
+所以，要先确认WEB API的返回值是否为正确有效的JSON格式。可以用下面的在线JSON校验工具来检查。http://www.bejson.com/
+
+
+
+要使用常规的AFN网络访问
+    1. AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    所有的网络请求,均有manager发起
+    
+    2. 需要注意的是,默认提交请求的数据是二进制的,返回格式是JSON
+    
+    3. 请求格式
+    AFHTTPRequestSerializer            HTTP二进制格式
+    AFJSONRequestSerializer            JSON
+    AFPropertyListRequestSerializer    PList(是一种特殊的XML,解析起来相对容易)
+    
+    4. 返回格式
+    AFHTTPResponseSerializer           HTTP二进制格式
+    AFJSONResponseSerializer           JSON
+    AFXMLParserResponseSerializer      XML,只能返回XMLParser,还需要自己通过代理方法解析
+    AFXMLDocumentResponseSerializer    (Mac OS X)
+    AFPropertyListResponseSerializer   PList
+    AFImageResponseSerializer          Image
+    AFCompoundResponseSerializer       组合
+
+
+##Example
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+    //设置请求格式和返回格式
+    manager.requestSerializer  = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+
+   //设置请求参数编码和返回参数编码
+    manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
+    manager.responseSerializer.stringEncoding = NSUTF8StringEncoding;
+
+    //设置请求头 HTTPHeader 之 Content-Type
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    //设置接收acceptableContentTypes
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
+    //NSMutableSet * muSet = [[NSMutableSet alloc]initWithSet:manager.responseSerializer.acceptableContentTypes];
+    //[muSet addObject:@"text/html"];
+    //manager.responseSerializer.acceptableContentTypes = muSet;
+
+    // 设置超时时间
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 5.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+
+
+##问题
+Q:iOS"Request failed: unacceptable content-type: text/html"
+A:添加一种服务器返回的数据格式manager.responseSerializer.acceptableContentTypes =。
+
+Q:AFNetworking在请求时报错code=-1016 和 3840
+A:在进行网络请求时出现-1016 是因为只支持text/json，application/json，text/javascript。解决办法是添加一种服务器返回的数据格式text/html。一劳永逸的方法是 在AFURLResponseSerialization.h里面搜索self.acceptableContentTypes,然后在里面添加@"text/html",@"text/plain"。这样就可以解决-1016的错误了。
+但是随之而来的是3840错误
+Error Domain=NSCocoaErrorDomain Code=3840 "The operation couldn’t be completed. (Cocoa error 3840.)" (JSON text did not start with array or object and option to allow fragments not set.) UserInfo=0x9152780 {NSDebugDescription=JSON text did not start with array or object and option to allow fragments not set.}
+你会发现出现此错误。怎么办呢
+添加如下语句 就可以解决问题了
+manger.requestSerializer = [AFHTTPRequestSerializerserializer];
+manger.responseSerializer = [AFHTTPResponseSerializerserializer];
+
+是否成功了,成功了吧!但是新问题出现了。编码问题。如果服务器返回a 的话   你收到的 是<61>
+这样  怎么能行呢?
+当你用浏览器 去请求时 发现 响应头Content-Type: text/html;charset=UTF-8 是这样的
+但是afNetwork 请求是Content-Type:text/plain;charset=ISO-8859-1 是这样的  不一致了吧
+为什么 pc浏览器 访问的 和用afNetwork 访问的 不一致呢? 不了解 什么情况?
+接着发现  其实 添加 如下二句 即可  也不用去修改AFURLResponseSerialization.h 里面的东西
+manger.requestSerializer = [AFHTTPRequestSerializerserializer];
+manger.responseSerializer = [AFHTTPResponseSerializerserializer];
+把 收到的responseObject 转换一下 编码 就OK了
+NSData *data = responseObject;
+NSString *string =  [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+综上：AFNetworking在请求时报错code=-1016 和 3840，只需添加
+manger.requestSerializer = [AFHTTPRequestSerializerserializer];
+manger.responseSerializer = [AFHTTPResponseSerializerserializer];
+而不用去修改manager.responseSerializer.acceptableContentTypes。

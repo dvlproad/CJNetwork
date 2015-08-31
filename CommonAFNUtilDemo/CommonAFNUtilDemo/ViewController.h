@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CurrentAFNAPI.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UIAlertViewDelegate, WebServiceAFNDelegate>
 
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CurrentAFNAPI.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [CommonAFNInstance shareCommonAFNInstance]; //主要用于开启网络监听
+    //自动登录的功能
+    NSString *name = [LoginHelper loginName];
+    NSString *pasd = [LoginHelper loginPasd];
+    if (name == nil) {
+        //[self goLogin];
+    }else{
+        [CurrentAFNAPI requestLogin_name:name pasd:pasd success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"获取acces_token成功，代表登录成功");
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"登录不了哦，再试试看！");
+        }];
+    }
+    
+    
     return YES;
 }
 
