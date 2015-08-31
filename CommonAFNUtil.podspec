@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CommonAFNUtil.git", :tag => "0.0.2" }
+  s.source       = { :git => "https://github.com/dvlproad/CommonAFNUtil.git", :tag => "0.0.21" }
   s.source_files  = "CommonAFNUtil/**/*.{h,m}", "ServiceHelp/**/*.{h,m}"
   s.frameworks = 'UIKit'
 
