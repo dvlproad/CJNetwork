@@ -10,13 +10,11 @@
 
 @interface LoginHelper : NSObject
 
-+ (void)login_UID:(NSString *)uid;
 + (void)login_name:(NSString *)name pasd:(NSString *)pasd;
 + (void)logout;
 
 + (BOOL)isLogin;
 
-+ (NSString *)loginUID;
 + (NSString *)loginName;
 + (NSString *)loginPasd;
 

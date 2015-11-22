@@ -22,67 +22,22 @@
 }
 
 
-//GET
-- (AFHTTPRequestOperation *)useManager_d:(AFHTTPRequestOperationManager *)manager
-                         getRequestUrl:(NSString *)Url
-                                params:(NSDictionary *)params
-                              delegate:(id<WebServiceAFNDelegate>)delegate{
-    return [CommonAFNUtil useManager:manager getRequestUrl:Url params:params delegate:delegate tag:0];
-}
 
-- (AFHTTPRequestOperation *)useManager_d:(AFHTTPRequestOperationManager *)manager
-                         getRequestUrl:(NSString *)Url
-                                params:(NSDictionary *)params
-                              delegate:(id<WebServiceAFNDelegate>)delegate
-                                   tag:(NSInteger)tag{
-    return [CommonAFNUtil useManager:manager getRequestUrl:Url params:params delegate:delegate tag:tag];
-}
-
-//POST
-- (AFHTTPRequestOperation *)useManager_d:(AFHTTPRequestOperationManager *)manager
-                        postRequestUrl:(NSString *)Url
-                                params:(NSDictionary *)params
-                              delegate:(id<WebServiceAFNDelegate>)delegate{
-    
-    return [CommonAFNUtil useManager:manager  postRequestUrl:Url params:params delegate:delegate tag:0];
-}
-
-- (AFHTTPRequestOperation *)useManager_d:(AFHTTPRequestOperationManager *)manager
-                        postRequestUrl:(NSString *)Url
-                                params:(NSDictionary *)params
-                              delegate:(id<WebServiceAFNDelegate>)delegate
-                                   tag:(NSInteger)tag{
-    return [CommonAFNUtil useManager:manager postRequestUrl:Url params:params delegate:delegate tag:tag];
-}
-
-- (AFHTTPRequestOperation *)useManager_b:(AFHTTPRequestOperationManager *)manager
+- (AFHTTPRequestOperation *)useManager:(AFHTTPRequestOperationManager *)manager
                         postRequestUrl:(NSString *)Url
                                 params:(NSDictionary *)params
                                success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure{
-    return [CommonAFNUtil useManager:manager postRequestUrl:Url params:params success:success failure:failure];
+                               failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure{
+    return [AFNUtil useManager:manager postRequestUrl:Url params:params success:success failure:failure];
 }
 
-- (AFHTTPRequestOperation *)useManager_b:(AFHTTPRequestOperationManager *)manager
+- (AFHTTPRequestOperation *)useManager:(AFHTTPRequestOperationManager *)manager
                         postRequestUrl:(NSString *)Url
                                 params:(NSDictionary *)params
                               useCache:(BOOL)useCache
                                success:(void (^)(AFHTTPRequestOperation *operation, id responseObject, BOOL isCacheData))success
-                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error, BOOL isCacheData))failure{
-    return [CommonAFNUtil useManager:manager postRequestUrl:Url params:params useCache:useCache success:success failure:failure];
-}
-
-//③POST_Request
-- (AFHTTPRequestOperation *)requestUrl:(NSString *)Url
-                                params:(NSDictionary *)params
-                              delegate:(id<WebServiceAFNDelegate>)delegate{
-    return [CommonAFNUtil requestUrl:Url params:params delegate:delegate tag:0];
-}
-- (AFHTTPRequestOperation *)requestUrl:(NSString *)Url
-                                params:(NSDictionary *)params
-                              delegate:(id<WebServiceAFNDelegate>)delegate
-                                   tag:(NSInteger)tag{
-    return [CommonAFNUtil requestUrl:Url params:params delegate:delegate tag:tag];
+                               failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg, BOOL isCacheData))failure{
+    return [AFNUtilCache useManager:manager postRequestUrl:Url params:params useCache:useCache success:success failure:failure];
 }
 
 @end

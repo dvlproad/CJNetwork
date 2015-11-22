@@ -7,35 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CommonAFNUtil.h"
+#import "AFNUtil.h"
+#import "AFNUtilCache.h"
 
 @interface CommonAFNInstance : NSObject
 
 + (CommonAFNInstance *)shareCommonAFNInstance;
 
-//GET
-- (AFHTTPRequestOperation *)useManager_d:(AFHTTPRequestOperationManager *)manager getRequestUrl:(NSString *)Url params:(NSDictionary *)params delegate:(id<WebServiceAFNDelegate>)delegate;
-- (AFHTTPRequestOperation *)useManager_d:(AFHTTPRequestOperationManager *)manager getRequestUrl:(NSString *)Url params:(NSDictionary *)params delegate:(id<WebServiceAFNDelegate>)delegate tag:(NSInteger)tag;
 
-//POST
-- (AFHTTPRequestOperation *)useManager_d:(AFHTTPRequestOperationManager *)manager postRequestUrl:(NSString *)Url params:(NSDictionary *)params delegate:(id<WebServiceAFNDelegate>)delegate;
-- (AFHTTPRequestOperation *)useManager_d:(AFHTTPRequestOperationManager *)manager postRequestUrl:(NSString *)Url params:(NSDictionary *)params delegate:(id<WebServiceAFNDelegate>)delegate tag:(NSInteger)tag;
-
-- (AFHTTPRequestOperation *)useManager_b:(AFHTTPRequestOperationManager *)manager
+- (AFHTTPRequestOperation *)useManager:(AFHTTPRequestOperationManager *)manager
                         postRequestUrl:(NSString *)Url
                                 params:(NSDictionary *)params
                                success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-- (AFHTTPRequestOperation *)useManager_b:(AFHTTPRequestOperationManager *)manager
+                               failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure;
+
+- (AFHTTPRequestOperation *)useManager:(AFHTTPRequestOperationManager *)manager
                         postRequestUrl:(NSString *)Url
                                 params:(NSDictionary *)params
                               useCache:(BOOL)useCache
                                success:(void (^)(AFHTTPRequestOperation *operation, id responseObject, BOOL isCacheData))success
-                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error, BOOL isCacheData))failure;
-
-//③POST_Request
-- (AFHTTPRequestOperation *)requestUrl:(NSString *)Url params:(NSDictionary *)params delegate:(id<WebServiceAFNDelegate>)delegate;
-- (AFHTTPRequestOperation *)requestUrl:(NSString *)Url params:(NSDictionary *)params delegate:(id<WebServiceAFNDelegate>)delegate tag:(NSInteger)tag;
+                               failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg, BOOL isCacheData))failure;
 
 
 

@@ -8,7 +8,7 @@
 
 #import "LoginHelper.h"
 
-#define kLoginUID   @"uid"
+//#define kLoginUID   @"uid"
 #define kLoginName  @"name"
 #define kLoginPasd  @"pasd"
 
@@ -20,9 +20,6 @@
 
 @implementation LoginHelper
 
-+ (void)login_UID:(NSString *)uid{
-    [[NSUserDefaults standardUserDefaults] setObject:uid forKey:kLoginUID];
-}
 
 + (void)login_name:(NSString *)name pasd:(NSString *)pasd{
     [[NSUserDefaults standardUserDefaults] setObject:name forKey:kLoginName];
@@ -30,7 +27,6 @@
 }
 
 + (void)logout{
-    [[NSUserDefaults standardUserDefaults] setObject:kLogoutUID forKey:kLoginUID];
     [[NSUserDefaults standardUserDefaults] setObject:kLogoutName forKey:kLoginName];
     [[NSUserDefaults standardUserDefaults] setObject:kLogoutPasd forKey:kLoginPasd];
 }
@@ -39,10 +35,6 @@
 + (BOOL)isLogin{
 //    return [[self loginUID] isEqualToString:kLogoutUID] ? NO : YES;
     return [[self loginName] isEqualToString:kLogoutName] ? NO : YES;
-}
-
-+ (NSString *)loginUID{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kLoginUID];
 }
 
 + (NSString *)loginName{

@@ -15,6 +15,25 @@
 @implementation CurrentAFNAPI
 
 
++ (void)requestLogin_name:(NSString *)name
+                     pasd:(NSString*)pasd
+                  success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                  failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure
+{
+    NSString *Url = API_BASE_Url(@"login");
+    NSDictionary *params = @{@"username" : name,
+                             @"password" : pasd
+                             };
+    AFHTTPRequestOperationManager *manager = [CurrentAFNManager manager_health];
+    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url params:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success(operation, responseObject);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg) {
+        NSLog(@"获取失败");
+        failure(operation, failMesg);
+    }];
+//    [self.indicatorView setAnimatingWithStateOfOperation:operation];
+}
 
 #pragma mark AUTH:认证接口
 /****************
@@ -23,10 +42,10 @@
  *   password：md5(yyMMdd+用户名倒序+26%trUst#9527)
  *       其中：yyMMdd从服务端接口【/api/systime】获取
  ****************/
-+ (void)requestLogin_name:(NSString *)name
++ (void)requestDDLogin_name:(NSString *)name
                      pasd:(NSString*)pasd
                   success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                  failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure
 {
     //当前API参考：http://dingdang.baseoa.com:8080/api.html#access-token
     NSString *Url = API_BASE_Url_dingdang(@"oauth/token");
@@ -37,7 +56,7 @@
                              @"client_secret" : CLIENT_SECRET
                              };
     AFHTTPRequestOperationManager *manager = [CurrentAFNManager manager_dingdang];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager_b:manager postRequestUrl:Url params:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url params:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         LoginShareInfo *shareInfo = [LoginShareInfo shared];
         shareInfo.access_token = [responseObject objectForKey:@"access_token"];
         shareInfo.expires_in = [responseObject objectForKey:@"expires_in"];
@@ -47,30 +66,30 @@
         
         success(operation, responseObject);
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg) {
         NSLog(@"获取失败");
-        failure(operation, error);
+        failure(operation, failMesg);
     }];
 }
 
-+ (void)requestLogout_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                      failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)requestDDLogout_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                      failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/logout");
     NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token};
     
     AFHTTPRequestOperationManager *manager = [CurrentAFNManager manager_dingdang];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager_b:manager postRequestUrl:Url params:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url params:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(operation, responseObject);
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        failure(operation, error);
+    } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg) {
+        failure(operation, failMesg);
     }];
     
 }
 
-+ (void)requestUser_GetInfo_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)requestDDUser_GetInfo_success:(void (^)(AFHTTPRequestOperation *operation,id responseObject))success
+                            failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/user/me");
     NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token};
@@ -84,26 +103,26 @@
     */
     
     AFHTTPRequestOperationManager *manager = [CurrentAFNManager manager_dingdang];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager_b:manager postRequestUrl:Url params:params useCache:NO success:^(AFHTTPRequestOperation *operation, id responseObject, BOOL isCacheData) {
+    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url params:params useCache:NO success:^(AFHTTPRequestOperation *operation, id responseObject, BOOL isCacheData) {
         if (isCacheData) {
             success(nil, responseObject);
         }else{
             success(operation, responseObject);
         }
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error, BOOL isCacheData) {
+    } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg, BOOL isCacheData) {
         if (isCacheData) {
             failure(nil, nil);
         }else{
-            failure(operation, error);
+            failure(operation, failMesg);
         }
     }];
 }
 
 
 //获取我的科目列表
-+ (void)requestCourse_Get_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
++ (void)requestDDCourse_Get_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                          failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/course/list");
     NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token,
@@ -111,18 +130,18 @@
     
     
     AFHTTPRequestOperationManager *manager = [CurrentAFNManager manager_dingdang];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager_b:manager postRequestUrl:Url params:params useCache:YES success:^(AFHTTPRequestOperation *operation, id responseObject, BOOL isCacheData) {
+    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url params:params useCache:YES success:^(AFHTTPRequestOperation *operation, id responseObject, BOOL isCacheData) {
         if (isCacheData) {
             success(nil, responseObject);
         }else{
             success(operation, responseObject);
         }
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error, BOOL isCacheData) {
+    } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg, BOOL isCacheData) {
         if (isCacheData) {
             failure(nil, nil);
         }else{
-            failure(operation, error);
+            failure(operation, failMesg);
         }
         
     }];

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CommonAFNUtil.h"
+#import "AFNUtil.h"
 
-@interface AFNDemoViewController : UIViewController<WebServiceAFNDelegate>{
+@interface AFNDemoViewController : UIViewController{
     
 }
 @property(nonatomic, strong) IBOutlet UIImageView *imageV;

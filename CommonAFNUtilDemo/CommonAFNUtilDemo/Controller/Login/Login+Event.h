@@ -9,6 +9,6 @@
 #import "Login.h"
 #import "CurrentAFNAPI.h"
 
-@interface Login (Event)<UITextFieldDelegate, MBProgressHUDDelegate, WebServiceAFNDelegate>
+@interface Login (Event)<UITextFieldDelegate>
 
 @end

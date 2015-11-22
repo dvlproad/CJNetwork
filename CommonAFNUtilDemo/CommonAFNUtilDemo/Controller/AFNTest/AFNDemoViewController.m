@@ -9,6 +9,7 @@
 #import "AFNDemoViewController.h"
 #import <AFNetworking/UIActivityIndicatorView+AFNetworking.h>   //UIActivityIndicatorView
 #import <AFNetworking/UIImageView+AFNetworking.h>               //UIImage
+#import "CommonAFNInstance.h"
 
 @interface AFNDemoViewController ()
 
@@ -31,17 +32,19 @@
     NSString *Url = API_BASE_Url_LookHouse(@"head/loadAd");
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    AFHTTPRequestOperation *operation = [CommonAFNUtil useManager:manager getRequestUrl:Url params:nil delegate:self tag:0];
+    AFHTTPRequestOperation *operation =
+    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url params:nil useCache:NO success:^(AFHTTPRequestOperation *operation, id responseObject, BOOL isCacheData) {
+        NSLog(@"获取数据成功");
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg, BOOL isCacheData) {
+        NSLog(@"获取数据失败");
+    }];
     
     //网络请求时候的动画添加
     UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] init];
     indicatorView.frame = CGRectMake(100, 200, 100, 100);/*calculate frame here*/
     [self.view addSubview:indicatorView];
     [indicatorView setAnimatingWithStateOfOperation:operation];
-}
-
-- (void)onRequestSuccess:(AFHTTPRequestOperation *)operation tag:(NSInteger)tag responseObject:(id)responseObject{
-    NSLog(@"获取数据成功");
 }
 
 

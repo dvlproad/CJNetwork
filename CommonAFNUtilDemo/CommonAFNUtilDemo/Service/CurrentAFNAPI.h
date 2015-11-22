@@ -15,19 +15,26 @@
 @class AFHTTPRequestOperation;
 @interface CurrentAFNAPI : NSObject
 
+//健康软件中的API
 + (void)requestLogin_name:(NSString *)name
                      pasd:(NSString*)pasd
                   success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+                  failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure;
 
-+ (void)requestLogout_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                      failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+//叮当中的API
++ (void)requestDDLogin_name:(NSString *)name
+                     pasd:(NSString*)pasd
+                  success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                  failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure;
 
-+ (void)requestUser_GetInfo_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)requestDDLogout_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                      failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure;
 
-//获取我的科目列表
-+ (void)requestCourse_Get_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
++ (void)requestDDUser_GetInfo_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                            failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure;
+
+//叮当中的API_获取我的科目列表
++ (void)requestDDCourse_Get_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                          failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure;
 
 @end
