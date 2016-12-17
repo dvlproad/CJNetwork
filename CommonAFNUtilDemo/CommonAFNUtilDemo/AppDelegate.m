@@ -38,10 +38,10 @@
     if (name == nil) {
         //[self goLogin];
     }else{
-        [CurrentAFNAPI requestDDLogin_name:name pasd:pasd success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [CurrentAFNAPI requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"获取acces_token成功，代表登录成功");
             
-        } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg) {
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
             NSLog(@"登录不了哦，再试试看！");
         }];
     }

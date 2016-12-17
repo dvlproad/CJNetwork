@@ -31,12 +31,12 @@
     
     NSString *Url = API_BASE_Url_LookHouse(@"head/loadAd");
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    AFHTTPRequestOperation *operation =
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url params:nil useCache:NO success:^(AFHTTPRequestOperation *operation, id responseObject, BOOL isCacheData) {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSURLSessionDataTask *URLSessionDataTask =
+    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:nil cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
         NSLog(@"获取数据成功");
         
-    } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg, BOOL isCacheData) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error, BOOL isCacheData) {
         NSLog(@"获取数据失败");
     }];
     
@@ -44,7 +44,7 @@
     UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] init];
     indicatorView.frame = CGRectMake(100, 200, 100, 100);/*calculate frame here*/
     [self.view addSubview:indicatorView];
-    [indicatorView setAnimatingWithStateOfOperation:operation];
+    [indicatorView setAnimatingWithStateOfTask:URLSessionDataTask];
 }
 
 
@@ -128,11 +128,11 @@
 + (void)postUploadWithUrl:(NSString *)urlStr fileUrl:(NSURL *)fileURL fileName:(NSString *)fileName fileType:(NSString *)fileTye success:(void (^)(id responseObject))success fail:(void (^)())fail
 {
     // 本地上传给服务器时,没有确定的URL,不好用MD5的方式处理
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     //@"http://localhost/demo/upload.php"
-    [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        
+    
+    [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         //        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"头像1.png" withExtension:nil];
         
         // 要上传保存在服务器中的名称
@@ -146,11 +146,11 @@
         //@"image/png"
         [formData appendPartWithFileURL:fileURL name:@"uploadFile" fileName:fileName mimeType:fileTye error:NULL];
         
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) {
             success(responseObject);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (fail) {
             fail();
         }
@@ -162,7 +162,7 @@
 //文件上传－随机生成文件名
 + (void)postUploadWithUrl:(NSString *)urlStr fileUrl:(NSURL *)fileURL success:(void (^)(id responseObject))success fail:(void (^)())fail
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     // AFHTTPResponseSerializer就是正常的HTTP请求响应结果:NSData
     // 当请求的返回数据不是JSON,XML,PList,UIImage之外,使用AFHTTPResponseSerializer
     // 例如返回一个html,text...
@@ -171,20 +171,20 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     // formData是遵守了AFMultipartFormData的对象
-    [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         // 将本地的文件上传至服务器
         //        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"头像1.png" withExtension:nil];
         
         [formData appendPartWithFileURL:fileURL name:@"uploadFile" error:NULL];
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //        NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         //
         //        NSLog(@"完成 %@", result);
         if (success) {
             success(responseObject);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"错误 %@", error.localizedDescription);
         if (fail) {
             fail();

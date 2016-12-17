@@ -17,20 +17,21 @@
 
 + (void)requestLogin_name:(NSString *)name
                      pasd:(NSString*)pasd
-                  success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                  failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure
+                  success:(CJRequestSuccess)success
+                  failure:(CJRequestFailure)failure
 {
     NSString *Url = API_BASE_Url(@"login");
     NSDictionary *params = @{@"username" : name,
                              @"password" : pasd
                              };
-    AFHTTPRequestOperationManager *manager = [CurrentAFNManager manager_health];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url params:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success(operation, responseObject);
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg) {
+    AFHTTPSessionManager *manager = [CurrentAFNManager manager_health];
+    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (success) {
+            success(task, responseObject);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"获取失败");
-        failure(operation, failMesg);
+        failure(task, error);
     }];
 //    [self.indicatorView setAnimatingWithStateOfOperation:operation];
 }
@@ -44,8 +45,8 @@
  ****************/
 + (void)requestDDLogin_name:(NSString *)name
                      pasd:(NSString*)pasd
-                  success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                  failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure
+                  success:(CJRequestSuccess)success
+                    failure:(CJRequestFailure)failure
 {
     //当前API参考：http://dingdang.baseoa.com:8080/api.html#access-token
     NSString *Url = API_BASE_Url_dingdang(@"oauth/token");
@@ -55,8 +56,8 @@
                              @"client_id"     : CLIENT,
                              @"client_secret" : CLIENT_SECRET
                              };
-    AFHTTPRequestOperationManager *manager = [CurrentAFNManager manager_dingdang];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url params:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    AFHTTPSessionManager *manager = [CurrentAFNManager manager_dingdang];
+    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         LoginShareInfo *shareInfo = [LoginShareInfo shared];
         shareInfo.access_token = [responseObject objectForKey:@"access_token"];
         shareInfo.expires_in = [responseObject objectForKey:@"expires_in"];
@@ -64,32 +65,33 @@
         shareInfo.scope = [responseObject objectForKey:@"scope"];
         shareInfo.token_type = [responseObject objectForKey:@"token_type"];
         
-        success(operation, responseObject);
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg) {
+        if (success) {
+            success(task, responseObject);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"获取失败");
-        failure(operation, failMesg);
+        failure(task, error);
     }];
 }
 
-+ (void)requestDDLogout_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                      failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure
++ (void)requestDDLogout_success:(CJRequestSuccess)success failure:(CJRequestFailure)failure
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/logout");
     NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token};
     
-    AFHTTPRequestOperationManager *manager = [CurrentAFNManager manager_dingdang];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url params:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success(operation, responseObject);
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg) {
-        failure(operation, failMesg);
+    AFHTTPSessionManager *manager = [CurrentAFNManager manager_dingdang];
+    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (success) {
+            success(task, responseObject);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"获取失败");
+        failure(task, error);
     }];
     
 }
 
-+ (void)requestDDUser_GetInfo_success:(void (^)(AFHTTPRequestOperation *operation,id responseObject))success
-                            failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure
++ (void)requestDDUser_GetInfo_success:(CJRequestSuccess)success failure:(CJRequestFailure)failure
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/user/me");
     NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token};
@@ -102,48 +104,73 @@
     }];
     */
     
-    AFHTTPRequestOperationManager *manager = [CurrentAFNManager manager_dingdang];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url params:params useCache:NO success:^(AFHTTPRequestOperation *operation, id responseObject, BOOL isCacheData) {
+    AFHTTPSessionManager *manager = [CurrentAFNManager manager_dingdang];
+    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:params cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
+        
         if (isCacheData) {
-            success(nil, responseObject);
-        }else{
-            success(operation, responseObject);
+            if (success) {
+                success(nil, responseObject);
+            }
+            
+        } else {
+            if (success) {
+                success(task, responseObject);
+            }
         }
         
-    } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg, BOOL isCacheData) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error, BOOL isCacheData) {
         if (isCacheData) {
-            failure(nil, nil);
-        }else{
-            failure(operation, failMesg);
+            if (failure) {
+                failure(nil, nil);
+            }
+            
+        } else {
+            if (failure) {
+                failure(task, error);
+            }
         }
     }];
 }
 
 
 //获取我的科目列表
-+ (void)requestDDCourse_Get_success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                          failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure
++ (void)requestDDCourse_Get_success:(CJRequestSuccess)success failure:(CJRequestFailure)failure
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/course/list");
+    if ([LoginShareInfo shared].access_token == nil) {
+        NSLog(@"access_token = nil");
+        return;
+    }
+    
     NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token,
                              @"type"        : @(0)};    //发布类型，0-大家帮 1-加密题
     
     
-    AFHTTPRequestOperationManager *manager = [CurrentAFNManager manager_dingdang];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url params:params useCache:YES success:^(AFHTTPRequestOperation *operation, id responseObject, BOOL isCacheData) {
+    AFHTTPSessionManager *manager = [CurrentAFNManager manager_dingdang];
+    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:params cacheReuqestData:YES progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
+        
         if (isCacheData) {
-            success(nil, responseObject);
-        }else{
-            success(operation, responseObject);
+            if (success) {
+                success(nil, responseObject);
+            }
+            
+        } else {
+            if (success) {
+                success(task, responseObject);
+            }
         }
         
-    } failure:^(AFHTTPRequestOperation *operation, NSString *failMesg, BOOL isCacheData) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error, BOOL isCacheData) {
         if (isCacheData) {
-            failure(nil, nil);
-        }else{
-            failure(operation, failMesg);
+            if (failure) {
+                failure(nil, nil);
+            }
+            
+        } else {
+            if (failure) {
+                failure(task, error);
+            }
         }
-        
     }];
 }
 

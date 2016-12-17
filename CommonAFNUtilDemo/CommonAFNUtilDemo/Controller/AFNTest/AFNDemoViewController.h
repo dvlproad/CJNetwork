@@ -10,8 +10,9 @@
 #import "AFNUtil.h"
 
 @interface AFNDemoViewController : UIViewController{
-    
+//    NSURLConnection
 }
+
 @property(nonatomic, strong) IBOutlet UIImageView *imageV;
 
 @end

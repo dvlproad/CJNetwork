@@ -25,8 +25,9 @@
         //NSLog(@"网络不给力");
         [self hud_showNoNetwork];
     }else{
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager POST:Url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        [manager POST:Url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSDictionary *dic = [NSDictionary dictionaryWithDictionary:responseObject];
             NSArray *infoArray = [dic objectForKey:@"results"];
             if ([infoArray count]) {
@@ -47,7 +48,7 @@
                 }
             }
             
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"检查更新请求发生错误", nil)];
             failure();
         }];

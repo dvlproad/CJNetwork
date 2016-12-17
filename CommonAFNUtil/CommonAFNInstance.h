@@ -15,18 +15,45 @@
 + (CommonAFNInstance *)shareCommonAFNInstance;
 
 
-- (AFHTTPRequestOperation *)useManager:(AFHTTPRequestOperationManager *)manager
-                        postRequestUrl:(NSString *)Url
-                                params:(NSDictionary *)params
-                               success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                               failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure;
+/**
+ *  POST请求
+ *
+ *  @param manager          manager
+ *  @param Url              Url
+ *  @param parameters       parameters
+ *  @param uploadProgress   uploadProgress
+ *  @param success          success
+ *  @param failure          failure
+ *
+ *  return NSURLSessionDataTask
+ */
+- (NSURLSessionDataTask *)useManager:(AFHTTPSessionManager *)manager
+                      postRequestUrl:(NSString *)Url
+                          parameters:(id)parameters
+                            progress:(void (^)(NSProgress * _Nonnull))uploadProgress
+                             success:(CJRequestSuccess)success
+                             failure:(CJRequestFailure)failure;
 
-- (AFHTTPRequestOperation *)useManager:(AFHTTPRequestOperationManager *)manager
-                        postRequestUrl:(NSString *)Url
-                                params:(NSDictionary *)params
-                              useCache:(BOOL)useCache
-                               success:(void (^)(AFHTTPRequestOperation *operation, id responseObject, BOOL isCacheData))success
-                               failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg, BOOL isCacheData))failure;
+/**
+ *  POST请求
+ *
+ *  @param manager          manager
+ *  @param Url              Url
+ *  @param parameters       parameters
+ *  @param cacheReuqestData 是否缓存网络数据
+ *  @param uploadProgress   uploadProgress
+ *  @param success          success
+ *  @param failure          failure
+ *
+ *  return NSURLSessionDataTask
+ */
+- (NSURLSessionDataTask *)useManager:(AFHTTPSessionManager *)manager
+                      postRequestUrl:(NSString *)Url
+                          parameters:(NSDictionary *)parameters
+                    cacheReuqestData:(BOOL)cacheReuqestData
+                            progress:(void (^)(NSProgress * _Nonnull))uploadProgress
+                             success:(CJRequestCacheSuccess)success
+                             failure:(CJRequestCacheFailure)failure;
 
 
 

@@ -1,18 +1,26 @@
 # CommonAFNUtil
 AFN基类
 
+#### Screenshots
+![Example](./Screenshots/Demo.gif "Demo")
+![Example](./Screenshots/Demo.png "Demo")
 
 CommonAFNInstance需
+
+```
 #import "NetworkManager.h"
 #import "CommonDataCacheManager.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <AFNetworking.h>
+```
 
 CommonDataCacheManager需
+
+```
 #import "NSDictionary+Convert.h"
 #import "NSData+Convert.h"
 #import "NSString+MD5.h"
-
+```
 
 ##基础知识了解
 1、单例：dispatch_once （使用dispatch_once时，不用使用@synchronized）

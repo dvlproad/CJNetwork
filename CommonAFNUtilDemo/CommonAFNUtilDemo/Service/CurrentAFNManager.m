@@ -11,9 +11,9 @@
 @implementation CurrentAFNManager
 
 #pragma mark - magager定义
-+ (AFHTTPRequestOperationManager *)manager_health
++ (AFHTTPSessionManager *)manager_health
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     //-->晚餐
     manager.requestSerializer  = [AFJSONRequestSerializer serializer];
@@ -27,9 +27,9 @@
     return manager;
 }
 
-+ (AFHTTPRequestOperationManager *)manager_dingdang
++ (AFHTTPSessionManager *)manager_dingdang
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     //-->叮当
     manager.requestSerializer  = [AFHTTPRequestSerializer serializer];
@@ -47,9 +47,10 @@
     return manager;
 }
 
-+ (AFHTTPRequestOperationManager *)manager_lookhouse
+//CJNetworkManager
++ (AFHTTPSessionManager *)manager_lookhouse
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     //-->看房
     manager.requestSerializer  = [AFHTTPRequestSerializer serializer];

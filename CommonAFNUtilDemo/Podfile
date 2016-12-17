@@ -2,9 +2,7 @@ platform :ios, '7.0'
 #use_frameworks!
 
 target 'CommonAFNUtilDemo' do
-  pod 'AFNetworking', '~> 2.6.3'
-#  pod 'ASIHTTPRequest', '~> 1.8.2'
-#  pod 'Reachability', '~> 3.2'
+  pod 'AFNetworking', '~> 3.1.0'
   pod 'CocoaAsyncSocket', '~> 7.4.1'
   
   pod 'MBProgressHUD', '~> 0.9.1'
@@ -14,7 +12,6 @@ target 'CommonAFNUtilDemo' do
 end
 
 target 'CommonAFNUtilDemoTests' do
-   pod 'AFNetworking', '~> 2.6.3'
-#   pod 'ASIHTTPRequest', '~> 1.8.2'
+   pod 'AFNetworking', '~> 3.1.0'
    pod 'CocoaAsyncSocket', '~> 7.4.1'
 end

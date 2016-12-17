@@ -11,8 +11,8 @@
 
 @interface CurrentAFNManager : NSObject
 
-+ (AFHTTPRequestOperationManager *)manager_health;
-+ (AFHTTPRequestOperationManager *)manager_dingdang;
-+ (AFHTTPRequestOperationManager *)manager_lookhouse;
++ (AFHTTPSessionManager *)manager_health;
++ (AFHTTPSessionManager *)manager_dingdang;
++ (AFHTTPSessionManager *)manager_lookhouse;
 
 @end

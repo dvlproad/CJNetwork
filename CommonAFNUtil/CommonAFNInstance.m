@@ -23,21 +23,34 @@
 
 
 
-- (AFHTTPRequestOperation *)useManager:(AFHTTPRequestOperationManager *)manager
-                        postRequestUrl:(NSString *)Url
-                                params:(NSDictionary *)params
-                               success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                               failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg))failure{
-    return [AFNUtil useManager:manager postRequestUrl:Url params:params success:success failure:failure];
+- (NSURLSessionDataTask *)useManager:(AFHTTPSessionManager *)manager
+                      postRequestUrl:(NSString *)Url
+                          parameters:(id)parameters
+                            progress:(void (^)(NSProgress * _Nonnull))uploadProgress
+                             success:(CJRequestSuccess)success
+                             failure:(CJRequestFailure)failure {
+    return [AFNUtil useManager:manager
+                postRequestUrl:Url
+                    parameters:parameters
+                      progress:uploadProgress
+                       success:success
+                       failure:failure];
 }
 
-- (AFHTTPRequestOperation *)useManager:(AFHTTPRequestOperationManager *)manager
-                        postRequestUrl:(NSString *)Url
-                                params:(NSDictionary *)params
-                              useCache:(BOOL)useCache
-                               success:(void (^)(AFHTTPRequestOperation *operation, id responseObject, BOOL isCacheData))success
-                               failure:(void (^)(AFHTTPRequestOperation *operation, NSString *failMesg, BOOL isCacheData))failure{
-    return [AFNUtilCache useManager:manager postRequestUrl:Url params:params useCache:useCache success:success failure:failure];
+- (NSURLSessionDataTask *)useManager:(AFHTTPSessionManager *)manager
+                      postRequestUrl:(NSString *)Url
+                          parameters:(NSDictionary *)parameters
+                    cacheReuqestData:(BOOL)cacheReuqestData
+                            progress:(void (^)(NSProgress * _Nonnull))uploadProgress
+                             success:(CJRequestCacheSuccess)success
+                             failure:(CJRequestCacheFailure)failure {
+    return [AFNUtil useManager:manager
+                postRequestUrl:Url
+                    parameters:parameters
+              cacheReuqestData:cacheReuqestData
+                      progress:uploadProgress
+                       success:success
+                       failure:failure];
 }
 
 @end
