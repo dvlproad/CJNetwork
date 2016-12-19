@@ -7,6 +7,7 @@
 //
 
 #import "CurrentAFNAPI.h"
+#import "CJResponseModel.h"
 
 #define CLIENT @"app"
 #define PLATCODE @"IOS"
@@ -25,7 +26,7 @@
                              @"password" : pasd
                              };
     AFHTTPSessionManager *manager = [CurrentAFNManager manager_health];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
             success(task, responseObject);
         }
@@ -57,7 +58,7 @@
                              @"client_secret" : CLIENT_SECRET
                              };
     AFHTTPSessionManager *manager = [CurrentAFNManager manager_dingdang];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         LoginShareInfo *shareInfo = [LoginShareInfo shared];
         shareInfo.access_token = [responseObject objectForKey:@"access_token"];
         shareInfo.expires_in = [responseObject objectForKey:@"expires_in"];
@@ -80,7 +81,7 @@
     NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token};
     
     AFHTTPSessionManager *manager = [CurrentAFNManager manager_dingdang];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
             success(task, responseObject);
         }
@@ -105,7 +106,7 @@
     */
     
     AFHTTPSessionManager *manager = [CurrentAFNManager manager_dingdang];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:params cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
+    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:params cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
         
         if (isCacheData) {
             if (success) {
@@ -147,7 +148,7 @@
     
     
     AFHTTPSessionManager *manager = [CurrentAFNManager manager_dingdang];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:params cacheReuqestData:YES progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
+    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:params cacheReuqestData:YES progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
         
         if (isCacheData) {
             if (success) {
@@ -174,5 +175,86 @@
     }];
 }
 
+
++ (void)requestijinbuLogin_name:(NSString *)name
+                           pasd:(NSString*)pasd
+                        success:(CJRequestSuccess)success
+                        failure:(CJRequestFailure)failure
+{
+    NSString *Url = API_BASE_Url_ijinbu(@"ijinbu/app/teacherLogin/login");
+    NSDictionary *params = @{@"userAccount":name, //测试:name:18020721201 pasd:123456
+                             @"userPwd":    [pasd MD5],
+                             @"loginType":  @(0)
+//                             @"client_id"     : CLIENT,
+//                             @"client_secret" : CLIENT_SECRET
+                             };
+    NSLog(@"Url = %@", Url);
+    NSLog(@"params = %@", params);
+    
+    AFHTTPSessionManager *manager = [CurrentAFNManager manager_ijinbu];
+    
+    NSString *sign = [self signWithParams:params path:nil];
+    NSLog(@"sign = %@", sign);
+    [manager.requestSerializer setValue:sign forHTTPHeaderField:@"sign"];
+    
+    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"请求ijinbu成功");
+        NSLog(@"responseObject = %@", responseObject);
+        CJResponseModel *responseModel = [[CJResponseModel alloc] initWithDictionary:responseObject error:nil];
+        if ([responseModel.status integerValue] == 1) {
+            NSLog(@"登录ijinbu成功");
+            if (success) {
+                success(task, responseObject);
+            }
+            
+        } else {
+            NSLog(@"登录ijinbu失败");
+            if (failure) {
+                failure(task, nil);
+            }
+
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"请求ijinbu失败");
+        NSLog(@"error = %@", error.description);
+        if (failure) {
+            failure(task, error);
+        }
+    }];
+}
+
++ (NSString *)signWithParams:(NSDictionary *)params path:(NSString*)path
+{
+#if 0
+    return [[NSString stringWithFormat:@"%@123456", [HPDevice deviceId]] md5Hash];
+#else
+    NSURL *url = [NSURL URLWithString:path];
+    NSString *q = [url query];
+    NSArray *kvs = [q componentsSeparatedByString:@"&"];
+    NSMutableDictionary *d = [NSMutableDictionary dictionaryWithDictionary:params];
+    for (NSString *item in kvs)
+    {
+        NSArray *a = [item componentsSeparatedByString:@"="];
+        if (a.count > 1)
+            [d setValue:a[1] forKey:a[0]];
+        else if (a.count == 1)
+            [d setValue:@"" forKey:a[0]];
+    }
+    NSArray *keys = [[d allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+        return [obj1 compare:obj2];
+    }];
+    NSMutableString *string = [NSMutableString string];
+    for (NSUInteger i = 0; i < keys.count; i++) {
+        NSObject *value = [d valueForKey:keys[i]];
+        [string appendFormat:@"%@%@", keys[i], value!=[NSNull null]?value:@""];
+    }
+    if (string.length > 0)
+    {
+        //        [string appendString:@"appKey=9a628966c0f3ff45cf3c68a92ea0ec2a"];
+    }
+    return [string MD5];
+#endif
+}
 
 @end

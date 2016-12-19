@@ -37,4 +37,10 @@
 + (void)requestDDCourse_Get_success:(CJRequestSuccess)success
                             failure:(CJRequestFailure)failure;
 
+//ijinbu
++ (void)requestijinbuLogin_name:(NSString *)name
+                           pasd:(NSString*)pasd
+                        success:(CJRequestSuccess)success
+                        failure:(CJRequestFailure)failure;
+
 @end

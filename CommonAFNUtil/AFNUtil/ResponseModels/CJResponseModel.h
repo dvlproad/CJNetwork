@@ -10,8 +10,8 @@
 
 @interface CJResponseModel : JSONModel
 
-@property (strong, nonatomic) NSNumber *status;
-@property (strong, nonatomic) NSString *message;
-@property (strong, nonatomic) id result;
+@property(nonatomic, strong) NSNumber<Optional> *status;
+@property(nonatomic, strong) NSString<Optional> *message;
+@property(nonatomic, strong) id<Optional> result;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CurrentAFNAPI.h"
+#import "CJNetworkMonitor.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +20,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [CommonAFNInstance shareCommonAFNInstance]; //主要用于开启网络监听
+    [[CJNetworkMonitor sharedInstance] startNetworkMonitoring];
+    
+    [CommonAFNInstance sharedInstance]; //主要用于开启网络监听
     [self performSelector:@selector(tryAutoLogin) withObject:nil afterDelay:0.35f];
     /*
      如果启动就去检测 建议延时调用

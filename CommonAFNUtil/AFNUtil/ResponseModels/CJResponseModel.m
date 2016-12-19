@@ -10,4 +10,14 @@
 
 @implementation CJResponseModel
 
++ (JSONKeyMapper *)keyMapper{
+    NSDictionary *map = @{
+                          @"status":    @"status",
+                          @"message":   @"message",
+                          @"result":    @"result"
+                          };
+    
+    return [[JSONKeyMapper alloc]initWithDictionary:map];
+}
+
 @end

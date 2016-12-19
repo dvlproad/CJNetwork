@@ -12,8 +12,7 @@
 
 @interface CommonAFNInstance : NSObject
 
-+ (CommonAFNInstance *)shareCommonAFNInstance;
-
++ (CommonAFNInstance *)sharedInstance;
 
 /**
  *  POST请求

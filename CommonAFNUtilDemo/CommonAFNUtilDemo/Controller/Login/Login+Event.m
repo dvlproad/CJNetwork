@@ -91,8 +91,19 @@
 }
 
 
-
-
+- (IBAction)login_ijinbu:(id)sender {
+    [self.view endEditing:YES];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"正在登录", nil) maskType:SVProgressHUDMaskTypeBlack];
+    
+    NSString *name = @"18020721201";
+    NSString *pasd = @"123456";
+    [CurrentAFNAPI requestijinbuLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
+        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];//登录不了哦，再试试看！
+    }];
+}
 
 
 @end

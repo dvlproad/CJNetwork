@@ -7,6 +7,11 @@
 //
 
 #import "CurrentAFNManager.h"
+#import <OpenUDID/OpenUDID.h>
+#import "CJJSONResponseSerializer.h"
+
+static NSString *const HPServerAPIVer = @"2.5.1207";
+NSString * ijinbuBaseUrl = @"http://www.ijinbu.com";
 
 @implementation CurrentAFNManager
 
@@ -23,6 +28,9 @@
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 10.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    
+//    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.app.net/"]];
+//    manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     
     return manager;
 }
@@ -65,6 +73,33 @@
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 10.f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    
+    return manager;
+}
+
++ (AFHTTPSessionManager *)manager_ijinbu {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    //-->ijinbu
+    NSString *deviceId = [OpenUDID value];
+    
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setValue:deviceId forHTTPHeaderField:@"imei"];
+    [requestSerializer setValue:@"1" forHTTPHeaderField:@"clientType"];
+    [requestSerializer setValue:@"2" forHTTPHeaderField:@"appType"];
+    //NSString *ver = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleVersionKey];
+    [requestSerializer setValue:HPServerAPIVer forHTTPHeaderField:@"ver"];
+    [requestSerializer setValue:[[NSString stringWithFormat:@"%@123456", deviceId] MD5] forHTTPHeaderField:@"sign"];
+    [requestSerializer setValue:[NSBundle mainBundle].bundleIdentifier forHTTPHeaderField:@"bundleId"];
+    manager.requestSerializer  = requestSerializer;
+    
+    CJJSONResponseSerializer *responseSerializer = [CJJSONResponseSerializer serializer];
+    responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
+                                                         @"text/plain",
+                                                         @"text/html",
+                                                         @"application/json",
+                                                         @"application/json;charset=utf-8", nil];
+    manager.responseSerializer = responseSerializer;
     
     return manager;
 }

@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h> //使用CocoaPod的时候得用尖括号引用头文件
+#import "NSString+MD5.h"
 
 @interface CurrentAFNManager : NSObject
 
 + (AFHTTPSessionManager *)manager_health;
 + (AFHTTPSessionManager *)manager_dingdang;
 + (AFHTTPSessionManager *)manager_lookhouse;
++ (AFHTTPSessionManager *)manager_ijinbu;
 
 @end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78071C891E0775DD005B0E8F /* CJNetworkMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 78071C881E0775DD005B0E8F /* CJNetworkMonitor.m */; };
+		78071C8C1E07D5A8005B0E8F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 78071C8B1E07D5A8005B0E8F /* NSString+URLEncoding.m */; };
+		78071C8F1E07D84E005B0E8F /* 0000.txt in Resources */ = {isa = PBXBuildFile; fileRef = 78071C8E1E07D84E005B0E8F /* 0000.txt */; };
+		78071C931E07DDAA005B0E8F /* CJJSONResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 78071C921E07DDAA005B0E8F /* CJJSONResponseSerializer.m */; };
 		78AB6B1D1C01CDD2004404A9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78AB6B1C1C01CDD2004404A9 /* Login.storyboard */; };
 		78AB6B351C0214A2004404A9 /* AFHTTPRequestOperation+Get.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AB6B2C1C0214A2004404A9 /* AFHTTPRequestOperation+Get.m */; };
 		78AB6B361C0214A2004404A9 /* AFNUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AB6B2E1C0214A2004404A9 /* AFNUtil.m */; };
@@ -58,6 +62,13 @@
 		06DDE5678FB698FF9D1ACC99 /* libPods-CommonAFNUtilDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonAFNUtilDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4204150C2F919C31E2F10C0F /* Pods-CommonAFNUtilDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonAFNUtilDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonAFNUtilDemo/Pods-CommonAFNUtilDemo.release.xcconfig"; sourceTree = "<group>"; };
 		4DF147B794DABA1B3B749FCD /* Pods-CommonAFNUtilDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonAFNUtilDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonAFNUtilDemo/Pods-CommonAFNUtilDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		78071C871E0775DD005B0E8F /* CJNetworkMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkMonitor.h; sourceTree = "<group>"; };
+		78071C881E0775DD005B0E8F /* CJNetworkMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJNetworkMonitor.m; sourceTree = "<group>"; };
+		78071C8A1E07D5A8005B0E8F /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		78071C8B1E07D5A8005B0E8F /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		78071C8E1E07D84E005B0E8F /* 0000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 0000.txt; sourceTree = "<group>"; };
+		78071C911E07DDAA005B0E8F /* CJJSONResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJJSONResponseSerializer.h; sourceTree = "<group>"; };
+		78071C921E07DDAA005B0E8F /* CJJSONResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJJSONResponseSerializer.m; sourceTree = "<group>"; };
 		78AB6B1C1C01CDD2004404A9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		78AB6B2B1C0214A2004404A9 /* AFHTTPRequestOperation+Get.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestOperation+Get.h"; sourceTree = "<group>"; };
 		78AB6B2C1C0214A2004404A9 /* AFHTTPRequestOperation+Get.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestOperation+Get.m"; sourceTree = "<group>"; };
@@ -168,12 +179,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		78071C861E0775CA005B0E8F /* CJNetworkMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				78071C871E0775DD005B0E8F /* CJNetworkMonitor.h */,
+				78071C881E0775DD005B0E8F /* CJNetworkMonitor.m */,
+			);
+			path = CJNetworkMonitor;
+			sourceTree = "<group>";
+		};
+		78071C8D1E07D84E005B0E8F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				78071C8E1E07D84E005B0E8F /* 0000.txt */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		78071C901E07DD95005B0E8F /* CJJSONResponseSerializer */ = {
+			isa = PBXGroup;
+			children = (
+				78071C911E07DDAA005B0E8F /* CJJSONResponseSerializer.h */,
+				78071C921E07DDAA005B0E8F /* CJJSONResponseSerializer.m */,
+			);
+			path = CJJSONResponseSerializer;
+			sourceTree = "<group>";
+		};
 		78AB6B2A1C0214A2004404A9 /* AFNUtil */ = {
 			isa = PBXGroup;
 			children = (
 				78AB6B2B1C0214A2004404A9 /* AFHTTPRequestOperation+Get.h */,
 				78AB6B2C1C0214A2004404A9 /* AFHTTPRequestOperation+Get.m */,
 				78AB6B2D1C0214A2004404A9 /* AFNUtil.h */,
+				78071C901E07DD95005B0E8F /* CJJSONResponseSerializer */,
 				78AB6B2E1C0214A2004404A9 /* AFNUtil.m */,
 				78F9C6611E05C4C200D523B9 /* RequestModels */,
 				78F9C6621E05C4C200D523B9 /* ResponseModels */,
@@ -206,6 +244,7 @@
 		801531911B7864ED00B82127 /* ServiceHelp */ = {
 			isa = PBXGroup;
 			children = (
+				78071C861E0775CA005B0E8F /* CJNetworkMonitor */,
 				80FD325A1B943FFC0060A7FB /* Library */,
 				801531951B7864ED00B82127 /* CommonWebUtil */,
 				801531981B7864ED00B82127 /* NetworkUtil */,
@@ -293,6 +332,7 @@
 				804F8FC51B3BDF4E00AF11AA /* AppDelegate.m */,
 				804F8FC71B3BDF4E00AF11AA /* ViewController.h */,
 				804F8FC81B3BDF4E00AF11AA /* ViewController.m */,
+				78071C8D1E07D84E005B0E8F /* Resources */,
 				804F8FCA1B3BDF4E00AF11AA /* Main.storyboard */,
 				804F8FCD1B3BDF4E00AF11AA /* Images.xcassets */,
 				804F8FCF1B3BDF4E00AF11AA /* LaunchScreen.xib */,
@@ -350,6 +390,8 @@
 				80E194291B7C92F2007907BF /* CurrentAFNManager.m */,
 				808CBA321B720C8E00EDFFB9 /* LoginShareInfo.h */,
 				808CBA331B720C8E00EDFFB9 /* LoginShareInfo.m */,
+				78071C8A1E07D5A8005B0E8F /* NSString+URLEncoding.h */,
+				78071C8B1E07D5A8005B0E8F /* NSString+URLEncoding.m */,
 				801531911B7864ED00B82127 /* ServiceHelp */,
 				808CBA731B733A1800EDFFB9 /* CommonDataCacheManager */,
 				808CBA441B72F73E00EDFFB9 /* CommonAFNUtil */,
@@ -417,12 +459,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 804F8FE01B3BDF4E00AF11AA /* Build configuration list for PBXNativeTarget "CommonAFNUtilDemo" */;
 			buildPhases = (
-				3A5F004D09DE712676D93DB4 /* 📦 Check Pods Manifest.lock */,
+				3A5F004D09DE712676D93DB4 /* [CP] Check Pods Manifest.lock */,
 				804F8FB91B3BDF4E00AF11AA /* Sources */,
 				804F8FBA1B3BDF4E00AF11AA /* Frameworks */,
 				804F8FBB1B3BDF4E00AF11AA /* Resources */,
-				9AA8F6A3EEBAA0E16A50D12B /* 📦 Embed Pods Frameworks */,
-				02B6FFD7DB23234DBF67BFFC /* 📦 Copy Pods Resources */,
+				9AA8F6A3EEBAA0E16A50D12B /* [CP] Embed Pods Frameworks */,
+				02B6FFD7DB23234DBF67BFFC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -437,12 +479,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 804F8FE31B3BDF4E00AF11AA /* Build configuration list for PBXNativeTarget "CommonAFNUtilDemoTests" */;
 			buildPhases = (
-				1BBB60416933B04CBE41A0C0 /* 📦 Check Pods Manifest.lock */,
+				1BBB60416933B04CBE41A0C0 /* [CP] Check Pods Manifest.lock */,
 				804F8FD21B3BDF4E00AF11AA /* Sources */,
 				804F8FD31B3BDF4E00AF11AA /* Frameworks */,
 				804F8FD41B3BDF4E00AF11AA /* Resources */,
-				D020104D8EFA97C69B8A5282 /* 📦 Embed Pods Frameworks */,
-				749EC6C4D750CC118BD91678 /* 📦 Copy Pods Resources */,
+				D020104D8EFA97C69B8A5282 /* [CP] Embed Pods Frameworks */,
+				749EC6C4D750CC118BD91678 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -499,6 +541,7 @@
 				804F8FCC1B3BDF4E00AF11AA /* Main.storyboard in Resources */,
 				801531B21B78675400B82127 /* AFNDemoViewController.xib in Resources */,
 				78AB6B1D1C01CDD2004404A9 /* Login.storyboard in Resources */,
+				78071C8F1E07D84E005B0E8F /* 0000.txt in Resources */,
 				807109E71B7E17E900F343F3 /* SocketDemoViewController.xib in Resources */,
 				804F8FD11B3BDF4E00AF11AA /* LaunchScreen.xib in Resources */,
 				804F8FCE1B3BDF4E00AF11AA /* Images.xcassets in Resources */,
@@ -515,14 +558,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02B6FFD7DB23234DBF67BFFC /* 📦 Copy Pods Resources */ = {
+		02B6FFD7DB23234DBF67BFFC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,44 +573,44 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommonAFNUtilDemo/Pods-CommonAFNUtilDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1BBB60416933B04CBE41A0C0 /* 📦 Check Pods Manifest.lock */ = {
+		1BBB60416933B04CBE41A0C0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		3A5F004D09DE712676D93DB4 /* 📦 Check Pods Manifest.lock */ = {
+		3A5F004D09DE712676D93DB4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		749EC6C4D750CC118BD91678 /* 📦 Copy Pods Resources */ = {
+		749EC6C4D750CC118BD91678 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,14 +618,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommonAFNUtilDemoTests/Pods-CommonAFNUtilDemoTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9AA8F6A3EEBAA0E16A50D12B /* 📦 Embed Pods Frameworks */ = {
+		9AA8F6A3EEBAA0E16A50D12B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,14 +633,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommonAFNUtilDemo/Pods-CommonAFNUtilDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D020104D8EFA97C69B8A5282 /* 📦 Embed Pods Frameworks */ = {
+		D020104D8EFA97C69B8A5282 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,6 +665,7 @@
 				78AB6B391C0214A2004404A9 /* URLRequestUtil.m in Sources */,
 				80E1942A1B7C92F2007907BF /* CurrentAFNManager.m in Sources */,
 				801531B31B78675400B82127 /* Login+Event.m in Sources */,
+				78071C891E0775DD005B0E8F /* CJNetworkMonitor.m in Sources */,
 				801531B41B78675400B82127 /* Login.m in Sources */,
 				808CBA7F1B733A1800EDFFB9 /* NSDictionary+Convert.m in Sources */,
 				78AB6B371C0214A2004404A9 /* AFNUtilCache.m in Sources */,
@@ -637,6 +681,8 @@
 				808CBA7E1B733A1800EDFFB9 /* NSData+Convert.m in Sources */,
 				78F9C6651E05C4EC00D523B9 /* CJResponseModel.m in Sources */,
 				808CBA351B720C8E00EDFFB9 /* LoginShareInfo.m in Sources */,
+				78071C931E07DDAA005B0E8F /* CJJSONResponseSerializer.m in Sources */,
+				78071C8C1E07D5A8005B0E8F /* NSString+URLEncoding.m in Sources */,
 				78AB6B381C0214A2004404A9 /* AFNUtilCheck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

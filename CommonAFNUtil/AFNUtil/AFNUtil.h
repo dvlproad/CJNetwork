@@ -11,7 +11,6 @@
 #import <AFNetworking/AFNetworking.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
-
 typedef void(^CJRequestSuccess)(NSURLSessionDataTask *task, id responseObject);
 typedef void(^CJRequestFailure)(NSURLSessionDataTask *task, NSError *error);
 //void (^)(AFHTTPRequestOperation *operation, NSString *failMesg)

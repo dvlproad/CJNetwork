@@ -82,7 +82,7 @@ static int apiTestCount = 0;
                                  @"searchConn": @""};
     
     AFHTTPSessionManager *manager = [CurrentAFNManager manager_lookhouse];
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:parameters cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
+    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:parameters cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
         NSLog(@"接口测试成功。。。%d", apiTestCount++);
     } failure:^(NSURLSessionDataTask *task, NSError *error, BOOL isCacheData) {
         NSLog(@"接口测试失败。。。");

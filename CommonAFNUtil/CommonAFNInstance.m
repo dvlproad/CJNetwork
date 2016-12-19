@@ -10,17 +10,19 @@
 
 @implementation CommonAFNInstance
 
-+ (CommonAFNInstance *)shareCommonAFNInstance
-{
-    static CommonAFNInstance *_shareCommonAFNInstance = nil;
+/**
+ *  创建单例
+ *
+ *  @return 单例
+ */
++ (CommonAFNInstance *)sharedInstance {
+    static CommonAFNInstance *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _shareCommonAFNInstance = [[self alloc] init];
-        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+        _sharedInstance = [[self alloc] init];
     });
-    return _shareCommonAFNInstance;
+    return _sharedInstance;
 }
-
 
 
 - (NSURLSessionDataTask *)useManager:(AFHTTPSessionManager *)manager

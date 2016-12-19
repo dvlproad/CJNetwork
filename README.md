@@ -1,6 +1,13 @@
 # CommonAFNUtil
 AFN基类
 
+## CJNetworkMonitor
+网络状态监听类
+
+##### How to Use
+我们在`AppDelegate`中调用`[[CJNetworkMonitor sharedInstance] startNetworkMonitoring];`开启网络状况监听。则之后当网络状态改变的时候，AFNetworking会自动发送AFNetworkingReachabilityDidChangeNotification通知，我们则只需要对那些需要处理网络状态改变的控制器里，添加通知网络状态改变通知的捕获就行，如
+`[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityDidChangeNotification:) name:AFNetworkingReachabilityDidChangeNotification object:nil];`
+
 #### Screenshots
 ![Example](./Screenshots/Demo.gif "Demo")
 ![Example](./Screenshots/Demo.png "Demo")

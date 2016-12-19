@@ -33,7 +33,7 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSURLSessionDataTask *URLSessionDataTask =
-    [[CommonAFNInstance shareCommonAFNInstance] useManager:manager postRequestUrl:Url parameters:nil cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
+    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:nil cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
         NSLog(@"获取数据成功");
         
     } failure:^(NSURLSessionDataTask *task, NSError *error, BOOL isCacheData) {
