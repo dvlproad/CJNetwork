@@ -1,4 +1,4 @@
-# CommonAFNUtil
+# CJNetwork
 AFN基类
 
 ## CJNetworkMonitor

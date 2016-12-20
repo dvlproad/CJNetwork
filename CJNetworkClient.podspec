@@ -2,14 +2,14 @@ Pod::Spec.new do |s|
   s.name         = "CJNetworkClient"
   s.version      = "1.0.1"
   s.summary      = "一个AFNetworking应用的封装"
-  s.homepage     = "https://github.com/dvlproad/CommonAFNUtil"
+  s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
   s.author             = { "dvlproad" => "studyroad@qq.com" }
   # s.social_media_url   = "http://twitter.com/dvlproad"
 
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CommonAFNUtil.git", :tag => "CJNetworkClient_1.0.1" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkClient_1.0.1" }
   s.source_files  = "CJNetworkClient/**/*.{h,m}"
   s.frameworks = 'UIKit'
 
