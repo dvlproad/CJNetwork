@@ -7,7 +7,6 @@
 //
 
 #import "Login.h"
-#import "CurrentAFNAPI.h"
 
 @interface Login (Event)<UITextFieldDelegate>
 

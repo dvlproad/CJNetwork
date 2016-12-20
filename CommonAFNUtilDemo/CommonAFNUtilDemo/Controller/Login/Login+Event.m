@@ -9,6 +9,10 @@
 #import "Login+Event.h"
 #import "NSString+Encoding.h"
 
+#import "CJNetworkClient+Healthy.h"
+#import "CJNetworkClient+LoginIjinbu.h"
+#import "CJNetworkClient+Dingdang.h"
+
 @implementation Login (Event)
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
@@ -26,7 +30,7 @@
     
     NSString *name = self.tfName.text;
     NSString *pasd = self.tfPasd.text;
-    [CurrentAFNAPI requestLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
+    [CJNetworkClient requestLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
         /*
          NSDictionary *dic = [responseObject objectForKey:@"user"];
@@ -40,7 +44,7 @@
          */
         [self.navigationController popViewControllerAnimated:YES];
         
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
 //        failMesg = [failMesg Unicode_To_Chinese];
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];
     }];
@@ -53,10 +57,10 @@
     
     NSString *name = @"13055284289";
     NSString *pasd = @"123456";
-    [CurrentAFNAPI requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
+    [CJNetworkClient requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];//获取acces_token成功，登录成功
         
-        [CurrentAFNAPI requestDDUser_GetInfo_success:^(NSURLSessionDataTask *task, id responseObject) {
+        [CJNetworkClient requestDDUser_GetInfo_success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"用户信息获取成功");
             //NSLog(@"%@",responseObject);
             NSDictionary *data = [responseObject objectForKey:@"data"];
@@ -69,11 +73,11 @@
             [LoginShareInfo shared].uinfo = uinfo;
             [LoginHelper login_name:name pasd:pasd];
             
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
             NSLog(@"登录不了哦，再试试看！");
         }];
         
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];//登录不了哦，再试试看！
     }];
 }
@@ -83,9 +87,9 @@
         NSLog(@"未登录，请先登录");
         return;
     }
-    [CurrentAFNAPI requestDDCourse_Get_success:^(NSURLSessionDataTask *task, id responseObject) {
+    [CJNetworkClient requestDDCourse_Get_success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"缓存/非缓存数据。。。%@", responseObject);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
         NSLog(@"获取我的科目列表失败");
     }];
 }
@@ -97,11 +101,12 @@
     
     NSString *name = @"18020721201";
     NSString *pasd = @"123456";
-    [CurrentAFNAPI requestijinbuLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
+    
+    [CJNetworkClient requestijinbuLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
         
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];//登录不了哦，再试试看！
+    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
+        [SVProgressHUD showErrorWithStatus:errorMessage];//登录不了哦，再试试看！
     }];
 }
 

@@ -2,7 +2,7 @@
 //  CJJSONResponseSerializer.m
 //  CommonAFNUtilDemo
 //
-//  Created by 李超前 on 2016/12/19.
+//  Created by dvlproad on 2016/12/19.
 //  Copyright © 2016年 ciyouzen. All rights reserved.
 //
 

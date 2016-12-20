@@ -10,6 +10,10 @@
 #import "Login.h"
 #import "AFNDemoViewController.h"
 
+#import "CJNetworkClient.h"
+#import "CJNetworkClient+Test.h"
+#import <AFNetworking/UIActivityIndicatorView+AFNetworking.h>
+
 static int apiTestCount = 0;
 
 @interface ViewController (){
@@ -37,8 +41,9 @@ static int apiTestCount = 0;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (IBAction)checkVersion:(id)sender{
-    [AFNUtilCheck checkVersionWithAPPID:@"587767923" success:^(BOOL isLastest, NSString *app_trackViewUrl) {
+- (IBAction)checkVersion:(id)sender {
+    NSURLSessionDataTask *URLSessionDataTask =
+    [CJNetworkClient checkVersionWithAPPID:@"587767923" success:^(BOOL isLastest, NSString *app_trackViewUrl) {
         if (isLastest == NO) {
             trackViewUrl = app_trackViewUrl;
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
@@ -53,6 +58,13 @@ static int apiTestCount = 0;
     } failure:^{
         NSLog(@"网络检查失败");
     }];
+    
+    //网络请求时候的动画添加
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] init];
+    indicatorView.frame = CGRectMake(100, 200, 100, 100);/*calculate frame here*/
+    indicatorView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:indicatorView];
+    [indicatorView setAnimatingWithStateOfTask:URLSessionDataTask];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -73,19 +85,12 @@ static int apiTestCount = 0;
 
 
 - (void)doAPITest{
-    NSString *Url = API_BASE_Url_LookHouse(@"buy/getHouseList");
-    NSDictionary *parameters = @{@"area": @"",
-                                 @"squareFrom": @"",
-                                 @"squareTo"  : @"",
-                                 @"amountForm": @"100",
-                                 @"amountTo"  : @"200",
-                                 @"searchConn": @""};
-    
-    AFHTTPSessionManager *manager = [CurrentAFNManager manager_lookhouse];
-    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:parameters cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
+    [CJNetworkClient requestBaiduHomeSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"接口测试成功。。。%d", apiTestCount++);
-    } failure:^(NSURLSessionDataTask *task, NSError *error, BOOL isCacheData) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
         NSLog(@"接口测试失败。。。");
+        
     }];
 }
 

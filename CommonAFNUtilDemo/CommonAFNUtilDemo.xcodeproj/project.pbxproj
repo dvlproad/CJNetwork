@@ -9,15 +9,24 @@
 /* Begin PBXBuildFile section */
 		78071C891E0775DD005B0E8F /* CJNetworkMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 78071C881E0775DD005B0E8F /* CJNetworkMonitor.m */; };
 		78071C8C1E07D5A8005B0E8F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 78071C8B1E07D5A8005B0E8F /* NSString+URLEncoding.m */; };
-		78071C8F1E07D84E005B0E8F /* 0000.txt in Resources */ = {isa = PBXBuildFile; fileRef = 78071C8E1E07D84E005B0E8F /* 0000.txt */; };
 		78071C931E07DDAA005B0E8F /* CJJSONResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 78071C921E07DDAA005B0E8F /* CJJSONResponseSerializer.m */; };
+		78590B5E1E08DB55000F80EF /* NSURLSessionTask+CJErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B5D1E08DB55000F80EF /* NSURLSessionTask+CJErrorMessage.m */; };
+		78590B661E08EEF0000F80EF /* IjinbuHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B651E08EEF0000F80EF /* IjinbuHTTPSessionManager.m */; };
+		78590B6B1E0900C5000F80EF /* CJNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B6A1E0900C5000F80EF /* CJNetworkClient.m */; };
+		78590B6E1E09011A000F80EF /* CJNetworkClient+LoginIjinbu.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B6D1E09011A000F80EF /* CJNetworkClient+LoginIjinbu.m */; };
+		78590B711E090536000F80EF /* CJNetworkClient+Dingdang.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B701E090536000F80EF /* CJNetworkClient+Dingdang.m */; };
+		78590B741E090626000F80EF /* CJNetworkClient+Healthy.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B731E090626000F80EF /* CJNetworkClient+Healthy.m */; };
+		78590B771E0906C3000F80EF /* TestHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B761E0906C3000F80EF /* TestHTTPSessionManager.m */; };
+		78590B7A1E0906D6000F80EF /* HealthyHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B791E0906D6000F80EF /* HealthyHTTPSessionManager.m */; };
+		78590B7D1E0906E6000F80EF /* DingdangHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B7C1E0906E6000F80EF /* DingdangHTTPSessionManager.m */; };
+		78590B801E090AFA000F80EF /* CJNetworkClient+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B7F1E090AFA000F80EF /* CJNetworkClient+Test.m */; };
+		78590B861E090F73000F80EF /* CJResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B831E090F73000F80EF /* CJResponseModel.m */; };
+		78590B871E090F73000F80EF /* IjinbuResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B851E090F73000F80EF /* IjinbuResponseModel.m */; };
+		78590B8A1E091129000F80EF /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B891E091129000F80EF /* AccountInfo.m */; };
+		78590B901E092C55000F80EF /* CJAppCheckUpdateHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B8F1E092C55000F80EF /* CJAppCheckUpdateHTTPSessionManager.m */; };
 		78AB6B1D1C01CDD2004404A9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78AB6B1C1C01CDD2004404A9 /* Login.storyboard */; };
-		78AB6B351C0214A2004404A9 /* AFHTTPRequestOperation+Get.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AB6B2C1C0214A2004404A9 /* AFHTTPRequestOperation+Get.m */; };
 		78AB6B361C0214A2004404A9 /* AFNUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AB6B2E1C0214A2004404A9 /* AFNUtil.m */; };
-		78AB6B371C0214A2004404A9 /* AFNUtilCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AB6B301C0214A2004404A9 /* AFNUtilCache.m */; };
-		78AB6B381C0214A2004404A9 /* AFNUtilCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AB6B321C0214A2004404A9 /* AFNUtilCheck.m */; };
 		78AB6B391C0214A2004404A9 /* URLRequestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AB6B341C0214A2004404A9 /* URLRequestUtil.m */; };
-		78F9C6651E05C4EC00D523B9 /* CJResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F9C6641E05C4EC00D523B9 /* CJResponseModel.m */; };
 		801531841B78505B00B82127 /* CommonAFNInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 801531831B78505B00B82127 /* CommonAFNInstance.m */; };
 		8015319E1B7864EE00B82127 /* CommonWebUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 801531971B7864ED00B82127 /* CommonWebUtil.m */; };
 		801531A01B7864EE00B82127 /* NetworkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8015319C1B7864EE00B82127 /* NetworkUtil.m */; };
@@ -35,14 +44,11 @@
 		804F8FDD1B3BDF4E00AF11AA /* CommonAFNUtilDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 804F8FDC1B3BDF4E00AF11AA /* CommonAFNUtilDemoTests.m */; };
 		807109E61B7E17E900F343F3 /* SocketDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 807109E41B7E17E900F343F3 /* SocketDemoViewController.m */; };
 		807109E71B7E17E900F343F3 /* SocketDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 807109E51B7E17E900F343F3 /* SocketDemoViewController.xib */; };
-		808CBA341B720C8E00EDFFB9 /* CurrentAFNAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 808CBA311B720C8E00EDFFB9 /* CurrentAFNAPI.m */; };
 		808CBA351B720C8E00EDFFB9 /* LoginShareInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 808CBA331B720C8E00EDFFB9 /* LoginShareInfo.m */; };
 		808CBA7D1B733A1800EDFFB9 /* CommonDataCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 808CBA751B733A1800EDFFB9 /* CommonDataCacheManager.m */; };
 		808CBA7E1B733A1800EDFFB9 /* NSData+Convert.m in Sources */ = {isa = PBXBuildFile; fileRef = 808CBA781B733A1800EDFFB9 /* NSData+Convert.m */; };
 		808CBA7F1B733A1800EDFFB9 /* NSDictionary+Convert.m in Sources */ = {isa = PBXBuildFile; fileRef = 808CBA7A1B733A1800EDFFB9 /* NSDictionary+Convert.m */; };
 		808CBA801B733A1800EDFFB9 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 808CBA7C1B733A1800EDFFB9 /* NSString+MD5.m */; };
-		80E1942A1B7C92F2007907BF /* CurrentAFNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E194291B7C92F2007907BF /* CurrentAFNManager.m */; };
-		80EB6EE71B6C986F008835A8 /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EB6EE61B6C986F008835A8 /* AccountInfo.m */; };
 		80FD325D1B943FFC0060A7FB /* NSString+Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 80FD325C1B943FFC0060A7FB /* NSString+Encoding.m */; };
 		9325B3927FD88FBF830525A0 /* libPods-CommonAFNUtilDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06DDE5678FB698FF9D1ACC99 /* libPods-CommonAFNUtilDemo.a */; };
 		9EAE19EB98284D342405A9D9 /* libPods-CommonAFNUtilDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A8FCC6E00473C074D62DB2 /* libPods-CommonAFNUtilDemoTests.a */; };
@@ -66,22 +72,41 @@
 		78071C881E0775DD005B0E8F /* CJNetworkMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJNetworkMonitor.m; sourceTree = "<group>"; };
 		78071C8A1E07D5A8005B0E8F /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		78071C8B1E07D5A8005B0E8F /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
-		78071C8E1E07D84E005B0E8F /* 0000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 0000.txt; sourceTree = "<group>"; };
 		78071C911E07DDAA005B0E8F /* CJJSONResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJJSONResponseSerializer.h; sourceTree = "<group>"; };
 		78071C921E07DDAA005B0E8F /* CJJSONResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJJSONResponseSerializer.m; sourceTree = "<group>"; };
+		78590B5C1E08DB55000F80EF /* NSURLSessionTask+CJErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSessionTask+CJErrorMessage.h"; sourceTree = "<group>"; };
+		78590B5D1E08DB55000F80EF /* NSURLSessionTask+CJErrorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSessionTask+CJErrorMessage.m"; sourceTree = "<group>"; };
+		78590B641E08EEF0000F80EF /* IjinbuHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuHTTPSessionManager.h; sourceTree = "<group>"; };
+		78590B651E08EEF0000F80EF /* IjinbuHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuHTTPSessionManager.m; sourceTree = "<group>"; };
+		78590B691E0900C5000F80EF /* CJNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkClient.h; sourceTree = "<group>"; };
+		78590B6A1E0900C5000F80EF /* CJNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJNetworkClient.m; sourceTree = "<group>"; };
+		78590B6C1E09011A000F80EF /* CJNetworkClient+LoginIjinbu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CJNetworkClient+LoginIjinbu.h"; sourceTree = "<group>"; };
+		78590B6D1E09011A000F80EF /* CJNetworkClient+LoginIjinbu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CJNetworkClient+LoginIjinbu.m"; sourceTree = "<group>"; };
+		78590B6F1E090536000F80EF /* CJNetworkClient+Dingdang.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CJNetworkClient+Dingdang.h"; sourceTree = "<group>"; };
+		78590B701E090536000F80EF /* CJNetworkClient+Dingdang.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CJNetworkClient+Dingdang.m"; sourceTree = "<group>"; };
+		78590B721E090626000F80EF /* CJNetworkClient+Healthy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CJNetworkClient+Healthy.h"; sourceTree = "<group>"; };
+		78590B731E090626000F80EF /* CJNetworkClient+Healthy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CJNetworkClient+Healthy.m"; sourceTree = "<group>"; };
+		78590B751E0906C3000F80EF /* TestHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHTTPSessionManager.h; sourceTree = "<group>"; };
+		78590B761E0906C3000F80EF /* TestHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHTTPSessionManager.m; sourceTree = "<group>"; };
+		78590B781E0906D6000F80EF /* HealthyHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthyHTTPSessionManager.h; sourceTree = "<group>"; };
+		78590B791E0906D6000F80EF /* HealthyHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthyHTTPSessionManager.m; sourceTree = "<group>"; };
+		78590B7B1E0906E6000F80EF /* DingdangHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DingdangHTTPSessionManager.h; sourceTree = "<group>"; };
+		78590B7C1E0906E6000F80EF /* DingdangHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DingdangHTTPSessionManager.m; sourceTree = "<group>"; };
+		78590B7E1E090AFA000F80EF /* CJNetworkClient+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CJNetworkClient+Test.h"; sourceTree = "<group>"; };
+		78590B7F1E090AFA000F80EF /* CJNetworkClient+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CJNetworkClient+Test.m"; sourceTree = "<group>"; };
+		78590B821E090F73000F80EF /* CJResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJResponseModel.h; sourceTree = "<group>"; };
+		78590B831E090F73000F80EF /* CJResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJResponseModel.m; sourceTree = "<group>"; };
+		78590B841E090F73000F80EF /* IjinbuResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuResponseModel.h; sourceTree = "<group>"; };
+		78590B851E090F73000F80EF /* IjinbuResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuResponseModel.m; sourceTree = "<group>"; };
+		78590B881E091129000F80EF /* AccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfo.h; sourceTree = "<group>"; };
+		78590B891E091129000F80EF /* AccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfo.m; sourceTree = "<group>"; };
+		78590B8E1E092C55000F80EF /* CJAppCheckUpdateHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJAppCheckUpdateHTTPSessionManager.h; sourceTree = "<group>"; };
+		78590B8F1E092C55000F80EF /* CJAppCheckUpdateHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJAppCheckUpdateHTTPSessionManager.m; sourceTree = "<group>"; };
 		78AB6B1C1C01CDD2004404A9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		78AB6B2B1C0214A2004404A9 /* AFHTTPRequestOperation+Get.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestOperation+Get.h"; sourceTree = "<group>"; };
-		78AB6B2C1C0214A2004404A9 /* AFHTTPRequestOperation+Get.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestOperation+Get.m"; sourceTree = "<group>"; };
 		78AB6B2D1C0214A2004404A9 /* AFNUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNUtil.h; sourceTree = "<group>"; };
 		78AB6B2E1C0214A2004404A9 /* AFNUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNUtil.m; sourceTree = "<group>"; };
-		78AB6B2F1C0214A2004404A9 /* AFNUtilCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNUtilCache.h; sourceTree = "<group>"; };
-		78AB6B301C0214A2004404A9 /* AFNUtilCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNUtilCache.m; sourceTree = "<group>"; };
-		78AB6B311C0214A2004404A9 /* AFNUtilCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNUtilCheck.h; sourceTree = "<group>"; };
-		78AB6B321C0214A2004404A9 /* AFNUtilCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNUtilCheck.m; sourceTree = "<group>"; };
 		78AB6B331C0214A2004404A9 /* URLRequestUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLRequestUtil.h; sourceTree = "<group>"; };
 		78AB6B341C0214A2004404A9 /* URLRequestUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLRequestUtil.m; sourceTree = "<group>"; };
-		78F9C6631E05C4EC00D523B9 /* CJResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJResponseModel.h; sourceTree = "<group>"; };
-		78F9C6641E05C4EC00D523B9 /* CJResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJResponseModel.m; sourceTree = "<group>"; };
 		801531821B78505B00B82127 /* CommonAFNInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonAFNInstance.h; sourceTree = "<group>"; };
 		801531831B78505B00B82127 /* CommonAFNInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonAFNInstance.m; sourceTree = "<group>"; };
 		801531961B7864ED00B82127 /* CommonWebUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonWebUtil.h; sourceTree = "<group>"; };
@@ -115,8 +140,6 @@
 		807109E41B7E17E900F343F3 /* SocketDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketDemoViewController.m; sourceTree = "<group>"; };
 		807109E51B7E17E900F343F3 /* SocketDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocketDemoViewController.xib; sourceTree = "<group>"; };
 		808CBA2A1B71EF8D00EDFFB9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		808CBA301B720C8E00EDFFB9 /* CurrentAFNAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentAFNAPI.h; sourceTree = "<group>"; };
-		808CBA311B720C8E00EDFFB9 /* CurrentAFNAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentAFNAPI.m; sourceTree = "<group>"; };
 		808CBA321B720C8E00EDFFB9 /* LoginShareInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginShareInfo.h; sourceTree = "<group>"; };
 		808CBA331B720C8E00EDFFB9 /* LoginShareInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginShareInfo.m; sourceTree = "<group>"; };
 		808CBA741B733A1800EDFFB9 /* CommonDataCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDataCacheManager.h; sourceTree = "<group>"; };
@@ -127,10 +150,6 @@
 		808CBA7A1B733A1800EDFFB9 /* NSDictionary+Convert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Convert.m"; sourceTree = "<group>"; };
 		808CBA7B1B733A1800EDFFB9 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		808CBA7C1B733A1800EDFFB9 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
-		80E194281B7C92F2007907BF /* CurrentAFNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentAFNManager.h; sourceTree = "<group>"; };
-		80E194291B7C92F2007907BF /* CurrentAFNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentAFNManager.m; sourceTree = "<group>"; };
-		80EB6EE51B6C986F008835A8 /* AccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfo.h; sourceTree = "<group>"; };
-		80EB6EE61B6C986F008835A8 /* AccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfo.m; sourceTree = "<group>"; };
 		80FD325B1B943FFC0060A7FB /* NSString+Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Encoding.h"; sourceTree = "<group>"; };
 		80FD325C1B943FFC0060A7FB /* NSString+Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Encoding.m"; sourceTree = "<group>"; };
 		8466B89648C8AB42EFAD5B0E /* Pods-CommonAFNUtilDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonAFNUtilDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonAFNUtilDemoTests/Pods-CommonAFNUtilDemoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -188,14 +207,6 @@
 			path = CJNetworkMonitor;
 			sourceTree = "<group>";
 		};
-		78071C8D1E07D84E005B0E8F /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				78071C8E1E07D84E005B0E8F /* 0000.txt */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		78071C901E07DD95005B0E8F /* CJJSONResponseSerializer */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,40 +216,72 @@
 			path = CJJSONResponseSerializer;
 			sourceTree = "<group>";
 		};
+		78590B5F1E08E1B0000F80EF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				78590B881E091129000F80EF /* AccountInfo.h */,
+				78590B891E091129000F80EF /* AccountInfo.m */,
+				78590B811E090F73000F80EF /* ResponseModels */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		78590B631E08EE3A000F80EF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				78590B641E08EEF0000F80EF /* IjinbuHTTPSessionManager.h */,
+				78590B651E08EEF0000F80EF /* IjinbuHTTPSessionManager.m */,
+				78590B751E0906C3000F80EF /* TestHTTPSessionManager.h */,
+				78590B761E0906C3000F80EF /* TestHTTPSessionManager.m */,
+				78590B781E0906D6000F80EF /* HealthyHTTPSessionManager.h */,
+				78590B791E0906D6000F80EF /* HealthyHTTPSessionManager.m */,
+				78590B7B1E0906E6000F80EF /* DingdangHTTPSessionManager.h */,
+				78590B7C1E0906E6000F80EF /* DingdangHTTPSessionManager.m */,
+				78590B721E090626000F80EF /* CJNetworkClient+Healthy.h */,
+				78590B731E090626000F80EF /* CJNetworkClient+Healthy.m */,
+				78590B6C1E09011A000F80EF /* CJNetworkClient+LoginIjinbu.h */,
+				78590B6D1E09011A000F80EF /* CJNetworkClient+LoginIjinbu.m */,
+				78590B6F1E090536000F80EF /* CJNetworkClient+Dingdang.h */,
+				78590B701E090536000F80EF /* CJNetworkClient+Dingdang.m */,
+				78590B7E1E090AFA000F80EF /* CJNetworkClient+Test.h */,
+				78590B7F1E090AFA000F80EF /* CJNetworkClient+Test.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		78590B681E0900A3000F80EF /* CJNetworkClient */ = {
+			isa = PBXGroup;
+			children = (
+				78590B691E0900C5000F80EF /* CJNetworkClient.h */,
+				78590B6A1E0900C5000F80EF /* CJNetworkClient.m */,
+			);
+			path = CJNetworkClient;
+			sourceTree = "<group>";
+		};
+		78590B811E090F73000F80EF /* ResponseModels */ = {
+			isa = PBXGroup;
+			children = (
+				78590B821E090F73000F80EF /* CJResponseModel.h */,
+				78590B831E090F73000F80EF /* CJResponseModel.m */,
+				78590B841E090F73000F80EF /* IjinbuResponseModel.h */,
+				78590B851E090F73000F80EF /* IjinbuResponseModel.m */,
+			);
+			path = ResponseModels;
+			sourceTree = "<group>";
+		};
 		78AB6B2A1C0214A2004404A9 /* AFNUtil */ = {
 			isa = PBXGroup;
 			children = (
-				78AB6B2B1C0214A2004404A9 /* AFHTTPRequestOperation+Get.h */,
-				78AB6B2C1C0214A2004404A9 /* AFHTTPRequestOperation+Get.m */,
 				78AB6B2D1C0214A2004404A9 /* AFNUtil.h */,
-				78071C901E07DD95005B0E8F /* CJJSONResponseSerializer */,
 				78AB6B2E1C0214A2004404A9 /* AFNUtil.m */,
-				78F9C6611E05C4C200D523B9 /* RequestModels */,
-				78F9C6621E05C4C200D523B9 /* ResponseModels */,
-				78AB6B2F1C0214A2004404A9 /* AFNUtilCache.h */,
-				78AB6B301C0214A2004404A9 /* AFNUtilCache.m */,
-				78AB6B311C0214A2004404A9 /* AFNUtilCheck.h */,
-				78AB6B321C0214A2004404A9 /* AFNUtilCheck.m */,
+				78590B5C1E08DB55000F80EF /* NSURLSessionTask+CJErrorMessage.h */,
+				78590B5D1E08DB55000F80EF /* NSURLSessionTask+CJErrorMessage.m */,
+				78590B681E0900A3000F80EF /* CJNetworkClient */,
+				78071C901E07DD95005B0E8F /* CJJSONResponseSerializer */,
 				78AB6B331C0214A2004404A9 /* URLRequestUtil.h */,
 				78AB6B341C0214A2004404A9 /* URLRequestUtil.m */,
 			);
 			path = AFNUtil;
-			sourceTree = "<group>";
-		};
-		78F9C6611E05C4C200D523B9 /* RequestModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RequestModels;
-			sourceTree = "<group>";
-		};
-		78F9C6621E05C4C200D523B9 /* ResponseModels */ = {
-			isa = PBXGroup;
-			children = (
-				78F9C6631E05C4EC00D523B9 /* CJResponseModel.h */,
-				78F9C6641E05C4EC00D523B9 /* CJResponseModel.m */,
-			);
-			path = ResponseModels;
 			sourceTree = "<group>";
 		};
 		801531911B7864ED00B82127 /* ServiceHelp */ = {
@@ -332,13 +375,13 @@
 				804F8FC51B3BDF4E00AF11AA /* AppDelegate.m */,
 				804F8FC71B3BDF4E00AF11AA /* ViewController.h */,
 				804F8FC81B3BDF4E00AF11AA /* ViewController.m */,
-				78071C8D1E07D84E005B0E8F /* Resources */,
+				78590B631E08EE3A000F80EF /* Network */,
+				78590B5F1E08E1B0000F80EF /* Models */,
 				804F8FCA1B3BDF4E00AF11AA /* Main.storyboard */,
 				804F8FCD1B3BDF4E00AF11AA /* Images.xcassets */,
 				804F8FCF1B3BDF4E00AF11AA /* LaunchScreen.xib */,
 				801531A51B78675400B82127 /* Controller */,
 				808CBA2F1B720C8E00EDFFB9 /* Service */,
-				80EB6EE41B6C97D8008835A8 /* Database */,
 				804F8FC01B3BDF4E00AF11AA /* Supporting Files */,
 			);
 			path = CommonAFNUtilDemo;
@@ -384,10 +427,6 @@
 		808CBA2F1B720C8E00EDFFB9 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				808CBA301B720C8E00EDFFB9 /* CurrentAFNAPI.h */,
-				808CBA311B720C8E00EDFFB9 /* CurrentAFNAPI.m */,
-				80E194281B7C92F2007907BF /* CurrentAFNManager.h */,
-				80E194291B7C92F2007907BF /* CurrentAFNManager.m */,
 				808CBA321B720C8E00EDFFB9 /* LoginShareInfo.h */,
 				808CBA331B720C8E00EDFFB9 /* LoginShareInfo.m */,
 				78071C8A1E07D5A8005B0E8F /* NSString+URLEncoding.h */,
@@ -404,6 +443,8 @@
 			children = (
 				801531821B78505B00B82127 /* CommonAFNInstance.h */,
 				801531831B78505B00B82127 /* CommonAFNInstance.m */,
+				78590B8E1E092C55000F80EF /* CJAppCheckUpdateHTTPSessionManager.h */,
+				78590B8F1E092C55000F80EF /* CJAppCheckUpdateHTTPSessionManager.m */,
 				78AB6B2A1C0214A2004404A9 /* AFNUtil */,
 			);
 			name = CommonAFNUtil;
@@ -432,15 +473,6 @@
 				808CBA7C1B733A1800EDFFB9 /* NSString+MD5.m */,
 			);
 			path = Librarys;
-			sourceTree = "<group>";
-		};
-		80EB6EE41B6C97D8008835A8 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				80EB6EE51B6C986F008835A8 /* AccountInfo.h */,
-				80EB6EE61B6C986F008835A8 /* AccountInfo.m */,
-			);
-			path = Database;
 			sourceTree = "<group>";
 		};
 		80FD325A1B943FFC0060A7FB /* Library */ = {
@@ -541,7 +573,6 @@
 				804F8FCC1B3BDF4E00AF11AA /* Main.storyboard in Resources */,
 				801531B21B78675400B82127 /* AFNDemoViewController.xib in Resources */,
 				78AB6B1D1C01CDD2004404A9 /* Login.storyboard in Resources */,
-				78071C8F1E07D84E005B0E8F /* 0000.txt in Resources */,
 				807109E71B7E17E900F343F3 /* SocketDemoViewController.xib in Resources */,
 				804F8FD11B3BDF4E00AF11AA /* LaunchScreen.xib in Resources */,
 				804F8FCE1B3BDF4E00AF11AA /* Images.xcassets in Resources */,
@@ -656,34 +687,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				801531B51B78675400B82127 /* LoginHelper.m in Sources */,
+				78590B7A1E0906D6000F80EF /* HealthyHTTPSessionManager.m in Sources */,
+				78590B8A1E091129000F80EF /* AccountInfo.m in Sources */,
 				808CBA7D1B733A1800EDFFB9 /* CommonDataCacheManager.m in Sources */,
 				80FD325D1B943FFC0060A7FB /* NSString+Encoding.m in Sources */,
+				78590B801E090AFA000F80EF /* CJNetworkClient+Test.m in Sources */,
 				804F8FC91B3BDF4E00AF11AA /* ViewController.m in Sources */,
+				78590B5E1E08DB55000F80EF /* NSURLSessionTask+CJErrorMessage.m in Sources */,
+				78590B871E090F73000F80EF /* IjinbuResponseModel.m in Sources */,
 				808CBA801B733A1800EDFFB9 /* NSString+MD5.m in Sources */,
-				80EB6EE71B6C986F008835A8 /* AccountInfo.m in Sources */,
-				808CBA341B720C8E00EDFFB9 /* CurrentAFNAPI.m in Sources */,
 				78AB6B391C0214A2004404A9 /* URLRequestUtil.m in Sources */,
-				80E1942A1B7C92F2007907BF /* CurrentAFNManager.m in Sources */,
+				78590B771E0906C3000F80EF /* TestHTTPSessionManager.m in Sources */,
 				801531B31B78675400B82127 /* Login+Event.m in Sources */,
+				78590B711E090536000F80EF /* CJNetworkClient+Dingdang.m in Sources */,
 				78071C891E0775DD005B0E8F /* CJNetworkMonitor.m in Sources */,
 				801531B41B78675400B82127 /* Login.m in Sources */,
 				808CBA7F1B733A1800EDFFB9 /* NSDictionary+Convert.m in Sources */,
-				78AB6B371C0214A2004404A9 /* AFNUtilCache.m in Sources */,
+				78590B741E090626000F80EF /* CJNetworkClient+Healthy.m in Sources */,
+				78590B6B1E0900C5000F80EF /* CJNetworkClient.m in Sources */,
 				807109E61B7E17E900F343F3 /* SocketDemoViewController.m in Sources */,
 				801531A01B7864EE00B82127 /* NetworkUtil.m in Sources */,
 				804F8FC61B3BDF4E00AF11AA /* AppDelegate.m in Sources */,
-				78AB6B351C0214A2004404A9 /* AFHTTPRequestOperation+Get.m in Sources */,
+				78590B861E090F73000F80EF /* CJResponseModel.m in Sources */,
 				801531841B78505B00B82127 /* CommonAFNInstance.m in Sources */,
+				78590B6E1E09011A000F80EF /* CJNetworkClient+LoginIjinbu.m in Sources */,
 				804F8FC31B3BDF4E00AF11AA /* main.m in Sources */,
+				78590B661E08EEF0000F80EF /* IjinbuHTTPSessionManager.m in Sources */,
 				801531B11B78675400B82127 /* AFNDemoViewController.m in Sources */,
 				78AB6B361C0214A2004404A9 /* AFNUtil.m in Sources */,
 				8015319E1B7864EE00B82127 /* CommonWebUtil.m in Sources */,
 				808CBA7E1B733A1800EDFFB9 /* NSData+Convert.m in Sources */,
-				78F9C6651E05C4EC00D523B9 /* CJResponseModel.m in Sources */,
 				808CBA351B720C8E00EDFFB9 /* LoginShareInfo.m in Sources */,
+				78590B7D1E0906E6000F80EF /* DingdangHTTPSessionManager.m in Sources */,
 				78071C931E07DDAA005B0E8F /* CJJSONResponseSerializer.m in Sources */,
+				78590B901E092C55000F80EF /* CJAppCheckUpdateHTTPSessionManager.m in Sources */,
 				78071C8C1E07D5A8005B0E8F /* NSString+URLEncoding.m in Sources */,
-				78AB6B381C0214A2004404A9 /* AFNUtilCheck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

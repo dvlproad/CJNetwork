@@ -12,14 +12,15 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 typedef void(^CJRequestSuccess)(NSURLSessionDataTask *task, id responseObject);
-typedef void(^CJRequestFailure)(NSURLSessionDataTask *task, NSError *error);
-//void (^)(AFHTTPRequestOperation *operation, NSString *failMesg)
+typedef void(^CJRequestFailure)(NSURLSessionDataTask *task, NSString *errorMessage);
 
 /**< 注意在缓存机制中，success与failuer指的都是是获取数据成功的与否，而不是请求成功的与否 */
 typedef void(^CJRequestCacheSuccess)(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData);
-typedef void(^CJRequestCacheFailure)(NSURLSessionDataTask *task, NSError *error, BOOL isCacheData);
+typedef void(^CJRequestCacheFailure)(NSURLSessionDataTask *task, NSString *errorMessage, BOOL isCacheData);
 
 @interface AFNUtil : NSObject
+
++ (void)hud_showNoNetwork;
 
 //AFHTTPSessionManager : AFURLSessionManager
 

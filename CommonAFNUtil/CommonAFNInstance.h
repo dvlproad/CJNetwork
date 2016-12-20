@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNUtil.h"
-#import "AFNUtilCache.h"
 
 @interface CommonAFNInstance : NSObject
 

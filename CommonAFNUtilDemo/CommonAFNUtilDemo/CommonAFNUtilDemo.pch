@@ -8,15 +8,9 @@
 
 
 //API路径
-#define Use_OutNet
 
-#ifdef Use_OutNet //外网
-    #define API_BASE_Url_Health(_Url_) [NSURL URLWithString:[[@"http://121.40.82.169/drupal/api/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
-    #define API_BASE_Url_LookHouse(_Url_) [[@"http://117.27.157.178:8081/shoujikanfang/d/r/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
-#else
-    #define API_BASE_Url_Health(_Url_) [NSURL URLWithString:[[@"http://10.167.145.101/drupal/api/" s
-    #define API_BASE_Url_LookHouse(_Url_) [[@"http://192.168.18.203:9080/video/d/s/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
-#endif
+//health
+#define API_BASE_Url_Health(_Url_) [NSURL URLWithString:[[@"http://121.40.82.169/drupal/api/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
 
 //dingdang
 #define API_BASE_Url(_Url_) [[@"http://121.40.82.169/drupal/api/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
@@ -24,7 +18,6 @@
 
 //ijinbu
 #define API_BASE_Url_ijinbu(_Url_) [[@"http://www.ijinbu.com/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
-//#define API_BASE_Url_ijinbu(_Url_) [[@"http://192.168.1.77:8080/ijinbu/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
 
 
 #define Test_ImageUrl0   @"http://g.hiphotos.baidu.com/image/w%3D310/sign=6b019ccf9b25bc312b5d07996ede8de7/9e3df8dcd100baa18be50eba4510b912c9fc2ee1.jpg"

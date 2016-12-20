@@ -1,25 +1,18 @@
 //
-//  CurrentAFNAPI.h
+//  CJNetworkClient+Dingdang.h
 //  CommonAFNUtilDemo
 //
-//  Created by lichq on 8/1/15.
-//  Copyright (c) 2015 ciyouzen. All rights reserved.
+//  Created by dvlproad on 2016/12/20.
+//  Copyright © 2016年 ciyouzen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "CommonAFNInstance.h"
-#import "CurrentAFNManager.h"
+#import "CJNetworkClient.h"
+#import "DingdangHTTPSessionManager.h"
+
 #import "LoginHelper.h"
 #import "LoginShareInfo.h"
 
-@class AFHTTPRequestOperation;
-@interface CurrentAFNAPI : NSObject
-
-//健康软件中的API
-+ (void)requestLogin_name:(NSString *)name
-                     pasd:(NSString*)pasd
-                  success:(CJRequestSuccess)success
-                  failure:(CJRequestFailure)failure;
+@interface CJNetworkClient (Dingdang)
 
 //叮当中的API
 + (void)requestDDLogin_name:(NSString *)name
@@ -36,11 +29,5 @@
 //叮当中的API_获取我的科目列表
 + (void)requestDDCourse_Get_success:(CJRequestSuccess)success
                             failure:(CJRequestFailure)failure;
-
-//ijinbu
-+ (void)requestijinbuLogin_name:(NSString *)name
-                           pasd:(NSString*)pasd
-                        success:(CJRequestSuccess)success
-                        failure:(CJRequestFailure)failure;
 
 @end

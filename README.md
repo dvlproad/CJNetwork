@@ -8,6 +8,48 @@ AFN基类
 我们在`AppDelegate`中调用`[[CJNetworkMonitor sharedInstance] startNetworkMonitoring];`开启网络状况监听。则之后当网络状态改变的时候，AFNetworking会自动发送AFNetworkingReachabilityDidChangeNotification通知，我们则只需要对那些需要处理网络状态改变的控制器里，添加通知网络状态改变通知的捕获就行，如
 `[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityDidChangeNotification:) name:AFNetworkingReachabilityDidChangeNotification object:nil];`
 
+## AFNetworking一些API介绍
+必知点：AFNetworking框架默认请求类型`requestSerializer`和响应类型`responseSerializer`都是JSON格式的，即默认请求类型为`AFJSONRequestSerializer`，默认相应类型为`AFJSONResponseSerializer`。
+
+#### 1、关于请求类型及请求参数的书写
+所以在进行请求时候，我们必须根据自己请求的参数类型parameters，对AFNetworking的请求类型进行设置。主要设置为：
+
+1. 如果请求参数是字典类型`NSDictionary`，则请求类型应设置`AFHTTPRequestSerializer`。
+2. 如果请求参数是JSON类型，则请求类型应设置`AFJSONRequestSerializer `。
+
+因为设置的类型不同，AFNetworking会根据设置的类型执行该类型下面对应的`- (NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request withParameters:(id)parameters error:(NSError *__autoreleasing *)error`方法。
+
+其中
+
+AFHTTPRequestSerializer对参数会有如下第496行的处理`query = AFQueryStringFromParameters(parameters);`该处理为将字典类型转为一串请求的字符串格式。
+
+AFJSONRequestSerializer对参数的处理主要为第1260行的
+`[mutableRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:parameters options:self.writingOptions error:error]];`
+
+
+#### 2、关于响应类型及响应response
+响应的时候，`AFURLSessionManager`其会调用`AFURLSessionManagerTaskDelegate`协议，执行该协议里第292的`responseObject = [manager.responseSerializer responseObjectForResponse:task.response data:data error:&serializationError];`可以看出这里会根据我们设置的不同响应类型，调用该响应类型下的
+
+```
+- (id)responseObjectForResponse:(NSURLResponse *)response
+                           data:(NSData *)data
+                          error:(NSError *__autoreleasing *)error
+```
+
+所以，这里我们衍生出一个继承自AFJSONResponseSerializer的CJJSONResponseSerializer的新响应类型，重写该方法，用来处理服务端返回的JSON不是标准的json格式的问题，即主要处理AFNetworking 3840的错误。
+
+
+##### NSJSONSerialization
+```
+NSData *data = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+    NSMutableDictionary *responseObject_dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+```
+//NSJSONReadingMutableContainers的作用: http://blog.csdn.net/chenyong05314/article/details/45691041
+     NSJSONReadingMutableContainers：返回可变容器，NSMutableDictionary或NSMutableArray。
+     NSJSONReadingMutableLeaves：返回的JSON对象中字符串的值为NSMutableString
+     NSJSONReadingAllowFragments：允许JSON字符串最外层既不是NSArray也不是NSDictionary，但必须是有效的JSON Fragment。例如使用这个选项可以解析 @“123” 这样的字符串。
+
+
 #### Screenshots
 ![Example](./Screenshots/Demo.gif "Demo")
 ![Example](./Screenshots/Demo.png "Demo")
@@ -60,3 +102,4 @@ Apple的GCD Documentation证实了这一点:
 2、线程的同步执行@synchronized
 为了防止多个线程同时执行同一个代码块，OC提供了@synchronized()指令。使用@synchronized()指令可以锁住在线程中执行的某一个代码块。存在被保护（即被锁住）的代码块的其他线程，将被阻塞，这也就意味着，他们将在@synchronized()代码块的最后一条语句执行结束后才能继续执行。
 @synchronized()指令的唯一参数可以使用任何OC对象，包括self。这个对象就是我们所谓的信号量。
+

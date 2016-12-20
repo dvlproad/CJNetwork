@@ -7,8 +7,8 @@
 //
 
 #import "AFNUtil.h"
-#import "AFHTTPRequestOperation+Get.h"
 #import "CommonDataCacheManager.h"
+#import "NSURLSessionTask+CJErrorMessage.h"
 
 @implementation AFNUtil
 
@@ -32,14 +32,15 @@
         if (success) {
             success(task, responseObject);
         }
-//            NSMutableDictionary *responseObject_dic = [operation responseObject_dic:operation];
-//            success(operation, responseObject_dic);
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure) {
-            failure(task, error);
+            NSString *errorMessage = [task errorMessage];
+            if ([errorMessage isEqualToString:@""]) {
+                errorMessage = error.description;
+            }
+            failure(task, errorMessage);
         }
-//        NSString *failMesg = [operation failMesg:operation];
-//            failure(operation, failMesg);
     }];
     
     return URLSessionDataTask;
@@ -93,7 +94,8 @@
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             BOOL fromRequestCacheData = NO;//有网络的时候,responseObject等就不是来源磁盘(缓存),故为NO
             if (failure) {
-                failure(task, error, fromRequestCacheData);
+                NSString *errorMessage = [task errorMessage];
+                failure(task, errorMessage, fromRequestCacheData);
             }
         }];
        
@@ -102,7 +104,7 @@
 }
 
 #pragma mark - 私有方法
-+ (void)hud_showNoNetwork{
++ (void)hud_showNoNetwork {
     [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"网络不给力", nil)];
 }
 
@@ -127,8 +129,8 @@
         [self hud_showNoNetwork];
         
         if (failure) {
-            NSError *error = nil;
-            failure(URLSessionDataTask, error, fromRequestCacheData);
+            NSString *errorMessage = NSLocalizedString(@"网络不给力", nil);
+            failure(URLSessionDataTask, errorMessage, fromRequestCacheData);
         }
         return;
     }
@@ -139,8 +141,8 @@
         [self hud_showNoNetwork];
         
         if (failure) {
-            NSError *error = nil;
-            failure(URLSessionDataTask, error, fromRequestCacheData);
+            NSString *errorMessage = NSLocalizedString(@"网络不给力", nil);
+            failure(URLSessionDataTask, errorMessage, fromRequestCacheData);
         }
         return;
     }
@@ -159,8 +161,8 @@
         [self hud_showNoNetwork];
         
         if (failure) {
-            NSError *error = nil;
-            failure(URLSessionDataTask, error, fromRequestCacheData);
+            NSString *errorMessage = NSLocalizedString(@"网络不给力", nil);
+            failure(URLSessionDataTask, errorMessage, fromRequestCacheData);
         }
     }
 }

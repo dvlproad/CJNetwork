@@ -9,12 +9,8 @@
 #import "AccountInfo.h"
 
 @implementation AccountInfo
-//@synthesize uid;
-//@synthesize name;
-//@synthesize email;
-//@synthesize pasd;
 
-+ (JSONKeyMapper *)keyMapper{
++ (JSONKeyMapper *)keyMapper {
     return [[JSONKeyMapper alloc]initWithDictionary:@{
                                                       @"uid" : @"uid",
                                                       @"name" : @"name",

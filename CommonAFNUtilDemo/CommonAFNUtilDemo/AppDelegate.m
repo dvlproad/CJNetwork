@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "CurrentAFNAPI.h"
 #import "CJNetworkMonitor.h"
+#import "CJNetworkClient+Dingdang.h"
 
 @interface AppDelegate ()
 
@@ -20,9 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[CJNetworkMonitor sharedInstance] startNetworkMonitoring];
+    [[CJNetworkMonitor sharedInstance] startNetworkMonitoring]; //开启网络监听
     
-    [CommonAFNInstance sharedInstance]; //主要用于开启网络监听
     [self performSelector:@selector(tryAutoLogin) withObject:nil afterDelay:0.35f];
     /*
      如果启动就去检测 建议延时调用
@@ -41,10 +40,10 @@
     if (name == nil) {
         //[self goLogin];
     }else{
-        [CurrentAFNAPI requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
+        [CJNetworkClient requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"获取acces_token成功，代表登录成功");
             
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
             NSLog(@"登录不了哦，再试试看！");
         }];
     }

@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CurrentAFNAPI.h"
-#import "AFNUtilCheck.h"
 
 @interface ViewController : UIViewController<UIAlertViewDelegate>
 

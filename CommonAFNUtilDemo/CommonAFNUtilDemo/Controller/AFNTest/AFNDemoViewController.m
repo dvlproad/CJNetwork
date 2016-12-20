@@ -23,32 +23,6 @@
 }
 
 
-
-//具体参照 AFNetworking2.5使用：http://blog.csdn.net/daiyelang/article/details/38434023
-- (IBAction)testAFNetworking:(id)sender{
-    //下面代码放到ViewDidload里就会出现错误，为什么？
-    NSLog(@"testAFNetworking...");
-    
-    NSString *Url = API_BASE_Url_LookHouse(@"head/loadAd");
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSURLSessionDataTask *URLSessionDataTask =
-    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:nil cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
-        NSLog(@"获取数据成功");
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error, BOOL isCacheData) {
-        NSLog(@"获取数据失败");
-    }];
-    
-    //网络请求时候的动画添加
-    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] init];
-    indicatorView.frame = CGRectMake(100, 200, 100, 100);/*calculate frame here*/
-    [self.view addSubview:indicatorView];
-    [indicatorView setAnimatingWithStateOfTask:URLSessionDataTask];
-}
-
-
-
 #pragma mark - 图片获取
 - (IBAction)testImageView:(id)sender{
     NSURL *URL = [NSURL URLWithString:@"http://d.hiphotos.baidu.com/image/w%3D310/sign=21bab078bd096b63811958513c328733/ac345982b2b7d0a2270873cac8ef76094a369aa7.jpg"];
