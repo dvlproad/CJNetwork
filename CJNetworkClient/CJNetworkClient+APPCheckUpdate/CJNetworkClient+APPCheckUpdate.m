@@ -1,29 +1,18 @@
 //
-//  CJNetworkClient.m
+//  CJNetworkClient+APPCheckUpdate.m
 //  CommonAFNUtilDemo
 //
-//  Created by dvlproad on 2016/12/20.
+//  Created by 李超前 on 2016/12/20.
 //  Copyright © 2016年 ciyouzen. All rights reserved.
 //
 
-#import "CJNetworkClient.h"
+#import "CJNetworkClient+APPCheckUpdate.h"
 #import "CJAppCheckUpdateHTTPSessionManager.h"
 
-@implementation CJNetworkClient
-
-/*
-+ (CJNetworkClient *)sharedInstance {
-    static CJNetworkClient *_sharedInstance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedInstance = [[self alloc] init];
-    });
-    return _sharedInstance;
-}
-*/
+@implementation CJNetworkClient (APPCheckUpdate)
 
 #pragma mark - 公共方法
-+ (NSURLSessionDataTask *)checkVersionWithAPPID:(NSString *)appid
+- (NSURLSessionDataTask *)checkVersionWithAPPID:(NSString *)appid
                                         success:(void(^)(BOOL isLastest, NSString *app_trackViewUrl))success
                                         failure:(void(^)(void))failure {
     
@@ -33,7 +22,7 @@
     AFHTTPSessionManager *manager = [CJAppCheckUpdateHTTPSessionManager sharedInstance];
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self useManager:manager postRequestUrl:Url parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic = [NSDictionary dictionaryWithDictionary:responseObject];
         NSArray *infoArray = [dic objectForKey:@"results"];
         if ([infoArray count]) {
@@ -61,6 +50,5 @@
     
     return URLSessionDataTask;
 }
-
 
 @end

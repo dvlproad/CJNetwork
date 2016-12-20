@@ -11,6 +11,9 @@
 
 @interface CJNetworkClient (Test)
 
+- (void)requestBaiduHomeSuccess22:(CJRequestSuccess)success
+                        failure:(CJRequestFailure)failure;
+
 + (void)requestBaiduHomeSuccess:(CJRequestSuccess)success
                         failure:(CJRequestFailure)failure;
 

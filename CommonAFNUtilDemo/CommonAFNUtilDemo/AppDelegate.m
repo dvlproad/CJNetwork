@@ -40,7 +40,7 @@
     if (name == nil) {
         //[self goLogin];
     }else{
-        [CJNetworkClient requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
+        [[CJNetworkClient sharedInstance] requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"获取acces_token成功，代表登录成功");
             
         } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {

@@ -16,7 +16,7 @@
     NSDictionary *parameters = nil;
     
     AFHTTPSessionManager *manager = [TestHTTPSessionManager sharedInstance];
-    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:parameters cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
+    [[CJNetworkClient sharedInstance] useManager:manager postRequestUrl:Url parameters:parameters cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
         if (success) {
             success(task, responseObject);
         }

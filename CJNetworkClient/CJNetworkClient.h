@@ -1,28 +1,17 @@
 //
-//  AFNUtil.h
+//  CJNetworkClient.h
 //  CommonAFNUtilDemo
 //
-//  Created by lichq on 6/25/15.
-//  Copyright (c) 2015 ciyouzen. All rights reserved.
+//  Created by dvlproad on 2016/12/20.
+//  Copyright © 2016年 ciyouzen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <AFNetworking/AFNetworking.h>
-#import <SVProgressHUD/SVProgressHUD.h>
+#import "AFNUtil.h"
 
-typedef void(^CJRequestSuccess)(NSURLSessionDataTask *task, id responseObject);
-typedef void(^CJRequestFailure)(NSURLSessionDataTask *task, NSString *errorMessage);
+@interface CJNetworkClient : NSObject
 
-/**< 注意在缓存机制中，success与failuer指的都是是获取数据成功的与否，而不是请求成功的与否 */
-typedef void(^CJRequestCacheSuccess)(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData);
-typedef void(^CJRequestCacheFailure)(NSURLSessionDataTask *task, NSString *errorMessage, BOOL isCacheData);
-
-@interface AFNUtil : NSObject
-
-+ (void)hud_showNoNetwork;
-
-//AFHTTPSessionManager : AFURLSessionManager
++ (CJNetworkClient *)sharedInstance;
 
 /**
  *  POST请求
@@ -36,7 +25,7 @@ typedef void(^CJRequestCacheFailure)(NSURLSessionDataTask *task, NSString *error
  *
  *  return NSURLSessionDataTask
  */
-+ (NSURLSessionDataTask *)useManager:(AFHTTPSessionManager *)manager
+- (NSURLSessionDataTask *)useManager:(AFHTTPSessionManager *)manager
                       postRequestUrl:(NSString *)Url
                           parameters:(id)parameters
                             progress:(void (^)(NSProgress * _Nonnull))uploadProgress
@@ -56,13 +45,12 @@ typedef void(^CJRequestCacheFailure)(NSURLSessionDataTask *task, NSString *error
  *
  *  return NSURLSessionDataTask
  */
-+ (NSURLSessionDataTask *)useManager:(AFHTTPSessionManager *)manager
+- (NSURLSessionDataTask *)useManager:(AFHTTPSessionManager *)manager
                       postRequestUrl:(NSString *)Url
                           parameters:(NSDictionary *)parameters
                     cacheReuqestData:(BOOL)cacheReuqestData
                             progress:(void (^)(NSProgress * _Nonnull))uploadProgress
                              success:(CJRequestCacheSuccess)success
                              failure:(CJRequestCacheFailure)failure;
-
 
 @end

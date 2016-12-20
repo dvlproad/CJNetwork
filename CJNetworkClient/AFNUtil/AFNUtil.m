@@ -14,12 +14,12 @@
 
 #pragma mark - 公共方法
 /** 完整的描述请参见文件头部 */
-+ (NSURLSessionDataTask *)useManager:(AFHTTPSessionManager *)manager
-                      postRequestUrl:(NSString *)Url
-                          parameters:(id)parameters
-                            progress:(void (^)(NSProgress * _Nonnull))uploadProgress
-                             success:(CJRequestSuccess)success
-                             failure:(CJRequestFailure)failure {
++ (nullable NSURLSessionDataTask *)useManager:(nullable AFHTTPSessionManager *)manager
+                               postRequestUrl:(nullable NSString *)Url
+                                   parameters:(nullable id)parameters
+                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                      success:(nullable CJRequestSuccess)success
+                                      failure:(nullable CJRequestFailure)failure {
     
     BOOL isNetworkEnabled = [AFNetworkReachabilityManager sharedManager].isReachable;
     if (isNetworkEnabled == NO) {//网络不可用
@@ -47,13 +47,13 @@
 }
 
 /** 完整的描述请参见文件头部 */
-+ (NSURLSessionDataTask *)useManager:(AFHTTPSessionManager *)manager
-                      postRequestUrl:(NSString *)Url
-                          parameters:(NSDictionary *)parameters
-                    cacheReuqestData:(BOOL)cacheReuqestData
-                            progress:(void (^)(NSProgress * _Nonnull))uploadProgress
-                             success:(CJRequestCacheSuccess)success
-                             failure:(CJRequestCacheFailure)failure {
++ (nullable NSURLSessionDataTask *)useManager:(nullable AFHTTPSessionManager *)manager
+                               postRequestUrl:(nullable NSString *)Url
+                                   parameters:(nullable id)parameters
+                             cacheReuqestData:(BOOL)cacheReuqestData
+                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                      success:(nullable CJRequestCacheSuccess)success
+                                      failure:(nullable CJRequestCacheFailure)failure {
     BOOL isNetworkEnabled = [AFNetworkReachabilityManager sharedManager].isReachable;
     if (isNetworkEnabled == NO) {
         /* 网络不可用，读取本地缓存数据 */

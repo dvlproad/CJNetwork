@@ -12,7 +12,7 @@
 @interface CJNetworkClient (LoginIjinbu)
 
 //ijinbu
-+ (void)requestijinbuLogin_name:(NSString *)name
+- (void)requestijinbuLogin_name:(NSString *)name
                            pasd:(NSString*)pasd
                         success:(CJRequestSuccess)success
                         failure:(CJRequestFailure)failure;

@@ -21,7 +21,7 @@
  *   password：md5(yyMMdd+用户名倒序+26%trUst#9527)
  *       其中：yyMMdd从服务端接口【/api/systime】获取
  ****************/
-+ (void)requestDDLogin_name:(NSString *)name
+- (void)requestDDLogin_name:(NSString *)name
                        pasd:(NSString*)pasd
                     success:(CJRequestSuccess)success
                     failure:(CJRequestFailure)failure
@@ -35,7 +35,7 @@
                              @"client_secret" : CLIENT_SECRET
                              };
     AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         LoginShareInfo *shareInfo = [LoginShareInfo shared];
         shareInfo.access_token = [responseObject objectForKey:@"access_token"];
         shareInfo.expires_in = [responseObject objectForKey:@"expires_in"];
@@ -52,13 +52,13 @@
     }];
 }
 
-+ (void)requestDDLogout_success:(CJRequestSuccess)success failure:(CJRequestFailure)failure
+- (void)requestDDLogout_success:(CJRequestSuccess)success failure:(CJRequestFailure)failure
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/logout");
     NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token};
     
     AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
             success(task, responseObject);
         }
@@ -69,7 +69,7 @@
     
 }
 
-+ (void)requestDDUser_GetInfo_success:(CJRequestSuccess)success failure:(CJRequestFailure)failure
+- (void)requestDDUser_GetInfo_success:(CJRequestSuccess)success failure:(CJRequestFailure)failure
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/user/me");
     NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token};
@@ -83,7 +83,7 @@
      */
     
     AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:params cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
+    [self useManager:manager postRequestUrl:Url parameters:params cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
         
         if (isCacheData) {
             if (success) {
@@ -112,7 +112,7 @@
 
 
 //获取我的科目列表
-+ (void)requestDDCourse_Get_success:(CJRequestSuccess)success failure:(CJRequestFailure)failure
+- (void)requestDDCourse_Get_success:(CJRequestSuccess)success failure:(CJRequestFailure)failure
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/course/list");
     if ([LoginShareInfo shared].access_token == nil) {
@@ -125,7 +125,7 @@
     
     
     AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:params cacheReuqestData:YES progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
+    [self useManager:manager postRequestUrl:Url parameters:params cacheReuqestData:YES progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
         
         if (isCacheData) {
             if (success) {

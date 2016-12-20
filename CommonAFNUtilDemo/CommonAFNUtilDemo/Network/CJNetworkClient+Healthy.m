@@ -10,7 +10,7 @@
 
 @implementation CJNetworkClient (Healthy)
 
-+ (void)requestLogin_name:(NSString *)name
+- (void)requestLogin_name:(NSString *)name
                      pasd:(NSString*)pasd
                   success:(CJRequestSuccess)success
                   failure:(CJRequestFailure)failure
@@ -20,7 +20,7 @@
                              @"password" : pasd
                              };
     AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
-    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
             success(task, responseObject);
         }

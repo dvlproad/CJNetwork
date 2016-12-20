@@ -1,29 +1,23 @@
 //
-//  CommonAFNInstance.m
+//  CJNetworkClient.m
 //  CommonAFNUtilDemo
 //
-//  Created by lichq on 8/10/15.
-//  Copyright (c) 2015 ciyouzen. All rights reserved.
+//  Created by dvlproad on 2016/12/20.
+//  Copyright © 2016年 ciyouzen. All rights reserved.
 //
 
-#import "CommonAFNInstance.h"
+#import "CJNetworkClient.h"
 
-@implementation CommonAFNInstance
+@implementation CJNetworkClient
 
-/**
- *  创建单例
- *
- *  @return 单例
- */
-+ (CommonAFNInstance *)sharedInstance {
-    static CommonAFNInstance *_sharedInstance = nil;
++ (CJNetworkClient *)sharedInstance {
+    static CJNetworkClient *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[self alloc] init];
     });
     return _sharedInstance;
 }
-
 
 - (NSURLSessionDataTask *)useManager:(AFHTTPSessionManager *)manager
                       postRequestUrl:(NSString *)Url
@@ -54,5 +48,6 @@
                        success:success
                        failure:failure];
 }
+
 
 @end

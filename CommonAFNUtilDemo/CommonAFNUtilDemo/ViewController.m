@@ -10,7 +10,7 @@
 #import "Login.h"
 #import "AFNDemoViewController.h"
 
-#import "CJNetworkClient.h"
+#import "CJNetworkClient+APPCheckUpdate.h"
 #import "CJNetworkClient+Test.h"
 #import <AFNetworking/UIActivityIndicatorView+AFNetworking.h>
 
@@ -43,7 +43,7 @@ static int apiTestCount = 0;
 
 - (IBAction)checkVersion:(id)sender {
     NSURLSessionDataTask *URLSessionDataTask =
-    [CJNetworkClient checkVersionWithAPPID:@"587767923" success:^(BOOL isLastest, NSString *app_trackViewUrl) {
+    [[CJNetworkClient sharedInstance] checkVersionWithAPPID:@"587767923" success:^(BOOL isLastest, NSString *app_trackViewUrl) {
         if (isLastest == NO) {
             trackViewUrl = app_trackViewUrl;
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
@@ -85,7 +85,15 @@ static int apiTestCount = 0;
 
 
 - (void)doAPITest{
-    [CJNetworkClient requestBaiduHomeSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+//    [CJNetworkClient requestBaiduHomeSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+//        NSLog(@"接口测试成功。。。%d", apiTestCount++);
+//        
+//    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
+//        NSLog(@"接口测试失败。。。");
+//        
+//    }];
+    
+    [[CJNetworkClient sharedInstance] requestBaiduHomeSuccess22:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"接口测试成功。。。%d", apiTestCount++);
         
     } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {

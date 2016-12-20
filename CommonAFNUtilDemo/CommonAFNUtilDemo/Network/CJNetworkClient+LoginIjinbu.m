@@ -12,7 +12,7 @@
 
 @implementation CJNetworkClient (LoginIjinbu)
 
-+ (void)requestijinbuLogin_name:(NSString *)name
+- (void)requestijinbuLogin_name:(NSString *)name
                            pasd:(NSString*)pasd
                         success:(CJRequestSuccess)success
                         failure:(CJRequestFailure)failure
@@ -33,7 +33,7 @@
     NSLog(@"sign = %@", sign);
     [manager.requestSerializer setValue:sign forHTTPHeaderField:@"sign"];
     
-    [[CommonAFNInstance sharedInstance] useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"请求ijinbu成功");
         NSLog(@"responseObject = %@", responseObject);
         IjinbuResponseModel *responseModel = [[IjinbuResponseModel alloc] initWithDictionary:responseObject error:nil];
@@ -60,7 +60,7 @@
     }];
 }
 
-+ (NSString *)signWithParams:(NSDictionary *)params path:(NSString*)path
+- (NSString *)signWithParams:(NSDictionary *)params path:(NSString*)path
 {
 #if 0
     return [[NSString stringWithFormat:@"%@123456", [HPDevice deviceId]] md5Hash];

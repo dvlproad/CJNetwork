@@ -12,7 +12,7 @@
 @interface CJNetworkClient (Healthy)
 
 //健康软件中的API
-+ (void)requestLogin_name:(NSString *)name
+- (void)requestLogin_name:(NSString *)name
                      pasd:(NSString*)pasd
                   success:(CJRequestSuccess)success
                   failure:(CJRequestFailure)failure;
