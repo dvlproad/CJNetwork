@@ -10,8 +10,10 @@
 #import "NSString+Encoding.h"
 
 #import "CJNetworkClient+Healthy.h"
-#import "CJNetworkClient+LoginIjinbu.h"
 #import "CJNetworkClient+Dingdang.h"
+
+//#import "CJNetworkClient+LoginIjinbu.h"
+#import "IJBNetworkClient+Login.h"
 
 @implementation Login (Event)
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -44,7 +46,8 @@
          */
         [self.navigationController popViewControllerAnimated:YES];
         
-    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSString *failMesg = [error localizedDescription];
 //        failMesg = [failMesg Unicode_To_Chinese];
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];
     }];
@@ -73,11 +76,11 @@
             [LoginShareInfo shared].uinfo = uinfo;
             [LoginHelper login_name:name pasd:pasd];
             
-        } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"登录不了哦，再试试看！");
         }];
         
-    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];//登录不了哦，再试试看！
     }];
 }
@@ -89,7 +92,7 @@
     }
     [[CJNetworkClient sharedInstance] requestDDCourse_Get_success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"缓存/非缓存数据。。。%@", responseObject);
-    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"获取我的科目列表失败");
     }];
 }
@@ -102,11 +105,20 @@
     NSString *name = @"18020721201";
     NSString *pasd = @"123456";
     
+    /*
     [[CJNetworkClient sharedInstance] requestijinbuLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
         
     } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
         [SVProgressHUD showErrorWithStatus:errorMessage];//登录不了哦，再试试看！
+    }];
+    */
+    
+    [[IJBNetworkClient sharedInstance] requestijinbuLogin_name:name pasd:pasd success:^(id responseModel) {
+        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+        
+    } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"登录失败"];//登录不了哦，再试试看！
     }];
 }
 

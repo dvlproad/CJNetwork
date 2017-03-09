@@ -96,7 +96,7 @@ static int apiTestCount = 0;
     [[CJNetworkClient sharedInstance] requestBaiduHomeSuccess22:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"接口测试成功。。。%d", apiTestCount++);
         
-    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"接口测试失败。。。");
         
     }];

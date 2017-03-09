@@ -7,8 +7,15 @@
 //
 
 #import "AFNUtil.h"
-#import "CommonDataCacheManager.h"
+#import "CJMemoryDiskCacheManager.h"
 #import "NSURLSessionTask+CJErrorMessage.h"
+
+#import "NSDictionary+Convert.h"
+#import "NSData+Convert.h"
+#import "NSString+MD5.h"
+
+static NSString *relativeDirectoryPath = @"Document";
+
 
 @implementation AFNUtil
 
@@ -28,20 +35,7 @@
     }
         
     //网络可用
-    NSURLSessionDataTask *URLSessionDataTask = [manager POST:Url parameters:parameters progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (success) {
-            success(task, responseObject);
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (failure) {
-            NSString *errorMessage = [task errorMessage];
-            if ([errorMessage isEqualToString:@""]) {
-                errorMessage = error.description;
-            }
-            failure(task, errorMessage);
-        }
-    }];
+    NSURLSessionDataTask *URLSessionDataTask = [manager POST:Url parameters:parameters progress:uploadProgress success:success failure:success];
     
     return URLSessionDataTask;
 }
@@ -81,12 +75,15 @@
                     
                 }else{
                     if (!responseObject){
-                        [[CommonDataCacheManager sharedCacheManager] removeMemoryCacheForKey:requestCacheKey];
+                        [[CJMemoryDiskCacheManager sharedInstance] removeCacheForCacheKey:requestCacheKey diskRelativeDirectoryPath:relativeDirectoryPath];
+                        
                         
                     } else {
                         //TODO:responseObject(json) 转data
                         NSDictionary *dic = [NSDictionary dictionaryWithDictionary:responseObject];
-                        [[CommonDataCacheManager sharedCacheManager] cacheData:[dic convertToData] forCacheKey:requestCacheKey toDisk:YES];
+                        NSData *cacheData = [dic convertToData];
+                        
+                        [[CJMemoryDiskCacheManager sharedInstance] cacheData:cacheData forCacheKey:requestCacheKey andSaveInDisk:YES withDiskRelativeDirectoryPath:relativeDirectoryPath];
                     }
                 }
             }
@@ -95,7 +92,8 @@
             BOOL fromRequestCacheData = NO;//有网络的时候,responseObject等就不是来源磁盘(缓存),故为NO
             if (failure) {
                 NSString *errorMessage = [task errorMessage];
-                failure(task, errorMessage, fromRequestCacheData);
+                NSError *error = [self networkErrorWithLocalizedDescription:errorMessage];
+                failure(task, error, fromRequestCacheData);
             }
         }];
        
@@ -122,7 +120,7 @@
                   parameters:(NSDictionary *)parameters
                      success:(CJRequestCacheSuccess)success
                      failure:(CJRequestCacheFailure)failure {
-    NSURLSessionDataTask *URLSessionDataTask = nil;
+    NSURLSessionDataTask *task = nil;
     
     if (fromRequestCacheData == NO) {
         NSLog(@"提示：这里之前未缓存，无法读取缓存，提示网络不给力");
@@ -130,7 +128,8 @@
         
         if (failure) {
             NSString *errorMessage = NSLocalizedString(@"网络不给力", nil);
-            failure(URLSessionDataTask, errorMessage, fromRequestCacheData);
+            NSError *error = [self networkErrorWithLocalizedDescription:errorMessage];
+            failure(task, error, fromRequestCacheData);
         }
         return;
     }
@@ -142,18 +141,21 @@
         
         if (failure) {
             NSString *errorMessage = NSLocalizedString(@"网络不给力", nil);
-            failure(URLSessionDataTask, errorMessage, fromRequestCacheData);
+            NSError *error = [self networkErrorWithLocalizedDescription:errorMessage];
+            failure(task, error, fromRequestCacheData);
         }
         return;
     }
     
-    NSData *requestCacheData = [[CommonDataCacheManager sharedCacheManager] dataFromKey:requestCacheKey isMemoryCacheNil_then_getFromDisk:YES];
+    
+    
+    NSData *requestCacheData = [[CJMemoryDiskCacheManager sharedInstance] getCacheDataByCacheKey:requestCacheKey diskRelativeDirectoryPath:relativeDirectoryPath];
     if (requestCacheData) {
         //NSLog(@"读到缓存数据，但不保证该数据是最新的，因为网络还是不给力");
         
         if (success) {
             NSDictionary *responseObject = [requestCacheData convertToDictionary];
-            success(URLSessionDataTask, responseObject, fromRequestCacheData);
+            success(task, responseObject, fromRequestCacheData);
         }
         
     } else {
@@ -162,7 +164,8 @@
         
         if (failure) {
             NSString *errorMessage = NSLocalizedString(@"网络不给力", nil);
-            failure(URLSessionDataTask, errorMessage, fromRequestCacheData);
+            NSError *error = [self networkErrorWithLocalizedDescription:errorMessage];
+            failure(task, error, fromRequestCacheData);
         }
     }
 }
@@ -176,14 +179,28 @@
  *  return 请求的缓存key
  */
 + (NSString *)getRequestCacheKeyByRequestUrl:(NSString *)Url
-                                  parameters:(NSDictionary *)parameters{
-    NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:parameters];
+                                  parameters:(NSDictionary *)parameters {
+    NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] init];
+    [mutableDictionary addEntriesFromDictionary:parameters];
     [mutableDictionary setObject:Url forKey:@"cjRequestUrl"];
     
-    NSString *string = [parameters convertToString];
+    NSString *string = [mutableDictionary convertToString];
     NSString *requestCacheKey = [string MD5];
     
     return requestCacheKey;
+}
+
+
+/** 网络不给力时候，默认返回的error */
++ (NSError *)networkErrorWithLocalizedDescription:(NSString *)localizedDescription {
+    //NSString *localizedDescription = NSLocalizedString(@"网络不给力", nil);
+    
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    [userInfo setValue:localizedDescription forKey:NSLocalizedDescriptionKey];
+    
+    NSError *error = [[NSError alloc] initWithDomain:@"com.dvlproad.network.error" code:-1 userInfo:userInfo];
+    
+    return error;
 }
 
 

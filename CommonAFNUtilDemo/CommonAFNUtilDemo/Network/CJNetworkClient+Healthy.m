@@ -24,9 +24,9 @@
         if (success) {
             success(task, responseObject);
         }
-    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"获取失败");
-        failure(task, errorMessage);
+        failure(task, error);
     }];
     //    [self.indicatorView setAnimatingWithStateOfOperation:operation];
 }

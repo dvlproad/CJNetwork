@@ -12,11 +12,18 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 typedef void(^CJRequestSuccess)(NSURLSessionDataTask * _Nullable task, id _Nullable responseObject);
-typedef void(^CJRequestFailure)(NSURLSessionDataTask * _Nullable task, NSString *_Nullable errorMessage);
+typedef void(^CJRequestFailure)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error);
 
 /**< 注意在缓存机制中，success与failuer指的都是是获取数据成功的与否，而不是请求成功的与否 */
 typedef void(^CJRequestCacheSuccess)(NSURLSessionDataTask *_Nullable task, id _Nullable responseObject, BOOL isCacheData);
-typedef void(^CJRequestCacheFailure)(NSURLSessionDataTask *_Nullable task, NSString *_Nullable errorMessage, BOOL isCacheData);
+typedef void(^CJRequestCacheFailure)(NSURLSessionDataTask *_Nullable task, NSError * _Nonnull error, BOOL isCacheData);
+
+/*
+NSString *errorMessage = [task errorMessage];
+if ([errorMessage isEqualToString:@""]) {
+    errorMessage = error.description;
+}
+*/
 
 @interface AFNUtil : NSObject
 
@@ -64,5 +71,7 @@ typedef void(^CJRequestCacheFailure)(NSURLSessionDataTask *_Nullable task, NSStr
                                       success:(nullable CJRequestCacheSuccess)success
                                       failure:(nullable CJRequestCacheFailure)failure;
 
+
++ (NSError *)networkErrorWithLocalizedDescription:(NSString *)localizedDescription;
 
 @end

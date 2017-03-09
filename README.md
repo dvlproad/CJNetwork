@@ -1,5 +1,6 @@
 # CJNetwork
 AFN基类
+替换掉了CommonAFNUtil的使用
 
 ## CJNetworkMonitor
 网络状态监听类

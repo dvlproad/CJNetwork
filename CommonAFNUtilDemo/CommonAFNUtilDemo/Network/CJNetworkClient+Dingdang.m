@@ -46,9 +46,9 @@
         if (success) {
             success(task, responseObject);
         }
-    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"获取失败");
-        failure(task, errorMessage);
+        failure(task, error);
     }];
 }
 
@@ -62,9 +62,9 @@
         if (success) {
             success(task, responseObject);
         }
-    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"获取失败");
-        failure(task, errorMessage);
+        failure(task, error);
     }];
     
 }
@@ -96,7 +96,7 @@
             }
         }
         
-    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage, BOOL isCacheData) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error, BOOL isCacheData) {
         if (isCacheData) {
             if (failure) {
                 failure(nil, nil);
@@ -104,7 +104,7 @@
             
         } else {
             if (failure) {
-                failure(task, errorMessage);
+                failure(task, error);
             }
         }
     }];
@@ -138,7 +138,7 @@
             }
         }
         
-    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage, BOOL isCacheData) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error, BOOL isCacheData) {
         if (isCacheData) {
             if (failure) {
                 failure(nil, nil);
@@ -146,7 +146,7 @@
             
         } else {
             if (failure) {
-                failure(task, errorMessage);
+                failure(task, error);
             }
         }
     }];

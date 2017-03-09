@@ -42,7 +42,7 @@
         }
         
         
-    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"检查更新请求发生错误", nil)];
         failure();
     }];

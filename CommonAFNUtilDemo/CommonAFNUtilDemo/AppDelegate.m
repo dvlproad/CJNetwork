@@ -43,7 +43,7 @@
         [[CJNetworkClient sharedInstance] requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"获取acces_token成功，代表登录成功");
             
-        } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"登录不了哦，再试试看！");
         }];
     }

@@ -1,29 +1,29 @@
 //
-//  CJNetworkClient+LoginIjinbu.m
+//  IJBNetworkClient.m
 //  CommonAFNUtilDemo
 //
-//  Created by dvlproad on 2016/12/20.
-//  Copyright © 2016年 ciyouzen. All rights reserved.
+//  Created by 李超前 on 2017/3/6.
+//  Copyright © 2017年 ciyouzen. All rights reserved.
 //
 
-#import "CJNetworkClient+LoginIjinbu.h"
+#import "IJBNetworkClient.h"
 
-#import "IjinbuResponseModel.h"
+@implementation IJBNetworkClient
 
-@implementation CJNetworkClient (LoginIjinbu)
++ (IJBNetworkClient *)sharedInstance {
+    static IJBNetworkClient *_sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+    return _sharedInstance;
+}
 
-- (void)requestijinbuLogin_name:(NSString *)name
-                           pasd:(NSString*)pasd
-                        success:(CJRequestSuccess)success
-                        failure:(CJRequestFailure)failure
+- (NSURLSessionDataTask *)postWithPath:(NSString *)Url
+                                params:(NSDictionary *)params
+                               success:(HPSuccess)success
+                               failure:(HPFailure)failure
 {
-    NSString *Url = API_BASE_Url_ijinbu(@"ijinbu/app/teacherLogin/login");
-    NSDictionary *params = @{@"userAccount":name, //测试:name:18020721201 pasd:123456
-                             @"userPwd":    [pasd MD5],
-                             @"loginType":  @(0)
-                             //                             @"client_id"     : CLIENT,
-                             //                             @"client_secret" : CLIENT_SECRET
-                             };
     NSLog(@"Url = %@", Url);
     NSLog(@"params = %@", params);
     
@@ -33,6 +33,7 @@
     NSLog(@"sign = %@", sign);
     [manager.requestSerializer setValue:sign forHTTPHeaderField:@"sign"];
     
+    NSURLSessionDataTask *dataTask =
     [self useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"请求ijinbu成功");
         NSLog(@"responseObject = %@", responseObject);
@@ -40,15 +41,14 @@
         if ([responseModel.status integerValue] == 1) {
             NSLog(@"登录ijinbu成功");
             if (success) {
-                success(task, responseObject);
+                success(responseModel);
             }
             
         } else {
             NSLog(@"登录ijinbu失败");
+            
             if (failure) {
-                NSString *errorMessage = responseModel.message;
-                NSError *error = [AFNUtil networkErrorWithLocalizedDescription:errorMessage];
-                failure(task, error);
+                failure(nil);
             }
             
         }
@@ -57,10 +57,13 @@
         NSString *errorMessage = [error localizedDescription];
         NSLog(@"请求ijinbu失败:%@", errorMessage);
         if (failure) {
-            failure(task, error);
+            failure(nil);
         }
     }];
+    
+    return dataTask;
 }
+
 
 - (NSString *)signWithParams:(NSDictionary *)params path:(NSString*)path
 {
@@ -94,5 +97,6 @@
     return [string MD5];
 #endif
 }
+
 
 @end

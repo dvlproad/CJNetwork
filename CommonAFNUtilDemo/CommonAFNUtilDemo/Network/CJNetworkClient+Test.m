@@ -21,9 +21,9 @@
             success(task, responseObject);
         }
         
-    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage, BOOL isCacheData) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error, BOOL isCacheData) {
         if (failure) {
-            failure(task, errorMessage);
+            failure(task, error);
         }
     }];
 }
