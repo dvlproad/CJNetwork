@@ -1,17 +1,25 @@
 //
-//  CJNetworkClient+APPCheckUpdate.m
+//  CJNetworkClient.m
 //  CommonAFNUtilDemo
 //
-//  Created by 李超前 on 2016/12/20.
+//  Created by dvlproad on 2016/12/20.
 //  Copyright © 2016年 ciyouzen. All rights reserved.
 //
 
-#import "CJNetworkClient+APPCheckUpdate.h"
-#import "CJAppCheckUpdateHTTPSessionManager.h"
+#import "CJNetworkClient.h"
+#import "CJNetworkClientHTTPSessionManager.h"
 
-@implementation CJNetworkClient (APPCheckUpdate)
+@implementation CJNetworkClient
 
-#pragma mark - 公共方法
++ (CJNetworkClient *)sharedInstance {
+    static CJNetworkClient *_sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+    return _sharedInstance;
+}
+
 - (NSURLSessionDataTask *)checkVersionWithAPPID:(NSString *)appid
                                         success:(void(^)(BOOL isLastest, NSString *app_trackViewUrl))success
                                         failure:(void(^)(void))failure {
@@ -19,10 +27,10 @@
     NSString *Url = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", appid]; //你的应用程序的ID,如587767923
     NSDictionary *parameters = nil;
     
-    AFHTTPSessionManager *manager = [CJAppCheckUpdateHTTPSessionManager sharedInstance];
+    AFHTTPSessionManager *manager = [CJNetworkClientHTTPSessionManager sharedInstance];
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [self useManager:manager postRequestUrl:Url parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager cj_postRequestUrl:Url parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic = [NSDictionary dictionaryWithDictionary:responseObject];
         NSArray *infoArray = [dic objectForKey:@"results"];
         if ([infoArray count]) {
@@ -50,5 +58,6 @@
     
     return URLSessionDataTask;
 }
+
 
 @end

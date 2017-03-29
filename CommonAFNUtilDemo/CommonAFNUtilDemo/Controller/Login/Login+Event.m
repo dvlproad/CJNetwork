@@ -9,11 +9,9 @@
 #import "Login+Event.h"
 #import "NSString+Encoding.h"
 
-#import "CJNetworkClient+Healthy.h"
-#import "CJNetworkClient+Dingdang.h"
-
-//#import "CJNetworkClient+LoginIjinbu.h"
-#import "IJBNetworkClient+Login.h"
+#import "HealthyNetworkClient.h"
+#import "DingdangNetworkClient.h"
+#import "IjinbuNetworkClient+Login.h"
 
 @implementation Login (Event)
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -32,7 +30,7 @@
     
     NSString *name = self.tfName.text;
     NSString *pasd = self.tfPasd.text;
-    [[CJNetworkClient sharedInstance] requestLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[HealthyNetworkClient sharedInstance] requestLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
         /*
          NSDictionary *dic = [responseObject objectForKey:@"user"];
@@ -60,10 +58,10 @@
     
     NSString *name = @"13055284289";
     NSString *pasd = @"123456";
-    [[CJNetworkClient sharedInstance] requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[DingdangNetworkClient sharedInstance] requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];//获取acces_token成功，登录成功
         
-        [[CJNetworkClient sharedInstance] requestDDUser_GetInfo_success:^(NSURLSessionDataTask *task, id responseObject) {
+        [[DingdangNetworkClient sharedInstance] requestDDUser_GetInfo_success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"用户信息获取成功");
             //NSLog(@"%@",responseObject);
             NSDictionary *data = [responseObject objectForKey:@"data"];
@@ -90,7 +88,7 @@
         NSLog(@"未登录，请先登录");
         return;
     }
-    [[CJNetworkClient sharedInstance] requestDDCourse_Get_success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[DingdangNetworkClient sharedInstance] requestDDCourse_Get_success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"缓存/非缓存数据。。。%@", responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"获取我的科目列表失败");
@@ -114,7 +112,7 @@
     }];
     */
     
-    [[IJBNetworkClient sharedInstance] requestijinbuLogin_name:name pasd:pasd success:^(id responseModel) {
+    [[IjinbuNetworkClient sharedInstance] requestijinbuLogin_name:name pasd:pasd success:^(id responseModel) {
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
         
     } failure:^(NSError *error) {

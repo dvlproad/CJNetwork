@@ -1,17 +1,18 @@
 //
-//  IJBNetworkClient.m
+//  IjinbuNetworkClient.m
 //  CommonAFNUtilDemo
 //
-//  Created by 李超前 on 2017/3/6.
+//  Created by dvlproad on 2017/3/6.
 //  Copyright © 2017年 ciyouzen. All rights reserved.
 //
 
-#import "IJBNetworkClient.h"
+#import "IjinbuNetworkClient.h"
+#import "IjinbuHTTPSessionManager.h"
 
-@implementation IJBNetworkClient
+@implementation IjinbuNetworkClient
 
-+ (IJBNetworkClient *)sharedInstance {
-    static IJBNetworkClient *_sharedInstance = nil;
++ (IjinbuNetworkClient *)sharedInstance {
+    static IjinbuNetworkClient *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[self alloc] init];
@@ -34,19 +35,16 @@
     [manager.requestSerializer setValue:sign forHTTPHeaderField:@"sign"];
     
     NSURLSessionDataTask *dataTask =
-    [self useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager cj_postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         NSLog(@"请求ijinbu成功");
         NSLog(@"responseObject = %@", responseObject);
         IjinbuResponseModel *responseModel = [[IjinbuResponseModel alloc] initWithDictionary:responseObject error:nil];
         if ([responseModel.status integerValue] == 1) {
-            NSLog(@"登录ijinbu成功");
             if (success) {
                 success(responseModel);
             }
             
         } else {
-            NSLog(@"登录ijinbu失败");
-            
             if (failure) {
                 failure(nil);
             }
@@ -55,7 +53,7 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSString *errorMessage = [error localizedDescription];
-        NSLog(@"请求ijinbu失败:%@", errorMessage);
+        NSLog(@"Failure:请求ijinbu失败:%@", errorMessage);
         if (failure) {
             failure(nil);
         }

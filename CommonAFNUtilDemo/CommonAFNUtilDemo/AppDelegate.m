@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CJNetworkMonitor.h"
-#import "CJNetworkClient+Dingdang.h"
+#import "DingdangNetworkClient.h"
 
 @interface AppDelegate ()
 
@@ -40,7 +40,7 @@
     if (name == nil) {
         //[self goLogin];
     }else{
-        [[CJNetworkClient sharedInstance] requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
+        [[DingdangNetworkClient sharedInstance] requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"获取acces_token成功，代表登录成功");
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

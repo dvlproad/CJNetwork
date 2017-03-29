@@ -1,18 +1,28 @@
 //
-//  CJNetworkClient+Dingdang.m
+//  DingdangNetworkClient.m
 //  CommonAFNUtilDemo
 //
 //  Created by dvlproad on 2016/12/20.
-//  Copyright © 2016年 ciyouzen. All rights reserved.
-//
+//  Copyright © 2016年 ciyouzen. All rights reserved.//
 
-#import "CJNetworkClient+Dingdang.h"
+#import "DingdangNetworkClient.h"
+#import "DingdangHTTPSessionManager.h"
+
 
 #define CLIENT @"app"
 #define PLATCODE @"IOS"
 #define CLIENT_SECRET @"f50aa247a3e56eb5ee744a983e2ff9d5"
 
-@implementation CJNetworkClient (Dingdang)
+@implementation DingdangNetworkClient
+
++ (DingdangNetworkClient *)sharedInstance {
+    static DingdangNetworkClient *_sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+    return _sharedInstance;
+}
 
 #pragma mark AUTH:认证接口
 /****************
@@ -23,8 +33,8 @@
  ****************/
 - (void)requestDDLogin_name:(NSString *)name
                        pasd:(NSString*)pasd
-                    success:(CJRequestSuccess)success
-                    failure:(CJRequestFailure)failure
+                    success:(AFRequestSuccess)success
+                    failure:(AFRequestFailure)failure
 {
     //当前API参考：http://dingdang.baseoa.com:8080/api.html#access-token
     NSString *Url = API_BASE_Url_dingdang(@"oauth/token");
@@ -35,7 +45,7 @@
                              @"client_secret" : CLIENT_SECRET
                              };
     AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    [self useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager cj_postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         LoginShareInfo *shareInfo = [LoginShareInfo shared];
         shareInfo.access_token = [responseObject objectForKey:@"access_token"];
         shareInfo.expires_in = [responseObject objectForKey:@"expires_in"];
@@ -52,13 +62,13 @@
     }];
 }
 
-- (void)requestDDLogout_success:(CJRequestSuccess)success failure:(CJRequestFailure)failure
+- (void)requestDDLogout_success:(AFRequestSuccess)success failure:(AFRequestFailure)failure
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/logout");
     NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token};
     
     AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    [self useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager cj_postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
             success(task, responseObject);
         }
@@ -69,7 +79,7 @@
     
 }
 
-- (void)requestDDUser_GetInfo_success:(CJRequestSuccess)success failure:(CJRequestFailure)failure
+- (void)requestDDUser_GetInfo_success:(AFRequestSuccess)success failure:(AFRequestFailure)failure
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/user/me");
     NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token};
@@ -83,7 +93,7 @@
      */
     
     AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    [self useManager:manager postRequestUrl:Url parameters:params cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
+    [manager cj_postRequestUrl:Url parameters:params cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
         
         if (isCacheData) {
             if (success) {
@@ -112,7 +122,7 @@
 
 
 //获取我的科目列表
-- (void)requestDDCourse_Get_success:(CJRequestSuccess)success failure:(CJRequestFailure)failure
+- (void)requestDDCourse_Get_success:(AFRequestSuccess)success failure:(AFRequestFailure)failure
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/course/list");
     if ([LoginShareInfo shared].access_token == nil) {
@@ -125,7 +135,7 @@
     
     
     AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    [self useManager:manager postRequestUrl:Url parameters:params cacheReuqestData:YES progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
+    [manager cj_postRequestUrl:Url parameters:params cacheReuqestData:YES progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
         
         if (isCacheData) {
             if (success) {
@@ -151,5 +161,6 @@
         }
     }];
 }
+
 
 @end

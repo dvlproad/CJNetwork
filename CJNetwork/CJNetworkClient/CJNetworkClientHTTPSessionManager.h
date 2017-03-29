@@ -1,5 +1,5 @@
 //
-//  CJAppCheckUpdateHTTPSessionManager.h
+//  CJNetworkClientHTTPSessionManager.h
 //  CommonAFNUtilDemo
 //
 //  Created by dvlproad on 2016/12/20.
@@ -8,7 +8,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-@interface CJAppCheckUpdateHTTPSessionManager : AFHTTPSessionManager
+@interface CJNetworkClientHTTPSessionManager : AFHTTPSessionManager
 
 + (AFHTTPSessionManager *)sharedInstance;
 

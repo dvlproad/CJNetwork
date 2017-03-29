@@ -1,14 +1,15 @@
 //
-//  IJBNetworkClient+Login.m
+//  IjinbuNetworkClient+Login.m
 //  CommonAFNUtilDemo
 //
-//  Created by 李超前 on 2017/3/6.
+//  Created by dvlproad on 2017/3/6.
 //  Copyright © 2017年 ciyouzen. All rights reserved.
 //
 
-#import "IJBNetworkClient+Login.h"
+#import "IjinbuNetworkClient+Login.h"
+#import "NSString+MD5.h"
 
-@implementation IJBNetworkClient (Login)
+@implementation IjinbuNetworkClient (Login)
 
 - (NSURLSessionDataTask *)requestijinbuLogin_name:(NSString *)name
                                              pasd:(NSString*)pasd
@@ -19,8 +20,6 @@
     NSDictionary *params = @{@"userAccount":name, //测试:name:18020721201 pasd:123456
                              @"userPwd":    [pasd MD5],
                              @"loginType":  @(0)
-                             //                             @"client_id"     : CLIENT,
-                             //                             @"client_secret" : CLIENT_SECRET
                              };
     
     return [self postWithPath:Url params:params success:success failure:failure];

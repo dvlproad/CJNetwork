@@ -1,26 +1,37 @@
 //
-//  CJNetworkClient+Healthy.m
+//  HealthyNetworkClient.m
 //  CommonAFNUtilDemo
 //
 //  Created by dvlproad on 2016/12/20.
 //  Copyright © 2016年 ciyouzen. All rights reserved.
 //
 
-#import "CJNetworkClient+Healthy.h"
+#import "HealthyNetworkClient.h"
+#import "HealthyHTTPSessionManager.h"
 
-@implementation CJNetworkClient (Healthy)
+
+@implementation HealthyNetworkClient
+
++ (HealthyNetworkClient *)sharedInstance {
+    static HealthyNetworkClient *_sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+    return _sharedInstance;
+}
 
 - (void)requestLogin_name:(NSString *)name
                      pasd:(NSString*)pasd
-                  success:(CJRequestSuccess)success
-                  failure:(CJRequestFailure)failure
+                  success:(AFRequestSuccess)success
+                  failure:(AFRequestFailure)failure
 {
     NSString *Url = API_BASE_Url(@"login");
     NSDictionary *params = @{@"username" : name,
                              @"password" : pasd
                              };
     AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
-    [self useManager:manager postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager cj_postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {
             success(task, responseObject);
         }
@@ -30,5 +41,6 @@
     }];
     //    [self.indicatorView setAnimatingWithStateOfOperation:operation];
 }
+
 
 @end

@@ -1,14 +1,14 @@
 //
-//  CJAppCheckUpdateHTTPSessionManager.m
+//  CJNetworkClientHTTPSessionManager.m
 //  CommonAFNUtilDemo
 //
 //  Created by dvlproad on 2016/12/20.
 //  Copyright © 2016年 ciyouzen. All rights reserved.
 //
 
-#import "CJAppCheckUpdateHTTPSessionManager.h"
+#import "CJNetworkClientHTTPSessionManager.h"
 
-@implementation CJAppCheckUpdateHTTPSessionManager
+@implementation CJNetworkClientHTTPSessionManager
 
 + (AFHTTPSessionManager *)sharedInstance {
     static AFHTTPSessionManager *_sharedInstance = nil;

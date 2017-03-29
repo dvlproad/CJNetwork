@@ -1,14 +1,14 @@
 //
-//  IJBNetworkClient+Login.h
+//  IjinbuNetworkClient+Login.h
 //  CommonAFNUtilDemo
 //
-//  Created by 李超前 on 2017/3/6.
+//  Created by dvlproad on 2017/3/6.
 //  Copyright © 2017年 ciyouzen. All rights reserved.
 //
 
-#import "IJBNetworkClient.h"
+#import "IjinbuNetworkClient.h"
 
-@interface IJBNetworkClient (Login)
+@interface IjinbuNetworkClient (Login)
 
 - (NSURLSessionDataTask *)requestijinbuLogin_name:(NSString *)name
                                              pasd:(NSString*)pasd

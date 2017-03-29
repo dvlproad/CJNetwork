@@ -10,8 +10,9 @@
 #import "Login.h"
 #import "AFNDemoViewController.h"
 
-#import "CJNetworkClient+APPCheckUpdate.h"
-#import "CJNetworkClient+Test.h"
+#import "CJNetworkClient.h"
+#import "TestNetworkClient.h"
+
 #import <AFNetworking/UIActivityIndicatorView+AFNetworking.h>
 
 static int apiTestCount = 0;
@@ -85,20 +86,10 @@ static int apiTestCount = 0;
 
 
 - (void)doAPITest{
-//    [CJNetworkClient requestBaiduHomeSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-//        NSLog(@"接口测试成功。。。%d", apiTestCount++);
-//        
-//    } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {
-//        NSLog(@"接口测试失败。。。");
-//        
-//    }];
-    
-    [[CJNetworkClient sharedInstance] requestBaiduHomeSuccess22:^(NSURLSessionDataTask *task, id responseObject) {
+    [[TestNetworkClient sharedInstance] requestBaiduHomeSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"接口测试成功。。。%d", apiTestCount++);
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"接口测试失败。。。");
-        
     }];
 }
 
