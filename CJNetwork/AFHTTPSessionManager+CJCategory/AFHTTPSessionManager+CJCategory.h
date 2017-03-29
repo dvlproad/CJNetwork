@@ -7,6 +7,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
+#import "CJNetworkMonitor.h"
 
 #import "CJRequestCacheDataUtil.h"
 #import <SVProgressHUD/SVProgressHUD.h>

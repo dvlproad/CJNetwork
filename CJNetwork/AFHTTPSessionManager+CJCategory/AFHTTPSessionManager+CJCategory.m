@@ -17,7 +17,8 @@
                                              success:(nullable AFRequestSuccess)success
                                              failure:(nullable AFRequestFailure)failure
 {
-    BOOL isNetworkEnabled = [AFNetworkReachabilityManager sharedManager].isReachable;
+    //注：如果网络一直判断失败，请检查之前是否从不曾调用过[[CJNetworkMonitor sharedInstance] startNetworkMonitoring];如是，请提前调用至少一次即可
+    BOOL isNetworkEnabled = [CJNetworkMonitor sharedInstance].networkSuccess;
     if (isNetworkEnabled == NO) {//网络不可用
         [self hud_showNoNetwork];
         return nil;
@@ -37,7 +38,8 @@
                                              success:(nullable CJRequestCacheSuccess)success
                                              failure:(nullable CJRequestCacheFailure)failure
 {
-    BOOL isNetworkEnabled = [AFNetworkReachabilityManager sharedManager].isReachable;
+    //注：如果网络一直判断失败，请检查之前是否从不曾调用过[[CJNetworkMonitor sharedInstance] startNetworkMonitoring];如是，请提前调用至少一次即可
+    BOOL isNetworkEnabled = [CJNetworkMonitor sharedInstance].networkSuccess;
     if (isNetworkEnabled == NO) {
         /* 网络不可用，读取本地缓存数据 */
         BOOL canGetRequestDataFromCache = cacheReuqestData;

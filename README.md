@@ -5,6 +5,13 @@ AFN基类
 ## CJNetworkMonitor
 网络状态监听类
 
+注：使用`AFNetworkReachabilityManager`一定要记得调用`startMonitoring`，如下。否则容易造成网络判断出错。同时为了频繁的调用`startMonitoring`，所以自然想到只在程序启动的时候调用。另外为了在之后能够随时获取当前的网络状态，我们故而封装了个CJNetworkMonitor，通过在启动的时候`[[CJNetworkMonitor sharedInstance] startNetworkMonitoring];`开启网络状况监听。之后需要的时候，随时通过它的networkStatus或者networkSuccess来获取他的状态。
+
+```
+AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+[reachabilityManager startMonitoring];
+```
+
 ##### How to Use
 我们在`AppDelegate`中调用`[[CJNetworkMonitor sharedInstance] startNetworkMonitoring];`开启网络状况监听。则之后当网络状态改变的时候，AFNetworking会自动发送AFNetworkingReachabilityDidChangeNotification通知，我们则只需要对那些需要处理网络状态改变的控制器里，添加通知网络状态改变通知的捕获就行，如
 `[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityDidChangeNotification:) name:AFNetworkingReachabilityDidChangeNotification object:nil];`
