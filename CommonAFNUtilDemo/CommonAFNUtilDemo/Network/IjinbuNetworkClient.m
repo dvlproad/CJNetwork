@@ -20,11 +20,13 @@
     return _sharedInstance;
 }
 
-- (NSURLSessionDataTask *)postWithPath:(NSString *)Url
-                                params:(NSDictionary *)params
-                               success:(HPSuccess)success
-                               failure:(HPFailure)failure
+- (NSURLSessionDataTask *)postWithRelativeUrl:(NSString *)RelativeUrl
+                                       params:(NSDictionary *)params
+                                      success:(HPSuccess)success
+                                      failure:(HPFailure)failure
 {
+    NSString *Url = API_BASE_Url_ijinbu(RelativeUrl);
+    
     NSLog(@"Url = %@", Url);
     NSLog(@"params = %@", params);
     

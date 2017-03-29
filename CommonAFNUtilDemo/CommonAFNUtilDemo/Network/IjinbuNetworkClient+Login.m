@@ -16,13 +16,13 @@
                                           success:(HPSuccess)success
                                           failure:(HPFailure)failure
 {
-    NSString *Url = API_BASE_Url_ijinbu(@"ijinbu/app/teacherLogin/login");
+    NSString *Url = @"ijinbu/app/teacherLogin/login";
     NSDictionary *params = @{@"userAccount":name, //测试:name:18020721201 pasd:123456
                              @"userPwd":    [pasd MD5],
                              @"loginType":  @(0)
                              };
     
-    return [self postWithPath:Url params:params success:success failure:failure];
+    return [self postWithRelativeUrl:Url params:params success:success failure:failure];
 }
 
 @end

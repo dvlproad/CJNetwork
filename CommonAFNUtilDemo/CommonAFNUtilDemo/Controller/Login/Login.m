@@ -18,8 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.tfName.text = @"test";
-    self.tfPasd.text = @"test";
+    self.nameTextField.text = @"test";
+    self.pasdTextField.text = @"test";
 }
 
 - (void)didReceiveMemoryWarning {

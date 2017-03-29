@@ -28,8 +28,8 @@
     [self.view endEditing:YES];
     [SVProgressHUD showWithStatus:NSLocalizedString(@"正在登录", nil) maskType:SVProgressHUDMaskTypeBlack];
     
-    NSString *name = self.tfName.text;
-    NSString *pasd = self.tfPasd.text;
+    NSString *name = self.nameTextField.text;
+    NSString *pasd = self.pasdTextField.text;
     [[HealthyNetworkClient sharedInstance] requestLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
         /*

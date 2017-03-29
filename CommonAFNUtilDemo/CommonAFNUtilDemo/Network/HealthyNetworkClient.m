@@ -26,7 +26,7 @@
                   success:(AFRequestSuccess)success
                   failure:(AFRequestFailure)failure
 {
-    NSString *Url = API_BASE_Url(@"login");
+    NSString *Url = API_BASE_Url_Health(@"login");
     NSDictionary *params = @{@"username" : name,
                              @"password" : pasd
                              };

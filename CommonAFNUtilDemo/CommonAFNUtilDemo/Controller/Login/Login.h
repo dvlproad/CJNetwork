@@ -12,8 +12,8 @@
 @interface Login : UIViewController{
     MBProgressHUD *HUD;
 }
-@property(nonatomic, strong) IBOutlet UITextField *tfName;
-@property(nonatomic, strong) IBOutlet UITextField *tfPasd;
+@property(nonatomic, strong) IBOutlet UITextField *nameTextField;
+@property(nonatomic, strong) IBOutlet UITextField *pasdTextField;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorView;
 
 @end

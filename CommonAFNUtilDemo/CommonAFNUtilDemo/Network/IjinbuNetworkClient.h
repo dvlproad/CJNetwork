@@ -18,9 +18,9 @@ typedef  void ((^HPFailure)(NSError *error));
 
 + (IjinbuNetworkClient *)sharedInstance;
 
-- (NSURLSessionDataTask *)postWithPath:(NSString *)Url
-                                params:(NSDictionary *)params
-                               success:(HPSuccess)success
-                               failure:(HPFailure)failure;
+- (NSURLSessionDataTask *)postWithRelativeUrl:(NSString *)RelativeUrl
+                                       params:(NSDictionary *)params
+                                      success:(HPSuccess)success
+                                      failure:(HPFailure)failure;
 
 @end
