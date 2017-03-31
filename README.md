@@ -44,8 +44,32 @@ AFJSONRequestSerializer对参数的处理主要为第1260行的
                           error:(NSError *__autoreleasing *)error
 ```
 
-所以，这里我们衍生出一个继承自AFJSONResponseSerializer的CJJSONResponseSerializer的新响应类型，重写该方法，用来处理服务端返回的JSON不是标准的json格式的问题，即主要处理AFNetworking 3840的错误。
+所以，这里我们衍生出一个继承自AFJSONResponseSerializer的**CJJSONResponseSerializer**的新响应类型，重写该方法，用来处理服务端返回的JSON不是标准的json格式的问题，即主要处理AFNetworking 3840的错误。
 
+
+## 断点续传
+#### 1、关于断点续传原理：
+首先,如果想要进行断点续传，那么需要简单了解一下断点续传的工作机制，在HTTP请求头中，有一个Range的关键字，通过这个关键字可以告诉服务器返回哪些数据给我。比如:
+
+	bytes=500-999		表示从第500字节-第999字节
+	bytes=500- 		表示从第500字节往后的所有字节
+
+然后我们再根据服务器返回的数据，将得到的data数据拼接到文件后面,就可以实现断点续传了。
+
+1、AFNetworking3.0+ 实现文件断点下载的方法：直接调用以下方法即可
+
+```
+- (NSURLSessionDownloadTask *)downloadTaskWithRequest:(NSURLRequest *)request
+                                             progress:(void (^)(NSProgress *downloadProgress)) downloadProgressBlock
+                                          destination:(NSURL * (^)(NSURL *targetPath, NSURLResponse *response))destination
+                                    completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler
+```
+
+2、[AFNetworking2.0+ 实现文件断点下载的方法](https://github.com/iTofu/LCDownloadManager)   
+
+3、使用NSURLSessionDataTask可以很轻松实现**断点续传**，可是有个致命的缺点就是无法进行**后台下载**，一点应用程序进入了后台，便会停止下载。所以无法满足我们的需求。而NSURLSessionDownloadTask是唯一可以实现后台下载的类，所以我们只能从这个类进行下手了。
+
+当使用`NSURLSessionDownloadTask`进行下载的时候，系统会在cache文件夹下创建一个下载的路径，路径下会有一个以"CFNetworking"打头的.tmp文件(以下简称"下载文件"防止混淆),这个就是我们正在下载中的文件。而当我们调用了cancelByProducingResumeData:方法后，会得到一个data文件,通过String格式化后，发现是一个XML文件，里面包含了关于.tmp文件的一些关键点的描述,包括"Range","key","下载文件的路径"等等.而原本存在于download文件下的下载文件，则被移动到了系统tmp文件夹目录下.而当我们再次进行resume操作的时候，下载文件则又被移回到了download文件夹下。
 
 ##### NSJSONSerialization
 ```

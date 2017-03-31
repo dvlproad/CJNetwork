@@ -9,6 +9,22 @@
 /* Begin PBXBuildFile section */
 		7803FF551E6D76C100E2594E /* IjinbuNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7803FF541E6D76C100E2594E /* IjinbuNetworkClient.m */; };
 		7803FF581E6D7A6A00E2594E /* IjinbuNetworkClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 7803FF571E6D7A6A00E2594E /* IjinbuNetworkClient+Login.m */; };
+		784C152E1E8DF0090019D652 /* MQLResumeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C152D1E8DF0090019D652 /* MQLResumeManager.m */; };
+		784C15451E8E2CC50019D652 /* DownloadListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15401E8E2CC50019D652 /* DownloadListViewController.m */; };
+		784C15461E8E2CC50019D652 /* DownloadListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C15411E8E2CC50019D652 /* DownloadListViewController.xib */; };
+		784C15471E8E2CC50019D652 /* DownloadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15431E8E2CC50019D652 /* DownloadTableViewCell.m */; };
+		784C15481E8E2CC50019D652 /* DownloadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C15441E8E2CC50019D652 /* DownloadTableViewCell.xib */; };
+		784C15541E8E2D040019D652 /* AFDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C154B1E8E2D040019D652 /* AFDownloadViewController.m */; };
+		784C15551E8E2D040019D652 /* BaseDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C154D1E8E2D040019D652 /* BaseDownloadViewController.m */; };
+		784C15561E8E2D040019D652 /* BaseDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C154E1E8E2D040019D652 /* BaseDownloadViewController.xib */; };
+		784C15571E8E2D040019D652 /* SessionDataTaskDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15501E8E2D040019D652 /* SessionDataTaskDownloadViewController.m */; };
+		784C15581E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15521E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.m */; };
+		784C15591E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C15531E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.xib */; };
+		784C155D1E8E2DB60019D652 /* DownloadHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C155B1E8E2DB60019D652 /* DownloadHomeViewController.m */; };
+		784C155E1E8E2DB60019D652 /* DownloadHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C155C1E8E2DB60019D652 /* DownloadHomeViewController.xib */; };
+		784C15671E8E2FD70019D652 /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15611E8E2FD70019D652 /* HSDownloadManager.m */; };
+		784C15681E8E2FD70019D652 /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15631E8E2FD70019D652 /* HSSessionModel.m */; };
+		784C15691E8E2FD70019D652 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15661E8E2FD70019D652 /* NSString+Hash.m */; };
 		78590B661E08EEF0000F80EF /* IjinbuHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B651E08EEF0000F80EF /* IjinbuHTTPSessionManager.m */; };
 		78590B771E0906C3000F80EF /* TestHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B761E0906C3000F80EF /* TestHTTPSessionManager.m */; };
 		78590B7A1E0906D6000F80EF /* HealthyHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B791E0906D6000F80EF /* HealthyHTTPSessionManager.m */; };
@@ -77,6 +93,33 @@
 		7803FF541E6D76C100E2594E /* IjinbuNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuNetworkClient.m; sourceTree = "<group>"; };
 		7803FF561E6D7A6A00E2594E /* IjinbuNetworkClient+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IjinbuNetworkClient+Login.h"; sourceTree = "<group>"; };
 		7803FF571E6D7A6A00E2594E /* IjinbuNetworkClient+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IjinbuNetworkClient+Login.m"; sourceTree = "<group>"; };
+		784C152C1E8DF0090019D652 /* MQLResumeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQLResumeManager.h; sourceTree = "<group>"; };
+		784C152D1E8DF0090019D652 /* MQLResumeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQLResumeManager.m; sourceTree = "<group>"; };
+		784C153F1E8E2CC50019D652 /* DownloadListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListViewController.h; sourceTree = "<group>"; };
+		784C15401E8E2CC50019D652 /* DownloadListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListViewController.m; sourceTree = "<group>"; };
+		784C15411E8E2CC50019D652 /* DownloadListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadListViewController.xib; sourceTree = "<group>"; };
+		784C15421E8E2CC50019D652 /* DownloadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTableViewCell.h; sourceTree = "<group>"; };
+		784C15431E8E2CC50019D652 /* DownloadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTableViewCell.m; sourceTree = "<group>"; };
+		784C15441E8E2CC50019D652 /* DownloadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadTableViewCell.xib; sourceTree = "<group>"; };
+		784C154A1E8E2D040019D652 /* AFDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadViewController.h; sourceTree = "<group>"; };
+		784C154B1E8E2D040019D652 /* AFDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadViewController.m; sourceTree = "<group>"; };
+		784C154C1E8E2D040019D652 /* BaseDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDownloadViewController.h; sourceTree = "<group>"; };
+		784C154D1E8E2D040019D652 /* BaseDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDownloadViewController.m; sourceTree = "<group>"; };
+		784C154E1E8E2D040019D652 /* BaseDownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseDownloadViewController.xib; sourceTree = "<group>"; };
+		784C154F1E8E2D040019D652 /* SessionDataTaskDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDataTaskDownloadViewController.h; sourceTree = "<group>"; };
+		784C15501E8E2D040019D652 /* SessionDataTaskDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDataTaskDownloadViewController.m; sourceTree = "<group>"; };
+		784C15511E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDownloadTaskDownloadViewController.h; sourceTree = "<group>"; };
+		784C15521E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDownloadTaskDownloadViewController.m; sourceTree = "<group>"; };
+		784C15531E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SessionDownloadTaskDownloadViewController.xib; sourceTree = "<group>"; };
+		784C155A1E8E2DB60019D652 /* DownloadHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadHomeViewController.h; sourceTree = "<group>"; };
+		784C155B1E8E2DB60019D652 /* DownloadHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadHomeViewController.m; sourceTree = "<group>"; };
+		784C155C1E8E2DB60019D652 /* DownloadHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadHomeViewController.xib; sourceTree = "<group>"; };
+		784C15601E8E2FD70019D652 /* HSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDownloadManager.h; sourceTree = "<group>"; };
+		784C15611E8E2FD70019D652 /* HSDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSDownloadManager.m; sourceTree = "<group>"; };
+		784C15621E8E2FD70019D652 /* HSSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSSessionModel.h; sourceTree = "<group>"; };
+		784C15631E8E2FD70019D652 /* HSSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSSessionModel.m; sourceTree = "<group>"; };
+		784C15651E8E2FD70019D652 /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
+		784C15661E8E2FD70019D652 /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		78590B641E08EEF0000F80EF /* IjinbuHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuHTTPSessionManager.h; sourceTree = "<group>"; };
 		78590B651E08EEF0000F80EF /* IjinbuHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuHTTPSessionManager.m; sourceTree = "<group>"; };
 		78590B751E0906C3000F80EF /* TestHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHTTPSessionManager.h; sourceTree = "<group>"; };
@@ -213,6 +256,78 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		784C15111E8CD8370019D652 /* DownloadDemo */ = {
+			isa = PBXGroup;
+			children = (
+				784C15491E8E2D040019D652 /* DownloadViewController */,
+				784C153E1E8E2CC50019D652 /* DownloadListViewController */,
+				784C155A1E8E2DB60019D652 /* DownloadHomeViewController.h */,
+				784C155B1E8E2DB60019D652 /* DownloadHomeViewController.m */,
+				784C155C1E8E2DB60019D652 /* DownloadHomeViewController.xib */,
+			);
+			path = DownloadDemo;
+			sourceTree = "<group>";
+		};
+		784C152B1E8DF0090019D652 /* CJResumeManager */ = {
+			isa = PBXGroup;
+			children = (
+				784C152C1E8DF0090019D652 /* MQLResumeManager.h */,
+				784C152D1E8DF0090019D652 /* MQLResumeManager.m */,
+			);
+			path = CJResumeManager;
+			sourceTree = "<group>";
+		};
+		784C153E1E8E2CC50019D652 /* DownloadListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				784C153F1E8E2CC50019D652 /* DownloadListViewController.h */,
+				784C15401E8E2CC50019D652 /* DownloadListViewController.m */,
+				784C15411E8E2CC50019D652 /* DownloadListViewController.xib */,
+				784C15421E8E2CC50019D652 /* DownloadTableViewCell.h */,
+				784C15431E8E2CC50019D652 /* DownloadTableViewCell.m */,
+				784C15441E8E2CC50019D652 /* DownloadTableViewCell.xib */,
+			);
+			path = DownloadListViewController;
+			sourceTree = "<group>";
+		};
+		784C15491E8E2D040019D652 /* DownloadViewController */ = {
+			isa = PBXGroup;
+			children = (
+				784C154A1E8E2D040019D652 /* AFDownloadViewController.h */,
+				784C154B1E8E2D040019D652 /* AFDownloadViewController.m */,
+				784C154C1E8E2D040019D652 /* BaseDownloadViewController.h */,
+				784C154D1E8E2D040019D652 /* BaseDownloadViewController.m */,
+				784C154E1E8E2D040019D652 /* BaseDownloadViewController.xib */,
+				784C154F1E8E2D040019D652 /* SessionDataTaskDownloadViewController.h */,
+				784C15501E8E2D040019D652 /* SessionDataTaskDownloadViewController.m */,
+				784C15511E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.h */,
+				784C15521E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.m */,
+				784C15531E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.xib */,
+			);
+			path = DownloadViewController;
+			sourceTree = "<group>";
+		};
+		784C155F1E8E2FD70019D652 /* HSDownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				784C15601E8E2FD70019D652 /* HSDownloadManager.h */,
+				784C15611E8E2FD70019D652 /* HSDownloadManager.m */,
+				784C15621E8E2FD70019D652 /* HSSessionModel.h */,
+				784C15631E8E2FD70019D652 /* HSSessionModel.m */,
+				784C15641E8E2FD70019D652 /* MD5 */,
+			);
+			path = HSDownloadManager;
+			sourceTree = "<group>";
+		};
+		784C15641E8E2FD70019D652 /* MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				784C15651E8E2FD70019D652 /* NSString+Hash.h */,
+				784C15661E8E2FD70019D652 /* NSString+Hash.m */,
+			);
+			path = MD5;
+			sourceTree = "<group>";
+		};
 		78590B5F1E08E1B0000F80EF /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +377,8 @@
 		78D026BD1E8BA741004B666C /* CJNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				784C155F1E8E2FD70019D652 /* HSDownloadManager */,
+				784C152B1E8DF0090019D652 /* CJResumeManager */,
 				78D026BE1E8BA741004B666C /* AFHTTPSessionManager+CJCategory */,
 				78D026CF1E8BA741004B666C /* CJNetworkClient */,
 			);
@@ -398,6 +515,7 @@
 		801531A51B78675400B82127 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				784C15111E8CD8370019D652 /* DownloadDemo */,
 				807109DD1B7E17AE00F343F3 /* AsyncSocketTest */,
 				801531A61B78675400B82127 /* AFNTest */,
 				801531AA1B78675400B82127 /* Login */,
@@ -603,12 +721,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				784C15461E8E2CC50019D652 /* DownloadListViewController.xib in Resources */,
 				804F8FCC1B3BDF4E00AF11AA /* Main.storyboard in Resources */,
 				801531B21B78675400B82127 /* AFNDemoViewController.xib in Resources */,
+				784C15561E8E2D040019D652 /* BaseDownloadViewController.xib in Resources */,
 				78AB6B1D1C01CDD2004404A9 /* Login.storyboard in Resources */,
 				807109E71B7E17E900F343F3 /* SocketDemoViewController.xib in Resources */,
 				804F8FD11B3BDF4E00AF11AA /* LaunchScreen.xib in Resources */,
+				784C15591E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.xib in Resources */,
+				784C155E1E8E2DB60019D652 /* DownloadHomeViewController.xib in Resources */,
 				804F8FCE1B3BDF4E00AF11AA /* Images.xcassets in Resources */,
+				784C15481E8E2CC50019D652 /* DownloadTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,9 +844,12 @@
 			files = (
 				78D027031E8BAA7A004B666C /* NSString+Encoding.m in Sources */,
 				801531B51B78675400B82127 /* LoginHelper.m in Sources */,
+				784C15541E8E2D040019D652 /* AFDownloadViewController.m in Sources */,
+				784C15681E8E2FD70019D652 /* HSSessionModel.m in Sources */,
 				78D026DC1E8BA742004B666C /* CJNetworkClientHTTPSessionManager.m in Sources */,
 				78D026B31E8B9BD2004B666C /* DingdangNetworkClient.m in Sources */,
 				78590B7A1E0906D6000F80EF /* HealthyHTTPSessionManager.m in Sources */,
+				784C15671E8E2FD70019D652 /* HSDownloadManager.m in Sources */,
 				78590B8A1E091129000F80EF /* AccountInfo.m in Sources */,
 				78D026D61E8BA741004B666C /* NSString+URLEncoding.m in Sources */,
 				78D026ED1E8BAA66004B666C /* CJCacheDataModel.m in Sources */,
@@ -733,16 +859,23 @@
 				78D026D91E8BA741004B666C /* CJRequestCacheDataUtil.m in Sources */,
 				78D026F21E8BAA66004B666C /* NSDictionary+Convert.m in Sources */,
 				78D026DA1E8BA741004B666C /* URLRequestUtil.m in Sources */,
+				784C15581E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.m in Sources */,
 				78590B771E0906C3000F80EF /* TestHTTPSessionManager.m in Sources */,
+				784C15451E8E2CC50019D652 /* DownloadListViewController.m in Sources */,
 				78D026F31E8BAA66004B666C /* NSString+MD5.m in Sources */,
 				78D026B91E8BA0AF004B666C /* HealthyNetworkClient.m in Sources */,
 				801531B31B78675400B82127 /* Login+Event.m in Sources */,
 				78D027021E8BAA7A004B666C /* CommonWebUtil.m in Sources */,
 				801531B41B78675400B82127 /* Login.m in Sources */,
+				784C152E1E8DF0090019D652 /* MQLResumeManager.m in Sources */,
+				784C15551E8E2D040019D652 /* BaseDownloadViewController.m in Sources */,
 				7803FF551E6D76C100E2594E /* IjinbuNetworkClient.m in Sources */,
 				807109E61B7E17E900F343F3 /* SocketDemoViewController.m in Sources */,
 				78D026F01E8BAA66004B666C /* CJMemoryDiskCacheManager.m in Sources */,
 				804F8FC61B3BDF4E00AF11AA /* AppDelegate.m in Sources */,
+				784C15471E8E2CC50019D652 /* DownloadTableViewCell.m in Sources */,
+				784C15571E8E2D040019D652 /* SessionDataTaskDownloadViewController.m in Sources */,
+				784C15691E8E2FD70019D652 /* NSString+Hash.m in Sources */,
 				78590B861E090F73000F80EF /* CJResponseModel.m in Sources */,
 				804F8FC31B3BDF4E00AF11AA /* main.m in Sources */,
 				78D026EF1E8BAA66004B666C /* CJMemoryCacheManager.m in Sources */,
@@ -755,6 +888,7 @@
 				78D026B61E8B9C09004B666C /* TestNetworkClient.m in Sources */,
 				78D027011E8BAA7A004B666C /* CJNetworkMonitor.m in Sources */,
 				78D026DB1E8BA742004B666C /* CJNetworkClient.m in Sources */,
+				784C155D1E8E2DB60019D652 /* DownloadHomeViewController.m in Sources */,
 				78D027041E8BAA7A004B666C /* NetworkUtil.m in Sources */,
 				78D026D51E8BA741004B666C /* AFHTTPSessionManager+CJCategory.m in Sources */,
 				808CBA351B720C8E00EDFFB9 /* LoginShareInfo.m in Sources */,

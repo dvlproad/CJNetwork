@@ -13,6 +13,8 @@
 #import "CJNetworkClient.h"
 #import "TestNetworkClient.h"
 
+#import "DownloadHomeViewController.h"
+
 #import <AFNetworking/UIActivityIndicatorView+AFNetworking.h>
 
 static int apiTestCount = 0;
@@ -67,6 +69,13 @@ static int apiTestCount = 0;
     [self.view addSubview:indicatorView];
     [indicatorView setAnimatingWithStateOfTask:URLSessionDataTask];
 }
+
+
+- (IBAction)goDownloadHomeViewController:(id)sender {
+    DownloadHomeViewController *viewController = [[DownloadHomeViewController alloc] initWithNibName:@"DownloadHomeViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == 10000 && buttonIndex == 1) {
