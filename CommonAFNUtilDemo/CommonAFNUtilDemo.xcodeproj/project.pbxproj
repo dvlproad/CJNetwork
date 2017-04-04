@@ -9,7 +9,12 @@
 /* Begin PBXBuildFile section */
 		7803FF551E6D76C100E2594E /* IjinbuNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7803FF541E6D76C100E2594E /* IjinbuNetworkClient.m */; };
 		7803FF581E6D7A6A00E2594E /* IjinbuNetworkClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 7803FF571E6D7A6A00E2594E /* IjinbuNetworkClient+Login.m */; };
-		784C152E1E8DF0090019D652 /* MQLResumeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C152D1E8DF0090019D652 /* MQLResumeManager.m */; };
+		780B38441E93BACB005E8D63 /* CJUploadItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 780B38401E93BACB005E8D63 /* CJUploadItemModel.m */; };
+		780B38451E93BACB005E8D63 /* CJUploadResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 780B38421E93BACB005E8D63 /* CJUploadResponseModel.m */; };
+		780B38561E93BD00005E8D63 /* MQLResumeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 780B384D1E93BD00005E8D63 /* MQLResumeManager.m */; };
+		780B38571E93BD00005E8D63 /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 780B38501E93BD00005E8D63 /* HSDownloadManager.m */; };
+		780B38581E93BD00005E8D63 /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 780B38521E93BD00005E8D63 /* HSSessionModel.m */; };
+		780B38591E93BD00005E8D63 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 780B38551E93BD00005E8D63 /* NSString+Hash.m */; };
 		784C15451E8E2CC50019D652 /* DownloadListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15401E8E2CC50019D652 /* DownloadListViewController.m */; };
 		784C15461E8E2CC50019D652 /* DownloadListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C15411E8E2CC50019D652 /* DownloadListViewController.xib */; };
 		784C15471E8E2CC50019D652 /* DownloadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15431E8E2CC50019D652 /* DownloadTableViewCell.m */; };
@@ -22,9 +27,6 @@
 		784C15591E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C15531E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.xib */; };
 		784C155D1E8E2DB60019D652 /* DownloadHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C155B1E8E2DB60019D652 /* DownloadHomeViewController.m */; };
 		784C155E1E8E2DB60019D652 /* DownloadHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C155C1E8E2DB60019D652 /* DownloadHomeViewController.xib */; };
-		784C15671E8E2FD70019D652 /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15611E8E2FD70019D652 /* HSDownloadManager.m */; };
-		784C15681E8E2FD70019D652 /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15631E8E2FD70019D652 /* HSSessionModel.m */; };
-		784C15691E8E2FD70019D652 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15661E8E2FD70019D652 /* NSString+Hash.m */; };
 		78590B661E08EEF0000F80EF /* IjinbuHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B651E08EEF0000F80EF /* IjinbuHTTPSessionManager.m */; };
 		78590B771E0906C3000F80EF /* TestHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B761E0906C3000F80EF /* TestHTTPSessionManager.m */; };
 		78590B7A1E0906D6000F80EF /* HealthyHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B791E0906D6000F80EF /* HealthyHTTPSessionManager.m */; };
@@ -93,8 +95,19 @@
 		7803FF541E6D76C100E2594E /* IjinbuNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuNetworkClient.m; sourceTree = "<group>"; };
 		7803FF561E6D7A6A00E2594E /* IjinbuNetworkClient+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IjinbuNetworkClient+Login.h"; sourceTree = "<group>"; };
 		7803FF571E6D7A6A00E2594E /* IjinbuNetworkClient+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IjinbuNetworkClient+Login.m"; sourceTree = "<group>"; };
-		784C152C1E8DF0090019D652 /* MQLResumeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQLResumeManager.h; sourceTree = "<group>"; };
-		784C152D1E8DF0090019D652 /* MQLResumeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQLResumeManager.m; sourceTree = "<group>"; };
+		780B383F1E93BACB005E8D63 /* CJUploadItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadItemModel.h; sourceTree = "<group>"; };
+		780B38401E93BACB005E8D63 /* CJUploadItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadItemModel.m; sourceTree = "<group>"; };
+		780B38411E93BACB005E8D63 /* CJUploadResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadResponseModel.h; sourceTree = "<group>"; };
+		780B38421E93BACB005E8D63 /* CJUploadResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadResponseModel.m; sourceTree = "<group>"; };
+		780B38431E93BACB005E8D63 /* CJUploadState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadState.h; sourceTree = "<group>"; };
+		780B384C1E93BD00005E8D63 /* MQLResumeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQLResumeManager.h; sourceTree = "<group>"; };
+		780B384D1E93BD00005E8D63 /* MQLResumeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQLResumeManager.m; sourceTree = "<group>"; };
+		780B384F1E93BD00005E8D63 /* HSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDownloadManager.h; sourceTree = "<group>"; };
+		780B38501E93BD00005E8D63 /* HSDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSDownloadManager.m; sourceTree = "<group>"; };
+		780B38511E93BD00005E8D63 /* HSSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSSessionModel.h; sourceTree = "<group>"; };
+		780B38521E93BD00005E8D63 /* HSSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSSessionModel.m; sourceTree = "<group>"; };
+		780B38541E93BD00005E8D63 /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
+		780B38551E93BD00005E8D63 /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		784C153F1E8E2CC50019D652 /* DownloadListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListViewController.h; sourceTree = "<group>"; };
 		784C15401E8E2CC50019D652 /* DownloadListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListViewController.m; sourceTree = "<group>"; };
 		784C15411E8E2CC50019D652 /* DownloadListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadListViewController.xib; sourceTree = "<group>"; };
@@ -114,12 +127,6 @@
 		784C155A1E8E2DB60019D652 /* DownloadHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadHomeViewController.h; sourceTree = "<group>"; };
 		784C155B1E8E2DB60019D652 /* DownloadHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadHomeViewController.m; sourceTree = "<group>"; };
 		784C155C1E8E2DB60019D652 /* DownloadHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadHomeViewController.xib; sourceTree = "<group>"; };
-		784C15601E8E2FD70019D652 /* HSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDownloadManager.h; sourceTree = "<group>"; };
-		784C15611E8E2FD70019D652 /* HSDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSDownloadManager.m; sourceTree = "<group>"; };
-		784C15621E8E2FD70019D652 /* HSSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSSessionModel.h; sourceTree = "<group>"; };
-		784C15631E8E2FD70019D652 /* HSSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSSessionModel.m; sourceTree = "<group>"; };
-		784C15651E8E2FD70019D652 /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
-		784C15661E8E2FD70019D652 /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		78590B641E08EEF0000F80EF /* IjinbuHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuHTTPSessionManager.h; sourceTree = "<group>"; };
 		78590B651E08EEF0000F80EF /* IjinbuHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuHTTPSessionManager.m; sourceTree = "<group>"; };
 		78590B751E0906C3000F80EF /* TestHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHTTPSessionManager.h; sourceTree = "<group>"; };
@@ -256,6 +263,67 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		780B383D1E93BACB005E8D63 /* CJNetworkModels */ = {
+			isa = PBXGroup;
+			children = (
+				780B383E1E93BACB005E8D63 /* CJUploadModels */,
+			);
+			name = CJNetworkModels;
+			path = ../../CJNetworkModels;
+			sourceTree = "<group>";
+		};
+		780B383E1E93BACB005E8D63 /* CJUploadModels */ = {
+			isa = PBXGroup;
+			children = (
+				780B383F1E93BACB005E8D63 /* CJUploadItemModel.h */,
+				780B38401E93BACB005E8D63 /* CJUploadItemModel.m */,
+				780B38411E93BACB005E8D63 /* CJUploadResponseModel.h */,
+				780B38421E93BACB005E8D63 /* CJUploadResponseModel.m */,
+				780B38431E93BACB005E8D63 /* CJUploadState.h */,
+			);
+			path = CJUploadModels;
+			sourceTree = "<group>";
+		};
+		780B384A1E93BD00005E8D63 /* 断点续传组件 */ = {
+			isa = PBXGroup;
+			children = (
+				780B384B1E93BD00005E8D63 /* CJResumeManager */,
+				780B384E1E93BD00005E8D63 /* HSDownloadManager */,
+			);
+			name = "断点续传组件";
+			path = "../../断点续传组件";
+			sourceTree = "<group>";
+		};
+		780B384B1E93BD00005E8D63 /* CJResumeManager */ = {
+			isa = PBXGroup;
+			children = (
+				780B384C1E93BD00005E8D63 /* MQLResumeManager.h */,
+				780B384D1E93BD00005E8D63 /* MQLResumeManager.m */,
+			);
+			path = CJResumeManager;
+			sourceTree = "<group>";
+		};
+		780B384E1E93BD00005E8D63 /* HSDownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				780B384F1E93BD00005E8D63 /* HSDownloadManager.h */,
+				780B38501E93BD00005E8D63 /* HSDownloadManager.m */,
+				780B38511E93BD00005E8D63 /* HSSessionModel.h */,
+				780B38521E93BD00005E8D63 /* HSSessionModel.m */,
+				780B38531E93BD00005E8D63 /* MD5 */,
+			);
+			path = HSDownloadManager;
+			sourceTree = "<group>";
+		};
+		780B38531E93BD00005E8D63 /* MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				780B38541E93BD00005E8D63 /* NSString+Hash.h */,
+				780B38551E93BD00005E8D63 /* NSString+Hash.m */,
+			);
+			path = MD5;
+			sourceTree = "<group>";
+		};
 		784C15111E8CD8370019D652 /* DownloadDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,15 +334,6 @@
 				784C155C1E8E2DB60019D652 /* DownloadHomeViewController.xib */,
 			);
 			path = DownloadDemo;
-			sourceTree = "<group>";
-		};
-		784C152B1E8DF0090019D652 /* CJResumeManager */ = {
-			isa = PBXGroup;
-			children = (
-				784C152C1E8DF0090019D652 /* MQLResumeManager.h */,
-				784C152D1E8DF0090019D652 /* MQLResumeManager.m */,
-			);
-			path = CJResumeManager;
 			sourceTree = "<group>";
 		};
 		784C153E1E8E2CC50019D652 /* DownloadListViewController */ = {
@@ -305,27 +364,6 @@
 				784C15531E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.xib */,
 			);
 			path = DownloadViewController;
-			sourceTree = "<group>";
-		};
-		784C155F1E8E2FD70019D652 /* HSDownloadManager */ = {
-			isa = PBXGroup;
-			children = (
-				784C15601E8E2FD70019D652 /* HSDownloadManager.h */,
-				784C15611E8E2FD70019D652 /* HSDownloadManager.m */,
-				784C15621E8E2FD70019D652 /* HSSessionModel.h */,
-				784C15631E8E2FD70019D652 /* HSSessionModel.m */,
-				784C15641E8E2FD70019D652 /* MD5 */,
-			);
-			path = HSDownloadManager;
-			sourceTree = "<group>";
-		};
-		784C15641E8E2FD70019D652 /* MD5 */ = {
-			isa = PBXGroup;
-			children = (
-				784C15651E8E2FD70019D652 /* NSString+Hash.h */,
-				784C15661E8E2FD70019D652 /* NSString+Hash.m */,
-			);
-			path = MD5;
 			sourceTree = "<group>";
 		};
 		78590B5F1E08E1B0000F80EF /* Models */ = {
@@ -377,8 +415,6 @@
 		78D026BD1E8BA741004B666C /* CJNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				784C155F1E8E2FD70019D652 /* HSDownloadManager */,
-				784C152B1E8DF0090019D652 /* CJResumeManager */,
 				78D026BE1E8BA741004B666C /* AFHTTPSessionManager+CJCategory */,
 				78D026CF1E8BA741004B666C /* CJNetworkClient */,
 			);
@@ -574,6 +610,8 @@
 				804F8FC51B3BDF4E00AF11AA /* AppDelegate.m */,
 				804F8FC71B3BDF4E00AF11AA /* ViewController.h */,
 				804F8FC81B3BDF4E00AF11AA /* ViewController.m */,
+				780B384A1E93BD00005E8D63 /* 断点续传组件 */,
+				780B383D1E93BACB005E8D63 /* CJNetworkModels */,
 				78D026F41E8BAA7A004B666C /* CJNetworkHelper */,
 				78D026DD1E8BAA66004B666C /* CJCacheManager */,
 				78D026BD1E8BA741004B666C /* CJNetwork */,
@@ -842,15 +880,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				780B38561E93BD00005E8D63 /* MQLResumeManager.m in Sources */,
 				78D027031E8BAA7A004B666C /* NSString+Encoding.m in Sources */,
 				801531B51B78675400B82127 /* LoginHelper.m in Sources */,
 				784C15541E8E2D040019D652 /* AFDownloadViewController.m in Sources */,
-				784C15681E8E2FD70019D652 /* HSSessionModel.m in Sources */,
 				78D026DC1E8BA742004B666C /* CJNetworkClientHTTPSessionManager.m in Sources */,
 				78D026B31E8B9BD2004B666C /* DingdangNetworkClient.m in Sources */,
 				78590B7A1E0906D6000F80EF /* HealthyHTTPSessionManager.m in Sources */,
-				784C15671E8E2FD70019D652 /* HSDownloadManager.m in Sources */,
 				78590B8A1E091129000F80EF /* AccountInfo.m in Sources */,
+				780B38571E93BD00005E8D63 /* HSDownloadManager.m in Sources */,
 				78D026D61E8BA741004B666C /* NSString+URLEncoding.m in Sources */,
 				78D026ED1E8BAA66004B666C /* CJCacheDataModel.m in Sources */,
 				78D026D81E8BA741004B666C /* CJJSONResponseSerializer.m in Sources */,
@@ -859,6 +897,7 @@
 				78D026D91E8BA741004B666C /* CJRequestCacheDataUtil.m in Sources */,
 				78D026F21E8BAA66004B666C /* NSDictionary+Convert.m in Sources */,
 				78D026DA1E8BA741004B666C /* URLRequestUtil.m in Sources */,
+				780B38581E93BD00005E8D63 /* HSSessionModel.m in Sources */,
 				784C15581E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.m in Sources */,
 				78590B771E0906C3000F80EF /* TestHTTPSessionManager.m in Sources */,
 				784C15451E8E2CC50019D652 /* DownloadListViewController.m in Sources */,
@@ -867,7 +906,6 @@
 				801531B31B78675400B82127 /* Login+Event.m in Sources */,
 				78D027021E8BAA7A004B666C /* CommonWebUtil.m in Sources */,
 				801531B41B78675400B82127 /* Login.m in Sources */,
-				784C152E1E8DF0090019D652 /* MQLResumeManager.m in Sources */,
 				784C15551E8E2D040019D652 /* BaseDownloadViewController.m in Sources */,
 				7803FF551E6D76C100E2594E /* IjinbuNetworkClient.m in Sources */,
 				807109E61B7E17E900F343F3 /* SocketDemoViewController.m in Sources */,
@@ -875,7 +913,6 @@
 				804F8FC61B3BDF4E00AF11AA /* AppDelegate.m in Sources */,
 				784C15471E8E2CC50019D652 /* DownloadTableViewCell.m in Sources */,
 				784C15571E8E2D040019D652 /* SessionDataTaskDownloadViewController.m in Sources */,
-				784C15691E8E2FD70019D652 /* NSString+Hash.m in Sources */,
 				78590B861E090F73000F80EF /* CJResponseModel.m in Sources */,
 				804F8FC31B3BDF4E00AF11AA /* main.m in Sources */,
 				78D026EF1E8BAA66004B666C /* CJMemoryCacheManager.m in Sources */,
@@ -886,10 +923,13 @@
 				78590B661E08EEF0000F80EF /* IjinbuHTTPSessionManager.m in Sources */,
 				801531B11B78675400B82127 /* AFNDemoViewController.m in Sources */,
 				78D026B61E8B9C09004B666C /* TestNetworkClient.m in Sources */,
+				780B38451E93BACB005E8D63 /* CJUploadResponseModel.m in Sources */,
 				78D027011E8BAA7A004B666C /* CJNetworkMonitor.m in Sources */,
 				78D026DB1E8BA742004B666C /* CJNetworkClient.m in Sources */,
+				780B38441E93BACB005E8D63 /* CJUploadItemModel.m in Sources */,
 				784C155D1E8E2DB60019D652 /* DownloadHomeViewController.m in Sources */,
 				78D027041E8BAA7A004B666C /* NetworkUtil.m in Sources */,
+				780B38591E93BD00005E8D63 /* NSString+Hash.m in Sources */,
 				78D026D51E8BA741004B666C /* AFHTTPSessionManager+CJCategory.m in Sources */,
 				808CBA351B720C8E00EDFFB9 /* LoginShareInfo.m in Sources */,
 				78D026D71E8BA741004B666C /* NSURLSessionTask+CJErrorMessage.m in Sources */,
