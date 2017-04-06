@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AFHTTPSessionManager+CJCategory.h"
+#import "AFHTTPSessionManager+CJCacheRequest.h"
 
 #import "IjinbuResponseModel.h"
 
-typedef  void ((^HPSuccess)(id responseModel));
+#import "IjinbuSession.h"
+#import "IjinbuUser.h"
+
+typedef  void ((^HPSuccess)(IjinbuResponseModel *responseModel));
 typedef  void ((^HPFailure)(NSError *error));
 
 @interface IjinbuNetworkClient : NSObject
@@ -22,5 +25,8 @@ typedef  void ((^HPFailure)(NSError *error));
                                        params:(NSDictionary *)params
                                       success:(HPSuccess)success
                                       failure:(HPFailure)failure;
+
+
+- (NSString *)signWithParams:(NSDictionary *)params path:(NSString*)path;
 
 @end

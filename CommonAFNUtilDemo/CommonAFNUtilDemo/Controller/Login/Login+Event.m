@@ -13,6 +13,8 @@
 #import "DingdangNetworkClient.h"
 #import "IjinbuNetworkClient+Login.h"
 
+#import "UploadViewController.h"
+
 @implementation Login (Event)
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
@@ -113,7 +115,12 @@
     */
     
     [[IjinbuNetworkClient sharedInstance] requestijinbuLogin_name:name pasd:pasd success:^(id responseModel) {
-        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+            UploadViewController *viewController = [[UploadViewController alloc] initWithNibName:@"UploadViewController" bundle:nil];
+            [self.navigationController pushViewController:viewController animated:YES];
+        });
+        
         
     } failure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"登录失败"];//登录不了哦，再试试看！

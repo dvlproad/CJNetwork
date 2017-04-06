@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CJNetwork"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "一个AFNetworking应用的封装"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkModels_0.0.3" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkModels_0.0.4" }
   s.source_files  = "CJNetwork/**/*.{h,m}"
   s.frameworks = 'UIKit'
 
@@ -31,14 +31,5 @@ Pod::Spec.new do |s|
   s.subspec 'CJCacheManager' do |ss|
     ss.source_files = "CJCacheManager/**/*.{h,m}"
   end
-
-  s.subspec 'CJNetworkModels' do |ss|
-    ss.subspec 'CJUploadModels' do |sss|
-      sss.source_files = "CJNetworkModels/CJUploadModels/**/*.{h,m}"
-    end
-  end
-
-  
-
 
 end

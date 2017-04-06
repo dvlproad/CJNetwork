@@ -22,7 +22,17 @@
                              @"loginType":  @(0)
                              };
     
-    return [self postWithRelativeUrl:Url params:params success:success failure:failure];
+    return [self postWithRelativeUrl:Url params:params success:^(IjinbuResponseModel *responseModel) {
+        NSLog(@"ijinbu_login_responseModel = %@", responseModel);
+        IjinbuUser *user = [MTLJSONAdapter modelOfClass:[IjinbuUser class] fromJSONDictionary:responseModel.result error:nil];
+        IjinbuSession *session = [IjinbuSession current];
+        session.user = user;
+        
+        
+        if (success) {
+            success(responseModel);
+        }
+    } failure:failure];
 }
 
 @end

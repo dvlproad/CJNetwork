@@ -10,6 +10,8 @@
 #import <OpenUDID/OpenUDID.h>
 #import "CJJSONResponseSerializer.h"
 
+#import "IjinbuSession.h"
+
 static NSString *const HPServerAPIVer = @"2.5.1207";
 NSString * ijinbuBaseUrl = @"http://www.ijinbu.com";
 
@@ -21,11 +23,22 @@ NSString * ijinbuBaseUrl = @"http://www.ijinbu.com";
     dispatch_once(&onceToken, ^{
         _sharedInstance = [self createSessionManager];
     });
+    
+    //登录成功后，有session，添加适当的token
+    if ([[IjinbuSession current].nid length] > 0) {
+        [[_sharedInstance requestSerializer] setValue:[IjinbuSession current].nid forHTTPHeaderField:@"sid"];
+    }
+    
+    if ([IjinbuSession current].user.token.length > 0) {
+        [[_sharedInstance requestSerializer] setValue:[IjinbuSession current].user.token forHTTPHeaderField:@"token"];
+    }
+    
     return _sharedInstance;
 }
 
 + (AFHTTPSessionManager *)createSessionManager {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:ijinbuBaseUrl]];
     
     //-->ijinbu
     NSString *deviceId = [OpenUDID value];
@@ -47,6 +60,11 @@ NSString * ijinbuBaseUrl = @"http://www.ijinbu.com";
                                                  @"application/json",
                                                  @"application/json;charset=utf-8", nil];
     manager.responseSerializer = responseSerializer;
+    
+    
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 60.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     
     return manager;
 }
