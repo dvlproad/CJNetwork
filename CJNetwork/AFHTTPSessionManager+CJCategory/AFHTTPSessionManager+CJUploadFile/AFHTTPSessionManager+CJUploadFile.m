@@ -13,9 +13,9 @@
 - (nullable NSURLSessionDataTask *)cj_postUploadUrl:(nullable NSString *)Url
                                          parameters:(nullable id)parameters
                                         uploadItems:(nullable NSArray<CJUploadItemModel *> *)uploadItems
-                                           progress:(nullable AFUploadProgressBlock)uploadProgress
-                                            success:(nullable AFRequestSuccess)success
-                                            failure:(nullable AFRequestFailure)failure
+                                           progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                            success:(nullable void (^)(NSURLSessionDataTask * _Nonnull, id _Nonnull))success
+                                            failure:(nullable void (^)(NSURLSessionDataTask *_Nonnull, NSError *_Nonnull))failure
 {
     NSURLSessionDataTask *URLSessionDataTask =
     [self POST:Url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)

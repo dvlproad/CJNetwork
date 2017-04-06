@@ -1,24 +1,14 @@
 //
-//  CJNetworkClient.m
+//  AFHTTPSessionManager+CJCheckVersion.m
 //  CommonAFNUtilDemo
 //
-//  Created by dvlproad on 2016/12/20.
-//  Copyright © 2016年 ciyouzen. All rights reserved.
+//  Created by lichq on 6/25/15.
+//  Copyright (c) 2015 ciyouzen. All rights reserved.
 //
 
-#import "CJNetworkClient.h"
-#import "CJNetworkClientHTTPSessionManager.h"
+#import "AFHTTPSessionManager+CJCheckVersion.h"
 
-@implementation CJNetworkClient
-
-+ (CJNetworkClient *)sharedInstance {
-    static CJNetworkClient *_sharedInstance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedInstance = [[self alloc] init];
-    });
-    return _sharedInstance;
-}
+@implementation AFHTTPSessionManager (CJCheckVersion)
 
 - (NSURLSessionDataTask *)checkVersionWithAPPID:(NSString *)appid
                                         success:(void(^)(BOOL isLastest, NSString *app_trackViewUrl))success
@@ -27,10 +17,8 @@
     NSString *Url = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", appid]; //你的应用程序的ID,如587767923
     NSDictionary *parameters = nil;
     
-    AFHTTPSessionManager *manager = [CJNetworkClientHTTPSessionManager sharedInstance];
-    
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cj_postRequestUrl:Url parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self POST:Url parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic = [NSDictionary dictionaryWithDictionary:responseObject];
         NSArray *infoArray = [dic objectForKey:@"results"];
         if ([infoArray count]) {
@@ -43,21 +31,28 @@
             
             if (![lastVersion isEqualToString:curVersion]) {
                 NSString *trackViewUrl = [releaseInfo objectForKey:@"trackViewUrl"];//获取应用程序的地址:即应用程序在appstore中的介绍页面
-                success(NO, trackViewUrl);
-            }else{
-                success(YES, nil);
+                if (success) {
+                    success(NO, trackViewUrl);
+                }
+                
+            } else {
+                if (success) {
+                    success(YES, nil);
+                }
             }
         }
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"检查更新请求发生错误", nil)];
-        failure();
+        //[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"检查更新请求发生错误", nil)];
+        NSLog(@"%@", NSLocalizedString(@"检查更新请求发生错误", nil));
+        if (failure) {
+            failure();
+        }
+        
     }];
-    
     
     return URLSessionDataTask;
 }
-
 
 @end

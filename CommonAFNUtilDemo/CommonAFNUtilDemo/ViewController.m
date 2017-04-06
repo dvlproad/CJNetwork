@@ -10,7 +10,7 @@
 #import "Login.h"
 #import "AFNDemoViewController.h"
 
-#import "CJNetworkClient.h"
+#import "CheckVersionNetworkClient.h"
 #import "TestNetworkClient.h"
 
 #import "DownloadHomeViewController.h"
@@ -46,7 +46,7 @@ static int apiTestCount = 0;
 
 - (IBAction)checkVersion:(id)sender {
     NSURLSessionDataTask *URLSessionDataTask =
-    [[CJNetworkClient sharedInstance] checkVersionWithAPPID:@"587767923" success:^(BOOL isLastest, NSString *app_trackViewUrl) {
+    [[CheckVersionNetworkClient sharedInstance] checkVersionWithAPPID:@"587767923" success:^(BOOL isLastest, NSString *app_trackViewUrl) {
         if (isLastest == NO) {
             trackViewUrl = app_trackViewUrl;
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];

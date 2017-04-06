@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CJNetwork"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
   s.summary      = "一个AFNetworking应用的封装"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkModels_0.0.4" }
-  s.source_files  = "CJNetwork/**/*.{h,m}"
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "AFHTTPSessionManager+CJCategory_0.0.5" }
+  # s.source_files  = "CJNetwork/**/*.{h,m}"
   s.frameworks = 'UIKit'
 
   # s.library   = "iconv"
@@ -23,13 +23,20 @@ Pod::Spec.new do |s|
   s.dependency 'AFNetworking', '~> 3.1.0'
   s.dependency 'SVProgressHUD', '~> 1.1.3'
 
+  s.subspec 'AFHTTPSessionManager+CJCategory' do |ss|
+    ss.source_files = "CJNetwork/AFHTTPSessionManager+CJCategory/**/*.{h,m}"
 
-  s.subspec 'CJNetworkHelper' do |ss|
-    ss.source_files = "CJNetworkHelper/**/*.{h,m}"
+    ss.subspec 'CJNetworkMonitor' do |sss|
+      sss.source_files = "CJNetwork/CJNetworkMonitor/**/*.{h,m}"
+    end
+
+    ss.subspec 'CJCacheManager' do |sss|
+      sss.source_files = "CJCacheManager/**/*.{h,m}"
+    end
   end
 
-  s.subspec 'CJCacheManager' do |ss|
-    ss.source_files = "CJCacheManager/**/*.{h,m}"
+  s.subspec 'URLRequestUtil' do |ss|
+    ss.source_files = "CJNetwork/URLRequestUtil/**/*.{h,m}"
   end
 
 end

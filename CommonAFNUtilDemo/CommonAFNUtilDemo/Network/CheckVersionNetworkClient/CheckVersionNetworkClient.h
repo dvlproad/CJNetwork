@@ -1,5 +1,5 @@
 //
-//  CJNetworkClient.h
+//  CheckVersionNetworkClient.h
 //  CommonAFNUtilDemo
 //
 //  Created by dvlproad on 2016/12/20.
@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "AFHTTPSessionManager+CJCacheRequest.h"
 
-@interface CJNetworkClient : NSObject
+@interface CheckVersionNetworkClient : NSObject
 
-+ (CJNetworkClient *)sharedInstance;
++ (CheckVersionNetworkClient *)sharedInstance;
 
 - (NSURLSessionDataTask *)checkVersionWithAPPID:(NSString *)appid
                                         success:(void(^)(BOOL isLastest, NSString *app_trackViewUrl))success

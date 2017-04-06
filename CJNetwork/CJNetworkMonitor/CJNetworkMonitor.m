@@ -7,6 +7,7 @@
 //
 
 #import "CJNetworkMonitor.h"
+#import <SystemConfiguration/CaptiveNetwork.h>
 
 @implementation CJNetworkMonitor
 
@@ -62,5 +63,33 @@
     
     [reachabilityManager startMonitoring];
 }
+
+
+
+/** 完整的描述请参见文件头部 */
+- (NSString *)getWIFISSID {
+    NSString *ssid = nil;
+    NSArray *ifs = (NSArray *)CFBridgingRelease(CNCopySupportedInterfaces());
+    NSDictionary *info = nil;
+    
+    if(ifs == nil) {
+        //NSLog(@"can not find interface");
+        return nil;
+    }
+    
+    for (NSString *ifnam in ifs) {
+        info = (NSDictionary *)CFBridgingRelease(CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam));
+        
+        if (info && [info count]) {
+            ssid = [info objectForKey:@"SSID"];
+            if(ssid != nil) {
+                break;
+            }
+        }
+    }
+    
+    return ssid;
+}
+
 
 @end

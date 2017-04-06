@@ -7,7 +7,6 @@
 //
 
 #import "Login+Event.h"
-#import "NSString+Encoding.h"
 
 #import "HealthyNetworkClient.h"
 #import "DingdangNetworkClient.h"
@@ -48,7 +47,7 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 //        NSString *failMesg = [error localizedDescription];
-//        failMesg = [failMesg Unicode_To_Chinese];
+//        failMesg = [failMesg cjEncodeUnicodeToChinese];
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];
     }];
 }
@@ -106,7 +105,7 @@
     NSString *pasd = @"123456";
     
     /*
-    [[CJNetworkClient sharedInstance] requestijinbuLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[CheckVersionNetworkClient sharedInstance] requestijinbuLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"登录成功"];
         
     } failure:^(NSURLSessionDataTask *task, NSString *errorMessage) {

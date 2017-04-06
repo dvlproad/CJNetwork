@@ -1,5 +1,5 @@
 //
-//  CJNetworkClientHTTPSessionManager.h
+//  CheckVersionNetworkClientHTTPSessionManager.h
 //  CommonAFNUtilDemo
 //
 //  Created by dvlproad on 2016/12/20.
@@ -7,8 +7,9 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
+#import "AFHTTPSessionManager+CJCheckVersion.h"
 
-@interface CJNetworkClientHTTPSessionManager : AFHTTPSessionManager
+@interface CheckVersionNetworkClientHTTPSessionManager : AFHTTPSessionManager
 
 + (AFHTTPSessionManager *)sharedInstance;
 

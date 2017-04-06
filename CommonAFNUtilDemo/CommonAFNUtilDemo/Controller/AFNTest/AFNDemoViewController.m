@@ -9,7 +9,7 @@
 #import "AFNDemoViewController.h"
 #import <AFNetworking/UIActivityIndicatorView+AFNetworking.h>   //UIActivityIndicatorView
 #import <AFNetworking/UIImageView+AFNetworking.h>               //UIImage
-#import "CJNetworkClient.h"
+#import "CheckVersionNetworkClient.h"
 
 @interface AFNDemoViewController ()
 

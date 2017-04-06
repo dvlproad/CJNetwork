@@ -31,4 +31,12 @@
  */
 - (void)startNetworkMonitoring;
 
+
+/**
+ *  获取wifi名称即SSID(SSID全称Service Set IDentifier, 即Wifi网络的公开名称)
+ *  @brief  模拟器测试无效，始终为空，真机有效
+ *
+ */
+- (NSString *)getWIFISSID;
+
 @end
