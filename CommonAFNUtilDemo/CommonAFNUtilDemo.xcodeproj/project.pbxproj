@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78049F311F307C5C009CE88A /* IjinbuResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78049F2B1F307C5C009CE88A /* IjinbuResponseModel.m */; };
+		78049F321F307C5C009CE88A /* IjinbuSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 78049F2E1F307C5C009CE88A /* IjinbuSession.m */; };
+		78049F331F307C5C009CE88A /* IjinbuUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 78049F301F307C5C009CE88A /* IjinbuUser.m */; };
+		78049F391F307CAF009CE88A /* CJResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78049F381F307CAF009CE88A /* CJResponseModel.m */; };
 		780B38561E93BD00005E8D63 /* MQLResumeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 780B384D1E93BD00005E8D63 /* MQLResumeManager.m */; };
 		780B38571E93BD00005E8D63 /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 780B38501E93BD00005E8D63 /* HSDownloadManager.m */; };
 		780B38581E93BD00005E8D63 /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 780B38521E93BD00005E8D63 /* HSSessionModel.m */; };
@@ -51,8 +55,6 @@
 		784C15591E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C15531E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.xib */; };
 		784C155D1E8E2DB60019D652 /* DownloadHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C155B1E8E2DB60019D652 /* DownloadHomeViewController.m */; };
 		784C155E1E8E2DB60019D652 /* DownloadHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C155C1E8E2DB60019D652 /* DownloadHomeViewController.xib */; };
-		78590B861E090F73000F80EF /* CJResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B831E090F73000F80EF /* CJResponseModel.m */; };
-		78590B871E090F73000F80EF /* IjinbuResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B851E090F73000F80EF /* IjinbuResponseModel.m */; };
 		78590B8A1E091129000F80EF /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B891E091129000F80EF /* AccountInfo.m */; };
 		78AB6B1D1C01CDD2004404A9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78AB6B1C1C01CDD2004404A9 /* Login.storyboard */; };
 		78D026ED1E8BAA66004B666C /* CJCacheDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D026DF1E8BAA66004B666C /* CJCacheDataModel.m */; };
@@ -65,8 +67,6 @@
 		78D0A5B21E94FCAD00337381 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D0A5B01E94FCAD00337381 /* UploadViewController.m */; };
 		78D0A5B31E94FCAD00337381 /* UploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D0A5B11E94FCAD00337381 /* UploadViewController.xib */; };
 		78D0A5B91E95064D00337381 /* op1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 78D0A5B81E95064D00337381 /* op1.jpg */; };
-		78F3A9CD1E961FC2005D3DA4 /* IjinbuSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F3A9CA1E961FC2005D3DA4 /* IjinbuSession.m */; };
-		78F3A9CE1E961FC2005D3DA4 /* IjinbuUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F3A9CC1E961FC2005D3DA4 /* IjinbuUser.m */; };
 		801531B11B78675400B82127 /* AFNDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 801531A81B78675400B82127 /* AFNDemoViewController.m */; };
 		801531B21B78675400B82127 /* AFNDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 801531A91B78675400B82127 /* AFNDemoViewController.xib */; };
 		801531B31B78675400B82127 /* Login+Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 801531AC1B78675400B82127 /* Login+Event.m */; };
@@ -100,6 +100,14 @@
 		06DDE5678FB698FF9D1ACC99 /* libPods-CommonAFNUtilDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonAFNUtilDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4204150C2F919C31E2F10C0F /* Pods-CommonAFNUtilDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonAFNUtilDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonAFNUtilDemo/Pods-CommonAFNUtilDemo.release.xcconfig"; sourceTree = "<group>"; };
 		4DF147B794DABA1B3B749FCD /* Pods-CommonAFNUtilDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonAFNUtilDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonAFNUtilDemo/Pods-CommonAFNUtilDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		78049F2A1F307C5C009CE88A /* IjinbuResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuResponseModel.h; sourceTree = "<group>"; };
+		78049F2B1F307C5C009CE88A /* IjinbuResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuResponseModel.m; sourceTree = "<group>"; };
+		78049F2D1F307C5C009CE88A /* IjinbuSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuSession.h; sourceTree = "<group>"; };
+		78049F2E1F307C5C009CE88A /* IjinbuSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuSession.m; sourceTree = "<group>"; };
+		78049F2F1F307C5C009CE88A /* IjinbuUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuUser.h; sourceTree = "<group>"; };
+		78049F301F307C5C009CE88A /* IjinbuUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuUser.m; sourceTree = "<group>"; };
+		78049F371F307CAF009CE88A /* CJResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJResponseModel.h; sourceTree = "<group>"; };
+		78049F381F307CAF009CE88A /* CJResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJResponseModel.m; sourceTree = "<group>"; };
 		780B384C1E93BD00005E8D63 /* MQLResumeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQLResumeManager.h; sourceTree = "<group>"; };
 		780B384D1E93BD00005E8D63 /* MQLResumeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQLResumeManager.m; sourceTree = "<group>"; };
 		780B384F1E93BD00005E8D63 /* HSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDownloadManager.h; sourceTree = "<group>"; };
@@ -186,10 +194,6 @@
 		784C155A1E8E2DB60019D652 /* DownloadHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadHomeViewController.h; sourceTree = "<group>"; };
 		784C155B1E8E2DB60019D652 /* DownloadHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadHomeViewController.m; sourceTree = "<group>"; };
 		784C155C1E8E2DB60019D652 /* DownloadHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadHomeViewController.xib; sourceTree = "<group>"; };
-		78590B821E090F73000F80EF /* CJResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJResponseModel.h; sourceTree = "<group>"; };
-		78590B831E090F73000F80EF /* CJResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJResponseModel.m; sourceTree = "<group>"; };
-		78590B841E090F73000F80EF /* IjinbuResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuResponseModel.h; sourceTree = "<group>"; };
-		78590B851E090F73000F80EF /* IjinbuResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuResponseModel.m; sourceTree = "<group>"; };
 		78590B881E091129000F80EF /* AccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfo.h; sourceTree = "<group>"; };
 		78590B891E091129000F80EF /* AccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfo.m; sourceTree = "<group>"; };
 		78AB6B1C1C01CDD2004404A9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -211,10 +215,6 @@
 		78D0A5B01E94FCAD00337381 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
 		78D0A5B11E94FCAD00337381 /* UploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadViewController.xib; sourceTree = "<group>"; };
 		78D0A5B81E95064D00337381 /* op1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = op1.jpg; sourceTree = "<group>"; };
-		78F3A9C91E961FC2005D3DA4 /* IjinbuSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuSession.h; sourceTree = "<group>"; };
-		78F3A9CA1E961FC2005D3DA4 /* IjinbuSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuSession.m; sourceTree = "<group>"; };
-		78F3A9CB1E961FC2005D3DA4 /* IjinbuUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuUser.h; sourceTree = "<group>"; };
-		78F3A9CC1E961FC2005D3DA4 /* IjinbuUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuUser.m; sourceTree = "<group>"; };
 		801531A71B78675400B82127 /* AFNDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNDemoViewController.h; sourceTree = "<group>"; };
 		801531A81B78675400B82127 /* AFNDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNDemoViewController.m; sourceTree = "<group>"; };
 		801531A91B78675400B82127 /* AFNDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AFNDemoViewController.xib; sourceTree = "<group>"; };
@@ -288,6 +288,35 @@
 				E4A8FCC6E00473C074D62DB2 /* libPods-CommonAFNUtilDemoTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		78049F291F307C5C009CE88A /* IjinbuResponseModel */ = {
+			isa = PBXGroup;
+			children = (
+				78049F2A1F307C5C009CE88A /* IjinbuResponseModel.h */,
+				78049F2B1F307C5C009CE88A /* IjinbuResponseModel.m */,
+			);
+			path = IjinbuResponseModel;
+			sourceTree = "<group>";
+		};
+		78049F2C1F307C5C009CE88A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				78049F2D1F307C5C009CE88A /* IjinbuSession.h */,
+				78049F2E1F307C5C009CE88A /* IjinbuSession.m */,
+				78049F2F1F307C5C009CE88A /* IjinbuUser.h */,
+				78049F301F307C5C009CE88A /* IjinbuUser.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		78049F361F307CAF009CE88A /* BaseResponseModels */ = {
+			isa = PBXGroup;
+			children = (
+				78049F371F307CAF009CE88A /* CJResponseModel.h */,
+				78049F381F307CAF009CE88A /* CJResponseModel.m */,
+			);
+			path = BaseResponseModels;
 			sourceTree = "<group>";
 		};
 		780B384A1E93BD00005E8D63 /* 断点续传组件 */ = {
@@ -471,7 +500,8 @@
 				78193C5F1E961EB800638145 /* IjinbuNetworkClient+UploadFile.m */,
 				78193C601E961EB800638145 /* IjinbuNetworkClient.h */,
 				78193C611E961EB800638145 /* IjinbuNetworkClient.m */,
-				78F3A9C81E961FC2005D3DA4 /* Models */,
+				78049F291F307C5C009CE88A /* IjinbuResponseModel */,
+				78049F2C1F307C5C009CE88A /* Manager */,
 				78193C641E961EB800638145 /* IjinbuUploadModels */,
 			);
 			path = Ijinbu;
@@ -552,7 +582,6 @@
 			children = (
 				78590B881E091129000F80EF /* AccountInfo.h */,
 				78590B891E091129000F80EF /* AccountInfo.m */,
-				78590B811E090F73000F80EF /* ResponseModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -560,6 +589,7 @@
 		78590B631E08EE3A000F80EF /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				78049F361F307CAF009CE88A /* BaseResponseModels */,
 				78193C0A1E95FCE300638145 /* CheckVersionNetworkClient */,
 				78193C4F1E961EB800638145 /* Dingdang */,
 				78193C541E961EB800638145 /* Healthy */,
@@ -567,17 +597,6 @@
 				78193C711E961EB800638145 /* Test */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		78590B811E090F73000F80EF /* ResponseModels */ = {
-			isa = PBXGroup;
-			children = (
-				78590B821E090F73000F80EF /* CJResponseModel.h */,
-				78590B831E090F73000F80EF /* CJResponseModel.m */,
-				78590B841E090F73000F80EF /* IjinbuResponseModel.h */,
-				78590B851E090F73000F80EF /* IjinbuResponseModel.m */,
-			);
-			path = ResponseModels;
 			sourceTree = "<group>";
 		};
 		78D026DD1E8BAA66004B666C /* CJCacheManager */ = {
@@ -627,17 +646,6 @@
 				78D0A5B81E95064D00337381 /* op1.jpg */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		78F3A9C81E961FC2005D3DA4 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				78F3A9C91E961FC2005D3DA4 /* IjinbuSession.h */,
-				78F3A9CA1E961FC2005D3DA4 /* IjinbuSession.m */,
-				78F3A9CB1E961FC2005D3DA4 /* IjinbuUser.h */,
-				78F3A9CC1E961FC2005D3DA4 /* IjinbuUser.m */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		801531A51B78675400B82127 /* Controller */ = {
@@ -973,7 +981,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78F3A9CE1E961FC2005D3DA4 /* IjinbuUser.m in Sources */,
 				780B38561E93BD00005E8D63 /* MQLResumeManager.m in Sources */,
 				78193C791E961EB800638145 /* HealthyNetworkClient.m in Sources */,
 				801531B51B78675400B82127 /* LoginHelper.m in Sources */,
@@ -985,22 +992,24 @@
 				78193C3A1E96181F00638145 /* AFHTTPSessionManager+CJCheckVersion.m in Sources */,
 				78193C771E961EB800638145 /* DingdangNetworkClient.m in Sources */,
 				78D0A5B21E94FCAD00337381 /* UploadViewController.m in Sources */,
+				78049F391F307CAF009CE88A /* CJResponseModel.m in Sources */,
 				78D026ED1E8BAA66004B666C /* CJCacheDataModel.m in Sources */,
 				804F8FC91B3BDF4E00AF11AA /* ViewController.m in Sources */,
-				78590B871E090F73000F80EF /* IjinbuResponseModel.m in Sources */,
 				78193C3B1E96181F00638145 /* AFHTTPSessionManager+CJUploadFile.m in Sources */,
 				78D026F21E8BAA66004B666C /* NSDictionary+Convert.m in Sources */,
 				78193C391E96181F00638145 /* CJRequestCacheDataUtil.m in Sources */,
 				780B38581E93BD00005E8D63 /* HSSessionModel.m in Sources */,
 				784C15581E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.m in Sources */,
 				784C15451E8E2CC50019D652 /* DownloadListViewController.m in Sources */,
+				78049F311F307C5C009CE88A /* IjinbuResponseModel.m in Sources */,
 				78D026F31E8BAA66004B666C /* NSString+MD5.m in Sources */,
 				78193C851E961EB800638145 /* TestHTTPSessionManager.m in Sources */,
-				78F3A9CD1E961FC2005D3DA4 /* IjinbuSession.m in Sources */,
 				801531B31B78675400B82127 /* Login+Event.m in Sources */,
 				78193C7D1E961EB800638145 /* IjinbuNetworkClient.m in Sources */,
+				78049F321F307C5C009CE88A /* IjinbuSession.m in Sources */,
 				78193C411E96181F00638145 /* CJNetworkMonitor.m in Sources */,
 				801531B41B78675400B82127 /* Login.m in Sources */,
+				78049F331F307C5C009CE88A /* IjinbuUser.m in Sources */,
 				784C15551E8E2D040019D652 /* BaseDownloadViewController.m in Sources */,
 				78193C7C1E961EB800638145 /* IjinbuNetworkClient+UploadFile.m in Sources */,
 				78193C861E961EB800638145 /* TestNetworkClient.m in Sources */,
@@ -1014,7 +1023,6 @@
 				78193C421E96181F00638145 /* URLRequestUtil.m in Sources */,
 				78193C761E961EB800638145 /* DingdangHTTPSessionManager.m in Sources */,
 				78193C781E961EB800638145 /* HealthyHTTPSessionManager.m in Sources */,
-				78590B861E090F73000F80EF /* CJResponseModel.m in Sources */,
 				78193C3D1E96181F00638145 /* CJUploadResponseModel.m in Sources */,
 				804F8FC31B3BDF4E00AF11AA /* main.m in Sources */,
 				78193C4E1E961A4300638145 /* NSURLSessionTask+CJErrorMessage.m in Sources */,
