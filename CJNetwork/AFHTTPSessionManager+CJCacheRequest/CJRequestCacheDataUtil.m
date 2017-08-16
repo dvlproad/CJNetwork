@@ -8,7 +8,7 @@
 
 #import "CJRequestCacheDataUtil.h"
 
-#import "CJMemoryDiskCacheManager.h"
+#import "CJCacheManager.h"
 
 #import "NSDictionary+Convert.h"
 #import "NSData+Convert.h"
@@ -29,7 +29,7 @@ static NSString *relativeDirectoryPath = @"CJNetworkCache";
         
     }else{
         if (!responseObject){
-            [[CJMemoryDiskCacheManager sharedInstance] removeCacheForCacheKey:requestCacheKey diskRelativeDirectoryPath:relativeDirectoryPath];
+            [[CJCacheManager sharedInstance] removeCacheForCacheKey:requestCacheKey diskRelativeDirectoryPath:relativeDirectoryPath];
             
             
         } else {
@@ -37,7 +37,7 @@ static NSString *relativeDirectoryPath = @"CJNetworkCache";
             NSDictionary *dic = [NSDictionary dictionaryWithDictionary:responseObject];
             NSData *cacheData = [dic convertToData];
             
-            [[CJMemoryDiskCacheManager sharedInstance] cacheData:cacheData forCacheKey:requestCacheKey andSaveInDisk:YES withDiskRelativeDirectoryPath:relativeDirectoryPath];
+            [[CJCacheManager sharedInstance] cacheData:cacheData forCacheKey:requestCacheKey andSaveInDisk:YES withDiskRelativeDirectoryPath:relativeDirectoryPath];
         }
     }
 }
@@ -78,7 +78,7 @@ static NSString *relativeDirectoryPath = @"CJNetworkCache";
     
     
     
-    NSData *requestCacheData = [[CJMemoryDiskCacheManager sharedInstance] getCacheDataByCacheKey:requestCacheKey diskRelativeDirectoryPath:relativeDirectoryPath];
+    NSData *requestCacheData = [[CJCacheManager sharedInstance] getCacheDataByCacheKey:requestCacheKey diskRelativeDirectoryPath:relativeDirectoryPath];
     if (requestCacheData) {
         //NSLog(@"读到缓存数据，但不保证该数据是最新的，因为网络还是不给力");
         

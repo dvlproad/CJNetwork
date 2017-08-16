@@ -1,19 +1,19 @@
 //
-//  CJMemoryCacheManager.h
-//  CommonAFNUtilDemo
+//  CJDataMemoryDictionaryManager.h
+//  CommonFMDBUtilDemo
 //
-//  Created by lichq on 7/31/15.
-//  Copyright (c) 2015 ciyouzen. All rights reserved.
+//  Created by ciyouzen on 7/31/15.
+//  Copyright (c) 2015 dvlproad. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-@interface CJMemoryCacheManager : NSObject
+@interface CJDataMemoryDictionaryManager : NSObject
 
 @property (nonatomic, copy, readonly) NSString *managerForUserId;
 
-+ (CJMemoryCacheManager *)sharedInstance;
++ (CJDataMemoryDictionaryManager *)sharedInstance;
 
 /**
  *  通过指定key缓存数据

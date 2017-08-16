@@ -43,6 +43,14 @@
 		78193C831E961EB800638145 /* IjinbuUploadItemRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 78193C6E1E961EB800638145 /* IjinbuUploadItemRequest.m */; };
 		78193C851E961EB800638145 /* TestHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78193C731E961EB800638145 /* TestHTTPSessionManager.m */; };
 		78193C861E961EB800638145 /* TestNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 78193C751E961EB800638145 /* TestNetworkClient.m */; };
+		783286251F44C98300A67E4D /* CJCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7832861A1F44C98300A67E4D /* CJCacheManager.m */; };
+		783286261F44C98300A67E4D /* CJCacheDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7832861D1F44C98300A67E4D /* CJCacheDataModel.m */; };
+		783286271F44C98300A67E4D /* CJDataDiskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 783286201F44C98300A67E4D /* CJDataDiskManager.m */; };
+		783286281F44C98300A67E4D /* CJDataMemoryCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 783286221F44C98300A67E4D /* CJDataMemoryCacheManager.m */; };
+		783286291F44C98300A67E4D /* CJDataMemoryDictionaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 783286241F44C98300A67E4D /* CJDataMemoryDictionaryManager.m */; };
+		783286311F44C9E900A67E4D /* NSData+Convert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7832862C1F44C9E900A67E4D /* NSData+Convert.m */; };
+		783286321F44C9E900A67E4D /* NSDictionary+Convert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7832862E1F44C9E900A67E4D /* NSDictionary+Convert.m */; };
+		783286331F44C9E900A67E4D /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 783286301F44C9E900A67E4D /* NSString+MD5.m */; };
 		784C15451E8E2CC50019D652 /* DownloadListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15401E8E2CC50019D652 /* DownloadListViewController.m */; };
 		784C15461E8E2CC50019D652 /* DownloadListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C15411E8E2CC50019D652 /* DownloadListViewController.xib */; };
 		784C15471E8E2CC50019D652 /* DownloadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 784C15431E8E2CC50019D652 /* DownloadTableViewCell.m */; };
@@ -57,13 +65,6 @@
 		784C155E1E8E2DB60019D652 /* DownloadHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C155C1E8E2DB60019D652 /* DownloadHomeViewController.xib */; };
 		78590B8A1E091129000F80EF /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590B891E091129000F80EF /* AccountInfo.m */; };
 		78AB6B1D1C01CDD2004404A9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78AB6B1C1C01CDD2004404A9 /* Login.storyboard */; };
-		78D026ED1E8BAA66004B666C /* CJCacheDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D026DF1E8BAA66004B666C /* CJCacheDataModel.m */; };
-		78D026EE1E8BAA66004B666C /* CJDiskCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D026E11E8BAA66004B666C /* CJDiskCacheManager.m */; };
-		78D026EF1E8BAA66004B666C /* CJMemoryCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D026E31E8BAA66004B666C /* CJMemoryCacheManager.m */; };
-		78D026F01E8BAA66004B666C /* CJMemoryDiskCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D026E51E8BAA66004B666C /* CJMemoryDiskCacheManager.m */; };
-		78D026F11E8BAA66004B666C /* NSData+Convert.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D026E81E8BAA66004B666C /* NSData+Convert.m */; };
-		78D026F21E8BAA66004B666C /* NSDictionary+Convert.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D026EA1E8BAA66004B666C /* NSDictionary+Convert.m */; };
-		78D026F31E8BAA66004B666C /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D026EC1E8BAA66004B666C /* NSString+MD5.m */; };
 		78D0A5B21E94FCAD00337381 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D0A5B01E94FCAD00337381 /* UploadViewController.m */; };
 		78D0A5B31E94FCAD00337381 /* UploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D0A5B11E94FCAD00337381 /* UploadViewController.xib */; };
 		78D0A5B91E95064D00337381 /* op1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 78D0A5B81E95064D00337381 /* op1.jpg */; };
@@ -175,6 +176,22 @@
 		78193C731E961EB800638145 /* TestHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHTTPSessionManager.m; sourceTree = "<group>"; };
 		78193C741E961EB800638145 /* TestNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNetworkClient.h; sourceTree = "<group>"; };
 		78193C751E961EB800638145 /* TestNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNetworkClient.m; sourceTree = "<group>"; };
+		783286191F44C98300A67E4D /* CJCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJCacheManager.h; sourceTree = "<group>"; };
+		7832861A1F44C98300A67E4D /* CJCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJCacheManager.m; sourceTree = "<group>"; };
+		7832861C1F44C98300A67E4D /* CJCacheDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJCacheDataModel.h; sourceTree = "<group>"; };
+		7832861D1F44C98300A67E4D /* CJCacheDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJCacheDataModel.m; sourceTree = "<group>"; };
+		7832861F1F44C98300A67E4D /* CJDataDiskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJDataDiskManager.h; sourceTree = "<group>"; };
+		783286201F44C98300A67E4D /* CJDataDiskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJDataDiskManager.m; sourceTree = "<group>"; };
+		783286211F44C98300A67E4D /* CJDataMemoryCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJDataMemoryCacheManager.h; sourceTree = "<group>"; };
+		783286221F44C98300A67E4D /* CJDataMemoryCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJDataMemoryCacheManager.m; sourceTree = "<group>"; };
+		783286231F44C98300A67E4D /* CJDataMemoryDictionaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJDataMemoryDictionaryManager.h; sourceTree = "<group>"; };
+		783286241F44C98300A67E4D /* CJDataMemoryDictionaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJDataMemoryDictionaryManager.m; sourceTree = "<group>"; };
+		7832862B1F44C9E900A67E4D /* NSData+Convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Convert.h"; sourceTree = "<group>"; };
+		7832862C1F44C9E900A67E4D /* NSData+Convert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Convert.m"; sourceTree = "<group>"; };
+		7832862D1F44C9E900A67E4D /* NSDictionary+Convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Convert.h"; sourceTree = "<group>"; };
+		7832862E1F44C9E900A67E4D /* NSDictionary+Convert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Convert.m"; sourceTree = "<group>"; };
+		7832862F1F44C9E900A67E4D /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		783286301F44C9E900A67E4D /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		784C153F1E8E2CC50019D652 /* DownloadListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListViewController.h; sourceTree = "<group>"; };
 		784C15401E8E2CC50019D652 /* DownloadListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListViewController.m; sourceTree = "<group>"; };
 		784C15411E8E2CC50019D652 /* DownloadListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadListViewController.xib; sourceTree = "<group>"; };
@@ -197,20 +214,6 @@
 		78590B881E091129000F80EF /* AccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfo.h; sourceTree = "<group>"; };
 		78590B891E091129000F80EF /* AccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfo.m; sourceTree = "<group>"; };
 		78AB6B1C1C01CDD2004404A9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		78D026DE1E8BAA66004B666C /* CJCacheDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJCacheDataModel.h; sourceTree = "<group>"; };
-		78D026DF1E8BAA66004B666C /* CJCacheDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJCacheDataModel.m; sourceTree = "<group>"; };
-		78D026E01E8BAA66004B666C /* CJDiskCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJDiskCacheManager.h; sourceTree = "<group>"; };
-		78D026E11E8BAA66004B666C /* CJDiskCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJDiskCacheManager.m; sourceTree = "<group>"; };
-		78D026E21E8BAA66004B666C /* CJMemoryCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJMemoryCacheManager.h; sourceTree = "<group>"; };
-		78D026E31E8BAA66004B666C /* CJMemoryCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJMemoryCacheManager.m; sourceTree = "<group>"; };
-		78D026E41E8BAA66004B666C /* CJMemoryDiskCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJMemoryDiskCacheManager.h; sourceTree = "<group>"; };
-		78D026E51E8BAA66004B666C /* CJMemoryDiskCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJMemoryDiskCacheManager.m; sourceTree = "<group>"; };
-		78D026E71E8BAA66004B666C /* NSData+Convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Convert.h"; sourceTree = "<group>"; };
-		78D026E81E8BAA66004B666C /* NSData+Convert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Convert.m"; sourceTree = "<group>"; };
-		78D026E91E8BAA66004B666C /* NSDictionary+Convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Convert.h"; sourceTree = "<group>"; };
-		78D026EA1E8BAA66004B666C /* NSDictionary+Convert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Convert.m"; sourceTree = "<group>"; };
-		78D026EB1E8BAA66004B666C /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
-		78D026EC1E8BAA66004B666C /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		78D0A5AF1E94FCAD00337381 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
 		78D0A5B01E94FCAD00337381 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
 		78D0A5B11E94FCAD00337381 /* UploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadViewController.xib; sourceTree = "<group>"; };
@@ -535,6 +538,53 @@
 			path = Test;
 			sourceTree = "<group>";
 		};
+		783286181F44C98300A67E4D /* CJCacheManager */ = {
+			isa = PBXGroup;
+			children = (
+				783286191F44C98300A67E4D /* CJCacheManager.h */,
+				7832861A1F44C98300A67E4D /* CJCacheManager.m */,
+				7832861B1F44C98300A67E4D /* Model */,
+				7832861E1F44C98300A67E4D /* ReadWriteDataManager */,
+			);
+			name = CJCacheManager;
+			path = ../../CJCacheManager;
+			sourceTree = "<group>";
+		};
+		7832861B1F44C98300A67E4D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7832861C1F44C98300A67E4D /* CJCacheDataModel.h */,
+				7832861D1F44C98300A67E4D /* CJCacheDataModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7832861E1F44C98300A67E4D /* ReadWriteDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				7832861F1F44C98300A67E4D /* CJDataDiskManager.h */,
+				783286201F44C98300A67E4D /* CJDataDiskManager.m */,
+				783286211F44C98300A67E4D /* CJDataMemoryCacheManager.h */,
+				783286221F44C98300A67E4D /* CJDataMemoryCacheManager.m */,
+				783286231F44C98300A67E4D /* CJDataMemoryDictionaryManager.h */,
+				783286241F44C98300A67E4D /* CJDataMemoryDictionaryManager.m */,
+			);
+			path = ReadWriteDataManager;
+			sourceTree = "<group>";
+		};
+		7832862A1F44C9E900A67E4D /* Librarys */ = {
+			isa = PBXGroup;
+			children = (
+				7832862B1F44C9E900A67E4D /* NSData+Convert.h */,
+				7832862C1F44C9E900A67E4D /* NSData+Convert.m */,
+				7832862D1F44C9E900A67E4D /* NSDictionary+Convert.h */,
+				7832862E1F44C9E900A67E4D /* NSDictionary+Convert.m */,
+				7832862F1F44C9E900A67E4D /* NSString+MD5.h */,
+				783286301F44C9E900A67E4D /* NSString+MD5.m */,
+			);
+			path = Librarys;
+			sourceTree = "<group>";
+		};
 		784C15111E8CD8370019D652 /* DownloadDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -589,6 +639,7 @@
 		78590B631E08EE3A000F80EF /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				7832862A1F44C9E900A67E4D /* Librarys */,
 				78049F361F307CAF009CE88A /* BaseResponseModels */,
 				78193C0A1E95FCE300638145 /* CheckVersionNetworkClient */,
 				78193C4F1E961EB800638145 /* Dingdang */,
@@ -597,36 +648,6 @@
 				78193C711E961EB800638145 /* Test */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		78D026DD1E8BAA66004B666C /* CJCacheManager */ = {
-			isa = PBXGroup;
-			children = (
-				78D026DE1E8BAA66004B666C /* CJCacheDataModel.h */,
-				78D026DF1E8BAA66004B666C /* CJCacheDataModel.m */,
-				78D026E01E8BAA66004B666C /* CJDiskCacheManager.h */,
-				78D026E11E8BAA66004B666C /* CJDiskCacheManager.m */,
-				78D026E21E8BAA66004B666C /* CJMemoryCacheManager.h */,
-				78D026E31E8BAA66004B666C /* CJMemoryCacheManager.m */,
-				78D026E41E8BAA66004B666C /* CJMemoryDiskCacheManager.h */,
-				78D026E51E8BAA66004B666C /* CJMemoryDiskCacheManager.m */,
-				78D026E61E8BAA66004B666C /* Librarys */,
-			);
-			name = CJCacheManager;
-			path = ../../CJCacheManager;
-			sourceTree = "<group>";
-		};
-		78D026E61E8BAA66004B666C /* Librarys */ = {
-			isa = PBXGroup;
-			children = (
-				78D026E71E8BAA66004B666C /* NSData+Convert.h */,
-				78D026E81E8BAA66004B666C /* NSData+Convert.m */,
-				78D026E91E8BAA66004B666C /* NSDictionary+Convert.h */,
-				78D026EA1E8BAA66004B666C /* NSDictionary+Convert.m */,
-				78D026EB1E8BAA66004B666C /* NSString+MD5.h */,
-				78D026EC1E8BAA66004B666C /* NSString+MD5.m */,
-			);
-			path = Librarys;
 			sourceTree = "<group>";
 		};
 		78D0A5AE1E94FC9A00337381 /* UploadDemo */ = {
@@ -709,11 +730,11 @@
 			children = (
 				804F8FC41B3BDF4E00AF11AA /* AppDelegate.h */,
 				804F8FC51B3BDF4E00AF11AA /* AppDelegate.m */,
+				783286181F44C98300A67E4D /* CJCacheManager */,
 				78193C151E96181F00638145 /* CJNetwork */,
 				804F8FC71B3BDF4E00AF11AA /* ViewController.h */,
 				804F8FC81B3BDF4E00AF11AA /* ViewController.m */,
 				780B384A1E93BD00005E8D63 /* 断点续传组件 */,
-				78D026DD1E8BAA66004B666C /* CJCacheManager */,
 				78590B631E08EE3A000F80EF /* Network */,
 				78590B5F1E08E1B0000F80EF /* Models */,
 				804F8FCA1B3BDF4E00AF11AA /* Main.storyboard */,
@@ -988,22 +1009,24 @@
 				78590B8A1E091129000F80EF /* AccountInfo.m in Sources */,
 				780B38571E93BD00005E8D63 /* HSDownloadManager.m in Sources */,
 				78193C0F1E95FCE300638145 /* CheckVersionNetworkClient.m in Sources */,
+				783286271F44C98300A67E4D /* CJDataDiskManager.m in Sources */,
 				78193C7A1E961EB800638145 /* IjinbuHTTPSessionManager.m in Sources */,
 				78193C3A1E96181F00638145 /* AFHTTPSessionManager+CJCheckVersion.m in Sources */,
+				783286311F44C9E900A67E4D /* NSData+Convert.m in Sources */,
+				783286291F44C98300A67E4D /* CJDataMemoryDictionaryManager.m in Sources */,
 				78193C771E961EB800638145 /* DingdangNetworkClient.m in Sources */,
 				78D0A5B21E94FCAD00337381 /* UploadViewController.m in Sources */,
+				783286281F44C98300A67E4D /* CJDataMemoryCacheManager.m in Sources */,
 				78049F391F307CAF009CE88A /* CJResponseModel.m in Sources */,
-				78D026ED1E8BAA66004B666C /* CJCacheDataModel.m in Sources */,
 				804F8FC91B3BDF4E00AF11AA /* ViewController.m in Sources */,
 				78193C3B1E96181F00638145 /* AFHTTPSessionManager+CJUploadFile.m in Sources */,
-				78D026F21E8BAA66004B666C /* NSDictionary+Convert.m in Sources */,
 				78193C391E96181F00638145 /* CJRequestCacheDataUtil.m in Sources */,
 				780B38581E93BD00005E8D63 /* HSSessionModel.m in Sources */,
 				784C15581E8E2D040019D652 /* SessionDownloadTaskDownloadViewController.m in Sources */,
 				784C15451E8E2CC50019D652 /* DownloadListViewController.m in Sources */,
 				78049F311F307C5C009CE88A /* IjinbuResponseModel.m in Sources */,
-				78D026F31E8BAA66004B666C /* NSString+MD5.m in Sources */,
 				78193C851E961EB800638145 /* TestHTTPSessionManager.m in Sources */,
+				783286331F44C9E900A67E4D /* NSString+MD5.m in Sources */,
 				801531B31B78675400B82127 /* Login+Event.m in Sources */,
 				78193C7D1E961EB800638145 /* IjinbuNetworkClient.m in Sources */,
 				78049F321F307C5C009CE88A /* IjinbuSession.m in Sources */,
@@ -1016,26 +1039,25 @@
 				78193C4D1E961A4300638145 /* NSString+URLEncoding.m in Sources */,
 				807109E61B7E17E900F343F3 /* SocketDemoViewController.m in Sources */,
 				78193C811E961EB800638145 /* CJUploadItemResult.m in Sources */,
-				78D026F01E8BAA66004B666C /* CJMemoryDiskCacheManager.m in Sources */,
 				804F8FC61B3BDF4E00AF11AA /* AppDelegate.m in Sources */,
+				783286251F44C98300A67E4D /* CJCacheManager.m in Sources */,
 				784C15471E8E2CC50019D652 /* DownloadTableViewCell.m in Sources */,
 				784C15571E8E2D040019D652 /* SessionDataTaskDownloadViewController.m in Sources */,
+				783286321F44C9E900A67E4D /* NSDictionary+Convert.m in Sources */,
 				78193C421E96181F00638145 /* URLRequestUtil.m in Sources */,
 				78193C761E961EB800638145 /* DingdangHTTPSessionManager.m in Sources */,
 				78193C781E961EB800638145 /* HealthyHTTPSessionManager.m in Sources */,
 				78193C3D1E96181F00638145 /* CJUploadResponseModel.m in Sources */,
 				804F8FC31B3BDF4E00AF11AA /* main.m in Sources */,
+				783286261F44C98300A67E4D /* CJCacheDataModel.m in Sources */,
 				78193C4E1E961A4300638145 /* NSURLSessionTask+CJErrorMessage.m in Sources */,
 				78193C831E961EB800638145 /* IjinbuUploadItemRequest.m in Sources */,
 				78193C821E961EB800638145 /* CJUploadVideoItem.m in Sources */,
 				78193C801E961EB800638145 /* CJImageUploadItem.m in Sources */,
 				78193C3C1E96181F00638145 /* CJUploadItemModel.m in Sources */,
-				78D026EF1E8BAA66004B666C /* CJMemoryCacheManager.m in Sources */,
 				78193C4C1E961A4300638145 /* CJJSONResponseSerializer.m in Sources */,
 				78193C381E96181F00638145 /* AFHTTPSessionManager+CJCacheRequest.m in Sources */,
 				78193C7B1E961EB800638145 /* IjinbuNetworkClient+Login.m in Sources */,
-				78D026F11E8BAA66004B666C /* NSData+Convert.m in Sources */,
-				78D026EE1E8BAA66004B666C /* CJDiskCacheManager.m in Sources */,
 				801531B11B78675400B82127 /* AFNDemoViewController.m in Sources */,
 				78193C7F1E961EB800638145 /* CJBaseUploadItem.m in Sources */,
 				78193C101E95FCE300638145 /* CheckVersionNetworkClientHTTPSessionManager.m in Sources */,

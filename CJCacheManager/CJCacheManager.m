@@ -1,15 +1,15 @@
 //
-//  CJMemoryDiskCacheManager.m
+//  CJCacheManager.m
 //  CommonAFNUtilDemo
 //
 //  Created by lichq on 7/31/15.
 //  Copyright (c) 2015 ciyouzen. All rights reserved.
 //
 
-#import "CJMemoryDiskCacheManager.h"
+#import "CJCacheManager.h"
 #import "CJCacheDataModel.h"
 
-@interface CJMemoryDiskCacheManager () {
+@interface CJCacheManager () {
     NSOperationQueue *cacheInQueue; /**< 缓存数据进内存的队列 */
     NSOperationQueue *cacheOutQueue;/**< 从内存中获取缓存数据的的队列 */
 }
@@ -19,10 +19,10 @@
 
 
 
-@implementation CJMemoryDiskCacheManager
+@implementation CJCacheManager
 
-+ (CJMemoryDiskCacheManager *)sharedInstance {
-    static CJMemoryDiskCacheManager *_sharedInstance = nil;
++ (CJCacheManager *)sharedInstance {
+    static CJCacheManager *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[self alloc] init];
@@ -51,7 +51,7 @@
     NSAssert(cacheData && cacheKey && relativeDirectoryPath, @"要缓存到磁盘的数据、地址等都不能为空");
     
     //保存到内存
-    [[CJMemoryCacheManager sharedInstance] cacheData:cacheData forCacheKey:cacheKey];
+    [[CJDataMemoryDictionaryManager sharedInstance] cacheData:cacheData forCacheKey:cacheKey];
     
     if (saveInDisk){
         CJCacheDataModel *cacheDataModel = [[CJCacheDataModel alloc] init];
@@ -69,9 +69,9 @@
 
 /** 数据的保存 */
 - (void)cacheDataToDisk:(CJCacheDataModel *)cacheDataModel {
-    [[CJDiskCacheManager sharedCacheManager] saveData:cacheDataModel.data
-                                                 withName:cacheDataModel.name
-                                  toRelativeDirectoryPath:cacheDataModel.cacheToRelativeDirectoryPath];
+    [CJDataDiskManager saveFileData:cacheDataModel.data
+                       withFileName:cacheDataModel.name
+            toRelativeDirectoryPath:cacheDataModel.cacheToRelativeDirectoryPath];
 }
 
 
@@ -79,7 +79,7 @@
 /** 完整的描述请参见文件头部 */
 - (NSData *)getCacheDataByCacheKey:(NSString *)cacheKey diskRelativeDirectoryPath:(NSString *)relativeDirectoryPath
 {
-    NSData *cacheData = [[CJMemoryCacheManager sharedInstance] getMemoryCacheDataByCacheKey:cacheKey];
+    NSData *cacheData = [[CJDataMemoryDictionaryManager sharedInstance] getMemoryCacheDataByCacheKey:cacheKey];
     if (cacheData != nil) {
         return cacheData;
         
@@ -92,7 +92,7 @@
         NSString *absoluteFilePath = [NSHomeDirectory() stringByAppendingPathComponent:relativeFilePath];
         cacheData = [[NSData alloc] initWithContentsOfFile:absoluteFilePath];
         if (cacheData){ //之前内存中可能由于清理内存等缘故，该数据所对的key已被清理，所以当能从磁盘中读到该key所对的数据时，记得顺便存到内存中，因为下次可以从内存中直接读取数据，那样更快
-            [[CJMemoryCacheManager sharedInstance] cacheData:cacheData forCacheKey:cacheKey];
+            [[CJDataMemoryDictionaryManager sharedInstance] cacheData:cacheData forCacheKey:cacheKey];
         }
         return cacheData;
     }
@@ -100,7 +100,7 @@
 
 /** 完整的描述请参见文件头部 */
 - (void)removeCacheForCacheKey:(NSString *)cacheKey diskRelativeDirectoryPath:(NSString *)relativeDirectoryPath {
-    [[CJMemoryCacheManager sharedInstance] removeMemoryCacheForCacheKey:cacheKey];
+    [[CJDataMemoryDictionaryManager sharedInstance] removeMemoryCacheForCacheKey:cacheKey];
     
     NSString *relativeFilePath = [relativeDirectoryPath stringByAppendingPathComponent:cacheKey];
     NSString *absoluteFilePath = [NSHomeDirectory() stringByAppendingPathComponent:relativeFilePath];
@@ -109,7 +109,7 @@
 
 /** 完整的描述请参见文件头部 */
 - (void)clearMemoryCacheAndDiskCache:(NSString *)relativeDirectoryPath {
-    [[CJMemoryCacheManager sharedInstance] clearMemoryCache];
+    [[CJDataMemoryDictionaryManager sharedInstance] clearMemoryCache];
     
     NSString *absoluteDirectoryPath = [NSHomeDirectory() stringByAppendingPathComponent:relativeDirectoryPath];
     [[NSFileManager defaultManager] removeItemAtPath:absoluteDirectoryPath error:nil];

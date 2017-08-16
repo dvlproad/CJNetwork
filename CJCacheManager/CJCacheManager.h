@@ -1,17 +1,17 @@
 //
-//  CJMemoryDiskCacheManager.h
+//  CJCacheManager.h
 //  CommonAFNUtilDemo
 //
 //  Created by lichq on 7/31/15.
 //  Copyright (c) 2015 ciyouzen. All rights reserved.
 //
 
-#import "CJMemoryCacheManager.h"
-#import "CJDiskCacheManager.h"
+#import "CJDataMemoryDictionaryManager.h"
+#import "CJDataDiskManager.h"
 
-@interface CJMemoryDiskCacheManager : NSObject
+@interface CJCacheManager : NSObject
 
-+ (CJMemoryDiskCacheManager *)sharedInstance;
++ (CJCacheManager *)sharedInstance;
 
 /**
  *  保存数据到内存

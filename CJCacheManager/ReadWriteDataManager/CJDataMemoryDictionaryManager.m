@@ -1,14 +1,14 @@
 //
-//  CJMemoryCacheManager.m
-//  CommonAFNUtilDemo
+//  CJDataMemoryDictionaryManager.m
+//  CommonFMDBUtilDemo
 //
-//  Created by lichq on 7/31/15.
-//  Copyright (c) 2015 ciyouzen. All rights reserved.
+//  Created by ciyouzen on 7/31/15.
+//  Copyright (c) 2015 dvlproad. All rights reserved.
 //
 
-#import "CJMemoryCacheManager.h"
+#import "CJDataMemoryDictionaryManager.h"
 
-@interface CJMemoryCacheManager () {
+@interface CJDataMemoryDictionaryManager () {
     
 }
 @property (nonatomic, strong) NSMutableDictionary *cacheDictionary; /**< 所有缓存的数据() */
@@ -21,14 +21,20 @@
 
 
 
-@implementation CJMemoryCacheManager
+@implementation CJDataMemoryDictionaryManager
 
-+ (CJMemoryCacheManager *)sharedInstance {
-    static CJMemoryCacheManager *_sharedInstance = nil;
++ (CJDataMemoryDictionaryManager *)sharedInstance {
+    static CJDataMemoryDictionaryManager *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[self alloc] init];
     });
+    
+    //当收到内存警报时，清空内存缓存
+    [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidReceiveMemoryWarningNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+//        [_sharedInstance removeAllObjects];
+    }];
+    
     return _sharedInstance;
 }
 
