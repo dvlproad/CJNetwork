@@ -14,7 +14,7 @@
                                         success:(void(^)(BOOL isLastest, NSString *app_trackViewUrl))success
                                         failure:(void(^)(void))failure {
     
-    NSString *Url = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", appid]; //你的应用程序的ID,如587767923
+    NSString *Url = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@", appid]; //你的应用程序的ID,如587767923
     NSDictionary *parameters = nil;
     
     NSURLSessionDataTask *URLSessionDataTask =

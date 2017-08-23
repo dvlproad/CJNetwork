@@ -26,6 +26,10 @@ Pod::Spec.new do |s|
     ss.dependency 'AFNetworking', '~> 3.1.0'
   end
 
+  s.subspec 'CJRequestUtil' do |ss|
+    ss.source_files = "CJNetwork/CJRequestUtil/**/*.{h,m}"
+  end
+
   s.subspec 'CJCacheManager' do |ss|
     ss.source_files = "CJCacheManager/**/*.{h,m}"
   end
@@ -49,10 +53,6 @@ Pod::Spec.new do |s|
   s.subspec 'AFHTTPSessionManager+CJUploadFile' do |ss|
     ss.source_files = "CJNetwork/AFHTTPSessionManager+CJUploadFile/**/*.{h,m}"
     ss.dependency 'CJNetwork/CJNetworkMonitor'
-  end
-
-  s.subspec 'URLRequestUtil' do |ss|
-    ss.source_files = "CJNetwork/URLRequestUtil/**/*.{h,m}"
   end
 
 end

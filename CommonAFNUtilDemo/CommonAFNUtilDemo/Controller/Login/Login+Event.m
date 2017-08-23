@@ -17,6 +17,39 @@
 @implementation Login (Event)
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
+    
+    NSDictionary *params = @{@"uid":            @"13141",
+                             @"access_token":   @"dfdfd"};
+    
+    NSMutableString *postString = [NSMutableString new];
+    for (NSString *key in [params allKeys]) {
+        id obj = [params valueForKey:key];
+        if ([obj isKindOfClass:[NSString class]]) {
+            if (postString.length!=0) {
+                [postString appendString:@"&"];
+            }
+            [postString appendFormat:@"%@=%@",key,obj];
+        }
+        if ([obj isKindOfClass:[NSArray class]]) {
+            for (NSString *value in obj) {
+                if (postString.length!=0) {
+                    [postString appendString:@"&"];
+                }
+                [postString appendFormat:@"%@=%@",key,value];
+            }
+        }
+    }
+    
+    
+    NSData *bodyData1 = [postString dataUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"bodyData1 = %@", bodyData1);
+    NSLog(@"postString = %@", postString);
+    
+    //打印JSONObject
+    NSData *bodyData2 = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *postString2 = [[NSString alloc] initWithData:bodyData2 encoding:NSUTF8StringEncoding];
+    NSLog(@"bodyData2 = %@", bodyData2);
+    NSLog(@"postString2 = %@", postString2);
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
