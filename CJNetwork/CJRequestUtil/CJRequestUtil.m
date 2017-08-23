@@ -19,12 +19,14 @@
     
     NSData * (^encryptBlock)(NSDictionary *requestParmas) = ^NSData *(NSDictionary *requestParmas) {
         //TODO:详细的app中需要实现的方法
-        return nil;
+        NSData *bodyData = nil;
+        return bodyData;
     };
     
     NSDictionary * (^decryptBlock)(NSString *responseString) = ^NSDictionary *(NSString *responseString) {
         //TODO:详细的app中需要实现的方法
-        return nil;
+        NSDictionary *responseObject = nil;
+        return responseObject;
     };
     
     [self cj_postUrl:Url params:params encryptBlock:encryptBlock decryptBlock:decryptBlock success:success failure:failure];
