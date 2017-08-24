@@ -10,8 +10,9 @@
 
 @interface CJRequestUtil : NSObject
 
+#pragma mark - POST请求
 /*
-//TODO:详细的app中需要进一步实现的通用方法(详细的看.m文件)
+//TODO:在详细的app中需要进一步实现的通用方法(详细的看.m文件)
 + (void)cj_postUrl:(NSString *)Url
             params:(id)params
            encrypt:(BOOL)encrypt
@@ -36,6 +37,24 @@
       decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
            success:(void (^)(NSDictionary *responseObject))success
            failure:(void (^)(NSError *error))failure;
+
+
+
+
+
+#pragma mark - GET请求
+/**
+ *  发起GET请求
+ *
+ *  @param Url          Url
+ *  @param params       params
+ *  @param success      请求成功的回调failure
+ *  @param failure      请求失败的回调failure
+ */
++ (void)cj_getUrl:(NSString *)Url
+           params:(id)params
+          success:(void (^)(NSDictionary *responseObject))success
+          failure:(void (^)(NSError *error))failure;
 
 
 @end
