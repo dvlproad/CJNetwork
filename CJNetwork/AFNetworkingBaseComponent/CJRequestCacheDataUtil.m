@@ -10,9 +10,7 @@
 
 #import "CJCacheManager.h"
 
-#import "NSDictionary+Convert.h"
-#import "NSData+Convert.h"
-#import "NSString+MD5.h"
+#import "CJObjectConvertUtil.h"
 
 static NSString *relativeDirectoryPath = @"CJNetworkCache";
 
@@ -35,7 +33,7 @@ static NSString *relativeDirectoryPath = @"CJNetworkCache";
         } else {
             //TODO:responseObject(json) 转data
             NSDictionary *dic = [NSDictionary dictionaryWithDictionary:responseObject];
-            NSData *cacheData = [dic convertToData];
+            NSData *cacheData = [CJObjectConvertUtil dataFromDictionary:dic];
             
             [[CJCacheManager sharedInstance] cacheData:cacheData forCacheKey:requestCacheKey andSaveInDisk:YES withDiskRelativeDirectoryPath:relativeDirectoryPath];
         }
@@ -83,7 +81,7 @@ static NSString *relativeDirectoryPath = @"CJNetworkCache";
         //NSLog(@"读到缓存数据，但不保证该数据是最新的，因为网络还是不给力");
         
         if (success) {
-            NSDictionary *responseObject = [requestCacheData convertToDictionary];
+            NSDictionary *responseObject = [CJObjectConvertUtil dictionaryFromData:requestCacheData];
             success(task, responseObject, fromRequestCacheData);
         }
         return YES;
@@ -115,8 +113,8 @@ static NSString *relativeDirectoryPath = @"CJNetworkCache";
     [mutableDictionary addEntriesFromDictionary:parameters];
     [mutableDictionary setObject:Url forKey:@"cjRequestUrl"];
     
-    NSString *string = [mutableDictionary convertToString];
-    NSString *requestCacheKey = [string MD5];
+    NSString *string = [CJObjectConvertUtil stringFromDictionary:mutableDictionary];
+    NSString *requestCacheKey = [CJObjectConvertUtil MD5StringFromString:string];
     
     return requestCacheKey;
 }

@@ -49,7 +49,9 @@ NSString * ijinbuBaseUrl = @"http://www.ijinbu.com";
     [requestSerializer setValue:@"2" forHTTPHeaderField:@"appType"];
     //NSString *ver = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleVersionKey];
     [requestSerializer setValue:HPServerAPIVer forHTTPHeaderField:@"ver"];
-    [requestSerializer setValue:[[NSString stringWithFormat:@"%@123456", deviceId] MD5] forHTTPHeaderField:@"sign"];
+    
+    NSString *md5String = [CJObjectConvertUtil MD5StringFromString:[NSString stringWithFormat:@"%@123456", deviceId]];
+    [requestSerializer setValue:md5String forHTTPHeaderField:@"sign"];
     [requestSerializer setValue:[NSBundle mainBundle].bundleIdentifier forHTTPHeaderField:@"bundleId"];
     manager.requestSerializer  = requestSerializer;
     

@@ -13,7 +13,9 @@
 #import "CJRequestCacheDataUtil.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
-
+/**
+ *  AFN的请求方法(包含缓存方法)
+ */
 @interface AFHTTPSessionManager (CJCategory)
 
 /**

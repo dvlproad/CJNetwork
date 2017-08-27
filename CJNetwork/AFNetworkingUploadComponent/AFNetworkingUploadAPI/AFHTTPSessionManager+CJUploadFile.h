@@ -9,6 +9,10 @@
 #import <AFNetworking/AFNetworking.h>
 #import "CJUploadItemModel.h"
 
+
+/**
+ *  文件的上传请求方法(使用AFN)
+ */
 @interface AFHTTPSessionManager (CJUploadFile)
 
 - (nullable NSURLSessionDataTask *)cj_postUploadUrl:(nullable NSString *)Url

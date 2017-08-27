@@ -94,7 +94,9 @@
     {
         //        [string appendString:@"appKey=9a628966c0f3ff45cf3c68a92ea0ec2a"];
     }
-    return [string MD5];
+    
+    NSString *md5String = [CJObjectConvertUtil MD5StringFromString:string];
+    return md5String;
 #endif
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "IjinbuNetworkClient+Login.h"
-#import "NSString+MD5.h"
+#import "CJObjectConvertUtil.h"
 
 @implementation IjinbuNetworkClient (Login)
 
@@ -18,7 +18,7 @@
 {
     NSString *Url = @"ijinbu/app/teacherLogin/login";
     NSDictionary *params = @{@"userAccount":name, //测试:name:18020721201 pasd:123456
-                             @"userPwd":    [pasd MD5],
+                             @"userPwd":    [CJObjectConvertUtil MD5StringFromString:pasd],
                              @"loginType":  @(0)
                              };
     

@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  系统的请求方法
+ */
 @interface CJRequestUtil : NSObject
 
 #pragma mark - POST请求
