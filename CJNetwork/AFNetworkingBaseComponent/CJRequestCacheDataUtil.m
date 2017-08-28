@@ -1,9 +1,9 @@
 //
 //  CJRequestCacheDataUtil.m
-//  CommonAFNUtilDemo
+//  CJNetworkDemo
 //
 //  Created by dvlproad on 2017/3/29.
-//  Copyright © 2017年 ciyouzen. All rights reserved.
+//  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
 #import "CJRequestCacheDataUtil.h"

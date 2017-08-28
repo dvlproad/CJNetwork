@@ -1,9 +1,9 @@
 //
 //  NSURLSessionTask+CJErrorMessage.h
-//  CommonAFNUtilDemo
+//  CJNetworkDemo
 //
 //  Created by dvlproad on 2016/12/20.
-//  Copyright © 2016年 ciyouzen. All rights reserved.
+//  Copyright © 2016年 dvlproad. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

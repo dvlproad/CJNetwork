@@ -14,15 +14,15 @@
 /**
  *  保存文件到以home相对的相对路径下
  *
- *  @param data                     文件数据
- *  @param fileName                 文件以什么名字保存
- *  @param relativeDirectoryPath    文件保存的相对路径
+ *  @param data                         文件数据
+ *  @param fileName                     文件以什么名字保存
+ *  @param localRelativDirectoryPath    文件保存的相对路径
  *
  *  return 是否保存成功
  */
 + (BOOL)saveFileData:(NSData *)data
         withFileName:(NSString *)fileName
-toRelativeDirectoryPath:(NSString *)localRelativePathrelativeDirectoryPath;
+toRelativeDirectoryPath:(NSString *)localRelativDirectoryPath;
 
 
 /**

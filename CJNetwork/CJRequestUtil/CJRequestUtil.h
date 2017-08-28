@@ -1,9 +1,9 @@
 //
 //  CJRequestUtil.h
-//  CommonAFNUtilDemo
+//  CJNetworkDemo
 //
 //  Created by dvlproad on 15/11/22.
-//  Copyright © 2015年 ciyouzen. All rights reserved.
+//  Copyright © 2015年 dvlproad. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

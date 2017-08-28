@@ -1,9 +1,9 @@
 //
 //  CJObjectConvertUtil.h
-//  CommonAFNUtilDemo
+//  CJNetworkDemo
 //
-//  Created by 李超前 on 2017/8/28.
-//  Copyright © 2017年 dvlproad. All rights reserved.
+//  Created by ciyouzen on 6/25/15.
+//  Copyright (c) 2015 dvlproad. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

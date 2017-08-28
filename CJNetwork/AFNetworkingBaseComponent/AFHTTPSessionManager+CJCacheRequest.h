@@ -1,9 +1,9 @@
 //
 //  AFHTTPSessionManager+CJCacheRequest.h
-//  CommonAFNUtilDemo
+//  CJNetworkDemo
 //
-//  Created by lichq on 6/25/15.
-//  Copyright (c) 2015 ciyouzen. All rights reserved.
+//  Created by ciyouzen on 6/25/15.
+//  Copyright (c) 2015 dvlproad. All rights reserved.
 //
 
 #import <AFNetworking/AFNetworking.h>
@@ -18,7 +18,7 @@
 @interface AFHTTPSessionManager (CJCategory) {
     
 }
-@property (nonatomic, copy) void (^cjNoNetworkHandle)(void);    /**< 没有网络时候要执行的操作(添加此此代码块，解除对SVProgressHUD的依赖) */
+@property (nonatomic, copy) void (^_Nullable cjNoNetworkHandle)(void);    /**< 没有网络时候要执行的操作(添加此此代码块，解除对SVProgressHUD的依赖) */
 
 /**
  *  POST请求

@@ -1,9 +1,9 @@
 //
 //  CJNetworkDefine.h
-//  CommonAFNUtilDemo
+//  CJNetworkDemo
 //
 //  Created by dvlproad on 2017/4/5.
-//  Copyright © 2017年 ciyouzen. All rights reserved.
+//  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
 #ifndef CJNetworkDefine_h
