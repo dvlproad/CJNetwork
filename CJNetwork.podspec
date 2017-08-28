@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CJNetwork"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "一个AFNetworking应用的封装"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.1.0" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.1.1" }
   s.source_files  = "CJNetwork/*.{h,m}"
   s.frameworks = 'UIKit'
 
@@ -50,7 +50,6 @@ Pod::Spec.new do |s|
 
     ss.dependency 'CJNetwork/CJNetworkMonitor'
     ss.dependency 'CJNetwork/CJCacheManager'
-    ss.dependency 'SVProgressHUD', '~> 1.1.3'
   end
 
   # 版本检查（子类会自称父类的s.dependency）

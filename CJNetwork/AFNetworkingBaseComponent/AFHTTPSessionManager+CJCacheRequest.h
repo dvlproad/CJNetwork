@@ -11,12 +11,14 @@
 #import "CJNetworkDefine.h"
 
 #import "CJRequestCacheDataUtil.h"
-#import <SVProgressHUD/SVProgressHUD.h>
 
 /**
  *  AFN的请求方法(包含缓存方法)
  */
-@interface AFHTTPSessionManager (CJCategory)
+@interface AFHTTPSessionManager (CJCategory) {
+    
+}
+@property (nonatomic, copy) void (^cjNoNetworkHandle)(void);    /**< 没有网络时候要执行的操作(添加此此代码块，解除对SVProgressHUD的依赖) */
 
 /**
  *  POST请求

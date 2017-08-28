@@ -9,6 +9,8 @@
 #import "UploadViewController.h"
 #import "IjinbuNetworkClient+UploadFile.h"
 
+#import <SVProgressHUD/SVProgressHUD.h>
+
 @interface UploadViewController ()
 
 @end

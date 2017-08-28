@@ -14,7 +14,7 @@
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright (c) 2011&#8211;2016 Alamofire Software Foundation (http://alamofire.org/)
+			<string>Copyright (c) 2011–2016 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -213,7 +213,7 @@ distribution.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright (c) 2011-2014 Sam Vermette
+			<string>Copyright (c) 2011-2016 Sam Vermette, Tobias Tiemerding and contributors.
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -238,7 +238,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 A different license may apply to other resources included in this package, 
 including Freepik Icons. Please consult their 
-respective headers for the terms of their individual licenses.</string>
+respective headers for the terms of their individual licenses.
+</string>
 			<key>License</key>
 			<string>MIT</string>
 			<key>Title</key>

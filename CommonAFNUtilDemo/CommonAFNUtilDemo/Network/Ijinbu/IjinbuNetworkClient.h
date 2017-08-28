@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFHTTPSessionManager+CJCacheRequest.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #import "IjinbuResponseModel.h"
 

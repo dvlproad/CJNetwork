@@ -6,7 +6,7 @@ target 'CommonAFNUtilDemo' do
   pod 'CocoaAsyncSocket', '~> 7.4.1'
   
   pod 'MBProgressHUD', '~> 0.9.1'
-  pod 'SVProgressHUD', '~> 1.1.3'
+  pod 'SVProgressHUD', '~> 2.1.2'
   
   pod 'JSONModel', '~> 1.1.0'
   pod 'Mantle', '~> 1.5.8'

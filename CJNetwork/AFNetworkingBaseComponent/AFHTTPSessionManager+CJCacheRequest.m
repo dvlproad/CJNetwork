@@ -7,8 +7,21 @@
 //
 
 #import "AFHTTPSessionManager+CJCacheRequest.h"
+#import <objc/runtime.h>
 
 @implementation AFHTTPSessionManager (CJCategory)
+
+#pragma mark - runtime
+static NSString *cjNoNetworkHandleKey = @"cjNoNetworkHandleKey";
+
+- (void (^)(void))cjNoNetworkHandle {
+    return objc_getAssociatedObject(self, (__bridge const void *)(cjNoNetworkHandleKey));
+}
+
+- (void)setCjNoNetworkHandle:(void (^)(void))cjNoNetworkHandle {
+    objc_setAssociatedObject(self, (__bridge const void *)(cjNoNetworkHandleKey), cjNoNetworkHandle, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
 
 /** 完整的描述请参见文件头部 */
 - (nullable NSURLSessionDataTask *)cj_postRequestUrl:(nullable NSString *)Url
@@ -80,7 +93,12 @@
 
 #pragma mark - 私有方法
 - (void)hud_showNoNetwork {
-    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"网络不给力", nil)];
+    if (self.cjNoNetworkHandle) {
+        self.cjNoNetworkHandle();
+        //附：cjNoNetworkHandle一般为[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"网络不给力", nil)];
+    } else {
+        NSLog(@"网络不给力");
+    }
 }
 
 

@@ -31,6 +31,9 @@
     NSLog(@"params = %@", params);
     
     AFHTTPSessionManager *manager = [IjinbuHTTPSessionManager sharedInstance];
+    [manager setCjNoNetworkHandle:^{
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"网络不给力", nil)];
+    }];
     
     NSString *sign = [self signWithParams:params path:nil];
     NSLog(@"sign = %@", sign);
