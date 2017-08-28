@@ -91,6 +91,9 @@
             if (failure) {
                 failure(error);
             }
+            
+            NSString *errorMessage = [self getErrorMessageFromResponse:response];
+            NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, errorMessage);
         }
     }];
     [task resume];
@@ -131,6 +134,9 @@
             if (failure) {
                 failure(error);
             }
+            
+            NSString *errorMessage = [self getErrorMessageFromResponse:response];
+            NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, errorMessage);
         }
     }];
     [task resume];
@@ -192,6 +198,53 @@
     
     NSString *fullUrlForGet = [NSString stringWithFormat:@"%@%@", requestUrl, requestParmasString];
     return fullUrlForGet;
+}
+
+
+/**
+ *  从Response中获取错误信息
+ *  400 (语法错误)　　401 (未通过验证)　　403 (拒绝请求)　　404 (找不到请求的页面)　　500 (服务器内部错误)
+ *
+ */
++ (NSString *)getErrorMessageFromResponse:(NSURLResponse *)originResponse {
+    NSString *errorMessage = @"";
+    
+    NSHTTPURLResponse *response = (NSHTTPURLResponse *)originResponse;
+    if (response == nil) {
+        errorMessage = NSLocalizedString(@"无法连接服务器", nil);
+        return errorMessage;
+    }
+    
+    NSInteger statusCode = response.statusCode;//参照服务器状态码大全
+    switch (statusCode) {
+        case 400:{
+            errorMessage = NSLocalizedString(@"语法错误", nil);
+            break;
+        }
+        case 401:{
+            errorMessage = NSLocalizedString(@"未通过验证", nil);
+            break;
+        }
+        case 403:{
+            errorMessage = NSLocalizedString(@"拒绝请求", nil);
+            break;
+        }
+        case 404:{
+            errorMessage = NSLocalizedString(@"找不到请求的页面", nil);
+            break;
+        }
+        case 500:{
+            errorMessage = NSLocalizedString(@"服务器内部错误", nil);
+            break;
+        }
+        default:{
+            //errorMessage = task.responseString;
+            errorMessage = @"";
+            break;
+        }
+    }
+    
+    return errorMessage;
 }
 
 
