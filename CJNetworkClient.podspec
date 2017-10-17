@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.1.1" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.1.2" }
   s.source_files  = "CJNetwork/*.{h,m}"
   #s.resources = "CJFile/{png}"
   
