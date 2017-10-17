@@ -1,8 +1,8 @@
 //
 //  IjinbuSession.m
-//  CommonAFNUtilDemo
+//  CJNetworkDemo
 //
-//  Created by dvlproad on 2017/4/6.
+//  Created by ciyouzen on 2017/4/6.
 //  Copyright © 2017年 ciyouzen. All rights reserved.
 //
 

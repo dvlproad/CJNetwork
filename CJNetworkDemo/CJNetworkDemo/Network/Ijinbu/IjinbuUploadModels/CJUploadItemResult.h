@@ -2,7 +2,7 @@
 //  CJUploadItemResult.h
 //  CJNetworkDemo
 //
-//  Created by dvlproad on 2017/1/20.
+//  Created by ciyouzen on 2017/1/20.
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 

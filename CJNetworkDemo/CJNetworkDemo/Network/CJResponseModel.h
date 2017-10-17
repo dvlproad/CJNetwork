@@ -1,8 +1,8 @@
 //
 //  CJResponseModel.h
-//  CommonAFNUtilDemo
+//  CJNetworkDemo
 //
-//  Created by dvlproad on 2016/12/18.
+//  Created by ciyouzen on 2016/12/18.
 //  Copyright © 2016年 ciyouzen. All rights reserved.
 //
 

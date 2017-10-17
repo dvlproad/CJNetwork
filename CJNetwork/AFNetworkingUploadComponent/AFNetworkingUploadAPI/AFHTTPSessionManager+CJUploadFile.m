@@ -2,7 +2,7 @@
 //  AFHTTPSessionManager+CJUploadFile.m
 //  CJNetworkDemo
 //
-//  Created by dvlproad on 2016/10/5.
+//  Created by ciyouzen on 2016/10/5.
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 

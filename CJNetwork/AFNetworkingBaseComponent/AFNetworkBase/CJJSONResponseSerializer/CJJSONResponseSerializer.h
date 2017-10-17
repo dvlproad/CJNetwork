@@ -2,7 +2,7 @@
 //  CJJSONResponseSerializer.h
 //  CJNetworkDemo
 //
-//  Created by dvlproad on 2016/12/19.
+//  Created by ciyouzen on 2016/12/19.
 //  Copyright © 2016年 dvlproad. All rights reserved.
 //
 

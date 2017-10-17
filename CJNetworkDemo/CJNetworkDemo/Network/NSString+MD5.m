@@ -1,8 +1,8 @@
 //
 //  NSString+MD5.m
-//  CommonAFNUtilDemo
+//  CJNetworkDemo
 //
-//  Created by lichq on 8/1/15.
+//  Created by ciyouzen on 8/1/15.
 //  Copyright (c) 2015 ciyouzen. All rights reserved.
 //
 

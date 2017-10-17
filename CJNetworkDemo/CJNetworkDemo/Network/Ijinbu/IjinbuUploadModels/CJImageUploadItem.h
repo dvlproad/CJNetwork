@@ -2,7 +2,7 @@
 //  CJImageUploadItem.h
 //  FileChooseViewDemo
 //
-//  Created by dvlproad on 2017/1/19.
+//  Created by ciyouzen on 2017/1/19.
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 

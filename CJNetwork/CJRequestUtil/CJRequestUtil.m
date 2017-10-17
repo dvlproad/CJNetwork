@@ -2,7 +2,7 @@
 //  CJRequestUtil.m
 //  CJNetworkDemo
 //
-//  Created by dvlproad on 15/11/22.
+//  Created by ciyouzen on 15/11/22.
 //  Copyright © 2015年 dvlproad. All rights reserved.
 //
 
@@ -32,18 +32,11 @@
 }
 */
 
-/**
- *  发起请求
- *
- *  @param Url          Url
- *  @param params       params
- *  @param encryptBlock 对请求的参数requestParmas加密的方法
- *  @param decryptBlock 对请求得到的responseString解密的方法
- *  @param success      请求成功的回调failure
- *  @param failure      请求失败的回调failure
- */
+
+/* 完整的描述请参见文件头部 */
 + (void)cj_postUrl:(NSString *)Url
             params:(id)params
+           encrypt:(BOOL)encrypt
       encryptBlock:(NSData * (^)(NSDictionary *requestParmas))encryptBlock
       decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
            success:(void (^)(NSDictionary *responseObject))success
@@ -51,9 +44,17 @@
 {
     NSURL *URL = [NSURL URLWithString:Url];
     
+    //将传给服务器的参数用字符串打印出来
+    NSString *allParamsJsonString = nil;
+    if ([NSJSONSerialization isValidJSONObject:params]) {
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+        allParamsJsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:URL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     NSData *bodyData = nil;
-    if (encryptBlock) {
+    if (encrypt && encryptBlock) {
         //bodyData = [CJEncryptAndDecryptTool encryptParmas:params];
         bodyData = encryptBlock(params);
         
@@ -69,7 +70,7 @@
         
         if (error == nil) {
             NSDictionary *responseObject = nil;
-            if (decryptBlock) {
+            if (encrypt && decryptBlock) {
                 NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                 
                 //responseObject = [CJEncryptAndDecryptTool decryptJsonString:responseString];
@@ -79,7 +80,7 @@
                 responseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             }
             
-            NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, responseObject);
+            NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n\n传给服务器的json参数:%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, responseObject, allParamsJsonString);
             
             if (success) {
                 success(responseObject);
@@ -93,7 +94,7 @@
             }
             
             NSString *errorMessage = [self getErrorMessageFromResponse:response];
-            NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, errorMessage);
+            NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n\n传给服务器的json参数:%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, errorMessage, allParamsJsonString);
         }
     }];
     [task resume];
