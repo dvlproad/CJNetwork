@@ -19,12 +19,12 @@
  *
  *  @param showImage                显示的图片
  *  @param imageLocalRelativePath   图片的本地相对路径
- *  @param uploadItems              该item需要执行的上传
+ *  @param uploadFileModels              该item需要执行的上传
  *
  *  return CJImageUploadItem
  */
 - (instancetype)initWithShowImage:(UIImage *)showImage
            imageLocalRelativePath:(NSString *)imageLocalRelativePath
-                      uploadItems:(NSArray<CJUploadItemModel *> *)uploadItems;
+                      uploadFileModels:(NSArray<CJUploadFileModel *> *)uploadFileModels;
 
 @end

@@ -10,12 +10,12 @@
 #import <Mantle/Mantle.h>
 
 #import "CJBaseUploadItem.h"
-#import "CJUploadItemModel.h"
+#import "CJUploadFileModel.h"
 
 @interface IjinbuUploadItemRequest : MTLModel
 
 //可选
 @property (nonatomic, assign) NSInteger uploadItemToWhere; /** 可选：上传到哪里(一个项目中可能有好几个地方都要上传) */
-@property (nonatomic, strong) NSArray *uploadItems;
+@property (nonatomic, strong) NSArray *uploadFileModels;
 
 @end

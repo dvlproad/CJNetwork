@@ -21,7 +21,7 @@
  *  @param manager      manager
  *  @param Url          Url
  *  @param parameters   parameters
- *  @param uploadItems  要上传的数据组uploadItems
+ *  @param uploadFileModels  要上传的数据组uploadFileModels
  *  @param uploadInfoChangeBlock    上传请求的时刻信息变化后(正在上传、上传完成都会导致其变化)要执行的操作
  *  @param dealResopnseForUploadInfoBlock   上传结束后从response中获取上传请求的该时刻信息(正在上传的时刻系统可自动获取)
  */
@@ -30,7 +30,7 @@
       uploadRequestConfigureByManager:(AFHTTPSessionManager *)manager
                                   Url:(NSString *)Url
                            parameters:(id)parameters
-                          uploadItems:(NSArray<CJUploadItemModel *> *)uploadItems
+                          uploadFileModels:(NSArray<CJUploadFileModel *> *)uploadFileModels
                 uploadInfoChangeBlock:(void(^)(CJBaseUploadItem *saveUploadInfoToItem))uploadInfoChangeBlock
        dealResopnseForUploadInfoBlock:(CJUploadInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock;
 

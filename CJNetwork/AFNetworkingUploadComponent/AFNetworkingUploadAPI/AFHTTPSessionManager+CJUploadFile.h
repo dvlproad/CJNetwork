@@ -7,7 +7,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#import "CJUploadItemModel.h"
+#import "CJUploadFileModel.h"
 
 
 @interface AFHTTPSessionManager (CJUploadFile)
@@ -17,7 +17,7 @@
  *
  *  @param Url              Url
  *  @param parameters       parameters
- *  @param uploadItems      要上传的数据组uploadItems
+ *  @param uploadFileModels 要上传的数据组uploadFileModels
  *  @param uploadProgress   uploadProgress
  *  @param success          上传成功执行的回调
  *  @param failure          上传失败执行的回调
@@ -26,7 +26,7 @@
  */
 - (nullable NSURLSessionDataTask *)cj_postUploadUrl:(nullable NSString *)Url
                                          parameters:(nullable id)parameters
-                                        uploadItems:(nullable NSArray<CJUploadItemModel *> *)uploadItems
+                                   uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                             success:(nullable void (^)(NSURLSessionDataTask * _Nonnull, id _Nonnull))success
                                             failure:(nullable void (^)(NSURLSessionDataTask *_Nonnull, NSError *_Nonnull))failure;

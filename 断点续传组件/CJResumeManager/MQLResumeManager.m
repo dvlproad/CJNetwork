@@ -35,7 +35,7 @@ typedef void (^progressBlock)();
 /**
  *  设置进度回调block
  *
- *  @param progress
+ *  @param progress progress
  */
 -(void)setProgressBlockWithProgress:(void (^)(long long totalReceivedContentLength, long long totalContentLength))progress;
 
@@ -76,7 +76,7 @@ typedef void (^progressBlock)();
 /**
  *  设置进度回调block
  *
- *  @param progress
+ *  @param progress progress
  */
 -(void)setProgressBlockWithProgress:(void (^)(long long totalReceivedContentLength, long long totalContentLength))progress{
     

@@ -1,13 +1,13 @@
 //
-//  CJUploadItemModel.m
+//  CJUploadFileModel.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2016/06/07.
 //  Copyright © 2016年 dvlproad. All rights reserved.
 //
 
-#import "CJUploadItemModel.h"
+#import "CJUploadFileModel.h"
 
-@implementation CJUploadItemModel
+@implementation CJUploadFileModel
 
 @end

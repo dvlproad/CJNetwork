@@ -15,7 +15,7 @@
 - (instancetype)initWithShowImage:(UIImage *)showImage
            imageLocalRelativePath:(NSString *)imageLocalRelativePath
            videoLocalRelativePath:(NSString *)videoLocalRelativePath
-                      uploadItems:(NSArray<CJUploadItemModel *> *)uploadItems
+                      uploadFileModels:(NSArray<CJUploadFileModel *> *)uploadFileModels
 {
     self = [super init];
     if (self) {
@@ -23,7 +23,7 @@
         
         self.imageLocalRelativePath = imageLocalRelativePath;
         self.videoLocalRelativePath = videoLocalRelativePath;
-        self.uploadItems = [NSMutableArray arrayWithArray:uploadItems];
+        self.uploadFileModels = [NSMutableArray arrayWithArray:uploadFileModels];
     }
     
     return self;

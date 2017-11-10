@@ -12,7 +12,7 @@
 
 - (nullable NSURLSessionDataTask *)cj_postUploadUrl:(nullable NSString *)Url
                                          parameters:(nullable id)parameters
-                                        uploadItems:(nullable NSArray<CJUploadItemModel *> *)uploadItems
+                                   uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                             success:(nullable void (^)(NSURLSessionDataTask * _Nonnull, id _Nonnull))success
                                             failure:(nullable void (^)(NSURLSessionDataTask *_Nonnull, NSError *_Nonnull))failure
@@ -20,11 +20,11 @@
     NSURLSessionDataTask *URLSessionDataTask =
     [self POST:Url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
     {
-        for (CJUploadItemModel *uploadItemModel in uploadItems) {
-            NSData *data = uploadItemModel.uploadItemData;
-            NSString *fileName = uploadItemModel.uploadItemName;
+        for (CJUploadFileModel *uploadFileModel in uploadFileModels) {
+            NSData *data = uploadFileModel.uploadItemData;
+            NSString *fileName = uploadFileModel.uploadItemName;
             
-            switch (uploadItemModel.uploadItemType) {
+            switch (uploadFileModel.uploadItemType) {
                 case CJUploadItemTypeImage:
                 {
                     if (!data) {

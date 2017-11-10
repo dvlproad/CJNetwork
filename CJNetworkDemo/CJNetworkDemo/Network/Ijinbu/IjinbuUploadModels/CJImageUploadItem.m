@@ -14,14 +14,14 @@
 /** 完整的描述请参见文件头部 */
 - (instancetype)initWithShowImage:(UIImage *)showImage
            imageLocalRelativePath:(NSString *)imageLocalRelativePath
-                      uploadItems:(NSArray<CJUploadItemModel *> *)uploadItems
+                      uploadFileModels:(NSArray<CJUploadFileModel *> *)uploadFileModels
 {
     self = [super init];
     if (self) {
         self.image = [self adjustImageWithImage:showImage];
         
         self.localRelativePath = imageLocalRelativePath;
-        self.uploadItems = [NSMutableArray arrayWithArray:uploadItems];
+        self.uploadFileModels = [NSMutableArray arrayWithArray:uploadFileModels];
     }
     
     return self;

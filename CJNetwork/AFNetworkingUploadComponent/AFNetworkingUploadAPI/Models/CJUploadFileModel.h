@@ -1,5 +1,5 @@
 //
-//  CJUploadItemModel.h
+//  CJUploadFileModel.h
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2016/06/07.
@@ -15,10 +15,10 @@ typedef NS_ENUM(NSUInteger, CJUploadItemType) {
 };
 
 /**
- *  上传的每个数据的模型
+ *  上传的每个数据的模型(在CJFile库中海油一个CJFileModel是针对路径的)
  *
  */
-@interface CJUploadItemModel : NSObject
+@interface CJUploadFileModel : NSObject
 
 @property (nonatomic, assign) CJUploadItemType uploadItemType;
 @property (nonatomic, strong) NSData *uploadItemData;  /**< 文件数据 */

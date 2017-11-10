@@ -16,7 +16,7 @@
       uploadRequestConfigureByManager:(AFHTTPSessionManager *)manager
                                   Url:(NSString *)Url
                            parameters:(id)parameters
-                          uploadItems:(NSArray<CJUploadItemModel *> *)uploadItems
+                          uploadFileModels:(NSArray<CJUploadFileModel *> *)uploadFileModels
                 uploadInfoChangeBlock:(void(^)(CJBaseUploadItem *saveUploadInfoToItem))uploadInfoChangeBlock
        dealResopnseForUploadInfoBlock:(CJUploadInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock
 {
@@ -27,7 +27,7 @@
         [AFNetworkingUploadUtil cj_UseManager:manager
                                 postUploadUrl:Url
                                    parameters:parameters
-                                  uploadItems:uploadItems
+                                  uploadFileModels:uploadFileModels
                          uploadInfoSaveInItem:saveUploadInfoToItem
                         uploadInfoChangeBlock:uploadInfoChangeBlock
                dealResopnseForUploadInfoBlock:dealResopnseForUploadInfoBlock];
@@ -47,7 +47,7 @@
         [AFNetworkingUploadUtil cj_UseManager:manager
                                 postUploadUrl:Url
                                    parameters:parameters
-                                  uploadItems:uploadItems
+                                  uploadFileModels:uploadFileModels
                          uploadInfoSaveInItem:saveUploadInfoToItem
                         uploadInfoChangeBlock:uploadInfoChangeBlock
                dealResopnseForUploadInfoBlock:dealResopnseForUploadInfoBlock];

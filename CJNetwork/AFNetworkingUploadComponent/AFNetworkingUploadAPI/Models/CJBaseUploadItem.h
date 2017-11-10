@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AFNetworking/AFNetworking.h>
 
-#import "CJUploadItemModel.h"
+#import "CJUploadFileModel.h"
 #import "CJUploadInfo.h"
 
 @interface CJBaseUploadItem : NSObject
@@ -17,7 +17,7 @@
 @property (nonatomic, assign) BOOL isNetworkItem;   /**< (新增)是否是网络文件，如果是则不用进行上传 */
 
 //必填参数
-@property (nonatomic, strong) NSMutableArray<CJUploadItemModel *> *uploadItems;
+@property (nonatomic, strong) NSMutableArray<CJUploadFileModel *> *uploadFileModels;
 
 @property (nonatomic, strong) NSURLSessionDataTask *operation;
 

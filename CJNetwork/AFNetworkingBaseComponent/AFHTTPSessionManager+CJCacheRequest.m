@@ -38,7 +38,7 @@ static NSString *cjNoNetworkHandleKey = @"cjNoNetworkHandleKey";
     }
     
     //网络可用
-    NSURLSessionDataTask *URLSessionDataTask = [self POST:Url parameters:parameters progress:uploadProgress success:success failure:success];
+    NSURLSessionDataTask *URLSessionDataTask = [self POST:Url parameters:parameters progress:uploadProgress success:success failure:failure];
     
     return URLSessionDataTask;
 }

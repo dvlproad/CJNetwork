@@ -23,22 +23,22 @@
 }
 
 - (IBAction)uploadFile:(id)sender {
-    NSMutableArray<CJUploadItemModel *> *uploadItems = [[NSMutableArray alloc] init];
+    NSMutableArray<CJUploadFileModel *> *uploadFileModels = [[NSMutableArray alloc] init];
     
     NSString *imageName = @"op1.jpg";
     UIImage *image = [UIImage imageNamed:@"op1.jpg"];
     NSData *imageData = UIImageJPEGRepresentation(image, 1);
     
     //图片
-    CJUploadItemModel *imageUploadModel = [[CJUploadItemModel alloc] init];
+    CJUploadFileModel *imageUploadModel = [[CJUploadFileModel alloc] init];
     imageUploadModel.uploadItemType = CJUploadItemTypeImage;
     imageUploadModel.uploadItemData = imageData;
     imageUploadModel.uploadItemName = imageName;
-    [uploadItems addObject:imageUploadModel];
+    [uploadFileModels addObject:imageUploadModel];
     
     IjinbuUploadItemRequest *uploadItemRequest = [[IjinbuUploadItemRequest alloc] init];
     uploadItemRequest.uploadItemToWhere = 16;
-    uploadItemRequest.uploadItems = uploadItems;
+    uploadItemRequest.uploadFileModels = uploadFileModels;
     
     [[IjinbuNetworkClient sharedInstance] requestUploadFile:uploadItemRequest progress:nil success:^(IjinbuResponseModel *responseModel) {
         [SVProgressHUD showSuccessWithStatus:@"上传成功"];

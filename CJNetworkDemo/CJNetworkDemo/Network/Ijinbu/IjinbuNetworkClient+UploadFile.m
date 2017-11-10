@@ -13,7 +13,7 @@
 @implementation IjinbuNetworkClient (UploadFile)
 
 /** 多个文件上传 */
-- (NSURLSessionDataTask *)requestUploadItems:(NSArray<CJUploadItemModel *> *)uploadItems
+- (NSURLSessionDataTask *)requestUploadItems:(NSArray<CJUploadFileModel *> *)uploadFileModels
                                      toWhere:(NSInteger)uploadItemToWhere
                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                      success:(HPSuccess)success
@@ -21,7 +21,7 @@
 {
     IjinbuUploadItemRequest *uploadItemRequest = [[IjinbuUploadItemRequest alloc] init];
     uploadItemRequest.uploadItemToWhere = uploadItemToWhere;
-    uploadItemRequest.uploadItems = uploadItems;
+    uploadItemRequest.uploadFileModels = uploadFileModels;
     
     NSURLSessionDataTask *requestOperation =
     [self requestUploadFile:uploadItemRequest progress:uploadProgress success:success failure:failure];
@@ -66,15 +66,15 @@
 {
     NSAssert(data != nil, @"Error：路径存在，但是获取数据为空");
     
-    CJUploadItemModel *uploadItemModel = [[CJUploadItemModel alloc] init];
-    uploadItemModel.uploadItemType = uploadItemType;
-    uploadItemModel.uploadItemData = data;
-    uploadItemModel.uploadItemName = fileName;
-    NSArray<CJUploadItemModel *> *uploadItems = @[uploadItemModel];
+    CJUploadFileModel *uploadFileModel = [[CJUploadFileModel alloc] init];
+    uploadFileModel.uploadItemType = uploadItemType;
+    uploadFileModel.uploadItemData = data;
+    uploadFileModel.uploadItemName = fileName;
+    NSArray<CJUploadFileModel *> *uploadFileModels = @[uploadFileModel];
     
     IjinbuUploadItemRequest *uploadItemRequest = [[IjinbuUploadItemRequest alloc] init];
     uploadItemRequest.uploadItemToWhere = uploadItemToWhere;
-    uploadItemRequest.uploadItems = uploadItems;
+    uploadItemRequest.uploadFileModels = uploadFileModels;
     
     NSURLSessionDataTask *requestOperation =
     [self requestUploadFile:uploadItemRequest progress:nil success:success failure:failure];
@@ -93,11 +93,11 @@
     
     NSString *Url = API_BASE_Url_ijinbu(@"ijinbu/app/public/batchUpload");
     NSDictionary *parameters = @{@"uploadType": @(request.uploadItemToWhere)};
-    NSArray<CJUploadItemModel *> *uploadItems = request.uploadItems;
+    NSArray<CJUploadFileModel *> *uploadFileModels = request.uploadFileModels;
     NSLog(@"Url = %@", Url);
     NSLog(@"params = %@", parameters);
     
-    return [manager cj_postUploadUrl:Url parameters:parameters uploadItems:uploadItems progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
+    return [manager cj_postUploadUrl:Url parameters:parameters uploadFileModels:uploadFileModels progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
         IjinbuResponseModel *responseModel = [MTLJSONAdapter modelOfClass:[IjinbuResponseModel class] fromJSONDictionary:responseObject error:nil];
         if (success) {
             success(responseModel);

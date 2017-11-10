@@ -23,14 +23,14 @@
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    //-->叮当
+    // -->叮当
     manager.requestSerializer  = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
     NSMutableSet * muSet = [[NSMutableSet alloc]initWithSet:manager.responseSerializer.acceptableContentTypes];
     [muSet addObject:@"text/html"];
     manager.responseSerializer.acceptableContentTypes = muSet;
-    //<--叮当
+    // <--叮当
     
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 10.f;

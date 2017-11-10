@@ -15,7 +15,7 @@
 + (NSURLSessionDataTask *)cj_UseManager:(AFHTTPSessionManager *)manager
                           postUploadUrl:(NSString *)Url
                              parameters:(id)parameters
-                            uploadItems:(NSArray<CJUploadItemModel *> *)uploadItems
+                       uploadFileModels:(NSArray<CJUploadFileModel *> *)uploadFileModels
                    uploadInfoSaveInItem:(CJBaseUploadItem *)saveUploadInfoToItem
                   uploadInfoChangeBlock:(void(^)(CJBaseUploadItem *saveUploadInfoToItem))uploadInfoChangeBlock
          dealResopnseForUploadInfoBlock:(CJUploadInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock
@@ -56,7 +56,7 @@
     };
     
     
-    return [manager cj_postUploadUrl:Url parameters:parameters uploadItems:uploadItems progress:uploadingBlock success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
+    return [manager cj_postUploadUrl:Url parameters:parameters uploadFileModels:uploadFileModels progress:uploadingBlock success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
         if (dealResopnseForUploadInfoBlock) {
             CJUploadInfo *uploadInfo = dealResopnseForUploadInfoBlock(responseObject);
             uploadCompleteBlock(uploadInfo);
@@ -66,7 +66,7 @@
         CJUploadInfo *uploadInfo = [[CJUploadInfo alloc] init];
         uploadInfo.responseModel = nil;
         uploadInfo.uploadState = CJUploadStateFailure;
-        uploadInfo.uploadStatePromptText = @"点击重传";
+        uploadInfo.uploadStatePromptText = NSLocalizedString(@"点击重传", nil);
         
         uploadCompleteBlock(uploadInfo);
         

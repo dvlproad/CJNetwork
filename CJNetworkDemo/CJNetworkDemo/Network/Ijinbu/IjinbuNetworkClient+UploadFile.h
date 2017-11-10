@@ -13,7 +13,7 @@
 @interface IjinbuNetworkClient (UploadFile)
 
 /** 多个文件上传 */
-- (NSURLSessionDataTask *)requestUploadItems:(NSArray<CJUploadItemModel *> *)uploadItems
+- (NSURLSessionDataTask *)requestUploadItems:(NSArray<CJUploadFileModel *> *)uploadFileModels
                                      toWhere:(NSInteger)uploadItemToWhere
                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                      success:(HPSuccess)success
