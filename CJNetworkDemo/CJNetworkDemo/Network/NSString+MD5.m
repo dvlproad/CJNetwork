@@ -3,7 +3,7 @@
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 8/1/15.
-//  Copyright (c) 2015 ciyouzen. All rights reserved.
+//  Copyright (c) 2015 dvlproad. All rights reserved.
 //
 
 #import "NSString+MD5.h"
