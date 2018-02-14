@@ -12,7 +12,7 @@
 
 #pragma mark - POST请求
 /* //TODO:在详细的app中需要进一步实现的通用方法
-+ (void)cj_postUrl:(NSString *)Url
++ (void)xx_postUrl:(NSString *)Url
             params:(id)params
            encrypt:(BOOL)encrypt
            success:(void (^)(NSDictionary *responseObject))success
@@ -34,16 +34,14 @@
 
 
 /* 完整的描述请参见文件头部 */
-+ (void)cj_postUrl:(NSString *)Url
-            params:(id)params
-           encrypt:(BOOL)encrypt
-      encryptBlock:(NSData * (^)(NSDictionary *requestParmas))encryptBlock
-      decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
-           success:(void (^)(NSDictionary *responseObject))success
-           failure:(void (^)(NSError *error))failure
++ (NSURLSessionDataTask *)cj_postUrl:(NSString *)Url
+                              params:(id)params
+                             encrypt:(BOOL)encrypt
+                        encryptBlock:(NSData * (^)(NSDictionary *requestParmas))encryptBlock
+                        decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
+                             success:(void (^)(NSDictionary *responseObject))success
+                             failure:(void (^)(NSError *error))failure
 {
-    NSURL *URL = [NSURL URLWithString:Url];
-    
     //将传给服务器的参数用字符串打印出来
     NSString *allParamsJsonString = nil;
     if ([NSJSONSerialization isValidJSONObject:params]) {
@@ -51,16 +49,19 @@
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
         allParamsJsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     }
+    //NSLog(@"传给服务器的json参数:%@", allParamsJsonString);
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:URL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+    /* 利用Url和params，通过加密的方法创建请求 */
     NSData *bodyData = nil;
     if (encrypt && encryptBlock) {
         //bodyData = [CJEncryptAndDecryptTool encryptParmas:params];
         bodyData = encryptBlock(params);
-        
     } else {
         bodyData = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
     }
+    
+    NSURL *URL = [NSURL URLWithString:Url];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPBody:bodyData];
     [request setHTTPMethod:@"POST"];
     
@@ -69,26 +70,25 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         if (error == nil) {
-            NSDictionary *responseObject = nil;
+            NSDictionary *recognizableResponseObject = nil; //可识别的responseObject,如果是加密的还要解密
             if (encrypt && decryptBlock) {
                 NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                 
-                //responseObject = [CJEncryptAndDecryptTool decryptJsonString:responseString];
-                responseObject = decryptBlock(responseString);
+                //recognizableResponseObject = [CJEncryptAndDecryptTool decryptJsonString:responseString];
+                recognizableResponseObject = decryptBlock(responseString);
                 
             } else {
-                responseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                recognizableResponseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             }
             
-            NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n\n传给服务器的json参数:%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, responseObject, allParamsJsonString);
+            NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n\n传给服务器的json参数:%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, recognizableResponseObject, allParamsJsonString);
             
             if (success) {
-                success(responseObject);
+                success(recognizableResponseObject);
             }
         }
         else
         {
-            //NSDictionary *responseObject = @{@"status":@(-1), @"message":@"网络异常"};
             if (failure) {
                 failure(error);
             }
@@ -98,6 +98,8 @@
         }
     }];
     [task resume];
+    
+    return task;
 }
 
 
