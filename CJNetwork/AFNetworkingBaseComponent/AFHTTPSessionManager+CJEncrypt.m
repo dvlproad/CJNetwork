@@ -73,7 +73,7 @@
                 failure(error);
             }
             
-            NSString *errorMessage = [CJRequestErrorMessageUtil getErrorMessageFromHTTPURLResponse:response];
+            NSString *errorMessage = [CJRequestErrorMessageUtil getErrorMessageFromURLResponse:response];
             NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n\n传给服务器的json参数:%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, errorMessage, allParamsJsonString);
         }
     }];

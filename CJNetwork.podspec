@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CJNetwork"
-  s.version      = "0.1.3"
+  s.version      = "0.1.4"
   s.summary      = "一个AFNetworking应用的封装"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.1.3" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.1.4" }
   s.source_files  = "CJNetwork/*.{h,m}"
   s.frameworks = 'UIKit'
 
