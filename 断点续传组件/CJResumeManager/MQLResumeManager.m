@@ -8,8 +8,8 @@
 
 #import "MQLResumeManager.h"
 
-typedef void (^completionBlock)();
-typedef void (^progressBlock)();
+typedef void (^completionBlock)(void);
+typedef void (^progressBlock)(void);
 
 @interface MQLResumeManager ()<NSURLSessionDelegate, NSURLSessionTaskDelegate>
 
@@ -29,7 +29,7 @@ typedef void (^progressBlock)();
  *  @param success 成功回调block
  *  @param failure 失败回调block
  */
-- (void)setCompletionBlockWithSuccess:(void (^)())success
+- (void)setCompletionBlockWithSuccess:(void (^)(void))success
                               failure:(void (^)(NSError *error))failure;
 
 /**
@@ -54,7 +54,7 @@ typedef void (^progressBlock)();
  *  @param success 成功回调block
  *  @param failure 失败回调block
  */
-- (void)setCompletionBlockWithSuccess:(void (^)())success
+- (void)setCompletionBlockWithSuccess:(void (^)(void))success
                               failure:(void (^)(NSError *error))failure{
     
     __weak typeof(self) weakSelf = self;
@@ -113,7 +113,7 @@ typedef void (^progressBlock)();
 /** 完整的描述请参见文件头部 */
 + (MQLResumeManager*)resumeManagerWithURL:(NSURL*)url
                                targetPath:(NSString *)targetPath
-                                  success:(void (^)())success
+                                  success:(void (^)(void))success
                                   failure:(void (^)(NSError *error))failure
                                  progress:(void (^)(long long totalReceivedContentLength, long long totalContentLength))progress
 {

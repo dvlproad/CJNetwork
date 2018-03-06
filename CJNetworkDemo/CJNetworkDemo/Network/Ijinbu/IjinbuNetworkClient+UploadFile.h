@@ -13,29 +13,29 @@
 @interface IjinbuNetworkClient (UploadFile)
 
 /** 多个文件上传 */
-- (NSURLSessionDataTask *)requestUploadItems:(NSArray<CJUploadFileModel *> *)uploadFileModels
+- (nullable NSURLSessionDataTask *)requestUploadItems:(NSArray<CJUploadFileModel *> * _Nullable)uploadFileModels
                                      toWhere:(NSInteger)uploadItemToWhere
                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                      success:(HPSuccess)success
                                      failure:(HPFailure)failure;
 
 /** 单个文件上传1 */
-- (NSURLSessionDataTask *)requestUploadLocalItem:(NSString *)localRelativePath
+- (nullable NSURLSessionDataTask *)requestUploadLocalItem:(NSString * _Nullable)localRelativePath
                                         itemType:(CJUploadItemType)uploadItemType
                                          toWhere:(NSInteger)uploadItemToWhere
                                          success:(HPSuccess)success
                                          failure:(HPFailure)failure;
 
 /** 单个文件上传2 */
-- (NSURLSessionDataTask *)requestUploadItemData:(NSData *)data
-                                       itemName:(NSString *)fileName
+- (nullable NSURLSessionDataTask *)requestUploadItemData:(NSData * _Nullable)data
+                                       itemName:(NSString *_Nullable)fileName
                                        itemType:(CJUploadItemType)uploadItemType
                                         toWhere:(NSInteger)uploadItemToWhere
                                         success:(HPSuccess)success
                                         failure:(HPFailure)failure;
 
 /** 上传文件 */
-- (NSURLSessionDataTask *)requestUploadFile:(IjinbuUploadItemRequest *)request
+- (nullable NSURLSessionDataTask *)requestUploadFile:(IjinbuUploadItemRequest *_Nullable)request
                                    progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                     success:(HPSuccess)success
                                     failure:(HPFailure)failure;

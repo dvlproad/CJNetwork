@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CJNetwork"
-  s.version      = "0.1.4"
+  s.version      = "0.1.5"
   s.summary      = "一个AFNetworking应用的封装"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.1.4" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.1.5" }
   s.source_files  = "CJNetwork/*.{h,m}"
   s.frameworks = 'UIKit'
 
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   # 网络的监控器
   s.subspec 'CJNetworkMonitor' do |ss|
     ss.source_files = "CJNetwork/CJNetworkMonitor/**/*.{h,m}"
-    ss.dependency 'AFNetworking', '~> 3.1.0'
+    ss.dependency 'AFNetworking'
   end
 
   # 系统的请求方法

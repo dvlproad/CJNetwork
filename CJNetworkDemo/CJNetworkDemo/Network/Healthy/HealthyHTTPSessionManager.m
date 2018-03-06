@@ -23,10 +23,10 @@
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    //-->晚餐
+    // -->晚餐
     manager.requestSerializer  = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    //<--晚餐
+    // <--晚餐
     
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 10.f;

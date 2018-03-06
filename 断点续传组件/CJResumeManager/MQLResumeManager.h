@@ -24,7 +24,7 @@
  */
 + (MQLResumeManager*)resumeManagerWithURL:(NSURL*)url
                                targetPath:(NSString *)targetPath
-                                  success:(void (^)())success
+                                  success:(void (^)(void))success
                                   failure:(void (^)(NSError *error))failure
                                  progress:(void (^)(long long totalReceivedContentLength, long long totalContentLength))progress;
 

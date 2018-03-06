@@ -13,19 +13,19 @@
 #import "IjinbuSession.h"
 #import "IjinbuUser.h"
 
-typedef  void ((^HPSuccess)(IjinbuResponseModel *responseModel));
-typedef  void ((^HPFailure)(NSError *error));
+typedef void ((^ _Nullable HPSuccess)(IjinbuResponseModel * _Nullable responseModel));
+typedef void ((^ _Nullable HPFailure)(NSError * _Nullable error));
 
 @interface IjinbuNetworkClient : NSObject
 
-+ (IjinbuNetworkClient *)sharedInstance;
++ (nullable IjinbuNetworkClient *)sharedInstance;
 
-- (NSURLSessionDataTask *)postWithRelativeUrl:(NSString *)RelativeUrl
-                                       params:(NSDictionary *)params
+- (nullable NSURLSessionDataTask *)postWithRelativeUrl:(nullable NSString *)RelativeUrl
+                                       params:(nullable NSDictionary *)params
                                       success:(HPSuccess)success
                                       failure:(HPFailure)failure;
 
 
-- (NSString *)signWithParams:(NSDictionary *)params path:(NSString*)path;
+- (nullable NSString *)signWithParams:(NSDictionary * _Nullable)params path:(NSString * _Nullable)path;
 
 @end

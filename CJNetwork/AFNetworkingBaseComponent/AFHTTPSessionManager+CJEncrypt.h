@@ -26,13 +26,13 @@
  *  @param success      请求成功的回调failure
  *  @param failure      请求失败的回调failure
  */
-- (nullable NSURLSessionDataTask *)cj_postUrl:(NSString *)Url
-                                       params:(id)params
+- (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
+                                       params:(nullable id)params
                                       encrypt:(BOOL)encrypt
-                                 encryptBlock:(NSData * (^)(NSDictionary *requestParmas))encryptBlock
-                                 decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
+                                 encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
+                                 decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                      success:(void (^)(NSDictionary *responseObject))success
-                                      failure:(void (^)(NSError *error))failure;
+                                      success:(nullable void (^)(NSDictionary *_Nullable responseObject))success
+                                      failure:(nullable void (^)(NSError * _Nullable error))failure;
 
 @end
