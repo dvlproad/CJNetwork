@@ -95,10 +95,12 @@ static int apiTestCount = 0;
 
 
 - (void)doAPITest{
-    [[TestNetworkClient sharedInstance] requestBaiduHomeSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"接口测试成功。。。%d", apiTestCount++);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"接口测试失败。。。");
+    [[TestNetworkClient sharedInstance] requestBaiduHomeCompleteBlock:^(CJResponseModel *responseModel) {
+        if (responseModel.status == 0) {
+            NSLog(@"接口测试成功。。。%d", apiTestCount++);
+        } else {
+            NSLog(@"接口测试失败。。。");
+        }
     }];
 }
 

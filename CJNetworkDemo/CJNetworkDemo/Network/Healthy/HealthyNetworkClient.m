@@ -21,24 +21,43 @@
     return _sharedInstance;
 }
 
+- (nullable NSURLSessionDataTask *)health_postUrl:(nullable NSString *)Url
+                                           params:(nullable id)params
+                                    completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
+{
+    AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
+    
+    NSURLSessionDataTask *URLSessionDataTask =
+    [manager cj_postUrl:Url params:params cache:NO success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
+        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+        responseModel.status = [responseObject[@"status"] integerValue];
+        responseModel.message = responseObject[@"msg"];
+        responseModel.result = responseObject[@"result"];
+        if (completeBlock) {
+            completeBlock(responseModel);
+        }
+        
+    } failure:^(NSError * _Nullable error) {
+        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+        responseModel.status = -1;
+        responseModel.message = NSLocalizedString(@"网络请求失败", nil);
+        responseModel.result = nil;
+        if (completeBlock) {
+            completeBlock(responseModel);
+        }
+    }];
+    return URLSessionDataTask;
+}
+
 - (void)requestLogin_name:(NSString *)name
                      pasd:(NSString*)pasd
-                  success:(AFRequestSuccess)success
-                  failure:(AFRequestFailure)failure
+            completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
 {
     NSString *Url = API_BASE_Url_Health(@"login");
     NSDictionary *params = @{@"username" : name,
                              @"password" : pasd
                              };
-    AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
-    [manager cj_postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (success) {
-            success(task, responseObject);
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"获取失败");
-        failure(task, error);
-    }];
+    [self health_postUrl:Url params:params completeBlock:completeBlock];
     //    [self.indicatorView setAnimatingWithStateOfOperation:operation];
 }
 

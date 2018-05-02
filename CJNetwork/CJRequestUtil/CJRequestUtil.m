@@ -11,7 +11,7 @@
 @implementation CJRequestUtil
 
 #pragma mark - POST请求
-/* //TODO:在详细的app中需要进一步实现的通用方法
+/* //详细的app中增加实现的通用方法的例子如下
 + (void)xx_postUrl:(NSString *)Url
             params:(id)params
            encrypt:(BOOL)encrypt

@@ -118,7 +118,6 @@
 		7846528C1F5448F100E20A27 /* CJJSONResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJJSONResponseSerializer.m; sourceTree = "<group>"; };
 		7846528D1F5448F100E20A27 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		7846528E1F5448F100E20A27 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
-		7846528F1F5448F100E20A27 /* CJNetworkDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkDefine.h; sourceTree = "<group>"; };
 		784652931F5448F100E20A27 /* CJObjectConvertUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJObjectConvertUtil.h; sourceTree = "<group>"; };
 		784652941F5448F100E20A27 /* CJObjectConvertUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJObjectConvertUtil.m; sourceTree = "<group>"; };
 		784652951F5448F100E20A27 /* CJRequestCacheDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJRequestCacheDataUtil.h; sourceTree = "<group>"; };
@@ -334,7 +333,6 @@
 			isa = PBXGroup;
 			children = (
 				7846528A1F5448F100E20A27 /* CJJSONResponseSerializer */,
-				7846528F1F5448F100E20A27 /* CJNetworkDefine.h */,
 				787BAF252034A3F9000E276E /* CJRequestErrorMessageUtil.h */,
 				787BAF262034A3F9000E276E /* CJRequestErrorMessageUtil.m */,
 			);

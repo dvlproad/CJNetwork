@@ -12,6 +12,8 @@
 #import "LoginHelper.h"
 #import "LoginShareInfo.h"
 
+#import "CJResponseModel.h"
+
 @interface DingdangNetworkClient : NSObject
 
 + (DingdangNetworkClient *)sharedInstance;
@@ -19,17 +21,13 @@
 //叮当中的API
 - (void)requestDDLogin_name:(NSString *)name
                        pasd:(NSString*)pasd
-                    success:(AFRequestSuccess)success
-                    failure:(AFRequestFailure)failure;
+              completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
 
-- (void)requestDDLogout_success:(AFRequestSuccess)success
-                        failure:(AFRequestFailure)failure;
+- (void)requestDDLogout_completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
 
-- (void)requestDDUser_GetInfo_success:(AFRequestSuccess)success
-                              failure:(AFRequestFailure)failure;
+- (void)requestDDUser_GetInfo_completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
 
 //叮当中的API_获取我的科目列表
-- (void)requestDDCourse_Get_success:(AFRequestSuccess)success
-                            failure:(AFRequestFailure)failure;
+- (void)requestDDCourse_Get_completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
 
 @end

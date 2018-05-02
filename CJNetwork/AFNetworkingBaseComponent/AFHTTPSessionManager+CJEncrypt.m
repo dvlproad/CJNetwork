@@ -69,12 +69,18 @@
         }
         else
         {
+            
+            NSString *cjErrorMeesage = [CJRequestErrorMessageUtil getErrorMessageFromURLResponse:response];
+            NSError *newError = [CJRequestErrorMessageUtil getNewErrorWithError:error cjErrorMeesage:cjErrorMeesage];
+            
             if (failure) {
-                failure(error);
+                failure(newError);
             }
             
-            NSString *errorMessage = [CJRequestErrorMessageUtil getErrorMessageFromURLResponse:response];
-            NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n\n传给服务器的json参数:%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, errorMessage, allParamsJsonString);
+            
+
+            
+            NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n\n传给服务器的json参数:%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, cjErrorMeesage, allParamsJsonString);
         }
     }];
     [task resume];
@@ -117,6 +123,49 @@
     }];
     return URLSessionDataTask;
     //*/
+}
+
+
+
+/* 完整的描述请参见文件头部 */
+- (NSURLSessionDataTask *)cj_getUrl:(NSString *)Url
+                             params:(NSDictionary *)params
+                           progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                            success:(void (^)(NSDictionary *responseDict))success
+                            failure:(void (^)(NSError *error))failure
+{
+    NSLog(@"Url = %@", Url);
+    NSLog(@"params = %@", params);
+    
+    //将传给服务器的参数用字符串打印出来
+    NSString *allParamsJsonString = nil;
+    if ([NSJSONSerialization isValidJSONObject:params]) {
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+        allParamsJsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    //NSLog(@"传给服务器的json参数:%@", allParamsJsonString);
+    
+    NSURLSessionDataTask *dataTask =
+    [self GET:Url parameters:params progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        
+        NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n\n传给服务器的json参数:%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, responseDict, allParamsJsonString);
+        if (success) {
+            success(responseDict);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSString *cjErrorMeesage = [CJRequestErrorMessageUtil getErrorMessageFromURLSessionTask:task];
+        NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n\n传给服务器的json参数:%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, cjErrorMeesage, allParamsJsonString);
+        
+        NSError *newError = [CJRequestErrorMessageUtil getNewErrorWithError:error cjErrorMeesage:cjErrorMeesage];
+        if (failure) {
+            failure(newError);
+        }
+    }];
+    
+    return dataTask;
 }
 
 

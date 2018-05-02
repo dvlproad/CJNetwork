@@ -10,6 +10,37 @@
 
 @implementation CJRequestErrorMessageUtil
 
+//+ (NSError *)getNewErrorFromError:(NSError *)error URLResponse:(NSURLResponse *)URLResponse {
+//    NSHTTPURLResponse *response = (NSHTTPURLResponse *)URLResponse;
+//    NSString *cjErrorMeesage = [self getErrorMessageFromHTTPURLResponse:response];
+//    
+//    
+//    NSError *newError = [self getNewErrorWithError:error cjErrorMeesage:cjErrorMeesage];
+//    
+//    return newError;
+//}
+
++ (NSError *)getNewErrorWithError:(NSError *)error cjErrorMeesage:(NSString *)cjErrorMeesage {
+    NSMutableDictionary *newUserInfo = [NSMutableDictionary dictionary];
+    [newUserInfo setObject:cjErrorMeesage forKey:@"cjNewErrorMeesage"];
+    //[newUserInfo setValue:cjErrorMeesage forKey:NSLocalizedDescriptionKey];
+    
+    if (error == nil) {
+        //nothing
+    } else {
+        NSDictionary *oldUserInfo = error.userInfo;
+        [newUserInfo addEntriesFromDictionary:oldUserInfo];
+        
+        [newUserInfo setObject:error.domain forKey:@"cjOriginErrorDomain"];
+        [newUserInfo setObject:@(error.code) forKey:@"cjOriginErrorCode"];
+    }
+    
+    
+    NSError *newError = [[NSError alloc] initWithDomain:@"com.dvlproad.network.error" code:-1 userInfo:newUserInfo];
+    
+    return newError;
+}
+
 
 + (NSString *)getErrorMessageFromURLSessionTask:(NSURLSessionTask *)task {
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;

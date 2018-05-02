@@ -16,29 +16,25 @@
 - (nullable NSURLSessionDataTask *)requestUploadItems:(NSArray<CJUploadFileModel *> * _Nullable)uploadFileModels
                                      toWhere:(NSInteger)uploadItemToWhere
                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                     success:(HPSuccess)success
-                                     failure:(HPFailure)failure;
+                                        completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock;
 
 /** 单个文件上传1 */
 - (nullable NSURLSessionDataTask *)requestUploadLocalItem:(NSString * _Nullable)localRelativePath
                                         itemType:(CJUploadItemType)uploadItemType
                                          toWhere:(NSInteger)uploadItemToWhere
-                                         success:(HPSuccess)success
-                                         failure:(HPFailure)failure;
+                                            completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock;
 
 /** 单个文件上传2 */
 - (nullable NSURLSessionDataTask *)requestUploadItemData:(NSData * _Nullable)data
                                        itemName:(NSString *_Nullable)fileName
                                        itemType:(CJUploadItemType)uploadItemType
                                         toWhere:(NSInteger)uploadItemToWhere
-                                        success:(HPSuccess)success
-                                        failure:(HPFailure)failure;
+                                           completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock;
 
 /** 上传文件 */
 - (nullable NSURLSessionDataTask *)requestUploadFile:(IjinbuUploadItemRequest *_Nullable)request
                                    progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                    success:(HPSuccess)success
-                                    failure:(HPFailure)failure;
+                                       completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock;
 
 
 

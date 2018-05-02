@@ -15,8 +15,8 @@
 
 #pragma mark - POST请求
 /*
-//TODO:在详细的app中需要进一步实现的通用方法(详细的看.m文件)
-+ (void)cj_postUrl:(NSString *)Url
+//TODO:在详细的app中需要增加的通用方法名举例如下(详细的实现过程参考本CJRequestUtil.m文件)
++ (void)xx_postUrl:(NSString *)Url
             params:(id)params
            encrypt:(BOOL)encrypt
            success:(void (^)(NSDictionary *responseObject))success

@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, CJRequestFailureType) {
-    CJRequestFailureTypeNoNetworkAndNoCache,    /**< 无网且无缓存 */
-    CJRequestFailureTypeCacheKeyNil,            /**< cacheKey == nil */
-    CJRequestFailureTypeCacheDataNil,           /**< 未读到缓存数据,如第一次就是无网请求,提示网络不给力 */
+typedef NS_ENUM(NSUInteger, CJRequestCacheFailureType) {
+    CJRequestCacheFailureTypeCacheKeyNil,            /**< cacheKey == nil */
+    CJRequestCacheFailureTypeCacheDataNil,           /**< 未读到缓存数据,如第一次就是无网请求,提示网络不给力 */
 };
 
 
@@ -39,6 +38,6 @@ typedef NS_ENUM(NSUInteger, CJRequestFailureType) {
 + (void)requestCacheDataByUrl:(nullable NSString *)Url
                        params:(nullable id)params
                       success:(nullable void (^)(NSDictionary *_Nullable responseObject))success
-                      failure:(nullable void (^)(NSError * _Nullable error, CJRequestFailureType failureType))failure;
+                      failure:(nullable void (^)(CJRequestCacheFailureType failureType))failure;
 
 @end

@@ -13,19 +13,21 @@
 #import "IjinbuSession.h"
 #import "IjinbuUser.h"
 
-typedef void ((^ _Nullable HPSuccess)(IjinbuResponseModel * _Nullable responseModel));
-typedef void ((^ _Nullable HPFailure)(NSError * _Nullable error));
+#import "IjinbuUploadItemRequest.h"
+
+//API路径--ijinbu
+#define API_BASE_Url_ijinbu(_Url_) [[@"http://www.ijinbu.com/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
 
 @interface IjinbuNetworkClient : NSObject
 
 + (nullable IjinbuNetworkClient *)sharedInstance;
 
-- (nullable NSURLSessionDataTask *)postWithRelativeUrl:(nullable NSString *)RelativeUrl
-                                       params:(nullable NSDictionary *)params
-                                      success:(HPSuccess)success
-                                      failure:(HPFailure)failure;
+- (nullable NSURLSessionDataTask *)ijinbu_postUrl:(nullable NSString *)Url
+                                           params:(nullable id)params
+                                    completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock;
 
-
-- (nullable NSString *)signWithParams:(NSDictionary * _Nullable)params path:(NSString * _Nullable)path;
+- (NSURLSessionDataTask *)ijinbu_uploadFile:(IjinbuUploadItemRequest *)request
+                                   progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                              completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock;
 
 @end

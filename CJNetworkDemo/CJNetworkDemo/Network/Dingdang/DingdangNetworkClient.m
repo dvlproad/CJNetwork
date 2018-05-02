@@ -24,6 +24,36 @@
     return _sharedInstance;
 }
 
+- (nullable NSURLSessionDataTask *)dd_postUrl:(nullable NSString *)Url
+                                       params:(nullable id)params
+                                        cache:(BOOL)cache
+                                      completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
+{
+    AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
+    NSURLSessionDataTask *URLSessionDataTask =
+    [manager cj_postUrl:Url params:params cache:cache success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
+        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+        responseModel.status = [responseObject[@"status"] integerValue];
+        responseModel.message = responseObject[@"message"];
+        responseModel.result = responseObject[@"result"];
+        responseModel.isCacheData = isCacheData;
+        if (completeBlock) {
+            completeBlock(responseModel);
+        }
+        
+    } failure:^(NSError * _Nullable error) {
+        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+        responseModel.status = -1;
+        responseModel.message = NSLocalizedString(@"网络请求失败", nil);
+        responseModel.result = nil;
+        responseModel.isCacheData = NO;
+        if (completeBlock) {
+            completeBlock(responseModel);
+        }
+    }];
+    return URLSessionDataTask;
+}
+
 #pragma mark AUTH:认证接口
 /****************
  *   第三方登录时:
@@ -33,8 +63,7 @@
  ****************/
 - (void)requestDDLogin_name:(NSString *)name
                        pasd:(NSString*)pasd
-                    success:(AFRequestSuccess)success
-                    failure:(AFRequestFailure)failure
+              completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
 {
     //当前API参考：http://dingdang.baseoa.com:8080/api.html#access-token
     NSString *Url = API_BASE_Url_dingdang(@"oauth/token");
@@ -44,84 +73,45 @@
                              @"client_id"     : CLIENT,
                              @"client_secret" : CLIENT_SECRET
                              };
-    AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    [manager cj_postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        LoginShareInfo *shareInfo = [LoginShareInfo shared];
-        shareInfo.access_token = [responseObject objectForKey:@"access_token"];
-        shareInfo.expires_in = [responseObject objectForKey:@"expires_in"];
-        shareInfo.refresh_token = [responseObject objectForKey:@"refresh_token"];
-        shareInfo.scope = [responseObject objectForKey:@"scope"];
-        shareInfo.token_type = [responseObject objectForKey:@"token_type"];
-        
-        if (success) {
-            success(task, responseObject);
+    [self dd_postUrl:Url params:params cache:NO completeBlock:^(CJResponseModel *responseModel) {
+        if (responseModel.status == 0) {
+            NSDictionary *responseResult = responseModel.result;
+            
+            LoginShareInfo *shareInfo = [LoginShareInfo shared];
+            shareInfo.access_token = [responseResult objectForKey:@"access_token"];
+            shareInfo.expires_in = [responseResult objectForKey:@"expires_in"];
+            shareInfo.refresh_token = [responseResult objectForKey:@"refresh_token"];
+            shareInfo.scope = [responseResult objectForKey:@"scope"];
+            shareInfo.token_type = [responseResult objectForKey:@"token_type"];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"获取失败");
-        failure(task, error);
+        
+        if (completeBlock) {
+            completeBlock(responseModel);
+        }
     }];
 }
 
-- (void)requestDDLogout_success:(AFRequestSuccess)success failure:(AFRequestFailure)failure
+- (void)requestDDLogout_completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/logout");
-    NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token};
+    NSDictionary *params = @{
+                             @"access_token": [LoginShareInfo shared].access_token
+                             };
     
-    AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    [manager cj_postRequestUrl:Url parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (success) {
-            success(task, responseObject);
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"获取失败");
-        failure(task, error);
-    }];
-    
+    [self dd_postUrl:Url params:params cache:NO completeBlock:completeBlock];
 }
 
-- (void)requestDDUser_GetInfo_success:(AFRequestSuccess)success failure:(AFRequestFailure)failure
+- (void)requestDDUser_GetInfo_completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/user/me");
     NSDictionary *params = @{@"access_token": [LoginShareInfo shared].access_token};
-    /*
-     [[CommonAFNAPI shareCommonAFNAPI] postRequestUrl:Url params:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-     success(operation, responseObject);
-     
-     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-     failure(operation, error);
-     }];
-     */
     
-    AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    
-    [manager cj_postUrl:Url params:params cache:NO success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
-        if (isCacheData) {
-            if (success) {
-                success(nil, responseObject);
-            }
-            
-        } else {
-            if (success) {
-                success(task, responseObject);
-            }
-        }
-    } failure:^(NSError * _Nullable error, CJRequestFailureType failureType) {
-        if (isCacheData) {
-            if (failure) {
-                failure(nil, nil);
-            }
-            
-        } else {
-            if (failure) {
-                failure(task, error);
-            }
-        }
-    }];
+    [self dd_postUrl:Url params:params cache:NO completeBlock:completeBlock];
 }
 
 
 //获取我的科目列表
-- (void)requestDDCourse_Get_success:(AFRequestSuccess)success failure:(AFRequestFailure)failure
+- (void)requestDDCourse_Get_completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
 {
     NSString *Url = API_BASE_Url_dingdang(@"api/course/list");
     if ([LoginShareInfo shared].access_token == nil) {
@@ -133,32 +123,7 @@
                              @"type"        : @(0)};    //发布类型，0-大家帮 1-加密题
     
     
-    AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    [manager cj_postRequestUrl:Url parameters:params cacheReuqestData:YES progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
-        
-        if (isCacheData) {
-            if (success) {
-                success(nil, responseObject);
-            }
-            
-        } else {
-            if (success) {
-                success(task, responseObject);
-            }
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error, BOOL isCacheData) {
-        if (isCacheData) {
-            if (failure) {
-                failure(nil, nil);
-            }
-            
-        } else {
-            if (failure) {
-                failure(task, error);
-            }
-        }
-    }];
+    [self dd_postUrl:Url params:params cache:YES completeBlock:completeBlock];
 }
 
 

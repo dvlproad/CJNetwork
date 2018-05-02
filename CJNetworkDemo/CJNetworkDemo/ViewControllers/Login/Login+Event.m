@@ -64,24 +64,27 @@
     
     NSString *name = self.nameTextField.text;
     NSString *pasd = self.pasdTextField.text;
-    [[HealthyNetworkClient sharedInstance] requestLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
-        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
-        /*
-         NSDictionary *dic = [responseObject objectForKey:@"user"];
-         NSError *error;
-         AccountInfo *uinfo = [[AccountInfo alloc] initWithDictionary:dic error:&error];
-         if (error) {
-         NSLog(@"error.userInfo = %@", error.userInfo);
-         }
-         [LoginShareInfo shared].uinfo = uinfo;
-         [LoginHelper login_name:name pasd:pasd];
-         */
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSString *failMesg = [error localizedDescription];
-//        failMesg = [failMesg cjEncodeUnicodeToChinese];
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];
+    [[HealthyNetworkClient sharedInstance] requestLogin_name:name pasd:pasd completeBlock:^(CJResponseModel *responseModel) {
+        if (responseModel.status == 0) {
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
+            /*
+             NSDictionary *dic = [responseObject objectForKey:@"user"];
+             NSError *error;
+             AccountInfo *uinfo = [[AccountInfo alloc] initWithDictionary:dic error:&error];
+             if (error) {
+             NSLog(@"error.userInfo = %@", error.userInfo);
+             }
+             [LoginShareInfo shared].uinfo = uinfo;
+             [LoginHelper login_name:name pasd:pasd];
+             */
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            
+        } else {
+            //        NSString *failMesg = [error localizedDescription];
+            //        failMesg = [failMesg cjEncodeUnicodeToChinese];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];
+        }
     }];
 }
 
@@ -94,13 +97,24 @@
     
     NSString *name = @"13055284289";
     NSString *pasd = @"123456";
-    [[DingdangNetworkClient sharedInstance] requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
-        [SVProgressHUD showSuccessWithStatus:@"登录成功"];//获取acces_token成功，登录成功
-        
-        [[DingdangNetworkClient sharedInstance] requestDDUser_GetInfo_success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[DingdangNetworkClient sharedInstance] requestDDLogin_name:name pasd:pasd completeBlock:^(CJResponseModel *responseModel) {
+        if (responseModel.status == 0) {
+            [SVProgressHUD showSuccessWithStatus:@"登录成功"];//获取acces_token成功，登录成功
+            
+            [self getUserInfoByUserName:name password:pasd];
+        } else {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];//登录不了哦，再试试看！
+        }
+    }];
+}
+
+- (void)getUserInfoByUserName:(NSString *)userName password:(NSString *)password {
+    [[DingdangNetworkClient sharedInstance] requestDDUser_GetInfo_completeBlock:^(CJResponseModel *responseModel) {
+        if (responseModel.status == 0) {
             NSLog(@"用户信息获取成功");
             //NSLog(@"%@",responseObject);
-            NSDictionary *data = [responseObject objectForKey:@"data"];
+            NSDictionary *responseResult = responseModel.result;
+            NSDictionary *data = [responseResult objectForKey:@"data"];
             
             NSError *error;
             AccountInfo *uinfo = [[AccountInfo alloc] initWithDictionary:data error:&error];
@@ -108,14 +122,11 @@
                 NSLog(@"error.userInfo= %@", error.userInfo);
             }
             [LoginShareInfo shared].uinfo = uinfo;
-            [LoginHelper login_name:name pasd:pasd];
+            [LoginHelper login_name:userName pasd:password];
             
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        } else {
             NSLog(@"登录不了哦，再试试看！");
-        }];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];//登录不了哦，再试试看！
+        }
     }];
 }
 
@@ -125,10 +136,13 @@
         NSLog(@"未登录，请先登录");
         return;
     }
-    [[DingdangNetworkClient sharedInstance] requestDDCourse_Get_success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"缓存/非缓存数据。。。%@", responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"获取我的科目列表失败");
+    [[DingdangNetworkClient sharedInstance] requestDDCourse_Get_completeBlock:^(CJResponseModel *responseModel) {
+        if (responseModel.status == 0) {
+            NSLog(@"缓存/非缓存数据。。。%@", responseModel);
+        } else {
+            NSLog(@"获取我的科目列表失败");
+        }
+     
     }];
 }
 
@@ -149,16 +163,18 @@
     }];
     */
     
-    [[IjinbuNetworkClient sharedInstance] requestijinbuLogin_name:name pasd:pasd success:^(id responseModel) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-            UploadViewController *viewController = [[UploadViewController alloc] initWithNibName:@"UploadViewController" bundle:nil];
-            [self.navigationController pushViewController:viewController animated:YES];
-        });
-        
-        
-    } failure:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"登录失败"];//登录不了哦，再试试看！
+    [[IjinbuNetworkClient sharedInstance] requestijinbuLogin_name:name pasd:pasd completeBlock:^(IjinbuResponseModel *responseModel) {
+        if (responseModel.status == 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+                UploadViewController *viewController = [[UploadViewController alloc] initWithNibName:@"UploadViewController" bundle:nil];
+                [self.navigationController pushViewController:viewController animated:YES];
+            });
+            
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"登录失败"];//登录不了哦，再试试看！
+        }
+     
     }];
 }
 

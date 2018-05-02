@@ -9,22 +9,24 @@
 #import <AFNetworking/AFNetworking.h>
 
 #import "CJNetworkMonitor.h"
-#import "CJNetworkDefine.h"
 
 #import "CJRequestCacheDataUtil.h"
 
 @interface AFHTTPSessionManager (CJEncrypt)
 
 /**
- *  发起请求
+ *  发起POST请求
  *
- *  @param Url          Url
- *  @param params       params
- *  @param encrypt      是否加密
- *  @param encryptBlock 对请求的参数requestParmas加密的方法
- *  @param decryptBlock 对请求得到的responseString解密的方法
- *  @param success      请求成功的回调success
- *  @param failure      请求失败的回调failure
+ *  @param Url              Url
+ *  @param params           params
+ *  @param encrypt          是否加密
+ *  @param encryptBlock     对请求的参数requestParmas加密的方法
+ *  @param decryptBlock     对请求得到的responseString解密的方法
+ *  @param uploadProgress   uploadProgress
+ *  @param success          请求成功的回调success
+ *  @param failure          请求失败的回调failure
+ *
+ *  @return NSURLSessionDataTask
  */
 - (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
                                        params:(nullable id)params
@@ -34,5 +36,23 @@
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                       success:(nullable void (^)(NSDictionary *_Nullable responseObject))success
                                       failure:(nullable void (^)(NSError * _Nullable error))failure;
+
+
+/**
+ *  发起GET请求
+ *
+ *  @param Url              Url
+ *  @param params           params
+ *  @param uploadProgress   uploadProgress
+ *  @param success          请求成功的回调success
+ *  @param failure          请求失败的回调failure
+ *
+ *  @return NSURLSessionDataTask
+ */
+- (NSURLSessionDataTask *)cj_getUrl:(NSString *)Url
+                             params:(NSDictionary *)params
+                           progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                            success:(void (^)(NSDictionary *responseDict))success
+                            failure:(void (^)(NSError *error))failure;
 
 @end

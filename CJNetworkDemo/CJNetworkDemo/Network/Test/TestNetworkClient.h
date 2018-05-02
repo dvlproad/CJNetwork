@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "AFHTTPSessionManager+CJCacheRequest.h"
 
+#import "CJResponseModel.h"
+
 @interface TestNetworkClient : NSObject
 
 + (TestNetworkClient *)sharedInstance;
 
-- (void)requestBaiduHomeSuccess:(AFRequestSuccess)success
-                        failure:(AFRequestFailure)failure;
+- (void)requestBaiduHomeCompleteBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
 
 @end

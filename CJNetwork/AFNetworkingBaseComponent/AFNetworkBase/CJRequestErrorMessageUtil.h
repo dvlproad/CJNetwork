@@ -10,6 +10,8 @@
 
 @interface CJRequestErrorMessageUtil : NSObject
 
++ (NSError *)getNewErrorWithError:(NSError *)error cjErrorMeesage:(NSString *)cjErrorMeesage;
+
 + (NSString *)getErrorMessageFromURLSessionTask:(NSURLSessionTask *)task;
 
 + (NSString *)getErrorMessageFromURLResponse:(NSURLResponse *)URLResponse;

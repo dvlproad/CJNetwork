@@ -40,11 +40,12 @@
     if (name == nil) {
         //[self goLogin];
     }else{
-        [[DingdangNetworkClient sharedInstance] requestDDLogin_name:name pasd:pasd success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"获取acces_token成功，代表登录成功");
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSLog(@"登录不了哦，再试试看！");
+        [[DingdangNetworkClient sharedInstance] requestDDLogin_name:name pasd:pasd completeBlock:^(CJResponseModel *responseModel) {
+            if (responseModel.status == 0) {
+                NSLog(@"获取acces_token成功，代表登录成功");
+            } else {
+                NSLog(@"登录不了哦，再试试看！");
+            }
         }];
     }
 }

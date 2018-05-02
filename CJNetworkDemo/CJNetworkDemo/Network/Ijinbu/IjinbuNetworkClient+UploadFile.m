@@ -16,15 +16,14 @@
 - (NSURLSessionDataTask *)requestUploadItems:(NSArray<CJUploadFileModel *> *)uploadFileModels
                                      toWhere:(NSInteger)uploadItemToWhere
                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                     success:(HPSuccess)success
-                                     failure:(HPFailure)failure
+                                     completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock
 {
     IjinbuUploadItemRequest *uploadItemRequest = [[IjinbuUploadItemRequest alloc] init];
     uploadItemRequest.uploadItemToWhere = uploadItemToWhere;
     uploadItemRequest.uploadFileModels = uploadFileModels;
     
     NSURLSessionDataTask *requestOperation =
-    [self requestUploadFile:uploadItemRequest progress:uploadProgress success:success failure:failure];
+    [self requestUploadFile:uploadItemRequest progress:uploadProgress completeBlock:completeBlock];
     
     return requestOperation;
 }
@@ -33,8 +32,7 @@
 - (NSURLSessionDataTask *)requestUploadLocalItem:(NSString *)localRelativePath
                                         itemType:(CJUploadItemType)uploadItemType
                                          toWhere:(NSInteger)uploadItemToWhere
-                                         success:(HPSuccess)success
-                                         failure:(HPFailure)failure {
+                                         completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock {
     NSAssert(localRelativePath != nil, @"本地相对路径错误");
     
     NSString *localAbsolutePath = [[NSHomeDirectory() stringByAppendingPathComponent:localRelativePath] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -51,7 +49,7 @@
     NSString *fileName = localAbsolutePath.lastPathComponent;
     
     NSURLSessionDataTask *requestOperation =
-    [self requestUploadItemData:data itemName:fileName itemType:uploadItemType toWhere:uploadItemToWhere success:success failure:failure];
+    [self requestUploadItemData:data itemName:fileName itemType:uploadItemType toWhere:uploadItemToWhere completeBlock:completeBlock];
     
     return requestOperation;
 }
@@ -61,8 +59,7 @@
                                        itemName:(NSString *)fileName
                                        itemType:(CJUploadItemType)uploadItemType
                                         toWhere:(NSInteger)uploadItemToWhere
-                                        success:(HPSuccess)success
-                                        failure:(HPFailure)failure
+                                        completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock
 {
     NSAssert(data != nil, @"Error：路径存在，但是获取数据为空");
     
@@ -77,38 +74,13 @@
     uploadItemRequest.uploadFileModels = uploadFileModels;
     
     NSURLSessionDataTask *requestOperation =
-    [self requestUploadFile:uploadItemRequest progress:nil success:success failure:failure];
+    [self ijinbu_uploadFile:uploadItemRequest progress:nil completeBlock:completeBlock];
     
     return requestOperation;
     
 }
 
-/** 上传文件 */
-- (NSURLSessionDataTask *)requestUploadFile:(IjinbuUploadItemRequest *)request
-                                   progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                    success:(HPSuccess)success
-                                    failure:(HPFailure)failure
-{
-    AFHTTPSessionManager *manager = [IjinbuHTTPSessionManager sharedInstance];
-    
-    NSString *Url = API_BASE_Url_ijinbu(@"ijinbu/app/public/batchUpload");
-    NSDictionary *parameters = @{@"uploadType": @(request.uploadItemToWhere)};
-    NSArray<CJUploadFileModel *> *uploadFileModels = request.uploadFileModels;
-    NSLog(@"Url = %@", Url);
-    NSLog(@"params = %@", parameters);
-    
-    return [manager cj_postUploadUrl:Url parameters:parameters uploadFileModels:uploadFileModels progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
-        IjinbuResponseModel *responseModel = [MTLJSONAdapter modelOfClass:[IjinbuResponseModel class] fromJSONDictionary:responseObject error:nil];
-        if (success) {
-            success(responseModel);
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
+
 
 
 

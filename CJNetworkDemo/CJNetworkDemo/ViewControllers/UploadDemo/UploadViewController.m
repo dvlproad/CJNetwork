@@ -40,11 +40,12 @@
     uploadItemRequest.uploadItemToWhere = 16;
     uploadItemRequest.uploadFileModels = uploadFileModels;
     
-    [[IjinbuNetworkClient sharedInstance] requestUploadFile:uploadItemRequest progress:nil success:^(IjinbuResponseModel *responseModel) {
-        [SVProgressHUD showSuccessWithStatus:@"上传成功"];
-        
-    } failure:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"上传失败"];
+    [[IjinbuNetworkClient sharedInstance] ijinbu_uploadFile:uploadItemRequest progress:nil completeBlock:^(IjinbuResponseModel *responseModel) {
+        if (responseModel.status == 0) {
+            [SVProgressHUD showSuccessWithStatus:@"上传成功"];
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"上传失败"];
+        }
     }];
 }
 

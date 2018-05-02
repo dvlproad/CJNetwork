@@ -6,12 +6,14 @@
 //  Copyright © 2016年 dvlproad. All rights reserved.
 //
 
-#import <Mantle/Mantle.h>
+#import <Foundation/Foundation.h>
 
-@interface CJResponseModel : MTLModel <MTLJSONSerializing> //不要忘了<MTLJSONSerializing>
+@interface CJResponseModel : NSObject
 
-@property(nonatomic, strong) NSNumber *status;
-@property(nonatomic, strong) NSString *message;
+@property(nonatomic, assign) NSInteger status;
+@property(nonatomic, copy) NSString *message;
 @property(nonatomic, strong) id result;
+
+@property(nonatomic, assign) BOOL isCacheData;
 
 @end

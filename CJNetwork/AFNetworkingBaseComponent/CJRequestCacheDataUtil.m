@@ -44,15 +44,13 @@ static NSString *relativeDirectoryPath = @"CJNetworkCache";
 + (void)requestCacheDataByUrl:(nullable NSString *)Url
                        params:(nullable id)params
                       success:(nullable void (^)(NSDictionary *_Nullable responseObject))success
-                      failure:(nullable void (^)(NSError * _Nullable error, CJRequestFailureType failureType))failure
+                      failure:(nullable void (^)(CJRequestCacheFailureType failureType))failure
 {
     NSString *requestCacheKey = [self getRequestCacheKeyByRequestUrl:Url parameters:params];
     if (nil == requestCacheKey) {
         NSLog(@"error: cacheKey == nil, 无法读取缓存，提示网络不给力");
         if (failure) {
-            NSString *errorMessage = NSLocalizedString(@"网络不给力", nil);
-            NSError *error = [self networkErrorWithLocalizedDescription:errorMessage];
-            failure(error, CJRequestFailureTypeCacheKeyNil);
+            failure(CJRequestCacheFailureTypeCacheKeyNil);
         }
         return;
     }
@@ -61,21 +59,16 @@ static NSString *relativeDirectoryPath = @"CJNetworkCache";
     
     NSData *requestCacheData = [[CJCacheManager sharedInstance] getCacheDataByCacheKey:requestCacheKey diskRelativeDirectoryPath:relativeDirectoryPath];
     if (requestCacheData) {
-        //NSLog(@"读到缓存数据，但不保证该数据是最新的，因为网络还是不给力");
-        
+        //NSLog(@"读到有缓存数据，但不保证该数据是最新的，因为网络还是不给力");
         if (success) {
             NSDictionary *responseObject = [CJObjectConvertUtil dictionaryFromData:requestCacheData];
             success(responseObject);
         }
         
     } else {
-        NSLog(@"未读到缓存数据,如第一次就是无网请求,提示网络不给力");
-        //[self hud_showNoNetwork];
-        
+        //NSLog(@"未读到有缓存数据,如第一次就是无网请求,提示网络不给力");
         if (failure) {
-            NSString *errorMessage = NSLocalizedString(@"网络不给力", nil);
-            NSError *error = [self networkErrorWithLocalizedDescription:errorMessage];
-            failure(error, CJRequestFailureTypeCacheDataNil);
+            failure(CJRequestCacheFailureTypeCacheDataNil);
         }
     }
 }
@@ -98,19 +91,6 @@ static NSString *relativeDirectoryPath = @"CJNetworkCache";
     NSString *requestCacheKey = [CJObjectConvertUtil MD5StringFromString:string];
     
     return requestCacheKey;
-}
-
-
-/** 网络不给力时候，默认返回的error */
-+ (NSError *)networkErrorWithLocalizedDescription:(NSString *)localizedDescription {
-    //NSString *localizedDescription = NSLocalizedString(@"网络不给力", nil);
-    
-    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-    [userInfo setValue:localizedDescription forKey:NSLocalizedDescriptionKey];
-    
-    NSError *error = [[NSError alloc] initWithDomain:@"com.dvlproad.network.error" code:-1 userInfo:userInfo];
-    
-    return error;
 }
 
 

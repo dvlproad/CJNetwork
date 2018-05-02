@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "AFHTTPSessionManager+CJCacheRequest.h"
 
+#import "CJResponseModel.h"
+
 @interface HealthyNetworkClient : NSObject
 
 + (HealthyNetworkClient *)sharedInstance;
@@ -16,7 +18,6 @@
 //健康软件中的API
 - (void)requestLogin_name:(NSString *)name
                      pasd:(NSString*)pasd
-                  success:(AFRequestSuccess)success
-                  failure:(AFRequestFailure)failure;
+            completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
 
 @end

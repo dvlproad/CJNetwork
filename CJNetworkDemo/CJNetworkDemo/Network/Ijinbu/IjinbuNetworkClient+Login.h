@@ -12,7 +12,6 @@
 
 - (NSURLSessionDataTask *)requestijinbuLogin_name:(NSString *)name
                                              pasd:(NSString*)pasd
-                                          success:(HPSuccess)success
-                                          failure:(HPFailure)failure;
+                                    completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock;
 
 @end
