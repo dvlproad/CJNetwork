@@ -93,8 +93,8 @@
      */
     
     AFHTTPSessionManager *manager = [DingdangHTTPSessionManager sharedInstance];
-    [manager cj_postRequestUrl:Url parameters:params cacheReuqestData:NO progress:nil success:^(NSURLSessionDataTask *task, id responseObject, BOOL isCacheData) {
-        
+    
+    [manager cj_postUrl:Url params:params cache:NO success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
         if (isCacheData) {
             if (success) {
                 success(nil, responseObject);
@@ -105,8 +105,7 @@
                 success(task, responseObject);
             }
         }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error, BOOL isCacheData) {
+    } failure:^(NSError * _Nullable error, CJRequestFailureType failureType) {
         if (isCacheData) {
             if (failure) {
                 failure(nil, nil);

@@ -23,7 +23,7 @@
  *  @param encrypt      是否加密
  *  @param encryptBlock 对请求的参数requestParmas加密的方法
  *  @param decryptBlock 对请求得到的responseString解密的方法
- *  @param success      请求成功的回调failure
+ *  @param success      请求成功的回调success
  *  @param failure      请求失败的回调failure
  */
 - (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url

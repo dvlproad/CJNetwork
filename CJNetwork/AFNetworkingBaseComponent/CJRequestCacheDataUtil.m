@@ -41,37 +41,20 @@ static NSString *relativeDirectoryPath = @"CJNetworkCache";
 }
 
 /** 完整的描述请参见文件头部 */
-+ (BOOL)requestNetworkDataFromCache:(BOOL)fromRequestCacheData
-                       byRequestUrl:(nullable NSString *)Url
-                         parameters:(nullable NSDictionary *)parameters
-                            success:(nullable CJRequestCacheSuccess)success
-                            failure:(nullable CJRequestCacheFailure)failure
++ (void)requestCacheDataByUrl:(nullable NSString *)Url
+                       params:(nullable id)params
+                      success:(nullable void (^)(NSDictionary *_Nullable responseObject))success
+                      failure:(nullable void (^)(NSError * _Nullable error, CJRequestFailureType failureType))failure
 {
-    NSURLSessionDataTask *task = nil;
-    
-    if (fromRequestCacheData == NO) {
-        NSLog(@"提示：这里之前未缓存，无法读取缓存，提示网络不给力");
-        //[self hud_showNoNetwork];
-        
-        if (failure) {
-            NSString *errorMessage = NSLocalizedString(@"网络不给力", nil);
-            NSError *error = [self networkErrorWithLocalizedDescription:errorMessage];
-            failure(task, error, fromRequestCacheData);
-        }
-        return NO;
-    }
-    
-    NSString *requestCacheKey = [self getRequestCacheKeyByRequestUrl:Url parameters:parameters];
+    NSString *requestCacheKey = [self getRequestCacheKeyByRequestUrl:Url parameters:params];
     if (nil == requestCacheKey) {
         NSLog(@"error: cacheKey == nil, 无法读取缓存，提示网络不给力");
-        //[self hud_showNoNetwork];
-        
         if (failure) {
             NSString *errorMessage = NSLocalizedString(@"网络不给力", nil);
             NSError *error = [self networkErrorWithLocalizedDescription:errorMessage];
-            failure(task, error, fromRequestCacheData);
+            failure(error, CJRequestFailureTypeCacheKeyNil);
         }
-        return NO;
+        return;
     }
     
     
@@ -82,20 +65,18 @@ static NSString *relativeDirectoryPath = @"CJNetworkCache";
         
         if (success) {
             NSDictionary *responseObject = [CJObjectConvertUtil dictionaryFromData:requestCacheData];
-            success(task, responseObject, fromRequestCacheData);
+            success(responseObject);
         }
-        return YES;
         
     } else {
-        NSLog(@"未读到缓存数据，提示网络不给力");
+        NSLog(@"未读到缓存数据,如第一次就是无网请求,提示网络不给力");
         //[self hud_showNoNetwork];
         
         if (failure) {
             NSString *errorMessage = NSLocalizedString(@"网络不给力", nil);
             NSError *error = [self networkErrorWithLocalizedDescription:errorMessage];
-            failure(task, error, fromRequestCacheData);
+            failure(error, CJRequestFailureTypeCacheDataNil);
         }
-        return NO;
     }
 }
 
