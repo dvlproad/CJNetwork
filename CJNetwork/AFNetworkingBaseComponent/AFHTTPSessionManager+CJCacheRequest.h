@@ -7,8 +7,6 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#import "CJNetworkMonitor.h"
-
 #import "CJRequestCacheDataUtil.h"
 
 typedef NS_OPTIONS(NSUInteger, CJNeedGetCacheOption) {
@@ -20,17 +18,17 @@ typedef NS_OPTIONS(NSUInteger, CJNeedGetCacheOption) {
 /**
  *  AFN的请求方法(包含缓存方法)
  */
-@interface AFHTTPSessionManager (CJCategory) {
+@interface AFHTTPSessionManager (CJCacheRequest) {
     
 }
-//@property (nonatomic, copy) void (^_Nullable cjNoNetworkHandle)(void);    /**< 没有网络时候要执行的操作(添加此此代码块，解除对SVProgressHUD的依赖) */
 
-
+#pragma mark - CJCache
 /**
- *  发起请求
+ *  发起POST请求
  *
  *  @param Url          Url
  *  @param params       params
+ *  @param isNetworkEnabled 当前的网络状态是否可用
  *  @param cache        是否缓存网络数据(如果有缓存，则即代表可以从缓存中获取数据)
  *  @param success      请求成功的回调success
  *  @param failure      请求失败的回调failure
@@ -39,7 +37,34 @@ typedef NS_OPTIONS(NSUInteger, CJNeedGetCacheOption) {
  */
 - (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
                                        params:(nullable id)params
+                         currentNetworkStatus:(BOOL)isNetworkEnabled
                                         cache:(BOOL)cache
+                                      success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
+                                      failure:(nullable void (^)(NSError * _Nullable error))failure;
+
+#pragma mark - CJCacheEncrypt
+/**
+ *  发起POST请求
+ *
+ *  @param Url          Url
+ *  @param params       params
+ *  @param isNetworkEnabled 当前的网络状态是否可用
+ *  @param cache        是否缓存网络数据(如果有缓存，则即代表可以从缓存中获取数据)
+ *  @param encrypt      是否加密
+ *  @param encryptBlock 对请求的参数requestParmas加密的方法
+ *  @param decryptBlock 对请求得到的responseString解密的方法
+ *  @param success      请求成功的回调success
+ *  @param failure      请求失败的回调failure
+ *
+ *  @return NSURLSessionDataTask
+ */
+- (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
+                                       params:(nullable id)params
+                         currentNetworkStatus:(BOOL)isNetworkEnabled
+                                        cache:(BOOL)cache
+                                      encrypt:(BOOL)encrypt
+                                 encryptBlock:(NSData * (^)(NSDictionary *requestParmas))encryptBlock
+                                 decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
                                       success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
                                       failure:(nullable void (^)(NSError * _Nullable error))failure;
 

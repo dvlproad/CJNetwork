@@ -15,6 +15,8 @@
 
 #import "IjinbuUploadItemRequest.h"
 
+#import "CJNetworkMonitor.h"
+
 //API路径--ijinbu
 #define API_BASE_Url_ijinbu(_Url_) [[@"http://www.ijinbu.com/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
 

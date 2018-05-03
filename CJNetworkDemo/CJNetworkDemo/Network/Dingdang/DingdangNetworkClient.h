@@ -14,6 +14,8 @@
 
 #import "CJResponseModel.h"
 
+#import "CJNetworkMonitor.h"
+
 @interface DingdangNetworkClient : NSObject
 
 + (DingdangNetworkClient *)sharedInstance;

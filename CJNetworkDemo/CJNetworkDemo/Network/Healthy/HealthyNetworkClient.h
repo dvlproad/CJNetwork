@@ -11,6 +11,8 @@
 
 #import "CJResponseModel.h"
 
+#import "CJNetworkMonitor.h"
+
 @interface HealthyNetworkClient : NSObject
 
 + (HealthyNetworkClient *)sharedInstance;
