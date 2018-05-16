@@ -15,7 +15,7 @@
 
 #import "IjinbuUploadItemRequest.h"
 
-#import "CJNetworkMonitor.h"
+#import "AppInfoManager.h"
 
 //API路径--ijinbu
 #define API_BASE_Url_ijinbu(_Url_) [[@"http://www.ijinbu.com/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
@@ -26,6 +26,7 @@
 
 - (nullable NSURLSessionDataTask *)ijinbu_postUrl:(nullable NSString *)Url
                                            params:(nullable id)params
+                                            cache:(BOOL)cache
                                     completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock;
 
 - (NSURLSessionDataTask *)ijinbu_uploadFile:(IjinbuUploadItemRequest *)request

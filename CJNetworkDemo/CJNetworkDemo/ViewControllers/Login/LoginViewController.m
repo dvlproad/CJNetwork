@@ -1,18 +1,20 @@
 //
-//  Login.m
+//  LoginViewController.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 6/25/15.
 //  Copyright (c) 2015 dvlproad. All rights reserved.
 //
 
-#import "Login.h"
+#import "LoginViewController.h"
 
-@interface Login ()
+#import "AppInfoManager.h"
+
+@interface LoginViewController ()
 
 @end
 
-@implementation Login
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -20,6 +22,13 @@
     
     self.nameTextField.text = @"test";
     self.pasdTextField.text = @"test";
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkChange:) name:@"NetworkEnableChange" object:nil];
+}
+
+- (void)networkChange:(NSNotification *)notification {
+    BOOL networkEnable = [AppInfoManager sharedInstance].networkEnable;
+    NSLog(@"当前网络:%@", networkEnable ? @"可用" : @"不可用");
 }
 
 - (void)didReceiveMemoryWarning {

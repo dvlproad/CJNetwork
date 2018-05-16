@@ -1,5 +1,5 @@
 //
-//  Login.h
+//  LoginViewController.h
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 6/25/15.
@@ -10,7 +10,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
-@interface Login : UIViewController{
+@interface LoginViewController : UIViewController{
     MBProgressHUD *HUD;
 }
 @property(nonatomic, strong) IBOutlet UITextField *nameTextField;

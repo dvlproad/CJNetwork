@@ -7,8 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "CJNetworkMonitor.h"
-#import "DingdangNetworkClient.h"
+#import "AppInfoManager.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[CJNetworkMonitor sharedInstance] startNetworkMonitoring]; //开启网络监听
+    [[AppInfoManager sharedInstance] startNetworkMonitoring]; //开启网络监听
     
     [self performSelector:@selector(tryAutoLogin) withObject:nil afterDelay:0.35f];
     /*
@@ -35,19 +34,7 @@
 
 - (void)tryAutoLogin{
     //自动登录的功能
-    NSString *name = [LoginHelper loginName];
-    NSString *pasd = [LoginHelper loginPasd];
-    if (name == nil) {
-        //[self goLogin];
-    }else{
-        [[DingdangNetworkClient sharedInstance] requestDDLogin_name:name pasd:pasd completeBlock:^(CJResponseModel *responseModel) {
-            if (responseModel.status == 0) {
-                NSLog(@"获取acces_token成功，代表登录成功");
-            } else {
-                NSLog(@"登录不了哦，再试试看！");
-            }
-        }];
-    }
+    
 }
 
 

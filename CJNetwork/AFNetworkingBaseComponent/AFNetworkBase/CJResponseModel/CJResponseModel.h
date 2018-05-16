@@ -16,4 +16,12 @@
 
 @property(nonatomic, assign) BOOL isCacheData;
 
+/*
+CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+responseModel.status = [responseObject[@"status"] integerValue];
+responseModel.message = responseObject[@"message"];
+responseModel.result = responseObject[@"result"];
+responseModel.isCacheData = isCacheData;
+*/
+
 @end

@@ -11,7 +11,7 @@
 
 #import "CJResponseModel.h"
 
-#import "CJNetworkMonitor.h"
+#import "AppInfoManager.h"
 
 @interface HealthyNetworkClient : NSObject
 

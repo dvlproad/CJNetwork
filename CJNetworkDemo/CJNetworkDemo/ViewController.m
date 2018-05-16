@@ -7,10 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "Login.h"
+#import "LoginViewController.h"
 #import "AFNDemoViewController.h"
 
-#import "CheckVersionNetworkClient.h"
 #import "TestNetworkClient.h"
 
 #import "DownloadHomeViewController.h"
@@ -35,7 +34,7 @@ static int apiTestCount = 0;
 
 - (IBAction)goLoginDemo:(id)sender{
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-    Login *vc = [sb instantiateViewControllerWithIdentifier:@"Login"];
+    LoginViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LoginViewController"];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -43,33 +42,6 @@ static int apiTestCount = 0;
     AFNDemoViewController *vc = [[AFNDemoViewController alloc]initWithNibName:@"AFNDemoViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
-
-- (IBAction)checkVersion:(id)sender {
-    NSURLSessionDataTask *URLSessionDataTask =
-    [[CheckVersionNetworkClient sharedInstance] checkVersionWithAPPID:@"587767923" success:^(BOOL isLastest, NSString *app_trackViewUrl) {
-        if (isLastest == NO) {
-            trackViewUrl = app_trackViewUrl;
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
-            alert.tag = 10000;
-            [alert show];
-        }else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本已是最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            alert.tag = 10001;
-            [alert show];
-        }
-        
-    } failure:^{
-        NSLog(@"网络检查失败");
-    }];
-    
-    //网络请求时候的动画添加
-    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] init];
-    indicatorView.frame = CGRectMake(100, 200, 100, 100);/*calculate frame here*/
-    indicatorView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:indicatorView];
-    [indicatorView setAnimatingWithStateOfTask:URLSessionDataTask];
-}
-
 
 - (IBAction)goDownloadHomeViewController:(id)sender {
     DownloadHomeViewController *viewController = [[DownloadHomeViewController alloc] initWithNibName:@"DownloadHomeViewController" bundle:nil];
@@ -87,7 +59,7 @@ static int apiTestCount = 0;
 - (IBAction)apiTest:(id)sender{ //测试多次发送返回几次结果
     apiTestCount = 0;
     
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 1; i++) {
         [self doAPITest];
 //        [NSThread detachNewThreadSelector:@selector(doAPITest) toTarget:self withObject:nil];
     }

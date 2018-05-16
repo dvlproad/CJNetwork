@@ -91,7 +91,7 @@
         }
         default:{
             //errorMessage = task.responseString;
-            errorMessage = @"";
+            errorMessage = @"未知错误";
             break;
         }
     }

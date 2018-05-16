@@ -8,10 +8,6 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-#import "CJNetworkMonitor.h"
-
-#import "CJRequestCacheDataUtil.h"
-
 @interface AFHTTPSessionManager (CJEncrypt)
 
 /**
@@ -25,11 +21,11 @@
  *
  *  @return NSURLSessionDataTask
  */
-- (NSURLSessionDataTask *)cj_getUrl:(NSString *)Url
-                             params:(NSDictionary *)params
-                           progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                            success:(void (^)(NSDictionary *responseDict))success
-                            failure:(void (^)(NSError *error))failure;
+- (nullable NSURLSessionDataTask *)cj_getUrl:(nullable NSString *)Url
+                                      params:(nullable NSDictionary *)params
+                                    progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                     success:(nullable void (^)(NSDictionary *_Nullable responseObject))success
+                                     failure:(nullable void (^)(NSError * _Nullable error))failure;
 
 
 /**

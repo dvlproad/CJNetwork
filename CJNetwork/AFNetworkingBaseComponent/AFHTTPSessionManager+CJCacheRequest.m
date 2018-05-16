@@ -17,55 +17,11 @@
 - (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
                                        params:(nullable id)params
                          currentNetworkStatus:(BOOL)isNetworkEnabled
-                                        cache:(BOOL)cache
-                                      success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
-                                      failure:(nullable void (^)(NSError * _Nullable error))failure
-{
-    CJNeedGetCacheOption cacheOption = CJNeedGetCacheOptionNetworkUnable | CJNeedGetCacheOptionRequestFailure;
-    NSURLSessionDataTask *URLSessionDataTask = [self cj_postUrl:Url
-                                                         params:params
-                                           currentNetworkStatus:isNetworkEnabled
-                                                    cacheOption:cacheOption
-                                                       progress:nil
-                                                        success:success
-                                                        failure:failure];
-    return URLSessionDataTask;
-    
-}
-
-
-/**
- *  发起请求
- *
- *  @param Url              Url
- *  @param params           params
- *  @param isNetworkEnabled 当前的网络状态是否可用
- *  @param cacheOption      需要缓存网络数据的情况(如果有缓存，则即代表可以从缓存中获取数据)
- *  @param uploadProgress   uploadProgress
- *  @param success          请求成功的回调success
- *  @param failure          请求失败的回调failure
- *
- *  return NSURLSessionDataTask
- */
-- (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
-                                       params:(nullable id)params
-                         currentNetworkStatus:(BOOL)isNetworkEnabled
                                   cacheOption:(CJNeedGetCacheOption)cacheOption
-                                 //encacheBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encacheBlock
-                                 //decacheBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decacheBlock
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                       success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
                                       failure:(nullable void (^)(NSError * _Nullable error))failure
 {
-    //将传给服务器的参数用字符串打印出来
-    NSString *allParamsJsonString = nil;
-    if ([NSJSONSerialization isValidJSONObject:params]) {
-        NSError *error;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-        allParamsJsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
-    //NSLog(@"传给服务器的json参数:%@", allParamsJsonString);
-    
     if (isNetworkEnabled == NO) {
         /* 网络不可用，读取本地缓存数据 */
         NSString *cjErrorMeesage = NSLocalizedString(@"网络不给力", nil);
@@ -126,67 +82,14 @@
 - (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
                                        params:(nullable id)params
                          currentNetworkStatus:(BOOL)isNetworkEnabled
-                                        cache:(BOOL)cache
-                                      encrypt:(BOOL)encrypt
-                                 encryptBlock:(NSData * (^)(NSDictionary *requestParmas))encryptBlock
-                                 decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
-                                      success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
-                                      failure:(nullable void (^)(NSError * _Nullable error))failure
-{
-    CJNeedGetCacheOption cacheOption = CJNeedGetCacheOptionNetworkUnable | CJNeedGetCacheOptionRequestFailure;
-    NSURLSessionDataTask *URLSessionDataTask = [self cj_postUrl:Url
-                                                         params:params
-                                           currentNetworkStatus:isNetworkEnabled
-                                                    cacheOption:cacheOption
-                                                        encrypt:encrypt
-                                                   encryptBlock:encryptBlock
-                                                   decryptBlock:decryptBlock
-                                                       progress:nil
-                                                        success:success
-                                                        failure:failure];
-    return URLSessionDataTask;
-    
-}
-
-
-/**
- *  发起请求
- *
- *  @param Url              Url
- *  @param params           params
- *  @param isNetworkEnabled 当前的网络状态是否可用
- *  @param cacheOption      需要缓存网络数据的情况(如果有缓存，则即代表可以从缓存中获取数据)
- *  @param encrypt          是否加密
- *  @param encryptBlock     对请求的参数requestParmas加密的方法
- *  @param decryptBlock     对请求得到的responseString解密的方法
- *  @param uploadProgress   uploadProgress
- *  @param success          请求成功的回调success
- *  @param failure          请求失败的回调failure
- *
- *  return NSURLSessionDataTask
- */
-- (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
-                                       params:(nullable id)params
-                         currentNetworkStatus:(BOOL)isNetworkEnabled
                                   cacheOption:(CJNeedGetCacheOption)cacheOption
-                                //encacheBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encacheBlock
-                                //decacheBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decacheBlock
                                       encrypt:(BOOL)encrypt
-                                 encryptBlock:(NSData * (^)(NSDictionary *requestParmas))encryptBlock
-                                 decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
+                                 encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
+                                 decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                       success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
                                       failure:(nullable void (^)(NSError * _Nullable error))failure
 {
-    //将传给服务器的参数用字符串打印出来
-    NSString *allParamsJsonString = nil;
-    if ([NSJSONSerialization isValidJSONObject:params]) {
-        NSError *error;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-        allParamsJsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
-    //NSLog(@"传给服务器的json参数:%@", allParamsJsonString);
-    
     if (isNetworkEnabled == NO) {
         /* 网络不可用，读取本地缓存数据 */
         NSString *cjErrorMeesage = NSLocalizedString(@"网络不给力", nil);
@@ -283,16 +186,20 @@
     //NSLog(@"传给服务器的json参数:%@", allParamsJsonString);
     
     
-    NSData *data = responseObject;
     NSDictionary *recognizableResponseObject = nil; //可识别的responseObject,如果是加密的还要解密
     if (encrypt && decryptBlock) {
-        NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSString *responseString = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
         
         //recognizableResponseObject = [CJEncryptAndDecryptTool decryptJsonString:responseString];
         recognizableResponseObject = decryptBlock(responseString);
         
     } else {
-        recognizableResponseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        if ([NSJSONSerialization isValidJSONObject:responseObject]) {
+            recognizableResponseObject = responseObject;
+        } else {
+            recognizableResponseObject = [NSJSONSerialization JSONObjectWithData:(NSData *)responseObject options:NSJSONReadingMutableContainers error:nil];
+        }
+        
     }
     NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n\n传给服务器的json参数:%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, recognizableResponseObject, allParamsJsonString);
     

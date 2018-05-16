@@ -1,7 +1,8 @@
 Pod::Spec.new do |s|
+  #验证方法：pod lib lint CJNetwork.podspec --allow-warnings --use-libraries --verbose
   s.name         = "CJNetwork"
-  s.version      = "0.1.5"
-  s.summary      = "一个AFNetworking应用的封装"
+  s.version      = "0.2.0"
+  s.summary      = "一个AFNetworking应用的封装(支持加密和缓存数据)"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
   s.author             = { "dvlproad" => "studyroad@qq.com" }
@@ -9,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.1.5" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.2.0" }
   s.source_files  = "CJNetwork/*.{h,m}"
   s.frameworks = 'UIKit'
 
@@ -21,12 +22,6 @@ Pod::Spec.new do |s|
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
 
-  # 网络的监控器
-  s.subspec 'CJNetworkMonitor' do |ss|
-    ss.source_files = "CJNetwork/CJNetworkMonitor/**/*.{h,m}"
-    ss.dependency 'AFNetworking'
-  end
-
   # 系统的请求方法
   s.subspec 'CJRequestUtil' do |ss|
     ss.source_files = "CJNetwork/CJRequestUtil/**/*.{h,m}"
@@ -35,7 +30,8 @@ Pod::Spec.new do |s|
   # 文件的上传请求方法(使用AFN)（子类会自称父类的s.dependency）
   s.subspec 'AFNetworkingUploadComponent' do |ss|
     ss.source_files = "CJNetwork/AFNetworkingUploadComponent/**/*.{h,m}"
-    ss.dependency 'CJNetwork/CJNetworkMonitor'
+
+    ss.dependency 'AFNetworking'
   end
 
   # 数据的缓存
@@ -48,14 +44,8 @@ Pod::Spec.new do |s|
   s.subspec 'AFNetworkingBaseComponent' do |ss|
     ss.source_files = "CJNetwork/AFNetworkingBaseComponent/**/*.{h,m}"
 
-    ss.dependency 'CJNetwork/CJNetworkMonitor'
+    ss.dependency 'AFNetworking'
     ss.dependency 'CJNetwork/CJCacheManager'
-  end
-
-  # 版本检查（子类会自称父类的s.dependency）
-  s.subspec 'AFNetworkingCheckVersionComponent' do |ss|
-    ss.source_files = "CJNetwork/AFNetworkingCheckVersionComponent/**/*.{h,m}"
-    ss.dependency 'CJNetwork/CJNetworkMonitor'
   end
 
 end

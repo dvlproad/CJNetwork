@@ -28,11 +28,16 @@
 {
     AFHTTPSessionManager *manager = [TestHTTPSessionManager sharedInstance];
     
-    //注：如果网络一直判断失败，请检查之前是否从不曾调用过[[CJNetworkMonitor sharedInstance] startNetworkMonitoring];如是，请提前调用至少一次即可
-    BOOL isNetworkEnabled = [CJNetworkMonitor sharedInstance].networkSuccess;
+    //注：如果网络一直判断失败，请检查之前是否从不曾调用过[[AppInfoManager sharedInstance] startNetworkMonitoring];如是，请提前调用至少一次即可
+    BOOL isNetworkEnabled = [AppInfoManager sharedInstance].networkEnable;
+    CJNeedGetCacheOption cacheOption = CJNeedGetCacheOptionNone;
+    if (cache) {
+        cacheOption = CJNeedGetCacheOptionNetworkUnable | CJNeedGetCacheOptionRequestFailure;
+    }
+    
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cj_postUrl:Url params:params currentNetworkStatus:isNetworkEnabled cache:cache success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
+    [manager cj_postUrl:Url params:params currentNetworkStatus:isNetworkEnabled cacheOption:cacheOption progress:nil success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
         CJResponseModel *responseModel = [[CJResponseModel alloc] init];
         responseModel.status = [responseObject[@"status"] integerValue];
         responseModel.message = responseObject[@"message"];

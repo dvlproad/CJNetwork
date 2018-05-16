@@ -12,11 +12,11 @@
 @implementation AFHTTPSessionManager (CJEncrypt)
 
 /* 完整的描述请参见文件头部 */
-- (NSURLSessionDataTask *)cj_getUrl:(NSString *)Url
-                             params:(NSDictionary *)params
-                           progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                            success:(void (^)(NSDictionary *responseDict))success
-                            failure:(void (^)(NSError *error))failure
+- (nullable NSURLSessionDataTask *)cj_getUrl:(nullable NSString *)Url
+                                      params:(nullable NSDictionary *)params
+                                    progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                     success:(nullable void (^)(NSDictionary *_Nullable responseObject))success
+                                     failure:(nullable void (^)(NSError * _Nullable error))failure
 {
     NSLog(@"Url = %@", Url);
     NSLog(@"params = %@", params);
@@ -55,14 +55,14 @@
 
 
 /** 完整的描述请参见文件头部 */
-- (nullable NSURLSessionDataTask *)cj_postUrl:(NSString *)Url
-                                       params:(id)params
+- (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
+                                       params:(nullable id)params
                                       encrypt:(BOOL)encrypt
-                                 encryptBlock:(NSData * (^)(NSDictionary *requestParmas))encryptBlock
-                                 decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
+                                 encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
+                                 decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                      success:(void (^)(NSDictionary *responseObject))success
-                                      failure:(void (^)(NSError *error))failure
+                                      success:(nullable void (^)(NSDictionary *_Nullable responseObject))success
+                                      failure:(nullable void (^)(NSError * _Nullable error))failure
 {
     //将传给服务器的参数用字符串打印出来
     NSString *allParamsJsonString = nil;
@@ -92,16 +92,19 @@
     [self dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error == nil) {
-            NSData *data = responseObject;
             NSDictionary *recognizableResponseObject = nil; //可识别的responseObject,如果是加密的还要解密
             if (encrypt && decryptBlock) {
-                NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSString *responseString = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
                 
                 //recognizableResponseObject = [CJEncryptAndDecryptTool decryptJsonString:responseString];
                 recognizableResponseObject = decryptBlock(responseString);
                 
             } else {
-                recognizableResponseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                if ([NSJSONSerialization isValidJSONObject:responseObject]) {
+                    recognizableResponseObject = responseObject;
+                } else {
+                    recognizableResponseObject = [NSJSONSerialization JSONObjectWithData:(NSData *)responseObject options:NSJSONReadingMutableContainers error:nil];
+                }
             }
             NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n\n传给服务器的json参数:%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, recognizableResponseObject, allParamsJsonString);
             

@@ -21,7 +21,7 @@
                              @"loginType":  @(0)
                              };
     
-    return [self ijinbu_postUrl:Url params:params completeBlock:^(IjinbuResponseModel *responseModel) {
+    return [self ijinbu_postUrl:Url params:params cache:YES completeBlock:^(IjinbuResponseModel *responseModel) {
         if (responseModel.status == 0) {
             NSLog(@"ijinbu_login_responseModel = %@", responseModel);
             IjinbuUser *user = [MTLJSONAdapter modelOfClass:[IjinbuUser class] fromJSONDictionary:responseModel.result error:nil];
