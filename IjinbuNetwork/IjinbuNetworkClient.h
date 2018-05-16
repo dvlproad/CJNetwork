@@ -25,10 +25,10 @@
 - (nullable NSURLSessionDataTask *)ijinbu_postUrl:(nullable NSString *)Url
                                            params:(nullable id)params
                                             cache:(BOOL)cache
-                                    completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock;
+                                    completeBlock:(nullable void (^)(IjinbuResponseModel * _Nullable responseModel))completeBlock;
 
-- (NSURLSessionDataTask *)ijinbu_uploadFile:(IjinbuUploadItemRequest *)request
-                                   progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                              completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock;
+- (nullable NSURLSessionDataTask *)ijinbu_uploadFile:(nullable IjinbuUploadItemRequest *)request
+                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                       completeBlock:(nullable void (^)(IjinbuResponseModel * _Nullable responseModel))completeBlock;
 
 @end

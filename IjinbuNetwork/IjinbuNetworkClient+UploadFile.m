@@ -81,6 +81,38 @@
 }
 
 
+/** 上传文件 */
+- (NSURLSessionDataTask *)requestUploadFile:(IjinbuUploadItemRequest *)request
+                                   progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                              completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock
+{
+    AFHTTPSessionManager *manager = [IjinbuHTTPSessionManager sharedInstance];
+    
+    NSString *Url = API_BASE_Url_ijinbu(@"ijinbu/app/public/batchUpload");
+    NSDictionary *parameters = @{@"uploadType": @(request.uploadItemToWhere)};
+    NSArray<CJUploadFileModel *> *uploadFileModels = request.uploadFileModels;
+    NSLog(@"Url = %@", Url);
+    NSLog(@"params = %@", parameters);
+    
+    return [manager cj_postUploadUrl:Url parameters:parameters uploadFileModels:uploadFileModels progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
+        IjinbuResponseModel *responseModel = [[IjinbuResponseModel alloc] init];
+        responseModel.status = [responseObject[@"status"] integerValue];
+        responseModel.message = responseObject[@"msg"];
+        responseModel.result = responseObject[@"result"];
+        if (completeBlock) {
+            completeBlock(responseModel);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+        IjinbuResponseModel *responseModel = [[IjinbuResponseModel alloc] init];
+        responseModel.status = -1;
+        responseModel.message = NSLocalizedString(@"网络请求失败", nil);
+        responseModel.result = nil;
+        if (completeBlock) {
+            completeBlock(responseModel);
+        }
+    }];
+}
 
 
 

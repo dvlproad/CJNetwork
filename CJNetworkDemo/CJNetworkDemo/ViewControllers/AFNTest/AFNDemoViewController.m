@@ -99,7 +99,7 @@
 
 
 //文件上传－自定义上传文件名
-+ (void)postUploadWithUrl:(NSString *)urlStr fileUrl:(NSURL *)fileURL fileName:(NSString *)fileName fileType:(NSString *)fileTye success:(void (^)(id responseObject))success fail:(void (^)())fail
++ (void)postUploadWithUrl:(NSString *)urlStr fileUrl:(NSURL *)fileURL fileName:(NSString *)fileName fileType:(NSString *)fileTye success:(void (^)(id responseObject))success fail:(void (^)(void))fail
 {
     // 本地上传给服务器时,没有确定的URL,不好用MD5的方式处理
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -134,7 +134,7 @@
 
 
 //文件上传－随机生成文件名
-+ (void)postUploadWithUrl:(NSString *)urlStr fileUrl:(NSURL *)fileURL success:(void (^)(id responseObject))success fail:(void (^)())fail
++ (void)postUploadWithUrl:(NSString *)urlStr fileUrl:(NSURL *)fileURL success:(void (^)(id responseObject))success fail:(void (^)(void))fail
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     // AFHTTPResponseSerializer就是正常的HTTP请求响应结果:NSData

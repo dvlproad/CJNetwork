@@ -750,16 +750,16 @@
 		80E7E66B20AC34EA000F762D /* IjinbuUploadModels */ = {
 			isa = PBXGroup;
 			children = (
-				80E7E66C20AC34EA000F762D /* CJUploadVideoItem.h */,
-				80E7E66D20AC34EA000F762D /* IjinbuUploadItemResult.m */,
-				80E7E66E20AC34EA000F762D /* CJUploadItemResult.m */,
-				80E7E66F20AC34EA000F762D /* IjinbuUploadItemRequest.m */,
-				80E7E67020AC34EA000F762D /* CJImageUploadItem.m */,
-				80E7E67120AC34EA000F762D /* CJUploadVideoItem.m */,
-				80E7E67220AC34EA000F762D /* CJUploadItemResult.h */,
-				80E7E67320AC34EA000F762D /* IjinbuUploadItemResult.h */,
 				80E7E67420AC34EA000F762D /* CJImageUploadItem.h */,
+				80E7E67020AC34EA000F762D /* CJImageUploadItem.m */,
+				80E7E67220AC34EA000F762D /* CJUploadItemResult.h */,
+				80E7E66E20AC34EA000F762D /* CJUploadItemResult.m */,
+				80E7E66C20AC34EA000F762D /* CJUploadVideoItem.h */,
+				80E7E67120AC34EA000F762D /* CJUploadVideoItem.m */,
 				80E7E67520AC34EA000F762D /* IjinbuUploadItemRequest.h */,
+				80E7E66F20AC34EA000F762D /* IjinbuUploadItemRequest.m */,
+				80E7E67320AC34EA000F762D /* IjinbuUploadItemResult.h */,
+				80E7E66D20AC34EA000F762D /* IjinbuUploadItemResult.m */,
 			);
 			path = IjinbuUploadModels;
 			sourceTree = "<group>";
