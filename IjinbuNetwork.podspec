@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.name         = "IjinbuNetwork"
   s.version      = "0.0.1"
   s.summary      = "ijinbu组件化开发 -- 网络模块"
-  s.homepage     = "https://gitee.com/dvlproad/CJNetwork.git"
+  s.homepage     = "https://github.com/dvlproad/CJNetwork.git"
 
   #s.license      = "MIT"
   s.license      = {
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
  
-  s.source       = { :git => "https://gitee.com/dvlproad/CJNetwork.git", :tag => "IjinbuNetwork_0.0.1" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "IjinbuNetwork_0.0.1" }
   #s.source_files  = "CJCustomView/CJChat/*.{h,m}"
   #s.source_files = "CJChat/TestOSChinaPod.{h,m}"
   s.source_files = "IjinbuNetwork/**/*.{h,m}"
