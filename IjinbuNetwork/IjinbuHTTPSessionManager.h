@@ -7,10 +7,11 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#import "NSString+MD5.h"
 
 @interface IjinbuHTTPSessionManager : AFHTTPSessionManager
 
 + (AFHTTPSessionManager *)sharedInstance;
+
++ (NSString*)MD5String:(NSString *)string;
 
 @end

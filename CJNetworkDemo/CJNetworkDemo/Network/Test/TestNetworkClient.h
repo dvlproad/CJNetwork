@@ -11,8 +11,6 @@
 
 #import "CJResponseModel.h"
 
-#import "AppInfoManager.h"
-
 @interface TestNetworkClient : NSObject
 
 + (TestNetworkClient *)sharedInstance;

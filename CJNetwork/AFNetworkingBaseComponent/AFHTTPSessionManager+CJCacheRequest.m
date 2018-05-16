@@ -10,45 +10,29 @@
 
 #import "CJRequestErrorMessageUtil.h"
 
+//typedef NS_OPTIONS(NSUInteger, CJNeedGetCacheOption) {
+//    CJNeedGetCacheOptionNone = 1 << 0,             /**< 不缓存 */
+//    CJNeedGetCacheOptionNetworkUnable = 1 << 1,    /**< 无网 */
+//    CJNeedGetCacheOptionRequestFailure = 1 << 2,   /**< 有网，但是请求地址或者服务器错误等 */
+//};
+
+
 @implementation AFHTTPSessionManager (CJCacheRequest)
 
 #pragma mark - CJCache
 /** 完整的描述请参见文件头部 */
 - (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
                                        params:(nullable id)params
-                         currentNetworkStatus:(BOOL)isNetworkEnabled
-                                  cacheOption:(CJNeedGetCacheOption)cacheOption
+                                  shouldCache:(BOOL)shouldCache
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                       success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
                                       failure:(nullable void (^)(NSError * _Nullable error))failure
 {
-    if (isNetworkEnabled == NO) {
-        /* 网络不可用，读取本地缓存数据 */
-        NSString *cjErrorMeesage = NSLocalizedString(@"网络不给力", nil);
-        NSError *error = nil;
-        BOOL shouldGetCache = cacheOption | CJNeedGetCacheOptionNetworkUnable; //无网，网络不可用的情况下有用到缓存
-        [self didRequestFailureWithResponseError:error
-                                  cjErrorMeesage:cjErrorMeesage
-                                          forUrl:Url
-                                          params:params
-                                  shouldGetCache:shouldGetCache
-                                         encrypt:NO
-                                    encryptBlock:nil
-                                    decryptBlock:nil
-                                         success:success
-                                         failure:failure];
-        
-        return nil;
-    }
-    
-    
-    
-    /* 网络可用，直接下载数据，并根据是否需要缓存来进行缓存操作 */
     NSURLSessionDataTask *URLSessionDataTask = [self POST:Url parameters:params progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self didRequestSuccessWithResponseObject:responseObject
                                            forUrl:Url
                                            params:params
-                                      cacheOption:cacheOption
+                                      shouldCache:shouldCache
                                           encrypt:NO
                                      encryptBlock:nil
                                      decryptBlock:nil
@@ -56,12 +40,11 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSString *cjErrorMeesage = [CJRequestErrorMessageUtil getErrorMessageFromURLSessionTask:task];
-        BOOL shouldGetCache = cacheOption | CJNeedGetCacheOptionRequestFailure;//有网，但是请求地址或者服务器错误等
         [self didRequestFailureWithResponseError:error
                                   cjErrorMeesage:cjErrorMeesage
                                           forUrl:Url
                                           params:params
-                                  shouldGetCache:shouldGetCache
+                                  shouldGetCache:shouldCache
                                          encrypt:NO
                                     encryptBlock:nil
                                     decryptBlock:nil
@@ -81,8 +64,7 @@
 /** 完整的描述请参见文件头部 */
 - (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
                                        params:(nullable id)params
-                         currentNetworkStatus:(BOOL)isNetworkEnabled
-                                  cacheOption:(CJNeedGetCacheOption)cacheOption
+                                  shouldCache:(BOOL)shouldCache
                                       encrypt:(BOOL)encrypt
                                  encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
                                  decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
@@ -90,27 +72,6 @@
                                       success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
                                       failure:(nullable void (^)(NSError * _Nullable error))failure
 {
-    if (isNetworkEnabled == NO) {
-        /* 网络不可用，读取本地缓存数据 */
-        NSString *cjErrorMeesage = NSLocalizedString(@"网络不给力", nil);
-        NSError *error = nil;
-        BOOL shouldGetCache = cacheOption | CJNeedGetCacheOptionNetworkUnable; //无网，网络不可用的情况下有用到缓存
-        [self didRequestFailureWithResponseError:error
-                                  cjErrorMeesage:cjErrorMeesage
-                                          forUrl:Url
-                                          params:params
-                                  shouldGetCache:shouldGetCache
-                                         encrypt:encrypt
-                                    encryptBlock:encryptBlock
-                                    decryptBlock:decryptBlock
-                                         success:success
-                                         failure:failure];
-        
-        return nil;
-    }
-    
-    
-    /* 网络可用，直接下载数据，并根据是否需要缓存来进行缓存操作 */
     /* 利用Url和params，通过加密的方法创建请求 */
     NSData *bodyData = nil;
     if (encrypt && encryptBlock) {
@@ -133,7 +94,7 @@
             [self didRequestSuccessWithResponseObject:responseObject
                                                forUrl:Url
                                                params:params
-                                          cacheOption:cacheOption
+                                          shouldCache:shouldCache
                                               encrypt:encrypt
                                          encryptBlock:encryptBlock
                                          decryptBlock:decryptBlock
@@ -142,12 +103,11 @@
         else
         {
             NSString *cjErrorMeesage = [CJRequestErrorMessageUtil getErrorMessageFromURLResponse:response];
-            BOOL shouldGetCache = cacheOption | CJNeedGetCacheOptionRequestFailure;//有网，但是请求地址或者服务器错误等
             [self didRequestFailureWithResponseError:error
                                       cjErrorMeesage:cjErrorMeesage
                                               forUrl:Url
                                               params:params
-                                      shouldGetCache:shouldGetCache
+                                      shouldGetCache:shouldCache
                                              encrypt:encrypt
                                         encryptBlock:encryptBlock
                                         decryptBlock:decryptBlock
@@ -167,10 +127,11 @@
 
 
 #pragma mark - Private
+///请求得到数据时候执行的方法
 - (void)didRequestSuccessWithResponseObject:(nullable id)responseObject
                                      forUrl:(nullable NSString *)Url
                                      params:(nullable id)params
-                                cacheOption:(CJNeedGetCacheOption)cacheOption
+                                shouldCache:(BOOL)shouldCache
                                     encrypt:(BOOL)encrypt
                                encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
                                decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
@@ -207,12 +168,12 @@
         success(recognizableResponseObject, NO);//有网络的时候,responseObject等就不是来源磁盘(缓存),故为NO
     }
     
-    BOOL shouldCache = cacheOption | CJNeedGetCacheOptionNetworkUnable | CJNeedGetCacheOptionRequestFailure; //是否需要本地缓存现在请求下来的网络数据
-    if (shouldCache) {
+    if (shouldCache) {  //是否需要本地缓存现在请求下来的网络数据
         [CJRequestCacheDataUtil cacheNetworkData:responseObject byRequestUrl:Url parameters:params];
     }
 }
 
+///请求不到数据时候（无网 或者 有网但服务器异常等无数据时候）执行的方法
 - (void)didRequestFailureWithResponseError:(NSError * _Nullable)error
                               cjErrorMeesage:(nullable NSString *)cjErrorMeesage
                                      forUrl:(nullable NSString *)Url

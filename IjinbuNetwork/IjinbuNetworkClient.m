@@ -34,15 +34,8 @@
     NSLog(@"sign = %@", sign);
     [manager.requestSerializer setValue:sign forHTTPHeaderField:@"sign"];
     
-    //注：如果网络一直判断失败，请检查之前是否从不曾调用过[[AppInfoManager sharedInstance] startNetworkMonitoring];如是，请提前调用至少一次即可
-    BOOL isNetworkEnabled = [AFNetworkReachabilityManager sharedManager].isReachable;
-    CJNeedGetCacheOption cacheOption = CJNeedGetCacheOptionNone;
-    if (cache) {
-        cacheOption = CJNeedGetCacheOptionNetworkUnable | CJNeedGetCacheOptionRequestFailure;
-    }
-    
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cj_postUrl:Url params:params currentNetworkStatus:isNetworkEnabled cacheOption:cacheOption progress:nil success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
+    [manager cj_postUrl:Url params:params shouldCache:cache progress:nil success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
         IjinbuResponseModel *responseModel = [[IjinbuResponseModel alloc] init];
         responseModel.status = [responseObject[@"status"] integerValue];
         responseModel.message = responseObject[@"msg"];
@@ -126,7 +119,10 @@
     {
         //        [string appendString:@"appKey=9a628966c0f3ff45cf3c68a92ea0ec2a"];
     }
-    return [string MD5];
+    
+    NSString *md5Sign = [IjinbuHTTPSessionManager MD5String:string];
+    
+    return md5Sign;
 #endif
 }
 

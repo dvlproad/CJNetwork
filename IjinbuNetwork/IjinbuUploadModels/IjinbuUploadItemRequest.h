@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <Mantle/Mantle.h>
 
+#ifdef CJTESTPOD
 #import "CJBaseUploadItem.h"
 #import "CJUploadFileModel.h"
+#else
+#import <CJNetwork/CJBaseUploadItem.h>
+#import <CJNetwork/CJUploadFileModel.h>
+#endif
 
 @interface IjinbuUploadItemRequest : MTLModel
 

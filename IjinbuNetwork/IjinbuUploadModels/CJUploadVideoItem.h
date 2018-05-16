@@ -6,7 +6,12 @@
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
+#ifdef CJTESTPOD
 #import "CJBaseUploadItem.h"
+#else
+#import <CJNetwork/CJBaseUploadItem.h>
+#endif
+
 
 @interface CJUploadVideoItem : CJBaseUploadItem
 
