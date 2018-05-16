@@ -8,7 +8,6 @@
 
 #import "IjinbuNetworkClient+UploadFile.h"
 #import "IjinbuHTTPSessionManager.h"
-//#import "CJImageUploadItem.h"
 
 #ifdef CJTESTPOD
 #import "AFNetworkingUploadUtil.h"
@@ -121,63 +120,6 @@
         }
     }];
 }
-
-
-
-/*
-- (CJImageUploadItem *)cjUploadImage:(UIImage *)image
-                             toWhere:(NSInteger)uploadItemToWhere
-                      andSaveToLocal:(BOOL)saveToLocal
-                             success:(void(^)(CJImageUploadItem *uploadItem))success
-                             failure:(void(^)(void))failure
-{
-    NSLog(@"dealWithPickPhotoCompleteImage");
-    CJImageUploadItem *imageUploadItem = [[CJImageUploadItem alloc] init];
-    imageUploadItem.image = [UIImage adjustImageWithImage:image];
-    NSData *imageData = UIImageJPEGRepresentation(imageUploadItem.image, 0.8);
-    
-    //文件名
-    NSString *identifier = [[NSProcessInfo processInfo] globallyUniqueString];
-    NSString *fileName = [identifier stringByAppendingPathExtension:@"jpg"];
-    
-    if (saveToLocal) {
-        NSString *localRelativePath = [CJFileManager saveFileData:imageData
-                                                     withFileName:fileName
-                                               inSubDirectoryPath:@"UploadImage"
-                                              searchPathDirectory:NSCachesDirectory];
-        
-        //上传图片
-        imageUploadItem.localRelativePath = localRelativePath;
-    }
-    
-    imageUploadItem.operation =
-    [self requestUploadItemData:imageData itemName:fileName itemType:CJUploadItemTypeImage toWhere:uploadItemToWhere success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
-        CJResponseModel *responseModel = nil;
-        
-        imageUploadItem.responseModel = responseModel;
-        
-        if (!responseModel.result && [responseModel.result isKindOfClass:[NSArray class]])
-        {
-            NSArray *array = responseModel.result;
-            if (array.count > 0) {
-                if (success) {
-                    success(imageUploadItem);
-                }
-            }
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
-        //        [UIGlobal showMessage:error.localizedDescription];
-        
-        if (failure) {
-            failure();
-        }
-    }];
-    
-    
-    return imageUploadItem;
-}
-*/
 
 
 /* 完整的描述请参见文件头部 */
