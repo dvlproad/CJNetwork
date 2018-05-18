@@ -8,13 +8,10 @@ target 'CJNetworkDemo' do
   pod 'MBProgressHUD', '~> 0.9.1'
   pod 'SVProgressHUD', '~> 2.1.2'
   
-  pod 'JSONModel', '~> 1.1.0'
-  pod 'Mantle', '~> 2.1.0'
+#  pod 'JSONModel', '~> 1.1.0'
+#  pod 'Mantle', '~> 2.1.0'
   
   pod 'OpenUDID', '~> 1.0.0'
-  
-  pod 'CJBaseUIKit/UIImage+CJCategory', '~> 0.0.9'
-  
 end
 
 target 'CJNetworkDemoTests' do

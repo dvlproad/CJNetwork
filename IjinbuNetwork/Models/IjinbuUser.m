@@ -15,13 +15,14 @@
     return [IjinbuSession current].user;
 }
 
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{
-             @"imName":     @"hxAccount",
-             @"imPassword": @"hxPassWord",
-             @"token":      @"token",
-             };
+- (instancetype)initWithHisDictionary:(NSDictionary *)dictionary {
+    self = [super init];
+    if (self) {
+        self.imName = dictionary[@"hxAccount"];
+        self.imPassword = dictionary[@"hxPassWord"];
+        self.token = dictionary[@"token"];
+    }
+    return self;
 }
 
 @end

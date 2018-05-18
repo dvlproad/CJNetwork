@@ -10,11 +10,16 @@
 
 @implementation IjinbuUploadItemResult
 
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{@"networkId":      @"id",
-             @"networkUrl":     @"url",
-             @"networkName":    @"name",
-             };
+- (instancetype)initWithHisDictionary:(NSDictionary *)dictionary {
+    self = [super init];
+    if (self) {
+        self.networkId = dictionary[@"id"];
+        self.networkUrl = dictionary[@"url"];
+        self.networkName = dictionary[@"name"];
+        self.size = dictionary[@"size"];
+        self.ext = dictionary[@"ext"];
+    }
+    return self;
 }
 
 + (NSString *)jsonArrayWithObjectArray:(NSArray<IjinbuUploadItemResult *> *)jsonArray
@@ -37,7 +42,14 @@
             uploadItemResult.networkName = @"";
         }
         
-        NSDictionary *dictionary = [uploadItemResult dictionaryValue];
+        NSDictionary *dictionary = @{
+                                     @"networkId":      uploadItemResult.networkId,
+                                     @"networkUrl":     uploadItemResult.networkUrl,
+                                     @"networkName":    uploadItemResult.networkName,
+                                     @"size":           uploadItemResult.size,
+                                     @"ext":            uploadItemResult.ext,
+                                     };
+        
         NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
         [dictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             if (!obj || ![obj isKindOfClass:[NSNull class]]) {

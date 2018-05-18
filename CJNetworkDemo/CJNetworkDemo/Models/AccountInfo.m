@@ -10,13 +10,15 @@
 
 @implementation AccountInfo
 
-+ (JSONKeyMapper *)keyMapper {
-    return [[JSONKeyMapper alloc]initWithDictionary:@{
-                                                      @"uid" : @"uid",
-                                                      @"name" : @"name",
-                                                      @"email" : @"phoneNumber",
-                                                      @"pasd" : @"pasd"
-                                                      }];
+- (instancetype)initWithHisDictionary:(NSDictionary *)dictionary {
+    self = [super init];
+    if (self) {
+        self.uid = dictionary[@"uid"];
+        self.name = dictionary[@"name"];
+        self.email = dictionary[@"phoneNumber"];
+        self.pasd = dictionary[@"pasd"];
+    }
+    return self;
 }
 
 @end

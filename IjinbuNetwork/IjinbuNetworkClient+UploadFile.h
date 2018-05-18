@@ -32,9 +32,9 @@
                                            completeBlock:(nullable void (^)(IjinbuResponseModel * _Nullable responseModel))completeBlock;
 
 /** 上传文件 */
-- (nullable NSURLSessionDataTask *)requestUploadFile:(IjinbuUploadItemRequest *_Nullable)request
-                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                       completeBlock:(nullable void (^)(IjinbuResponseModel * _Nullable responseModel))completeBlock;
+- (NSURLSessionDataTask *)ijinbu_uploadFile:(IjinbuUploadItemRequest *)request
+                                   progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                              completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock;
 
 /**
  *  创建上传文件到服务器的请求任务：给item设置上传请求，并将上传请求的各个时刻信息uploadInfo①保存到该item上，②同时利用这些uploadInfo设置uploadProgressView

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Mantle/Mantle.h>
 
 #ifdef CJTESTPOD
 #import "CJBaseUploadItem.h"
@@ -17,10 +16,12 @@
 #import <CJNetwork/CJUploadFileModel.h>
 #endif
 
-@interface IjinbuUploadItemRequest : MTLModel
+@interface IjinbuUploadItemRequest : NSObject
 
 //可选
 @property (nonatomic, assign) NSInteger uploadItemToWhere; /** 可选：上传到哪里(一个项目中可能有好几个地方都要上传) */
 @property (nonatomic, strong) NSArray *uploadFileModels;
+
+- (instancetype)initWithHisDictionary:(NSDictionary *)dictionary;
 
 @end

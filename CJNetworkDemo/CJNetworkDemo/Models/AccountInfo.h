@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <JSONModel.h>
 
-@interface AccountInfo : JSONModel
+@interface AccountInfo : NSObject
 
-@property(nonatomic, strong) NSString<Optional> *uid;
-@property(nonatomic, strong) NSString<Optional> *name;
-@property(nonatomic, strong) NSString<Optional> *email;
-@property(nonatomic, strong) NSString<Optional> *pasd;
+@property(nonatomic, strong) NSString *uid;
+@property(nonatomic, strong) NSString *name;
+@property(nonatomic, strong) NSString *email;
+@property(nonatomic, strong) NSString *pasd;
+
+- (instancetype)initWithHisDictionary:(NSDictionary *)dictionary;
 
 @end

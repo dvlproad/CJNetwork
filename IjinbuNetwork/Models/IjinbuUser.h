@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Mantle/Mantle.h>
 
-@interface IjinbuUser : MTLModel <MTLJSONSerializing>
+@interface IjinbuUser : NSObject
 
 + (instancetype)current;
 
@@ -19,5 +18,7 @@
 @property (strong, nonatomic) NSString *imPassword;
 
 @property (copy, nonatomic) NSString *token;
+
+- (instancetype)initWithHisDictionary:(NSDictionary *)dictionary;
 
 @end

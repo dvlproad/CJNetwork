@@ -730,9 +730,9 @@
 		80E7E66620AC34EA000F762D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				80E7E66720AC34EA000F762D /* IjinbuUser.h */,
-				80E7E66820AC34EA000F762D /* IjinbuSession.m */,
 				80E7E66920AC34EA000F762D /* IjinbuSession.h */,
+				80E7E66820AC34EA000F762D /* IjinbuSession.m */,
+				80E7E66720AC34EA000F762D /* IjinbuUser.h */,
 				80E7E66A20AC34EA000F762D /* IjinbuUser.m */,
 			);
 			path = Models;

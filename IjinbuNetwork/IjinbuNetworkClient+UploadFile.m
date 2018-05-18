@@ -30,7 +30,7 @@
     uploadItemRequest.uploadFileModels = uploadFileModels;
     
     NSURLSessionDataTask *requestOperation =
-    [self requestUploadFile:uploadItemRequest progress:uploadProgress completeBlock:completeBlock];
+    [self ijinbu_uploadFile:uploadItemRequest progress:uploadProgress completeBlock:completeBlock];
     
     return requestOperation;
 }
@@ -89,7 +89,7 @@
 
 
 /** 上传文件 */
-- (NSURLSessionDataTask *)requestUploadFile:(IjinbuUploadItemRequest *)request
+- (NSURLSessionDataTask *)ijinbu_uploadFile:(IjinbuUploadItemRequest *)request
                                    progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                               completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock
 {
@@ -146,7 +146,14 @@
         CJUploadInfo *uploadInfo = [[CJUploadInfo alloc] init];
         uploadInfo.responseModel = responseModel;
         if (responseModel.status == 1) {
-            NSArray *operationUploadResult = [MTLJSONAdapter modelsOfClass:[IjinbuUploadItemResult class] fromJSONArray:responseModel.result error:nil];
+            NSMutableArray<NSDictionary *> *dictionarys = responseModel.result;
+            
+            NSMutableArray<IjinbuUploadItemResult *> *operationUploadResult = [[NSMutableArray alloc] init];
+            for (NSDictionary *dictionary in dictionarys) {
+                IjinbuUploadItemResult *itemResult = [[IjinbuUploadItemResult alloc] initWithHisDictionary:dictionary];
+                [operationUploadResult addObject:itemResult];
+            }
+        
             
             if (operationUploadResult == nil || operationUploadResult.count == 0) {
                 uploadInfo.uploadState = CJUploadStateFailure;

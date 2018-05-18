@@ -10,12 +10,12 @@
 
 @implementation IjinbuUploadItemRequest
 
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{
-             @"localUrl":       NSNull.null,
-             @"block":          NSNull.null,
-             @"uploadItemToWhere":   @"uploadType",
-             };
+- (instancetype)initWithHisDictionary:(NSDictionary *)dictionary {
+    self = [super init];
+    if (self) {
+        self.uploadItemToWhere = [dictionary[@"uploadType"] integerValue];
+    }
+    return self;
 }
 
 @end
