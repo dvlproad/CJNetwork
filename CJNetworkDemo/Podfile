@@ -12,6 +12,9 @@ target 'CJNetworkDemo' do
 #  pod 'Mantle', '~> 2.1.0'
   
   pod 'OpenUDID', '~> 1.0.0'
+  
+  pod 'CJBaseUIKit/CJAlert'
+  pod 'CJBaseUtil/CJIndentedStringUtil'
 end
 
 target 'CJNetworkDemoTests' do
