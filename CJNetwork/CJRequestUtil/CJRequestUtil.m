@@ -43,12 +43,7 @@
                              failure:(void (^)(NSError *error))failure
 {
     //将传给服务器的参数用字符串打印出来
-    NSString *allParamsJsonString = nil;
-    if ([NSJSONSerialization isValidJSONObject:params]) {
-        NSError *error;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-        allParamsJsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
+    NSString *allParamsJsonString = [CJRequestUtil easyFormattedStringFromDictionary:params];
     //NSLog(@"传给服务器的json参数:%@", allParamsJsonString);
     
     /* 利用Url和params，通过加密的方法创建请求 */
@@ -85,6 +80,19 @@
             
             if (success) {
                 success(recognizableResponseObject);
+                
+                /*
+                NSMutableString *networkLog = [NSMutableString string];
+                [networkLog appendFormat:@"地址：%@ \n", Url];
+                [networkLog appendFormat:@"参数：%@ \n", allParamsJsonString];
+                
+                NSString *responseJsonString = [CJRequestUtil easyFormattedStringFromDictionary:recognizableResponseObject];
+                [networkLog appendFormat:@"结果：%@ \n", responseJsonString];
+                
+                NSMutableDictionary *mutableResponseObject = [NSMutableDictionary dictionaryWithDictionary:recognizableResponseObject];
+                [mutableResponseObject setObject:networkLog forKey:@"cjNetworkLog"];
+                success(mutableResponseObject);
+                //*/
             }
         }
         else
@@ -250,6 +258,40 @@
     return errorMessage;
 }
 
+/* 完整的描述请参见文件头部 */
++ (NSString *)easyFormattedStringFromDictionary:(NSDictionary *)dictionary {
+    /*
+    NSString *allParamsJsonString = nil;
+    if ([NSJSONSerialization isValidJSONObject:dictionary]) {
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
+        allParamsJsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    return allParamsJsonString;
+    //*/
+    
+    NSMutableString *indentedString = [NSMutableString string];
+    
+    // 开头有个{
+    [indentedString appendString:@"{\n"];
+    
+    // 遍历所有的键值对
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        [indentedString appendFormat:@"\t%@", key];
+        [indentedString appendString:@" : "];
+        [indentedString appendFormat:@"%@,\n", obj];
+    }];
+    
+    // 结尾有个}
+    [indentedString appendString:@"}"];
+    
+    // 查找最后一个逗号
+    NSRange range = [indentedString rangeOfString:@"," options:NSBackwardsSearch];
+    if (range.location != NSNotFound)
+        [indentedString deleteCharactersInRange:range];
+    
+    return indentedString;
+}
 
 
 
