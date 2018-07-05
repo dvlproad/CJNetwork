@@ -77,7 +77,6 @@
 		80E7E67D20AC34EA000F762D /* IjinbuSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E7E66820AC34EA000F762D /* IjinbuSession.m */; };
 		80E7E67E20AC34EA000F762D /* IjinbuUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E7E66A20AC34EA000F762D /* IjinbuUser.m */; };
 		80E7E67F20AC34EA000F762D /* IjinbuUploadItemResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E7E66D20AC34EA000F762D /* IjinbuUploadItemResult.m */; };
-		80E7E68120AC34EA000F762D /* IjinbuUploadItemRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E7E66F20AC34EA000F762D /* IjinbuUploadItemRequest.m */; };
 		80E7E68420AC34EA000F762D /* IjinbuResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E7E67820AC34EA000F762D /* IjinbuResponseModel.m */; };
 		80E7E68520AC34EA000F762D /* IjinbuHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E7E67920AC34EA000F762D /* IjinbuHTTPSessionManager.m */; };
 		80E7E68620AC34EA000F762D /* IjinbuNetworkClient+UploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E7E67B20AC34EA000F762D /* IjinbuNetworkClient+UploadFile.m */; };
@@ -235,9 +234,7 @@
 		80E7E66920AC34EA000F762D /* IjinbuSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuSession.h; sourceTree = "<group>"; };
 		80E7E66A20AC34EA000F762D /* IjinbuUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuUser.m; sourceTree = "<group>"; };
 		80E7E66D20AC34EA000F762D /* IjinbuUploadItemResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuUploadItemResult.m; sourceTree = "<group>"; };
-		80E7E66F20AC34EA000F762D /* IjinbuUploadItemRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuUploadItemRequest.m; sourceTree = "<group>"; };
 		80E7E67320AC34EA000F762D /* IjinbuUploadItemResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuUploadItemResult.h; sourceTree = "<group>"; };
-		80E7E67520AC34EA000F762D /* IjinbuUploadItemRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuUploadItemRequest.h; sourceTree = "<group>"; };
 		80E7E67720AC34EA000F762D /* IjinbuResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IjinbuResponseModel.h; sourceTree = "<group>"; };
 		80E7E67820AC34EA000F762D /* IjinbuResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuResponseModel.m; sourceTree = "<group>"; };
 		80E7E67920AC34EA000F762D /* IjinbuHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IjinbuHTTPSessionManager.m; sourceTree = "<group>"; };
@@ -746,8 +743,6 @@
 		80E7E66B20AC34EA000F762D /* IjinbuUploadModels */ = {
 			isa = PBXGroup;
 			children = (
-				80E7E67520AC34EA000F762D /* IjinbuUploadItemRequest.h */,
-				80E7E66F20AC34EA000F762D /* IjinbuUploadItemRequest.m */,
 				80E7E67320AC34EA000F762D /* IjinbuUploadItemResult.h */,
 				80E7E66D20AC34EA000F762D /* IjinbuUploadItemResult.m */,
 			);
@@ -1066,7 +1061,6 @@
 				784653551F5448FB00E20A27 /* UploadViewController.m in Sources */,
 				784652B41F5448F100E20A27 /* AFHTTPSessionManager+CJCacheRequest.m in Sources */,
 				80E7E67D20AC34EA000F762D /* IjinbuSession.m in Sources */,
-				80E7E68120AC34EA000F762D /* IjinbuUploadItemRequest.m in Sources */,
 				784653401F5448FB00E20A27 /* AFNDemoViewController.m in Sources */,
 				784652BC1F5448F100E20A27 /* AFNetworkingUploadUtil.m in Sources */,
 				802D1D6C20CF719E003EAFE0 /* CJNetworkLogUtil.m in Sources */,

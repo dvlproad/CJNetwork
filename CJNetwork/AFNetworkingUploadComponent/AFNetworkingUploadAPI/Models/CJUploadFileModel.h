@@ -20,8 +20,32 @@ typedef NS_ENUM(NSUInteger, CJUploadItemType) {
  */
 @interface CJUploadFileModel : NSObject
 
-@property (nonatomic, assign) CJUploadItemType uploadItemType;
-@property (nonatomic, strong) NSData *uploadItemData;  /**< 文件数据 */
-@property (nonatomic, copy) NSString *uploadItemName;  /**< 文件名字 */
+@property (nonatomic, assign, readonly) CJUploadItemType uploadItemType;
+@property (nonatomic, strong, readonly) NSData *uploadItemData;  /**< 文件数据 */
+@property (nonatomic, copy, readonly) NSString *uploadItemName;  /**< 文件名字 */
+
+
+/**
+ *  初始化文件上传时候的上传模型
+ *
+ *  @param uploadItemType   文件的类型(这里没有从文件路径中，通过后缀得到他的类型，所以需要指定)
+ *  @param fileName         文件名字
+ *  @param data             文件数据
+ */
+- (instancetype)initWithItemType:(CJUploadItemType)uploadItemType
+                        itemName:(NSString *)fileName
+                        itemData:(NSData *)data;
+
+/**
+ *  初始化文件上传时候的上传模型（常用于上传已存于磁盘的资源文件）
+ *  @brief 通过本地相对路径localRelativePath，获得uploadItemType类型的文件上传时候的上传模型
+ *
+ *  @param localRelativePath    本地相对路径
+ *  @param uploadItemType       文件的类型(这里没有从文件路径中，通过后缀得到他的类型，所以需要指定)
+ *
+ *  @return 文件上传时候的上传模型
+ */
++ (CJUploadFileModel *)createFromLocalRelativePath:(NSString *)localRelativePath
+                                          itemType:(CJUploadItemType)uploadItemType;
 
 @end

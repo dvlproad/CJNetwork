@@ -17,91 +17,22 @@
 
 #import "IjinbuUploadItemResult.h"
 
+
 @implementation IjinbuNetworkClient (UploadFile)
 
-/** 多个文件上传 */
-- (NSURLSessionDataTask *)requestUploadItems:(NSArray<CJUploadFileModel *> *)uploadFileModels
-                                     toWhere:(NSInteger)uploadItemToWhere
-                                    progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                     completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock
-{
-    IjinbuUploadItemRequest *uploadItemRequest = [[IjinbuUploadItemRequest alloc] init];
-    uploadItemRequest.uploadItemToWhere = uploadItemToWhere;
-    uploadItemRequest.uploadFileModels = uploadFileModels;
-    
-    NSURLSessionDataTask *requestOperation =
-    [self ijinbu_uploadFile:uploadItemRequest progress:uploadProgress completeBlock:completeBlock];
-    
-    return requestOperation;
-}
-
-/** 单个文件上传1 */
-- (NSURLSessionDataTask *)requestUploadLocalItem:(NSString *)localRelativePath
-                                        itemType:(CJUploadItemType)uploadItemType
-                                         toWhere:(NSInteger)uploadItemToWhere
-                                         completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock {
-    NSAssert(localRelativePath != nil, @"本地相对路径错误");
-    
-    NSString *localAbsolutePath = [[NSHomeDirectory() stringByAppendingPathComponent:localRelativePath] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:localAbsolutePath];
-    if (fileExists == NO) {
-        NSAssert(NO, @"Error：要上传的文件不存在");
-        
-        return nil;
-    }
-    
-    NSData *data = [NSData dataWithContentsOfFile:localAbsolutePath];
-    NSAssert(data != nil, @"Error：路径存在，但是获取数据为空");
-    
-    NSString *fileName = localAbsolutePath.lastPathComponent;
-    
-    NSURLSessionDataTask *requestOperation =
-    [self requestUploadItemData:data itemName:fileName itemType:uploadItemType toWhere:uploadItemToWhere completeBlock:completeBlock];
-    
-    return requestOperation;
-}
-
-/** 单个文件上传2 */
-- (NSURLSessionDataTask *)requestUploadItemData:(NSData *)data
-                                       itemName:(NSString *)fileName
-                                       itemType:(CJUploadItemType)uploadItemType
-                                        toWhere:(NSInteger)uploadItemToWhere
-                                        completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock
-{
-    NSAssert(data != nil, @"Error：路径存在，但是获取数据为空");
-    
-    CJUploadFileModel *uploadFileModel = [[CJUploadFileModel alloc] init];
-    uploadFileModel.uploadItemType = uploadItemType;
-    uploadFileModel.uploadItemData = data;
-    uploadFileModel.uploadItemName = fileName;
-    NSArray<CJUploadFileModel *> *uploadFileModels = @[uploadFileModel];
-    
-    IjinbuUploadItemRequest *uploadItemRequest = [[IjinbuUploadItemRequest alloc] init];
-    uploadItemRequest.uploadItemToWhere = uploadItemToWhere;
-    uploadItemRequest.uploadFileModels = uploadFileModels;
-    
-    NSURLSessionDataTask *requestOperation =
-    [self ijinbu_uploadFile:uploadItemRequest progress:nil completeBlock:completeBlock];
-    
-    return requestOperation;
-    
-}
-
-
-/** 上传文件 */
-- (NSURLSessionDataTask *)ijinbu_uploadFile:(IjinbuUploadItemRequest *)request
-                                   progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                              completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock
+/* 完整的描述请参见文件头部 */
+- (nullable NSURLSessionDataTask *)ijinbu_multiUploadFileWithParams:(nullable id)params
+                                                   uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                                           progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                                      completeBlock:(nullable void (^)(IjinbuResponseModel * _Nullable responseModel))completeBlock
 {
     AFHTTPSessionManager *manager = [IjinbuHTTPSessionManager sharedInstance];
     
     NSString *Url = API_BASE_Url_ijinbu(@"ijinbu/app/public/batchUpload");
-    NSDictionary *parameters = @{@"uploadType": @(request.uploadItemToWhere)};
-    NSArray<CJUploadFileModel *> *uploadFileModels = request.uploadFileModels;
     NSLog(@"Url = %@", Url);
-    NSLog(@"params = %@", parameters);
+    NSLog(@"params = %@", params);
     
-    return [manager cj_postUploadUrl:Url parameters:parameters uploadFileModels:uploadFileModels progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
+    return [manager cj_postUploadUrl:Url parameters:params uploadFileModels:uploadFileModels progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
         IjinbuResponseModel *responseModel = [[IjinbuResponseModel alloc] init];
         responseModel.status = [responseObject[@"status"] integerValue];
         responseModel.message = responseObject[@"msg"];

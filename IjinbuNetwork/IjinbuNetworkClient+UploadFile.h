@@ -8,33 +8,26 @@
 
 #import "IjinbuNetworkClient.h"
 #import "AFHTTPSessionManager+CJUploadFile.h"
-#import "IjinbuUploadItemRequest.h"
+
+#import <UIKit/UIKit.h>
+
+#ifdef CJTESTPOD
+#import "CJBaseUploadItem.h"
+#import "CJUploadFileModel.h"
+#else
+#import <CJNetwork/CJBaseUploadItem.h>
+#import <CJNetwork/CJUploadFileModel.h>
+#endif
+
 
 @interface IjinbuNetworkClient (UploadFile)
 
-/** 多个文件上传 */
-- (nullable NSURLSessionDataTask *)requestUploadItems:(NSArray<CJUploadFileModel *> * _Nullable)uploadFileModels
-                                              toWhere:(NSInteger)uploadItemToWhere
-                                             progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                        completeBlock:(nullable void (^)(IjinbuResponseModel * _Nullable responseModel))completeBlock;
 
-/** 单个文件上传1 */
-- (nullable NSURLSessionDataTask *)requestUploadLocalItem:(NSString * _Nullable)localRelativePath
-                                                 itemType:(CJUploadItemType)uploadItemType
-                                                  toWhere:(NSInteger)uploadItemToWhere
-                                            completeBlock:(nullable void (^)(IjinbuResponseModel * _Nullable responseModel))completeBlock;
-
-/** 单个文件上传2 */
-- (nullable NSURLSessionDataTask *)requestUploadItemData:(NSData * _Nullable)data
-                                                itemName:(NSString *_Nullable)fileName
-                                                itemType:(CJUploadItemType)uploadItemType
-                                                 toWhere:(NSInteger)uploadItemToWhere
-                                           completeBlock:(nullable void (^)(IjinbuResponseModel * _Nullable responseModel))completeBlock;
-
-/** 上传文件 */
-- (NSURLSessionDataTask *)ijinbu_uploadFile:(IjinbuUploadItemRequest *)request
-                                   progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                              completeBlock:(void (^)(IjinbuResponseModel *responseModel))completeBlock;
+/** 上传多个文件(支持单个文件上传，单个文件最终也是走这个方法) */
+- (nullable NSURLSessionDataTask *)ijinbu_multiUploadFileWithParams:(nullable id)params
+                                                   uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                                           progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                                      completeBlock:(nullable void (^)(IjinbuResponseModel * _Nullable responseModel))completeBlock;
 
 /**
  *  创建上传文件到服务器的请求任务：给item设置上传请求，并将上传请求的各个时刻信息uploadInfo①保存到该item上，②同时利用这些uploadInfo设置uploadProgressView

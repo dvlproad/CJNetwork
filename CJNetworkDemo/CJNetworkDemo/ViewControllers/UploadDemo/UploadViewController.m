@@ -23,6 +23,8 @@
 }
 
 - (IBAction)uploadFile:(id)sender {
+    NSDictionary *params = @{@"uploadType": @(16)}; /** uploadType可选：上传到哪里(一个项目中可能有好几个地方都要上传) */
+    
     NSMutableArray<CJUploadFileModel *> *uploadFileModels = [[NSMutableArray alloc] init];
     
     NSString *imageName = @"op1.jpg";
@@ -30,17 +32,10 @@
     NSData *imageData = UIImageJPEGRepresentation(image, 1);
     
     //图片
-    CJUploadFileModel *imageUploadModel = [[CJUploadFileModel alloc] init];
-    imageUploadModel.uploadItemType = CJUploadItemTypeImage;
-    imageUploadModel.uploadItemData = imageData;
-    imageUploadModel.uploadItemName = imageName;
+    CJUploadFileModel *imageUploadModel = [[CJUploadFileModel alloc] initWithItemType:CJUploadItemTypeImage itemName:imageName itemData:imageData];
     [uploadFileModels addObject:imageUploadModel];
     
-    IjinbuUploadItemRequest *uploadItemRequest = [[IjinbuUploadItemRequest alloc] init];
-    uploadItemRequest.uploadItemToWhere = 16;
-    uploadItemRequest.uploadFileModels = uploadFileModels;
-    
-    [[IjinbuNetworkClient sharedInstance] ijinbu_uploadFile:uploadItemRequest progress:nil completeBlock:^(IjinbuResponseModel *responseModel) {
+    [[IjinbuNetworkClient sharedInstance] ijinbu_multiUploadFileWithParams:params uploadFileModels:uploadFileModels progress:nil completeBlock:^(IjinbuResponseModel *responseModel) {
         if (responseModel.status == 0) {
             [SVProgressHUD showSuccessWithStatus:@"上传成功"];
         } else {

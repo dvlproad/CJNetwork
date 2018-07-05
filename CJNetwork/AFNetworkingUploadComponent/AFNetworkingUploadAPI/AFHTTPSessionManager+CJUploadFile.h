@@ -28,7 +28,7 @@
                                          parameters:(nullable id)parameters
                                    uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                            success:(nullable void (^)(NSURLSessionDataTask * _Nonnull, id _Nonnull))success
-                                            failure:(nullable void (^)(NSURLSessionDataTask *_Nonnull, NSError *_Nonnull))failure;
+                                            success:(nullable void (^)(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject))success
+                                            failure:(nullable void (^)(NSURLSessionDataTask *_Nonnull task, NSError *_Nonnull error))failure;
 
 @end
