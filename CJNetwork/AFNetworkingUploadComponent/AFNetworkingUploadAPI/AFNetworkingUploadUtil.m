@@ -14,21 +14,18 @@
 /* 完整的描述请参见文件头部 */
 + (NSURLSessionDataTask *)cj_UseManager:(AFHTTPSessionManager *)manager
                           postUploadUrl:(NSString *)Url
-                                 params:(id)parameters
+                                 params:(id)params
                                 fileKey:(NSString *)fileKey
-                              fileValue:(NSArray<CJUploadFileModel *> *)uploadFileModels
-                   uploadInfoSaveInItem:(CJBaseUploadItem *)saveUploadInfoToItem
-                  uploadInfoChangeBlock:(void(^)(CJBaseUploadItem *saveUploadInfoToItem))uploadInfoChangeBlock
+                         fileValueOwner:(CJBaseUploadItem *)fileValueOwner
+            uploadMomentInfoChangeBlock:(void(^)(CJBaseUploadItem *momentInfoOwner))uploadMomentInfoChangeBlock
          dealResopnseForUploadInfoBlock:(CJUploadMomentInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock
 {
-    __weak typeof(saveUploadInfoToItem)weakItem = saveUploadInfoToItem;
-    
-    
+    __weak typeof(fileValueOwner)weakFileValueOwner = fileValueOwner;
     
     /* 正在上传 */
     void (^uploadingBlock)(NSProgress *progress) = ^ (NSProgress *progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            __strong __typeof(weakItem)strongItem = weakItem;
+            __strong __typeof(weakFileValueOwner)strongFileValueOwner = weakFileValueOwner;
             
             CJUploadMomentInfo *momentInfo = [[CJUploadMomentInfo alloc] init];
             momentInfo.uploadState = CJUploadMomentStateUploading;
@@ -36,28 +33,28 @@
             momentInfo.uploadStatePromptText = [NSString stringWithFormat:@"%.0lf%%", progressValue];
             momentInfo.progressValue = progressValue;
             
-            strongItem.momentInfo = momentInfo;
+            strongFileValueOwner.momentInfo = momentInfo;
             
-            if (uploadInfoChangeBlock) {
-                uploadInfoChangeBlock(strongItem);
+            if (uploadMomentInfoChangeBlock) {
+                uploadMomentInfoChangeBlock(strongFileValueOwner);
             }
         });
     };
     
     /* 上传完成 */
     void (^uploadCompleteBlock)(CJUploadMomentInfo *momentInfo) = ^ (CJUploadMomentInfo *momentInfo) {
-        __strong __typeof(weakItem)strongItem = weakItem;
-        strongItem.momentInfo = momentInfo;
+        __strong __typeof(weakFileValueOwner)strongFileValueOwner = weakFileValueOwner;
+        strongFileValueOwner.momentInfo = momentInfo;
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (uploadInfoChangeBlock) {
-                uploadInfoChangeBlock(strongItem);
+            if (uploadMomentInfoChangeBlock) {
+                uploadMomentInfoChangeBlock(strongFileValueOwner);
             }
         });
     };
     
     
-    return [manager cj_postUploadUrl:Url params:parameters fileKey:fileKey fileValue:uploadFileModels progress:uploadingBlock success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
+    return [manager cj_postUploadUrl:Url params:params fileKey:fileKey fileValue:fileValueOwner.uploadFileModels progress:uploadingBlock success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
         if (dealResopnseForUploadInfoBlock) {
             CJUploadMomentInfo *momentInfo = dealResopnseForUploadInfoBlock(responseObject);
             uploadCompleteBlock(momentInfo);

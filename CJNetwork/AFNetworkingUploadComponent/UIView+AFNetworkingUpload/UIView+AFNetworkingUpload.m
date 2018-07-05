@@ -29,9 +29,8 @@
                                 postUploadUrl:Url
                                        params:parameters
                                       fileKey:fileKey
-                                    fileValue:uploadFileModels
-                         uploadInfoSaveInItem:saveUploadInfoToItem
-                        uploadInfoChangeBlock:uploadInfoChangeBlock
+                               fileValueOwner:saveUploadInfoToItem
+                  uploadMomentInfoChangeBlock:uploadInfoChangeBlock
                dealResopnseForUploadInfoBlock:dealResopnseForUploadInfoBlock];
         
         saveUploadInfoToItem.operation = operation;
@@ -50,9 +49,8 @@
                                 postUploadUrl:Url
                                        params:parameters
                                       fileKey:fileKey
-                                    fileValue:uploadFileModels
-                         uploadInfoSaveInItem:saveUploadInfoToItem
-                        uploadInfoChangeBlock:uploadInfoChangeBlock
+                               fileValueOwner:saveUploadInfoToItem
+                  uploadMomentInfoChangeBlock:uploadInfoChangeBlock
                dealResopnseForUploadInfoBlock:dealResopnseForUploadInfoBlock];
         
         strongItem.operation = newOperation;

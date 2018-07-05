@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger, CJUploadItemType) {
 };
 
 /**
- *  上传的每个数据的模型(在CJFile库中海油一个CJFileModel是针对路径的)
+ *  上传的每个数据的模型(在CJFile库中还有一个CJFilePathModel是针对路径的)
  *
  */
 @interface CJUploadFileModel : NSObject

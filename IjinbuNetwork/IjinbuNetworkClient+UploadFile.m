@@ -127,11 +127,10 @@
     NSURLSessionDataTask *operation =
     [AFNetworkingUploadUtil cj_UseManager:manager
                             postUploadUrl:Url
-                               params:parameters
+                                   params:parameters
                                   fileKey:@"file"
-                                fileValue:uploadFileModels
-                     uploadInfoSaveInItem:saveUploadInfoToItem
-                    uploadInfoChangeBlock:uploadInfoChangeBlock
+                           fileValueOwner:saveUploadInfoToItem
+              uploadMomentInfoChangeBlock:uploadInfoChangeBlock
            dealResopnseForUploadInfoBlock:dealResopnseForUploadInfoBlock];
     
     return operation;
