@@ -10,4 +10,12 @@
 
 @implementation CJUploadFileModelsOwner
 
+- (instancetype)initWithUploadFileModels:(NSArray<CJUploadFileModel *> *)uploadFileModels {
+    self = [super init];
+    if (self) {
+        _uploadFileModels = [NSMutableArray arrayWithArray:uploadFileModels];
+    }
+    return self;
+}
+
 @end
