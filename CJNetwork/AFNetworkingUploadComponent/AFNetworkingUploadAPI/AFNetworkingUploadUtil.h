@@ -33,8 +33,9 @@
  */
 + (NSURLSessionDataTask *)cj_UseManager:(AFHTTPSessionManager *)manager
                           postUploadUrl:(NSString *)Url
-                             parameters:(id)parameters
-                       uploadFileModels:(NSArray<CJUploadFileModel *> *)uploadFileModels
+                                 params:(nullable id)parameters
+                                fileKey:(nullable NSString *)fileKey
+                              fileValue:(NSArray<CJUploadFileModel *> *)uploadFileModels
                    uploadInfoSaveInItem:(CJBaseUploadItem *)saveUploadInfoToItem
                   uploadInfoChangeBlock:(void(^)(CJBaseUploadItem *saveUploadInfoToItem))uploadInfoChangeBlock
          dealResopnseForUploadInfoBlock:(CJUploadInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock;

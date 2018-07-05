@@ -29,8 +29,9 @@
         andUseUploadInfoConfigureView:(CJUploadProgressView *)uploadProgressView
       uploadRequestConfigureByManager:(AFHTTPSessionManager *)manager
                                   Url:(NSString *)Url
-                           parameters:(id)parameters
-                          uploadFileModels:(NSArray<CJUploadFileModel *> *)uploadFileModels
+                               params:(id)parameters
+                              fileKey:(NSString *)fileKey
+                            fileValue:(NSArray<CJUploadFileModel *> *)uploadFileModels
                 uploadInfoChangeBlock:(void(^)(CJBaseUploadItem *saveUploadInfoToItem))uploadInfoChangeBlock
        dealResopnseForUploadInfoBlock:(CJUploadInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock;
 

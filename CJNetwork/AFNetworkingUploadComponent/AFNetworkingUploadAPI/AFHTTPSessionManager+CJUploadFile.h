@@ -17,7 +17,8 @@
  *
  *  @param Url              Url
  *  @param parameters       parameters
- *  @param uploadFileModels 要上传的数据组uploadFileModels
+ *  @param fileKey          文件参数：有些人会用file,有些人用upfile
+ *  @param uploadFileModels 文件数据：要上传的数据组uploadFileModels
  *  @param uploadProgress   uploadProgress
  *  @param success          上传成功执行的回调
  *  @param failure          上传失败执行的回调
@@ -25,8 +26,9 @@
  *  @return 上传文件的请求
  */
 - (nullable NSURLSessionDataTask *)cj_postUploadUrl:(nullable NSString *)Url
-                                         parameters:(nullable id)parameters
-                                   uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                             params:(nullable id)parameters
+                                            fileKey:(nullable NSString *)fileKey
+                                          fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                             success:(nullable void (^)(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject))success
                                             failure:(nullable void (^)(NSURLSessionDataTask *_Nonnull task, NSError *_Nonnull error))failure;

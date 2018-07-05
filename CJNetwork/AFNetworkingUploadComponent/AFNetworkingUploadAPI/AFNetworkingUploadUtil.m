@@ -14,8 +14,9 @@
 /* 完整的描述请参见文件头部 */
 + (NSURLSessionDataTask *)cj_UseManager:(AFHTTPSessionManager *)manager
                           postUploadUrl:(NSString *)Url
-                             parameters:(id)parameters
-                       uploadFileModels:(NSArray<CJUploadFileModel *> *)uploadFileModels
+                                 params:(nullable id)parameters
+                                fileKey:(nullable NSString *)fileKey
+                              fileValue:(NSArray<CJUploadFileModel *> *)uploadFileModels
                    uploadInfoSaveInItem:(CJBaseUploadItem *)saveUploadInfoToItem
                   uploadInfoChangeBlock:(void(^)(CJBaseUploadItem *saveUploadInfoToItem))uploadInfoChangeBlock
          dealResopnseForUploadInfoBlock:(CJUploadInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock
@@ -56,7 +57,7 @@
     };
     
     
-    return [manager cj_postUploadUrl:Url parameters:parameters uploadFileModels:uploadFileModels progress:uploadingBlock success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
+    return [manager cj_postUploadUrl:Url params:parameters fileKey:fileKey fileValue:uploadFileModels progress:uploadingBlock success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
         if (dealResopnseForUploadInfoBlock) {
             CJUploadInfo *uploadInfo = dealResopnseForUploadInfoBlock(responseObject);
             uploadCompleteBlock(uploadInfo);

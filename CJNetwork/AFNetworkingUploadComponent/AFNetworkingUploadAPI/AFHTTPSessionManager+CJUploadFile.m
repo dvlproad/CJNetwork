@@ -11,8 +11,9 @@
 @implementation AFHTTPSessionManager (CJUploadFile)
 
 - (nullable NSURLSessionDataTask *)cj_postUploadUrl:(nullable NSString *)Url
-                                         parameters:(nullable id)parameters
-                                   uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                             params:(nullable id)parameters
+                                            fileKey:(nullable NSString *)fileKey
+                                          fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                             success:(nullable void (^)(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject))success
                                             failure:(nullable void (^)(NSURLSessionDataTask *_Nonnull task, NSError *_Nonnull error))failure
@@ -30,7 +31,7 @@
                     if (!data) {
                         NSLog(@"Error：上传的图片数据不能为空");
                     }
-                    [formData appendPartWithFileData:data name:@"file" fileName:fileName mimeType:@"image/jpeg"];
+                    [formData appendPartWithFileData:data name:fileKey fileName:fileName mimeType:@"image/jpeg"];
                     break;
                 }
                 case CJUploadItemTypeSound:
@@ -38,7 +39,7 @@
                     if (!data) {
                         NSLog(@"Error：上传的语音数据不能为空");
                     }
-                    [formData appendPartWithFileData:data name:@"file" fileName:fileName mimeType:@"audio/mpeg3"];
+                    [formData appendPartWithFileData:data name:fileKey fileName:fileName mimeType:@"audio/mpeg3"];
                     break;
                 }
                 case CJUploadItemTypeAttach:
@@ -46,7 +47,7 @@
                     if (!data) {
                         NSLog(@"Error：上传的附件数据不能为空");
                     }
-                    [formData appendPartWithFileData:data name:@"file" fileName:fileName mimeType:@"application/octet-stream"];
+                    [formData appendPartWithFileData:data name:fileKey fileName:fileName mimeType:@"application/octet-stream"];
                     break;
                 }
                 default:

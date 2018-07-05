@@ -32,7 +32,7 @@
     NSLog(@"Url = %@", Url);
     NSLog(@"params = %@", params);
     
-    return [manager cj_postUploadUrl:Url parameters:params uploadFileModels:uploadFileModels progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
+    return [manager cj_postUploadUrl:Url params:params fileKey:@"file" fileValue:uploadFileModels progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
         IjinbuResponseModel *responseModel = [[IjinbuResponseModel alloc] init];
         responseModel.status = [responseObject[@"status"] integerValue];
         responseModel.message = responseObject[@"msg"];
@@ -127,8 +127,9 @@
     NSURLSessionDataTask *operation =
     [AFNetworkingUploadUtil cj_UseManager:manager
                             postUploadUrl:Url
-                               parameters:parameters
-                         uploadFileModels:uploadFileModels
+                               params:parameters
+                                  fileKey:@"file"
+                                fileValue:uploadFileModels
                      uploadInfoSaveInItem:saveUploadInfoToItem
                     uploadInfoChangeBlock:uploadInfoChangeBlock
            dealResopnseForUploadInfoBlock:dealResopnseForUploadInfoBlock];
