@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 	#验证方法：pod lib lint IjinbuNetwork.podspec --allow-warnings --use-libraries --verbose
   s.name         = "IjinbuNetwork"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
   s.summary      = "ijinbu组件化开发 -- 网络模块"
   s.homepage     = "https://github.com/dvlproad/CJNetwork.git"
 
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
  
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "IjinbuNetwork_0.0.4" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "IjinbuNetwork_0.0.5" }
   #s.source_files  = "CJCustomView/CJChat/*.{h,m}"
   #s.source_files = "CJChat/TestOSChinaPod.{h,m}"
   s.source_files = "IjinbuNetwork/**/*.{h,m}"
@@ -43,7 +43,6 @@ Pod::Spec.new do |s|
   # s.dependency "JSONKit", "~> 1.4"
   s.dependency "CJNetwork/AFNetworkingBaseComponent"
   s.dependency 'CJNetwork/AFNetworkingUploadComponent'
-  s.dependency "CJBaseUtil/CJDevice"
   s.dependency "OpenUDID"
 
 end
