@@ -14,10 +14,6 @@
 		784652B81F5448F100E20A27 /* CJObjectConvertUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652941F5448F100E20A27 /* CJObjectConvertUtil.m */; };
 		784652B91F5448F100E20A27 /* CJRequestCacheDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652961F5448F100E20A27 /* CJRequestCacheDataUtil.m */; };
 		784652BB1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846529D1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m */; };
-		784652BC1F5448F100E20A27 /* AFNetworkingUploadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846529F1F5448F100E20A27 /* AFNetworkingUploadUtil.m */; };
-		784652BD1F5448F100E20A27 /* CJBaseUploadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652A21F5448F100E20A27 /* CJBaseUploadItem.m */; };
-		784652BE1F5448F100E20A27 /* CJUploadMomentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652A41F5448F100E20A27 /* CJUploadMomentInfo.m */; };
-		784652BF1F5448F100E20A27 /* CJUploadFileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652A61F5448F100E20A27 /* CJUploadFileModel.m */; };
 		784652C01F5448F100E20A27 /* CJUploadProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652AA1F5448F100E20A27 /* CJUploadProgressView.m */; };
 		784652C11F5448F100E20A27 /* UIView+AFNetworkingUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652AC1F5448F100E20A27 /* UIView+AFNetworkingUpload.m */; };
 		784652C31F5448F100E20A27 /* CJRequestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652B31F5448F100E20A27 /* CJRequestUtil.m */; };
@@ -59,6 +55,9 @@
 		784653771F544A0100E20A27 /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 784653711F544A0100E20A27 /* HSSessionModel.m */; };
 		784653781F544A0100E20A27 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 784653741F544A0100E20A27 /* NSString+Hash.m */; };
 		784653971F54529400E20A27 /* IjinbuNetworkClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846537E1F54529400E20A27 /* IjinbuNetworkClient+Login.m */; };
+		785DDC9520EE876E007F9546 /* CJUploadMomentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 785DDC8E20EE876E007F9546 /* CJUploadMomentInfo.m */; };
+		785DDC9620EE876E007F9546 /* CJUploadFileModelsOwner.m in Sources */ = {isa = PBXBuildFile; fileRef = 785DDC9320EE876E007F9546 /* CJUploadFileModelsOwner.m */; };
+		785DDC9720EE876E007F9546 /* CJUploadFileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 785DDC9420EE876E007F9546 /* CJUploadFileModel.m */; };
 		787BAF2420349EF2000E276E /* AFHTTPSessionManager+CJEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 787BAF2320349EF2000E276E /* AFHTTPSessionManager+CJEncrypt.m */; };
 		787BAF272034A3F9000E276E /* CJRequestErrorMessageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 787BAF262034A3F9000E276E /* CJRequestErrorMessageUtil.m */; };
 		78FC91FA1F54481E00033DEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91F91F54481E00033DEF /* main.m */; };
@@ -115,15 +114,6 @@
 		784652961F5448F100E20A27 /* CJRequestCacheDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJRequestCacheDataUtil.m; sourceTree = "<group>"; };
 		7846529C1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+CJUploadFile.h"; sourceTree = "<group>"; };
 		7846529D1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+CJUploadFile.m"; sourceTree = "<group>"; };
-		7846529E1F5448F100E20A27 /* AFNetworkingUploadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkingUploadUtil.h; sourceTree = "<group>"; };
-		7846529F1F5448F100E20A27 /* AFNetworkingUploadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkingUploadUtil.m; sourceTree = "<group>"; };
-		784652A11F5448F100E20A27 /* CJBaseUploadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJBaseUploadItem.h; sourceTree = "<group>"; };
-		784652A21F5448F100E20A27 /* CJBaseUploadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJBaseUploadItem.m; sourceTree = "<group>"; };
-		784652A31F5448F100E20A27 /* CJUploadMomentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadMomentInfo.h; sourceTree = "<group>"; };
-		784652A41F5448F100E20A27 /* CJUploadMomentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadMomentInfo.m; sourceTree = "<group>"; };
-		784652A51F5448F100E20A27 /* CJUploadFileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadFileModel.h; sourceTree = "<group>"; };
-		784652A61F5448F100E20A27 /* CJUploadFileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadFileModel.m; sourceTree = "<group>"; };
-		784652A71F5448F100E20A27 /* CJUploadMomentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadMomentState.h; sourceTree = "<group>"; };
 		784652A91F5448F100E20A27 /* CJUploadProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadProgressView.h; sourceTree = "<group>"; };
 		784652AA1F5448F100E20A27 /* CJUploadProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadProgressView.m; sourceTree = "<group>"; };
 		784652AB1F5448F100E20A27 /* UIView+AFNetworkingUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AFNetworkingUpload.h"; sourceTree = "<group>"; };
@@ -198,6 +188,13 @@
 		784653791F544A6400E20A27 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		7846537D1F54529400E20A27 /* IjinbuNetworkClient+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IjinbuNetworkClient+Login.h"; sourceTree = "<group>"; };
 		7846537E1F54529400E20A27 /* IjinbuNetworkClient+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IjinbuNetworkClient+Login.m"; sourceTree = "<group>"; };
+		785DDC8E20EE876E007F9546 /* CJUploadMomentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadMomentInfo.m; sourceTree = "<group>"; };
+		785DDC8F20EE876E007F9546 /* CJUploadFileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadFileModel.h; sourceTree = "<group>"; };
+		785DDC9020EE876E007F9546 /* CJUploadMomentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadMomentState.h; sourceTree = "<group>"; };
+		785DDC9120EE876E007F9546 /* CJUploadFileModelsOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadFileModelsOwner.h; sourceTree = "<group>"; };
+		785DDC9220EE876E007F9546 /* CJUploadMomentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadMomentInfo.h; sourceTree = "<group>"; };
+		785DDC9320EE876E007F9546 /* CJUploadFileModelsOwner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadFileModelsOwner.m; sourceTree = "<group>"; };
+		785DDC9420EE876E007F9546 /* CJUploadFileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadFileModel.m; sourceTree = "<group>"; };
 		787BAF2220349EF1000E276E /* AFHTTPSessionManager+CJEncrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+CJEncrypt.h"; sourceTree = "<group>"; };
 		787BAF2320349EF2000E276E /* AFHTTPSessionManager+CJEncrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+CJEncrypt.m"; sourceTree = "<group>"; };
 		787BAF252034A3F9000E276E /* CJRequestErrorMessageUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJRequestErrorMessageUtil.h; sourceTree = "<group>"; };
@@ -347,25 +344,9 @@
 			children = (
 				7846529C1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.h */,
 				7846529D1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m */,
-				7846529E1F5448F100E20A27 /* AFNetworkingUploadUtil.h */,
-				7846529F1F5448F100E20A27 /* AFNetworkingUploadUtil.m */,
-				784652A01F5448F100E20A27 /* Models */,
+				785DDC8D20EE876E007F9546 /* CJUploadFileModelsOwner */,
 			);
 			path = AFNetworkingUploadAPI;
-			sourceTree = "<group>";
-		};
-		784652A01F5448F100E20A27 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				784652A11F5448F100E20A27 /* CJBaseUploadItem.h */,
-				784652A21F5448F100E20A27 /* CJBaseUploadItem.m */,
-				784652A51F5448F100E20A27 /* CJUploadFileModel.h */,
-				784652A61F5448F100E20A27 /* CJUploadFileModel.m */,
-				784652A31F5448F100E20A27 /* CJUploadMomentInfo.h */,
-				784652A41F5448F100E20A27 /* CJUploadMomentInfo.m */,
-				784652A71F5448F100E20A27 /* CJUploadMomentState.h */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		784652A81F5448F100E20A27 /* UIView+AFNetworkingUpload */ = {
@@ -619,6 +600,20 @@
 				7846537E1F54529400E20A27 /* IjinbuNetworkClient+Login.m */,
 			);
 			path = Ijinbu;
+			sourceTree = "<group>";
+		};
+		785DDC8D20EE876E007F9546 /* CJUploadFileModelsOwner */ = {
+			isa = PBXGroup;
+			children = (
+				785DDC9120EE876E007F9546 /* CJUploadFileModelsOwner.h */,
+				785DDC9320EE876E007F9546 /* CJUploadFileModelsOwner.m */,
+				785DDC8F20EE876E007F9546 /* CJUploadFileModel.h */,
+				785DDC9420EE876E007F9546 /* CJUploadFileModel.m */,
+				785DDC9220EE876E007F9546 /* CJUploadMomentInfo.h */,
+				785DDC8E20EE876E007F9546 /* CJUploadMomentInfo.m */,
+				785DDC9020EE876E007F9546 /* CJUploadMomentState.h */,
+			);
+			path = CJUploadFileModelsOwner;
 			sourceTree = "<group>";
 		};
 		78FC91EC1F54481E00033DEF = {
@@ -1038,18 +1033,16 @@
 				784652BB1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m in Sources */,
 				784652C01F5448F100E20A27 /* CJUploadProgressView.m in Sources */,
 				784653661F5449D000E20A27 /* CJDataDiskManager.m in Sources */,
-				784652BF1F5448F100E20A27 /* CJUploadFileModel.m in Sources */,
 				78FC92001F54481E00033DEF /* ViewController.m in Sources */,
 				784653681F5449D000E20A27 /* CJDataMemoryDictionaryManager.m in Sources */,
 				784652B91F5448F100E20A27 /* CJRequestCacheDataUtil.m in Sources */,
-				784652BE1F5448F100E20A27 /* CJUploadMomentInfo.m in Sources */,
 				784653671F5449D000E20A27 /* CJDataMemoryCacheManager.m in Sources */,
-				784652BD1F5448F100E20A27 /* CJBaseUploadItem.m in Sources */,
 				784652B81F5448F100E20A27 /* CJObjectConvertUtil.m in Sources */,
 				784653531F5448FB00E20A27 /* LoginHelper.m in Sources */,
 				7846533D1F5448FB00E20A27 /* TestHTTPSessionManager.m in Sources */,
 				784653481F5448FB00E20A27 /* DownloadTableViewCell.m in Sources */,
 				80E7E68420AC34EA000F762D /* IjinbuResponseModel.m in Sources */,
+				785DDC9720EE876E007F9546 /* CJUploadFileModel.m in Sources */,
 				784653511F5448FB00E20A27 /* LoginViewController.m in Sources */,
 				80E7E62920ABCFBC000F762D /* AppInfoManager.m in Sources */,
 				7846534A1F5448FB00E20A27 /* AFDownloadViewController.m in Sources */,
@@ -1060,12 +1053,13 @@
 				80E7E68520AC34EA000F762D /* IjinbuHTTPSessionManager.m in Sources */,
 				784653551F5448FB00E20A27 /* UploadViewController.m in Sources */,
 				784652B41F5448F100E20A27 /* AFHTTPSessionManager+CJCacheRequest.m in Sources */,
+				785DDC9520EE876E007F9546 /* CJUploadMomentInfo.m in Sources */,
 				80E7E67D20AC34EA000F762D /* IjinbuSession.m in Sources */,
 				784653401F5448FB00E20A27 /* AFNDemoViewController.m in Sources */,
-				784652BC1F5448F100E20A27 /* AFNetworkingUploadUtil.m in Sources */,
 				802D1D6C20CF719E003EAFE0 /* CJNetworkLogUtil.m in Sources */,
 				7846533E1F5448FB00E20A27 /* TestNetworkClient.m in Sources */,
 				784653641F5449D000E20A27 /* CJCacheManager.m in Sources */,
+				785DDC9620EE876E007F9546 /* CJUploadFileModelsOwner.m in Sources */,
 				784653501F5448FB00E20A27 /* LoginViewController+Event.m in Sources */,
 				7846534E1F5448FB00E20A27 /* SessionDownloadTaskDownloadViewController.m in Sources */,
 				784653651F5449D000E20A27 /* CJCacheDataModel.m in Sources */,

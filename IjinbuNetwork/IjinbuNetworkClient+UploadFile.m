@@ -10,9 +10,9 @@
 #import "IjinbuHTTPSessionManager.h"
 
 #ifdef CJTESTPOD
-#import "AFNetworkingUploadUtil.h"
+#import "AFHTTPSessionManager+CJUploadFile.h"
 #else
-#import <CJNetwork/AFNetworkingUploadUtil.h>
+#import <CJNetwork/AFHTTPSessionManager+CJUploadFile.h>
 #endif
 
 #import "IjinbuUploadItemResult.h"
@@ -56,8 +56,8 @@
 /* 完整的描述请参见文件头部 */
 + (NSURLSessionDataTask *)detailedRequestUploadItems:(NSArray<CJUploadFileModel *> *)uploadFileModels
                                              toWhere:(NSInteger)toWhere
-                             andsaveUploadInfoToItem:(CJBaseUploadItem *)saveUploadInfoToItem
-                               uploadInfoChangeBlock:(void(^)(CJBaseUploadItem *item))uploadInfoChangeBlock {
+                             andsaveUploadInfoToItem:(CJUploadFileModelsOwner *)saveUploadInfoToItem
+                               uploadInfoChangeBlock:(void(^)(CJUploadFileModelsOwner *item))uploadInfoChangeBlock {
     
     AFHTTPSessionManager *manager = [IjinbuHTTPSessionManager sharedInstance];
     
@@ -67,7 +67,7 @@
     NSLog(@"params = %@", parameters);
     
     /* 从请求结果response中获取momentInfo的代码块 */
-    CJUploadMomentInfo *(^dealResopnseForUploadInfoBlock)(id responseObject) = ^CJUploadMomentInfo *(id responseObject)
+    CJUploadMomentInfo *(^getUploadMomentInfoFromResopnseBlock)(id responseObject) = ^CJUploadMomentInfo *(id responseObject)
     {
         IjinbuResponseModel *responseModel = [[IjinbuResponseModel alloc] init];
         responseModel.status = [responseObject[@"status"] integerValue];
@@ -125,13 +125,12 @@
     
     
     NSURLSessionDataTask *operation =
-    [AFNetworkingUploadUtil cj_UseManager:manager
-                            postUploadUrl:Url
-                                   params:parameters
-                                  fileKey:@"file"
-                           fileValueOwner:saveUploadInfoToItem
-              uploadMomentInfoChangeBlock:uploadInfoChangeBlock
-           dealResopnseForUploadInfoBlock:dealResopnseForUploadInfoBlock];
+    [manager cj_postUploadUrl:Url
+                       params:parameters
+                      fileKey:@"file"
+               fileValueOwner:saveUploadInfoToItem
+  uploadMomentInfoChangeBlock:uploadInfoChangeBlock
+getUploadMomentInfoFromResopnseBlock:getUploadMomentInfoFromResopnseBlock];
     
     return operation;
 }

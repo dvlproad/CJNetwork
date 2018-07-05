@@ -24,7 +24,6 @@ typedef NS_ENUM(NSUInteger, CJUploadItemType) {
 @property (nonatomic, strong, readonly) NSData *uploadItemData;  /**< 文件数据 */
 @property (nonatomic, copy, readonly) NSString *uploadItemName;  /**< 文件名字 */
 
-
 /**
  *  初始化文件上传时候的上传模型
  *

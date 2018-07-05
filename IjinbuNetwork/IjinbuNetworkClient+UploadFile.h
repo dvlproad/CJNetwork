@@ -12,10 +12,10 @@
 #import <UIKit/UIKit.h>
 
 #ifdef CJTESTPOD
-#import "CJBaseUploadItem.h"
+#import "CJUploadFileModelsOwner.h"
 #import "CJUploadFileModel.h"
 #else
-#import <CJNetwork/CJBaseUploadItem.h>
+#import <CJNetwork/CJUploadFileModelsOwner.h>
 #import <CJNetwork/CJUploadFileModel.h>
 #endif
 
@@ -41,8 +41,8 @@
  */
 + (NSURLSessionDataTask *_Nullable)detailedRequestUploadItems:(NSArray<CJUploadFileModel *> *_Nullable)uploadFileModels
                                                       toWhere:(NSInteger)toWhere
-                                      andsaveUploadInfoToItem:(CJBaseUploadItem *_Nullable)saveUploadInfoToItem
-                                        uploadInfoChangeBlock:(void(^_Nullable)(CJBaseUploadItem * _Nullable item))uploadInfoChangeBlock;
+                                      andsaveUploadInfoToItem:(CJUploadFileModelsOwner *_Nullable)saveUploadInfoToItem
+                                        uploadInfoChangeBlock:(void(^_Nullable)(CJUploadFileModelsOwner * _Nullable item))uploadInfoChangeBlock;
 
 
 

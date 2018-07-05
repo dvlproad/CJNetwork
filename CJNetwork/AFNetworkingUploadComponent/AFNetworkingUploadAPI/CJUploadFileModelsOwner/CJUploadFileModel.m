@@ -8,6 +8,12 @@
 
 #import "CJUploadFileModel.h"
 
+@interface CJUploadFileModel ()
+
+@end
+
+
+
 @implementation CJUploadFileModel
 
 - (instancetype)initWithItemType:(CJUploadItemType)uploadItemType
