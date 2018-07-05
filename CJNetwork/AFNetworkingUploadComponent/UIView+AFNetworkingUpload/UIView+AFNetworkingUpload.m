@@ -19,7 +19,7 @@
                               fileKey:(NSString *)fileKey
                             fileValue:(NSArray<CJUploadFileModel *> *)uploadFileModels
                 uploadInfoChangeBlock:(void(^)(CJBaseUploadItem *saveUploadInfoToItem))uploadInfoChangeBlock
-       dealResopnseForUploadInfoBlock:(CJUploadInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock
+       dealResopnseForUploadInfoBlock:(CJUploadMomentInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock
 {
     
     NSURLSessionDataTask *operation = saveUploadInfoToItem.operation;
@@ -59,8 +59,8 @@
     }];
     
     
-    CJUploadInfo *uploadInfo = saveUploadInfoToItem.uploadInfo;
-    [uploadProgressView updateProgressText:uploadInfo.uploadStatePromptText progressVaule:uploadInfo.progressValue];//调用此方法避免reload时候显示错误
+    CJUploadMomentInfo *momentInfo = saveUploadInfoToItem.momentInfo;
+    [uploadProgressView updateProgressText:momentInfo.uploadStatePromptText progressVaule:momentInfo.progressValue];//调用此方法避免reload时候显示错误
 }
 
 @end

@@ -10,7 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 
 #import "CJUploadFileModel.h"
-#import "CJUploadInfo.h"
+#import "CJUploadMomentInfo.h"
 
 @interface CJBaseUploadItem : NSObject
 
@@ -21,6 +21,6 @@
 
 @property (nonatomic, strong) NSURLSessionDataTask *operation;
 
-@property (nonatomic, strong) CJUploadInfo *uploadInfo; /**< 上传的信息(包括进度以及上传结果) */
+@property (nonatomic, strong) CJUploadMomentInfo *momentInfo; /**< 上传的信息(包括进度以及上传结果) */
 
 @end

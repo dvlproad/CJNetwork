@@ -66,16 +66,16 @@
     NSLog(@"Url = %@", Url);
     NSLog(@"params = %@", parameters);
     
-    /* 从请求结果response中获取uploadInfo的代码块 */
-    CJUploadInfo *(^dealResopnseForUploadInfoBlock)(id responseObject) = ^CJUploadInfo *(id responseObject)
+    /* 从请求结果response中获取momentInfo的代码块 */
+    CJUploadMomentInfo *(^dealResopnseForUploadInfoBlock)(id responseObject) = ^CJUploadMomentInfo *(id responseObject)
     {
         IjinbuResponseModel *responseModel = [[IjinbuResponseModel alloc] init];
         responseModel.status = [responseObject[@"status"] integerValue];
         responseModel.message = responseObject[@"msg"];
         responseModel.result = responseObject[@"result"];
         
-        CJUploadInfo *uploadInfo = [[CJUploadInfo alloc] init];
-        uploadInfo.responseModel = responseModel;
+        CJUploadMomentInfo *momentInfo = [[CJUploadMomentInfo alloc] init];
+        momentInfo.responseModel = responseModel;
         if (responseModel.status == 1) {
             NSMutableArray<NSDictionary *> *dictionarys = responseModel.result;
             
@@ -87,8 +87,8 @@
         
             
             if (operationUploadResult == nil || operationUploadResult.count == 0) {
-                uploadInfo.uploadState = CJUploadStateFailure;
-                uploadInfo.uploadStatePromptText = @"点击重传";
+                momentInfo.uploadState = CJUploadMomentStateFailure;
+                momentInfo.uploadStatePromptText = @"点击重传";
                 
             } else {
                 BOOL findFailure = NO;
@@ -102,25 +102,25 @@
                 }
                 
                 if (findFailure) {
-                    uploadInfo.uploadState = CJUploadStateFailure;
-                    uploadInfo.uploadStatePromptText = @"点击重传";
+                    momentInfo.uploadState = CJUploadMomentStateFailure;
+                    momentInfo.uploadStatePromptText = @"点击重传";
                     
                 } else {
-                    uploadInfo.uploadState = CJUploadStateSuccess;
-                    uploadInfo.uploadStatePromptText = @"上传成功";
+                    momentInfo.uploadState = CJUploadMomentStateSuccess;
+                    momentInfo.uploadStatePromptText = @"上传成功";
                 }
             }
             
         } else if (responseModel.status == 2) {
-            uploadInfo.uploadState = CJUploadStateFailure;
-            uploadInfo.uploadStatePromptText = responseModel.message;
+            momentInfo.uploadState = CJUploadMomentStateFailure;
+            momentInfo.uploadStatePromptText = responseModel.message;
             
         } else {
-            uploadInfo.uploadState = CJUploadStateFailure;
-            uploadInfo.uploadStatePromptText = @"点击重传";
+            momentInfo.uploadState = CJUploadMomentStateFailure;
+            momentInfo.uploadStatePromptText = @"点击重传";
         }
         
-        return uploadInfo;
+        return momentInfo;
     };
     
     

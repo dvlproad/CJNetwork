@@ -14,12 +14,12 @@
 /* 完整的描述请参见文件头部 */
 + (NSURLSessionDataTask *)cj_UseManager:(AFHTTPSessionManager *)manager
                           postUploadUrl:(NSString *)Url
-                                 params:(nullable id)parameters
-                                fileKey:(nullable NSString *)fileKey
+                                 params:(id)parameters
+                                fileKey:(NSString *)fileKey
                               fileValue:(NSArray<CJUploadFileModel *> *)uploadFileModels
                    uploadInfoSaveInItem:(CJBaseUploadItem *)saveUploadInfoToItem
                   uploadInfoChangeBlock:(void(^)(CJBaseUploadItem *saveUploadInfoToItem))uploadInfoChangeBlock
-         dealResopnseForUploadInfoBlock:(CJUploadInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock
+         dealResopnseForUploadInfoBlock:(CJUploadMomentInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock
 {
     __weak typeof(saveUploadInfoToItem)weakItem = saveUploadInfoToItem;
     
@@ -30,13 +30,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             __strong __typeof(weakItem)strongItem = weakItem;
             
-            CJUploadInfo *uploadInfo = [[CJUploadInfo alloc] init];
-            uploadInfo.uploadState = CJUploadStateUploading;
+            CJUploadMomentInfo *momentInfo = [[CJUploadMomentInfo alloc] init];
+            momentInfo.uploadState = CJUploadMomentStateUploading;
             CGFloat progressValue = progress.fractionCompleted * 100;
-            uploadInfo.uploadStatePromptText = [NSString stringWithFormat:@"%.0lf%%", progressValue];
-            uploadInfo.progressValue = progressValue;
+            momentInfo.uploadStatePromptText = [NSString stringWithFormat:@"%.0lf%%", progressValue];
+            momentInfo.progressValue = progressValue;
             
-            strongItem.uploadInfo = uploadInfo;
+            strongItem.momentInfo = momentInfo;
             
             if (uploadInfoChangeBlock) {
                 uploadInfoChangeBlock(strongItem);
@@ -45,9 +45,9 @@
     };
     
     /* 上传完成 */
-    void (^uploadCompleteBlock)(CJUploadInfo *uploadInfo) = ^ (CJUploadInfo *uploadInfo) {
+    void (^uploadCompleteBlock)(CJUploadMomentInfo *momentInfo) = ^ (CJUploadMomentInfo *momentInfo) {
         __strong __typeof(weakItem)strongItem = weakItem;
-        strongItem.uploadInfo = uploadInfo;
+        strongItem.momentInfo = momentInfo;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (uploadInfoChangeBlock) {
@@ -59,17 +59,17 @@
     
     return [manager cj_postUploadUrl:Url params:parameters fileKey:fileKey fileValue:uploadFileModels progress:uploadingBlock success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
         if (dealResopnseForUploadInfoBlock) {
-            CJUploadInfo *uploadInfo = dealResopnseForUploadInfoBlock(responseObject);
-            uploadCompleteBlock(uploadInfo);
+            CJUploadMomentInfo *momentInfo = dealResopnseForUploadInfoBlock(responseObject);
+            uploadCompleteBlock(momentInfo);
         }
         
     } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
-        CJUploadInfo *uploadInfo = [[CJUploadInfo alloc] init];
-        uploadInfo.responseModel = nil;
-        uploadInfo.uploadState = CJUploadStateFailure;
-        uploadInfo.uploadStatePromptText = NSLocalizedString(@"点击重传", nil);
+        CJUploadMomentInfo *momentInfo = [[CJUploadMomentInfo alloc] init];
+        momentInfo.responseModel = nil;
+        momentInfo.uploadState = CJUploadMomentStateFailure;
+        momentInfo.uploadStatePromptText = NSLocalizedString(@"点击重传", nil);
         
-        uploadCompleteBlock(uploadInfo);
+        uploadCompleteBlock(momentInfo);
         
         NSLog(@"error: %@", [error localizedDescription]);
     }];

@@ -30,7 +30,7 @@
                                                       completeBlock:(nullable void (^)(IjinbuResponseModel * _Nullable responseModel))completeBlock;
 
 /**
- *  创建上传文件到服务器的请求任务：给item设置上传请求，并将上传请求的各个时刻信息uploadInfo①保存到该item上，②同时利用这些uploadInfo设置uploadProgressView
+ *  创建上传文件到服务器的请求任务：给item设置上传请求，并将上传请求的各个时刻信息momentInfo①保存到该item上，②同时利用这些momentInfo设置uploadProgressView
  *
  *  @param saveUploadInfoToItem     上传请求的各个时刻信息(正在上传、上传完成)的保存位置
  *  @param uploadFileModels         要上传的数据组uploadFileModels

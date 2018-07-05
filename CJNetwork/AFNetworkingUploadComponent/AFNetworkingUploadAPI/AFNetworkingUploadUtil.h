@@ -12,14 +12,14 @@
 #import "CJBaseUploadItem.h"    //上传请求的时刻信息要保存到的位置
 
 #import "CJUploadFileModel.h"   //要上传的数据模型
-#import "CJUploadInfo.h"        //上传请求的时刻信息（已包括 CJUploadState 和 responseModel(已转换成对象后的model)）
+#import "CJUploadMomentInfo.h"        //上传请求的时刻信息（已包括 CJUploadMomentState 和 responseModel(已转换成对象后的model)）
 
 
 @interface AFNetworkingUploadUtil : NSObject
 
 #pragma mark - 上传文件请求的接口
 /**
- *  上传文件的请求方法：除了上传文件，还对上传过程中的各个时刻信息的进行保存(uploadInfo：上传请求的各个时刻信息）
+ *  上传文件的请求方法：除了上传文件，还对上传过程中的各个时刻信息的进行保存(momentInfo：上传请求的各个时刻信息）
  *
  *  @param manager      manager
  *  @param Url          Url
@@ -33,11 +33,11 @@
  */
 + (NSURLSessionDataTask *)cj_UseManager:(AFHTTPSessionManager *)manager
                           postUploadUrl:(NSString *)Url
-                                 params:(nullable id)parameters
-                                fileKey:(nullable NSString *)fileKey
+                                 params:(id)parameters
+                                fileKey:(NSString *)fileKey
                               fileValue:(NSArray<CJUploadFileModel *> *)uploadFileModels
                    uploadInfoSaveInItem:(CJBaseUploadItem *)saveUploadInfoToItem
                   uploadInfoChangeBlock:(void(^)(CJBaseUploadItem *saveUploadInfoToItem))uploadInfoChangeBlock
-         dealResopnseForUploadInfoBlock:(CJUploadInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock;
+         dealResopnseForUploadInfoBlock:(CJUploadMomentInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock;
 
 @end

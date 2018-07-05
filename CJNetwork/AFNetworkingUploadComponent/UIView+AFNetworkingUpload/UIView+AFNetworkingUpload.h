@@ -14,7 +14,7 @@
 
 #pragma mark - TODO:有上传操作的那个视图要重写的方法
 /**
- *  给item设置上传请求，并将上传请求的各个时刻信息uploadInfo①保存到该item上，②同时利用这些uploadInfo设置uploadProgressView
+ *  给item设置上传请求，并将上传请求的各个时刻信息momentInfo①保存到该item上，②同时利用这些momentInfo设置uploadProgressView
  *
  *  @param saveUploadInfoToItem     上传请求的各个时刻信息(正在上传、上传完成)的保存位置
  *  @param uploadProgressView       上传请求的各个时刻信息(正在上传、上传完成)要用来设置的视图
@@ -33,6 +33,6 @@
                               fileKey:(NSString *)fileKey
                             fileValue:(NSArray<CJUploadFileModel *> *)uploadFileModels
                 uploadInfoChangeBlock:(void(^)(CJBaseUploadItem *saveUploadInfoToItem))uploadInfoChangeBlock
-       dealResopnseForUploadInfoBlock:(CJUploadInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock;
+       dealResopnseForUploadInfoBlock:(CJUploadMomentInfo * (^)(id responseObject))dealResopnseForUploadInfoBlock;
 
 @end

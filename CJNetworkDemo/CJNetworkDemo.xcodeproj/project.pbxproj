@@ -16,7 +16,7 @@
 		784652BB1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846529D1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m */; };
 		784652BC1F5448F100E20A27 /* AFNetworkingUploadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846529F1F5448F100E20A27 /* AFNetworkingUploadUtil.m */; };
 		784652BD1F5448F100E20A27 /* CJBaseUploadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652A21F5448F100E20A27 /* CJBaseUploadItem.m */; };
-		784652BE1F5448F100E20A27 /* CJUploadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652A41F5448F100E20A27 /* CJUploadInfo.m */; };
+		784652BE1F5448F100E20A27 /* CJUploadMomentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652A41F5448F100E20A27 /* CJUploadMomentInfo.m */; };
 		784652BF1F5448F100E20A27 /* CJUploadFileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652A61F5448F100E20A27 /* CJUploadFileModel.m */; };
 		784652C01F5448F100E20A27 /* CJUploadProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652AA1F5448F100E20A27 /* CJUploadProgressView.m */; };
 		784652C11F5448F100E20A27 /* UIView+AFNetworkingUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652AC1F5448F100E20A27 /* UIView+AFNetworkingUpload.m */; };
@@ -119,11 +119,11 @@
 		7846529F1F5448F100E20A27 /* AFNetworkingUploadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkingUploadUtil.m; sourceTree = "<group>"; };
 		784652A11F5448F100E20A27 /* CJBaseUploadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJBaseUploadItem.h; sourceTree = "<group>"; };
 		784652A21F5448F100E20A27 /* CJBaseUploadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJBaseUploadItem.m; sourceTree = "<group>"; };
-		784652A31F5448F100E20A27 /* CJUploadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadInfo.h; sourceTree = "<group>"; };
-		784652A41F5448F100E20A27 /* CJUploadInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadInfo.m; sourceTree = "<group>"; };
+		784652A31F5448F100E20A27 /* CJUploadMomentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadMomentInfo.h; sourceTree = "<group>"; };
+		784652A41F5448F100E20A27 /* CJUploadMomentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadMomentInfo.m; sourceTree = "<group>"; };
 		784652A51F5448F100E20A27 /* CJUploadFileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadFileModel.h; sourceTree = "<group>"; };
 		784652A61F5448F100E20A27 /* CJUploadFileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadFileModel.m; sourceTree = "<group>"; };
-		784652A71F5448F100E20A27 /* CJUploadState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadState.h; sourceTree = "<group>"; };
+		784652A71F5448F100E20A27 /* CJUploadMomentState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadMomentState.h; sourceTree = "<group>"; };
 		784652A91F5448F100E20A27 /* CJUploadProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUploadProgressView.h; sourceTree = "<group>"; };
 		784652AA1F5448F100E20A27 /* CJUploadProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadProgressView.m; sourceTree = "<group>"; };
 		784652AB1F5448F100E20A27 /* UIView+AFNetworkingUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AFNetworkingUpload.h"; sourceTree = "<group>"; };
@@ -361,9 +361,9 @@
 				784652A21F5448F100E20A27 /* CJBaseUploadItem.m */,
 				784652A51F5448F100E20A27 /* CJUploadFileModel.h */,
 				784652A61F5448F100E20A27 /* CJUploadFileModel.m */,
-				784652A31F5448F100E20A27 /* CJUploadInfo.h */,
-				784652A41F5448F100E20A27 /* CJUploadInfo.m */,
-				784652A71F5448F100E20A27 /* CJUploadState.h */,
+				784652A31F5448F100E20A27 /* CJUploadMomentInfo.h */,
+				784652A41F5448F100E20A27 /* CJUploadMomentInfo.m */,
+				784652A71F5448F100E20A27 /* CJUploadMomentState.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1042,7 +1042,7 @@
 				78FC92001F54481E00033DEF /* ViewController.m in Sources */,
 				784653681F5449D000E20A27 /* CJDataMemoryDictionaryManager.m in Sources */,
 				784652B91F5448F100E20A27 /* CJRequestCacheDataUtil.m in Sources */,
-				784652BE1F5448F100E20A27 /* CJUploadInfo.m in Sources */,
+				784652BE1F5448F100E20A27 /* CJUploadMomentInfo.m in Sources */,
 				784653671F5449D000E20A27 /* CJDataMemoryCacheManager.m in Sources */,
 				784652BD1F5448F100E20A27 /* CJBaseUploadItem.m in Sources */,
 				784652B81F5448F100E20A27 /* CJObjectConvertUtil.m in Sources */,
