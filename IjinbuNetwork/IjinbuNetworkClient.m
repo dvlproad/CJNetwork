@@ -59,9 +59,6 @@
 
 - (NSString *)signWithParams:(NSDictionary *)params path:(NSString*)path
 {
-#if 0
-    return [[NSString stringWithFormat:@"%@123456", [HPDevice deviceId]] md5Hash];
-#else
     NSURL *url = [NSURL URLWithString:path];
     NSString *q = [url query];
     NSArray *kvs = [q componentsSeparatedByString:@"&"];
@@ -90,7 +87,6 @@
     NSString *md5Sign = [IjinbuHTTPSessionManager MD5String:string];
     
     return md5Sign;
-#endif
 }
 
 
