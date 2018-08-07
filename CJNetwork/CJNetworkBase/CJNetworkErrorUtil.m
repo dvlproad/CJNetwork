@@ -1,29 +1,40 @@
 //
-//  CJRequestErrorMessageUtil.m
+//  CJNetworkErrorUtil.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2016/12/20.
 //  Copyright © 2016年 dvlproad. All rights reserved.
 //
 
-#import "CJRequestErrorMessageUtil.h"
+#import "CJNetworkErrorUtil.h"
 
-@implementation CJRequestErrorMessageUtil
+@implementation CJNetworkErrorUtil
 
-//+ (NSError *)getNewErrorFromError:(NSError *)error URLResponse:(NSURLResponse *)URLResponse {
-//    NSHTTPURLResponse *response = (NSHTTPURLResponse *)URLResponse;
-//    NSString *cjErrorMeesage = [self getErrorMessageFromHTTPURLResponse:response];
-//    
-//    
-//    NSError *newError = [self getNewErrorWithError:error cjErrorMeesage:cjErrorMeesage];
-//    
-//    return newError;
-//}
-
-+ (NSError *)getNewErrorWithError:(NSError *)error cjErrorMeesage:(NSString *)cjErrorMeesage {
+///将moreUserInfo添加到pError中
++ (void)perfectError:(NSError * *)pError withMoreUserInfo:(NSDictionary *)moreUserInfo
+{
     NSMutableDictionary *newUserInfo = [NSMutableDictionary dictionary];
-    [newUserInfo setObject:cjErrorMeesage forKey:@"cjNewErrorMeesage"];
-    //[newUserInfo setValue:cjErrorMeesage forKey:NSLocalizedDescriptionKey];
+    [newUserInfo addEntriesFromDictionary:moreUserInfo];
+    
+    NSError *error = *pError;
+    if (error == nil) {
+        //nothing
+    } else {
+        NSDictionary *oldUserInfo = error.userInfo;
+        [newUserInfo addEntriesFromDictionary:oldUserInfo];
+        
+        [newUserInfo setObject:error.domain forKey:@"cjOriginErrorDomain"];
+        [newUserInfo setObject:@(error.code) forKey:@"cjOriginErrorCode"];
+    }
+    
+    
+    NSError *newError = [[NSError alloc] initWithDomain:@"com.dvlproad.network.error" code:-1 userInfo:newUserInfo];
+    *pError = newError;
+}
+
++ (NSError *)getNewErrorWithError:(NSError *)error withMoreUserInfo:(NSDictionary *)moreUserInfo {
+    NSMutableDictionary *newUserInfo = [NSMutableDictionary dictionary];
+    [newUserInfo addEntriesFromDictionary:moreUserInfo];
     
     if (error == nil) {
         //nothing
@@ -40,7 +51,6 @@
     
     return newError;
 }
-
 
 + (NSString *)getErrorMessageFromURLSessionTask:(NSURLSessionTask *)task {
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;

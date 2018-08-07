@@ -1,5 +1,5 @@
 //
-//  CJRequestErrorMessageUtil.h
+//  CJNetworkErrorUtil.h
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2016/12/20.
@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CJRequestErrorMessageUtil : NSObject
+@interface CJNetworkErrorUtil : NSObject
 
-+ (NSError *)getNewErrorWithError:(NSError *)error cjErrorMeesage:(NSString *)cjErrorMeesage;
+///将moreUserInfo添加到pError中
+//+ (void)perfectError:(NSError * *)pError withMoreUserInfo:(NSDictionary *)moreUserInfo;
+
++ (NSError *)getNewErrorWithError:(NSError *)error withMoreUserInfo:(NSDictionary *)moreUserInfo;
 
 + (NSString *)getErrorMessageFromURLSessionTask:(NSURLSessionTask *)task;
 

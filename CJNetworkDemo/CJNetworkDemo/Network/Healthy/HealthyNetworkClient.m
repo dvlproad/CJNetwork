@@ -33,6 +33,7 @@
         responseModel.status = [responseObject[@"status"] integerValue];
         responseModel.message = responseObject[@"msg"];
         responseModel.result = responseObject[@"result"];
+        responseModel.cjNetworkLog = responseObject[@"cjNetworkLog"];
         if (completeBlock) {
             completeBlock(responseModel);
         }
@@ -42,6 +43,7 @@
         responseModel.status = -1;
         responseModel.message = NSLocalizedString(@"网络请求失败", nil);
         responseModel.result = nil;
+        responseModel.cjNetworkLog = error.userInfo[@"cjNetworkLog"];
         if (completeBlock) {
             completeBlock(responseModel);
         }

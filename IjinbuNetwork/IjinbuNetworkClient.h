@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CJBaseUIKit/CJAlert.h>
 
 #import "IjinbuResponseModel.h"
 

@@ -14,10 +14,10 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - CJBaseUIKit/CJAlert (0.2.1):
+  - CJBaseUIKit/CJAlert (0.2.2):
     - CJBaseUIKit/UIView/CJPopupAction
     - Masonry
-  - CJBaseUIKit/UIView/CJPopupAction (0.2.1)
+  - CJBaseUIKit/UIView/CJPopupAction (0.2.2)
   - CJBaseUtil/CJIndentedStringUtil (0.3.0)
   - CocoaAsyncSocket (7.4.3):
     - CocoaAsyncSocket/All (= 7.4.3)
@@ -33,7 +33,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
-  - CJBaseUIKit/CJAlert
+  - CJBaseUIKit/CJAlert (~> 0.2.2)
   - CJBaseUtil/CJIndentedStringUtil
   - CocoaAsyncSocket (~> 7.4.1)
   - MBProgressHUD (~> 0.9.1)
@@ -42,7 +42,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  CJBaseUIKit: c1cce857396828a5a0796055f95339c01afd3838
+  CJBaseUIKit: 5e21637c39e347c60373597b57bb49c22610607b
   CJBaseUtil: 58e64a849ccda0b36799bb16e81ae7983e5ea109
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -50,6 +50,6 @@ SPEC CHECKSUMS:
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: a3c012000f98ccc853d6fe4dfbf6db52ad2e64c4
+PODFILE CHECKSUM: 18834882a19267cc7a81cb71d94d90e788d250ac
 
 COCOAPODS: 1.4.0

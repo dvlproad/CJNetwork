@@ -45,7 +45,7 @@
 
 
 
-+ (NSString*)MD5StringFromString:(NSString *)string
++ (NSString *)MD5StringFromString:(NSString *)string
 {
     const char *ptr = [string UTF8String];
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];

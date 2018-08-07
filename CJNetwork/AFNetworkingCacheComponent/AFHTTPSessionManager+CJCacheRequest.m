@@ -8,7 +8,7 @@
 
 #import "AFHTTPSessionManager+CJCacheRequest.h"
 
-#import "CJRequestErrorMessageUtil.h"
+#import "CJNetworkErrorUtil.h"
 #import "CJNetworkLogUtil.h"
 
 //typedef NS_OPTIONS(NSUInteger, CJNeedGetCacheOption) {
@@ -40,9 +40,9 @@
                                           success:success];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSString *cjErrorMeesage = [CJRequestErrorMessageUtil getErrorMessageFromURLSessionTask:task];
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
         [self didRequestFailureWithResponseError:error
-                                  cjErrorMeesage:cjErrorMeesage
+                                     URLResponse:response
                                           forUrl:Url
                                           params:params
                                   shouldGetCache:shouldCache
@@ -103,9 +103,8 @@
         }
         else
         {
-            NSString *cjErrorMeesage = [CJRequestErrorMessageUtil getErrorMessageFromURLResponse:response];
             [self didRequestFailureWithResponseError:error
-                                      cjErrorMeesage:cjErrorMeesage
+                                         URLResponse:response
                                               forUrl:Url
                                               params:params
                                       shouldGetCache:shouldCache
@@ -138,11 +137,6 @@
                                decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
                                     success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
 {
-    //将传给服务器的参数用字符串打印出来
-    NSString *allParamsJsonString = [CJNetworkLogUtil formattedStringFromObject:params];
-    //NSLog(@"传给服务器的json参数:%@", allParamsJsonString);
-    
-    
     NSDictionary *recognizableResponseObject = nil; //可识别的responseObject,如果是加密的还要解密
     if (encrypt && decryptBlock) {
         NSString *responseString = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
@@ -160,18 +154,11 @@
     }
     
     //successNetworkLog
-    NSString *responseString = [CJNetworkLogUtil formattedStringFromObject:recognizableResponseObject];
-    NSMutableString *networkLog = [CJNetworkLogUtil networkLogWithUrl:Url paramsString:allParamsJsonString responseString:responseString];
-    [CJNetworkLogUtil printNetworkLog:networkLog];
+    id newResponseObject =
+    [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params responseObject:recognizableResponseObject];
     
     if (success) {
-        success(recognizableResponseObject, NO);//有网络的时候,responseObject等就不是来源磁盘(缓存),故为NO
-        
-        /*
-        NSMutableDictionary *mutableResponseObject = [NSMutableDictionary dictionaryWithDictionary:recognizableResponseObject];
-        [mutableResponseObject setObject:networkLog forKey:@"cjNetworkLog"];
-        success(mutableResponseObject, NO);
-        //*/
+        success(newResponseObject, NO);//有网络的时候,responseObject等就不是来源磁盘(缓存),故为NO
     }
     
     if (shouldCache) {  //是否需要本地缓存现在请求下来的网络数据
@@ -181,7 +168,7 @@
 
 ///请求不到数据时候（无网 或者 有网但服务器异常等无数据时候）执行的方法
 - (void)didRequestFailureWithResponseError:(NSError * _Nullable)error
-                              cjErrorMeesage:(nullable NSString *)cjErrorMeesage
+                               URLResponse:(NSURLResponse *)URLResponse
                                      forUrl:(nullable NSString *)Url
                                      params:(nullable id)params
                             shouldGetCache:(BOOL)shouldGetCache
@@ -191,38 +178,23 @@
                                    success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
                                     failure:(nullable void (^)(NSError * _Nullable error))failure
 {
-    //将传给服务器的参数用字符串打印出来
-    NSString *allParamsJsonString = [CJNetworkLogUtil formattedStringFromObject:params];
-    //NSLog(@"传给服务器的json参数:%@", allParamsJsonString);
-    
     if (shouldGetCache) {
         [CJRequestCacheDataUtil requestCacheDataByUrl:Url params:params success:^(NSDictionary * _Nullable responseObject) {
             //NSDictionary *recognizableResponseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSDictionary *recognizableResponseObject = responseObject;
             
             //successNetworkLog
-            NSString *responseString = [CJNetworkLogUtil formattedStringFromObject:recognizableResponseObject];
-            NSMutableString *networkLog = [CJNetworkLogUtil networkLogWithUrl:Url paramsString:allParamsJsonString responseString:responseString];
-            [CJNetworkLogUtil printNetworkLog:networkLog];
+            id newResponseObject =
+            [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params responseObject:recognizableResponseObject];
             
             if (success) {
-                success(recognizableResponseObject, YES);
-                
-                /*
-                NSMutableDictionary *mutableResponseObject = [NSMutableDictionary dictionaryWithDictionary:recognizableResponseObject];
-                [mutableResponseObject setObject:networkLog forKey:@"cjNetworkLog"];
-                success(mutableResponseObject, YES);
-                //*/
+                success(newResponseObject, YES);
             }
         } failure:^(CJRequestCacheFailureType failureType) {
             //从服务器请求不到数据，连从缓存中也都取不到
             if (failure) {
-                NSError *newError = [CJRequestErrorMessageUtil getNewErrorWithError:error cjErrorMeesage:cjErrorMeesage];
-                
                 //errorNetworkLog
-                NSString *responseString = cjErrorMeesage;
-                NSMutableString *networkLog = [CJNetworkLogUtil networkLogWithUrl:Url paramsString:allParamsJsonString responseString:responseString];
-                [CJNetworkLogUtil printNetworkLog:networkLog];
+                NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params error:error URLResponse:URLResponse];
                 
                 if (failure == CJRequestCacheFailureTypeCacheKeyNil) {
                     failure(newError);
@@ -235,12 +207,8 @@
         
     } else {
         NSLog(@"提示：这里之前未缓存，无法读取缓存，提示网络不给力");
-        NSError *newError = [CJRequestErrorMessageUtil getNewErrorWithError:error cjErrorMeesage:cjErrorMeesage];
-        
         //errorNetworkLog
-        NSString *responseString = cjErrorMeesage;
-        NSMutableString *networkLog = [CJNetworkLogUtil networkLogWithUrl:Url paramsString:allParamsJsonString responseString:responseString];
-        [CJNetworkLogUtil printNetworkLog:networkLog];
+        NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params error:error URLResponse:URLResponse];
         
         if (failure) {
             failure(newError);

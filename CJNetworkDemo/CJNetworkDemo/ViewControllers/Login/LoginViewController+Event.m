@@ -66,6 +66,9 @@
     [[HealthyNetworkClient sharedInstance] requestLogin_name:name pasd:pasd completeBlock:^(CJResponseModel *responseModel) {
         if (responseModel.status == 0) {
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
+            if (responseModel.cjNetworkLog) {
+                [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+            }
             /*
              NSDictionary *dic = [responseObject objectForKey:@"user"];
              NSError *error;
@@ -83,6 +86,9 @@
             //        NSString *failMesg = [error localizedDescription];
             //        failMesg = [failMesg cjEncodeUnicodeToChinese];
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];
+            if (responseModel.cjNetworkLog) {
+                [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+            }
         }
     }];
 }
@@ -100,12 +106,20 @@
         if (responseModel.status == 1) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+                if (responseModel.cjNetworkLog) {
+                    [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                }
+                
+                
                 UploadViewController *viewController = [[UploadViewController alloc] initWithNibName:@"UploadViewController" bundle:nil];
                 [self.navigationController pushViewController:viewController animated:YES];
             });
             
         } else {
             [SVProgressHUD showErrorWithStatus:@"登录失败"];//登录不了哦，再试试看！
+            if (responseModel.cjNetworkLog) {
+                [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+            }
         }
      
     }];

@@ -7,7 +7,7 @@
 //
 
 #import "AFHTTPSessionManager+CJEncrypt.h"
-#import "CJRequestErrorMessageUtil.h"
+#import "CJNetworkErrorUtil.h"
 #import "CJNetworkLogUtil.h"
 
 @implementation AFHTTPSessionManager (CJEncrypt)
@@ -22,47 +22,24 @@
     NSLog(@"Url = %@", Url);
     NSLog(@"params = %@", params);
     
-    //将传给服务器的参数用字符串打印出来
-    /*
-    NSString *allParamsJsonString = nil;
-    if ([NSJSONSerialization isValidJSONObject:params]) {
-        NSError *error;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-        allParamsJsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
-    //*/
-    NSString *allParamsJsonString = [CJNetworkLogUtil formattedStringFromObject:params];
-    //NSLog(@"传给服务器的json参数:%@", allParamsJsonString);
-    
     NSURLSessionDataTask *dataTask =
     [self GET:Url parameters:params progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         
         
         //successNetworkLog
-        NSString *responseString = [CJNetworkLogUtil formattedStringFromObject:responseDict];
-        NSMutableString *networkLog = [CJNetworkLogUtil networkLogWithUrl:Url paramsString:allParamsJsonString responseString:responseString];
-        [CJNetworkLogUtil printNetworkLog:networkLog];
+        id newResponseObject =
+        [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params responseObject:responseDict];
         
         if (success) {
-            success(responseDict);
-            
-            /*
-            NSMutableDictionary *mutableResponseObject = [NSMutableDictionary dictionaryWithDictionary:responseDict];
-            [mutableResponseObject setObject:networkLog forKey:@"cjNetworkLog"];
-            success(mutableResponseObject);
-            //*/
+            success(newResponseObject);
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSString *cjErrorMeesage = [CJRequestErrorMessageUtil getErrorMessageFromURLSessionTask:task];
-        
         //errorNetworkLog
-        NSString *responseString = cjErrorMeesage;
-        NSMutableString *networkLog = [CJNetworkLogUtil networkLogWithUrl:Url paramsString:allParamsJsonString responseString:responseString];
-        [CJNetworkLogUtil printNetworkLog:networkLog];
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params error:error URLResponse:response];
         
-        NSError *newError = [CJRequestErrorMessageUtil getNewErrorWithError:error cjErrorMeesage:cjErrorMeesage];
         if (failure) {
             failure(newError);
         }
@@ -83,10 +60,6 @@
                                       success:(nullable void (^)(NSDictionary *_Nullable responseObject))success
                                       failure:(nullable void (^)(NSError * _Nullable error))failure
 {
-    //将传给服务器的参数用字符串打印出来
-    NSString *allParamsJsonString = [CJNetworkLogUtil formattedStringFromObject:params];
-    //NSLog(@"传给服务器的json参数:%@", allParamsJsonString);
-    
     /* 利用Url和params，通过加密的方法创建请求 */
     NSData *bodyData = nil;
     if (encrypt && encryptBlock) {
@@ -120,31 +93,19 @@
                     recognizableResponseObject = [NSJSONSerialization JSONObjectWithData:(NSData *)responseObject options:NSJSONReadingMutableContainers error:nil];
                 }
             }
+            
             //successNetworkLog
-            NSString *responseString = [CJNetworkLogUtil formattedStringFromObject:recognizableResponseObject];
-            NSMutableString *networkLog = [CJNetworkLogUtil networkLogWithUrl:Url paramsString:allParamsJsonString responseString:responseString];
-            [CJNetworkLogUtil printNetworkLog:networkLog];
+            id newResponseObject =
+            [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params responseObject:recognizableResponseObject];
             
             if (success) {
-                success(recognizableResponseObject);
-                
-                /*
-                NSMutableDictionary *mutableResponseObject = [NSMutableDictionary dictionaryWithDictionary:recognizableResponseObject];
-                [mutableResponseObject setObject:networkLog forKey:@"cjNetworkLog"];
-                success(mutableResponseObject);
-                //*/
+                success(newResponseObject);
             }
         }
         else
         {
-            
-            NSString *cjErrorMeesage = [CJRequestErrorMessageUtil getErrorMessageFromURLResponse:response];
-            NSError *newError = [CJRequestErrorMessageUtil getNewErrorWithError:error cjErrorMeesage:cjErrorMeesage];
-            
             //errorNetworkLog
-            NSString *responseString = cjErrorMeesage;
-            NSMutableString *networkLog = [CJNetworkLogUtil networkLogWithUrl:Url paramsString:allParamsJsonString responseString:responseString];
-            [CJNetworkLogUtil printNetworkLog:networkLog];
+            NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params error:error URLResponse:response];
             
             if (failure) {
                 failure(newError);
