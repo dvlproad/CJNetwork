@@ -18,6 +18,7 @@ PODS:
     - CJBaseUIKit/UIView/CJPopupAction
     - Masonry
   - CJBaseUIKit/UIView/CJPopupAction (0.2.2)
+  - CJBaseUtil/CJDataUtil (0.3.0)
   - CJBaseUtil/CJIndentedStringUtil (0.3.0)
   - CocoaAsyncSocket (7.4.3):
     - CocoaAsyncSocket/All (= 7.4.3)
@@ -34,11 +35,24 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - CJBaseUIKit/CJAlert (~> 0.2.2)
+  - CJBaseUtil/CJDataUtil (~> 0.3.0)
   - CJBaseUtil/CJIndentedStringUtil
   - CocoaAsyncSocket (~> 7.4.1)
+  - Masonry
   - MBProgressHUD (~> 0.9.1)
   - OpenUDID (~> 1.0.0)
   - SVProgressHUD (~> 2.1.2)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - CJBaseUIKit
+    - CJBaseUtil
+    - CocoaAsyncSocket
+    - Masonry
+    - MBProgressHUD
+    - OpenUDID
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -50,6 +64,6 @@ SPEC CHECKSUMS:
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 18834882a19267cc7a81cb71d94d90e788d250ac
+PODFILE CHECKSUM: 7e40e1e6f03e7bb6660148e954398e8bf6a9dc02
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

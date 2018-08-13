@@ -13,7 +13,9 @@ target 'CJNetworkDemo' do
   
   pod 'OpenUDID', '~> 1.0.0'
   
+  pod 'Masonry'
   pod 'CJBaseUIKit/CJAlert', '~> 0.2.2'
+  pod 'CJBaseUtil/CJDataUtil', '~> 0.3.0'
   pod 'CJBaseUtil/CJIndentedStringUtil'
 end
 

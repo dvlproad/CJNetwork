@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "AppDelegate+WindowRootViewController.h"
+
 #import "AppInfoManager.h"
 
 @interface AppDelegate ()
@@ -28,6 +30,12 @@
      
      由于检测网络有一定的延迟，所以如果启动app立即去检测调用[AFNetworkReachabilityManager sharedManager].networkReachabilityStatus 有可能得到的是status == AFNetworkReachabilityStatusUnknown;但是此时明明是有网的，建议在收到监听网络状态回调以后再取[AFNetworkReachabilityManager sharedManager].networkReachabilityStatus。
      */
+    
+    // 设置主窗口,并设置根控制器
+    self.window = [[UIWindow alloc]init];
+    self.window.frame = [UIScreen mainScreen].bounds;
+    self.window.rootViewController = [self getMainRootViewController];
+    [self.window makeKeyAndVisible];
     
     return YES;
 }
