@@ -28,7 +28,8 @@
     AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cj_postUrl:Url params:params shouldCache:NO progress:nil success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
+    [manager cj_postUrl:Url params:params encrypt:NO encryptBlock:nil decryptBlock:nil progress:nil success:^(NSDictionary * _Nullable responseObject) {
+//    [manager cj_postUrl:Url params:params shouldCache:NO progress:nil success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
         CJResponseModel *responseModel = [[CJResponseModel alloc] init];
         responseModel.status = [responseObject[@"status"] integerValue];
         responseModel.message = responseObject[@"msg"];

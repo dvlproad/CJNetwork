@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFHTTPSessionManager+CJEncrypt.h"
 #import "AFHTTPSessionManager+CJCacheRequest.h"
 
 #import "CJResponseModel.h"

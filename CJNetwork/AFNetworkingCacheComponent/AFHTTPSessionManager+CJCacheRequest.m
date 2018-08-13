@@ -89,33 +89,29 @@
     [request setHTTPMethod:@"POST"];
     
     NSURLSessionDataTask *task =
-    [self dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    [self POST:Url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self didRequestSuccessWithResponseObject:responseObject
+                                           forUrl:Url
+                                           params:params
+                                      shouldCache:shouldCache
+                                          encrypt:encrypt
+                                     encryptBlock:encryptBlock
+                                     decryptBlock:decryptBlock
+                                          success:success];
         
-        if (error == nil) {
-            [self didRequestSuccessWithResponseObject:responseObject
-                                               forUrl:Url
-                                               params:params
-                                          shouldCache:shouldCache
-                                              encrypt:encrypt
-                                         encryptBlock:encryptBlock
-                                         decryptBlock:decryptBlock
-                                              success:success];
-        }
-        else
-        {
-            [self didRequestFailureWithResponseError:error
-                                         URLResponse:response
-                                              forUrl:Url
-                                              params:params
-                                      shouldGetCache:shouldCache
-                                             encrypt:encrypt
-                                        encryptBlock:encryptBlock
-                                        decryptBlock:decryptBlock
-                                             success:success
-                                             failure:failure];
-        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSURLResponse *response = task.response;
+        [self didRequestFailureWithResponseError:error
+                                     URLResponse:response
+                                          forUrl:Url
+                                          params:params
+                                  shouldGetCache:shouldCache
+                                         encrypt:encrypt
+                                    encryptBlock:encryptBlock
+                                    decryptBlock:decryptBlock
+                                         success:success
+                                         failure:failure];
     }];
-    [task resume];
     
     return task;
 }
