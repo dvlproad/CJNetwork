@@ -21,14 +21,18 @@
                                                        responseString:responseJsonString];
     [CJNetworkLogUtil printConsoleNetworkLog:networkLog];
     
+    return responseObject;
+    
+    /*
     if ([responseObject isKindOfClass:[NSDictionary class]]) {
         NSMutableDictionary *mutableResponseObject = [NSMutableDictionary dictionaryWithDictionary:responseObject];
         [mutableResponseObject setObject:networkLog forKey:@"cjNetworkLog"];
-        
+
         return mutableResponseObject;
     } else {
         return responseObject;
     }
+    */
 }
 
 ///errorNetworkLog
@@ -45,7 +49,7 @@
     NSMutableDictionary *moreUserInfo = [NSMutableDictionary dictionary];
     [moreUserInfo setObject:cjErrorMeesage forKey:@"cjNewErrorMeesage"];
     //[moreUserInfo setValue:cjErrorMeesage forKey:NSLocalizedDescriptionKey];
-    [moreUserInfo setObject:networkLog forKey:@"cjNetworkLog"];
+//    [moreUserInfo setObject:networkLog forKey:@"cjNetworkLog"];
     
     NSError *newError = [CJNetworkErrorUtil getNewErrorWithError:error withMoreUserInfo:moreUserInfo];
     
