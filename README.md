@@ -8,8 +8,7 @@
 * 4、按指定格式输出请求信息(比如①你要在控制台查看请求信息、②当你脱离调试模式时候，你希望通过一个alert弹出显示你的log)
 
 #### Screenshots
-![Example](./Screenshots/Demo.gif "Demo")
-![Example](./Screenshots/Demo.png "Demo")
+> ![CJNetwork](./Screenshots/CJNetwork.jpg "CJNetwork")
 
 #### 1、加解密：AFHTTPSessionManager+CJEncrypt
 ###### (1)、功能：
@@ -197,9 +196,22 @@
 
 
 
-## 版本介绍/主要修改内容
-* V3.0.1 2018-08-13
+## 版本介绍/更新记录
+* V0.4.0 2018-08-14
+> 请求内部方法改为直接调用AFNetworking方法，使得默认回调处于主线程中。
+
+* V0.3.1 2018-08-13
 > 增加cjNetworkLog代码，用于有时候调试时候可直接弹窗显示，接口请求信息。不过考虑需要额外开辟内存保存cjNetworkLog，所以该信息默认注释了，需要时候，自己去CJNetworkLogUtil中打开即可。
 
-* V3.0.0 2018-07-06
+* V0.3.0 2018-07-06
 > 优化资源文件上传接口，使其更易理解，参数更少。
+
+
+## Author Or Contact
+* [邮箱：studyroad@qq.com](studyroad@qq.com)
+* [简书：https://www.jianshu.com/u/498d9e6a26e1](https://www.jianshu.com/u/498d9e6a26e1)
+* [码云：https://gitee.com/dvlproad](https://gitee.com/dvlproad)
+
+
+## 结束语
+欢迎Stat、Follow、Fork、Pull Request！

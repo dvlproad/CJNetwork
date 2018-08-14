@@ -48,16 +48,16 @@
     //弹窗
     {
         CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
-        sectionDataModel.theme = @"断点续传相关";
+        sectionDataModel.theme = @"断点续传相关(包含进度显示)";
         {
             CJModuleModel *toastUtilModule = [[CJModuleModel alloc] init];
-            toastUtilModule.title = @"AFDownloadViewController";
+            toastUtilModule.title = @"使用AFN进行下载";
             toastUtilModule.classEntry = [AFDownloadViewController class];
             [sectionDataModel.values addObject:toastUtilModule];
         }
         {
             CJModuleModel *alertUtilModule = [[CJModuleModel alloc] init];
-            alertUtilModule.title = @"SessionDataTaskDownloadViewController";
+            alertUtilModule.title = @"断点续传(MQLResumeManager)";
             alertUtilModule.classEntry = [SessionDataTaskDownloadViewController class];
             [sectionDataModel.values addObject:alertUtilModule];
         }
@@ -69,7 +69,7 @@
         }
         {
             CJModuleModel *alertUtilModule = [[CJModuleModel alloc] init];
-            alertUtilModule.title = @"DownloadListViewController";
+            alertUtilModule.title = @"断点续传(HSDownloadManager)";
             alertUtilModule.classEntry = [DownloadListViewController class];
             [sectionDataModel.values addObject:alertUtilModule];
         }
@@ -88,7 +88,7 @@
         }
         {
             CJModuleModel *alertUtilModule = [[CJModuleModel alloc] init];
-            alertUtilModule.title = @"RepeatRequestViewController";
+            alertUtilModule.title = @"请求的重复发送问题";
             alertUtilModule.classEntry = [RepeatRequestViewController class];
             [sectionDataModel.values addObject:alertUtilModule];
         }
@@ -146,7 +146,7 @@
     UIViewController *viewController = nil;
     
     NSArray *noxibViewControllers = @[NSStringFromClass([UIViewController class]),
-                                      ];
+                                      NSStringFromClass([RepeatRequestViewController class])];
     
     NSString *clsString = NSStringFromClass(moduleModel.classEntry);
     if ([noxibViewControllers containsObject:clsString])

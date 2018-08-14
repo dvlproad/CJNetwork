@@ -8,7 +8,8 @@
 
 #import "EncryptHomeViewController.h"
 
-#import "LoginViewController.h"
+#import "HealthyNetworkClient.h"
+#import "HealthyHTTPSessionManager.h"
 
 @interface EncryptHomeViewController () <UITableViewDataSource, UITableViewDelegate> {
     
@@ -42,8 +43,8 @@
         sectionDataModel.theme = @"Encrypt相关";
         {
             CJModuleModel *toastUtilModule = [[CJModuleModel alloc] init];
-            toastUtilModule.title = @"LoginViewController";
-            toastUtilModule.classEntry = [LoginViewController class];
+            toastUtilModule.title = @"登录(健康)";
+            //toastUtilModule.classEntry = [UIViewController class];
             [sectionDataModel.values addObject:toastUtilModule];
         }
         
@@ -85,40 +86,61 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"didSelectRowAtIndexPath = %ld %ld", indexPath.section, indexPath.row);
+    //NSLog(@"didSelectRowAtIndexPath = %ld %ld", indexPath.section, indexPath.row);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-    LoginViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    [self.navigationController pushViewController:vc animated:YES];
-    return;
-    
-    CJSectionDataModel *sectionDataModel = [self.sectionDataModels objectAtIndex:indexPath.section];
-    NSArray *dataModels = sectionDataModel.values;
-    CJModuleModel *moduleModel = [dataModels objectAtIndex:indexPath.row];
-    
-    
-    Class classEntry = moduleModel.classEntry;
-    NSString *nibName = NSStringFromClass(moduleModel.classEntry);
-    
-    
-    UIViewController *viewController = nil;
-    
-    NSArray *noxibViewControllers = @[NSStringFromClass([UIViewController class]),
-                                      ];
-    
-    NSString *clsString = NSStringFromClass(moduleModel.classEntry);
-    if ([noxibViewControllers containsObject:clsString])
-    {
-        viewController = [[classEntry alloc] init];
-        viewController.view.backgroundColor = [UIColor whiteColor];
-    } else {
-        viewController = [[classEntry alloc] initWithNibName:nibName bundle:nil];
+
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            [self loginHealthWithCompleteBlock:^(CJResponseModel *responseModel) {
+                if (responseModel.status == 0) {
+                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
+                    if (responseModel.cjNetworkLog) {
+                        [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                    }
+                    
+                } else {
+                    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];
+                    if (responseModel.cjNetworkLog) {
+                        [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                    }
+                }
+            }];
+        }
     }
-    viewController.title = NSLocalizedString(moduleModel.title, nil);
-    viewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:viewController animated:YES];
 }
+
+- (void)loginHealthWithCompleteBlock:(void (^)(CJResponseModel *responseModel))completeBlock {
+    NSString *Url = @"http://121.40.82.169/drupal/api/login";
+    NSDictionary *params = @{@"username" : @"test",
+                             @"password" : @"test",
+                             };
+    
+    AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
+    
+    [manager cj_postUrl:Url params:params encrypt:NO encryptBlock:nil decryptBlock:nil progress:nil success:^(NSDictionary * _Nullable responseObject) {
+        //    [manager cj_postUrl:Url params:params shouldCache:NO progress:nil success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
+        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+        responseModel.status = [responseObject[@"status"] integerValue];
+        responseModel.message = responseObject[@"msg"];
+        responseModel.result = responseObject[@"result"];
+        responseModel.cjNetworkLog = responseObject[@"cjNetworkLog"];
+        if (completeBlock) {
+            completeBlock(responseModel);
+        }
+        
+    } failure:^(NSError * _Nullable error) {
+        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+        responseModel.status = -1;
+        responseModel.message = NSLocalizedString(@"网络请求失败", nil);
+        responseModel.result = nil;
+        responseModel.cjNetworkLog = error.userInfo[@"cjNetworkLog"];
+        if (completeBlock) {
+            completeBlock(responseModel);
+        }
+    }];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

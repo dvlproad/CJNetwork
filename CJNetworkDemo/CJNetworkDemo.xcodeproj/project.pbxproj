@@ -628,12 +628,12 @@
 		7868F1612121C79A00A283EB /* DownloadListViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7868F1622121C79A00A283EB /* DownloadListViewController.m */,
-				7868F1632121C79A00A283EB /* DownloadTableViewCell.h */,
-				7868F1642121C79A00A283EB /* DownloadTableViewCell.xib */,
 				7868F1652121C79A00A283EB /* DownloadListViewController.h */,
+				7868F1622121C79A00A283EB /* DownloadListViewController.m */,
 				7868F1662121C79A00A283EB /* DownloadListViewController.xib */,
+				7868F1632121C79A00A283EB /* DownloadTableViewCell.h */,
 				7868F1672121C79A00A283EB /* DownloadTableViewCell.m */,
+				7868F1642121C79A00A283EB /* DownloadTableViewCell.xib */,
 			);
 			path = DownloadListViewController;
 			sourceTree = "<group>";
@@ -676,15 +676,15 @@
 		7868F1AB2121D0FE00A283EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7868F1AC2121D0FE00A283EB /* icons8-folder.png */,
-				7868F1AD2121D0FE00A283EB /* bgCar@2x.jpg */,
 				7868F1AE2121D0FE00A283EB /* arrow */,
-				7868F1B82121D0FE00A283EB /* icons8-menu.png */,
-				7868F1B92121D0FE00A283EB /* bgSky@2x.jpg */,
-				7868F1BA2121D0FE00A283EB /* icons8-calendar.png */,
 				7868F1BB2121D0FE00A283EB /* bg@2x.jpg */,
+				7868F1AD2121D0FE00A283EB /* bgCar@2x.jpg */,
+				7868F1B92121D0FE00A283EB /* bgSky@2x.jpg */,
 				7868F1BC2121D0FE00A283EB /* header@2x.jpg */,
+				7868F1BA2121D0FE00A283EB /* icons8-calendar.png */,
+				7868F1AC2121D0FE00A283EB /* icons8-folder.png */,
 				7868F1BD2121D0FE00A283EB /* icons8-home.png */,
+				7868F1B82121D0FE00A283EB /* icons8-menu.png */,
 				7868F1BE2121D0FE00A283EB /* icons8-settings.png */,
 			);
 			path = Resources;

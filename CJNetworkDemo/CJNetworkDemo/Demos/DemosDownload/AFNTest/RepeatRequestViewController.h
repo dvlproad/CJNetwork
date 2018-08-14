@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Masonry/Masonry.h>
 
-@interface RepeatRequestViewController : UIViewController<UIAlertViewDelegate>
+@interface RepeatRequestViewController : UIViewController
 
 
 @end

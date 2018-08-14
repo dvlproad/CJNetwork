@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = NSLocalizedString(@"断点续传", nil);
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;

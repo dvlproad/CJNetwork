@@ -26,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = NSLocalizedString(@"使用AFN进行下载", nil);
+    
     self.progressView.progress = 0;
     
     _downloadTask =
