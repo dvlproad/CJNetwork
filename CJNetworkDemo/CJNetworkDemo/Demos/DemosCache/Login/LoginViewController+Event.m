@@ -68,6 +68,7 @@
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
             if (responseModel.cjNetworkLog) {
                 [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
             }
             /*
              NSDictionary *dic = [responseObject objectForKey:@"user"];
@@ -86,8 +87,11 @@
             //        NSString *failMesg = [error localizedDescription];
             //        failMesg = [failMesg cjEncodeUnicodeToChinese];
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];
+            
+            [CJLogViewWindow appendObject:@"缓存页面的健康登录失败"];
             if (responseModel.cjNetworkLog) {
                 [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
             }
         }
     }];

@@ -1,4 +1,4 @@
-platform :ios, '7.0'
+platform :ios, '8.0'
 #use_frameworks!
 
 target 'CJNetworkDemo' do
@@ -15,8 +15,9 @@ target 'CJNetworkDemo' do
   
   pod 'Masonry'
   pod 'CJBaseUIKit/CJAlert', '~> 0.2.2'
-  pod 'CJBaseUtil/CJDataUtil', '~> 0.3.0'
+  pod 'CJBaseUtil/CJDataUtil'
   pod 'CJBaseUtil/CJIndentedStringUtil'
+  pod 'CJBaseUtil/CJLog', '~> 0.3.1'
 end
 
 target 'CJNetworkDemoTests' do

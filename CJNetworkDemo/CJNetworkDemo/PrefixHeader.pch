@@ -12,6 +12,8 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #import <CJBaseUIKit/CJAlert.h>
+#import <CJBaseUtil/CJLogSuspendWindow.h>
+
 #import <SVProgressHUD/SVProgressHUD.h>
 
 #define Test_ImageUrl0   @"http://g.hiphotos.baidu.com/image/w%3D310/sign=6b019ccf9b25bc312b5d07996ede8de7/9e3df8dcd100baa18be50eba4510b912c9fc2ee1.jpg"

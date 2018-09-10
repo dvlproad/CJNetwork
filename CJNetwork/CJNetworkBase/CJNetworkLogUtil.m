@@ -21,18 +21,21 @@
                                                        responseString:responseJsonString];
     [CJNetworkLogUtil printConsoleNetworkLog:networkLog];
     
-    return responseObject;
     
-    /*
-    if ([responseObject isKindOfClass:[NSDictionary class]]) {
-        NSMutableDictionary *mutableResponseObject = [NSMutableDictionary dictionaryWithDictionary:responseObject];
-        [mutableResponseObject setObject:networkLog forKey:@"cjNetworkLog"];
-
-        return mutableResponseObject;
+    BOOL addNetworkLog = NO; //是否在增加cjNetworkLog字段给response，在调试时候有用
+    if (addNetworkLog) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSMutableDictionary *mutableResponseObject = [NSMutableDictionary dictionaryWithDictionary:responseObject];
+            [mutableResponseObject setObject:networkLog forKey:@"cjNetworkLog"];
+            
+            return mutableResponseObject;
+        } else {
+            return responseObject;
+        }
+        
     } else {
         return responseObject;
     }
-    */
 }
 
 ///errorNetworkLog
@@ -48,8 +51,12 @@
     
     NSMutableDictionary *moreUserInfo = [NSMutableDictionary dictionary];
     [moreUserInfo setObject:cjErrorMeesage forKey:@"cjNewErrorMeesage"];
-    //[moreUserInfo setValue:cjErrorMeesage forKey:NSLocalizedDescriptionKey];
-//    [moreUserInfo setObject:networkLog forKey:@"cjNetworkLog"];
+    
+    BOOL addNetworkLog = NO; //是否在增加cjNetworkLog字段给response，在调试时候有用
+    if (addNetworkLog) {
+        //[moreUserInfo setValue:cjErrorMeesage forKey:NSLocalizedDescriptionKey];
+        [moreUserInfo setObject:networkLog forKey:@"cjNetworkLog"];
+    }
     
     NSError *newError = [CJNetworkErrorUtil getNewErrorWithError:error withMoreUserInfo:moreUserInfo];
     

@@ -96,12 +96,16 @@
                     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
                     if (responseModel.cjNetworkLog) {
                         [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                        [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
                     }
                     
                 } else {
                     [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];
+                    
+                    [CJLogViewWindow appendObject:@"加密页面的健康登录失败"];
                     if (responseModel.cjNetworkLog) {
                         [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                        [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
                     }
                 }
             }];

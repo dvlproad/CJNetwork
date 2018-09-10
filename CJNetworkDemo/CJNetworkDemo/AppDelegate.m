@@ -37,6 +37,9 @@
     self.window.rootViewController = [self getMainRootViewController];
     [self.window makeKeyAndVisible];
     
+    
+    [CJLogSuspendWindow showWithFrame:CGRectMake(10, 200, 100, 100)];
+    
     return YES;
 }
 

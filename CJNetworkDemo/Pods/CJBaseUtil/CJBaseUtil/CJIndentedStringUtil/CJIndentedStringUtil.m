@@ -10,8 +10,9 @@
 
 @implementation CJIndentedStringUtil
 
+#pragma mark - Easy
 /* 完整的描述请参见文件头部 */
-+ (NSString *)easyFormattedStringFromDictionary:(NSDictionary *)dictionary {
++ (NSMutableString *)easyFormattedStringFromDictionary:(NSDictionary *)dictionary {
     NSMutableString *indentedString = [NSMutableString string];
     
     // 开头有个{
@@ -21,7 +22,22 @@
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [indentedString appendFormat:@"\t%@", key];
         [indentedString appendString:@" : "];
-        [indentedString appendFormat:@"%@,\n", obj];
+        
+        NSString *objString = nil;
+        if ([obj isKindOfClass:[NSString class]]) {
+            objString = (NSString *)obj;
+            
+        } else if ([obj isKindOfClass:[NSNumber class]]) {
+            objString = [(NSNumber *)objString stringValue];
+            
+        } else if ([obj isKindOfClass:[NSDictionary class]]) {
+            objString = [self easyFormattedStringFromDictionary:obj];
+        } else if ([obj isKindOfClass:[NSArray class]]) {
+            objString = [self easyFormattedStringFromArray:obj];
+        } else {
+            objString = @"未正确获取的obj";
+        }
+        [indentedString appendFormat:@"%@,\n", objString];
     }];
     
     // 结尾有个}
@@ -35,13 +51,39 @@
     return indentedString;
 }
 
-///从服务器得到的JSON数据解析成NSDictionary后，通过递归遍历多维的NSDictionary可以方便的把字典中的所有键值输出出来方便测试检查。
-+ (NSString *)fullFormattedStringFromDictionary:(NSDictionary *)dictionary {
-    NSString *indentedString = [CJIndentedStringUtil fullFormattedStringFromDictionary:dictionary flagPrefix:@"" textPrefix:@"\t"];
+/* 完整的描述请参见文件头部 */
++ (NSMutableString *)easyFormattedStringFromArray:(NSArray *)array
+{
+    NSMutableString *indentedString = [NSMutableString string];
+    
+    // 开头有个[
+    [indentedString appendString:@"[\n"];
+    
+    // 遍历所有的元素
+    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [indentedString appendFormat:@"\t%@,\n", obj];
+    }];
+    
+    // 结尾有个]
+    [indentedString appendString:@"]"];
+    
+    // 查找最后一个逗号
+    NSRange range = [indentedString rangeOfString:@"," options:NSBackwardsSearch];
+    if (range.location != NSNotFound)
+        [indentedString deleteCharactersInRange:range];
+    
     return indentedString;
 }
 
-+ (NSString *)fullFormattedStringFromDictionary:(NSDictionary *)dictionary flagPrefix:(NSString *)flagPrefix textPrefix:(NSString *)textPrefix {
+
+#pragma mark - Full
+///从服务器得到的JSON数据解析成NSDictionary后，通过递归遍历多维的NSDictionary可以方便的把字典中的所有键值输出出来方便测试检查。
++ (NSMutableString *)fullFormattedStringFromDictionary:(NSDictionary *)dictionary {
+    NSMutableString *indentedString = [CJIndentedStringUtil fullFormattedStringFromDictionary:dictionary flagPrefix:@"" textPrefix:@"\t"];
+    return indentedString;
+}
+
++ (NSMutableString *)fullFormattedStringFromDictionary:(NSDictionary *)dictionary flagPrefix:(NSString *)flagPrefix textPrefix:(NSString *)textPrefix {
     NSMutableString *indentedString = [NSMutableString string];
     
     
@@ -99,30 +141,6 @@
     
     
     [indentedString appendFormat:@"%@}", flagPrefix];   // 结尾有个}
-    
-    return indentedString;
-}
-
-/* 完整的描述请参见文件头部 */
-+ (NSString *)easyFormattedStringFromArray:(NSArray *)array
-{
-    NSMutableString *indentedString = [NSMutableString string];
-    
-    // 开头有个[
-    [indentedString appendString:@"[\n"];
-    
-    // 遍历所有的元素
-    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [indentedString appendFormat:@"\t%@,\n", obj];
-    }];
-    
-    // 结尾有个]
-    [indentedString appendString:@"]"];
-    
-    // 查找最后一个逗号
-    NSRange range = [indentedString rangeOfString:@"," options:NSBackwardsSearch];
-    if (range.location != NSNotFound)
-        [indentedString deleteCharactersInRange:range];
     
     return indentedString;
 }
