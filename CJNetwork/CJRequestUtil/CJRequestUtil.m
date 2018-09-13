@@ -60,7 +60,7 @@
     
     
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLSessionDataTask *URLSessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         if (error == nil) {
             NSDictionary *recognizableResponseObject = nil; //可识别的responseObject,如果是加密的还要解密
@@ -76,7 +76,7 @@
             
             //successNetworkLog
             id newResponseObject =
-            [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params responseObject:recognizableResponseObject];
+            [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params request:request responseObject:recognizableResponseObject];
             
             if (success) {
                 success(newResponseObject);
@@ -85,7 +85,7 @@
         else
         {
             //errorNetworkLog
-            NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params error:error URLResponse:response];
+            NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params request:request error:error URLResponse:response];
             
             if (failure) {
                 failure(newError);
@@ -93,9 +93,9 @@
             
         }
     }];
-    [task resume];
+    [URLSessionDataTask resume];
     
-    return task;
+    return URLSessionDataTask;
 }
 
 

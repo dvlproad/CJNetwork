@@ -8,25 +8,32 @@
 
 #import "CJNetworkLogUtil.h"
 #import "CJNetworkErrorUtil.h"
+#import "CJNetworkInfoModel.h"
 
 @implementation CJNetworkLogUtil
 
 ///successNetworkLog
-+ (id)printSuccessNetworkLogWithUrl:(NSString *)Url params:(id)params responseObject:(id)responseObject
++ (id)printSuccessNetworkLogWithUrl:(NSString *)Url params:(id)params request:(NSURLRequest *)request responseObject:(id)responseObject
 {
+    NSString *bodyString = [self getBodyStringForRequest:request];
+    
     NSString *responseJsonString = [CJNetworkLogUtil formattedStringFromObject:responseObject];
     
-    NSMutableString *networkLog = [CJNetworkLogUtil networkLogWithUrl:Url
-                                                               params:params
-                                                       responseString:responseJsonString];
-    [CJNetworkLogUtil printConsoleNetworkLog:networkLog];
+    CJNetworkInfoModel *networkInfoModel = [[CJNetworkInfoModel alloc] init];
+    networkInfoModel.Url = Url;
+    networkInfoModel.params = params;
+    networkInfoModel.bodyString = bodyString;
+    networkInfoModel.responseString = responseJsonString;
+    
+    NSMutableString *networkLogString = [CJNetworkLogUtil networkLogStringWithNetworkInfoModel:networkInfoModel];
+    [CJNetworkLogUtil printConsoleNetworkLog:networkLogString];
     
     
     BOOL addNetworkLog = NO; //是否在增加cjNetworkLog字段给response，在调试时候有用
     if (addNetworkLog) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSMutableDictionary *mutableResponseObject = [NSMutableDictionary dictionaryWithDictionary:responseObject];
-            [mutableResponseObject setObject:networkLog forKey:@"cjNetworkLog"];
+            [mutableResponseObject setObject:networkLogString forKey:@"cjNetworkLog"];
             
             return mutableResponseObject;
         } else {
@@ -39,15 +46,21 @@
 }
 
 ///errorNetworkLog
-+ (NSError *)printErrorNetworkLogWithUrl:(NSString *)Url params:(id)params error:(NSError *)error URLResponse:(NSURLResponse *)URLResponse
++ (NSError *)printErrorNetworkLogWithUrl:(NSString *)Url params:(id)params request:(NSURLRequest *)request error:(NSError *)error URLResponse:(NSURLResponse *)URLResponse
 {
+    NSString *bodyString = [self getBodyStringForRequest:request];
+    
     NSString *cjErrorMeesage = [CJNetworkErrorUtil getErrorMessageFromURLResponse:URLResponse];
     NSString *responseJsonString = cjErrorMeesage;
     
-    NSMutableString *networkLog = [CJNetworkLogUtil networkLogWithUrl:Url
-                                                               params:params
-                                                       responseString:responseJsonString];
-    [CJNetworkLogUtil printConsoleNetworkLog:networkLog];
+    CJNetworkInfoModel *networkInfoModel = [[CJNetworkInfoModel alloc] init];
+    networkInfoModel.Url = Url;
+    networkInfoModel.params = params;
+    networkInfoModel.bodyString = bodyString;
+    networkInfoModel.responseString = responseJsonString;
+    
+    NSMutableString *networkLogString = [CJNetworkLogUtil networkLogStringWithNetworkInfoModel:networkInfoModel];
+    [CJNetworkLogUtil printConsoleNetworkLog:networkLogString];
     
     NSMutableDictionary *moreUserInfo = [NSMutableDictionary dictionary];
     [moreUserInfo setObject:cjErrorMeesage forKey:@"cjNewErrorMeesage"];
@@ -55,7 +68,7 @@
     BOOL addNetworkLog = NO; //是否在增加cjNetworkLog字段给response，在调试时候有用
     if (addNetworkLog) {
         //[moreUserInfo setValue:cjErrorMeesage forKey:NSLocalizedDescriptionKey];
-        [moreUserInfo setObject:networkLog forKey:@"cjNetworkLog"];
+        [moreUserInfo setObject:networkLogString forKey:@"cjNetworkLog"];
     }
     
     NSError *newError = [CJNetworkErrorUtil getNewErrorWithError:error withMoreUserInfo:moreUserInfo];
@@ -63,6 +76,16 @@
     return newError;
 }
 
+///获取最后实际传到服务器的body
++ (NSString *)getBodyStringForRequest:(NSURLRequest *)request {
+    NSData *bodyData = request.HTTPBody;
+    if (bodyData == nil) {
+        return nil;
+    }
+    
+    NSString *bodyString = [[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding];
+    return bodyString;
+}
 
 #pragma mark - Private
 + (void)printConsoleNetworkLog:(NSString *)networkLog {
@@ -75,14 +98,26 @@
     NSLog(@"%@", consoleLog);
 }
 
-+ (NSMutableString *)networkLogWithUrl:(NSString *)Url params:(id)params responseString:(NSString *)responseString {
++ (NSMutableString *)networkLogStringWithNetworkInfoModel:(CJNetworkInfoModel *)networkInfoModel {
+    NSString *Url = networkInfoModel.Url;
+    
     //将传给服务器的参数用字符串打印出来
+    id params = networkInfoModel.params;
     NSString *allParamsJsonString = [CJNetworkLogUtil formattedStringFromObject:params];
     //NSLog(@"传给服务器的json参数:%@", allParamsJsonString);
     
+    NSString *bodyString = networkInfoModel.bodyString;
+    
+    NSString *responseString = networkInfoModel.responseString;
+    
+    
+    
+    
+    
     NSMutableString *networkLog = [NSMutableString string];
     [networkLog appendFormat:@"地址：%@ \n", Url];
-    [networkLog appendFormat:@"参数：%@ \n", allParamsJsonString];
+    [networkLog appendFormat:@"原始参数：%@ \n", allParamsJsonString];
+    [networkLog appendFormat:@"最终参数：%@ \n", bodyString];
     [networkLog appendFormat:@"结果：%@ \n", responseString];
     
     //[networkLog appendFormat:@"\n"];

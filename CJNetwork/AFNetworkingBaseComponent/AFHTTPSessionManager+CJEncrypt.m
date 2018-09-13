@@ -29,7 +29,7 @@
         
         //successNetworkLog
         id newResponseObject =
-        [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params responseObject:responseDict];
+        [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params request:task.originalRequest responseObject:responseDict];
         
         if (success) {
             success(newResponseObject);
@@ -38,7 +38,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //errorNetworkLog
         NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-        NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params error:error URLResponse:response];
+        NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params request:task.originalRequest error:error URLResponse:response];
         
         if (failure) {
             failure(newError);
@@ -73,7 +73,7 @@
     [request setHTTPBody:bodyData];
     [request setHTTPMethod:@"POST"];
     
-    NSURLSessionDataTask *task =
+    NSURLSessionDataTask *URLSessionDataTask =
     [self dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error == nil) {
@@ -81,7 +81,7 @@
             
             //successNetworkLog
             id newResponseObject =
-            [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params responseObject:recognizableResponseObject];
+            [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params request:request responseObject:recognizableResponseObject];
             
             if (success) {
                 success(newResponseObject);
@@ -91,16 +91,16 @@
         else
         {
             //errorNetworkLog
-            NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params error:error URLResponse:response];
+            NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params request:request error:error URLResponse:response];
             
             if (failure) {
                 failure(newError);
             }
         }
     }];
-    [task resume];
+    [URLSessionDataTask resume];
     
-    return task;
+    return URLSessionDataTask;
     
     /*
     //不知为什么无效的方法：
@@ -149,7 +149,7 @@
         
         //successNetworkLog
         id newResponseObject =
-        [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params responseObject:recognizableResponseObject];
+        [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params request:task.originalRequest responseObject:recognizableResponseObject];
         
         if (success) {
             success(newResponseObject);
@@ -159,7 +159,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSURLResponse *response = task.response;
         //errorNetworkLog
-        NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params error:error URLResponse:response];
+        NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params request:task.originalRequest error:error URLResponse:response];
         
         if (failure) {
             failure(newError);

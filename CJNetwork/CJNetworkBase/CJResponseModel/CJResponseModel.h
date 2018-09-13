@@ -10,12 +10,12 @@
 
 @interface CJResponseModel : NSObject
 
-@property(nonatomic, assign) NSInteger status;
-@property(nonatomic, copy) NSString *message;
-@property(nonatomic, strong) id result;
-@property(nonatomic, copy) NSString *cjNetworkLog;
+@property (nonatomic, assign) NSInteger status;
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, strong) id result;
+@property (nonatomic, copy) NSString *cjNetworkLog;
 
-@property(nonatomic, assign) BOOL isCacheData;
+@property (nonatomic, assign) BOOL isCacheData;
 
 /*
 CJResponseModel *responseModel = [[CJResponseModel alloc] init];

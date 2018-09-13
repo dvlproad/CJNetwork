@@ -12,10 +12,10 @@
 
 #pragma mark - Log
 ///successNetworkLog
-+ (id)printSuccessNetworkLogWithUrl:(NSString *)Url params:(id)params responseObject:(id)responseObject;
++ (id)printSuccessNetworkLogWithUrl:(NSString *)Url params:(id)params request:(NSURLRequest *)request responseObject:(id)responseObject;
 
 ///errorNetworkLog
-+ (NSError *)printErrorNetworkLogWithUrl:(NSString *)Url params:(id)params error:(NSError *)error URLResponse:(NSURLResponse *)URLResponse;
++ (NSError *)printErrorNetworkLogWithUrl:(NSString *)Url params:(id)params request:(NSURLRequest *)request error:(NSError *)error URLResponse:(NSURLResponse *)URLResponse;
 
 
 @end
