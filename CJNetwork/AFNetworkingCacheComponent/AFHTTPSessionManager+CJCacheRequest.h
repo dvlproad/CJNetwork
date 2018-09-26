@@ -7,6 +7,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
+#import "CJNetworkInfoModel.h"
 #import "CJRequestCacheDataUtil.h"
 
 
@@ -30,12 +31,13 @@
  *
  *  return NSURLSessionDataTask
  */
-- (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
-                                       params:(nullable id)params
-                                  shouldCache:(BOOL)shouldCache
-                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                      success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
-                                      failure:(nullable void (^)(NSError * _Nullable error))failure;
+- (nullable NSURLSessionDataTask *)cjCache_postUrl:(nullable NSString *)Url
+                                            params:(nullable id)params
+                                       shouldCache:(BOOL)shouldCache
+                                          progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                           logType:(CJNetworkLogType)logType
+                                           success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData))success
+                                           failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure;
 
 #pragma mark - CJCacheEncrypt
 /**
@@ -53,14 +55,15 @@
  *
  *  return NSURLSessionDataTask
  */
-- (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
-                                       params:(nullable id)params
-                                  shouldCache:(BOOL)shouldCache
-                                      encrypt:(BOOL)encrypt
-                                 encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
-                                 decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
-                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                      success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
-                                      failure:(nullable void (^)(NSError * _Nullable error))failure;
+- (nullable NSURLSessionDataTask *)cjCache_postUrl:(nullable NSString *)Url
+                                            params:(nullable id)params
+                                       shouldCache:(BOOL)shouldCache
+                                           encrypt:(BOOL)encrypt
+                                      encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
+                                      decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
+                                          progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                           logType:(CJNetworkLogType)logType
+                                           success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData))success
+                                           failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure;
 
 @end

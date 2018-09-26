@@ -8,10 +8,7 @@
 
 #import "LoginViewController+Event.h"
 
-#import "HealthyNetworkClient.h"
-#import "IjinbuNetworkClient+Login.h"
-
-#import "UploadViewController.h"
+#import "HealthyNetworkClient+Login.h"
 
 @implementation LoginViewController (Event)
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -63,7 +60,7 @@
     
     NSString *name = self.nameTextField.text;
     NSString *pasd = self.pasdTextField.text;
-    [[HealthyNetworkClient sharedInstance] requestLogin_name:name pasd:pasd completeBlock:^(CJResponseModel *responseModel) {
+    [[HealthyNetworkClient sharedInstance] requestLoginWithName:name pasd:pasd success:^(HealthResponseModel *responseModel) {
         if (responseModel.status == 0) {
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
             if (responseModel.cjNetworkLog) {
@@ -84,8 +81,8 @@
             
             
         } else {
-            //        NSString *failMesg = [error localizedDescription];
-            //        failMesg = [failMesg cjEncodeUnicodeToChinese];
+//        NSString *failMesg = [error localizedDescription];
+//        failMesg = [failMesg cjEncodeUnicodeToChinese];
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];
             
             [CJLogViewWindow appendObject:@"缓存页面的健康登录失败"];
@@ -94,40 +91,14 @@
                 [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
             }
         }
+        
+    } failure:^(NSError *error) {
+        
     }];
 }
 
 
-///登录（ijinbu）
-- (IBAction)login_ijinbu:(id)sender {
-    [self.view endEditing:YES];
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"正在登录", nil)];
-    
-    NSString *name = @"18020721201";
-    NSString *pasd = @"123456";
-    
-    [[IjinbuNetworkClient sharedInstance] requestijinbuLogin_name:name pasd:pasd completeBlock:^(IjinbuResponseModel *responseModel) {
-        if (responseModel.status == 1) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-                if (responseModel.cjNetworkLog) {
-                    [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
-                }
-                
-                
-                UploadViewController *viewController = [[UploadViewController alloc] initWithNibName:@"UploadViewController" bundle:nil];
-                [self.navigationController pushViewController:viewController animated:YES];
-            });
-            
-        } else {
-            [SVProgressHUD showErrorWithStatus:@"登录失败"];//登录不了哦，再试试看！
-            if (responseModel.cjNetworkLog) {
-                [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
-            }
-        }
-     
-    }];
-}
+
 
 
 @end

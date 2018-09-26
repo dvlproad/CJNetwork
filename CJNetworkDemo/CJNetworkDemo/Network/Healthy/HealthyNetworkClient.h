@@ -10,15 +10,16 @@
 #import "AFHTTPSessionManager+CJEncrypt.h"
 #import "AFHTTPSessionManager+CJCacheRequest.h"
 
-#import "CJResponseModel.h"
+#import "HealthResponseModel.h"
 
 @interface HealthyNetworkClient : NSObject
 
 + (HealthyNetworkClient *)sharedInstance;
 
-//健康软件中的API
-- (void)requestLogin_name:(NSString *)name
-                     pasd:(NSString*)pasd
-            completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
+- (NSURLSessionDataTask *)health_postApi:(NSString *)apiSuffix
+                                  params:(id)params
+                                 encrypt:(BOOL)encrypt
+                                 success:(void (^)(HealthResponseModel *responseModel))success
+                                 failure:(void (^)(NSError *error))failure;
 
 @end

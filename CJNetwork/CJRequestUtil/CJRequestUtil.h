@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CJNetworkInfoModel.h"
 
 /**
  *  系统的请求方法
@@ -42,8 +43,9 @@
                              encrypt:(BOOL)encrypt
                         encryptBlock:(NSData * (^)(NSDictionary *requestParmas))encryptBlock
                         decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
-                             success:(void (^)(NSDictionary *responseObject))success
-                             failure:(void (^)(NSError *error))failure;
+                             logType:(CJNetworkLogType)logType
+                             success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
+                             failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure;
 
 
 
@@ -60,8 +62,9 @@
  */
 + (void)cj_getUrl:(NSString *)Url
            params:(id)params
-          success:(void (^)(NSDictionary *responseObject))success
-          failure:(void (^)(NSError *error))failure;
+          logType:(CJNetworkLogType)logType
+          success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
+          failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure;
 
 
 @end

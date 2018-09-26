@@ -8,7 +8,6 @@
 
 #import "CJRequestUtil.h"
 #import "CJNetworkErrorUtil.h"
-#import "CJNetworkLogUtil.h"
 
 @implementation CJRequestUtil
 
@@ -17,8 +16,8 @@
 + (void)xx_postUrl:(NSString *)Url
             params:(id)params
            encrypt:(BOOL)encrypt
-           success:(void (^)(NSDictionary *responseObject))success
-           failure:(void (^)(NSError *error))failure {
+           success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
+           failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure {
     
     NSData * (^encryptBlock)(NSDictionary *requestParmas) = ^NSData *(NSDictionary *requestParmas) {
         NSData *bodyData = [CJEncryptAndDecryptTool encryptParmas:params];//在详细的app中需要实现的方法
@@ -30,9 +29,9 @@
         return responseObject;
     };
     
-    [self cj_postUrl:Url params:params encryptBlock:encryptBlock decryptBlock:decryptBlock success:success failure:failure];
+    [self cj_postUrl:Url params:params encrypt:encrypt encryptBlock:encryptBlock decryptBlock:decryptBlock logType:CJNetworkLogTypeConsoleLog success:success failure:failure];
 }
-*/
+//*/
 
 
 /* 完整的描述请参见文件头部 */
@@ -41,8 +40,9 @@
                              encrypt:(BOOL)encrypt
                         encryptBlock:(NSData * (^)(NSDictionary *requestParmas))encryptBlock
                         decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
-                             success:(void (^)(NSDictionary *responseObject))success
-                             failure:(void (^)(NSError *error))failure
+                             logType:(CJNetworkLogType)logType
+                             success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
+                             failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure
 {
     /* 利用Url和params，通过加密的方法创建请求 */
     NSData *bodyData = nil;
@@ -75,22 +75,19 @@
             }
             
             //successNetworkLog
-            id newResponseObject =
-            [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params request:request responseObject:recognizableResponseObject];
-            
+            CJSuccessNetworkInfo *successNetworkInfo = [CJSuccessNetworkInfo successNetworkLogWithType:logType Url:Url params:params request:request responseObject:recognizableResponseObject];
             if (success) {
-                success(newResponseObject);
+                success(successNetworkInfo);
             }
+            
         }
         else
         {
             //errorNetworkLog
-            NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params request:request error:error URLResponse:response];
-            
+            CJFailureNetworkInfo *failureNetworkInfo = [CJFailureNetworkInfo errorNetworkLogWithType:logType Url:Url params:params request:request error:error URLResponse:response];
             if (failure) {
-                failure(newError);
+                failure(failureNetworkInfo);
             }
-            
         }
     }];
     [URLSessionDataTask resume];
@@ -104,8 +101,9 @@
 /* 完整的描述请参见文件头部 */
 + (void)cj_getUrl:(NSString *)Url
            params:(id)params
-          success:(void (^)(NSDictionary *responseObject))success
-          failure:(void (^)(NSError *error))failure
+          logType:(CJNetworkLogType)logType
+          success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
+          failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure
 {
     NSString *fullUrlForGet = [self connectRequestUrl:Url params:params];
     NSURL *URL = [NSURL URLWithString:fullUrlForGet];
@@ -121,21 +119,18 @@
         if (error == nil) {
             NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             
-            NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址和参数：%@ \n结果：%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", fullUrlForGet, responseObject);
-            
+            CJSuccessNetworkInfo *successNetworkInfo = [CJSuccessNetworkInfo successNetworkLogWithType:logType Url:Url params:params request:request responseObject:responseObject];
             if (success) {
-                success(responseObject);
+                success(successNetworkInfo);
             }
         }
         else
         {
             //NSDictionary *responseObject = @{@"status":@(-1), @"message":@"网络异常"};
+            CJFailureNetworkInfo *failureNetworkInfo = [CJFailureNetworkInfo errorNetworkLogWithType:logType Url:Url params:params request:request error:error URLResponse:response];
             if (failure) {
-                failure(error);
+                failure(failureNetworkInfo);
             }
-            
-            NSString *errorMessage = [CJNetworkErrorUtil getErrorMessageFromURLResponse:response];
-            NSLog(@"\n\n  >>>>>>>>>>>>  网络请求Start  >>>>>>>>>>>>  \n地址：%@ \n参数：%@ \n结果：%@ \n  <<<<<<<<<<<<<  网络请求End  <<<<<<<<<<<<<  \n\n\n", Url, params, errorMessage);
         }
     }];
     [task resume];

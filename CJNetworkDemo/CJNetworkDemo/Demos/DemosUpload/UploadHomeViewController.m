@@ -8,8 +8,6 @@
 
 #import "UploadHomeViewController.h"
 
-#import "UploadViewController.h"
-
 @interface UploadHomeViewController () <UITableViewDataSource, UITableViewDelegate> {
     
 }
@@ -38,16 +36,16 @@
     NSMutableArray *sectionDataModels = [[NSMutableArray alloc] init];
     //弹窗
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
-        sectionDataModel.theme = @"Upload相关";
-        {
-            CJModuleModel *toastUtilModule = [[CJModuleModel alloc] init];
-            toastUtilModule.title = @"UploadViewController";
-            toastUtilModule.classEntry = [UploadViewController class];
-            [sectionDataModel.values addObject:toastUtilModule];
-        }
-        
-        [sectionDataModels addObject:sectionDataModel];
+//        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+//        sectionDataModel.theme = @"Upload相关";
+//        {
+//            CJModuleModel *toastUtilModule = [[CJModuleModel alloc] init];
+//            toastUtilModule.title = @"UploadViewController";
+//            toastUtilModule.classEntry = [UploadViewController class];
+//            [sectionDataModel.values addObject:toastUtilModule];
+//        }
+//        
+//        [sectionDataModels addObject:sectionDataModel];
     }
     
     

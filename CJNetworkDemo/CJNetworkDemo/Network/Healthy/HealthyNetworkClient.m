@@ -9,6 +9,8 @@
 #import "HealthyNetworkClient.h"
 #import "HealthyHTTPSessionManager.h"
 
+//API路径--health
+#define API_BASE_Url_Health(_Url_) [[@"http://121.40.82.169/drupal/api/" stringByAppendingString:_Url_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
 
 @implementation HealthyNetworkClient
 
@@ -21,47 +23,48 @@
     return _sharedInstance;
 }
 
-- (nullable NSURLSessionDataTask *)health_postUrl:(nullable NSString *)Url
-                                           params:(nullable id)params
-                                    completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
+- (NSURLSessionDataTask *)health_postApi:(NSString *)apiSuffix
+                                  params:(id)params
+                                 encrypt:(BOOL)encrypt
+                                 success:(void (^)(HealthResponseModel *responseModel))success
+                                 failure:(void (^)(NSError *error))failure
+{
+    //NSString *Url = [[LuckinNetworkEnvironment sharedInstance] completeUrlWithApiSuffix:apiSuffix];
+    NSString *Url = API_BASE_Url_Health(@"login");
+    return [self health_postUrl:Url params:params encrypt:encrypt success:success failure:failure];
+}
+
+- (NSURLSessionDataTask *)health_postUrl:(NSString *)Url
+                                  params:(id)params
+                                 encrypt:(BOOL)encrypt
+                                 success:(void (^)(HealthResponseModel *responseModel))success
+                                 failure:(void (^)(NSError *error))failure
 {
     AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cj_postUrl:Url params:params encrypt:NO encryptBlock:nil decryptBlock:nil progress:nil success:^(NSDictionary * _Nullable responseObject) {
+    [manager cj_postUrl:Url params:params encrypt:NO encryptBlock:nil decryptBlock:nil progress:nil logType:CJNetworkLogTypeConsoleLog success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo) {
+     
 //    [manager cj_postUrl:Url params:params shouldCache:NO progress:nil success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
-        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-        responseModel.status = [responseObject[@"status"] integerValue];
-        responseModel.message = responseObject[@"msg"];
-        responseModel.result = responseObject[@"result"];
-        responseModel.cjNetworkLog = responseObject[@"cjNetworkLog"];
-        if (completeBlock) {
-            completeBlock(responseModel);
+        NSDictionary *responseDictionary = successNetworkInfo.responseObject;
+        HealthResponseModel *responseModel = [[HealthResponseModel alloc] initWithResponseDictionary:responseDictionary];
+        if (success) {
+            success(responseModel);
         }
         
-    } failure:^(NSError * _Nullable error) {
-        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-        responseModel.status = -1;
-        responseModel.message = NSLocalizedString(@"网络请求失败", nil);
-        responseModel.result = nil;
-        responseModel.cjNetworkLog = error.userInfo[@"cjNetworkLog"];
-        if (completeBlock) {
-            completeBlock(responseModel);
+    } failure:^(CJFailureNetworkInfo * _Nullable failureNetworkInfo) {
+        NSError *error = failureNetworkInfo.error;
+        //HealthResponseModel *responseModel = [[CJResponseModel alloc] init];
+        //responseModel.status = -1;
+        //responseModel.message = NSLocalizedString(@"网络请求失败", nil);
+        //responseModel.result = nil;
+        //responseModel.cjNetworkLog = error.userInfo[@"cjNetworkLog"];
+        
+        if (failure) {
+            failure(error);
         }
     }];
     return URLSessionDataTask;
-}
-
-- (void)requestLogin_name:(NSString *)name
-                     pasd:(NSString*)pasd
-            completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
-{
-    NSString *Url = API_BASE_Url_Health(@"login");
-    NSDictionary *params = @{@"username" : name,
-                             @"password" : pasd
-                             };
-    [self health_postUrl:Url params:params completeBlock:completeBlock];
-    //    [self.indicatorView setAnimatingWithStateOfOperation:operation];
 }
 
 

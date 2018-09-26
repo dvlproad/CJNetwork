@@ -9,7 +9,6 @@
 #import "AFHTTPSessionManager+CJCacheRequest.h"
 
 #import "CJNetworkErrorUtil.h"
-#import "CJNetworkLogUtil.h"
 
 //typedef NS_OPTIONS(NSUInteger, CJNeedGetCacheOption) {
 //    CJNeedGetCacheOptionNone = 1 << 0,             /**< 不缓存 */
@@ -22,35 +21,40 @@
 
 #pragma mark - CJCache
 /** 完整的描述请参见文件头部 */
-- (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
-                                       params:(nullable id)params
-                                  shouldCache:(BOOL)shouldCache
-                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                      success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
-                                      failure:(nullable void (^)(NSError * _Nullable error))failure
+- (nullable NSURLSessionDataTask *)cjCache_postUrl:(nullable NSString *)Url
+                                            params:(nullable id)params
+                                       shouldCache:(BOOL)shouldCache
+                                          progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                           logType:(CJNetworkLogType)logType
+                                           success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData))success
+                                           failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure
 {
     NSURLSessionDataTask *URLSessionDataTask = [self POST:Url parameters:params progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self didRequestSuccessForTask:task withResponseObject:responseObject
-                                           forUrl:Url
-                                           params:params
-                                      shouldCache:shouldCache
-                                          encrypt:NO
-                                     encryptBlock:nil
-                                     decryptBlock:nil
-                                          success:success];
+        [self didRequestSuccessForTask:task
+                    withResponseObject:responseObject
+                                forUrl:Url
+                                params:params
+                           shouldCache:shouldCache
+                               encrypt:NO
+                          encryptBlock:nil
+                          decryptBlock:nil
+                               logType:logType
+                               success:success];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-        [self didRequestFailureForTask:task withResponseError:error
-                                     URLResponse:response
-                                          forUrl:Url
-                                          params:params
-                                  shouldGetCache:shouldCache
-                                         encrypt:NO
-                                    encryptBlock:nil
-                                    decryptBlock:nil
-                                         success:success
-                                         failure:failure];
+        [self didRequestFailureForTask:task
+                     withResponseError:error
+                           URLResponse:response
+                                forUrl:Url
+                                params:params
+                        shouldGetCache:shouldCache
+                               encrypt:NO
+                          encryptBlock:nil
+                          decryptBlock:nil
+                               logType:logType
+                               success:success
+                               failure:failure];
         
     }];
     
@@ -63,15 +67,16 @@
 
 #pragma mark - CJCacheEncrypt
 /** 完整的描述请参见文件头部 */
-- (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
-                                       params:(nullable id)params
-                                  shouldCache:(BOOL)shouldCache
-                                      encrypt:(BOOL)encrypt
-                                 encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
-                                 decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
-                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                      success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
-                                      failure:(nullable void (^)(NSError * _Nullable error))failure
+- (nullable NSURLSessionDataTask *)cjCache_postUrl:(nullable NSString *)Url
+                                            params:(nullable id)params
+                                       shouldCache:(BOOL)shouldCache
+                                           encrypt:(BOOL)encrypt
+                                      encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
+                                      decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
+                                          progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                           logType:(CJNetworkLogType)logType
+                                           success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData))success
+                                           failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure
 {
     /* 利用Url和params，通过加密的方法创建请求 */
     NSData *bodyData = nil;
@@ -90,27 +95,31 @@
     
     NSURLSessionDataTask *URLSessionDataTask =
     [self POST:Url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self didRequestSuccessForTask:task withResponseObject:responseObject
-                                           forUrl:Url
-                                           params:params
-                                      shouldCache:shouldCache
-                                          encrypt:encrypt
-                                     encryptBlock:encryptBlock
-                                     decryptBlock:decryptBlock
-                                          success:success];
+        [self didRequestSuccessForTask:task
+                    withResponseObject:responseObject
+                                forUrl:Url
+                                params:params
+                           shouldCache:shouldCache
+                               encrypt:encrypt
+                          encryptBlock:encryptBlock
+                          decryptBlock:decryptBlock
+                               logType:logType
+                               success:success];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSURLResponse *response = task.response;
-        [self didRequestFailureForTask:task withResponseError:error
-                                     URLResponse:response
-                                          forUrl:Url
-                                          params:params
-                                  shouldGetCache:shouldCache
-                                         encrypt:encrypt
-                                    encryptBlock:encryptBlock
-                                    decryptBlock:decryptBlock
-                                         success:success
-                                         failure:failure];
+        [self didRequestFailureForTask:task
+                     withResponseError:error
+                           URLResponse:response
+                                forUrl:Url
+                                params:params
+                        shouldGetCache:shouldCache
+                               encrypt:encrypt
+                          encryptBlock:encryptBlock
+                          decryptBlock:decryptBlock
+                               logType:logType
+                               success:success
+                               failure:failure];
     }];
     
     return URLSessionDataTask;
@@ -132,7 +141,8 @@
                          encrypt:(BOOL)encrypt
                     encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
                     decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
-                         success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
+                         logType:(CJNetworkLogType)logType
+                         success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData))success
 {
     NSDictionary *recognizableResponseObject = nil; //可识别的responseObject,如果是加密的还要解密
     if (encrypt && decryptBlock) {
@@ -151,11 +161,10 @@
     }
     
     //successNetworkLog
-    id newResponseObject =
-    [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params request:task.originalRequest responseObject:recognizableResponseObject];
-    
+    NSURLRequest *request = task.originalRequest;
+    CJSuccessNetworkInfo *successNetworkInfo = [CJSuccessNetworkInfo successNetworkLogWithType:logType Url:Url params:params request:request responseObject:recognizableResponseObject];
     if (success) {
-        success(newResponseObject, NO);//有网络的时候,responseObject等就不是来源磁盘(缓存),故为NO
+        success(successNetworkInfo, NO);//有网络的时候,responseObject等就不是来源磁盘(缓存),故为NO
     }
     
     if (shouldCache) {  //是否需要本地缓存现在请求下来的网络数据
@@ -173,8 +182,9 @@
                          encrypt:(BOOL)encrypt
                     encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
                     decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
-                         success:(nullable void (^)(NSDictionary *_Nullable responseObject, BOOL isCacheData))success
-                         failure:(nullable void (^)(NSError * _Nullable error))failure
+                         logType:(CJNetworkLogType)logType
+                         success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData))success
+                         failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure
 {
     if (shouldGetCache) {
         [CJRequestCacheDataUtil requestCacheDataByUrl:Url params:params success:^(NSDictionary * _Nullable responseObject) {
@@ -182,34 +192,36 @@
             NSDictionary *recognizableResponseObject = responseObject;
             
             //successNetworkLog
-            id newResponseObject =
-            [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params request:task.originalRequest responseObject:recognizableResponseObject];
-            
+            NSURLRequest *request = task.originalRequest;
+            CJSuccessNetworkInfo *successNetworkInfo = [CJSuccessNetworkInfo successNetworkLogWithType:logType Url:Url params:params request:request responseObject:recognizableResponseObject];
             if (success) {
-                success(newResponseObject, YES);
+                success(successNetworkInfo, YES);
             }
+            
         } failure:^(CJRequestCacheFailureType failureType) {
             //从服务器请求不到数据，连从缓存中也都取不到
+            NSURLRequest *request = task.originalRequest;
+            NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+            CJFailureNetworkInfo *failureNetworkInfo = [CJFailureNetworkInfo errorNetworkLogWithType:logType Url:Url params:params request:request error:error URLResponse:response];
+            
             if (failure) {
-                //errorNetworkLog
-                NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params request:task.originalRequest error:error URLResponse:URLResponse];
-                
                 if (failure == CJRequestCacheFailureTypeCacheKeyNil) {
-                    failure(newError);
+                    failure(failureNetworkInfo);
                 } else {
-                    failure(newError);
+                    failure(failureNetworkInfo);
                 }
-                
             }
         }];
         
     } else {
         NSLog(@"提示：这里之前未缓存，无法读取缓存，提示网络不给力");
         //errorNetworkLog
-        NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params request:task.originalRequest error:error URLResponse:URLResponse];
+        NSURLRequest *request = task.originalRequest;
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        CJFailureNetworkInfo *failureNetworkInfo = [CJFailureNetworkInfo errorNetworkLogWithType:logType Url:Url params:params request:request error:error URLResponse:response];
         
         if (failure) {
-            failure(newError);
+            failure(failureNetworkInfo);
         }
     }
 }

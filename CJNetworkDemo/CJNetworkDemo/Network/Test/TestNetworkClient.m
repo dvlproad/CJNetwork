@@ -29,17 +29,18 @@
     AFHTTPSessionManager *manager = [TestHTTPSessionManager sharedInstance];
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cj_postUrl:Url params:params shouldCache:cache progress:nil success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
+    [manager cjCache_postUrl:Url params:params shouldCache:cache progress:nil logType:CJNetworkLogTypeConsoleLog success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData) {
+        NSDictionary *responseDictionary = successNetworkInfo.responseObject;
         CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-        responseModel.status = [responseObject[@"status"] integerValue];
-        responseModel.message = responseObject[@"message"];
-        responseModel.result = responseObject[@"result"];
+        responseModel.status = [responseDictionary[@"status"] integerValue];
+        responseModel.message = responseDictionary[@"message"];
+        responseModel.result = responseDictionary[@"result"];
         responseModel.isCacheData = isCacheData;
         if (completeBlock) {
             completeBlock(responseModel);
         }
         
-    } failure:^(NSError * _Nullable error) {
+    } failure:^(CJFailureNetworkInfo * _Nullable failureNetworkInfo) {
         CJResponseModel *responseModel = [[CJResponseModel alloc] init];
         responseModel.status = -1;
         responseModel.message = NSLocalizedString(@"网络请求失败", nil);

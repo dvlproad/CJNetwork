@@ -114,20 +114,15 @@
 }
 
 - (void)loginHealthWithCompleteBlock:(void (^)(CJResponseModel *responseModel))completeBlock {
-    NSString *Url = @"http://121.40.82.169/drupal/api/login";
+    NSString *apiName = @"http://121.40.82.169/drupal/api/login";
     NSDictionary *params = @{@"username" : @"test",
                              @"password" : @"test",
                              };
     
     AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
     
-    [manager cj_postUrl:Url params:params encrypt:NO encryptBlock:nil decryptBlock:nil progress:nil success:^(NSDictionary * _Nullable responseObject) {
-        //    [manager cj_postUrl:Url params:params shouldCache:NO progress:nil success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
-        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-        responseModel.status = [responseObject[@"status"] integerValue];
-        responseModel.message = responseObject[@"msg"];
-        responseModel.result = responseObject[@"result"];
-        responseModel.cjNetworkLog = responseObject[@"cjNetworkLog"];
+    [[HealthyNetworkClient sharedInstance] health_postApi:apiName params:params encrypt:YES success:^(HealthResponseModel *responseModel) {
+    //    [manager cj_postUrl:Url params:params shouldCache:NO progress:nil success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
         if (completeBlock) {
             completeBlock(responseModel);
         }
