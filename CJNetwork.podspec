@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   #验证方法：pod lib lint CJNetwork.podspec --allow-warnings --use-libraries --verbose
   s.name         = "CJNetwork"
-  s.version      = "0.5.0"
+  s.version      = "0.5.1"
   s.summary      = "一个AFNetworking应用的封装(支持加密和缓存数据)"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.5.0" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.5.1" }
   s.source_files  = "CJNetwork/*.{h,m}"
   s.frameworks = 'UIKit'
 
@@ -62,6 +62,13 @@ Pod::Spec.new do |s|
 
     ss.dependency 'CJNetwork/AFNetworkingBaseComponent'
     ss.dependency 'CJNetwork/CJCacheManager'
+  end
+
+  # 其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现
+  s.subspec 'CJNetworkClient' do |ss|
+    ss.source_files = "CJNetworkClient/**/*.{h,m}"
+
+    ss.dependency 'CJNetwork/AFNetworkingBaseComponent'
   end
 
 end

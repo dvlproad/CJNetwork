@@ -74,6 +74,7 @@
 		7868F1CF2121D0FF00A283EB /* icons8-home.png in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1BD2121D0FE00A283EB /* icons8-home.png */; };
 		7868F1D02121D0FF00A283EB /* icons8-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1BE2121D0FE00A283EB /* icons8-settings.png */; };
 		787BAF2420349EF2000E276E /* AFHTTPSessionManager+CJEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 787BAF2320349EF2000E276E /* AFHTTPSessionManager+CJEncrypt.m */; };
+		788113D32199876C00D1630D /* CJNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 788113D22199876C00D1630D /* CJNetworkClient.m */; };
 		78881CEE214AE71800CAED82 /* CJNetworkInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78881CED214AE71700CAED82 /* CJNetworkInfoModel.m */; };
 		78B6C2FF215AAA8900D5864E /* HealthyNetworkClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B6C2FE215AAA8900D5864E /* HealthyNetworkClient+Login.m */; };
 		78FC91FA1F54481E00033DEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91F91F54481E00033DEF /* main.m */; };
@@ -225,6 +226,8 @@
 		7868F1BE2121D0FE00A283EB /* icons8-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-settings.png"; sourceTree = "<group>"; };
 		787BAF2220349EF1000E276E /* AFHTTPSessionManager+CJEncrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+CJEncrypt.h"; sourceTree = "<group>"; };
 		787BAF2320349EF2000E276E /* AFHTTPSessionManager+CJEncrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+CJEncrypt.m"; sourceTree = "<group>"; };
+		788113D12199876C00D1630D /* CJNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkClient.h; sourceTree = "<group>"; };
+		788113D22199876C00D1630D /* CJNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJNetworkClient.m; sourceTree = "<group>"; };
 		78881CEC214AE71700CAED82 /* CJNetworkInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkInfoModel.h; sourceTree = "<group>"; };
 		78881CED214AE71700CAED82 /* CJNetworkInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJNetworkInfoModel.m; sourceTree = "<group>"; };
 		78B6C2FD215AAA8900D5864E /* HealthyNetworkClient+Login.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HealthyNetworkClient+Login.h"; sourceTree = "<group>"; };
@@ -297,6 +300,7 @@
 		784652851F5448F100E20A27 /* CJNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				788113D02199870B00D1630D /* CJNetworkClient */,
 				784652861F5448F100E20A27 /* AFNetworkingBaseComponent */,
 				8050036A21194FEC002A2306 /* AFNetworkingCacheComponent */,
 				7846529A1F5448F100E20A27 /* AFNetworkingUploadComponent */,
@@ -366,30 +370,31 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		784652C71F5448FB00E20A27 /* Network */ = {
+		784652C71F5448FB00E20A27 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				784652D51F5448FB00E20A27 /* Healthy */,
-				784652F51F5448FB00E20A27 /* Test */,
+				80E7E62620ABCFBB000F762D /* AppInfo */,
+				784652D51F5448FB00E20A27 /* HealthyNetwork */,
+				784652F51F5448FB00E20A27 /* TestNetwork */,
 			);
-			path = Network;
+			path = Service;
 			sourceTree = "<group>";
 		};
-		784652D51F5448FB00E20A27 /* Healthy */ = {
+		784652D51F5448FB00E20A27 /* HealthyNetwork */ = {
 			isa = PBXGroup;
 			children = (
 				784652D61F5448FB00E20A27 /* HealthyHTTPSessionManager.h */,
 				784652D71F5448FB00E20A27 /* HealthyHTTPSessionManager.m */,
 				784652D81F5448FB00E20A27 /* HealthyNetworkClient.h */,
 				784652D91F5448FB00E20A27 /* HealthyNetworkClient.m */,
-				78590BCD215B272100F45AD5 /* Models */,
 				78B6C2FD215AAA8900D5864E /* HealthyNetworkClient+Login.h */,
 				78B6C2FE215AAA8900D5864E /* HealthyNetworkClient+Login.m */,
+				78590BCD215B272100F45AD5 /* Models */,
 			);
-			path = Healthy;
+			path = HealthyNetwork;
 			sourceTree = "<group>";
 		};
-		784652F51F5448FB00E20A27 /* Test */ = {
+		784652F51F5448FB00E20A27 /* TestNetwork */ = {
 			isa = PBXGroup;
 			children = (
 				784652F61F5448FB00E20A27 /* TestHTTPSessionManager.h */,
@@ -397,7 +402,7 @@
 				784652F81F5448FB00E20A27 /* TestNetworkClient.h */,
 				784652F91F5448FB00E20A27 /* TestNetworkClient.m */,
 			);
-			path = Test;
+			path = TestNetwork;
 			sourceTree = "<group>";
 		};
 		784653571F5449D000E20A27 /* CJCacheManager */ = {
@@ -658,6 +663,15 @@
 			path = arrow;
 			sourceTree = "<group>";
 		};
+		788113D02199870B00D1630D /* CJNetworkClient */ = {
+			isa = PBXGroup;
+			children = (
+				788113D12199876C00D1630D /* CJNetworkClient.h */,
+				788113D22199876C00D1630D /* CJNetworkClient.m */,
+			);
+			path = CJNetworkClient;
+			sourceTree = "<group>";
+		};
 		78881CEB214AE71700CAED82 /* CJNetworkInfoModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -696,7 +710,6 @@
 				78FC91FC1F54481E00033DEF /* AppDelegate.m */,
 				7868F1362121C61400A283EB /* AppDelegate+WindowRootViewController.h */,
 				7868F1372121C61400A283EB /* AppDelegate+WindowRootViewController.m */,
-				80E7E62620ABCFBB000F762D /* AppInfoManager */,
 				784653691F544A0100E20A27 /* 断点续传组件 */,
 				784653571F5449D000E20A27 /* CJCacheManager */,
 				784652851F5448F100E20A27 /* CJNetwork */,
@@ -705,7 +718,7 @@
 				7868F1AB2121D0FE00A283EB /* Resources */,
 				7868F1392121C79A00A283EB /* Demos */,
 				784652C41F5448FB00E20A27 /* Models */,
-				784652C71F5448FB00E20A27 /* Network */,
+				784652C71F5448FB00E20A27 /* Service */,
 				78FC92011F54481E00033DEF /* Main.storyboard */,
 				78FC92041F54481E00033DEF /* Assets.xcassets */,
 				78FC92061F54481E00033DEF /* LaunchScreen.storyboard */,
@@ -794,13 +807,13 @@
 			path = CJJSONResponseSerializer;
 			sourceTree = "<group>";
 		};
-		80E7E62620ABCFBB000F762D /* AppInfoManager */ = {
+		80E7E62620ABCFBB000F762D /* AppInfo */ = {
 			isa = PBXGroup;
 			children = (
 				80E7E62720ABCFBB000F762D /* AppInfoManager.h */,
 				80E7E62820ABCFBB000F762D /* AppInfoManager.m */,
 			);
-			path = AppInfoManager;
+			path = AppInfo;
 			sourceTree = "<group>";
 		};
 		B62537BB601228A564AEACA5 /* Frameworks */ = {
@@ -1046,6 +1059,7 @@
 				8050036F21194FEC002A2306 /* CJRequestCacheDataUtil.m in Sources */,
 				784653761F544A0100E20A27 /* HSDownloadManager.m in Sources */,
 				8050036921192C1E002A2306 /* CJObjectConvertUtil.m in Sources */,
+				788113D32199876C00D1630D /* CJNetworkClient.m in Sources */,
 				8050036321192BDC002A2306 /* CJNetworkErrorUtil.m in Sources */,
 				784652BB1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m in Sources */,
 				78B6C2FF215AAA8900D5864E /* HealthyNetworkClient+Login.m in Sources */,
