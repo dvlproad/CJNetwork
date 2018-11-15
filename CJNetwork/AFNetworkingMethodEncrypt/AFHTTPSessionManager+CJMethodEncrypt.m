@@ -23,13 +23,11 @@
 /** 完整的描述请参见文件头部 */
 - (nullable NSURLSessionDataTask *)cjCache_postUrl:(nullable NSString *)Url
                                             params:(nullable id)params
-                                       shouldCache:(BOOL)shouldCache
+                                      settingModel:(CJRequestSettingModel *)settingModel
                                            encrypt:(BOOL)encrypt
                                       encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
                                       decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
-                                          progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                           logType:(CJNetworkLogType)logType
-                                           success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData))success
+                                           success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
                                            failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure
 {
     /* 利用Url和params，通过加密的方法创建请求 */
@@ -51,33 +49,22 @@
     [self dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error == nil) {
-            [self didRequestSuccessForTask:URLSessionDataTask
-                        withResponseObject:responseObject
-                                    forUrl:Url
-                                    params:params
-                               shouldCache:shouldCache
-                                   encrypt:encrypt
-                              encryptBlock:encryptBlock
-                              decryptBlock:decryptBlock
-                                   logType:logType
-                                   success:success];
+            NSDictionary *recognizableResponseObject = nil; //可识别的responseObject,如果是加密的还要解密
+            if (encrypt && decryptBlock) {
+                NSString *responseString = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
+                
+                //recognizableResponseObject = [CJEncryptAndDecryptTool decryptJsonString:responseString];
+                recognizableResponseObject = decryptBlock(responseString);
+            } else {
+                recognizableResponseObject = responseObject;
+            }
+            
+            [self __didRequestSuccessForTask:URLSessionDataTask withResponseObject:recognizableResponseObject isCacheData:YES forUrl:Url params:params settingModel:settingModel success:success];
             
         }
         else
         {
-//            NSURLResponse *response = task.response;
-            [self didRequestFailureForTask:URLSessionDataTask
-                         withResponseError:error
-                               URLResponse:response
-                                    forUrl:Url
-                                    params:params
-                            shouldGetCache:shouldCache
-                                   encrypt:encrypt
-                              encryptBlock:encryptBlock
-                              decryptBlock:decryptBlock
-                                   logType:logType
-                                   success:success
-                                   failure:failure];
+            [self __didCacheRequestFailureForTask:URLSessionDataTask withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure getCacheSuccess:success];
         }
     }];
     [URLSessionDataTask resume];
@@ -94,143 +81,41 @@
 //    return URLSessionDataTask;
     
     /*
-     //不知为什么无效的方法：
-     NSURLSessionDataTask *URLSessionDataTask =
-     [self POST:Url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-     [formData appendPartWithFormData:bodyData name:@"json"];
-     
-     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-     
-     NSDictionary *recognizableResponseObject = [self dealResponseObject:responseObject encrypt:encrypt decryptBlock:decryptBlock];
-     
-     //successNetworkLog
-     id newResponseObject =
-     [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params responseObject:recognizableResponseObject];
-     
-     if (success) {
-     success(newResponseObject);
-     }
-     
-     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-     NSURLResponse *response = task.response;
-     //errorNetworkLog
-     NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params error:error URLResponse:response];
-     
-     if (failure) {
-     failure(newError);
-     }
-     
-     }];
-     return URLSessionDataTask;
-     //*/
-}
-
-- (NSDictionary *)dealResponseObject:(id  _Nullable)responseObject
-                             encrypt:(BOOL)encrypt
-                        decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
-{
-    NSDictionary *recognizableResponseObject = nil; //可识别的responseObject,如果是加密的还要解密
-    if (encrypt && decryptBlock) {
-        NSString *responseString = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
+    //不知为什么无效的方法：
+    NSURLSessionDataTask *URLSessionDataTask =
+    [self POST:Url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFormData:bodyData name:@"json"];
         
-        //recognizableResponseObject = [CJEncryptAndDecryptTool decryptJsonString:responseString];
-        recognizableResponseObject = decryptBlock(responseString);
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-    } else {
-        if ([NSJSONSerialization isValidJSONObject:responseObject]) {
-            recognizableResponseObject = responseObject;
-        } else {
-            recognizableResponseObject = [NSJSONSerialization JSONObjectWithData:(NSData *)responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSDictionary *recognizableResponseObject = nil; //可识别的responseObject,如果是加密的还要解密
+        if (encrypt && decryptBlock) {
+            NSString *responseString = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
+            
+            //recognizableResponseObject = [CJEncryptAndDecryptTool decryptJsonString:responseString];
+            recognizableResponseObject = decryptBlock(responseString);
         }
-    }
-    
-    return recognizableResponseObject;
-}
-
-
-
-
-#pragma mark - Private
-///请求得到数据时候执行的方法
-- (void)didRequestSuccessForTask:(NSURLSessionDataTask * _Nonnull)task
-              withResponseObject:(nullable id)responseObject
-                          forUrl:(nullable NSString *)Url
-                          params:(nullable id)params
-                     shouldCache:(BOOL)shouldCache
-                         encrypt:(BOOL)encrypt
-                    encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
-                    decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
-                         logType:(CJNetworkLogType)logType
-                         success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData))success
-{
-    
-    NSDictionary *recognizableResponseObject = [self dealResponseObject:responseObject encrypt:encrypt decryptBlock:decryptBlock];
-    
-    //successNetworkLog
-    NSURLRequest *request = task.originalRequest;
-    CJSuccessNetworkInfo *successNetworkInfo = [CJSuccessNetworkInfo successNetworkLogWithType:logType Url:Url params:params request:request responseObject:recognizableResponseObject];
-    if (success) {
-        success(successNetworkInfo, NO);//有网络的时候,responseObject等就不是来源磁盘(缓存),故为NO
-    }
-    
-    if (shouldCache) {  //是否需要本地缓存现在请求下来的网络数据
-        [CJRequestCacheDataUtil cacheNetworkData:responseObject byRequestUrl:Url parameters:params];
-    }
-}
-
-///请求不到数据时候（无网 或者 有网但服务器异常等无数据时候）执行的方法
-- (void)didRequestFailureForTask:(NSURLSessionDataTask * _Nonnull)task
-               withResponseError:(NSError * _Nullable)error
-                     URLResponse:(NSURLResponse *)URLResponse
-                          forUrl:(nullable NSString *)Url
-                          params:(nullable id)params
-                  shouldGetCache:(BOOL)shouldGetCache
-                         encrypt:(BOOL)encrypt
-                    encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
-                    decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
-                         logType:(CJNetworkLogType)logType
-                         success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData))success
-                         failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure
-{
-    if (shouldGetCache) {
-        [CJRequestCacheDataUtil requestCacheDataByUrl:Url params:params success:^(NSDictionary * _Nullable responseObject) {
-            //NSDictionary *recognizableResponseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSDictionary *recognizableResponseObject = responseObject;
-            
-            //successNetworkLog
-            NSURLRequest *request = task.originalRequest;
-            CJSuccessNetworkInfo *successNetworkInfo = [CJSuccessNetworkInfo successNetworkLogWithType:logType Url:Url params:params request:request responseObject:recognizableResponseObject];
-            if (success) {
-                success(successNetworkInfo, YES);
-            }
-            
-        } failure:^(CJRequestCacheFailureType failureType) {
-            //从服务器请求不到数据，连从缓存中也都取不到
-            NSURLRequest *request = task.originalRequest;
-            NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-            CJFailureNetworkInfo *failureNetworkInfo = [CJFailureNetworkInfo errorNetworkLogWithType:logType Url:Url params:params request:request error:error URLResponse:response];
-            
-            if (failure) {
-                if (failure == CJRequestCacheFailureTypeCacheKeyNil) {
-                    failure(failureNetworkInfo);
-                } else {
-                    failure(failureNetworkInfo);
-                }
-            }
-        }];
         
-    } else {
-        NSLog(@"提示：这里之前未缓存，无法读取缓存，提示网络不给力");
+        //successNetworkLog
+        id newResponseObject =
+        [CJNetworkLogUtil printSuccessNetworkLogWithUrl:Url params:params responseObject:recognizableResponseObject];
+        
+        if (success) {
+            success(newResponseObject);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSURLResponse *response = task.response;
         //errorNetworkLog
-        NSURLRequest *request = task.originalRequest;
-        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-        CJFailureNetworkInfo *failureNetworkInfo = [CJFailureNetworkInfo errorNetworkLogWithType:logType Url:Url params:params request:request error:error URLResponse:response];
+        NSError *newError = [CJNetworkLogUtil printErrorNetworkLogWithUrl:Url params:params error:error URLResponse:response];
         
         if (failure) {
-            failure(failureNetworkInfo);
+            failure(newError);
         }
-    }
+        
+    }];
+    return URLSessionDataTask;
+    //*/
 }
-
 
 @end

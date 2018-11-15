@@ -12,7 +12,7 @@
 
 #import "CJObjectConvertUtil.h"
 
-static NSString *relativeDirectoryPath = @"CJNetworkCache";
+static NSString * const relativeDirectoryPath = @"CJNetworkCache";
 
 @implementation CJRequestCacheDataUtil
 

@@ -7,8 +7,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#import "CJRequestSettingModel.h"
-#import "CJNetworkInfoModel.h"
+#import "AFHTTPSessionManager+CJReponseOrError.h"
 
 @interface AFHTTPSessionManager (CJSerializerEncrypt)
 
@@ -46,5 +45,6 @@
                                  settingModel:(CJRequestSettingModel *)settingModel
                                       success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
                                       failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure;
+
 
 @end

@@ -26,16 +26,20 @@
                                         cache:(BOOL)cache
                                 completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
 {
+    CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
+    settingModel.shouldCache = cache;
+    settingModel.logType = CJNetworkLogTypeConsoleLog;
+    
     AFHTTPSessionManager *manager = [TestHTTPSessionManager sharedInstance];
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cjCache_postUrl:Url params:params shouldCache:cache encrypt:NO encryptBlock:nil decryptBlock:nil progress:nil logType:CJNetworkLogTypeConsoleLog success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData) {
+    [manager cjCache_postUrl:Url params:params settingModel:nil encrypt:NO encryptBlock:nil decryptBlock:nil success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo) {
         NSDictionary *responseDictionary = successNetworkInfo.responseObject;
         CJResponseModel *responseModel = [[CJResponseModel alloc] init];
         responseModel.status = [responseDictionary[@"status"] integerValue];
         responseModel.message = responseDictionary[@"message"];
         responseModel.result = responseDictionary[@"result"];
-        responseModel.isCacheData = isCacheData;
+        responseModel.isCacheData = successNetworkInfo.isCacheData;
         if (completeBlock) {
             completeBlock(responseModel);
         }
