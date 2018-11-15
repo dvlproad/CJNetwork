@@ -29,7 +29,7 @@
     AFHTTPSessionManager *manager = [TestHTTPSessionManager sharedInstance];
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cjCache_postUrl:Url params:params shouldCache:cache progress:nil logType:CJNetworkLogTypeConsoleLog success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData) {
+    [manager cjCache_postUrl:Url params:params shouldCache:cache encrypt:NO encryptBlock:nil decryptBlock:nil progress:nil logType:CJNetworkLogTypeConsoleLog success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData) {
         NSDictionary *responseDictionary = successNetworkInfo.responseObject;
         CJResponseModel *responseModel = [[CJResponseModel alloc] init];
         responseModel.status = [responseDictionary[@"status"] integerValue];

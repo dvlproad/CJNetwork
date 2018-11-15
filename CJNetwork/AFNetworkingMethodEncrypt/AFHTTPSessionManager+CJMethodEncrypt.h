@@ -1,5 +1,5 @@
 //
-//  AFHTTPSessionManager+CJCacheRequest.h
+//  AFHTTPSessionManager+CJMethodEncrypt.h
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 6/25/15.
@@ -14,30 +14,9 @@
 /**
  *  AFN的请求方法(包含缓存和加密方法)
  */
-@interface AFHTTPSessionManager (CJCacheRequest) {
+@interface AFHTTPSessionManager (CJMethodEncrypt) {
     
 }
-
-#pragma mark - CJCache
-/**
- *  发起POST请求
- *
- *  @param Url              Url
- *  @param params           params
- *  @param shouldCache      需要缓存网络数据的情况(如果有缓存，则即代表可以从缓存中获取数据)
- *  @param uploadProgress   uploadProgress
- *  @param success          请求成功的回调success
- *  @param failure          请求失败的回调failure
- *
- *  return NSURLSessionDataTask
- */
-- (nullable NSURLSessionDataTask *)cjCache_postUrl:(nullable NSString *)Url
-                                            params:(nullable id)params
-                                       shouldCache:(BOOL)shouldCache
-                                          progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                           logType:(CJNetworkLogType)logType
-                                           success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo, BOOL isCacheData))success
-                                           failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure;
 
 #pragma mark - CJCacheEncrypt
 /**

@@ -33,6 +33,7 @@ typedef NS_ENUM(NSUInteger, CJNetworkLogType) {
     
 }
 //请求成功的结果
+//@property (nonatomic, assign) BOOL isCacheData;     /**< 是否是缓存数据 */
 @property (nonatomic, strong) id responseObject;
 @property (nonatomic, copy) NSString *responseString;
 

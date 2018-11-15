@@ -42,16 +42,17 @@
 {
     AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
     
+    CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
+    settingModel.logType = CJNetworkLogTypeConsoleLog;
+    
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cj_postUrl:Url params:params encrypt:NO encryptBlock:nil decryptBlock:nil progress:nil logType:CJNetworkLogTypeConsoleLog success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo) {
-     
-//    [manager cj_postUrl:Url params:params shouldCache:NO progress:nil success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
+    [manager cj_postUrl:Url params:params settingModel:settingModel success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo) {
         NSDictionary *responseDictionary = successNetworkInfo.responseObject;
         HealthResponseModel *responseModel = [[HealthResponseModel alloc] initWithResponseDictionary:responseDictionary];
         if (success) {
             success(responseModel);
         }
-        
+    
     } failure:^(CJFailureNetworkInfo * _Nullable failureNetworkInfo) {
         NSError *error = failureNetworkInfo.error;
         //HealthResponseModel *responseModel = [[CJResponseModel alloc] init];

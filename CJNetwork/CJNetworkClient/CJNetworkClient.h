@@ -8,7 +8,7 @@
 //  其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现
 
 #import <Foundation/Foundation.h>
-#import "AFHTTPSessionManager+CJEncrypt.h"
+#import "AFHTTPSessionManager+CJSerializerEncrypt.h"
 
 @interface CJNetworkClient : NSObject {
     
