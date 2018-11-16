@@ -198,10 +198,24 @@
 
 ## 版本介绍/更新记录
 * V0.6.0 2018-11-15
+
 > 1. 通过不同的加密方式，实现不同的加密接口，并分类；
 > 2. 优化每个请求的参数设置，避免接口太长，同时提高扩展性；
 > 3. 抽取每个请求的结果回调处理，为加入缓存处理预备；
 > 4. 导入`YYCache`以方便的使用缓存以及获取整个模型，而非只有模型的数据。并实现`CJNetworkCacheManager`缓存类。
+> 5. 增加缓存策略CJNetworkCacheStrategy，支持以下几种实现。
+> 
+```
+///缓存策略
+typedef NS_ENUM(NSUInteger, CJNetworkCacheStrategy) {
+    CJNetworkCacheStrategyNoneCache,            /**< 成功/失败的时候，都不使用缓存，直接使用网络数据 */
+    CJNetworkCacheStrategyEndWithCacheIfExist,  /**< 成功/失败的时候，如果有缓存，则不用再去取网络错误值 */
+    CJNetworkCacheStrategyUseCacheToTransition, /**< 成功/失败的时候，如果有缓存，使用缓存过去，最终以网络数据显示 */
+};
+```
+以及对每个请求结果根据对应的缓存策略，进行结果输出与显示；
+>
+> 6. 22
  
 * V0.5.0 2018-09-26
 > 1. 修改每个请求的回调结果为Model，以提供更全面的信息；

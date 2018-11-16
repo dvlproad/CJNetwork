@@ -20,6 +20,13 @@ typedef NS_ENUM(NSUInteger, CJNetworkCacheLevel) {
     CJNetworkCacheLevelSix
 };
 
+///缓存策略
+typedef NS_ENUM(NSUInteger, CJNetworkCacheStrategy) {
+    CJNetworkCacheStrategyNoneCache,            /**< 成功/失败的时候，都不使用缓存，直接使用网络数据 */
+    CJNetworkCacheStrategyEndWithCacheIfExist,  /**< 成功/失败的时候，如果有缓存，则不用再去取网络错误值 */
+    CJNetworkCacheStrategyUseCacheToTransition, /**< 成功/失败的时候，如果有缓存，使用缓存过去，最终以网络数据显示 */
+};
+
 @interface CJRequestSettingModel : NSObject {
     
 }
@@ -46,8 +53,8 @@ typedef NS_ENUM(NSUInteger, CJNetworkCacheLevel) {
 
 #pragma mark 缓存相关
 
-// 是否需要缓存
-@property (nonatomic, assign) BOOL shouldCache;
+// 缓存策略(如果设为CJNetworkCacheStrategyNoneCache，那么下面两个方法的缓存相当于只是缓存，却永远不会用，即白搭了)
+@property (nonatomic, assign) CJNetworkCacheStrategy cacheStrategy;
 
 // 缓存时间等级类型
 @property (nonatomic, assign ) CJNetworkCacheLevel cacheLevel;

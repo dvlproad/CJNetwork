@@ -23,11 +23,11 @@
 
 - (nullable NSURLSessionDataTask *)test_postUrl:(nullable NSString *)Url
                                        params:(nullable id)params
-                                        cache:(BOOL)cache
+                                cacheStrategy:(CJNetworkCacheStrategy)cacheStrategy
                                 completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
 {
     CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    settingModel.shouldCache = cache;
+    settingModel.cacheStrategy = cacheStrategy;
     settingModel.logType = CJNetworkLogTypeConsoleLog;
     
     AFHTTPSessionManager *manager = [TestHTTPSessionManager sharedInstance];
@@ -61,7 +61,8 @@
     NSString *Url = @"https://www.baidu.com";
     NSDictionary *parameters = nil;
     
-    [self test_postUrl:Url params:parameters cache:NO completeBlock:completeBlock];
+    CJNetworkCacheStrategy cacheStrategy = CJNetworkCacheStrategyNoneCache;
+    [self test_postUrl:Url params:parameters cacheStrategy:cacheStrategy completeBlock:completeBlock];
 }
 
 @end

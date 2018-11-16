@@ -47,35 +47,24 @@ static NSString * const kRelativeDirectoryPath = @"CJNetworkCache";
 }
 
 /** 完整的描述请参见文件头部 */
-+ (void)requestCacheDataByUrl:(nullable NSString *)Url
-                       params:(nullable id)params
-                      success:(nullable void (^)(NSDictionary *_Nullable responseObject))success
-                      failure:(nullable void (^)(CJRequestCacheFailureType failureType))failure
++ (NSDictionary *)requestCacheDataByUrl:(nullable NSString *)Url
+                                 params:(nullable id)params
 {
     NSString *requestCacheKey = [self getRequestCacheKeyByRequestUrl:Url parameters:params];
     if (nil == requestCacheKey) {
         NSLog(@"error: cacheKey == nil, 无法读取缓存，提示网络不给力");
-        if (failure) {
-            failure(CJRequestCacheFailureTypeCacheKeyNil);
-        }
-        return;
+        return nil;
     }
-    
-    
     
     NSData *requestCacheData = [[CJCacheManager sharedInstance] getCacheDataByCacheKey:requestCacheKey diskRelativeDirectoryPath:kRelativeDirectoryPath];
     if (requestCacheData) {
         //NSLog(@"读到有缓存数据，但不保证该数据是最新的，因为网络还是不给力");
-        if (success) {
-            NSDictionary *responseObject = [CJObjectConvertUtil dictionaryFromData:requestCacheData];
-            success(responseObject);
-        }
+        NSDictionary *responseObject = [CJObjectConvertUtil dictionaryFromData:requestCacheData];
+        return responseObject;
         
     } else {
         //NSLog(@"未读到有缓存数据,如第一次就是无网请求,提示网络不给力");
-        if (failure) {
-            failure(CJRequestCacheFailureTypeCacheDataNil);
-        }
+        return nil;
     }
 }
 
