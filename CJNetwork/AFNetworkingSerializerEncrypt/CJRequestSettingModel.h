@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, CJNetworkCacheLevel) {
 @property (nonatomic, copy) void (^uploadProgress)(NSProgress *progress);
 
 #pragma mark log相关
-// log类型
+// log类型(默认CJNetworkLogTypeConsoleLog)
 @property (nonatomic, assign) CJNetworkLogType logType;
 
 //#pragma mark 加密相关

@@ -25,6 +25,9 @@ Pod::Spec.new do |s|
 
   s.subspec 'CJNetworkBase' do |ss|
     ss.source_files = "CJNetwork/CJNetworkBase/**/*.{h,m}"
+
+    ss.dependency 'YYCache'
+    ss.dependency 'MJExtension'
   end
 
   # 系统的请求方法

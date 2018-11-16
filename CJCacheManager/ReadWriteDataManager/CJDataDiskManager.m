@@ -7,47 +7,47 @@
 //
 
 #import "CJDataDiskManager.h"
+#import "NSFileManagerCJHelper.h"
+
+@interface CJDataDiskManager ()
+
+@property (nonatomic, copy) NSString *relativeDirectoryPath;
+
+@end
 
 @implementation CJDataDiskManager
 
-/** 完整的描述请参见文件头部 */
-+ (BOOL)saveFileData:(NSData *)data
-        withFileName:(NSString *)fileName
-toRelativeDirectoryPath:(NSString *)relativeDirectoryPath
-{
-    NSAssert(data && fileName && relativeDirectoryPath, @"要缓存到磁盘的数据、地址及以什么作为文件名等都不能为空");
-    
-    NSString *absoluteDirectoryPath = [NSHomeDirectory() stringByAppendingPathComponent:relativeDirectoryPath];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:absoluteDirectoryPath]){
-        [[NSFileManager defaultManager] createDirectoryAtPath:absoluteDirectoryPath
-                                  withIntermediateDirectories:YES
-                                                   attributes:nil
-                                                        error:NULL];
+- (instancetype)initWithRelativeDirectoryPath:(NSString *)relativeDirectoryPath {
+    self = [super init];
+    if (self) {
+        NSAssert(relativeDirectoryPath, @"要缓存到磁盘的文件目录不能为空");
+        self.relativeDirectoryPath = relativeDirectoryPath;
     }
-    
-    NSString *absoluteFilePath = [absoluteDirectoryPath stringByAppendingPathComponent:fileName];
-    BOOL saveSuccess = [[NSFileManager defaultManager] createFileAtPath:absoluteFilePath contents:data attributes:nil]; //两种接口二选一即可
-    //BOOL saveSuccess = [data writeToFile:absoluteFilePath atomically:YES];
-    
-    return saveSuccess;
+    return self;
 }
 
-/** 完整的描述请参见文件头部 */
-+ (NSData *)readFileDataWithFileName:(NSString *)fileName
-           fromRelativeDirectoryPath:(NSString *)relativeDirectoryPath
-{
-    NSAssert(fileName && relativeDirectoryPath, @"要读取的文件地址、文件名都不能为空");
-    
-    NSString *absoluteDirectoryPath = [NSHomeDirectory() stringByAppendingPathComponent:relativeDirectoryPath];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:absoluteDirectoryPath]){
-        return nil;
-    }
-    
-    NSString *absoluteFilePath = [absoluteDirectoryPath stringByAppendingPathComponent:fileName];
-    //NSData *data = [[NSData alloc] initWithContentsOfFile:absoluteFilePath];
-    NSData *data = [[NSFileManager defaultManager] contentsAtPath:absoluteFilePath];
-    
-    return data;
+/**
+ *  保存文件到以home相对的相对路径下
+ *
+ *  @param data                         文件数据
+ *  @param fileName                     文件以什么名字保存
+ *
+ *  return 是否保存成功
+ */
+- (BOOL)saveFileData:(NSData *)data withFileName:(NSString *)fileName {
+    return [NSFileManagerCJHelper saveFileData:data withFileName:fileName toRelativeDirectoryPath:self.relativeDirectoryPath];
+}
+
+
+/**
+ *  从磁盘读取数据
+ *
+ *  @param fileName                 文件的名字
+ *
+ *  return 读取到的数据
+ */
+- (NSData *)readFileDataWithFileName:(NSString *)fileName {
+    return [NSFileManagerCJHelper readFileDataWithFileName:fileName fromRelativeDirectoryPath:self.relativeDirectoryPath];
 }
 
 

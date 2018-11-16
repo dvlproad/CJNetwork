@@ -28,7 +28,7 @@
         [weakSelf __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:params settingModel:settingModel success:success];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf __didCacheRequestFailureForTask:task withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure getCacheSuccess:success];
+        [weakSelf __didRequestFailureForTask:task withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure getCacheSuccess:success];
     }];
     
     return dataTask;
@@ -52,7 +52,7 @@
         [weakSelf __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:params settingModel:settingModel success:success];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [weakSelf __didCacheRequestFailureForTask:task withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure getCacheSuccess:success];
+        [weakSelf __didRequestFailureForTask:task withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure getCacheSuccess:success];
     }];
     
     return URLSessionDataTask;

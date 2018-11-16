@@ -64,7 +64,7 @@
         }
         else
         {
-            [self __didCacheRequestFailureForTask:URLSessionDataTask withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure getCacheSuccess:success];
+            [self __didRequestFailureForTask:URLSessionDataTask withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure getCacheSuccess:success];
         }
     }];
     [URLSessionDataTask resume];

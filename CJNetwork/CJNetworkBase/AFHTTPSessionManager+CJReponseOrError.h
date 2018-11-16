@@ -23,12 +23,12 @@
                            success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success;
 
 ///请求不到数据时候（无网 或者 有网但服务器异常等无数据时候）执行的方法
-- (void)__didCacheRequestFailureForTask:(NSURLSessionDataTask * _Nonnull)task
-                      withResponseError:(NSError * _Nullable)error
-                                 forUrl:(nullable NSString *)Url
-                                 params:(nullable id)params
-                           settingModel:(CJRequestSettingModel *)settingModel
-                                failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure
-                        getCacheSuccess:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success;
+- (void)__didRequestFailureForTask:(NSURLSessionDataTask * _Nonnull)task
+                 withResponseError:(NSError * _Nullable)error
+                            forUrl:(nullable NSString *)Url
+                            params:(nullable id)params
+                      settingModel:(CJRequestSettingModel *)settingModel
+                           failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure
+                   getCacheSuccess:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success;
 
 @end

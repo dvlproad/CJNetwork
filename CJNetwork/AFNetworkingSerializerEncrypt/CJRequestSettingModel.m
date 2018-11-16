@@ -10,4 +10,13 @@
 
 @implementation CJRequestSettingModel
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.logType = CJNetworkLogTypeConsoleLog;
+    }
+    return self;
+}
+
+
 @end

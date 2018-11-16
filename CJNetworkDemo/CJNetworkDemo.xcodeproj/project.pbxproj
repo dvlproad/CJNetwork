@@ -76,6 +76,8 @@
 		7868F1D02121D0FF00A283EB /* icons8-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1BE2121D0FE00A283EB /* icons8-settings.png */; };
 		787BAF2420349EF2000E276E /* AFHTTPSessionManager+CJSerializerEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 787BAF2320349EF2000E276E /* AFHTTPSessionManager+CJSerializerEncrypt.m */; };
 		788113D32199876C00D1630D /* CJNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 788113D22199876C00D1630D /* CJNetworkClient.m */; };
+		7886CD41219E7567007C3BCB /* NSFileManagerCJHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7886CD40219E7567007C3BCB /* NSFileManagerCJHelper.m */; };
+		7886CD44219E8FDA007C3BCB /* CJNetworkCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7886CD43219E8FDA007C3BCB /* CJNetworkCacheManager.m */; };
 		78881CEE214AE71800CAED82 /* CJNetworkInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78881CED214AE71700CAED82 /* CJNetworkInfoModel.m */; };
 		7896BB41219D6DB70014B4BD /* AFHTTPSessionManager+CJReponseOrError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7896BB40219D6DB70014B4BD /* AFHTTPSessionManager+CJReponseOrError.m */; };
 		78B6C2FF215AAA8900D5864E /* HealthyNetworkClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B6C2FE215AAA8900D5864E /* HealthyNetworkClient+Login.m */; };
@@ -232,6 +234,10 @@
 		787BAF2320349EF2000E276E /* AFHTTPSessionManager+CJSerializerEncrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+CJSerializerEncrypt.m"; sourceTree = "<group>"; };
 		788113D12199876C00D1630D /* CJNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkClient.h; sourceTree = "<group>"; };
 		788113D22199876C00D1630D /* CJNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJNetworkClient.m; sourceTree = "<group>"; };
+		7886CD3F219E7567007C3BCB /* NSFileManagerCJHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSFileManagerCJHelper.h; sourceTree = "<group>"; };
+		7886CD40219E7567007C3BCB /* NSFileManagerCJHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSFileManagerCJHelper.m; sourceTree = "<group>"; };
+		7886CD42219E8FDA007C3BCB /* CJNetworkCacheManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJNetworkCacheManager.h; sourceTree = "<group>"; };
+		7886CD43219E8FDA007C3BCB /* CJNetworkCacheManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJNetworkCacheManager.m; sourceTree = "<group>"; };
 		78881CEC214AE71700CAED82 /* CJNetworkInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkInfoModel.h; sourceTree = "<group>"; };
 		78881CED214AE71700CAED82 /* CJNetworkInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJNetworkInfoModel.m; sourceTree = "<group>"; };
 		7896BB3F219D6DB70014B4BD /* AFHTTPSessionManager+CJReponseOrError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+CJReponseOrError.h"; sourceTree = "<group>"; };
@@ -428,8 +434,6 @@
 		7846535A1F5449D000E20A27 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7846535B1F5449D000E20A27 /* CJCacheDataModel.h */,
-				7846535C1F5449D000E20A27 /* CJCacheDataModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -439,6 +443,8 @@
 			children = (
 				7846535E1F5449D000E20A27 /* CJDataDiskManager.h */,
 				7846535F1F5449D000E20A27 /* CJDataDiskManager.m */,
+				7886CD3F219E7567007C3BCB /* NSFileManagerCJHelper.h */,
+				7886CD40219E7567007C3BCB /* NSFileManagerCJHelper.m */,
 				784653601F5449D000E20A27 /* CJDataMemoryCacheManager.h */,
 				784653611F5449D000E20A27 /* CJDataMemoryCacheManager.m */,
 				784653621F5449D000E20A27 /* CJDataMemoryDictionaryManager.h */,
@@ -674,10 +680,24 @@
 		788113D02199870B00D1630D /* CJNetworkClient */ = {
 			isa = PBXGroup;
 			children = (
+				8050035E21192BDC002A2306 /* CJResponseModel */,
 				788113D12199876C00D1630D /* CJNetworkClient.h */,
 				788113D22199876C00D1630D /* CJNetworkClient.m */,
 			);
 			path = CJNetworkClient;
+			sourceTree = "<group>";
+		};
+		7886CD3E219E74AB007C3BCB /* CJNetworkCache */ = {
+			isa = PBXGroup;
+			children = (
+				8050036D21194FEC002A2306 /* CJRequestCacheDataUtil.h */,
+				8050036B21194FEC002A2306 /* CJRequestCacheDataUtil.m */,
+				7846535B1F5449D000E20A27 /* CJCacheDataModel.h */,
+				7846535C1F5449D000E20A27 /* CJCacheDataModel.m */,
+				7886CD42219E8FDA007C3BCB /* CJNetworkCacheManager.h */,
+				7886CD43219E8FDA007C3BCB /* CJNetworkCacheManager.m */,
+			);
+			path = CJNetworkCache;
 			sourceTree = "<group>";
 		};
 		78881CEB214AE71700CAED82 /* CJNetworkInfoModel */ = {
@@ -770,9 +790,9 @@
 				8050035C21192BDC002A2306 /* CJNetworkErrorUtil.m */,
 				78881CEB214AE71700CAED82 /* CJNetworkInfoModel */,
 				8050036621192C1E002A2306 /* CJObjectConvertUtil */,
-				8050035E21192BDC002A2306 /* CJResponseModel */,
 				7896BB3F219D6DB70014B4BD /* AFHTTPSessionManager+CJReponseOrError.h */,
 				7896BB40219D6DB70014B4BD /* AFHTTPSessionManager+CJReponseOrError.m */,
+				7886CD3E219E74AB007C3BCB /* CJNetworkCache */,
 			);
 			path = CJNetworkBase;
 			sourceTree = "<group>";
@@ -800,8 +820,6 @@
 			children = (
 				8050036C21194FEC002A2306 /* AFHTTPSessionManager+CJMethodEncrypt.h */,
 				8050036E21194FEC002A2306 /* AFHTTPSessionManager+CJMethodEncrypt.m */,
-				8050036D21194FEC002A2306 /* CJRequestCacheDataUtil.h */,
-				8050036B21194FEC002A2306 /* CJRequestCacheDataUtil.m */,
 			);
 			path = AFNetworkingMethodEncrypt;
 			sourceTree = "<group>";
@@ -1067,6 +1085,7 @@
 			files = (
 				7868F19D2121CC2600A283EB /* LoginHelper.m in Sources */,
 				7896BB41219D6DB70014B4BD /* AFHTTPSessionManager+CJReponseOrError.m in Sources */,
+				7886CD44219E8FDA007C3BCB /* CJNetworkCacheManager.m in Sources */,
 				8050036F21194FEC002A2306 /* CJRequestCacheDataUtil.m in Sources */,
 				784653761F544A0100E20A27 /* HSDownloadManager.m in Sources */,
 				8050036921192C1E002A2306 /* CJObjectConvertUtil.m in Sources */,
@@ -1104,6 +1123,7 @@
 				784653651F5449D000E20A27 /* CJCacheDataModel.m in Sources */,
 				784653771F544A0100E20A27 /* HSSessionModel.m in Sources */,
 				7868F1742121C79A00A283EB /* CacheHomeViewController.m in Sources */,
+				7886CD41219E7567007C3BCB /* NSFileManagerCJHelper.m in Sources */,
 				7868F18A2121C79A00A283EB /* EncryptHomeViewController.m in Sources */,
 				7868F1922121C80500A283EB /* DownloadHomeViewController.m in Sources */,
 				7868F1782121C79A00A283EB /* UploadHomeViewController.m in Sources */,

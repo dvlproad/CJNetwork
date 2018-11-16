@@ -19,13 +19,15 @@ typedef NS_ENUM(NSUInteger, CJRequestCacheFailureType) {
 /**
  *  缓存网络请求的数据
  *
- *  @param responseObject   要缓存的数据
- *  @param Url              Url
- *  @param parameters       parameters
+ *  @param responseObject       要缓存的数据
+ *  @param Url                  Url
+ *  @param parameters           parameters
+ *  @param cacheTimeInterval    cacheTimeInterval
  */
 + (void)cacheNetworkData:(nullable id)responseObject
             byRequestUrl:(nullable NSString *)Url
-              parameters:(nullable NSDictionary *)parameters;
+              parameters:(nullable NSDictionary *)parameters
+       cacheTimeInterval:(NSTimeInterval)cacheTimeInterval;
 
 /**
  *  获取请求的缓存数据（此方法，只有网络不给力的时候才会调用到）

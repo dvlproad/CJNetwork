@@ -21,7 +21,7 @@
 {
     BOOL shouldCache = settingModel.shouldCache;
     if (shouldCache) {  //是否需要本地缓存现在请求下来的网络数据
-        [CJRequestCacheDataUtil cacheNetworkData:responseObject byRequestUrl:Url parameters:params];
+        [CJRequestCacheDataUtil cacheNetworkData:responseObject byRequestUrl:Url parameters:params cacheTimeInterval:settingModel.cacheTimeInterval];
     }
     
     NSURLRequest *request = task.originalRequest;
@@ -35,7 +35,7 @@
 }
 
 ///请求不到数据时候（无网 或者 有网但服务器异常等无数据时候）执行的方法
-- (void)__didCacheRequestFailureForTask:(NSURLSessionDataTask * _Nonnull)task
+- (void)__didRequestFailureForTask:(NSURLSessionDataTask * _Nonnull)task
                  withResponseError:(NSError * _Nullable)error
                             forUrl:(nullable NSString *)Url
                             params:(nullable id)params
@@ -55,7 +55,7 @@
         }];
         
     } else {
-        NSLog(@"提示：这里之前未缓存，无法读取缓存，提示网络不给力");
+        //NSLog(@"提示：这里之前未缓存，无法读取缓存，提示网络不给力");
         //errorNetworkLog
         [self __didRequestFailureForTask:task withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure];
     }

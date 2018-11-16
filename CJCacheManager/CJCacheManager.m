@@ -7,12 +7,15 @@
 //
 
 #import "CJCacheManager.h"
-#import "CJCacheDataModel.h"
+#import "CJDataMemoryDictionaryManager.h"
+//#import "CJDataDiskManager.h"
+#import "NSFileManagerCJHelper.h"
 
 @interface CJCacheManager () {
     NSOperationQueue *cacheInQueue; /**< 缓存数据进内存的队列 */
     NSOperationQueue *cacheOutQueue;/**< 从内存中获取缓存数据的的队列 */
 }
+//@property (nonatomic, strong) CJDataDiskManager *diskCache; /**< 磁盘缓存 */
 
 @end
 
@@ -44,6 +47,12 @@
     return self;
 }
 
+//- (void)setRelativeDirectoryPath:(NSString *)relativeDirectoryPath {
+//    _relativeDirectoryPath = relativeDirectoryPath;
+//
+//
+//}
+
 
 /** 完整的描述请参见文件头部 */
 - (void)cacheData:(NSData *)cacheData forCacheKey:(NSString *)cacheKey andSaveInDisk:(BOOL)saveInDisk withDiskRelativeDirectoryPath:(NSString *)relativeDirectoryPath
@@ -54,24 +63,28 @@
     [[CJDataMemoryDictionaryManager sharedInstance] cacheData:cacheData forCacheKey:cacheKey];
     
     if (saveInDisk){
-        CJCacheDataModel *cacheDataModel = [[CJCacheDataModel alloc] init];
-        cacheDataModel.data = cacheData;
-        cacheDataModel.name = cacheKey;   //确保key中不含不规则字符，如斜杠冒号等
-        cacheDataModel.cacheToRelativeDirectoryPath = relativeDirectoryPath;
+        NSDictionary *cacheDataDictionary = @{@"dataObject":    cacheData,
+                                              @"cacheKey":      cacheKey,
+                                              @"cacheToRelativeDirectoryPath":relativeDirectoryPath
+                                              };
         
         //用NSInvocationOperation建了一个后台线程，并且放到NSOperationQueue中。后台线程执行cacheDataToDisk:方法。
         [cacheInQueue addOperation:
          [[NSInvocationOperation alloc]initWithTarget:self
                                              selector:@selector(cacheDataToDisk:)
-                                               object:cacheDataModel]];
+                                               object:cacheDataDictionary]];
     }
 }
 
 /** 数据的保存 */
-- (void)cacheDataToDisk:(CJCacheDataModel *)cacheDataModel {
-    [CJDataDiskManager saveFileData:cacheDataModel.data
-                       withFileName:cacheDataModel.name
-            toRelativeDirectoryPath:cacheDataModel.cacheToRelativeDirectoryPath];
+- (void)cacheDataToDisk:(NSDictionary *)cacheDataDictionary {
+    NSData *cacheData = cacheDataDictionary[@"dataObject"];
+    NSString *cacheKey = cacheDataDictionary[@"cacheKey"];
+    NSString *cacheToRelativeDirectoryPath = cacheDataDictionary[@"cacheToRelativeDirectoryPath"];
+    
+    [NSFileManagerCJHelper saveFileData:cacheData
+                       withFileName:cacheKey
+            toRelativeDirectoryPath:cacheToRelativeDirectoryPath];
 }
 
 
@@ -80,6 +93,8 @@
 - (NSData *)getCacheDataByCacheKey:(NSString *)cacheKey diskRelativeDirectoryPath:(NSString *)relativeDirectoryPath
 {
     NSData *cacheData = [[CJDataMemoryDictionaryManager sharedInstance] getMemoryCacheDataByCacheKey:cacheKey];
+    
+    
     if (cacheData != nil) {
         return cacheData;
         

@@ -8,11 +8,16 @@
 
 #import "CJRequestCacheDataUtil.h"
 
-#import "CJCacheManager.h"
-
 #import "CJObjectConvertUtil.h"
 
-static NSString * const relativeDirectoryPath = @"CJNetworkCache";
+#ifdef CJTESTPOD
+#import "CJCacheManager.h"
+#else
+#import <CJCacheManager/CJCacheManager.h>
+#endif
+
+
+static NSString * const kRelativeDirectoryPath = @"CJNetworkCache";
 
 @implementation CJRequestCacheDataUtil
 
@@ -20,6 +25,7 @@ static NSString * const relativeDirectoryPath = @"CJNetworkCache";
 + (void)cacheNetworkData:(nullable id)responseObject
             byRequestUrl:(nullable NSString *)Url
               parameters:(nullable NSDictionary *)parameters
+       cacheTimeInterval:(NSTimeInterval)cacheTimeInterval
 {
     NSString *requestCacheKey = [self getRequestCacheKeyByRequestUrl:Url parameters:parameters];
     if (nil == requestCacheKey) {
@@ -27,7 +33,7 @@ static NSString * const relativeDirectoryPath = @"CJNetworkCache";
         
     }else{
         if (!responseObject){
-            [[CJCacheManager sharedInstance] removeCacheForCacheKey:requestCacheKey diskRelativeDirectoryPath:relativeDirectoryPath];
+            [[CJCacheManager sharedInstance] removeCacheForCacheKey:requestCacheKey diskRelativeDirectoryPath:kRelativeDirectoryPath];
             
             
         } else {
@@ -35,7 +41,7 @@ static NSString * const relativeDirectoryPath = @"CJNetworkCache";
             NSDictionary *dic = [NSDictionary dictionaryWithDictionary:responseObject];
             NSData *cacheData = [CJObjectConvertUtil dataFromDictionary:dic];
             
-            [[CJCacheManager sharedInstance] cacheData:cacheData forCacheKey:requestCacheKey andSaveInDisk:YES withDiskRelativeDirectoryPath:relativeDirectoryPath];
+            [[CJCacheManager sharedInstance] cacheData:cacheData forCacheKey:requestCacheKey andSaveInDisk:YES withDiskRelativeDirectoryPath:kRelativeDirectoryPath];
         }
     }
 }
@@ -57,7 +63,7 @@ static NSString * const relativeDirectoryPath = @"CJNetworkCache";
     
     
     
-    NSData *requestCacheData = [[CJCacheManager sharedInstance] getCacheDataByCacheKey:requestCacheKey diskRelativeDirectoryPath:relativeDirectoryPath];
+    NSData *requestCacheData = [[CJCacheManager sharedInstance] getCacheDataByCacheKey:requestCacheKey diskRelativeDirectoryPath:kRelativeDirectoryPath];
     if (requestCacheData) {
         //NSLog(@"读到有缓存数据，但不保证该数据是最新的，因为网络还是不给力");
         if (success) {
@@ -90,6 +96,7 @@ static NSString * const relativeDirectoryPath = @"CJNetworkCache";
     NSString *string = [CJObjectConvertUtil stringFromDictionary:mutableDictionary];
     NSString *requestCacheKey = [CJObjectConvertUtil MD5StringFromString:string];
     
+    NSAssert(requestCacheKey, @"requestCacheKey值不能为空");
     return requestCacheKey;
 }
 

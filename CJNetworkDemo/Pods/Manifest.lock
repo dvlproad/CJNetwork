@@ -33,8 +33,10 @@ PODS:
   - CocoaAsyncSocket/RunLoop (7.4.3)
   - Masonry (1.1.0)
   - MBProgressHUD (0.9.2)
+  - MJExtension (3.0.15.1)
   - OpenUDID (1.0.0)
   - SVProgressHUD (2.1.2)
+  - YYCache (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -45,8 +47,10 @@ DEPENDENCIES:
   - CocoaAsyncSocket (~> 7.4.1)
   - Masonry
   - MBProgressHUD (~> 0.9.1)
+  - MJExtension (~> 3.0.15.1)
   - OpenUDID (~> 1.0.0)
   - SVProgressHUD (~> 2.1.2)
+  - YYCache (~> 1.0.4)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -56,8 +60,10 @@ SPEC REPOS:
     - CocoaAsyncSocket
     - Masonry
     - MBProgressHUD
+    - MJExtension
     - OpenUDID
     - SVProgressHUD
+    - YYCache
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -66,9 +72,11 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 2ec89605937702cc3309d7bd3bf7976350dcdad0
+PODFILE CHECKSUM: dde1f980f6b00c330e20c115af18c6fa004a7968
 
 COCOAPODS: 1.5.3

@@ -6,10 +6,12 @@
 //  Copyright (c) 2015 dvlproad. All rights reserved.
 //
 
-#import "CJDataMemoryDictionaryManager.h"
-#import "CJDataDiskManager.h"
+#import <Foundation/Foundation.h>
 
-@interface CJCacheManager : NSObject
+@interface CJCacheManager : NSObject {
+    
+}
+//@property (nonatomic, copy) NSString *relativeDirectoryPath;
 
 + (CJCacheManager *)sharedInstance;
 
