@@ -9,16 +9,14 @@
 #import "AFHTTPSessionManager.h"
 #import "CJRequestSettingModel.h"
 #import "CJNetworkInfoModel.h"
-#import "CJRequestCacheDataUtil.h"
 
 @interface AFHTTPSessionManager (CJReponseOrError)
 
-///得到缓存数据时候执行的方法
-- (void)__didGetCacheSuccessWithResponseObject:(nullable id)responseObject
-                                        forUrl:(nullable NSString *)Url
-                                        params:(nullable id)params
-                                  settingModel:(CJRequestSettingModel *)settingModel
-                                       success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success;
+/// 在请求前根据设置做相应处理
+- (BOOL)__didEventBeforeStartRequestWithUrl:(nullable NSString *)Url
+                                     params:(nullable NSDictionary *)params
+                               settingModel:(CJRequestSettingModel *)settingModel
+                                    success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success;
 
 ///网络请求获取到数据时候执行的方法(responseObject必须是解密后的数据)
 - (void)__didRequestSuccessForTask:(NSURLSessionDataTask * _Nonnull)task
