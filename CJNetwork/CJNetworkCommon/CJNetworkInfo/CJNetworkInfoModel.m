@@ -64,6 +64,9 @@
     NSMutableString *networkLog = [NSMutableString string];
     [networkLog appendFormat:@"地址：%@ \n", Url];
     [networkLog appendFormat:@"原始参数：%@ \n", allParamsJsonString];
+    if (!bodyString) {
+        bodyString = @"未获取到，请以原始参数为准...";
+    }
     [networkLog appendFormat:@"最终参数：%@ \n", bodyString];
     //[networkLog appendFormat:@"结果：%@ \n", resultString];
     

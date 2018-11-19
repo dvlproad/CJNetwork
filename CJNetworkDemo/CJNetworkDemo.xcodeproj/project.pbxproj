@@ -89,6 +89,7 @@
 		78EB551921A280C300EEB853 /* DemoButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB550E21A280C200EEB853 /* DemoButtonFactory.m */; };
 		78EB551A21A280C300EEB853 /* CJUIKitBaseHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB551121A280C200EEB853 /* CJUIKitBaseHomeViewController.m */; };
 		78EB551B21A280C300EEB853 /* CJUIKitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB551321A280C200EEB853 /* CJUIKitBaseViewController.m */; };
+		78EB551F21A29AC700EEB853 /* TestNetworkClient+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB551E21A29AC700EEB853 /* TestNetworkClient+Test.m */; };
 		78FC91FA1F54481E00033DEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91F91F54481E00033DEF /* main.m */; };
 		78FC91FD1F54481E00033DEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91FC1F54481E00033DEF /* AppDelegate.m */; };
 		78FC92001F54481E00033DEF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91FF1F54481E00033DEF /* ViewController.m */; };
@@ -264,6 +265,8 @@
 		78EB551121A280C200EEB853 /* CJUIKitBaseHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUIKitBaseHomeViewController.m; sourceTree = "<group>"; };
 		78EB551221A280C200EEB853 /* CJUIKitBaseHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUIKitBaseHomeViewController.h; sourceTree = "<group>"; };
 		78EB551321A280C200EEB853 /* CJUIKitBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUIKitBaseViewController.m; sourceTree = "<group>"; };
+		78EB551D21A29AC700EEB853 /* TestNetworkClient+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+Test.h"; sourceTree = "<group>"; };
+		78EB551E21A29AC700EEB853 /* TestNetworkClient+Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+Test.m"; sourceTree = "<group>"; };
 		78FC91F51F54481E00033DEF /* CJNetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CJNetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FC91F91F54481E00033DEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		78FC91FB1F54481E00033DEF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -632,6 +635,7 @@
 			children = (
 				7868F1692121C79A00A283EB /* EncryptHomeViewController.h */,
 				7868F16A2121C79A00A283EB /* EncryptHomeViewController.m */,
+				78EB551C21A29A7800EEB853 /* NDM */,
 			);
 			path = DemosEncrypt;
 			sourceTree = "<group>";
@@ -770,6 +774,15 @@
 				78EB551321A280C200EEB853 /* CJUIKitBaseViewController.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		78EB551C21A29A7800EEB853 /* NDM */ = {
+			isa = PBXGroup;
+			children = (
+				78EB551D21A29AC700EEB853 /* TestNetworkClient+Test.h */,
+				78EB551E21A29AC700EEB853 /* TestNetworkClient+Test.m */,
+			);
+			path = NDM;
 			sourceTree = "<group>";
 		};
 		78FC91EC1F54481E00033DEF = {
@@ -1202,6 +1215,7 @@
 				7868F19C2121CC2600A283EB /* LoginViewController.m in Sources */,
 				784653641F5449D000E20A27 /* CJCacheManager.m in Sources */,
 				7868F1892121C79A00A283EB /* DownloadTableViewCell.m in Sources */,
+				78EB551F21A29AC700EEB853 /* TestNetworkClient+Test.m in Sources */,
 				7846D3E5219D5A52003C7C64 /* CJRequestSettingModel.m in Sources */,
 				785DDC9620EE876E007F9546 /* CJUploadFileModelsOwner.m in Sources */,
 				784653651F5449D000E20A27 /* CJCacheDataModel.m in Sources */,

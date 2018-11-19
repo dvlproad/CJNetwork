@@ -32,7 +32,7 @@
  *
  *  return NSURLSessionDataTask
  */
-- (nullable NSURLSessionDataTask *)cjEncrypt_postUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cjMethodEncrypt_postUrl:(nullable NSString *)Url
                                             params:(nullable id)params
                                       settingModel:(CJRequestSettingModel *)settingModel
                                            encrypt:(BOOL)encrypt

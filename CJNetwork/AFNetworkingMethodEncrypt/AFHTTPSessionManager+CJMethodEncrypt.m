@@ -1,5 +1,5 @@
 //
-//  AFHTTPSessionManager+CJCacheRequest.m
+//  AFHTTPSessionManager+CJMethodEncrypt.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 6/25/15.
@@ -15,11 +15,11 @@
 //};
 
 
-@implementation AFHTTPSessionManager (CJCacheRequest)
+@implementation AFHTTPSessionManager (CJMethodEncrypt)
 
 #pragma mark - CJCacheEncrypt
 /** 完整的描述请参见文件头部 */
-- (nullable NSURLSessionDataTask *)cjEncrypt_postUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cjMethodEncrypt_postUrl:(nullable NSString *)Url
                                             params:(nullable id)params
                                       settingModel:(CJRequestSettingModel *)settingModel
                                            encrypt:(BOOL)encrypt
@@ -30,11 +30,13 @@
 {
     /* 利用Url和params，通过加密的方法创建请求 */
     NSData *bodyData = nil;
-    if (encrypt && encryptBlock) {
-        //bodyData = [CJEncryptAndDecryptTool encryptParmas:params];
-        bodyData = encryptBlock(params);
-    } else {
-        bodyData = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
+    if (params) {
+        if (encrypt && encryptBlock) {
+            //bodyData = [CJEncryptAndDecryptTool encryptParmas:params];
+            bodyData = encryptBlock(params);
+        } else {
+            bodyData = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
+        }
     }
     
     //正确的方法：

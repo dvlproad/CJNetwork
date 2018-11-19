@@ -8,6 +8,8 @@
 
 #import "EncryptHomeViewController.h"
 
+#import "TestNetworkClient+Test.h"
+
 #import "HealthyNetworkClient.h"
 #import "HealthyHTTPSessionManager.h"
 
@@ -29,6 +31,13 @@
     {
         CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
         sectionDataModel.theme = @"Encrypt相关";
+        
+        {
+            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            loginModule.title = @"测试缓存时间(请一定要执行验证)";
+            loginModule.selector = @selector(testCacheTime);
+            [sectionDataModel.values addObject:loginModule];
+        }
         {
             CJModuleModel *loginModule = [[CJModuleModel alloc] init];
             loginModule.title = @"登录(健康)";
@@ -41,6 +50,30 @@
     
     
     self.sectionDataModels = sectionDataModels;
+}
+
+/// 测试缓存
+- (void)testCacheTime {
+    NSLog(@"第一次请求到的肯定是非缓存的数据，否则错误");
+    [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:YES completeBlock:^(CJResponseModel *responseModel) {
+        NSAssert(responseModel.isCacheData == NO, @"第一次请求到的肯定是非缓存的数据，否则错误");
+    }];
+    
+    NSLog(@"在缓存过期10秒内，请求到的肯定是缓存的数据，否则错误");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:NO completeBlock:^(CJResponseModel *responseModel) {
+            NSAssert(responseModel.isCacheData == YES, @"在缓存过期10秒内，请求到的肯定是缓存的数据，否则错误");
+        }];
+    });
+    
+    NSLog(@"在缓存过期10秒后，请求到的肯定是非缓存的数据，否则错误");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(11 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:NO completeBlock:^(CJResponseModel *responseModel) {
+            NSAssert(responseModel.isCacheData == NO, @"在缓存过期10秒后，请求到的肯定是非缓存的数据，否则错误");
+            
+            [CJToast shortShowMessage:@"测试缓存时间通过"];
+        }];
+    });
 }
 
 - (void)testLoginHealth {

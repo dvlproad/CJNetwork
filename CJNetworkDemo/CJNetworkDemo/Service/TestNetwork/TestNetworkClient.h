@@ -7,14 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CJNetworkClient.h"
+#import "AFHTTPSessionManager+CJSerializerEncrypt.h"
 #import "AFHTTPSessionManager+CJMethodEncrypt.h"
-
 #import "CJResponseModel.h"
 
-@interface TestNetworkClient : NSObject
+@interface TestNetworkClient : CJNetworkClient
 
-+ (TestNetworkClient *)sharedInstance;
+- (nullable NSURLSessionDataTask *)testSimulate_postApiSuffix:(NSString *)apiSuffix
+                                                       params:(nullable id)params
+                                                 settingModel:(CJRequestSettingModel *)settingModel
+                                            shouldRemoveCache:(BOOL)shouldRemoveCache
+                                                completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
 
-- (void)requestBaiduHomeCompleteBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
+- (nullable NSURLSessionDataTask *)testEncrypt_postApiSuffix:(NSString *)apiSuffix
+                                                      params:(nullable id)params
+                                               cacheStrategy:(CJNetworkCacheStrategy)cacheStrategy
+                                               completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
 
 @end

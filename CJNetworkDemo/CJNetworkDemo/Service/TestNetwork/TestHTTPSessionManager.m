@@ -23,6 +23,22 @@
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
+    AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.requestSerializer  = requestSerializer;
+    
+    AFHTTPResponseSerializer *responseSerializer = [AFHTTPResponseSerializer serializer];
+    responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
+                                                 @"text/plain",
+                                                 @"text/html",
+                                                 @"application/json",
+                                                 @"application/json;charset=utf-8", nil];
+    manager.responseSerializer = responseSerializer;
+    
+    
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 20.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    
     return manager;
 }
 

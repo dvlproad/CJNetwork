@@ -39,4 +39,20 @@
  */
 + (id<NSCoding>)requestCacheDataByUrl:(nullable NSString *)Url params:(nullable id)params;
 
+
+/**
+ *  删除指定key的缓存数据
+ *
+ *  @param Url          Url
+ *  @param params       params
+ *
+ *  return  是否删除成功
+ */
++ (BOOL)removeCacheForUrl:(nullable NSString *)Url params:(nullable id)params;
+
+/**
+ *  清空所有缓存数据
+ */
++ (void)clearAllCache;
+
 @end

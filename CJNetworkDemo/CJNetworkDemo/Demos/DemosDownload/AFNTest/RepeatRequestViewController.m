@@ -8,7 +8,7 @@
 
 #import "RepeatRequestViewController.h"
 
-#import "TestNetworkClient.h"
+#import "TestNetworkClient+Test.h"
 
 
 static int apiTestCount = 0;

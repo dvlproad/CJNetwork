@@ -25,4 +25,6 @@ responseModel.result = responseObject[@"result"];
 responseModel.isCacheData = isCacheData;
 */
 
+- (instancetype)initWithResponseDictionary:(NSDictionary *)responseDictionary isCacheData:(BOOL)isCacheData;
+
 @end

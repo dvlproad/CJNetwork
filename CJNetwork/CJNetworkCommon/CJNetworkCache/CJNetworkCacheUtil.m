@@ -98,5 +98,31 @@
     return requestCacheKey;
 }
 
+/**
+ *  删除指定key的缓存数据
+ *
+ *  @param Url          Url
+ *  @param params       params
+ *
+ *  return  是否删除成功
+ */
++ (BOOL)removeCacheForUrl:(nullable NSString *)Url params:(nullable id)params {
+    NSString *requestCacheKey = [self getRequestCacheKeyByRequestUrl:Url parameters:params];
+    if (nil == requestCacheKey) {
+        NSLog(@"error: requestCacheKey == nil, 无法读取缓存，提示网络不给力");
+        return NO;
+    }
+    
+    [[CJNetworkCacheManager sharedInstance] removeCacheForCacheKey:requestCacheKey];
+    return YES;
+}
+
+/**
+ *  清空所有缓存数据
+ */
++ (void)clearAllCache {
+    [[CJNetworkCacheManager sharedInstance] clearMemoryCacheAndDiskCache];
+}
+
 
 @end
