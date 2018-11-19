@@ -17,7 +17,7 @@
     
 }
 
-#pragma mark - CJCacheEncrypt
+#pragma mark - CJEncrypt
 /**
  *  发起POST请求
  *
@@ -32,7 +32,7 @@
  *
  *  return NSURLSessionDataTask
  */
-- (nullable NSURLSessionDataTask *)cjCache_postUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cjEncrypt_postUrl:(nullable NSString *)Url
                                             params:(nullable id)params
                                       settingModel:(CJRequestSettingModel *)settingModel
                                            encrypt:(BOOL)encrypt

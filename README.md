@@ -7,6 +7,18 @@
 * 3、对请求接口进行缓存数据的功能
 * 4、按指定格式输出请求信息(比如①你要在控制台查看请求信息、②当你脱离调试模式时候，你希望通过一个alert弹出显示你的log)
 
+#### 包含组件
+>
+- CJNetwork/CJNetworkCommon：AFN请求过程中需要的几个公共方法(包含请求前获取缓存、请求后成功与失败操作)
+- CJNetwork/AFNetworkingSerializerEncrypt：AFN的请求方法(加解密方法卸载Method方法中)
+- CJNetwork/AFNetworkingMethodEncrypt：AFN的请求方法(加解密方法卸载Method方法中)
+- CJNetwork/AFNetworkingUploadComponent：AFN的上传请求方法
+- CJNetwork/CJNetworkClient：网络请求的管理类，其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现
+>
+- CJNetwork/CJRequestUtil：原生(非AFN)的请求
+>
+- CJNetwork/CJCacheManager：自己实现的非第三方的缓存机制
+
 #### Screenshots
 > ![CJNetwork](./Screenshots/CJNetwork.jpg "CJNetwork")
 
@@ -209,8 +221,8 @@
 ///缓存策略
 typedef NS_ENUM(NSUInteger, CJNetworkCacheStrategy) {
     CJNetworkCacheStrategyNoneCache,            /**< 成功/失败的时候，都不使用缓存，直接使用网络数据 */
-    CJNetworkCacheStrategyEndWithCacheIfExist,  /**< 成功/失败的时候，如果有缓存，则不用再去取网络错误值 */
-    CJNetworkCacheStrategyUseCacheToTransition, /**< 成功/失败的时候，如果有缓存，使用缓存过去，最终以网络数据显示 */
+    CJNetworkCacheStrategyEndWithCacheIfExist,  /**< 成功/失败的时候，如果有缓存，则不用再去取网络实际值 */
+    CJNetworkCacheStrategyUseCacheToTransition, /**< 成功/失败的时候，如果有缓存，使用缓存过渡来快速显示，最终以网络数据显示 */
 };
 ```
 以及对每个请求结果根据对应的缓存策略，进行结果输出与显示；

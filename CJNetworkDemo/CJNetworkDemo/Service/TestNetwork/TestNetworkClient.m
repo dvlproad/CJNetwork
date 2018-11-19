@@ -33,7 +33,7 @@
     AFHTTPSessionManager *manager = [TestHTTPSessionManager sharedInstance];
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cjCache_postUrl:Url params:params settingModel:nil encrypt:NO encryptBlock:nil decryptBlock:nil success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo) {
+    [manager cjEncrypt_postUrl:Url params:params settingModel:nil encrypt:NO encryptBlock:nil decryptBlock:nil success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo) {
         NSDictionary *responseDictionary = successNetworkInfo.responseObject;
         CJResponseModel *responseModel = [[CJResponseModel alloc] init];
         responseModel.status = [responseDictionary[@"status"] integerValue];

@@ -92,7 +92,7 @@
 		8050036321192BDC002A2306 /* CJNetworkErrorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8050035C21192BDC002A2306 /* CJNetworkErrorUtil.m */; };
 		8050036421192BDC002A2306 /* CJResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8050035F21192BDC002A2306 /* CJResponseModel.m */; };
 		8050036921192C1E002A2306 /* CJObjectConvertUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8050036721192C1E002A2306 /* CJObjectConvertUtil.m */; };
-		8050036F21194FEC002A2306 /* CJRequestCacheDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8050036B21194FEC002A2306 /* CJRequestCacheDataUtil.m */; };
+		8050036F21194FEC002A2306 /* CJNetworkCacheUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8050036B21194FEC002A2306 /* CJNetworkCacheUtil.m */; };
 		8050037021194FEC002A2306 /* AFHTTPSessionManager+CJMethodEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 8050036E21194FEC002A2306 /* AFHTTPSessionManager+CJMethodEncrypt.m */; };
 		805003762119500F002A2306 /* CJJSONResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 805003732119500F002A2306 /* CJJSONResponseSerializer.m */; };
 		805003772119500F002A2306 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 805003742119500F002A2306 /* NSString+URLEncoding.m */; };
@@ -266,9 +266,9 @@
 		8050036121192BDC002A2306 /* CJNetworkErrorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkErrorUtil.h; sourceTree = "<group>"; };
 		8050036721192C1E002A2306 /* CJObjectConvertUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJObjectConvertUtil.m; sourceTree = "<group>"; };
 		8050036821192C1E002A2306 /* CJObjectConvertUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJObjectConvertUtil.h; sourceTree = "<group>"; };
-		8050036B21194FEC002A2306 /* CJRequestCacheDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJRequestCacheDataUtil.m; sourceTree = "<group>"; };
+		8050036B21194FEC002A2306 /* CJNetworkCacheUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJNetworkCacheUtil.m; sourceTree = "<group>"; };
 		8050036C21194FEC002A2306 /* AFHTTPSessionManager+CJMethodEncrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+CJMethodEncrypt.h"; sourceTree = "<group>"; };
-		8050036D21194FEC002A2306 /* CJRequestCacheDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJRequestCacheDataUtil.h; sourceTree = "<group>"; };
+		8050036D21194FEC002A2306 /* CJNetworkCacheUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkCacheUtil.h; sourceTree = "<group>"; };
 		8050036E21194FEC002A2306 /* AFHTTPSessionManager+CJMethodEncrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+CJMethodEncrypt.m"; sourceTree = "<group>"; };
 		805003722119500F002A2306 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		805003732119500F002A2306 /* CJJSONResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJJSONResponseSerializer.m; sourceTree = "<group>"; };
@@ -317,7 +317,7 @@
 				8050036A21194FEC002A2306 /* AFNetworkingMethodEncrypt */,
 				7846529A1F5448F100E20A27 /* AFNetworkingUploadComponent */,
 				784652AD1F5448F100E20A27 /* CJNetwork.h */,
-				8050035B21192BDC002A2306 /* CJNetworkBase */,
+				8050035B21192BDC002A2306 /* CJNetworkCommon */,
 				784652B11F5448F100E20A27 /* CJRequestUtil */,
 			);
 			name = CJNetwork;
@@ -690,8 +690,8 @@
 		7886CD3E219E74AB007C3BCB /* CJNetworkCache */ = {
 			isa = PBXGroup;
 			children = (
-				8050036D21194FEC002A2306 /* CJRequestCacheDataUtil.h */,
-				8050036B21194FEC002A2306 /* CJRequestCacheDataUtil.m */,
+				8050036D21194FEC002A2306 /* CJNetworkCacheUtil.h */,
+				8050036B21194FEC002A2306 /* CJNetworkCacheUtil.m */,
 				7846535B1F5449D000E20A27 /* CJCacheDataModel.h */,
 				7846535C1F5449D000E20A27 /* CJCacheDataModel.m */,
 				7886CD42219E8FDA007C3BCB /* CJNetworkCacheManager.h */,
@@ -700,13 +700,15 @@
 			path = CJNetworkCache;
 			sourceTree = "<group>";
 		};
-		78881CEB214AE71700CAED82 /* CJNetworkInfoModel */ = {
+		78881CEB214AE71700CAED82 /* CJNetworkInfo */ = {
 			isa = PBXGroup;
 			children = (
 				78881CEC214AE71700CAED82 /* CJNetworkInfoModel.h */,
 				78881CED214AE71700CAED82 /* CJNetworkInfoModel.m */,
+				8050036121192BDC002A2306 /* CJNetworkErrorUtil.h */,
+				8050035C21192BDC002A2306 /* CJNetworkErrorUtil.m */,
 			);
-			path = CJNetworkInfoModel;
+			path = CJNetworkInfo;
 			sourceTree = "<group>";
 		};
 		78FC91EC1F54481E00033DEF = {
@@ -783,18 +785,16 @@
 			path = CJNetworkDemoUITests;
 			sourceTree = "<group>";
 		};
-		8050035B21192BDC002A2306 /* CJNetworkBase */ = {
+		8050035B21192BDC002A2306 /* CJNetworkCommon */ = {
 			isa = PBXGroup;
 			children = (
-				8050036121192BDC002A2306 /* CJNetworkErrorUtil.h */,
-				8050035C21192BDC002A2306 /* CJNetworkErrorUtil.m */,
-				78881CEB214AE71700CAED82 /* CJNetworkInfoModel */,
-				8050036621192C1E002A2306 /* CJObjectConvertUtil */,
 				7896BB3F219D6DB70014B4BD /* AFHTTPSessionManager+CJReponseOrError.h */,
 				7896BB40219D6DB70014B4BD /* AFHTTPSessionManager+CJReponseOrError.m */,
+				78881CEB214AE71700CAED82 /* CJNetworkInfo */,
+				8050036621192C1E002A2306 /* CJObjectConvertUtil */,
 				7886CD3E219E74AB007C3BCB /* CJNetworkCache */,
 			);
-			path = CJNetworkBase;
+			path = CJNetworkCommon;
 			sourceTree = "<group>";
 		};
 		8050035E21192BDC002A2306 /* CJResponseModel */ = {
@@ -1086,7 +1086,7 @@
 				7868F19D2121CC2600A283EB /* LoginHelper.m in Sources */,
 				7896BB41219D6DB70014B4BD /* AFHTTPSessionManager+CJReponseOrError.m in Sources */,
 				7886CD44219E8FDA007C3BCB /* CJNetworkCacheManager.m in Sources */,
-				8050036F21194FEC002A2306 /* CJRequestCacheDataUtil.m in Sources */,
+				8050036F21194FEC002A2306 /* CJNetworkCacheUtil.m in Sources */,
 				784653761F544A0100E20A27 /* HSDownloadManager.m in Sources */,
 				8050036921192C1E002A2306 /* CJObjectConvertUtil.m in Sources */,
 				788113D32199876C00D1630D /* CJNetworkClient.m in Sources */,

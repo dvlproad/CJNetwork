@@ -26,8 +26,8 @@
     if ([NSJSONSerialization isValidJSONObject:dictionary]) {
         NSError *error;
         NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:&error];
-        NSString *string = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-        resultString = [string stringByAppendingString:string];
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        resultString = [resultString stringByAppendingString:string];
     }
     return resultString;
 }

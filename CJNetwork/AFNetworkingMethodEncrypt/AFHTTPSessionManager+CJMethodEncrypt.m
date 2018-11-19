@@ -8,8 +8,6 @@
 
 #import "AFHTTPSessionManager+CJMethodEncrypt.h"
 
-#import "CJNetworkErrorUtil.h"
-
 //typedef NS_OPTIONS(NSUInteger, CJNeedGetCacheOption) {
 //    CJNeedGetCacheOptionNone = 1 << 0,             /**< 不缓存 */
 //    CJNeedGetCacheOptionNetworkUnable = 1 << 1,    /**< 无网 */
@@ -21,7 +19,7 @@
 
 #pragma mark - CJCacheEncrypt
 /** 完整的描述请参见文件头部 */
-- (nullable NSURLSessionDataTask *)cjCache_postUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cjEncrypt_postUrl:(nullable NSString *)Url
                                             params:(nullable id)params
                                       settingModel:(CJRequestSettingModel *)settingModel
                                            encrypt:(BOOL)encrypt

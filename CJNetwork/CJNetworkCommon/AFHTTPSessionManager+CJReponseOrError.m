@@ -7,8 +7,7 @@
 //
 
 #import "AFHTTPSessionManager+CJReponseOrError.h"
-#import "CJRequestCacheDataUtil.h"
-//#import "CJNetworkCacheManager.h"
+#import "CJNetworkCacheUtil.h"
 
 @implementation AFHTTPSessionManager (CJReponseOrError)
 
@@ -38,7 +37,7 @@
     }
     
     if (beforeStartRequestWillShowCache) {
-        NSDictionary * responseObject = [CJRequestCacheDataUtil requestCacheDataByUrl:Url params:params];
+        id responseObject = [CJNetworkCacheUtil requestCacheDataByUrl:Url params:params];
         if (responseObject) {
             [self __didGetCacheSuccessWithResponseObject:responseObject forUrl:Url params:params settingModel:settingModel success:success];
         } else { //获取缓存失败一定要进行请求，且一旦进行请求，最后肯定是以网络请求数据作为最后的显示，要不你请求干嘛
@@ -77,7 +76,7 @@
 {
     CJNetworkCacheStrategy cacheStrategy = settingModel.cacheStrategy;
     if (cacheStrategy != CJNetworkCacheStrategyNoneCache) {  //是否需要本地缓存现在请求下来的网络数据
-        [CJRequestCacheDataUtil cacheNetworkData:responseObject byRequestUrl:Url parameters:params cacheTimeInterval:settingModel.cacheTimeInterval];
+        [CJNetworkCacheUtil cacheResponseObject:responseObject forUrl:Url params:params cacheTimeInterval:settingModel.cacheTimeInterval];
     }
     
     NSURLRequest *request = task.originalRequest;

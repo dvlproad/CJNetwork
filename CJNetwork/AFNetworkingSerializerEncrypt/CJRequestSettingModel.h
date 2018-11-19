@@ -23,8 +23,8 @@ typedef NS_ENUM(NSUInteger, CJNetworkCacheLevel) {
 ///缓存策略
 typedef NS_ENUM(NSUInteger, CJNetworkCacheStrategy) {
     CJNetworkCacheStrategyNoneCache,            /**< 成功/失败的时候，都不使用缓存，直接使用网络数据 */
-    CJNetworkCacheStrategyEndWithCacheIfExist,  /**< 成功/失败的时候，如果有缓存，则不用再去取网络错误值 */
-    CJNetworkCacheStrategyUseCacheToTransition, /**< 成功/失败的时候，如果有缓存，使用缓存过去，最终以网络数据显示 */
+    CJNetworkCacheStrategyEndWithCacheIfExist,  /**< 成功/失败的时候，如果有缓存，则不用再去取网络实际值 */
+    CJNetworkCacheStrategyUseCacheToTransition, /**< 成功/失败的时候，如果有缓存，使用缓存过渡来快速显示，最终以网络数据显示 */
 };
 
 @interface CJRequestSettingModel : NSObject {

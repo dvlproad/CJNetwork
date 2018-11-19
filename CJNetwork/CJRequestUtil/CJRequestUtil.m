@@ -7,7 +7,6 @@
 //
 
 #import "CJRequestUtil.h"
-#import "CJNetworkErrorUtil.h"
 
 @implementation CJRequestUtil
 
