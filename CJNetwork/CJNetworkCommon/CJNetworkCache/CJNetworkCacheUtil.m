@@ -8,7 +8,7 @@
 
 #import "CJNetworkCacheUtil.h"
 
-//#ifdef CJTESTPOD
+//#ifdef CJNetworkPodTEST
 //#import "CJCacheManager.h"
 //#else
 //#import <CJCacheManager/CJCacheManager.h>

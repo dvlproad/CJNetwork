@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#ifdef CJNetworkPodTEST
 #import "CJNetworkInfoModel.h"
+#else
+#import <CJNetwork/CJNetworkInfoModel.h>
+#endif
+
 
 /**
  *  系统的请求方法
