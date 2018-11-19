@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.6.0_1" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.6.0_2" }
   s.source_files  = "CJNetwork/*.{h,m}"
   s.frameworks = 'UIKit'
 

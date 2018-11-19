@@ -814,6 +814,7 @@
 				78FC91FC1F54481E00033DEF /* AppDelegate.m */,
 				7868F1362121C61400A283EB /* AppDelegate+WindowRootViewController.h */,
 				7868F1372121C61400A283EB /* AppDelegate+WindowRootViewController.m */,
+				8050036621192C1E002A2306 /* CJObjectConvertUtil */,
 				78EB550421A280C200EEB853 /* CommonUI */,
 				784653691F544A0100E20A27 /* 断点续传组件 */,
 				784653571F5449D000E20A27 /* CJCacheManager */,
@@ -868,7 +869,6 @@
 				7846D3E3219D5A51003C7C64 /* CJRequestSettingModel.h */,
 				7846D3E4219D5A51003C7C64 /* CJRequestSettingModel.m */,
 				78881CEB214AE71700CAED82 /* CJNetworkInfo */,
-				8050036621192C1E002A2306 /* CJObjectConvertUtil */,
 				7886CD3E219E74AB007C3BCB /* CJNetworkCache */,
 			);
 			path = CJNetworkCommon;

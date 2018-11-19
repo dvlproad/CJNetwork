@@ -10,6 +10,7 @@
 #define CJNetwork_h
 
 #import "CJRequestUtil.h"                       //系统的请求方法
+#import "AFHTTPSessionManager+CJSerializerEncrypt.h"
 #import "AFHTTPSessionManager+CJMethodEncrypt.h" //AFN的请求方法(包含缓存方法)
 
 #import "AFHTTPSessionManager+CJUploadFile.h"   //文件的上传请求方法(使用AFN)

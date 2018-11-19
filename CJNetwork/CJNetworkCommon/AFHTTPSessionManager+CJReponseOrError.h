@@ -6,7 +6,7 @@
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
-#import "AFHTTPSessionManager.h"
+#import <AFNetworking/AFNetworking.h>
 #import "CJRequestSettingModel.h"
 #import "CJNetworkInfoModel.h"
 
