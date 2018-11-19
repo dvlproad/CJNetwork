@@ -43,13 +43,22 @@ Pod::Spec.new do |s|
   s.subspec 'CJNetworkCommon' do |ss|
     ss.source_files = "CJNetwork/CJNetworkCommon/**/*.{h,m}"
 
+    ss.dependency 'AFNetworking'
     ss.dependency 'YYCache'
     ss.dependency 'MJExtension'
   end
 
-  # 系统的请求方法
-  s.subspec 'CJRequestUtil' do |ss|
-    ss.source_files = "CJNetwork/CJRequestUtil/**/*.{h,m}"
+
+  # AFN的请求方法(加解密方法卸载Serializer方法中)
+  s.subspec 'AFNetworkingSerializerEncrypt' do |ss|
+    ss.source_files = "CJNetwork/AFNetworkingSerializerEncrypt/**/*.{h,m}"
+
+    ss.dependency 'CJNetwork/CJNetworkCommon'
+  end
+
+  # AFN的请求方法(加解密方法卸载Method方法中)
+  s.subspec 'AFNetworkingMethodEncrypt' do |ss|
+    ss.source_files = "CJNetwork/AFNetworkingMethodEncrypt/**/*.{h,m}"
 
     ss.dependency 'CJNetwork/CJNetworkCommon'
   end
@@ -61,30 +70,21 @@ Pod::Spec.new do |s|
     ss.dependency 'AFNetworking'
   end
 
-  # AFN的请求方法(加解密方法卸载Serializer方法中)
-  s.subspec 'AFNetworkingSerializerEncrypt' do |ss|
-    ss.source_files = "CJNetwork/AFNetworkingSerializerEncrypt/**/*.{h,m}"
-
-    ss.dependency 'AFNetworking'
-    ss.dependency 'CJNetwork/CJNetworkCommon'
-  end
-
-  # AFN的请求方法(加解密方法卸载Method方法中)
-  s.subspec 'AFNetworkingMethodEncrypt' do |ss|
-    ss.source_files = "CJNetwork/AFNetworkingMethodEncrypt/**/*.{h,m}"
-
-    ss.dependency 'AFNetworking'
-    ss.dependency 'CJNetwork/CJNetworkCommon'
-  end
-
   # 网络请求的管理类，其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现
   s.subspec 'CJNetworkClient' do |ss|
-    ss.source_files = "CJNetworkClient/**/*.{h,m}"
+    ss.source_files = "CJNetwork/CJNetworkClient/**/*.{h,m}"
 
     ss.dependency 'CJNetwork/AFNetworkingSerializerEncrypt'
     ss.dependency 'CJNetwork/AFNetworkingMethodEncrypt'
+    ss.dependency 'CJNetwork/AFNetworkingUploadComponent'
   end
 
+  # 系统的请求方法
+  s.subspec 'CJRequestUtil' do |ss|
+    ss.source_files = "CJNetwork/CJRequestUtil/**/*.{h,m}"
+
+    ss.dependency 'CJNetwork/CJNetworkCommon'
+  end
 
   # 数据的缓存
   s.subspec 'CJCacheManager' do |ss|

@@ -78,7 +78,7 @@
     
     if (dataModel.needCache) {
         NSTimeInterval timeInterval = [dataModel.expiredDate timeIntervalSinceDate:[NSDate date]];
-        if (timeInterval != 0) {
+        if (timeInterval > 0) {
             return dataModel.dataObject;
         } else { //过期了，删除缓存
             [self.cache removeObjectForKey:cacheKey];

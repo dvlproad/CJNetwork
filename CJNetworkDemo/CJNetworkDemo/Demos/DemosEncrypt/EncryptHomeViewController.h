@@ -6,15 +6,10 @@
 //  Copyright © 2016年 dvlproad. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <Masonry/Masonry.h>
-#import <CJBaseUtil/CJSectionDataModel.h>   //在CJDataUtil中
-#import <CJBaseUtil/CJModuleModel.h>        //在CJDataUtil中
+#import "CJUIKitBaseHomeViewController.h"
 
-@interface EncryptHomeViewController : UIViewController {
+@interface EncryptHomeViewController : CJUIKitBaseHomeViewController {
     
 }
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray<CJSectionDataModel *> *sectionDataModels;
 
 @end

@@ -11,9 +11,7 @@
 #import "HealthyNetworkClient.h"
 #import "HealthyHTTPSessionManager.h"
 
-@interface EncryptHomeViewController () <UITableViewDataSource, UITableViewDelegate> {
-    
-}
+@interface EncryptHomeViewController ()
 
 @end
 
@@ -23,17 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.title = NSLocalizedString(@"Encrypt首页", nil); //知识点:使得tabBar中的title可以和显示在顶部的title保持各自
-    
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    tableView.dataSource = self;
-    tableView.delegate = self;
-    [self.view addSubview:tableView];
-    [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.view);
-    }];
-    self.tableView = tableView;
+    self.navigationItem.title = NSLocalizedString(@"Encrypt首页", nil);
     
     
     NSMutableArray *sectionDataModels = [[NSMutableArray alloc] init];
@@ -42,10 +30,10 @@
         CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
         sectionDataModel.theme = @"Encrypt相关";
         {
-            CJModuleModel *toastUtilModule = [[CJModuleModel alloc] init];
-            toastUtilModule.title = @"登录(健康)";
-            //toastUtilModule.classEntry = [UIViewController class];
-            [sectionDataModel.values addObject:toastUtilModule];
+            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            loginModule.title = @"登录(健康)";
+            loginModule.selector = @selector(testLoginHealth);
+            [sectionDataModel.values addObject:loginModule];
         }
         
         [sectionDataModels addObject:sectionDataModel];
@@ -55,62 +43,25 @@
     self.sectionDataModels = sectionDataModels;
 }
 
-#pragma mark - UITableViewDataSource & UITableViewDelegate
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.sectionDataModels.count;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    CJSectionDataModel *sectionDataModel = [self.sectionDataModels objectAtIndex:section];
-    NSArray *dataModels = sectionDataModel.values;
-    
-    return dataModels.count;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    CJSectionDataModel *sectionDataModel = [self.sectionDataModels objectAtIndex:section];
-    
-    NSString *indexTitle = sectionDataModel.theme;
-    return indexTitle;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CJSectionDataModel *sectionDataModel = [self.sectionDataModels objectAtIndex:indexPath.section];
-    NSArray *dataModels = sectionDataModel.values;
-    CJModuleModel *moduleModel = [dataModels objectAtIndex:indexPath.row];
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = moduleModel.title;
-    
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //NSLog(@"didSelectRowAtIndexPath = %ld %ld", indexPath.section, indexPath.row);
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            [self loginHealthWithCompleteBlock:^(CJResponseModel *responseModel) {
-                if (responseModel.status == 0) {
-                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
-                    if (responseModel.cjNetworkLog) {
-                        [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
-                        [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
-                    }
-                    
-                } else {
-                    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];
-                    
-                    [CJLogViewWindow appendObject:@"加密页面的健康登录失败"];
-                    if (responseModel.cjNetworkLog) {
-                        [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
-                        [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
-                    }
-                }
-            }];
+- (void)testLoginHealth {
+    [self loginHealthWithCompleteBlock:^(CJResponseModel *responseModel) {
+        if (responseModel.status == 0) {
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
+            if (responseModel.cjNetworkLog) {
+                [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
+            }
+            
+        } else {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"登录失败", nil)];
+            
+            [CJLogViewWindow appendObject:@"加密页面的健康登录失败"];
+            if (responseModel.cjNetworkLog) {
+                [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
+            }
         }
-    }
+    }];
 }
 
 - (void)loginHealthWithCompleteBlock:(void (^)(CJResponseModel *responseModel))completeBlock {
@@ -118,11 +69,15 @@
     NSDictionary *params = @{@"username" : @"test",
                              @"password" : @"test",
                              };
-    
+    /*
     AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
-    
+    [manager cj_postUrl:UITrackingRunLoopMode params:params settingModel:nil success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo) {
+        <#code#>
+    } failure:^(CJFailureNetworkInfo * _Nullable failureNetworkInfo) {
+        <#code#>
+    }];
+    */
     [[HealthyNetworkClient sharedInstance] health_postApi:apiName params:params encrypt:YES success:^(HealthResponseModel *responseModel) {
-    //    [manager cj_postUrl:Url params:params shouldCache:NO progress:nil success:^(NSDictionary * _Nullable responseObject, BOOL isCacheData) {
         if (completeBlock) {
             completeBlock(responseModel);
         }

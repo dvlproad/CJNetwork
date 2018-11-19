@@ -8,7 +8,6 @@
 
 #import "CJCacheDataModel.h"
 
-
 @implementation CJCacheDataModel
 
 - (instancetype)initWithDataObject:(id<NSCoding>)object {

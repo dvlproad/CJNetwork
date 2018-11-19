@@ -62,6 +62,7 @@
                       flagImage:(UIImage *)flagImage
                           title:(NSString *)title
                         message:(NSString *)message
+                   blankBGColor:(UIColor *)blankBGColor
               cancelButtonTitle:(NSString *)cancelButtonTitle
                   okButtonTitle:(NSString *)okButtonTitle
                    cancelHandle:(void(^)(void))cancelHandle
@@ -72,7 +73,7 @@
                                               okButtonTitle:okButtonTitle
                                                cancelHandle:cancelHandle
                                                    okHandle:okHandle];
-    [alertView showWithShouldFitHeight:NO];
+    [alertView showWithShouldFitHeight:NO blankBGColor:blankBGColor];
 }
 
 #pragma mark - DebugView
@@ -81,7 +82,7 @@
 {    
     CGFloat screenWidth = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     CGSize popupViewSize = CGSizeMake(screenWidth * 0.9, 200);
-    CJAlertView *alertView = [[CJAlertView alloc] initWithSize:popupViewSize firstVerticalInterval:10 secondVerticalInterval:10 thirdVerticalInterval:0 bottomVerticalInterval:10];
+    CJAlertView *alertView = [[CJAlertView alloc] initWithSize:popupViewSize firstVerticalInterval:10 secondVerticalInterval:10 thirdVerticalInterval:0 bottomMinVerticalInterval:10];
     
     //UIImage *flagImage = [UIImage imageNamed:@"scan_icon_notice"];
     //[alertView addFlagImage:flagImage size:CGSizeMake(38, 38)];
@@ -109,7 +110,8 @@
         pasteboard.string = message;
     }];
     
-    [alertView showWithShouldFitHeight:YES];
+    UIColor *blankBGColor = [UIColor colorWithRed:.16 green:.17 blue:.21 alpha:.6];
+    [alertView showWithShouldFitHeight:YES blankBGColor:blankBGColor];
 }
 
 @end

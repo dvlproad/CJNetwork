@@ -26,24 +26,21 @@ target 'CJNetworkDemo' do
   pod 'AFNetworking', '~> 3.1.0'
   pod 'CocoaAsyncSocket', '~> 7.4.1'
   pod 'YYCache', '~> 1.0.4'
-  pod 'MJExtension', '~> 3.0.15.1'
-  
-  pod 'MBProgressHUD', '~> 0.9.1'
-  pod 'SVProgressHUD', '~> 2.1.2'
-  
+  pod 'MJExtension'
 #  pod 'JSONModel', '~> 1.1.0'
 #  pod 'Mantle', '~> 2.1.0'
   
-  pod 'OpenUDID', '~> 1.0.0'
+  pod 'MBProgressHUD'
+  pod 'SVProgressHUD'
   
   pod 'Masonry'
-  pod 'CJBaseUIKit/CJAlert', '~> 0.2.2'
-  pod 'CJBaseUtil/CJDataUtil'
-  pod 'CJBaseUtil/CJIndentedStringUtil'
-  pod 'CJBaseUtil/CJLog', '~> 0.3.1'
+  pod 'CJBaseUIKit', :subspecs => ['UIColor', 'UIButton', 'UITextField', 'CJToast', 'CJAlert']
+  pod 'CJBaseUtil', :subspecs => ['CJLog', 'CJIndentedStringUtil', 'CJDataUtil']
+
+  pod 'OpenUDID', '~> 1.0.0'
 end
 
 target 'CJNetworkDemoTests' do
-   pod 'AFNetworking', '~> 3.1.0'
-   pod 'CocoaAsyncSocket', '~> 7.4.1'
+   pod 'AFNetworking'
+   pod 'CocoaAsyncSocket'
 end
