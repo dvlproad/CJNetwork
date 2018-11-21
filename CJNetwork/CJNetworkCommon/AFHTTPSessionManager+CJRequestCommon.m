@@ -10,11 +10,138 @@
 #import <objc/runtime.h>
 #import "CJNetworkCacheUtil.h"
 
-//@interface AFURLSessionManager ()
-//
-//@end
+@interface AFURLSessionManager () {
+    
+}
+#pragma mark - 并发数控制
+@property (nonatomic, strong) dispatch_semaphore_t cjKeeperSignal;
+@property (nonatomic, assign) long cjKeeperSignalCount;
+@property (nonatomic, assign) BOOL shouldControlConcurrence;    /**< 是否应该控制并发数(默认NO) */
+@property (nonatomic, assign) NSInteger concurrenceCount;       /**< 有控制并发数时候的请求并发数 */
+
+#pragma mark - 拦截操作(一般只会用于需要获取dns的网络中)
+@property (nonatomic, copy) NSString *cjKeeperUrl;  /**< 需要拦截的Url，其他请求需要等到该Url请求结束后才能继续 */
+
+@end
 
 @implementation AFHTTPSessionManager (CJRequestCommon)
+
+#pragma mark - 并发数控制
+// cjKeeperSignal
+- (dispatch_semaphore_t)cjKeeperSignal {
+    return objc_getAssociatedObject(self, @selector(cjKeeperSignal));
+}
+
+- (void)setCjKeeperSignal:(dispatch_semaphore_t)cjKeeperSignal {
+    objc_setAssociatedObject(self, @selector(cjKeeperSignal), cjKeeperSignal, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+// cjKeeperSignalCount
+- (long)cjKeeperSignalCount {
+    return [objc_getAssociatedObject(self, @selector(cjKeeperSignalCount)) longValue];
+}
+
+- (void)setCjKeeperSignalCount:(long)cjKeeperSignalCount {
+    objc_setAssociatedObject(self, @selector(cjKeeperSignalCount), @(cjKeeperSignalCount), OBJC_ASSOCIATION_ASSIGN);
+}
+
+// shouldControlConcurrence
+- (BOOL)shouldControlConcurrence {
+    return [objc_getAssociatedObject(self, @selector(shouldControlConcurrence)) boolValue];
+}
+
+- (void)setShouldControlConcurrence:(BOOL)shouldControlConcurrence {
+    objc_setAssociatedObject(self, @selector(shouldControlConcurrence), @(shouldControlConcurrence), OBJC_ASSOCIATION_ASSIGN);
+}
+
+// concurrenceCount
+- (NSInteger)concurrenceCount {
+    return [objc_getAssociatedObject(self, @selector(concurrenceCount)) integerValue];
+}
+
+- (void)setConcurrenceCount:(NSInteger)concurrenceCount {
+    objc_setAssociatedObject(self, @selector(concurrenceCount), @(concurrenceCount), OBJC_ASSOCIATION_ASSIGN);
+}
+
+/// 设置并发数
+- (void)setupConcurrenceCount:(NSInteger)concurrenceCount {
+    NSAssert(concurrenceCount > 0, @"并发数必须大于0");
+    
+    self.shouldControlConcurrence = YES;
+    self.concurrenceCount = concurrenceCount;
+    
+    if (self.cjKeeperSignal == nil) {
+        self.cjKeeperSignal = dispatch_semaphore_create(concurrenceCount);
+        self.cjKeeperSignalCount = concurrenceCount;
+        
+    } else {
+        [self recoverConcurrenceCount];
+    }
+    
+}
+
+/// 恢复并发数(如果有些操作会更改到并发数，那么在该操作结束时候，需要调用此方法来恢复并发数)
+- (void)recoverConcurrenceCount {
+    if (!self.shouldControlConcurrence) {
+        return;
+    }
+    
+    if (self.cjKeeperSignalCount == self.concurrenceCount) {
+        return;
+    }
+    
+    if (self.cjKeeperSignalCount > self.concurrenceCount) { //并发数超过指定值，应该减少额外的信号量
+        NSInteger shouldExtarReleaseSignalCount = self.cjKeeperSignalCount-self.concurrenceCount;
+        for (NSInteger i = 0; i < shouldExtarReleaseSignalCount; i++) {
+            self.cjKeeperSignalCount = dispatch_semaphore_wait(self.cjKeeperSignal, DISPATCH_TIME_FOREVER);
+        }
+        
+    } else if (self.cjKeeperSignalCount < self.concurrenceCount) {//并发数小于指定值，应该增加额外的信号量
+        NSInteger shouldExtarAddSignalCount = self.concurrenceCount-self.cjKeeperSignalCount;
+        for (NSInteger i = 0; i < shouldExtarAddSignalCount; i++) {
+            self.cjKeeperSignalCount = dispatch_semaphore_signal(self.cjKeeperSignal);
+        }
+    }
+}
+
+/// 网络请求开始前，对信号量做等待(减法)操作
+- (void)__normalStartRequest {
+    if (!self.shouldControlConcurrence) {
+        return;
+    }
+    
+    if (self.cjKeeperSignal) {
+        dispatch_semaphore_wait(self.cjKeeperSignal, DISPATCH_TIME_FOREVER);
+    }
+}
+
+/// 网络请求结束后，对信号量做增加操作
+- (void)__normalEndRequest {
+    if (!self.shouldControlConcurrence) {
+        return;
+    }
+    
+    if (self.cjKeeperSignal) {
+        self.cjKeeperSignalCount = dispatch_semaphore_signal(self.cjKeeperSignal);
+    }
+}
+
+- (void)__specialStartRequestWithKeeper {
+    if (!self.shouldControlConcurrence) {
+        return;
+    }
+    
+    [self setupConcurrenceCount:1];
+}
+
+- (void)__specialEndRequestWithKeeper {
+    if (!self.shouldControlConcurrence) {
+        return;
+    }
+    
+    [self recoverConcurrenceCount];
+}
+
 
 #pragma mark - 网络操作
 /// 在请求前根据设置做相应处理
@@ -23,7 +150,7 @@
                                settingModel:(CJRequestSettingModel *)settingModel
                                     success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
 {
-    [self __didSignalWhenRequestStartWithSettingModel:settingModel];
+    [self __didConcurrenceControlWithStartRequestUrl:Url];
     
     CJRequestCacheStrategy cacheStrategy = settingModel.cacheStrategy;
     BOOL beforeStartRequestWillShowCache = YES; //在开始请求之前是否会先用缓存数据做一次快速显示
@@ -54,7 +181,7 @@
     }
     
     if (shouldStartRequestNetworkData == NO) {
-        [self __didSignalWhenRequestCompleteWithSettingModel:settingModel]; // 网络请求结束后，信号量操作
+        [self __didConcurrenceControlWithEndRequestUrl:Url]; // 网络请求结束后，并发量操作
     }
     
     return shouldStartRequestNetworkData;
@@ -100,7 +227,7 @@
         success(successRequestInfo);
     }
     
-    [self __didSignalWhenRequestCompleteWithSettingModel:settingModel]; // 网络请求结束后，信号量操作
+    [self __didConcurrenceControlWithEndRequestUrl:Url]; // 网络请求结束后，并发量操作
 }
 
 ///网络请求不到数据的时候（无网 或者 有网但服务器异常等无数据时候）执行的方法
@@ -120,47 +247,39 @@
         failure(failureRequestInfo);
     }
     
-    [self __didSignalWhenRequestCompleteWithSettingModel:settingModel]; // 网络请求结束后，信号量操作
+    [self __didConcurrenceControlWithEndRequestUrl:Url]; // 网络请求结束后，并发量操作
 }
 
-#pragma mark - 信号量操作
-- (dispatch_semaphore_t)cjKeeperSignal {
-    return objc_getAssociatedObject(self, @selector(cjKeeperSignal));
+#pragma mark - 拦截操作(一般只会用于需要获取dns的网络中)
+// cjKeeperUrl
+- (NSString *)cjKeeperUrl {
+    return objc_getAssociatedObject(self, @selector(cjKeeperUrl));
 }
 
-- (void)setCjKeeperSignal:(dispatch_semaphore_t)cjKeeperSignal {
-    objc_setAssociatedObject(self, @selector(cjKeeperSignal), cjKeeperSignal, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setCjKeeperUrl:(NSString *)cjKeeperUrl {
+    objc_setAssociatedObject(self, @selector(cjKeeperUrl), cjKeeperUrl, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (long)cjKeeperSignalCount {
-    return [objc_getAssociatedObject(self, @selector(cjKeeperSignalCount)) longValue];
+/// 设置拦截的操作
+- (void)setupKeeperUrl:(NSString *)Url {
+    self.cjKeeperUrl = Url;
 }
-
-- (void)setCjKeeperSignalCount:(long)cjKeeperSignalCount {
-    objc_setAssociatedObject(self, @selector(cjKeeperSignalCount), @(cjKeeperSignalCount), OBJC_ASSOCIATION_ASSIGN);
-}
-
 
 /// 网络请求开始前，对信号量做等待(减法)操作
-- (void)__didSignalWhenRequestStartWithSettingModel:(CJRequestSettingModel *)settingModel {
-    if (settingModel.isKeeperUrl) {
-        [self startKeeperWithAllowRequestCount:settingModel.keepingAllowRequestCount];
+- (void)__didConcurrenceControlWithStartRequestUrl:(NSString *)Url {
+    if ([Url isEqualToString:self.cjKeeperUrl]) {
+        [self __specialStartRequestWithKeeper];
     } else {
-        // 每次开始请求的时候，对信号量cjKeeperSignal减1，当cjKeeperSignal为0时候，该操作会处于等待状态，直到有地方又信号量加1了
-        if (self.cjKeeperSignal) {
-            dispatch_semaphore_wait(self.cjKeeperSignal, DISPATCH_TIME_FOREVER);
-        }
+        [self __normalStartRequest];
     }
 }
 
 /// 网络请求结束后，对信号量做增加操作
-- (void)__didSignalWhenRequestCompleteWithSettingModel:(CJRequestSettingModel *)settingModel {
-    if (settingModel.isKeeperUrl) {
-        [self stopKeeperWithAllowRequestCount:settingModel.keptAllowRequestCount];
+- (void)__didConcurrenceControlWithEndRequestUrl:(NSString *)Url {
+    if ([Url isEqualToString:self.cjKeeperUrl]) {
+        [self __specialEndRequestWithKeeper];
     } else {
-        if (self.cjKeeperSignal) {
-            self.cjKeeperSignalCount = dispatch_semaphore_signal(self.cjKeeperSignal);
-        }
+        [self __normalEndRequest];
     }
 }
 

@@ -20,17 +20,6 @@ typedef NS_ENUM(NSUInteger, CJRequestCacheStrategy) {
     
 }
 
-#pragma mark - 拦截
-// 请求拦截(默认NO)
-@property (nonatomic, assign) BOOL isKeeperUrl;
-
-// 以下 keepingAllowRequestCount 和 keptAllowRequestCount 只当 isKeeperUrl 为 YES 时候，才有用
-// 请求拦截后，最多允许通过的请求个数(默认1，以阻塞线程)
-@property (nonatomic, assign) BOOL keepingAllowRequestCount;
-
-// 请求结束后，最多允许通过的请求个数(默认6，以使得并发6)
-@property (nonatomic, assign) NSInteger keptAllowRequestCount;
-
 #pragma mark - 上传
 // 上传请求进度
 @property (nonatomic, copy) void (^uploadProgress)(NSProgress *progress);

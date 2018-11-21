@@ -13,18 +13,14 @@
 @interface AFHTTPSessionManager (CJRequestCommon) {
     
 }
+#pragma mark - 并发数控制
+/// 设置并发数
+- (void)setupConcurrenceCount:(NSInteger)concurrenceCount;
 
-#pragma mark - 信号量操作
+#pragma mark - 拦截操作(一般只会用于需要获取dns的网络中)
 
-@property (nonatomic, strong) dispatch_semaphore_t cjKeeperSignal;
-@property (nonatomic, assign) long cjKeeperSignalCount;
-
-/**
- *  开始拦截，使得允许通过的请求数目为allowRequestCount
- *
- *  @param allowRequestCount    允许通过的请求数目
- */
-- (void)startKeeperWithAllowRequestCount:(NSInteger)allowRequestCount;
+/// 设置拦截的操作
+- (void)setupKeeperUrl:(NSString *)Url;
 
 
 #pragma mark - 网络操作
