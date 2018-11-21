@@ -19,9 +19,7 @@
 #import "AFNDemoViewController.h"
 #import "RepeatRequestViewController.h"
 
-@interface DownloadHomeViewController () <UITableViewDataSource, UITableViewDelegate> {
-    
-}
+@interface DownloadHomeViewController ()
 
 @end
 

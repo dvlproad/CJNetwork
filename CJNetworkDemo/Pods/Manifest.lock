@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - CJBaseHelper/AuthorizationCJHelper (0.0.8)
   - CJBaseUIKit/CJAlert (0.3.0):
     - CJBaseUIKit/UIView/CJPopupAction
     - Masonry
@@ -29,6 +30,7 @@ PODS:
   - CJBaseUtil/CJLog (0.4.4):
     - CJBaseUIKit/UIView/CJDragAction
     - Masonry
+  - CJFoundation/NSString (0.1.2)
   - CocoaAsyncSocket (7.4.3):
     - CocoaAsyncSocket/All (= 7.4.3)
   - CocoaAsyncSocket/All (7.4.3):
@@ -46,6 +48,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - AFNetworking (~> 3.1.0)
+  - CJBaseHelper/AuthorizationCJHelper
   - CJBaseUIKit/CJAlert
   - CJBaseUIKit/CJToast
   - CJBaseUIKit/UIButton
@@ -54,6 +57,7 @@ DEPENDENCIES:
   - CJBaseUtil/CJDataUtil
   - CJBaseUtil/CJIndentedStringUtil
   - CJBaseUtil/CJLog
+  - CJFoundation/NSString
   - CocoaAsyncSocket
   - CocoaAsyncSocket (~> 7.4.1)
   - Masonry
@@ -66,8 +70,10 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - CJBaseHelper
     - CJBaseUIKit
     - CJBaseUtil
+    - CJFoundation
     - CocoaAsyncSocket
     - Masonry
     - MBProgressHUD
@@ -78,8 +84,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  CJBaseHelper: f39e78d52837f3d325170f1e4660f7e9e5a183cb
   CJBaseUIKit: 6706574187fb6beb8adcc5c72d70f1815ec232cc
   CJBaseUtil: 842f44965ee18787f17199677bfb78d2bf6d15df
+  CJFoundation: 2c27b7ad85ec0cc5ac24aa112867971e01ae3ea3
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -88,6 +96,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 6fd6cf8c6a5ef76a3f3f67d000b2b96f9d386877
+PODFILE CHECKSUM: a13a03265520cffefceb061ded416f7366ac9af5
 
 COCOAPODS: 1.5.3

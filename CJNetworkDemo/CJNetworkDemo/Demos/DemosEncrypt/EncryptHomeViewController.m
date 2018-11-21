@@ -54,25 +54,45 @@
 
 /// 测试缓存
 - (void)testCacheTime {
-    NSLog(@"第一次请求到的肯定是非缓存的数据，否则错误");
-    [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:YES completeBlock:^(CJResponseModel *responseModel) {
-        NSAssert(responseModel.isCacheData == NO, @"第一次请求到的肯定是非缓存的数据，否则错误");
+    // checkTestCacheTime 检查是否可以开始测试'设置的缓存过期时间是否有效'的问题
+    [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:YES success:^(CJResponseModel *responseModel) {
+        [self startTestCacheTime];
+    } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
+        NSAssert(isRequestFailure, @"网络请求失败，无法测试'设置的缓存过期时间是否有效'的问题，请先保证网络请求成功");
     }];
+}
+
+- (void)startTestCacheTime {
+    NSLog(@"第一次请求到的肯定是非缓存的数据，否则错误");
+    [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:YES success:^(CJResponseModel *responseModel) {
+        if (responseModel.isCacheData == NO) {
+            [CJToast shortShowMessage:@"①测试通过：第一次请求到的肯定是非缓存的数据"];
+        } else {
+            [DemoAlert showIKnowAlertViewWithTitle:@"①测试不通过：第一次请求到的不是非缓存的数据"];
+        }
+    } failure:nil];
     
     NSLog(@"在缓存过期10秒内，请求到的肯定是缓存的数据，否则错误");
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:NO completeBlock:^(CJResponseModel *responseModel) {
-            NSAssert(responseModel.isCacheData == YES, @"在缓存过期10秒内，请求到的肯定是缓存的数据，否则错误");
-        }];
+        [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:NO success:^(CJResponseModel *responseModel) {
+            if (responseModel.isCacheData == YES) {
+                [CJToast shortShowMessage:@"②测试通过：在缓存过期10秒内(现在是5秒)，请求到的肯定是缓存的数据"];
+            } else {
+                [DemoAlert showIKnowAlertViewWithTitle:@"②测试不通过：在缓存过期10秒内(现在是5秒)，请求到的不是缓存的数据"];
+            }
+        } failure:nil];
     });
     
     NSLog(@"在缓存过期10秒后，请求到的肯定是非缓存的数据，否则错误");
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(11 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:NO completeBlock:^(CJResponseModel *responseModel) {
-            NSAssert(responseModel.isCacheData == NO, @"在缓存过期10秒后，请求到的肯定是非缓存的数据，否则错误");
-            
-            [CJToast shortShowMessage:@"测试缓存时间通过"];
-        }];
+        [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:NO success:^(CJResponseModel *responseModel) {
+            if (responseModel.isCacheData == NO) {
+                [CJToast shortShowMessage:@"③测试通过：在缓存过期10秒后(现在是11秒)，请求到的肯定是非缓存的数据"];
+                [DemoAlert showIKnowAlertViewWithTitle:@"测试缓存时间通过"];
+            } else {
+                [DemoAlert showIKnowAlertViewWithTitle:@"③测试不通过：在缓存过期10秒后(现在是11秒)，请求到的不是非缓存的数据"];
+            }
+        } failure:nil];
     });
 }
 
@@ -104,9 +124,9 @@
                              };
     /*
     AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
-    [manager cj_postUrl:UITrackingRunLoopMode params:params settingModel:nil success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo) {
+    [manager cj_postUrl:UITrackingRunLoopMode params:params settingModel:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         <#code#>
-    } failure:^(CJFailureNetworkInfo * _Nullable failureNetworkInfo) {
+    } failure:^(CJFailureRequestInfo * _Nullable failureRequestInfo) {
         <#code#>
     }];
     */

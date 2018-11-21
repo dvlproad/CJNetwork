@@ -1,18 +1,18 @@
 //
-//  CJNetworkInfoModel.m
+//  CJRequestInfoModel.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2016/12/20.
 //  Copyright © 2016年 dvlproad. All rights reserved.
 //
 
-#import "CJNetworkInfoModel.h"
-#import "CJNetworkErrorUtil.h"
+#import "CJRequestInfoModel.h"
+#import "CJRequestErrorUtil.h"
 
 
-@implementation CJNetworkInfoModel
+@implementation CJRequestInfoModel
 
-- (instancetype)initWithType:(CJNetworkLogType)logType
+- (instancetype)initWithType:(CJRequestLogType)logType
                          Url:(NSString *)Url
                       params:(id)params
                      request:(NSURLRequest *)request
@@ -49,7 +49,7 @@
     
     //将传给服务器的参数用字符串打印出来
     id params = self.params;
-    NSString *allParamsJsonString = [CJNetworkInfoModel formattedStringFromObject:params];
+    NSString *allParamsJsonString = [CJRequestInfoModel formattedStringFromObject:params];
     //NSLog(@"传给服务器的json参数:%@", allParamsJsonString);
     
     NSString *bodyString = self.bodyString;
@@ -195,15 +195,15 @@
 
 
 
-@implementation CJSuccessNetworkInfo
+@implementation CJSuccessRequestInfo
 
-+ (id)successNetworkLogWithType:(CJNetworkLogType)logType
++ (id)successNetworkLogWithType:(CJRequestLogType)logType
                             Url:(NSString *)Url
                          params:(id)params
                         request:(NSURLRequest *)request
                  responseObject:(id)responseObject
 {
-    CJSuccessNetworkInfo *networkInfoModel = [[CJSuccessNetworkInfo alloc] initWithType:logType Url:Url params:params request:request];
+    CJSuccessRequestInfo *networkInfoModel = [[CJSuccessRequestInfo alloc] initWithType:logType Url:Url params:params request:request];
     
     //response
     NSDictionary *recognizableResponseObject = nil;
@@ -214,15 +214,15 @@
     }
     networkInfoModel.responseObject = recognizableResponseObject;
     
-    NSString *responseJsonString = [CJNetworkInfoModel formattedStringFromObject:recognizableResponseObject];
+    NSString *responseJsonString = [CJRequestInfoModel formattedStringFromObject:recognizableResponseObject];
     networkInfoModel.responseString = responseJsonString;
     
     //输出log
-    if (logType == CJNetworkLogTypeConsoleLog || logType == CJNetworkLogTypeSuppendWindow) {
+    if (logType == CJRequestLogTypeConsoleLog || logType == CJRequestLogTypeSuppendWindow) {
         NSString *networkLogString = [networkInfoModel getNetworkLogString];
         networkInfoModel.networkLogString = networkLogString;
         
-        [CJNetworkInfoModel printNetworkLogString:networkLogString];
+        [CJRequestInfoModel printNetworkLogString:networkLogString];
     }
     
     return networkInfoModel;
@@ -239,28 +239,28 @@
 
 
 
-@implementation CJFailureNetworkInfo
+@implementation CJFailureRequestInfo
 
-+ (id)errorNetworkLogWithType:(CJNetworkLogType)logType
++ (id)errorNetworkLogWithType:(CJRequestLogType)logType
                           Url:(NSString *)Url
                        params:(id)params
                       request:(NSURLRequest *)request
                         error:(NSError *)error
                   URLResponse:(NSURLResponse *)URLResponse
 {
-    CJFailureNetworkInfo *networkInfoModel = [[CJFailureNetworkInfo alloc] initWithType:logType Url:Url params:params request:request];
+    CJFailureRequestInfo *networkInfoModel = [[CJFailureRequestInfo alloc] initWithType:logType Url:Url params:params request:request];
     
     //error
     networkInfoModel.error = error;
-    NSString *cjErrorMeesage = [CJNetworkErrorUtil getErrorMessageFromURLResponse:URLResponse];
+    NSString *cjErrorMeesage = [CJRequestErrorUtil getErrorMessageFromURLResponse:URLResponse];
     networkInfoModel.errorMessage = cjErrorMeesage;
     
     //输出log
-    if (logType == CJNetworkLogTypeConsoleLog || logType == CJNetworkLogTypeSuppendWindow) {
+    if (logType == CJRequestLogTypeConsoleLog || logType == CJRequestLogTypeSuppendWindow) {
         NSString *networkLogString = [networkInfoModel getNetworkLogString];
         networkInfoModel.networkLogString = networkLogString;
         
-        [CJNetworkInfoModel printNetworkLogString:networkLogString];
+        [CJRequestInfoModel printNetworkLogString:networkLogString];
     }
     
     

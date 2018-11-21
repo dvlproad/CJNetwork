@@ -10,10 +10,10 @@
 
 @interface TestNetworkClient (Test)
 
-
 /// 测试缓存
 - (void)testCacheWithShouldRemoveCache:(BOOL)shouldRemoveCache
-                         completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
+                               success:(void (^)(CJResponseModel *responseModel))success
+                               failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 - (void)requestBaiduHomeCompleteBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
 

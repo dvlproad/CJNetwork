@@ -1,5 +1,5 @@
 //
-//  AFHTTPSessionManager+CJReponseOrError.h
+//  AFHTTPSessionManager+CJRequestCommon.h
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2017/6/13.
@@ -8,15 +8,32 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import "CJRequestSettingModel.h"
-#import "CJNetworkInfoModel.h"
+#import "CJRequestInfoModel.h"
 
-@interface AFHTTPSessionManager (CJReponseOrError)
+@interface AFHTTPSessionManager (CJRequestCommon) {
+    
+}
+
+#pragma mark - 信号量操作
+
+@property (nonatomic, strong) dispatch_semaphore_t cjKeeperSignal;
+@property (nonatomic, assign) long cjKeeperSignalCount;
+
+/**
+ *  开始拦截，使得允许通过的请求数目为allowRequestCount
+ *
+ *  @param allowRequestCount    允许通过的请求数目
+ */
+- (void)startKeeperWithAllowRequestCount:(NSInteger)allowRequestCount;
+
+
+#pragma mark - 网络操作
 
 /// 在请求前根据设置做相应处理
 - (BOOL)__didEventBeforeStartRequestWithUrl:(nullable NSString *)Url
                                      params:(nullable NSDictionary *)params
                                settingModel:(CJRequestSettingModel *)settingModel
-                                    success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success;
+                                    success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success;
 
 ///网络请求获取到数据时候执行的方法(responseObject必须是解密后的数据)
 - (void)__didRequestSuccessForTask:(NSURLSessionDataTask * _Nonnull)task
@@ -25,7 +42,7 @@
                             forUrl:(nullable NSString *)Url
                             params:(nullable id)params
                       settingModel:(CJRequestSettingModel *)settingModel
-                           success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success;
+                           success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success;
 
 ///网络请求不到数据的时候（无网 或者 有网但服务器异常等无数据时候）执行的方法
 - (void)__didRequestFailureForTask:(NSURLSessionDataTask * _Nonnull)task
@@ -33,6 +50,6 @@
                             forUrl:(nullable NSString *)Url
                             params:(nullable id)params
                       settingModel:(CJRequestSettingModel *)settingModel
-                           failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure;
+                           failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
 
 @end

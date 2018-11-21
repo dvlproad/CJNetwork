@@ -43,18 +43,18 @@
     AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
     
     CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    settingModel.logType = CJNetworkLogTypeConsoleLog;
+    settingModel.logType = CJRequestLogTypeConsoleLog;
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cj_postUrl:Url params:params settingModel:settingModel success:^(CJSuccessNetworkInfo * _Nullable successNetworkInfo) {
-        NSDictionary *responseDictionary = successNetworkInfo.responseObject;
+    [manager cj_postUrl:Url params:params settingModel:settingModel success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
+        NSDictionary *responseDictionary = successRequestInfo.responseObject;
         HealthResponseModel *responseModel = [[HealthResponseModel alloc] initWithResponseDictionary:responseDictionary];
         if (success) {
             success(responseModel);
         }
     
-    } failure:^(CJFailureNetworkInfo * _Nullable failureNetworkInfo) {
-        NSError *error = failureNetworkInfo.error;
+    } failure:^(CJFailureRequestInfo * _Nullable failureRequestInfo) {
+        NSError *error = failureRequestInfo.error;
         //HealthResponseModel *responseModel = [[CJResponseModel alloc] init];
         //responseModel.status = -1;
         //responseModel.message = NSLocalizedString(@"网络请求失败", nil);

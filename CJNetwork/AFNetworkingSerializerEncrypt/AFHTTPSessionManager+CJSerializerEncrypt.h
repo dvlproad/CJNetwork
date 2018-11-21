@@ -7,7 +7,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#import "AFHTTPSessionManager+CJReponseOrError.h"
+#import "AFHTTPSessionManager+CJRequestCommon.h"
 
 @interface AFHTTPSessionManager (CJSerializerEncrypt)
 
@@ -25,8 +25,8 @@
 - (nullable NSURLSessionDataTask *)cj_getUrl:(nullable NSString *)Url
                                       params:(nullable NSDictionary *)params
                                 settingModel:(CJRequestSettingModel *)settingModel
-                                     success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
-                                     failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure;
+                                     success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+                                     failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
 
 
 /**
@@ -43,8 +43,8 @@
 - (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
                                        params:(nullable id)params
                                  settingModel:(CJRequestSettingModel *)settingModel
-                                      success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
-                                      failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure;
+                                      success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+                                      failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
 
 
 @end

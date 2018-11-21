@@ -13,7 +13,11 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.logType = CJNetworkLogTypeConsoleLog;
+        self.logType = CJRequestLogTypeConsoleLog;
+        
+        self.isKeeperUrl = NO;
+        self.keepingAllowRequestCount = 1;
+        self.keptAllowRequestCount = 6;
     }
     return self;
 }

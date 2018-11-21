@@ -10,19 +10,21 @@
 #import <Foundation/Foundation.h>
 #import "AFHTTPSessionManager+CJSerializerEncrypt.h"
 
+#import "CJRequestSimulateUtil.h"
+
+/////缓存时间等级
+//typedef NS_ENUM(NSUInteger, CJNetworkCacheLevel) {
+//    CJNetworkCacheLevelCustom = 0,
+//    CJNetworkCacheLevelOne,
+//    CJNetworkCacheLevelTwo,
+//    CJNetworkCacheLevelThree,
+//    CJNetworkCacheLevelFour,
+//    CJNetworkCacheLevelFive,
+//    CJNetworkCacheLevelSix
+//};
+
 @interface CJNetworkClient : NSObject {
     
 }
-@property (nonatomic, copy) NSString *simulateDomain;   /**< 设置模拟接口所在的域名，当需要使用远程模拟的时候才需要设置(且若未设置则将使用http://localhost/+类名作为域名) */
-
-+ (instancetype)sharedInstance;
-
-#pragma mark - remoteSimulateApi
-/// 只获取模拟接口的完整模拟Url
-- (NSString *)cjGetRemoteSimulateUrlWithApiSuffix:(NSString *)apiSuffix;
-
-#pragma mark - localSimulateApi
-/// 开始本地模拟接口请求
-- (void)cjLocalSimulateApi:(NSString *)apiSuffix completeBlock:(void (^)(NSDictionary *responseDictionary))completeBlock;
 
 @end

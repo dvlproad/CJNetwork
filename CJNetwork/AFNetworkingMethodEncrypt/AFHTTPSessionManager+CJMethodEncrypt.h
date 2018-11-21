@@ -7,7 +7,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#import "AFHTTPSessionManager+CJReponseOrError.h"
+#import "AFHTTPSessionManager+CJRequestCommon.h"
 
 
 /**
@@ -38,7 +38,7 @@
                                            encrypt:(BOOL)encrypt
                                       encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
                                       decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
-                                           success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
-                                           failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure;
+                                           success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+                                           failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
 
 @end

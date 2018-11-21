@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 #ifdef CJNetworkPodTEST
-#import "CJNetworkInfoModel.h"
+#import "CJRequestInfoModel.h"
 #else
-#import <CJNetwork/CJNetworkInfoModel.h>
+#import <CJNetwork/CJRequestInfoModel.h>
 #endif
 
 
@@ -49,9 +49,9 @@
                              encrypt:(BOOL)encrypt
                         encryptBlock:(NSData * (^)(NSDictionary *requestParmas))encryptBlock
                         decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
-                             logType:(CJNetworkLogType)logType
-                             success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
-                             failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure;
+                             logType:(CJRequestLogType)logType
+                             success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+                             failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
 
 
 
@@ -68,9 +68,9 @@
  */
 + (void)cj_getUrl:(NSString *)Url
            params:(id)params
-          logType:(CJNetworkLogType)logType
-          success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
-          failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure;
+          logType:(CJRequestLogType)logType
+          success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+          failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
 
 
 @end

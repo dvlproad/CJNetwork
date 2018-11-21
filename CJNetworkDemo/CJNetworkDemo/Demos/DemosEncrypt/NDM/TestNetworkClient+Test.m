@@ -12,24 +12,25 @@
 
 /// 测试缓存
 - (void)testCacheWithShouldRemoveCache:(BOOL)shouldRemoveCache
-                         completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
+                               success:(void (^)(CJResponseModel *responseModel))success
+                               failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     NSString *apiSuffix = @"/api/testCache";
     NSDictionary *params = @{@"test": @"test"};
     
     CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    settingModel.cacheStrategy = CJNetworkCacheStrategyEndWithCacheIfExist;
+    settingModel.cacheStrategy = CJRequestCacheStrategyEndWithCacheIfExist;
     settingModel.cacheTimeInterval = 10;
-    settingModel.logType = CJNetworkLogTypeConsoleLog;
+    settingModel.logType = CJRequestLogTypeConsoleLog;
     
-    [self testSimulate_postApiSuffix:apiSuffix params:params settingModel:settingModel shouldRemoveCache:shouldRemoveCache completeBlock:completeBlock];
+    [self testSimulate_postApiSuffix:apiSuffix params:params settingModel:settingModel shouldRemoveCache:shouldRemoveCache success:success failure:failure];
 }
 
 - (void)requestBaiduHomeCompleteBlock:(void (^)(CJResponseModel *responseModel))completeBlock {
     NSString *apiSuffix = @"/api/testCache";
     NSDictionary *parameters = nil;
     
-    CJNetworkCacheStrategy cacheStrategy = CJNetworkCacheStrategyNoneCache;
+    CJRequestCacheStrategy cacheStrategy = CJRequestCacheStrategyNoneCache;
     [self testEncrypt_postApiSuffix:apiSuffix params:parameters cacheStrategy:cacheStrategy completeBlock:completeBlock];
 }
 

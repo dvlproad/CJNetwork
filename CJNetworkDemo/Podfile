@@ -34,8 +34,10 @@ target 'CJNetworkDemo' do
   pod 'SVProgressHUD'
   
   pod 'Masonry'
-  pod 'CJBaseUIKit', :subspecs => ['UIColor', 'UIButton', 'UITextField', 'CJToast', 'CJAlert']
-  pod 'CJBaseUtil', :subspecs => ['CJLog', 'CJIndentedStringUtil', 'CJDataUtil']
+  pod 'CJBaseUIKit',    :subspecs => ['UIColor', 'UIButton', 'UITextField', 'CJToast', 'CJAlert']
+  pod 'CJBaseUtil',     :subspecs => ['CJLog', 'CJIndentedStringUtil', 'CJDataUtil']
+  pod 'CJFoundation',   :subspecs => ['NSString']
+  pod 'CJBaseHelper',   :subspecs => ['AuthorizationCJHelper']
 
   pod 'OpenUDID', '~> 1.0.0'
 end

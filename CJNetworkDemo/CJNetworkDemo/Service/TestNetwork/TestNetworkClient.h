@@ -14,15 +14,18 @@
 
 @interface TestNetworkClient : CJNetworkClient
 
++ (TestNetworkClient *)sharedInstance;
+
 - (nullable NSURLSessionDataTask *)testSimulate_postApiSuffix:(NSString *)apiSuffix
                                                        params:(nullable id)params
                                                  settingModel:(CJRequestSettingModel *)settingModel
                                             shouldRemoveCache:(BOOL)shouldRemoveCache
-                                                completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
+                                                      success:(void (^)(CJResponseModel *responseModel))success
+                                                      failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 - (nullable NSURLSessionDataTask *)testEncrypt_postApiSuffix:(NSString *)apiSuffix
                                                       params:(nullable id)params
-                                               cacheStrategy:(CJNetworkCacheStrategy)cacheStrategy
+                                               cacheStrategy:(CJRequestCacheStrategy)cacheStrategy
                                                completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
 
 @end

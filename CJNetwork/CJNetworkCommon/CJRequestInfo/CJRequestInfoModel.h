@@ -1,5 +1,5 @@
 //
-//  CJNetworkInfoModel.h
+//  CJRequestInfoModel.h
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2016/12/20.
@@ -8,28 +8,36 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, CJNetworkLogType) {
-    CJNetworkLogTypeNone = 0,
-    CJNetworkLogTypeClean,
-    CJNetworkLogTypeConsoleLog,
-    CJNetworkLogTypeSuppendWindow,
+/// 网络请求方法
+typedef NS_ENUM(NSUInteger, CJRequestMethod) {
+    CJRequestMethodPOST = 0,
+    CJRequestMethodGET,
+};
+
+/// 网络请求结果显示方式
+typedef NS_ENUM(NSUInteger, CJRequestLogType) {
+    CJRequestLogTypeNone = 0,
+    CJRequestLogTypeClean,
+    CJRequestLogTypeConsoleLog,
+    CJRequestLogTypeSuppendWindow,
 };
 
 
-@interface CJNetworkInfoModel : NSObject
+@interface CJRequestInfoModel : NSObject
 
 @property (nonatomic, copy) NSString *Url;              /**< 请求的地址 */
 @property (nonatomic, strong) id params;                /**< 请求的原始参数 */
 @property (nonatomic, copy) NSString *bodyString;       /**< 请求的最终参数 */
+@property (nonatomic, assign) CJRequestMethod method;   /**< 网络请求方法 */
 
-@property (nonatomic, assign) CJNetworkLogType logType;
+@property (nonatomic, assign) CJRequestLogType logType; /**< 网络请求结果显示方式 */
 @property (nonatomic, copy) NSString *networkLogString;
 
 @end
 
 
 
-@interface CJSuccessNetworkInfo : CJNetworkInfoModel {
+@interface CJSuccessRequestInfo : CJRequestInfoModel {
     
 }
 //请求成功的结果
@@ -38,7 +46,7 @@ typedef NS_ENUM(NSUInteger, CJNetworkLogType) {
 @property (nonatomic, copy) NSString *responseString;
 
 ///初始化方法
-+ (id)successNetworkLogWithType:(CJNetworkLogType)logType
++ (id)successNetworkLogWithType:(CJRequestLogType)logType
                             Url:(NSString *)Url
                          params:(id)params
                         request:(NSURLRequest *)request
@@ -47,14 +55,15 @@ typedef NS_ENUM(NSUInteger, CJNetworkLogType) {
 @end
 
 
-@interface CJFailureNetworkInfo : CJNetworkInfoModel {
+@interface CJFailureRequestInfo : CJRequestInfoModel {
     
 }
 //请求失败的结果
+@property (nonatomic, assign) BOOL isRequestFailure;    /**< 是否是网络请求返回的错误，否的话就是业务逻辑错误 */
 @property (nonatomic, strong) NSError *error;
 @property (nonatomic, copy) NSString *errorMessage;
 
-+ (id)errorNetworkLogWithType:(CJNetworkLogType)logType
++ (id)errorNetworkLogWithType:(CJRequestLogType)logType
                           Url:(NSString *)Url
                        params:(id)params
                       request:(NSURLRequest *)request

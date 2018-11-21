@@ -15,5 +15,8 @@
 
 #import "AFHTTPSessionManager+CJUploadFile.h"   //文件的上传请求方法(使用AFN)
 
+#import "CJRequestSimulateUtil.h"
+
+#import "CJNetworkClient.h"
 
 #endif /* AFHTTPSessionManager_CJCategory_h */

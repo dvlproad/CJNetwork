@@ -15,8 +15,8 @@
 + (void)xx_postUrl:(NSString *)Url
             params:(id)params
            encrypt:(BOOL)encrypt
-           success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
-           failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure {
+           success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+           failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure {
     
     NSData * (^encryptBlock)(NSDictionary *requestParmas) = ^NSData *(NSDictionary *requestParmas) {
         NSData *bodyData = [CJEncryptAndDecryptTool encryptParmas:params];//在详细的app中需要实现的方法
@@ -28,7 +28,7 @@
         return responseObject;
     };
     
-    [self cj_postUrl:Url params:params encrypt:encrypt encryptBlock:encryptBlock decryptBlock:decryptBlock logType:CJNetworkLogTypeConsoleLog success:success failure:failure];
+    [self cj_postUrl:Url params:params encrypt:encrypt encryptBlock:encryptBlock decryptBlock:decryptBlock logType:CJRequestLogTypeConsoleLog success:success failure:failure];
 }
 //*/
 
@@ -39,9 +39,9 @@
                              encrypt:(BOOL)encrypt
                         encryptBlock:(NSData * (^)(NSDictionary *requestParmas))encryptBlock
                         decryptBlock:(NSDictionary * (^)(NSString *responseString))decryptBlock
-                             logType:(CJNetworkLogType)logType
-                             success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
-                             failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure
+                             logType:(CJRequestLogType)logType
+                             success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+                             failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
 {
     /* 利用Url和params，通过加密的方法创建请求 */
     NSData *bodyData = nil;
@@ -74,18 +74,18 @@
             }
             
             //successNetworkLog
-            CJSuccessNetworkInfo *successNetworkInfo = [CJSuccessNetworkInfo successNetworkLogWithType:logType Url:Url params:params request:request responseObject:recognizableResponseObject];
+            CJSuccessRequestInfo *successRequestInfo = [CJSuccessRequestInfo successNetworkLogWithType:logType Url:Url params:params request:request responseObject:recognizableResponseObject];
             if (success) {
-                success(successNetworkInfo);
+                success(successRequestInfo);
             }
             
         }
         else
         {
             //errorNetworkLog
-            CJFailureNetworkInfo *failureNetworkInfo = [CJFailureNetworkInfo errorNetworkLogWithType:logType Url:Url params:params request:request error:error URLResponse:response];
+            CJFailureRequestInfo *failureRequestInfo = [CJFailureRequestInfo errorNetworkLogWithType:logType Url:Url params:params request:request error:error URLResponse:response];
             if (failure) {
-                failure(failureNetworkInfo);
+                failure(failureRequestInfo);
             }
         }
     }];
@@ -100,9 +100,9 @@
 /* 完整的描述请参见文件头部 */
 + (void)cj_getUrl:(NSString *)Url
            params:(id)params
-          logType:(CJNetworkLogType)logType
-          success:(nullable void (^)(CJSuccessNetworkInfo * _Nullable successNetworkInfo))success
-          failure:(nullable void (^)(CJFailureNetworkInfo * _Nullable failureNetworkInfo))failure
+          logType:(CJRequestLogType)logType
+          success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+          failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
 {
     NSString *fullUrlForGet = [self connectRequestUrl:Url params:params];
     NSURL *URL = [NSURL URLWithString:fullUrlForGet];
@@ -118,17 +118,17 @@
         if (error == nil) {
             NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             
-            CJSuccessNetworkInfo *successNetworkInfo = [CJSuccessNetworkInfo successNetworkLogWithType:logType Url:Url params:params request:request responseObject:responseObject];
+            CJSuccessRequestInfo *successRequestInfo = [CJSuccessRequestInfo successNetworkLogWithType:logType Url:Url params:params request:request responseObject:responseObject];
             if (success) {
-                success(successNetworkInfo);
+                success(successRequestInfo);
             }
         }
         else
         {
             //NSDictionary *responseObject = @{@"status":@(-1), @"message":@"网络异常"};
-            CJFailureNetworkInfo *failureNetworkInfo = [CJFailureNetworkInfo errorNetworkLogWithType:logType Url:Url params:params request:request error:error URLResponse:response];
+            CJFailureRequestInfo *failureRequestInfo = [CJFailureRequestInfo errorNetworkLogWithType:logType Url:Url params:params request:request error:error URLResponse:response];
             if (failure) {
-                failure(failureNetworkInfo);
+                failure(failureRequestInfo);
             }
         }
     }];

@@ -11,9 +11,7 @@
 #import "LoginViewController.h"
 
 
-@interface CacheHomeViewController () <UITableViewDataSource, UITableViewDelegate> {
-    
-}
+@interface CacheHomeViewController () 
 
 @end
 
