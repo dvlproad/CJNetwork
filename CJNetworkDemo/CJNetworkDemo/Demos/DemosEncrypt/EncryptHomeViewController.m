@@ -9,6 +9,8 @@
 #import "EncryptHomeViewController.h"
 
 #import "TestNetworkClient+Test.h"
+#import "TestHTTPSessionManager.h"
+
 
 #import "HealthyNetworkClient.h"
 #import "HealthyHTTPSessionManager.h"
@@ -40,6 +42,24 @@
         }
         {
             CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            loginModule.title = @"正确的测试并发数设置(非网络)";
+            loginModule.selector = @selector(testConcurrenceCount_semaphore_signal_wait);
+            [sectionDataModel.values addObject:loginModule];
+        }
+        {
+            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            loginModule.title = @"错误的测试并发数设置(非网络)";
+            loginModule.selector = @selector(testConcurrenceCount_semaphore_signal_wait2);
+            [sectionDataModel.values addObject:loginModule];
+        }
+        {
+            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            loginModule.title = @"测试网络并发数设置(请一定要执行验证)";
+            loginModule.selector = @selector(testConcurrenceCount);
+            [sectionDataModel.values addObject:loginModule];
+        }
+        {
+            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
             loginModule.title = @"登录(健康)";
             loginModule.selector = @selector(testLoginHealth);
             [sectionDataModel.values addObject:loginModule];
@@ -52,7 +72,8 @@
     self.sectionDataModels = sectionDataModels;
 }
 
-/// 测试缓存
+#pragma mark - 测试缓存时间
+/// 测试缓存时间
 - (void)testCacheTime {
     // checkTestCacheTime 检查是否可以开始测试'设置的缓存过期时间是否有效'的问题
     [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:YES success:^(CJResponseModel *responseModel) {
@@ -95,6 +116,74 @@
         } failure:nil];
     });
 }
+
+#pragma mark - 测试并发数设置
+- (void)testConcurrenceCount {
+#ifndef CJTestNetworkConcurrence
+    [DemoAlert showIKnowAlertViewWithTitle:@"请在pch中先打开 CJTestNetworkConcurrence，在进行测试"];
+#endif
+    
+    [TestHTTPSessionManager sharedInstance].completionQueue = dispatch_queue_create("cn.testConcurrenceCount.queue", NULL);
+//    [TestHTTPSessionManager sharedInstance].completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    [[TestHTTPSessionManager sharedInstance] setupConcurrenceCount:4];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (NSInteger i = 0; i < 2; i++) {
+            for (NSInteger apiIndex = 1; apiIndex <= 5; apiIndex++) {
+                NSString *requestString = [NSString stringWithFormat:@"请求%ld(%ldx5+%ld)", i * 5 + apiIndex, i, apiIndex];
+                NSLog(@"开始%@", requestString);
+                [[TestNetworkClient sharedInstance] testConcurrenceCountApiIndex:apiIndex success:^(CJResponseModel *responseModel) {
+                    NSLog(@"完成%@:%@", requestString, [NSThread currentThread]);
+                } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
+                    NSLog(@"完成%@:%@", requestString, [NSThread currentThread]);
+                }];
+            }
+        }
+    });
+}
+
+- (void)testConcurrenceCount_semaphore_signal_wait {
+    // 创建一个控制线程同步的信号量，初始值为4(红灯)
+    dispatch_semaphore_t syncSemaphore = dispatch_semaphore_create(4); //可通过4+1=5个
+    
+    for (NSInteger i = 0; i < 30; i++) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            sleep(5);
+            NSLog(@"完成任务%ld", i);
+            // 使信号的信号量+1，这里的信号量本来为0，+1信号量为1(绿灯)
+            dispatch_semaphore_signal(syncSemaphore);
+        });
+        
+        // 开启信号等待，设置等待时间为永久，直到信号的信号量大于等于1（绿灯）
+        dispatch_semaphore_wait(syncSemaphore, DISPATCH_TIME_FOREVER);
+    }
+}
+
+
+
+- (void)testConcurrenceCount_semaphore_signal_wait2 {
+    // 创建一个控制线程同步的信号量，初始值为4(红灯)
+    dispatch_semaphore_t syncSemaphore = dispatch_semaphore_create(4); //可通过4+1=5个
+    
+    for (NSInteger i = 0; i < 30; i++) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                sleep(5); //不要在主线程sleep
+                NSLog(@"完成任务%ld", i);
+            });
+            
+            // 使信号的信号量+1，这里的信号量本来为0，+1信号量为1(绿灯)
+            dispatch_semaphore_signal(syncSemaphore);
+        });
+        
+        // 开启信号等待，设置等待时间为永久，直到信号的信号量大于等于1（绿灯）
+        dispatch_semaphore_wait(syncSemaphore, DISPATCH_TIME_FOREVER);
+    }
+}
+
+
+#pragma mark - 测试登录健康
 
 - (void)testLoginHealth {
     [self loginHealthWithCompleteBlock:^(CJResponseModel *responseModel) {

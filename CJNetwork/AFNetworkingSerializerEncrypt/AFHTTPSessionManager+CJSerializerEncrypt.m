@@ -58,6 +58,9 @@
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [weakSelf __didRequestFailureForTask:task withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure];
         }];
+        
+        [self __didConcurrenceControlWithStartRequestUrl:Url];
+        
         return URLSessionDataTask;
         
     } else {
@@ -68,6 +71,8 @@
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [weakSelf __didRequestFailureForTask:task withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure];
         }];
+        
+        [self __didConcurrenceControlWithStartRequestUrl:Url];
         
         return URLSessionDataTask;
     }

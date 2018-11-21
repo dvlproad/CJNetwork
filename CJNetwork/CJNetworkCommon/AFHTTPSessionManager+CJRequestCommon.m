@@ -14,7 +14,7 @@
     
 }
 #pragma mark - 并发数控制
-@property (nonatomic, strong) dispatch_semaphore_t cjKeeperSignal;
+//@property (nonatomic, strong) dispatch_semaphore_t cjKeeperSignal;
 @property (nonatomic, assign) long cjKeeperSignalCount;
 @property (nonatomic, assign) BOOL shouldControlConcurrence;    /**< 是否应该控制并发数(默认NO) */
 @property (nonatomic, assign) NSInteger concurrenceCount;       /**< 有控制并发数时候的请求并发数 */
@@ -73,11 +73,10 @@
     if (self.cjKeeperSignal == nil) {
         self.cjKeeperSignal = dispatch_semaphore_create(concurrenceCount);
         self.cjKeeperSignalCount = concurrenceCount;
-        
+
     } else {
         [self recoverConcurrenceCount];
     }
-    
 }
 
 /// 恢复并发数(如果有些操作会更改到并发数，那么在该操作结束时候，需要调用此方法来恢复并发数)
@@ -111,7 +110,7 @@
     }
     
     if (self.cjKeeperSignal) {
-        dispatch_semaphore_wait(self.cjKeeperSignal, DISPATCH_TIME_FOREVER);
+        self.cjKeeperSignalCount = dispatch_semaphore_wait(self.cjKeeperSignal, DISPATCH_TIME_FOREVER);
     }
 }
 
@@ -150,8 +149,6 @@
                                settingModel:(CJRequestSettingModel *)settingModel
                                     success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
 {
-    [self __didConcurrenceControlWithStartRequestUrl:Url];
-    
     CJRequestCacheStrategy cacheStrategy = settingModel.cacheStrategy;
     BOOL beforeStartRequestWillShowCache = YES; //在开始请求之前是否会先用缓存数据做一次快速显示
     BOOL shouldStartRequestNetworkData = YES;   //是否应该请求网络，如果最后不需要以实际的网络值显示，且能获取到缓存值，则不用进行请求
@@ -178,10 +175,6 @@
         } else { //获取缓存失败一定要进行请求，且一旦进行请求，最后肯定是以网络请求数据作为最后的显示，要不你请求干嘛
             shouldStartRequestNetworkData = YES;
         }
-    }
-    
-    if (shouldStartRequestNetworkData == NO) {
-        [self __didConcurrenceControlWithEndRequestUrl:Url]; // 网络请求结束后，并发量操作
     }
     
     return shouldStartRequestNetworkData;
@@ -223,11 +216,20 @@
     
     CJSuccessRequestInfo *successRequestInfo = [CJSuccessRequestInfo successNetworkLogWithType:logType Url:Url params:params request:request responseObject:responseObject];
     successRequestInfo.isCacheData = isCacheData;
+    
+#ifdef CJTestNetworkConcurrence
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if (success) {
+            success(successRequestInfo);
+        }
+        [self __didConcurrenceControlWithEndRequestUrl:Url]; // 网络请求结束后，并发量操作
+    });
+#else
     if (success) {
         success(successRequestInfo);
     }
-    
     [self __didConcurrenceControlWithEndRequestUrl:Url]; // 网络请求结束后，并发量操作
+#endif
 }
 
 ///网络请求不到数据的时候（无网 或者 有网但服务器异常等无数据时候）执行的方法
@@ -280,39 +282,6 @@
         [self __specialEndRequestWithKeeper];
     } else {
         [self __normalEndRequest];
-    }
-}
-
-/**
- *  开始拦截，使得允许通过的请求数目为allowRequestCount
- *
- *  @param allowRequestCount    允许通过的请求数目
- */
-- (void)startKeeperWithAllowRequestCount:(NSInteger)allowRequestCount {
-    if (self.cjKeeperSignal == nil) {
-        self.cjKeeperSignal = dispatch_semaphore_create(allowRequestCount);
-        self.cjKeeperSignalCount = allowRequestCount;
-    } else {
-        NSInteger shouldExtarReleaseSignalCount = self.cjKeeperSignalCount-allowRequestCount;//应该额外取消的信号量
-        if (shouldExtarReleaseSignalCount > 0) {
-            for (NSInteger i = 0; i < shouldExtarReleaseSignalCount; i++) {
-                self.cjKeeperSignalCount = dispatch_semaphore_wait(self.cjKeeperSignal, DISPATCH_TIME_FOREVER);
-            }
-        }
-    }
-}
-
-/**
- *  停止拦截，同时使得允许通过的请求数目为allowRequestCount(即并发数)
- *
- *  @param allowRequestCount    允许通过的请求数目
- */
-- (void)stopKeeperWithAllowRequestCount:(NSInteger)allowRequestCount {
-    if (self.cjKeeperSignal) {
-        // 网络请求结束后，对信号量cjKeeperSignal增加1
-        for (NSInteger i = 0; i < allowRequestCount; i++) {
-            self.cjKeeperSignalCount = dispatch_semaphore_signal(self.cjKeeperSignal);
-        }
     }
 }
 

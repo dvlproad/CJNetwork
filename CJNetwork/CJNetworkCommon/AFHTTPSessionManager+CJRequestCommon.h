@@ -14,6 +14,7 @@
     
 }
 #pragma mark - 并发数控制
+@property (nonatomic, strong) dispatch_semaphore_t cjKeeperSignal;
 /// 设置并发数
 - (void)setupConcurrenceCount:(NSInteger)concurrenceCount;
 
@@ -24,6 +25,9 @@
 
 
 #pragma mark - 网络操作
+
+/// 网络请求开始前，对信号量做等待(减法)操作
+- (void)__didConcurrenceControlWithStartRequestUrl:(NSString *)Url;
 
 /// 在请求前根据设置做相应处理
 - (BOOL)__didEventBeforeStartRequestWithUrl:(nullable NSString *)Url

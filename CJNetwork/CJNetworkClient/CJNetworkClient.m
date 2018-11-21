@@ -11,6 +11,7 @@
 
 @implementation CJNetworkClient
 
+/*
 #pragma mark - 单例
 + (instancetype)sharedInstance {
     id sharedInstance = objc_getAssociatedObject(self, @"cjNetworkClientSharedInstance");
@@ -28,7 +29,7 @@
 - (id)copyWithZone:(nullable NSZone *)zone {
     return [[self class] sharedInstance];
 }
-
+*/
 
 
 @end

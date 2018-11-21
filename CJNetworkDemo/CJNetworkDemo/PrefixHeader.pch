@@ -24,7 +24,7 @@
 #define CJTESTPOD
 #define CJNetworkPodTEST
 
-
+#define CJTestNetworkConcurrence
 #import "DemoAlert.h"
 #import "DemoButtonFactory.h"
 #import "DemoBarButtonItemFactory.h"
