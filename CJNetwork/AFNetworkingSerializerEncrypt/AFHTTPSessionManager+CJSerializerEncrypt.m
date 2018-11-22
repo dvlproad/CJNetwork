@@ -59,7 +59,7 @@
             [weakSelf __didRequestFailureForTask:task withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure];
         }];
         
-        [self __didConcurrenceControlWithStartRequestUrl:Url];
+        [self didConcurrenceControlWithStartRequestUrl:Url];
         
         return URLSessionDataTask;
         
@@ -72,7 +72,7 @@
             [weakSelf __didRequestFailureForTask:task withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure];
         }];
         
-        [self __didConcurrenceControlWithStartRequestUrl:Url];
+        [self didConcurrenceControlWithStartRequestUrl:Url];
         
         return URLSessionDataTask;
     }

@@ -96,12 +96,28 @@
             break;
         }
         case 500:{
-            errorMessage = NSLocalizedString(@"服务器内部错误", nil);
+            errorMessage = NSLocalizedString(@"服务不可用(500 Internal Server Error)，服务器内部错误", nil);
+            break;
+        }
+        case 501:{
+            errorMessage = NSLocalizedString(@"服务不可用(501)，服务器不具有请求功能", nil);
+            break;
+        }
+        case 502:{
+            errorMessage = NSLocalizedString(@"服务不可用(502 Bad Gateway)，错误忘关", nil);
+            break;
+        }
+        case 503:{
+            errorMessage = NSLocalizedString(@"服务不可用(503 Service Unavailable)，可能是服务器正在维护或者暂停", nil);
+            break;
+        }
+        case 504:{
+            errorMessage = NSLocalizedString(@"服务不可用(504 Gateway Time-out)，网关超时", nil);
             break;
         }
         default:{
             //errorMessage = task.responseString;
-            errorMessage = @"未知错误";
+            errorMessage = @"未知网络错误";
             break;
         }
     }

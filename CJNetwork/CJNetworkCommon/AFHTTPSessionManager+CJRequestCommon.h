@@ -7,27 +7,14 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
+#import "AFHTTPSessionManager+CJConcurrenceControl.h"
 #import "CJRequestSettingModel.h"
 #import "CJRequestInfoModel.h"
 
 @interface AFHTTPSessionManager (CJRequestCommon) {
     
 }
-#pragma mark - 并发数控制
-@property (nonatomic, strong) dispatch_semaphore_t cjKeeperSignal;
-/// 设置并发数
-- (void)setupConcurrenceCount:(NSInteger)concurrenceCount;
-
-#pragma mark - 拦截操作(一般只会用于需要获取dns的网络中)
-
-/// 设置拦截的操作
-- (void)setupKeeperUrl:(NSString *)Url;
-
-
 #pragma mark - 网络操作
-
-/// 网络请求开始前，对信号量做等待(减法)操作
-- (void)__didConcurrenceControlWithStartRequestUrl:(NSString *)Url;
 
 /// 在请求前根据设置做相应处理
 - (BOOL)__didEventBeforeStartRequestWithUrl:(nullable NSString *)Url

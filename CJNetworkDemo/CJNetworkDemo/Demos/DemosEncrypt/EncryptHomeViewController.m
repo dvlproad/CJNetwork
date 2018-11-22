@@ -29,10 +29,26 @@
     
     
     NSMutableArray *sectionDataModels = [[NSMutableArray alloc] init];
-    //弹窗
+    
+    //网络缓存时间相关(Cache)
     {
         CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
-        sectionDataModel.theme = @"Encrypt相关";
+        sectionDataModel.theme = @"网络能否请求相关(Just Request)";
+        
+        {
+            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            loginModule.title = @"登录(健康)";
+            loginModule.selector = @selector(testLoginHealth);
+            [sectionDataModel.values addObject:loginModule];
+        }
+        
+        [sectionDataModels addObject:sectionDataModel];
+    }
+    
+    //网络缓存时间相关(Cache)
+    {
+        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        sectionDataModel.theme = @"网络缓存时间相关(Cache)";
         
         {
             CJModuleModel *loginModule = [[CJModuleModel alloc] init];
@@ -40,6 +56,14 @@
             loginModule.selector = @selector(testCacheTime);
             [sectionDataModel.values addObject:loginModule];
         }
+        
+        [sectionDataModels addObject:sectionDataModel];
+    }
+    
+    //网络并发相关(Concurrence)
+    {
+        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        sectionDataModel.theme = @"网络并发相关(Concurrence)";
         {
             CJModuleModel *loginModule = [[CJModuleModel alloc] init];
             loginModule.title = @"正确的测试并发数设置(非网络)";
@@ -58,12 +82,6 @@
             loginModule.selector = @selector(testConcurrenceCount);
             [sectionDataModel.values addObject:loginModule];
         }
-        {
-            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
-            loginModule.title = @"登录(健康)";
-            loginModule.selector = @selector(testLoginHealth);
-            [sectionDataModel.values addObject:loginModule];
-        }
         
         [sectionDataModels addObject:sectionDataModel];
     }
@@ -79,7 +97,9 @@
     [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:YES success:^(CJResponseModel *responseModel) {
         [self startTestCacheTime];
     } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
-        NSAssert(isRequestFailure, @"网络请求失败，无法测试'设置的缓存过期时间是否有效'的问题，请先保证网络请求成功");
+        if (isRequestFailure) {
+            [CJAlert showIKnowWithTitle:@"网络请求失败，无法测试'设置的缓存过期时间是否有效'的问题，请先保证网络请求成功" message:errorMessage okHandle:nil];
+        }
     }];
 }
 
@@ -119,16 +139,30 @@
 
 #pragma mark - 测试并发数设置
 - (void)testConcurrenceCount {
-#ifndef CJTestNetworkConcurrence
-    [DemoAlert showIKnowAlertViewWithTitle:@"请在pch中先打开 CJTestNetworkConcurrence，在进行测试"];
-#endif
+    [[TestNetworkClient sharedInstance] testConcurrenceCountApiIndex:1 success:^(CJResponseModel *responseModel) {
+        [self startTestConcurrenceCount];
+    } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
+        if (isRequestFailure) {
+            [CJAlert showIKnowWithTitle:@"网络请求失败，无法测试'网络相关'的问题，请先保证网络请求成功" message:errorMessage okHandle:nil];
+        }
+    }];
+}
+
+- (void)startTestConcurrenceCount {
+    if (![NSThread isMainThread]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [CJToast shortShowMessage:@"开始测试并发数设置"];
+        });
+    } else {
+        [CJToast shortShowMessage:@"开始测试并发数设置"];
+    }
     
-    [TestHTTPSessionManager sharedInstance].completionQueue = dispatch_queue_create("cn.testConcurrenceCount.queue", NULL);
-//    [TestHTTPSessionManager sharedInstance].completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    [TestHTTPSessionManager sharedInstance].completionQueue = dispatch_queue_create("cn.testConcurrenceCount.queue", DISPATCH_QUEUE_CONCURRENT); //如果没设置成并发队列就不能测试
     [[TestHTTPSessionManager sharedInstance] setupConcurrenceCount:4];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        for (NSInteger i = 0; i < 2; i++) {
+        for (NSInteger i = 0; i < 4; i++) {
             for (NSInteger apiIndex = 1; apiIndex <= 5; apiIndex++) {
                 NSString *requestString = [NSString stringWithFormat:@"请求%ld(%ldx5+%ld)", i * 5 + apiIndex, i, apiIndex];
                 NSLog(@"开始%@", requestString);
