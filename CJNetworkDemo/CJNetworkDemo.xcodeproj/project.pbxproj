@@ -30,6 +30,9 @@
 		784653781F544A0100E20A27 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 784653741F544A0100E20A27 /* NSString+Hash.m */; };
 		7846D3E5219D5A52003C7C64 /* CJRequestSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846D3E4219D5A51003C7C64 /* CJRequestSettingModel.m */; };
 		7846E38821A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E38721A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.m */; };
+		7846E38B21A6A56900D73F51 /* TestConcurrenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E38A21A6A56900D73F51 /* TestConcurrenceManager.m */; };
+		7846E38E21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E38D21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m */; };
+		7846E39121A6AD5500D73F51 /* TestConcurrenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E39021A6AD5500D73F51 /* TestConcurrenceModel.m */; };
 		78590BD3215B275B00F45AD5 /* HealthResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590BD2215B275B00F45AD5 /* HealthResponseModel.m */; };
 		785DDC9520EE876E007F9546 /* CJUploadMomentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 785DDC8E20EE876E007F9546 /* CJUploadMomentInfo.m */; };
 		785DDC9620EE876E007F9546 /* CJUploadFileModelsOwner.m in Sources */ = {isa = PBXBuildFile; fileRef = 785DDC9320EE876E007F9546 /* CJUploadFileModelsOwner.m */; };
@@ -178,6 +181,12 @@
 		7846D3E4219D5A51003C7C64 /* CJRequestSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJRequestSettingModel.m; sourceTree = "<group>"; };
 		7846E38621A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+CJConcurrenceControl.h"; sourceTree = "<group>"; };
 		7846E38721A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+CJConcurrenceControl.m"; sourceTree = "<group>"; };
+		7846E38921A6A56900D73F51 /* TestConcurrenceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestConcurrenceManager.h; sourceTree = "<group>"; };
+		7846E38A21A6A56900D73F51 /* TestConcurrenceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestConcurrenceManager.m; sourceTree = "<group>"; };
+		7846E38C21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CJConcurrenceControl.h"; sourceTree = "<group>"; };
+		7846E38D21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CJConcurrenceControl.m"; sourceTree = "<group>"; };
+		7846E38F21A6AD5500D73F51 /* TestConcurrenceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestConcurrenceModel.h; sourceTree = "<group>"; };
+		7846E39021A6AD5500D73F51 /* TestConcurrenceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestConcurrenceModel.m; sourceTree = "<group>"; };
 		78590BD1215B275B00F45AD5 /* HealthResponseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HealthResponseModel.h; sourceTree = "<group>"; };
 		78590BD2215B275B00F45AD5 /* HealthResponseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthResponseModel.m; sourceTree = "<group>"; };
 		785DDC8E20EE876E007F9546 /* CJUploadMomentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUploadMomentInfo.m; sourceTree = "<group>"; };
@@ -818,6 +827,10 @@
 			children = (
 				78EB551D21A29AC700EEB853 /* TestNetworkClient+Test.h */,
 				78EB551E21A29AC700EEB853 /* TestNetworkClient+Test.m */,
+				7846E38921A6A56900D73F51 /* TestConcurrenceManager.h */,
+				7846E38A21A6A56900D73F51 /* TestConcurrenceManager.m */,
+				7846E38F21A6AD5500D73F51 /* TestConcurrenceModel.h */,
+				7846E39021A6AD5500D73F51 /* TestConcurrenceModel.m */,
 			);
 			path = NDM;
 			sourceTree = "<group>";
@@ -905,6 +918,8 @@
 				7896BB40219D6DB70014B4BD /* AFHTTPSessionManager+CJRequestCommon.m */,
 				7846E38621A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.h */,
 				7846E38721A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.m */,
+				7846E38C21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.h */,
+				7846E38D21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m */,
 				78226A9621A5490B002167F2 /* CJRequestSimulate */,
 				78226A9521A4F80E002167F2 /* CJRequestSetting */,
 				78881CEB214AE71700CAED82 /* CJRequestInfo */,
@@ -1226,6 +1241,7 @@
 				8050036321192BDC002A2306 /* CJRequestErrorUtil.m in Sources */,
 				784652BB1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m in Sources */,
 				78B6C2FF215AAA8900D5864E /* HealthyNetworkClient+Login.m in Sources */,
+				7846E38E21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m in Sources */,
 				784652C01F5448F100E20A27 /* CJUploadProgressView.m in Sources */,
 				78881CEE214AE71800CAED82 /* CJRequestInfoModel.m in Sources */,
 				784653661F5449D000E20A27 /* CJDataDiskManager.m in Sources */,
@@ -1267,11 +1283,13 @@
 				7868F1922121C80500A283EB /* DownloadHomeViewController.m in Sources */,
 				7868F1782121C79A00A283EB /* UploadHomeViewController.m in Sources */,
 				7868F17B2121C79A00A283EB /* SocketDemoViewController.m in Sources */,
+				7846E39121A6AD5500D73F51 /* TestConcurrenceModel.m in Sources */,
 				7868F1A92121D06C00A283EB /* RepeatRequestViewController.m in Sources */,
 				7868F1802121C79A00A283EB /* BaseDownloadViewController.m in Sources */,
 				784653781F544A0100E20A27 /* NSString+Hash.m in Sources */,
 				78226A9921A5492D002167F2 /* CJRequestSimulateUtil.m in Sources */,
 				784652C31F5448F100E20A27 /* CJRequestUtil.m in Sources */,
+				7846E38B21A6A56900D73F51 /* TestConcurrenceManager.m in Sources */,
 				7846532A1F5448FB00E20A27 /* AccountInfo.m in Sources */,
 				784653751F544A0100E20A27 /* MQLResumeManager.m in Sources */,
 				784653311F5448FB00E20A27 /* HealthyNetworkClient.m in Sources */,

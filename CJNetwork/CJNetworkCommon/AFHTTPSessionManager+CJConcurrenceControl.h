@@ -7,13 +7,9 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
+#import "NSObject+CJConcurrenceControl.h"
 
 @interface AFHTTPSessionManager (CJConcurrenceControl)
-
-#pragma mark - 并发数控制
-
-/// 设置并发数(TODO:多个请求因为失败，同时调用此方法怎么办)
-- (void)setupConcurrenceCount:(NSInteger)concurrenceCount;
 
 
 #pragma mark - 拦截操作(一般只会用于需要获取dns的网络中)
@@ -22,9 +18,9 @@
 - (void)setupKeeperUrl:(NSString *)Url withTimeout:(NSTimeInterval)timeout;
 
 /// 网络请求开始前，对信号量做等待(减法)操作
-- (void)didConcurrenceControlWithStartRequestUrl:(NSString *)Url;
+- (void)__didConcurrenceControlWithStartRequestUrl:(NSString *)Url;
 
 /// 网络请求结束后，对信号量做增加操作
-- (void)didConcurrenceControlWithEndRequestUrl:(NSString *)Url;
+- (void)__didConcurrenceControlWithEndRequestUrl:(NSString *)Url;
 
 @end

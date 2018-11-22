@@ -15,6 +15,9 @@
 #import "HealthyNetworkClient.h"
 #import "HealthyHTTPSessionManager.h"
 
+#import "TestConcurrenceModel.h"
+#import "TestConcurrenceManager.h"
+
 @interface EncryptHomeViewController ()
 
 @end
@@ -67,15 +70,30 @@
         {
             CJModuleModel *loginModule = [[CJModuleModel alloc] init];
             loginModule.title = @"正确的测试并发数设置(非网络)";
-            loginModule.selector = @selector(testConcurrenceCount_semaphore_signal_wait);
+            loginModule.selector = @selector(testConcurrenceCount_correct);
             [sectionDataModel.values addObject:loginModule];
         }
         {
             CJModuleModel *loginModule = [[CJModuleModel alloc] init];
             loginModule.title = @"错误的测试并发数设置(非网络)";
-            loginModule.selector = @selector(testConcurrenceCount_semaphore_signal_wait2);
+            loginModule.selector = @selector(testConcurrenceCount_wrong);
             [sectionDataModel.values addObject:loginModule];
         }
+        
+        {
+            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            loginModule.title = @"模拟测试网络并发数设置(请一定要执行验证)";
+            loginModule.selector = @selector(testConcurrenceCount_simulateNetwork);
+            [sectionDataModel.values addObject:loginModule];
+        }
+        
+        {
+            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            loginModule.title = @"模拟测试网络并发数设置(含拦截)(请一定要执行验证)";
+            loginModule.selector = @selector(testConcurrenceCount_simulateNetworkWithUrl);
+            [sectionDataModel.values addObject:loginModule];
+        }
+        
         {
             CJModuleModel *loginModule = [[CJModuleModel alloc] init];
             loginModule.title = @"测试网络并发数设置(请一定要执行验证)";
@@ -159,7 +177,7 @@
     
     
     [TestHTTPSessionManager sharedInstance].completionQueue = dispatch_queue_create("cn.testConcurrenceCount.queue", DISPATCH_QUEUE_CONCURRENT); //如果没设置成并发队列就不能测试
-    [[TestHTTPSessionManager sharedInstance] setupConcurrenceCount:4];
+    [[TestHTTPSessionManager sharedInstance] setupConcurrenceCount:3];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 0; i < 4; i++) {
@@ -176,7 +194,7 @@
     });
 }
 
-- (void)testConcurrenceCount_semaphore_signal_wait {
+- (void)testConcurrenceCount_correct {
     // 创建一个控制线程同步的信号量，初始值为4(红灯)
     dispatch_semaphore_t syncSemaphore = dispatch_semaphore_create(4); //可通过4+1=5个
     
@@ -195,7 +213,7 @@
 
 
 
-- (void)testConcurrenceCount_semaphore_signal_wait2 {
+- (void)testConcurrenceCount_wrong {
     // 创建一个控制线程同步的信号量，初始值为4(红灯)
     dispatch_semaphore_t syncSemaphore = dispatch_semaphore_create(4); //可通过4+1=5个
     
@@ -213,6 +231,24 @@
         
         // 开启信号等待，设置等待时间为永久，直到信号的信号量大于等于1（绿灯）
         dispatch_semaphore_wait(syncSemaphore, DISPATCH_TIME_FOREVER);
+    }
+}
+
+- (void)testConcurrenceCount_simulateNetwork {
+    TestConcurrenceModel *manager = [[TestConcurrenceModel alloc] init];
+    [manager setupConcurrenceCount:4];
+    
+    for (NSInteger i = 0; i < 20; i++) {
+        [manager runModelWithIndex:i];
+    }
+}
+
+- (void)testConcurrenceCount_simulateNetworkWithUrl {
+    TestConcurrenceManager *manager = [TestConcurrenceManager manager];
+    [manager setupConcurrenceCount:4];
+    
+    for (NSInteger i = 0; i < 20; i++) {
+        [manager runModelWithIndex:i];
     }
 }
 

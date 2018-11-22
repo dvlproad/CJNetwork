@@ -89,8 +89,6 @@
     if (success) {
         success(successRequestInfo);
     }
-    
-    [self didConcurrenceControlWithEndRequestUrl:Url]; // 网络请求结束后，并发量操作
 }
 
 ///网络请求不到数据的时候（无网 或者 有网但服务器异常等无数据时候）执行的方法
@@ -109,8 +107,6 @@
     if (failure) {
         failure(failureRequestInfo);
     }
-    
-    [self didConcurrenceControlWithEndRequestUrl:Url]; // 网络请求结束后，并发量操作
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import "AFHTTPSessionManager+CJRequestCommon.h"
+//#import "AFHTTPSessionManager+CJConcurrenceControl.h"
 
 @interface AFHTTPSessionManager (CJSerializerEncrypt)
 
