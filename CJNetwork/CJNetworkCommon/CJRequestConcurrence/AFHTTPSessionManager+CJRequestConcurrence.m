@@ -1,12 +1,12 @@
 //
-//  AFHTTPSessionManager+CJConcurrenceControl.m
+//  AFHTTPSessionManager+CJRequestConcurrence.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2018/11/20.
 //  Copyright © 2018年 dvlproad. All rights reserved.
 //
 
-#import "AFHTTPSessionManager+CJConcurrenceControl.h"
+#import "AFHTTPSessionManager+CJRequestConcurrence.h"
 #import <objc/runtime.h>
 
 @interface AFURLSessionManager () {
@@ -20,7 +20,7 @@
 @end
 
 
-@implementation AFHTTPSessionManager (CJConcurrenceControl)
+@implementation AFHTTPSessionManager (CJRequestConcurrence)
 
 #pragma mark - 拦截操作(一般只会用于需要获取dns的网络中)
 // cjKeeperUrl
@@ -61,12 +61,8 @@
 
 /// 网络请求开始前，对信号量做等待(减法)操作
 - (void)__didConcurrenceControlWithStartRequestUrl:(NSString *)Url {
-    if (!self.shouldControlConcurrence) {
-        return;
-    }
-    
     if ([Url isEqualToString:self.cjKeeperUrl]) {
-        [self setupConcurrenceCount:1];
+        [self __changeConcurrenceCount:1];
     } else {
         [self __minusOneConcurrenceCount];
     }

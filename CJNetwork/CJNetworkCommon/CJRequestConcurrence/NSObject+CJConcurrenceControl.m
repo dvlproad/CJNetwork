@@ -7,6 +7,7 @@
 //
 
 #import "NSObject+CJConcurrenceControl.h"
+#import <objc/runtime.h>
 
 @interface NSObject () {
     
@@ -68,11 +69,26 @@
     objc_setAssociatedObject(self, @selector(concurrenceCount), @(concurrenceCount), OBJC_ASSOCIATION_ASSIGN);
 }
 
+
+/// 设置允许控制并发数并指定并发数
+- (void)allowConcurrenceCount:(NSInteger)concurrenceCount {
+    self.shouldControlConcurrence = YES;
+    [self __setupConcurrenceCount:concurrenceCount];
+}
+
+/// 改变并发数为指定数目
+- (void)__changeConcurrenceCount:(NSInteger)concurrenceCount {
+    if (!self.shouldControlConcurrence) {
+        return;
+    }
+    
+    [self __setupConcurrenceCount:concurrenceCount];
+}
+
 /// 设置并发数为指定数目
-- (void)setupConcurrenceCount:(NSInteger)concurrenceCount {
+- (void)__setupConcurrenceCount:(NSInteger)concurrenceCount {
     NSAssert(concurrenceCount > 0, @"并发数必须大于0");
     
-    self.shouldControlConcurrence = YES;
     self.concurrenceCount = concurrenceCount;
     
     if (self.cjKeeperSignal == nil) {

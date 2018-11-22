@@ -177,7 +177,7 @@
     
     
     [TestHTTPSessionManager sharedInstance].completionQueue = dispatch_queue_create("cn.testConcurrenceCount.queue", DISPATCH_QUEUE_CONCURRENT); //如果没设置成并发队列就不能测试
-    [[TestHTTPSessionManager sharedInstance] setupConcurrenceCount:3];
+    [[TestHTTPSessionManager sharedInstance] allowConcurrenceCount:3];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 0; i < 4; i++) {
@@ -236,7 +236,7 @@
 
 - (void)testConcurrenceCount_simulateNetwork {
     TestConcurrenceModel *manager = [[TestConcurrenceModel alloc] init];
-    [manager setupConcurrenceCount:4];
+    [manager allowConcurrenceCount:4];
     
     for (NSInteger i = 0; i < 20; i++) {
         [manager runModelWithIndex:i];
@@ -245,7 +245,7 @@
 
 - (void)testConcurrenceCount_simulateNetworkWithUrl {
     TestConcurrenceManager *manager = [TestConcurrenceManager manager];
-    [manager setupConcurrenceCount:4];
+    [manager allowConcurrenceCount:4];
     
     for (NSInteger i = 0; i < 20; i++) {
         [manager runModelWithIndex:i];

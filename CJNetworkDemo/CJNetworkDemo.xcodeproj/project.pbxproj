@@ -29,7 +29,7 @@
 		784653771F544A0100E20A27 /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 784653711F544A0100E20A27 /* HSSessionModel.m */; };
 		784653781F544A0100E20A27 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 784653741F544A0100E20A27 /* NSString+Hash.m */; };
 		7846D3E5219D5A52003C7C64 /* CJRequestSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846D3E4219D5A51003C7C64 /* CJRequestSettingModel.m */; };
-		7846E38821A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E38721A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.m */; };
+		7846E38821A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E38721A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.m */; };
 		7846E38B21A6A56900D73F51 /* TestConcurrenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E38A21A6A56900D73F51 /* TestConcurrenceManager.m */; };
 		7846E38E21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E38D21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m */; };
 		7846E39121A6AD5500D73F51 /* TestConcurrenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E39021A6AD5500D73F51 /* TestConcurrenceModel.m */; };
@@ -179,8 +179,8 @@
 		784653791F544A6400E20A27 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		7846D3E3219D5A51003C7C64 /* CJRequestSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJRequestSettingModel.h; sourceTree = "<group>"; };
 		7846D3E4219D5A51003C7C64 /* CJRequestSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJRequestSettingModel.m; sourceTree = "<group>"; };
-		7846E38621A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+CJConcurrenceControl.h"; sourceTree = "<group>"; };
-		7846E38721A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+CJConcurrenceControl.m"; sourceTree = "<group>"; };
+		7846E38621A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+CJRequestConcurrence.h"; sourceTree = "<group>"; };
+		7846E38721A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+CJRequestConcurrence.m"; sourceTree = "<group>"; };
 		7846E38921A6A56900D73F51 /* TestConcurrenceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestConcurrenceManager.h; sourceTree = "<group>"; };
 		7846E38A21A6A56900D73F51 /* TestConcurrenceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestConcurrenceManager.m; sourceTree = "<group>"; };
 		7846E38C21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CJConcurrenceControl.h"; sourceTree = "<group>"; };
@@ -558,6 +558,17 @@
 			path = MD5;
 			sourceTree = "<group>";
 		};
+		7846E39221A6B29100D73F51 /* CJRequestConcurrence */ = {
+			isa = PBXGroup;
+			children = (
+				7846E38621A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.h */,
+				7846E38721A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.m */,
+				7846E38C21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.h */,
+				7846E38D21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m */,
+			);
+			path = CJRequestConcurrence;
+			sourceTree = "<group>";
+		};
 		78590BCD215B272100F45AD5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -916,10 +927,7 @@
 			children = (
 				7896BB3F219D6DB70014B4BD /* AFHTTPSessionManager+CJRequestCommon.h */,
 				7896BB40219D6DB70014B4BD /* AFHTTPSessionManager+CJRequestCommon.m */,
-				7846E38621A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.h */,
-				7846E38721A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.m */,
-				7846E38C21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.h */,
-				7846E38D21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m */,
+				7846E39221A6B29100D73F51 /* CJRequestConcurrence */,
 				78226A9621A5490B002167F2 /* CJRequestSimulate */,
 				78226A9521A4F80E002167F2 /* CJRequestSetting */,
 				78881CEB214AE71700CAED82 /* CJRequestInfo */,
@@ -1274,7 +1282,7 @@
 				78EB551F21A29AC700EEB853 /* TestNetworkClient+Test.m in Sources */,
 				7846D3E5219D5A52003C7C64 /* CJRequestSettingModel.m in Sources */,
 				785DDC9620EE876E007F9546 /* CJUploadFileModelsOwner.m in Sources */,
-				7846E38821A6925400D73F51 /* AFHTTPSessionManager+CJConcurrenceControl.m in Sources */,
+				7846E38821A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.m in Sources */,
 				784653651F5449D000E20A27 /* CJCacheDataModel.m in Sources */,
 				784653771F544A0100E20A27 /* HSSessionModel.m in Sources */,
 				7868F1742121C79A00A283EB /* CacheHomeViewController.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  AFHTTPSessionManager+CJConcurrenceControl.h
+//  AFHTTPSessionManager+CJRequestConcurrence.h
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2018/11/20.
@@ -9,7 +9,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "NSObject+CJConcurrenceControl.h"
 
-@interface AFHTTPSessionManager (CJConcurrenceControl)
+@interface AFHTTPSessionManager (CJRequestConcurrence)
 
 
 #pragma mark - 拦截操作(一般只会用于需要获取dns的网络中)
