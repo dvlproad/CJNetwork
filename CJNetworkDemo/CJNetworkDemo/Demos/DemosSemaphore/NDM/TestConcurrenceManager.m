@@ -26,6 +26,17 @@
         });
     });
     [self __didConcurrenceControlWithStartRequestUrl:Url];    // 网络请求开始后，并发量操作
+    
+    dispatch_queue_t concurrentQueue = dispatch_queue_create("model.testConcurrenceCount.queue", DISPATCH_QUEUE_CONCURRENT); //创建并发队列
+    [self __willUpdateConcurrenceCount];
+    dispatch_async(concurrentQueue, ^{
+        NSLog(@"%ld:开始", index);
+        sleep(2);
+        [self __didAddOneConcurrenceCount];
+        NSLog(@"%ld:模拟的网络请求结束", index);
+    });
+    [self __willUpdateConcurrenceCount];
+    [self __didMinusOneConcurrenceCount];
 }
 
 @end

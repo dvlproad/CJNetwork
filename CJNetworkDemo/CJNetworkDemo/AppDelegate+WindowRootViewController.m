@@ -10,7 +10,7 @@
 
 #import "EncryptHomeViewController.h"
 #import "UploadHomeViewController.h"
-#import "CacheHomeViewController.h"
+#import "SemaphoreHomeViewController.h"
 #import "SocketHomeViewController.h"
 #import "DownloadHomeViewController.h"
 
@@ -44,10 +44,10 @@
     [tabBarController addChildViewController:scrollViewHomeNavigationController];
     
     
-    CacheHomeViewController *viewController4 = [[CacheHomeViewController alloc] init];
+    SemaphoreHomeViewController *viewController4 = [[SemaphoreHomeViewController alloc] init];
     viewController4.view.backgroundColor = [UIColor whiteColor];
-    viewController4.navigationItem.title = NSLocalizedString(@"Cache首页", nil);
-    viewController4.tabBarItem.title = NSLocalizedString(@"Cache", nil);
+    viewController4.navigationItem.title = NSLocalizedString(@"Semaphore首页", nil);
+    viewController4.tabBarItem.title = NSLocalizedString(@"Semaphore", nil);
     viewController4.tabBarItem.image = [[UIImage imageNamed:@"icons8-settings"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UINavigationController *navigationController4 = [[UINavigationController alloc] initWithRootViewController:viewController4];
     [tabBarController addChildViewController:navigationController4];

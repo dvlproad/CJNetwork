@@ -16,18 +16,21 @@
 #pragma mark - 并发数控制
 
 /// 设置允许控制并发数并指定并发数
-- (void)allowConcurrenceCount:(NSInteger)concurrenceCount;
+- (void)allowMaxConcurrenceCount:(NSInteger)allowMaxConcurrenceCount;
 
 /// 改变并发数为指定数目(TODO:多个请求因为失败，同时调用此方法怎么办)
-- (void)__changeConcurrenceCount:(NSInteger)concurrenceCount;
+- (void)__changeConcurrenceCountTo:(NSInteger)allowMaxConcurrenceCount;
 
 /// 恢复并发数(如果有些操作会更改到并发数，那么在该操作结束时候，需要调用此方法来恢复并发数)
-- (void)__recoverConcurrenceCount;
+- (void)__recoverMaxAllowConcurrenceCount;
 
-/// 并发数 +1
-- (void)__addOneConcurrenceCount;
 
-/// 并发数 -1
-- (void)__minusOneConcurrenceCount;
+/// 将要改变并发数
+- (BOOL)__willUpdateConcurrenceCount;
+
+/// 正式改变并发数 +1
+- (void)__didAddOneConcurrenceCount;
+/// 正式改变并发数 -1
+- (void)__didMinusOneConcurrenceCount;
 
 @end

@@ -15,11 +15,6 @@
                                success:(void (^)(CJResponseModel *responseModel))success
                                failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
-/// 测试并发数
-- (void)testConcurrenceCountApiIndex:(NSInteger)apiIndex
-                             success:(void (^)(CJResponseModel *responseModel))success
-                             failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
-
 - (void)requestBaiduHomeCompleteBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
 
 @end

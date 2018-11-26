@@ -52,14 +52,10 @@
         NSURLSessionDataTask *URLSessionDataTask =
         [self GET:Url parameters:params progress:settingModel.uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [self __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:params settingModel:settingModel success:success];
-//            [self __didConcurrenceControlWithEndRequestUrl:Url];  // 网络请求结束后，并发量操作
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self __didRequestFailureForTask:task withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure];
-//            [self __didConcurrenceControlWithEndRequestUrl:Url];  // 网络请求结束后，并发量操作
         }];
-        
-//        [self __didConcurrenceControlWithStartRequestUrl:Url];    // 网络请求开始后，并发量操作
         
         return URLSessionDataTask;
         
@@ -67,14 +63,10 @@
         NSURLSessionDataTask *URLSessionDataTask =
         [self POST:Url parameters:params progress:settingModel.uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [self __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:params settingModel:settingModel success:success];
-//            [self __didConcurrenceControlWithEndRequestUrl:Url];  // 网络请求结束后，并发量操作
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self __didRequestFailureForTask:task withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure];
-//            [self __didConcurrenceControlWithEndRequestUrl:Url];  // 网络请求结束后，并发量操作
         }];
-        
-//        [self __didConcurrenceControlWithStartRequestUrl:Url];    // 网络请求开始后，并发量操作
         
         return URLSessionDataTask;
     }

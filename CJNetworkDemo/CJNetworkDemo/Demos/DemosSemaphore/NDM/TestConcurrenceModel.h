@@ -10,8 +10,14 @@
 #import <Foundation/Foundation.h>
 #import "NSObject+CJConcurrenceControl.h"
 
-@interface TestConcurrenceModel : NSObject
+@interface TestConcurrenceModel : NSObject {
+    
+}
+@property (nonatomic, strong) dispatch_queue_t queue;
+@property (nonatomic, strong) dispatch_queue_t concurrentQueue;
 
 - (void)runModelWithIndex:(NSInteger)index;
+
+- (void)runModelWithKeeper;
 
 @end

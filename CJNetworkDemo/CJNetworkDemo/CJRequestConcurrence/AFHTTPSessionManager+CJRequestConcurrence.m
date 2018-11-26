@@ -62,18 +62,18 @@
 /// 网络请求开始前，对信号量做等待(减法)操作
 - (void)__didConcurrenceControlWithStartRequestUrl:(NSString *)Url {
     if ([Url isEqualToString:self.cjKeeperUrl]) {
-        [self __changeConcurrenceCount:1];
+        [self __changeConcurrenceCountTo:1];
     } else {
-        [self __minusOneConcurrenceCount];
+//        [self __minusOneConcurrenceCount];
     }
 }
 
 /// 网络请求结束后，对信号量做增加操作
 - (void)__didConcurrenceControlWithEndRequestUrl:(NSString *)Url {
     if ([Url isEqualToString:self.cjKeeperUrl]) {
-        [self __recoverConcurrenceCount];
+        [self __recoverMaxAllowConcurrenceCount];
     } else {
-        [self __addOneConcurrenceCount];
+//        [self __addOneConcurrenceCount];
     }
 }
 

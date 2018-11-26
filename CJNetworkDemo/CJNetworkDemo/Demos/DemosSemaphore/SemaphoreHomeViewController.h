@@ -1,5 +1,5 @@
 //
-//  CacheHomeViewController.h
+//  SemaphoreHomeViewController.h
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2016/3/26.
@@ -8,7 +8,7 @@
 
 #import "CJUIKitBaseHomeViewController.h"
 
-@interface CacheHomeViewController : CJUIKitBaseHomeViewController {
+@interface SemaphoreHomeViewController : CJUIKitBaseHomeViewController {
     
 }
 
