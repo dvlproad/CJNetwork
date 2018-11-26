@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6BB55F47EDA2461A6F1BDB89 /* libPods-CJNetworkDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5E7F97EF39C0473AB7ABAD /* libPods-CJNetworkDemo.a */; };
+		7801C0D421ABE04400045114 /* CJNetworkEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0CA21ABE04400045114 /* CJNetworkEnvironmentManager.m */; };
+		7801C0D521ABE04400045114 /* CJNetworkEnvironmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0CC21ABE04400045114 /* CJNetworkEnvironmentModel.m */; };
+		7801C0D621ABE04400045114 /* CJJSONResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0D121ABE04400045114 /* CJJSONResponseSerializer.m */; };
+		7801C0D721ABE04400045114 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0D221ABE04400045114 /* NSString+URLEncoding.m */; };
 		78226A9421A424B0002167F2 /* DemoAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 78226A9321A424B0002167F2 /* DemoAlert.m */; };
 		78226A9921A5492D002167F2 /* CJRequestSimulateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 78226A9821A5492D002167F2 /* CJRequestSimulateUtil.m */; };
 		784652BB1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846529D1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m */; };
@@ -110,8 +114,6 @@
 		8050036921192C1E002A2306 /* CJObjectConvertUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8050036721192C1E002A2306 /* CJObjectConvertUtil.m */; };
 		8050036F21194FEC002A2306 /* CJNetworkCacheUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8050036B21194FEC002A2306 /* CJNetworkCacheUtil.m */; };
 		8050037021194FEC002A2306 /* AFHTTPSessionManager+CJMethodEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 8050036E21194FEC002A2306 /* AFHTTPSessionManager+CJMethodEncrypt.m */; };
-		805003762119500F002A2306 /* CJJSONResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 805003732119500F002A2306 /* CJJSONResponseSerializer.m */; };
-		805003772119500F002A2306 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 805003742119500F002A2306 /* NSString+URLEncoding.m */; };
 		80E7E62920ABCFBC000F762D /* AppInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E7E62820ABCFBB000F762D /* AppInfoManager.m */; };
 		FE2ABDE4BA0BFA3A4E890E9C /* libPods-CJNetworkDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 950ACC5ADCD7E563531771DD /* libPods-CJNetworkDemoTests.a */; };
 /* End PBXBuildFile section */
@@ -136,6 +138,14 @@
 /* Begin PBXFileReference section */
 		3D5E7F97EF39C0473AB7ABAD /* libPods-CJNetworkDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CJNetworkDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77134D72A7065F0DD4229D2D /* Pods-CJNetworkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		7801C0CA21ABE04400045114 /* CJNetworkEnvironmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJNetworkEnvironmentManager.m; sourceTree = "<group>"; };
+		7801C0CB21ABE04400045114 /* CJNetworkEnvironmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkEnvironmentModel.h; sourceTree = "<group>"; };
+		7801C0CC21ABE04400045114 /* CJNetworkEnvironmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJNetworkEnvironmentModel.m; sourceTree = "<group>"; };
+		7801C0CD21ABE04400045114 /* CJNetworkEnvironmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkEnvironmentManager.h; sourceTree = "<group>"; };
+		7801C0D021ABE04400045114 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		7801C0D121ABE04400045114 /* CJJSONResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJJSONResponseSerializer.m; sourceTree = "<group>"; };
+		7801C0D221ABE04400045114 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		7801C0D321ABE04400045114 /* CJJSONResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJJSONResponseSerializer.h; sourceTree = "<group>"; };
 		78226A9221A424B0002167F2 /* DemoAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoAlert.h; sourceTree = "<group>"; };
 		78226A9321A424B0002167F2 /* DemoAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoAlert.m; sourceTree = "<group>"; };
 		78226A9721A5492D002167F2 /* CJRequestSimulateUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJRequestSimulateUtil.h; sourceTree = "<group>"; };
@@ -314,10 +324,6 @@
 		8050036C21194FEC002A2306 /* AFHTTPSessionManager+CJMethodEncrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+CJMethodEncrypt.h"; sourceTree = "<group>"; };
 		8050036D21194FEC002A2306 /* CJNetworkCacheUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkCacheUtil.h; sourceTree = "<group>"; };
 		8050036E21194FEC002A2306 /* AFHTTPSessionManager+CJMethodEncrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+CJMethodEncrypt.m"; sourceTree = "<group>"; };
-		805003722119500F002A2306 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
-		805003732119500F002A2306 /* CJJSONResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJJSONResponseSerializer.m; sourceTree = "<group>"; };
-		805003742119500F002A2306 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
-		805003752119500F002A2306 /* CJJSONResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJJSONResponseSerializer.h; sourceTree = "<group>"; };
 		80E7E62720ABCFBB000F762D /* AppInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfoManager.h; sourceTree = "<group>"; };
 		80E7E62820ABCFBB000F762D /* AppInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfoManager.m; sourceTree = "<group>"; };
 		90255310EA6CED3E04FA1CEB /* Pods-CJNetworkDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemoTests/Pods-CJNetworkDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -353,6 +359,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7801C0C821ABE04400045114 /* CJExampleNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				7801C0C921ABE04400045114 /* CJNetworkEnvironmentManager */,
+				7801C0CE21ABE04400045114 /* CJNetworkSessionManager */,
+			);
+			name = CJExampleNetwork;
+			path = ../../CJExampleNetwork;
+			sourceTree = "<group>";
+		};
+		7801C0C921ABE04400045114 /* CJNetworkEnvironmentManager */ = {
+			isa = PBXGroup;
+			children = (
+				7801C0CA21ABE04400045114 /* CJNetworkEnvironmentManager.m */,
+				7801C0CB21ABE04400045114 /* CJNetworkEnvironmentModel.h */,
+				7801C0CC21ABE04400045114 /* CJNetworkEnvironmentModel.m */,
+				7801C0CD21ABE04400045114 /* CJNetworkEnvironmentManager.h */,
+			);
+			path = CJNetworkEnvironmentManager;
+			sourceTree = "<group>";
+		};
+		7801C0CE21ABE04400045114 /* CJNetworkSessionManager */ = {
+			isa = PBXGroup;
+			children = (
+				7801C0CF21ABE04400045114 /* CJJSONResponseSerializer */,
+			);
+			path = CJNetworkSessionManager;
+			sourceTree = "<group>";
+		};
+		7801C0CF21ABE04400045114 /* CJJSONResponseSerializer */ = {
+			isa = PBXGroup;
+			children = (
+				7801C0D321ABE04400045114 /* CJJSONResponseSerializer.h */,
+				7801C0D121ABE04400045114 /* CJJSONResponseSerializer.m */,
+				7801C0D021ABE04400045114 /* NSString+URLEncoding.h */,
+				7801C0D221ABE04400045114 /* NSString+URLEncoding.m */,
+			);
+			path = CJJSONResponseSerializer;
+			sourceTree = "<group>";
+		};
 		78226A9121A424B0002167F2 /* DemoAlert */ = {
 			isa = PBXGroup;
 			children = (
@@ -762,7 +808,6 @@
 		788113D02199870B00D1630D /* CJNetworkClient */ = {
 			isa = PBXGroup;
 			children = (
-				805003712119500F002A2306 /* CJJSONResponseSerializer */,
 				8050035E21192BDC002A2306 /* CJResponseModel */,
 				788113D12199876C00D1630D /* CJNetworkClient.h */,
 				788113D22199876C00D1630D /* CJNetworkClient.m */,
@@ -880,6 +925,7 @@
 				78FC91FC1F54481E00033DEF /* AppDelegate.m */,
 				7868F1362121C61400A283EB /* AppDelegate+WindowRootViewController.h */,
 				7868F1372121C61400A283EB /* AppDelegate+WindowRootViewController.m */,
+				7801C0C821ABE04400045114 /* CJExampleNetwork */,
 				7846E39221A6B29100D73F51 /* CJRequestConcurrence */,
 				8050036621192C1E002A2306 /* CJObjectConvertUtil */,
 				78EB550421A280C200EEB853 /* CommonUI */,
@@ -966,17 +1012,6 @@
 				8050036E21194FEC002A2306 /* AFHTTPSessionManager+CJMethodEncrypt.m */,
 			);
 			path = AFNetworkingMethodEncrypt;
-			sourceTree = "<group>";
-		};
-		805003712119500F002A2306 /* CJJSONResponseSerializer */ = {
-			isa = PBXGroup;
-			children = (
-				805003752119500F002A2306 /* CJJSONResponseSerializer.h */,
-				805003732119500F002A2306 /* CJJSONResponseSerializer.m */,
-				805003722119500F002A2306 /* NSString+URLEncoding.h */,
-				805003742119500F002A2306 /* NSString+URLEncoding.m */,
-			);
-			path = CJJSONResponseSerializer;
 			sourceTree = "<group>";
 		};
 		80E7E62620ABCFBB000F762D /* AppInfo */ = {
@@ -1264,6 +1299,7 @@
 				784653681F5449D000E20A27 /* CJDataMemoryDictionaryManager.m in Sources */,
 				78590BD3215B275B00F45AD5 /* HealthResponseModel.m in Sources */,
 				784653671F5449D000E20A27 /* CJDataMemoryCacheManager.m in Sources */,
+				7801C0D621ABE04400045114 /* CJJSONResponseSerializer.m in Sources */,
 				7846533D1F5448FB00E20A27 /* TestHTTPSessionManager.m in Sources */,
 				785DDC9720EE876E007F9546 /* CJUploadFileModel.m in Sources */,
 				7868F17F2121C79A00A283EB /* SessionDownloadTaskDownloadViewController.m in Sources */,
@@ -1273,6 +1309,7 @@
 				78FC91FA1F54481E00033DEF /* main.m in Sources */,
 				7868F1822121C79A00A283EB /* SessionDataTaskDownloadViewController.m in Sources */,
 				78EB551921A280C300EEB853 /* DemoButtonFactory.m in Sources */,
+				7801C0D721ABE04400045114 /* NSString+URLEncoding.m in Sources */,
 				78EB551B21A280C300EEB853 /* CJUIKitBaseViewController.m in Sources */,
 				78EB551A21A280C300EEB853 /* CJUIKitBaseHomeViewController.m in Sources */,
 				78226A9421A424B0002167F2 /* DemoAlert.m in Sources */,
@@ -1284,11 +1321,13 @@
 				7846533E1F5448FB00E20A27 /* TestNetworkClient.m in Sources */,
 				7868F19C2121CC2600A283EB /* LoginViewController.m in Sources */,
 				784653641F5449D000E20A27 /* CJCacheManager.m in Sources */,
+				7801C0D421ABE04400045114 /* CJNetworkEnvironmentManager.m in Sources */,
 				7868F1892121C79A00A283EB /* DownloadTableViewCell.m in Sources */,
 				78EB551F21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m in Sources */,
 				7846D3E5219D5A52003C7C64 /* CJRequestSettingModel.m in Sources */,
 				785DDC9620EE876E007F9546 /* CJUploadFileModelsOwner.m in Sources */,
 				7846E38821A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.m in Sources */,
+				7801C0D521ABE04400045114 /* CJNetworkEnvironmentModel.m in Sources */,
 				784653651F5449D000E20A27 /* CJCacheDataModel.m in Sources */,
 				784653771F544A0100E20A27 /* HSSessionModel.m in Sources */,
 				7886CD41219E7567007C3BCB /* NSFileManagerCJHelper.m in Sources */,
@@ -1312,8 +1351,6 @@
 				7868F1862121C79A00A283EB /* DownloadListViewController.m in Sources */,
 				784652C11F5448F100E20A27 /* UIView+AFNetworkingUpload.m in Sources */,
 				784653301F5448FB00E20A27 /* HealthyHTTPSessionManager.m in Sources */,
-				805003772119500F002A2306 /* NSString+URLEncoding.m in Sources */,
-				805003762119500F002A2306 /* CJJSONResponseSerializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

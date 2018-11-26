@@ -257,7 +257,7 @@
 #pragma mark - 测试更新Semaphore的值
 - (void)test_updateSemaphoreCount_correct {
     NSLog(@"----------------------");
-    dispatch_queue_t serialQueue2 = dispatch_queue_create("serialQueue", DISPATCH_QUEUE_SERIAL);
+    //dispatch_queue_t serialQueue2 = dispatch_queue_create("serialQueue", DISPATCH_QUEUE_SERIAL);
     dispatch_queue_t concurrentQueue2 = dispatch_queue_create("concurrentQueue2", DISPATCH_QUEUE_CONCURRENT);
     
     dispatch_semaphore_t updateCountSemaphore = dispatch_semaphore_create(1);
@@ -287,7 +287,7 @@
 
 - (void)test_updateSemaphoreCount_nolock {
     NSLog(@"----------------------");
-    dispatch_queue_t serialQueue2 = dispatch_queue_create("serialQueue", DISPATCH_QUEUE_SERIAL);
+    //dispatch_queue_t serialQueue2 = dispatch_queue_create("serialQueue", DISPATCH_QUEUE_SERIAL);
     dispatch_queue_t concurrentQueue2 = dispatch_queue_create("concurrentQueue2", DISPATCH_QUEUE_CONCURRENT);
     
     dispatch_semaphore_t concurrentSemaphore = dispatch_semaphore_create(0);
@@ -307,7 +307,7 @@
 
 - (void)test_updateSemaphoreCount_wrong {
     NSLog(@"----------------------");
-    dispatch_queue_t serialQueue2 = dispatch_queue_create("serialQueue", DISPATCH_QUEUE_SERIAL);
+    //dispatch_queue_t serialQueue2 = dispatch_queue_create("serialQueue", DISPATCH_QUEUE_SERIAL);
     dispatch_queue_t concurrentQueue2 = dispatch_queue_create("concurrentQueue2", DISPATCH_QUEUE_CONCURRENT);
     
     dispatch_semaphore_t updateCountSemaphore = dispatch_semaphore_create(1);
@@ -430,7 +430,7 @@
     TestConcurrenceModel *manager = [[TestConcurrenceModel alloc] init];
     [manager allowMaxConcurrenceCount:4];
     
-    dispatch_queue_t commonSerialQueue = dispatch_queue_create("commonSerialQueue", DISPATCH_QUEUE_SERIAL); //创建串行队列
+    //dispatch_queue_t commonSerialQueue = dispatch_queue_create("commonSerialQueue", DISPATCH_QUEUE_SERIAL); //创建串行队列
     dispatch_queue_t commonConcurrentQueue = dispatch_queue_create("commonConcurrentQueue", DISPATCH_QUEUE_CONCURRENT); //创建并发队列
     self.commonConcurrentQueue = commonConcurrentQueue;
     for (NSInteger i = 0; i < 10; i++) { //为什么并行队列时候，大于最大并发量为什么会有问题

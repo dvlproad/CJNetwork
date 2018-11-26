@@ -17,6 +17,4 @@
 
 #import "CJRequestSimulateUtil.h"
 
-#import "CJNetworkClient.h"
-
 #endif /* AFHTTPSessionManager_CJCategory_h */

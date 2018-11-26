@@ -10,6 +10,7 @@
 #import "TestHTTPSessionManager.h"
 
 #import "CJNetworkCacheUtil.h"
+#import "CJRequestSimulateUtil.h"
 
 @implementation TestNetworkClient
 
@@ -98,7 +99,7 @@
     return URLSessionDataTask;
 }
 
-- (NSURLSessionDataTask *)local_postApi:(NSString *)apiSuffix
+- (NSURLSessionDataTask *)exampleLocal_postApi:(NSString *)apiSuffix
                                  params:(id)params
                                 encrypt:(BOOL)encrypt
                                 success:(void (^)(CJResponseModel *responseModel))success

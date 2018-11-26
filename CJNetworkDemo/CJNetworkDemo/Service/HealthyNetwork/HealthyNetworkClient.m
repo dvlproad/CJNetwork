@@ -29,7 +29,7 @@
                                  success:(void (^)(HealthResponseModel *responseModel))success
                                  failure:(void (^)(NSError *error))failure
 {
-    //NSString *Url = [[LuckinNetworkEnvironment sharedInstance] completeUrlWithApiSuffix:apiSuffix];
+    //NSString *Url = [[CJNetworkEnvironmentManager sharedInstance] completeUrlWithApiSuffix:apiSuffix];
     NSString *Url = API_BASE_Url_Health(@"login");
     return [self health_postUrl:Url params:params encrypt:encrypt success:success failure:failure];
 }
