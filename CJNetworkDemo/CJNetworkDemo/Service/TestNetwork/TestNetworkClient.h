@@ -16,16 +16,16 @@
 
 + (TestNetworkClient *)sharedInstance;
 
-- (nullable NSURLSessionDataTask *)testSimulate_postApiSuffix:(NSString *)apiSuffix
-                                                       params:(nullable id)params
-                                                 settingModel:(CJRequestSettingModel *)settingModel
-                                            shouldRemoveCache:(BOOL)shouldRemoveCache
-                                                      success:(void (^)(CJResponseModel *responseModel))success
-                                                      failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
+- (NSURLSessionDataTask *)testSimulate_postApi:(NSString *)apiSuffix
+                                        params:(nullable id)params
+                                  settingModel:(CJRequestSettingModel *)settingModel
+                                       success:(void (^)(CJResponseModel *responseModel))success
+                                       failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
-- (nullable NSURLSessionDataTask *)testEncrypt_postApiSuffix:(NSString *)apiSuffix
-                                                      params:(nullable id)params
-                                               cacheStrategy:(CJRequestCacheStrategy)cacheStrategy
-                                               completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
+- (NSURLSessionDataTask *)testLocal_postApi:(NSString *)apiSuffix
+                                     params:(id)params
+                               settingModel:(CJRequestSettingModel *)settingModel
+                                    success:(void (^)(CJResponseModel *responseModel))success
+                                    failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 @end

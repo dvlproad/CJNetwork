@@ -22,7 +22,7 @@
     settingModel.cacheStrategy = CJRequestCacheStrategyNoneCache;
     settingModel.logType = CJRequestLogTypeNone;
     
-    [self testSimulate_postApiSuffix:apiSuffix params:params settingModel:settingModel shouldRemoveCache:NO success:^(CJResponseModel *responseModel) {
+    [self testSimulate_postApi:apiSuffix params:params settingModel:settingModel success:^(CJResponseModel *responseModel) {
         sleep(5);
         if (success) {
             success(responseModel);

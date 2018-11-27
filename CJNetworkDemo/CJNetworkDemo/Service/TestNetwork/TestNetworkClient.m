@@ -9,7 +9,6 @@
 #import "TestNetworkClient.h"
 #import "TestHTTPSessionManager.h"
 
-#import "CJNetworkCacheUtil.h"
 #import "CJRequestSimulateUtil.h"
 
 @implementation TestNetworkClient
@@ -23,100 +22,56 @@
     return _sharedInstance;
 }
 
-- (nullable NSURLSessionDataTask *)testSimulate_postApiSuffix:(NSString *)apiSuffix
-                                                       params:(nullable id)params
-                                                 settingModel:(CJRequestSettingModel *)settingModel
-                                            shouldRemoveCache:(BOOL)shouldRemoveCache
-                                                      success:(void (^)(CJResponseModel *responseModel))success
-                                                      failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
-{
-    NSString *domain = @"http://localhost/CJDemoDataSimulationDemo";
-    NSString *Url = [domain stringByAppendingString:apiSuffix];
-    
-    if (shouldRemoveCache) {
-        [CJNetworkCacheUtil removeCacheForUrl:Url params:params];
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        AFHTTPSessionManager *cleanHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
+        TestHTTPSessionManager *cryptHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
+//        CJDemoNetworkEnvironmentManager *environmentManager = [CJDemoNetworkEnvironmentManager sharedInstance];
+        id environmentManager = nil;
+        [self setupCleanHTTPSessionManager:cleanHTTPSessionManager cryptHTTPSessionManager:cryptHTTPSessionManager environmentManager:environmentManager];
+        
+        [self setupResponseConvertBlock:^CJResponseModel *(id responseObject, BOOL isCacheData) {
+            NSDictionary *responseDictionary = responseObject;
+            //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
+            //CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:isCacheData];
+            CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+            responseModel.status = [responseDictionary[@"status"] integerValue];
+            responseModel.message = responseDictionary[@"message"];
+            responseModel.result = responseDictionary[@"result"];
+            responseModel.isCacheData = isCacheData;
+
+            return responseModel;
+            
+        } firstJudgeLogicSuccessBlock:^BOOL(CJResponseModel *responseModel) {
+            return YES;
+            
+        } getRequestFailureMessageBlock:^NSString *(NSError *error) {
+            return @"网络错误";
+        }];
+        
+        NSString *simulateDomain = @"http://localhost/CJDemoDataSimulationDemo";
+        [self setupSimulateDomain:simulateDomain];
     }
-    
-    AFHTTPSessionManager *manager = [TestHTTPSessionManager sharedInstance];
-    
-    NSURLSessionDataTask *URLSessionDataTask =
-    [manager cj_getUrl:Url params:params settingModel:settingModel success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
-        NSDictionary *responseDictionary = successRequestInfo.responseObject;
-        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-        responseModel.status = [responseDictionary[@"status"] integerValue];
-        responseModel.message = responseDictionary[@"message"];
-        responseModel.result = responseDictionary[@"result"];
-        responseModel.isCacheData = successRequestInfo.isCacheData;
-        if (success) {
-            success(responseModel);
-        }
-        
-    } failure:^(CJFailureRequestInfo * _Nullable failureRequestInfo) {
-        NSString *errorMessage = failureRequestInfo.errorMessage;
-        if (failure) {
-            failure(YES, errorMessage);
-        }
-    }];
-    return URLSessionDataTask;
+    return self;
 }
 
-- (nullable NSURLSessionDataTask *)testEncrypt_postApiSuffix:(NSString *)apiSuffix
-                                                      params:(nullable id)params
-                                               cacheStrategy:(CJRequestCacheStrategy)cacheStrategy
-                                               completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
+- (NSURLSessionDataTask *)testSimulate_postApi:(NSString *)apiSuffix
+                                        params:(nullable id)params
+                                  settingModel:(CJRequestSettingModel *)settingModel
+                                       success:(void (^)(CJResponseModel *responseModel))success
+                                       failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
-    NSString *domain = @"https://localhost/CJDemoDataSimulationDemo";
-    NSString *Url = [domain stringByAppendingString:apiSuffix];
-    
-    CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    settingModel.cacheStrategy = cacheStrategy;
-    settingModel.logType = CJRequestLogTypeConsoleLog;
-    
-    AFHTTPSessionManager *manager = [TestHTTPSessionManager sharedInstance];
-    
-    NSURLSessionDataTask *URLSessionDataTask =
-    [manager cjMethodEncrypt_postUrl:Url params:params settingModel:settingModel encrypt:NO encryptBlock:nil decryptBlock:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
-        NSDictionary *responseDictionary = successRequestInfo.responseObject;
-        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-        responseModel.status = [responseDictionary[@"status"] integerValue];
-        responseModel.message = responseDictionary[@"message"];
-        responseModel.result = responseDictionary[@"result"];
-        responseModel.isCacheData = successRequestInfo.isCacheData;
-        if (completeBlock) {
-            completeBlock(responseModel);
-        }
-        
-    } failure:^(CJFailureRequestInfo * _Nullable failureRequestInfo) {
-        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-        responseModel.status = -1;
-        responseModel.message = NSLocalizedString(@"网络请求失败", nil);
-        responseModel.result = nil;
-        responseModel.isCacheData = NO;
-        if (completeBlock) {
-            completeBlock(responseModel);
-        }
-    }];
-    return URLSessionDataTask;
+    return [self exampleSimulate_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)exampleLocal_postApi:(NSString *)apiSuffix
-                                 params:(id)params
-                                encrypt:(BOOL)encrypt
-                                success:(void (^)(CJResponseModel *responseModel))success
-                                failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
+- (NSURLSessionDataTask *)testLocal_postApi:(NSString *)apiSuffix
+                                     params:(id)params
+                               settingModel:(CJRequestSettingModel *)settingModel
+                                    success:(void (^)(CJResponseModel *responseModel))success
+                                    failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
-    [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
-        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-        responseModel.status = [responseDictionary[@"status"] integerValue];
-        responseModel.message = responseDictionary[@"message"];
-        responseModel.result = responseDictionary[@"result"];
-        responseModel.isCacheData = NO;
-        if (success) {
-            success(responseModel);
-        }
-    }];
-    
-    return nil;
+    return [self exampleLocal_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
 }
 
 @end

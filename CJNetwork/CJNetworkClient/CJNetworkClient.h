@@ -41,7 +41,9 @@
              cryptHTTPSessionManager:(AFHTTPSessionManager<CJNetworkCryptHTTPSessionManagerProtocol> *)cryptHTTPSessionManager
                   environmentManager:(id<CJNetworkEnvironmentProtocol>)environmentManager;
 
-- (void)setupResponseFirstJudgeLogicSuccessBlock:(BOOL(^)(CJResponseModel *responseModel))firstJudgeLogicSuccessBlock getRequestFailureMessageBlock:(NSString* (^)(NSError *error))getRequestFailureMessageBlock;
+- (void)setupResponseConvertBlock:(CJResponseModel *(^)(id responseObject, BOOL isCacheData))responseConvertBlock
+      firstJudgeLogicSuccessBlock:(BOOL(^)(CJResponseModel *responseModel))firstJudgeLogicSuccessBlock
+    getRequestFailureMessageBlock:(NSString* (^)(NSError *error))getRequestFailureMessageBlock;
 
 - (void)setupSimulateDomain:(NSString *)simulateDomain;
 

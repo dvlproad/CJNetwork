@@ -8,7 +8,7 @@
 
 #import "RepeatRequestViewController.h"
 
-#import "TestNetworkClient+Test.h"
+#import "TestNetworkClient+TestRequest.h"
 
 
 static int apiTestCount = 0;
@@ -55,12 +55,10 @@ static int apiTestCount = 0;
 
 
 - (void)doAPITest{
-    [[TestNetworkClient sharedInstance] requestBaiduHomeCompleteBlock:^(CJResponseModel *responseModel) {
-        if (responseModel.status == 0) {
-            NSLog(@"接口测试成功。。。%d", apiTestCount++);
-        } else {
-            NSLog(@"接口测试失败。。。");
-        }
+    [[TestNetworkClient sharedInstance] testRequestWithSuccess:^(CJResponseModel *responseModel) {
+        NSLog(@"接口测试成功。。。%d", apiTestCount++);
+    } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
+        NSLog(@"接口测试失败。。。");
     }];
 }
 

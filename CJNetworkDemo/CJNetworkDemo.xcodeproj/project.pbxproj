@@ -12,6 +12,9 @@
 		7801C0D521ABE04400045114 /* CJNetworkEnvironmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0CC21ABE04400045114 /* CJNetworkEnvironmentModel.m */; };
 		7801C0D621ABE04400045114 /* CJJSONResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0D121ABE04400045114 /* CJJSONResponseSerializer.m */; };
 		7801C0D721ABE04400045114 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0D221ABE04400045114 /* NSString+URLEncoding.m */; };
+		7801C0DA21AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0D921AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m */; };
+		7801C0DD21AD1F4C00045114 /* TestNetworkClient+TestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0DC21AD1F4C00045114 /* TestNetworkClient+TestCache.m */; };
+		7801C0E021AD225100045114 /* TestNetworkClient+TestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0DF21AD225100045114 /* TestNetworkClient+TestRequest.m */; };
 		78226A9421A424B0002167F2 /* DemoAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 78226A9321A424B0002167F2 /* DemoAlert.m */; };
 		78226A9921A5492D002167F2 /* CJRequestSimulateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 78226A9821A5492D002167F2 /* CJRequestSimulateUtil.m */; };
 		784652BB1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846529D1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m */; };
@@ -99,7 +102,6 @@
 		78EB551A21A280C300EEB853 /* CJUIKitBaseHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB551121A280C200EEB853 /* CJUIKitBaseHomeViewController.m */; };
 		78EB551B21A280C300EEB853 /* CJUIKitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB551321A280C200EEB853 /* CJUIKitBaseViewController.m */; };
 		78EB551F21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB551E21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m */; };
-		78F2CB8021ABC350000828C8 /* TestNetworkClient+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F2CB7F21ABC34F000828C8 /* TestNetworkClient+Test.m */; };
 		78FC91FA1F54481E00033DEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91F91F54481E00033DEF /* main.m */; };
 		78FC91FD1F54481E00033DEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91FC1F54481E00033DEF /* AppDelegate.m */; };
 		78FC92001F54481E00033DEF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91FF1F54481E00033DEF /* ViewController.m */; };
@@ -146,6 +148,12 @@
 		7801C0D121ABE04400045114 /* CJJSONResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJJSONResponseSerializer.m; sourceTree = "<group>"; };
 		7801C0D221ABE04400045114 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		7801C0D321ABE04400045114 /* CJJSONResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJJSONResponseSerializer.h; sourceTree = "<group>"; };
+		7801C0D821AD1EA100045114 /* TestNetworkClient+MethodEncrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+MethodEncrypt.h"; sourceTree = "<group>"; };
+		7801C0D921AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+MethodEncrypt.m"; sourceTree = "<group>"; };
+		7801C0DB21AD1F4C00045114 /* TestNetworkClient+TestCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+TestCache.h"; sourceTree = "<group>"; };
+		7801C0DC21AD1F4C00045114 /* TestNetworkClient+TestCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestCache.m"; sourceTree = "<group>"; };
+		7801C0DE21AD225100045114 /* TestNetworkClient+TestRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+TestRequest.h"; sourceTree = "<group>"; };
+		7801C0DF21AD225100045114 /* TestNetworkClient+TestRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestRequest.m"; sourceTree = "<group>"; };
 		78226A9221A424B0002167F2 /* DemoAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoAlert.h; sourceTree = "<group>"; };
 		78226A9321A424B0002167F2 /* DemoAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoAlert.m; sourceTree = "<group>"; };
 		78226A9721A5492D002167F2 /* CJRequestSimulateUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJRequestSimulateUtil.h; sourceTree = "<group>"; };
@@ -294,8 +302,6 @@
 		78EB551321A280C200EEB853 /* CJUIKitBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUIKitBaseViewController.m; sourceTree = "<group>"; };
 		78EB551D21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+TestConcurrence.h"; sourceTree = "<group>"; };
 		78EB551E21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestConcurrence.m"; sourceTree = "<group>"; };
-		78F2CB7E21ABC34F000828C8 /* TestNetworkClient+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+Test.h"; sourceTree = "<group>"; };
-		78F2CB7F21ABC34F000828C8 /* TestNetworkClient+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+Test.m"; sourceTree = "<group>"; };
 		78FC91F51F54481E00033DEF /* CJNetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CJNetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FC91F91F54481E00033DEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		78FC91FB1F54481E00033DEF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -529,6 +535,8 @@
 				784652F71F5448FB00E20A27 /* TestHTTPSessionManager.m */,
 				784652F81F5448FB00E20A27 /* TestNetworkClient.h */,
 				784652F91F5448FB00E20A27 /* TestNetworkClient.m */,
+				7801C0D821AD1EA100045114 /* TestNetworkClient+MethodEncrypt.h */,
+				7801C0D921AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m */,
 			);
 			path = TestNetwork;
 			sourceTree = "<group>";
@@ -739,8 +747,10 @@
 			children = (
 				7868F1692121C79A00A283EB /* EncryptHomeViewController.h */,
 				7868F16A2121C79A00A283EB /* EncryptHomeViewController.m */,
-				78F2CB7E21ABC34F000828C8 /* TestNetworkClient+Test.h */,
-				78F2CB7F21ABC34F000828C8 /* TestNetworkClient+Test.m */,
+				7801C0DB21AD1F4C00045114 /* TestNetworkClient+TestCache.h */,
+				7801C0DC21AD1F4C00045114 /* TestNetworkClient+TestCache.m */,
+				7801C0DE21AD225100045114 /* TestNetworkClient+TestRequest.h */,
+				7801C0DF21AD225100045114 /* TestNetworkClient+TestRequest.m */,
 				7868F1932121CC2600A283EB /* Login */,
 			);
 			path = DemosEncrypt;
@@ -1290,6 +1300,7 @@
 				784652BB1F5448F100E20A27 /* AFHTTPSessionManager+CJUploadFile.m in Sources */,
 				78B6C2FF215AAA8900D5864E /* HealthyNetworkClient+Login.m in Sources */,
 				7846E38E21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m in Sources */,
+				7801C0E021AD225100045114 /* TestNetworkClient+TestRequest.m in Sources */,
 				784652C01F5448F100E20A27 /* CJUploadProgressView.m in Sources */,
 				78881CEE214AE71800CAED82 /* CJRequestInfoModel.m in Sources */,
 				784653661F5449D000E20A27 /* CJDataDiskManager.m in Sources */,
@@ -1298,6 +1309,7 @@
 				7868F1812121C79A00A283EB /* AFDownloadViewController.m in Sources */,
 				784653681F5449D000E20A27 /* CJDataMemoryDictionaryManager.m in Sources */,
 				78590BD3215B275B00F45AD5 /* HealthResponseModel.m in Sources */,
+				7801C0DA21AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m in Sources */,
 				784653671F5449D000E20A27 /* CJDataMemoryCacheManager.m in Sources */,
 				7801C0D621ABE04400045114 /* CJJSONResponseSerializer.m in Sources */,
 				7846533D1F5448FB00E20A27 /* TestHTTPSessionManager.m in Sources */,
@@ -1344,8 +1356,8 @@
 				7846E38B21A6A56900D73F51 /* TestConcurrenceManager.m in Sources */,
 				7846532A1F5448FB00E20A27 /* AccountInfo.m in Sources */,
 				784653751F544A0100E20A27 /* MQLResumeManager.m in Sources */,
-				78F2CB8021ABC350000828C8 /* TestNetworkClient+Test.m in Sources */,
 				784653311F5448FB00E20A27 /* HealthyNetworkClient.m in Sources */,
+				7801C0DD21AD1F4C00045114 /* TestNetworkClient+TestCache.m in Sources */,
 				787BAF2420349EF2000E276E /* AFHTTPSessionManager+CJSerializerEncrypt.m in Sources */,
 				7868F1A82121D06C00A283EB /* AFNDemoViewController.m in Sources */,
 				7868F1862121C79A00A283EB /* DownloadListViewController.m in Sources */,

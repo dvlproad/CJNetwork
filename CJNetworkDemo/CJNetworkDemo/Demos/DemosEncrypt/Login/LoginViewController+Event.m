@@ -92,7 +92,7 @@
             }
         }
         
-    } failure:^(NSError *error) {
+    } failure:^(NSString *errorMessage) {
         
     }];
 }

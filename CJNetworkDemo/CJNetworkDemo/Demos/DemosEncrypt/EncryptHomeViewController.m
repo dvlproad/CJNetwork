@@ -10,7 +10,7 @@
 
 #import "LoginViewController.h"
 
-#import "TestNetworkClient+Test.h"
+#import "TestNetworkClient+TestCache.h"
 
 
 #import "HealthyNetworkClient.h"
@@ -83,8 +83,10 @@
 /// 测试缓存时间
 - (void)testCacheTime {
     // checkTestCacheTime 检查是否可以开始测试'设置的缓存过期时间是否有效'的问题
-    [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:YES success:^(CJResponseModel *responseModel) {
+    
+    [[TestNetworkClient sharedInstance] testEndWithCacheIfExistWithSuccess:^(CJResponseModel *responseModel) {
         [self startTestCacheTime];
+        
     } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
         if (isRequestFailure) {
             [CJAlert showIKnowWithTitle:@"网络请求失败，无法测试'设置的缓存过期时间是否有效'的问题，请先保证网络请求成功" message:errorMessage okHandle:nil];
@@ -94,7 +96,10 @@
 
 - (void)startTestCacheTime {
     NSLog(@"第一次请求到的肯定是非缓存的数据，否则错误");
-    [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:YES success:^(CJResponseModel *responseModel) {
+    
+    [[TestNetworkClient sharedInstance] removeCacheForEndWithCacheIfExistApi];
+    
+    [[TestNetworkClient sharedInstance] testEndWithCacheIfExistWithSuccess:^(CJResponseModel *responseModel) {
         if (responseModel.isCacheData == NO) {
             [CJToast shortShowMessage:@"①测试通过：第一次请求到的肯定是非缓存的数据"];
         } else {
@@ -104,7 +109,7 @@
     
     NSLog(@"在缓存过期10秒内，请求到的肯定是缓存的数据，否则错误");
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:NO success:^(CJResponseModel *responseModel) {
+        [[TestNetworkClient sharedInstance] testEndWithCacheIfExistWithSuccess:^(CJResponseModel *responseModel) {
             if (responseModel.isCacheData == YES) {
                 [CJToast shortShowMessage:@"②测试通过：在缓存过期10秒内(现在是5秒)，请求到的肯定是缓存的数据"];
             } else {
@@ -115,7 +120,7 @@
     
     NSLog(@"在缓存过期10秒后，请求到的肯定是非缓存的数据，否则错误");
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(11 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[TestNetworkClient sharedInstance] testCacheWithShouldRemoveCache:NO success:^(CJResponseModel *responseModel) {
+        [[TestNetworkClient sharedInstance] testEndWithCacheIfExistWithSuccess:^(CJResponseModel *responseModel) {
             if (responseModel.isCacheData == NO) {
                 [CJToast shortShowMessage:@"③测试通过：在缓存过期10秒后(现在是11秒)，请求到的肯定是非缓存的数据"];
                 [DemoAlert showIKnowAlertViewWithTitle:@"测试缓存时间通过"];
@@ -167,12 +172,12 @@
             completeBlock(responseModel);
         }
         
-    } failure:^(NSError * _Nullable error) {
+    } failure:^(NSString *errorMessage) {
         CJResponseModel *responseModel = [[CJResponseModel alloc] init];
         responseModel.status = -1;
         responseModel.message = NSLocalizedString(@"网络请求失败", nil);
         responseModel.result = nil;
-        responseModel.cjNetworkLog = error.userInfo[@"cjNetworkLog"];
+        //responseModel.cjNetworkLog = error.userInfo[@"cjNetworkLog"];
         if (completeBlock) {
             completeBlock(responseModel);
         }

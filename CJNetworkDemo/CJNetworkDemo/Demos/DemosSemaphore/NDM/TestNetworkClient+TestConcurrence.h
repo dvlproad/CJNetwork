@@ -9,6 +9,7 @@
 #import "TestNetworkClient.h"
 
 @interface TestNetworkClient (TestConcurrence)
+
 /// 测试并发数
 - (void)testConcurrenceCountApiIndex:(NSInteger)apiIndex
                              success:(void (^)(CJResponseModel *responseModel))success

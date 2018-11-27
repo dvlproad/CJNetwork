@@ -13,7 +13,7 @@
 - (void)requestLoginWithName:(NSString *)name
                         pasd:(NSString*)pasd
                      success:(void (^)(HealthResponseModel *responseModel))success
-                     failure:(void (^)(NSError *error))failure
+                     failure:(void (^)(NSString *errorMessage))failure
 {
     NSString *apiName = @"login";
     NSDictionary *params = @{@"username" : name,

@@ -20,6 +20,6 @@
                                   params:(id)params
                                  encrypt:(BOOL)encrypt
                                  success:(void (^)(HealthResponseModel *responseModel))success
-                                 failure:(void (^)(NSError *error))failure;
+                                 failure:(void (^)(NSString *errorMessage))failure;
 
 @end

@@ -14,6 +14,6 @@
 - (void)requestLoginWithName:(NSString *)name
                         pasd:(NSString*)pasd
                      success:(void (^)(HealthResponseModel *responseModel))success
-                     failure:(void (^)(NSError *error))failure;
+                     failure:(void (^)(NSString *errorMessage))failure;
 
 @end

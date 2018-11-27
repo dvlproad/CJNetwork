@@ -22,6 +22,9 @@
 //@property (nonatomic, copy) NSDictionary *(^completeParamsBlock)(id environmentManager, NSDictionary *customParams);
 
 #pragma mark - 请求判断
+//必须实现：将responseObject转为CJResponseModel
+@property (nonatomic, copy) CJResponseModel *(^responseConvertBlock)(id responseObject, BOOL isCacheData);
+
 //必须实现：对"请求成功的success回调"做初次判断，设置哪些情况可以继续走success回调(如statusCode==1)，其余转为走failue回调。(有些特殊情况的好处：当只有statusCode==1的才能继续走success回调的时候，就不用每个请求的sucess都写一遍statusCode==1的判断了)
 @property (nonatomic, copy) BOOL(^firstJudgeLogicSuccessBlock)(CJResponseModel *responseModel);
 
@@ -46,8 +49,17 @@
     self.environmentManager = environmentManager;
 }
 
-- (void)setupResponseFirstJudgeLogicSuccessBlock:(BOOL(^)(CJResponseModel *responseModel))firstJudgeLogicSuccessBlock getRequestFailureMessageBlock:(NSString* (^)(NSError *error))getRequestFailureMessageBlock
+- (void)setupResponseConvertBlock:(CJResponseModel *(^)(id responseObject, BOOL isCacheData))responseConvertBlock
+      firstJudgeLogicSuccessBlock:(BOOL(^)(CJResponseModel *responseModel))firstJudgeLogicSuccessBlock
+    getRequestFailureMessageBlock:(NSString* (^)(NSError *error))getRequestFailureMessageBlock
 {
+    //NSDictionary *responseDictionary = successNetworkInfo.responseObject;
+    //BOOL isCacheData = successNetworkInfo.isCacheData;
+    //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
+    //CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:successNetworkInfo.isCacheData];
+    
+    NSAssert(responseConvertBlock, @"responseConvertBlock不能为空");
+    self.responseConvertBlock = responseConvertBlock;
     self.firstJudgeLogicSuccessBlock = firstJudgeLogicSuccessBlock;
     self.getRequestFailureMessageBlock = getRequestFailureMessageBlock;
 }
@@ -83,47 +95,8 @@
                                      success:(void (^)(CJResponseModel *responseModel))success
                                      failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
-    NSDictionary *allParams = [self.environmentManager completeParamsWithCustomParams:params];
-    
-    AFHTTPSessionManager *manager = self.cleanHTTPSessionManager;
-    
-    NSURLSessionDataTask *dataTask =
-    [manager cj_getUrl:Url params:allParams settingModel:settingModel success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
-        NSDictionary *responseDictionary = successNetworkInfo.responseObject;
-        //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
-        CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:successNetworkInfo.isCacheData];
-        
-        NSAssert(self.firstJudgeLogicSuccessBlock, @"对请求成功的success回调做初次判断，设置哪些情况可以继续走success回调的方法不能为空");
-        BOOL logicSuccess = self.firstJudgeLogicSuccessBlock(responseModel);
-        if (logicSuccess) {
-            if (success) {
-                success(responseModel);
-            }
-        } else {
-            NSString *logicFailureMessage = responseModel.message;
-            if (failure) {
-                failure(NO, logicFailureMessage);
-            }
-        }
-    } failure:^(CJFailureRequestInfo * _Nullable failureNetworkInfo) {
-        NSError *error = failureNetworkInfo.error;
-        NSString *errorMessage = failureNetworkInfo.errorMessage;
-        if (self.getRequestFailureMessageBlock) {
-            errorMessage = self.getRequestFailureMessageBlock(error);
-        }
-        //CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-        //responseModel.status = -1;
-        //responseModel.message = NSLocalizedString(@"网络请求失败", nil);
-        //responseModel.result = nil;
-        
-        if (failure) {
-            failure(YES, errorMessage);
-        }
-    }];
-    
-    return dataTask;
+    return [self exampleReal_requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel success:success failure:failure];
 }
-
 
 - (NSURLSessionDataTask *)exampleReal_postUrl:(NSString *)Url
                                        params:(id)params
@@ -131,21 +104,35 @@
                                       success:(void (^)(CJResponseModel *responseModel))success
                                       failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
-    
+    return [self exampleReal_requestUrl:Url params:params method:CJRequestMethodPOST settingModel:settingModel success:success failure:failure];
+}
+
+- (nullable NSURLSessionDataTask *)exampleReal_requestUrl:(nullable NSString *)Url
+                                                   params:(nullable id)params
+                                                   method:(CJRequestMethod)method
+                                             settingModel:(CJRequestSettingModel *)settingModel
+                                                  success:(void (^)(CJResponseModel *responseModel))success
+                                                  failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
+{
     NSDictionary *allParams = [self.environmentManager completeParamsWithCustomParams:params];
     
     AFHTTPSessionManager *manager = nil;
-    if (encrypt) {
-        manager = self.cryptHTTPSessionManager;
-    } else {
+    if (method == CJRequestMethodGET) {
         manager = self.cleanHTTPSessionManager;
+    } else if (method == CJRequestMethodPOST) {
+        if (settingModel.shouldEncrypt) {
+            manager = self.cryptHTTPSessionManager;
+        } else {
+            manager = self.cleanHTTPSessionManager;
+        }
     }
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cj_postUrl:Url params:allParams settingModel:settingModel success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
+    [manager cj_requestUrl:Url params:allParams method:method settingModel:settingModel success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
         NSDictionary *responseDictionary = successNetworkInfo.responseObject;
-        //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
-        CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:successNetworkInfo.isCacheData];
+        BOOL isCacheData = successNetworkInfo.isCacheData;
+        CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
+        
         NSAssert(self.firstJudgeLogicSuccessBlock, @"对请求成功的success回调做初次判断，设置哪些情况可以继续走success回调的方法不能为空");
         BOOL logicSuccess = self.firstJudgeLogicSuccessBlock(responseModel);
         if (logicSuccess) {
@@ -158,7 +145,6 @@
                 failure(NO, logicFailureMessage);
             }
         }
-        
     } failure:^(CJFailureRequestInfo * _Nullable failureNetworkInfo) {
         NSError *error = failureNetworkInfo.error;
         NSString *errorMessage = failureNetworkInfo.errorMessage;
@@ -210,8 +196,9 @@
                                       failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
-        //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
-        CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:NO];
+        BOOL isCacheData = NO;
+        CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
+        
         if (success) {
             success(responseModel);
         }
@@ -227,8 +214,9 @@
                                        failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
-        //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
-        CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:NO];
+        BOOL isCacheData = NO;
+        CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
+        
         if (success) {
             success(responseModel);
         }
