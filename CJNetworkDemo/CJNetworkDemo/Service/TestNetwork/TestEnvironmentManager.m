@@ -1,17 +1,17 @@
 //
-//  CJNetworkEnvironmentManager.m
+//  TestEnvironmentManager.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2017/8/1.
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
-#import "CJNetworkEnvironmentManager.h"
+#import "TestEnvironmentManager.h"
 #import <CJBaseHelper/DeviceCJHelper.h>
 #import <CJBaseHelper/NSObjectCJHelper.h>
 #import <OpenUDID/OpenUDID.h>
 
-@interface CJNetworkEnvironmentManager() {
+@interface TestEnvironmentManager() {
     
 }
 
@@ -19,10 +19,10 @@
 
 
 
-@implementation CJNetworkEnvironmentManager
+@implementation TestEnvironmentManager
 
-+ (CJNetworkEnvironmentManager *)sharedInstance {
-    static CJNetworkEnvironmentManager *_sharedInstance = nil;
++ (TestEnvironmentManager *)sharedInstance {
+    static TestEnvironmentManager *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[self alloc] init];
@@ -39,7 +39,7 @@
 }
 
 - (NSString *)getBaseUrl {
-    CJNetworkEnvironmentModel *environmentModel = self.environmentModel;
+    TestEnvironmentModel *environmentModel = self.environmentModel;
     
     NSString *hostName = nil;
 //    if (environmentModel.useDomain) {
@@ -90,10 +90,10 @@
     }
     [commonParams setValue:appVersion forKey:@"appVersion"];
     
-//    NSString *appNameType = LuckinDriverAppNameType;
+//    NSString *appNameType = TestDriverAppNameType;
 //    [commonParams setValue:appNameType forKey:@"app_type"];
 //
-//    NSInteger appDataSourceType = LuckinDriverAppDataSourceType;
+//    NSInteger appDataSourceType = TestDriverAppDataSourceType;
 //    [commonParams setValue:@(appDataSourceType) forKey:@"app"];
     if (specificCommonParams) {
         //[commonParams setValue:kCid forKey:@"mapiVersion"]; //必须添加

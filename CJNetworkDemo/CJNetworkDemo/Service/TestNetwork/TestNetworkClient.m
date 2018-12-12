@@ -8,6 +8,7 @@
 
 #import "TestNetworkClient.h"
 #import "TestHTTPSessionManager.h"
+#import "TestEnvironmentManager.h"
 
 #import "CJRequestSimulateUtil.h"
 
@@ -27,24 +28,36 @@
     if (self) {
         AFHTTPSessionManager *cleanHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
         TestHTTPSessionManager *cryptHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
-//        CJDemoNetworkEnvironmentManager *environmentManager = [CJDemoNetworkEnvironmentManager sharedInstance];
-        id environmentManager = nil;
-        [self setupCleanHTTPSessionManager:cleanHTTPSessionManager cryptHTTPSessionManager:cryptHTTPSessionManager environmentManager:environmentManager];
+        [self setupCleanHTTPSessionManager:cleanHTTPSessionManager cryptHTTPSessionManager:cryptHTTPSessionManager];
+        
+        //TestEnvironmentManager *environmentManager = [TestEnvironmentManager sharedInstance];
+        [self setupCompleteFullUrlBlock:^NSString *(NSString *apiSuffix) {
+            NSString *baseUrl = @"http://xxx.xxx.xxx";
+            NSString *mainUrl = [[baseUrl stringByAppendingString:apiSuffix] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            return mainUrl;
+            //return [environmentManager completeUrlWithApiSuffix:apiSuffix];
+        } completeAllParamsBlock:^NSDictionary *(NSDictionary *customParams) {
+            NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:customParams];
+            NSDictionary *commonParams = @{@"phone": @"iPhone6"};
+            [allParams addEntriesFromDictionary:commonParams];
+            return allParams;
+            //return [environmentManager completeParamsWithCustomParams:customParams];
+        }];
         
         [self setupResponseConvertBlock:^CJResponseModel *(id responseObject, BOOL isCacheData) {
             NSDictionary *responseDictionary = responseObject;
             //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
             //CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:isCacheData];
             CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-            responseModel.status = [responseDictionary[@"status"] integerValue];
+            responseModel.statusCode = [responseDictionary[@"status"] integerValue];
             responseModel.message = responseDictionary[@"message"];
             responseModel.result = responseDictionary[@"result"];
             responseModel.isCacheData = isCacheData;
 
             return responseModel;
             
-        } firstJudgeLogicSuccessBlock:^BOOL(CJResponseModel *responseModel) {
-            return YES;
+        } checkIsCommonBlock:^BOOL(CJResponseModel *responseModel) {
+            return NO;
             
         } getRequestFailureMessageBlock:^NSString *(NSError *error) {
             return @"网络错误";
@@ -62,7 +75,7 @@
                                        success:(void (^)(CJResponseModel *responseModel))success
                                        failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
-    return [self exampleSimulate_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
+    return [self simulate2_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
 }
 
 - (NSURLSessionDataTask *)testLocal_postApi:(NSString *)apiSuffix
@@ -71,7 +84,7 @@
                                     success:(void (^)(CJResponseModel *responseModel))success
                                     failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
-    return [self exampleLocal_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
+    return [self local2_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
 }
 
 @end

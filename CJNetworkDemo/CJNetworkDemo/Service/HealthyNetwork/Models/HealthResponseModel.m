@@ -14,7 +14,7 @@
     self = [super init];
     if (self) {
         NSInteger statusCode = [[responseDictionary objectForKey:@"status"] integerValue];
-        self.status = statusCode;
+        self.statusCode = statusCode;
         
         NSString *message = responseDictionary[@"msg"];
         if ([self isNoNullForObject:message]) {

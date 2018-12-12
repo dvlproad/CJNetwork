@@ -1,5 +1,5 @@
 //
-//  CJNetworkEnvironmentModel.h
+//  TestEnvironmentModel.h
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2018/9/17.
@@ -11,7 +11,7 @@
 /**
  *  环境
  */
-@interface CJNetworkEnvironmentModel : NSObject
+@interface TestEnvironmentModel : NSObject
 
 @property (nonatomic, copy) NSString *eid;      /**< id */
 @property (nonatomic, copy) NSString *name;     /**< 名字/描述 */

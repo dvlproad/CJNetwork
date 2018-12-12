@@ -10,86 +10,65 @@
 
 #import <Foundation/Foundation.h>
 #import "AFHTTPSessionManager+CJSerializerEncrypt.h"
-
-@protocol CJNetworkEnvironmentProtocol <NSObject>
-
-@property (nonatomic, strong) id environmentModel;  /**< 当前网络环境 */
-@property (nonatomic, strong) NSMutableDictionary *specificCommonParams;           /**< 设置每个请求都会有的公共参数(项目里已添加了其他一些公共参数) */
-
-- (NSString *)completeUrlWithApiSuffix:(NSString *)apiSuffix;
-- (NSDictionary *)completeParamsWithCustomParams:(NSDictionary *)customParams;
-
-@end
-
-
-
-@protocol CJNetworkCryptHTTPSessionManagerProtocol <NSObject>
-
-- (void)setupSecretKey:(NSString *)secretKey;
-
-@end
-
-
-
 #import "CJResponseModel.h"
+
+typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
+    CJResponeFailureTypeUncheck = 0,            /**< 未进行是否等失败判断 */
+    CJResponeFailureTypeRequestFailure,         /**< 请求失败 */
+    CJResponeFailureTypeCommonFailure,          /**< 通用失败 */
+    CJResponeFailureTypeNeedFurtherJudgeFailure,/**< 需要进一步判断是否错误的那些(在未进行归类或者未归类进指定错误的时候，都是这个值) */
+};
 
 
 @interface CJNetworkClient : NSObject {
     
 }
+// 一定要执行
 - (void)setupCleanHTTPSessionManager:(AFHTTPSessionManager *)cleanHTTPSessionManager
-             cryptHTTPSessionManager:(AFHTTPSessionManager<CJNetworkCryptHTTPSessionManagerProtocol> *)cryptHTTPSessionManager
-                  environmentManager:(id<CJNetworkEnvironmentProtocol>)environmentManager;
+             cryptHTTPSessionManager:(AFHTTPSessionManager *)cryptHTTPSessionManager;
+
+- (void)setupCompleteFullUrlBlock:(NSString * (^)(NSString *apiSuffix))completeFullUrlBlock
+           completeAllParamsBlock:(NSDictionary * (^)(NSDictionary *customParams))completeAllParamsBlock;
 
 - (void)setupResponseConvertBlock:(CJResponseModel *(^)(id responseObject, BOOL isCacheData))responseConvertBlock
-      firstJudgeLogicSuccessBlock:(BOOL(^)(CJResponseModel *responseModel))firstJudgeLogicSuccessBlock
+               checkIsCommonBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonBlock
     getRequestFailureMessageBlock:(NSString* (^)(NSError *error))getRequestFailureMessageBlock;
 
+// 可选执行(当你需要执行模拟的时候才需要)
 - (void)setupSimulateDomain:(NSString *)simulateDomain;
 
-#pragma mark - Environment
-- (void)updateEnvironmentModel:(id)environmentModel;
-- (void)updateEnvironmentSpecificCommonParams:(NSMutableDictionary *)specificCommonParams;
+#pragma mark - Real
+- (NSURLSessionDataTask *)real_getApi:(NSString *)apiSuffix
+                               params:(NSDictionary *)params
+                         settingModel:(CJRequestSettingModel *)settingModel
+                        completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
-#pragma mark - Crypt
-- (void)setupCryptSecretKey:(NSString *)secretKey;
+- (NSURLSessionDataTask *)real_postApi:(NSString *)apiSuffix
+                                params:(id)params
+                          settingModel:(CJRequestSettingModel *)settingModel
+                         completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
-- (NSURLSessionDataTask *)exampleReal_getUrl:(NSString *)Url
-                                      params:(NSDictionary *)params
-                                settingModel:(CJRequestSettingModel *)settingModel
-                                     success:(void (^)(CJResponseModel *responseModel))success
-                                     failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
-
-- (NSURLSessionDataTask *)exampleReal_postUrl:(NSString *)Url
-                                       params:(id)params
-                                 settingModel:(CJRequestSettingModel *)settingModel
-                                      success:(void (^)(CJResponseModel *responseModel))success
-                                      failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 #pragma mark simulate
-- (NSURLSessionDataTask *)exampleSimulate_getApi:(NSString *)apiSuffix
-                                          params:(NSDictionary *)params
-                                    settingModel:(CJRequestSettingModel *)settingModel
-                                         success:(void (^)(CJResponseModel *responseModel))success
-                                         failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
+- (NSURLSessionDataTask *)simulate_getApi:(NSString *)apiSuffix
+                                   params:(NSDictionary *)params
+                             settingModel:(CJRequestSettingModel *)settingModel
+                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
-- (NSURLSessionDataTask *)exampleSimulate_postApi:(NSString *)apiSuffix
-                                           params:(id)params
-                                     settingModel:(CJRequestSettingModel *)settingModel
-                                          success:(void (^)(CJResponseModel *responseModel))success
-                                          failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
+- (NSURLSessionDataTask *)simulate_postApi:(NSString *)apiSuffix
+                                    params:(id)params
+                              settingModel:(CJRequestSettingModel *)settingModel
+                             completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
 #pragma mark - localApi
-- (NSURLSessionDataTask *)exampleLocal_getApi:(NSString *)apiSuffix
-                                       params:(NSDictionary *)params
-                                 settingModel:(CJRequestSettingModel *)settingModel
-                                      success:(void (^)(CJResponseModel *responseModel))success
-                                      failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
+- (NSURLSessionDataTask *)local_getApi:(NSString *)apiSuffix
+                                params:(NSDictionary *)params
+                          settingModel:(CJRequestSettingModel *)settingModel
+                         completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
-- (NSURLSessionDataTask *)exampleLocal_postApi:(NSString *)apiSuffix
-                                        params:(id)params
-                                  settingModel:(CJRequestSettingModel *)settingModel
-                                       success:(void (^)(CJResponseModel *responseModel))success
-                                       failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
+- (NSURLSessionDataTask *)local_postApi:(NSString *)apiSuffix
+                                 params:(id)params
+                           settingModel:(CJRequestSettingModel *)settingModel
+                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
 @end

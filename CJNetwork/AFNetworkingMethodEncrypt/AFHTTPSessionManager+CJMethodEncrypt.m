@@ -45,7 +45,7 @@
     [request setHTTPBody:bodyData];
     [request setHTTPMethod:@"POST"];
     
-    NSURLSessionDataTask *URLSessionDataTask =
+    __block NSURLSessionDataTask *URLSessionDataTask =
     [self dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (error == nil) {

@@ -7,9 +7,11 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#import "CJNetworkClient.h"
+#import "CJNetworkCryptHTTPSessionManagerProtocol.h"
 
-@interface TestHTTPSessionManager : AFHTTPSessionManager <CJNetworkCryptHTTPSessionManagerProtocol>
+@interface TestHTTPSessionManager : AFHTTPSessionManager <CJNetworkCryptHTTPSessionManagerProtocol> {
+    
+}
 
 + (TestHTTPSessionManager *)sharedInstance;
 

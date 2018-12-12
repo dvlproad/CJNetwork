@@ -14,7 +14,7 @@
 
 @interface AppInfoManager ()
 
-@property (readonly, nonatomic, assign) AFNetworkReachabilityStatus lastNetworkReachabilityStatus;
+@property (nonatomic, assign, readonly) AFNetworkReachabilityStatus lastNetworkReachabilityStatus;
 
 @end
 
@@ -69,7 +69,7 @@
         if (weakSelf.lastNetworkReachabilityStatus == status) {
             return;
         }
-        _lastNetworkReachabilityStatus = status;
+        self->_lastNetworkReachabilityStatus = status;
         
         switch (status) {
             case AFNetworkReachabilityStatusUnknown:

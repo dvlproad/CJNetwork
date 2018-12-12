@@ -10,11 +10,12 @@
 
 @implementation CJResponseModel
 
+/*
 - (instancetype)initWithResponseDictionary:(NSDictionary *)responseDictionary isCacheData:(BOOL)isCacheData {
     self = [super init];
     if (self) {
         NSInteger statusCode = [[responseDictionary objectForKey:@"status"] integerValue];
-        self.status = statusCode;
+        self.statusCode = statusCode;
         
         NSString *message = responseDictionary[@"message"];
         if ([self isNoNullForObject:message]) {
@@ -30,6 +31,7 @@
     }
     return self;
 }
+*/
 
 - (BOOL)isNoNullForObject:(id)object {
     if ([object isKindOfClass:[NSNull class]]) {
@@ -38,6 +40,17 @@
         return YES;
     }
 }
+
+
++ (CJResponseModel *)responseModelWithRequestFailureMessage:(NSString *)requestFailureMessage {
+    CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+    responseModel.statusCode = -1;
+    responseModel.message = requestFailureMessage;
+    responseModel.result = nil;
+    
+    return responseModel;
+}
+
 
 
 @end

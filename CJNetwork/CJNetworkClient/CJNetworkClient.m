@@ -16,17 +16,16 @@
 }
 #pragma mark - 整体网络
 @property (nonatomic, strong) AFHTTPSessionManager *cleanHTTPSessionManager;
-@property (nonatomic, strong) AFHTTPSessionManager<CJNetworkCryptHTTPSessionManagerProtocol> *cryptHTTPSessionManager;
-@property (nonatomic, strong) id<CJNetworkEnvironmentProtocol> environmentManager;
-//@property (nonatomic, copy) NSString *(^completeUrlBlock)(id environmentManager, NSString *apiSuffix);
-//@property (nonatomic, copy) NSDictionary *(^completeParamsBlock)(id environmentManager, NSDictionary *customParams);
+@property (nonatomic, strong) AFHTTPSessionManager *cryptHTTPSessionManager;
+@property (nonatomic, copy) NSString *(^completeFullUrlBlock)(NSString *apiSuffix);
+@property (nonatomic, copy) NSDictionary *(^completeAllParamsBlock)(NSDictionary *customParams);
 
 #pragma mark - 请求判断
 //必须实现：将responseObject转为CJResponseModel
 @property (nonatomic, copy) CJResponseModel *(^responseConvertBlock)(id responseObject, BOOL isCacheData);
 
-//必须实现：对"请求成功的success回调"做初次判断，设置哪些情况可以继续走success回调(如statusCode==1)，其余转为走failue回调。(有些特殊情况的好处：当只有statusCode==1的才能继续走success回调的时候，就不用每个请求的sucess都写一遍statusCode==1的判断了)
-@property (nonatomic, copy) BOOL(^firstJudgeLogicSuccessBlock)(CJResponseModel *responseModel);
+//必须实现：检查是否是共同错误并在此对共同错误做处理，如statusCode == -5 为异地登录(可为ni,非nil时一般返回值为NO)
+@property (nonatomic, copy) BOOL(^checkIsCommonBlock)(CJResponseModel *responseModel);
 
 //可选实现：获取"请求失败的回调"的错误信息
 @property (nonatomic, copy) NSString* (^getRequestFailureMessageBlock)(NSError *error);
@@ -41,26 +40,28 @@
 @implementation CJNetworkClient
 
 - (void)setupCleanHTTPSessionManager:(AFHTTPSessionManager *)cleanHTTPSessionManager
-             cryptHTTPSessionManager:(AFHTTPSessionManager<CJNetworkCryptHTTPSessionManagerProtocol> *)cryptHTTPSessionManager
-                  environmentManager:(id<CJNetworkEnvironmentProtocol>)environmentManager
+             cryptHTTPSessionManager:(AFHTTPSessionManager *)cryptHTTPSessionManager
 {
+    NSAssert(cleanHTTPSessionManager || cryptHTTPSessionManager, @"不加密和加密的不可以同时都没有");
     self.cleanHTTPSessionManager = cleanHTTPSessionManager;
     self.cryptHTTPSessionManager = cryptHTTPSessionManager;
-    self.environmentManager = environmentManager;
+}
+
+- (void)setupCompleteFullUrlBlock:(NSString * (^)(NSString *apiSuffix))completeFullUrlBlock
+           completeAllParamsBlock:(NSDictionary * (^)(NSDictionary *customParams))completeAllParamsBlock
+{
+    NSAssert(completeFullUrlBlock, @"Url 的获取方法都不能为空");
+    _completeFullUrlBlock = completeFullUrlBlock;
+    _completeAllParamsBlock = completeAllParamsBlock;
 }
 
 - (void)setupResponseConvertBlock:(CJResponseModel *(^)(id responseObject, BOOL isCacheData))responseConvertBlock
-      firstJudgeLogicSuccessBlock:(BOOL(^)(CJResponseModel *responseModel))firstJudgeLogicSuccessBlock
+               checkIsCommonBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonBlock
     getRequestFailureMessageBlock:(NSString* (^)(NSError *error))getRequestFailureMessageBlock
 {
-    //NSDictionary *responseDictionary = successNetworkInfo.responseObject;
-    //BOOL isCacheData = successNetworkInfo.isCacheData;
-    //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
-    //CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:successNetworkInfo.isCacheData];
-    
     NSAssert(responseConvertBlock, @"responseConvertBlock不能为空");
     self.responseConvertBlock = responseConvertBlock;
-    self.firstJudgeLogicSuccessBlock = firstJudgeLogicSuccessBlock;
+    self.checkIsCommonBlock = checkIsCommonBlock;
     self.getRequestFailureMessageBlock = getRequestFailureMessageBlock;
 }
 
@@ -88,43 +89,102 @@
 }
 */
 
-#pragma mark - Base
-- (NSURLSessionDataTask *)exampleReal_getUrl:(NSString *)Url
-                                      params:(NSDictionary *)params
-                                settingModel:(CJRequestSettingModel *)settingModel
-                                     success:(void (^)(CJResponseModel *responseModel))success
-                                     failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
+#pragma mark - Real
+- (NSURLSessionDataTask *)real_getApi:(NSString *)apiSuffix
+                               params:(NSDictionary *)params
+                         settingModel:(CJRequestSettingModel *)settingModel
+                        completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
-    return [self exampleReal_requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel success:success failure:failure];
-}
-
-- (NSURLSessionDataTask *)exampleReal_postUrl:(NSString *)Url
-                                       params:(id)params
-                                 settingModel:(CJRequestSettingModel *)settingModel
-                                      success:(void (^)(CJResponseModel *responseModel))success
-                                      failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
-{
-    return [self exampleReal_requestUrl:Url params:params method:CJRequestMethodPOST settingModel:settingModel success:success failure:failure];
-}
-
-- (nullable NSURLSessionDataTask *)exampleReal_requestUrl:(nullable NSString *)Url
-                                                   params:(nullable id)params
-                                                   method:(CJRequestMethod)method
-                                             settingModel:(CJRequestSettingModel *)settingModel
-                                                  success:(void (^)(CJResponseModel *responseModel))success
-                                                  failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
-{
-    NSDictionary *allParams = [self.environmentManager completeParamsWithCustomParams:params];
+    NSString *Url = self.completeFullUrlBlock(apiSuffix);
     
+    return [self requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
+}
+
+- (NSURLSessionDataTask *)real_postApi:(NSString *)apiSuffix
+                                params:(id)params
+                          settingModel:(CJRequestSettingModel *)settingModel
+                         completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+{
+    NSString *Url = self.completeFullUrlBlock(apiSuffix);
+    
+    return [self requestUrl:Url params:params method:CJRequestMethodPOST settingModel:settingModel completeBlock:completeBlock];
+}
+
+#pragma mark simulate
+- (NSURLSessionDataTask *)simulate_getApi:(NSString *)apiSuffix
+                                   params:(NSDictionary *)params
+                             settingModel:(CJRequestSettingModel *)settingModel
+                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+{
+    NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
+    
+    return [self requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
+}
+
+
+- (NSURLSessionDataTask *)simulate_postApi:(NSString *)apiSuffix
+                                    params:(id)params
+                              settingModel:(CJRequestSettingModel *)settingModel
+                             completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+{
+    NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
+    
+    return [self requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
+}
+
+#pragma mark - localApi
+- (NSURLSessionDataTask *)local_getApi:(NSString *)apiSuffix
+                                params:(NSDictionary *)params
+                          settingModel:(CJRequestSettingModel *)settingModel
+                         completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+{
+    [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
+        BOOL isCacheData = NO;
+        CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
+        
+        if (completeBlock) {
+            completeBlock(CJResponeFailureTypeUncheck, responseModel);
+        }
+    }];
+    return nil;
+}
+
+
+- (NSURLSessionDataTask *)local_postApi:(NSString *)apiSuffix
+                                 params:(id)params
+                           settingModel:(CJRequestSettingModel *)settingModel
+                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+{
+    [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
+        BOOL isCacheData = NO;
+        CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
+        
+        if (completeBlock) {
+            completeBlock(CJResponeFailureTypeUncheck, responseModel);
+        }
+    }];
+    return nil;
+}
+
+
+#pragma mark - Base
+- (nullable NSURLSessionDataTask *)requestUrl:(nullable NSString *)Url
+                                       params:(nullable id)customParams
+                                       method:(CJRequestMethod)method
+                                 settingModel:(CJRequestSettingModel *)settingModel
+                                completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+{
     AFHTTPSessionManager *manager = nil;
     if (method == CJRequestMethodGET) {
         manager = self.cleanHTTPSessionManager;
+        
     } else if (method == CJRequestMethodPOST) {
-        if (settingModel.shouldEncrypt) {
-            manager = self.cryptHTTPSessionManager;
-        } else {
-            manager = self.cleanHTTPSessionManager;
-        }
+        manager = settingModel.shouldEncrypt ? self.cryptHTTPSessionManager : self.cleanHTTPSessionManager;
+    }
+    
+    NSDictionary *allParams = customParams;
+    if (self.completeAllParamsBlock) {
+        allParams = self.completeAllParamsBlock(customParams);
     }
     
     NSURLSessionDataTask *URLSessionDataTask =
@@ -132,112 +192,46 @@
         NSDictionary *responseDictionary = successNetworkInfo.responseObject;
         BOOL isCacheData = successNetworkInfo.isCacheData;
         CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
+        //方式①
+        //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
+        //方式②
+        //CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:successNetworkInfo.isCacheData];
+        //方式③
+        //CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+        //responseModel.statusCode = [responseDictionary[@"status"] integerValue];
+        //responseModel.message = responseDictionary[@"message"];
+        //responseModel.result = responseDictionary[@"result"];
+        //responseModel.isCacheData = isCacheData;
         
-        NSAssert(self.firstJudgeLogicSuccessBlock, @"对请求成功的success回调做初次判断，设置哪些情况可以继续走success回调的方法不能为空");
-        BOOL logicSuccess = self.firstJudgeLogicSuccessBlock(responseModel);
-        if (logicSuccess) {
-            if (success) {
-                success(responseModel);
+        if (self.checkIsCommonBlock) {
+            BOOL isCommonFailure = self.checkIsCommonBlock(responseModel);
+            CJResponeFailureType failureType = isCommonFailure ? CJResponeFailureTypeCommonFailure : CJResponeFailureTypeNeedFurtherJudgeFailure;
+            if (completeBlock) {
+                completeBlock(failureType, responseModel);
             }
+            
         } else {
-            NSString *logicFailureMessage = responseModel.message;
-            if (failure) {
-                failure(NO, logicFailureMessage);
+            if (completeBlock) {
+                completeBlock(CJResponeFailureTypeNeedFurtherJudgeFailure, responseModel);
             }
         }
+        
+        
     } failure:^(CJFailureRequestInfo * _Nullable failureNetworkInfo) {
         NSError *error = failureNetworkInfo.error;
         NSString *errorMessage = failureNetworkInfo.errorMessage;
         if (self.getRequestFailureMessageBlock) {
             errorMessage = self.getRequestFailureMessageBlock(error);
         }
-        //CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-        //responseModel.status = -1;
-        //responseModel.message = NSLocalizedString(@"网络请求失败", nil);
-        //responseModel.result = nil;
         
-        if (failure) {
-            failure(YES, errorMessage);
+        CJResponseModel *responseModel = [CJResponseModel responseModelWithRequestFailureMessage:errorMessage];
+        CJResponeFailureType failureType = CJResponeFailureTypeRequestFailure;
+        if (completeBlock) {
+            completeBlock(failureType, responseModel);
         }
     }];
     
     return URLSessionDataTask;
 }
-
-#pragma mark simulate
-- (NSURLSessionDataTask *)exampleSimulate_getApi:(NSString *)apiSuffix
-                                          params:(NSDictionary *)params
-                                    settingModel:(CJRequestSettingModel *)settingModel
-                                         success:(void (^)(CJResponseModel *responseModel))success
-                                         failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
-{
-    NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
-    
-    return [self exampleReal_getUrl:Url params:params settingModel:settingModel success:success failure:failure];
-}
-
-
-- (NSURLSessionDataTask *)exampleSimulate_postApi:(NSString *)apiSuffix
-                                           params:(id)params
-                                     settingModel:(CJRequestSettingModel *)settingModel
-                                          success:(void (^)(CJResponseModel *responseModel))success
-                                          failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
-{
-    NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
-    
-    return [self exampleReal_getUrl:Url params:params settingModel:settingModel success:success failure:failure];
-}
-
-#pragma mark - localApi
-- (NSURLSessionDataTask *)exampleLocal_getApi:(NSString *)apiSuffix
-                                       params:(NSDictionary *)params
-                                 settingModel:(CJRequestSettingModel *)settingModel
-                                      success:(void (^)(CJResponseModel *responseModel))success
-                                      failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
-{
-    [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
-        BOOL isCacheData = NO;
-        CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
-        
-        if (success) {
-            success(responseModel);
-        }
-    }];
-    return nil;
-}
-
-
-- (NSURLSessionDataTask *)exampleLocal_postApi:(NSString *)apiSuffix
-                                        params:(id)params
-                                  settingModel:(CJRequestSettingModel *)settingModel
-                                       success:(void (^)(CJResponseModel *responseModel))success
-                                       failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
-{
-    [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
-        BOOL isCacheData = NO;
-        CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
-        
-        if (success) {
-            success(responseModel);
-        }
-    }];
-    return nil;
-}
-
-
-#pragma mark - Environment
-- (void)updateEnvironmentModel:(id)environmentModel {
-    self.environmentManager.environmentModel = environmentModel;
-}
-
-- (void)updateEnvironmentSpecificCommonParams:(NSMutableDictionary *)specificCommonParams {
-    self.environmentManager.specificCommonParams = specificCommonParams;
-}
-
-#pragma mark - Crypt
-- (void)setupCryptSecretKey:(NSString *)secretKey {
-    [self.cryptHTTPSessionManager setupSecretKey:secretKey];
-}
-
 
 @end

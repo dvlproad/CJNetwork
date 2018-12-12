@@ -34,7 +34,7 @@
     settingModel.cacheTimeInterval = 10;
     settingModel.logType = CJRequestLogTypeConsoleLog;
     
-    [self testSimulate_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
+    [self simulate2_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
 }
 
 /// 测试无缓存

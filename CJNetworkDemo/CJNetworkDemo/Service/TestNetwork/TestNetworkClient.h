@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CJNetworkClient.h"
+#import "CJNetworkClient+SuccessFailure.h"
 #import "AFHTTPSessionManager+CJSerializerEncrypt.h"
 #import "AFHTTPSessionManager+CJMethodEncrypt.h"
 #import "CJResponseModel.h"

@@ -7,6 +7,7 @@
 //
 
 #import "TestNetworkClient+TestConcurrence.h"
+#import "CJNetworkClient+SuccessFailure.h"
 
 @implementation TestNetworkClient (TestConcurrence)
 

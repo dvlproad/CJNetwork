@@ -1,14 +1,14 @@
 //
-//  CJNetworkEnvironmentModel.m
+//  TestEnvironmentModel.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2018/9/17.
 //  Copyright © 2018年 dvlproad. All rights reserved.
 //
 
-#import "CJNetworkEnvironmentModel.h"
+#import "TestEnvironmentModel.h"
 
-@implementation CJNetworkEnvironmentModel
+@implementation TestEnvironmentModel
 
 - (instancetype)init {
     self = [super init];

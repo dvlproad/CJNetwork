@@ -135,7 +135,7 @@
 
 - (void)testLoginHealth {
     [self loginHealthWithCompleteBlock:^(CJResponseModel *responseModel) {
-        if (responseModel.status == 0) {
+        if (responseModel.statusCode == 0) {
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
             if (responseModel.cjNetworkLog) {
                 [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
@@ -174,7 +174,7 @@
         
     } failure:^(NSString *errorMessage) {
         CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-        responseModel.status = -1;
+        responseModel.statusCode = -1;
         responseModel.message = NSLocalizedString(@"网络请求失败", nil);
         responseModel.result = nil;
         //responseModel.cjNetworkLog = error.userInfo[@"cjNetworkLog"];

@@ -10,7 +10,7 @@
 
 @interface CJResponseModel : NSObject
 
-@property (nonatomic, assign) NSInteger status;
+@property (nonatomic, assign) NSInteger statusCode;
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, strong) id result;
 @property (nonatomic, copy) NSString *cjNetworkLog;
@@ -19,13 +19,14 @@
 
 /*
 CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-responseModel.status = [responseObject[@"status"] integerValue];
-responseModel.message = responseObject[@"message"];
-responseModel.result = responseObject[@"result"];
+responseModel.statusCode = [responseDictionary[@"status"] integerValue];
+responseModel.message = responseDictionary[@"message"];
+responseModel.result = responseDictionary[@"result"];
 responseModel.isCacheData = isCacheData;
 */
-
-- (instancetype)initWithResponseDictionary:(NSDictionary *)responseDictionary isCacheData:(BOOL)isCacheData;
+//- (instancetype)initWithResponseDictionary:(NSDictionary *)responseDictionary isCacheData:(BOOL)isCacheData;
 - (BOOL)isNoNullForObject:(id)object;
+
++ (CJResponseModel *)responseModelWithRequestFailureMessage:(NSString *)requestFailureMessage;
 
 @end

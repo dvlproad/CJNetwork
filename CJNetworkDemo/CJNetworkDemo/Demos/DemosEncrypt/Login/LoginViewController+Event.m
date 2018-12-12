@@ -61,7 +61,7 @@
     NSString *name = self.nameTextField.text;
     NSString *pasd = self.pasdTextField.text;
     [[HealthyNetworkClient sharedInstance] requestLoginWithName:name pasd:pasd success:^(HealthResponseModel *responseModel) {
-        if (responseModel.status == 0) {
+        if (responseModel.statusCode == 0) {
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
             if (responseModel.cjNetworkLog) {
                 [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
