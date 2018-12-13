@@ -1,18 +1,18 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - CJBaseHelper/AuthorizationCJHelper (0.0.8)
   - CJBaseHelper/DeviceCJHelper (0.0.8)
@@ -33,6 +33,29 @@ PODS:
     - CJBaseUIKit/UIView/CJDragAction
     - Masonry
   - CJFoundation/NSString (0.1.2)
+  - CJNetwork (0.6.4):
+    - CJNetwork/AFNetworkingMethodEncrypt (= 0.6.4)
+    - CJNetwork/AFNetworkingSerializerEncrypt (= 0.6.4)
+    - CJNetwork/AFNetworkingUploadComponent (= 0.6.4)
+    - CJNetwork/CJCacheManager (= 0.6.4)
+    - CJNetwork/CJNetworkClient (= 0.6.4)
+    - CJNetwork/CJNetworkCommon (= 0.6.4)
+    - CJNetwork/CJRequestUtil (= 0.6.4)
+  - CJNetwork/AFNetworkingMethodEncrypt (0.6.4):
+    - CJNetwork/CJNetworkCommon
+  - CJNetwork/AFNetworkingSerializerEncrypt (0.6.4):
+    - CJNetwork/CJNetworkCommon
+  - CJNetwork/AFNetworkingUploadComponent (0.6.4):
+    - AFNetworking
+  - CJNetwork/CJCacheManager (0.6.4)
+  - CJNetwork/CJNetworkClient (0.6.4):
+    - CJNetwork/AFNetworkingSerializerEncrypt
+  - CJNetwork/CJNetworkCommon (0.6.4):
+    - AFNetworking
+    - MJExtension
+    - YYCache
+  - CJNetwork/CJRequestUtil (0.6.4):
+    - CJNetwork/CJNetworkCommon
   - CocoaAsyncSocket (7.4.3):
     - CocoaAsyncSocket/All (= 7.4.3)
   - CocoaAsyncSocket/All (7.4.3):
@@ -48,8 +71,6 @@ PODS:
   - YYCache (1.0.4)
 
 DEPENDENCIES:
-  - AFNetworking
-  - AFNetworking (~> 3.1.0)
   - CJBaseHelper/AuthorizationCJHelper
   - CJBaseHelper/DeviceCJHelper
   - CJBaseHelper/NSObjectCJHelper
@@ -62,14 +83,13 @@ DEPENDENCIES:
   - CJBaseUtil/CJIndentedStringUtil
   - CJBaseUtil/CJLog
   - CJFoundation/NSString
-  - CocoaAsyncSocket
+  - CJNetwork (from `~/Project/Github/CJNetwork`)
   - CocoaAsyncSocket (~> 7.4.1)
   - Masonry
   - MBProgressHUD
   - MJExtension
   - OpenUDID (~> 1.0.0)
   - SVProgressHUD
-  - YYCache (~> 1.0.4)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -86,12 +106,17 @@ SPEC REPOS:
     - SVProgressHUD
     - YYCache
 
+EXTERNAL SOURCES:
+  CJNetwork:
+    :path: "~/Project/Github/CJNetwork"
+
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CJBaseHelper: f39e78d52837f3d325170f1e4660f7e9e5a183cb
   CJBaseUIKit: 6706574187fb6beb8adcc5c72d70f1815ec232cc
   CJBaseUtil: 842f44965ee18787f17199677bfb78d2bf6d15df
   CJFoundation: 2c27b7ad85ec0cc5ac24aa112867971e01ae3ea3
+  CJNetwork: b52069e94053ed98f3c5a6e4faceba4e4081d512
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -100,6 +125,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: f657b7ae50d7c05c8a2366dcd85833cc6a63019a
+PODFILE CHECKSUM: 1ce6af0cea685f1d43fee72e49b44a1cd61c8a36
 
 COCOAPODS: 1.5.3

@@ -13,20 +13,13 @@
 #import "AFHTTPSessionManager+CJMethodEncrypt.h"
 #import "CJResponseModel.h"
 
-@interface TestNetworkClient : CJNetworkClient
+@interface TestNetworkClient : CJNetworkClient {
+    
+}
+// 外界环境变化的时候要修改的值
+@property (nonatomic, copy) NSString *baseUrl;  /**< 共有Url，形如@"http://xxx.xxx.xxx" */
+@property (nonatomic, strong) NSDictionary *commonParams;
 
 + (TestNetworkClient *)sharedInstance;
-
-- (NSURLSessionDataTask *)testSimulate_postApi:(NSString *)apiSuffix
-                                        params:(nullable id)params
-                                  settingModel:(CJRequestSettingModel *)settingModel
-                                       success:(void (^)(CJResponseModel *responseModel))success
-                                       failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
-
-- (NSURLSessionDataTask *)testLocal_postApi:(NSString *)apiSuffix
-                                     params:(id)params
-                               settingModel:(CJRequestSettingModel *)settingModel
-                                    success:(void (^)(CJResponseModel *responseModel))success
-                                    failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 @end

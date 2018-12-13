@@ -23,26 +23,24 @@ end
 
 
 target 'CJNetworkDemo' do
-  pod 'AFNetworking', '~> 3.1.0'
-  pod 'CocoaAsyncSocket', '~> 7.4.1'
-  pod 'YYCache', '~> 1.0.4'
-  pod 'MJExtension'
-#  pod 'JSONModel', '~> 1.1.0'
-#  pod 'Mantle', '~> 2.1.0'
-  
-  pod 'MBProgressHUD'
-  pod 'SVProgressHUD'
-  
-  pod 'Masonry'
-  pod 'CJBaseUIKit',    :subspecs => ['UIColor', 'UIButton', 'UITextField', 'CJToast', 'CJAlert']
-  pod 'CJBaseUtil',     :subspecs => ['CJLog', 'CJIndentedStringUtil', 'CJDataUtil']
-  pod 'CJFoundation',   :subspecs => ['NSString']
-  pod 'CJBaseHelper',   :subspecs => ['DeviceCJHelper', 'NSObjectCJHelper', 'AuthorizationCJHelper']
+    pod 'CJNetwork',      :path => '~/Project/Github/CJNetwork’
+    pod 'CocoaAsyncSocket', '~> 7.4.1'
+    pod 'MJExtension'
+#    pod 'JSONModel', '~> 1.1.0'
+#    pod 'Mantle', '~> 2.1.0'
 
-  pod 'OpenUDID', '~> 1.0.0'
+    pod 'MBProgressHUD'
+    pod 'SVProgressHUD'
+    
+    pod 'Masonry'
+    pod 'CJBaseUIKit',    :subspecs => ['UIColor', 'UIButton', 'UITextField', 'CJToast', 'CJAlert']
+    pod 'CJBaseUtil',     :subspecs => ['CJLog', 'CJIndentedStringUtil', 'CJDataUtil']
+    pod 'CJFoundation',   :subspecs => ['NSString']
+    pod 'CJBaseHelper',   :subspecs => ['DeviceCJHelper', 'NSObjectCJHelper', 'AuthorizationCJHelper']
+    
+    pod 'OpenUDID', '~> 1.0.0'
 end
 
 target 'CJNetworkDemoTests' do
-   pod 'AFNetworking'
-   pod 'CocoaAsyncSocket'
+    
 end

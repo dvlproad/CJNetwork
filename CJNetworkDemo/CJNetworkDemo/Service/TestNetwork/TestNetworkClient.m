@@ -8,9 +8,7 @@
 
 #import "TestNetworkClient.h"
 #import "TestHTTPSessionManager.h"
-#import "TestEnvironmentManager.h"
-
-#import "CJRequestSimulateUtil.h"
+//#import "TestNetworkEnvironmentManager.h"
 
 @implementation TestNetworkClient
 
@@ -27,19 +25,22 @@
     self = [super init];
     if (self) {
         AFHTTPSessionManager *cleanHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
-        TestHTTPSessionManager *cryptHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
+        AFHTTPSessionManager *cryptHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
         [self setupCleanHTTPSessionManager:cleanHTTPSessionManager cryptHTTPSessionManager:cryptHTTPSessionManager];
         
-        //TestEnvironmentManager *environmentManager = [TestEnvironmentManager sharedInstance];
+        //TestNetworkEnvironmentManager *environmentManager = [TestNetworkEnvironmentManager sharedInstance];
         [self setupCompleteFullUrlBlock:^NSString *(NSString *apiSuffix) {
-            NSString *baseUrl = @"http://xxx.xxx.xxx";
-            NSString *mainUrl = [[baseUrl stringByAppendingString:apiSuffix] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            return mainUrl;
+            NSMutableString *fullUrl = [NSMutableString string];
+            [fullUrl appendFormat:@"%@", self.baseUrl];
+            if (![self.baseUrl hasSuffix:@"/"]) {
+                [fullUrl appendFormat:@"/"];
+            }
+            [fullUrl appendFormat:@"%@", apiSuffix];
+            return [fullUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             //return [environmentManager completeUrlWithApiSuffix:apiSuffix];
         } completeAllParamsBlock:^NSDictionary *(NSDictionary *customParams) {
             NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:customParams];
-            NSDictionary *commonParams = @{@"phone": @"iPhone6"};
-            [allParams addEntriesFromDictionary:commonParams];
+            [allParams addEntriesFromDictionary:self.commonParams];
             return allParams;
             //return [environmentManager completeParamsWithCustomParams:customParams];
         }];
@@ -67,24 +68,6 @@
         [self setupSimulateDomain:simulateDomain];
     }
     return self;
-}
-
-- (NSURLSessionDataTask *)testSimulate_postApi:(NSString *)apiSuffix
-                                        params:(nullable id)params
-                                  settingModel:(CJRequestSettingModel *)settingModel
-                                       success:(void (^)(CJResponseModel *responseModel))success
-                                       failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
-{
-    return [self simulate2_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
-}
-
-- (NSURLSessionDataTask *)testLocal_postApi:(NSString *)apiSuffix
-                                     params:(id)params
-                               settingModel:(CJRequestSettingModel *)settingModel
-                                    success:(void (^)(CJResponseModel *responseModel))success
-                                    failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
-{
-    return [self local2_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
 }
 
 @end

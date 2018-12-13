@@ -4,7 +4,7 @@
 //  Created by Tom Corwine on 5/30/12.
 //
 
-#import "NSString+hash.h"
+#import "NSString+Hash.h"
 
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>

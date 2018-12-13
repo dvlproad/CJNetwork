@@ -26,7 +26,7 @@
                                  success:(void (^)(HealthResponseModel *responseModel))success
                                  failure:(void (^)(NSString *errorMessage))failure
 {
-    //NSString *Url = [[TestEnvironmentManager sharedInstance] completeUrlWithApiSuffix:apiSuffix];
+    //NSString *Url = [[TestNetworkEnvironmentManager sharedInstance] completeUrlWithApiSuffix:apiSuffix];
     NSString *Url = [[@"http://121.40.82.169/drupal/api/" stringByAppendingString:apiSuffix] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     return [self health_postUrl:Url params:params encrypt:encrypt success:success failure:failure];
 }
