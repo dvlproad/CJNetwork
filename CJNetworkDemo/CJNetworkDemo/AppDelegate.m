@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AppDelegate+WindowRootViewController.h"
+#import "AppDelegate+StartUp.h"
 
 #import "AppInfoManager.h"
 
@@ -23,6 +24,7 @@
     
     [[AppInfoManager sharedInstance] startNetworkMonitoring]; //开启网络监听
     
+    [self startUp];
     [self performSelector:@selector(tryAutoLogin) withObject:nil afterDelay:0.35f];
     /*
      如果启动就去检测 建议延时调用

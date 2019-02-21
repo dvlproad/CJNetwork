@@ -7,6 +7,7 @@
 //
 
 #import "TestNetworkClient.h"
+#import <CJNetwork/AFHTTPSessionManager+CJMethodEncrypt.h>
 
 @interface TestNetworkClient (MethodEncrypt)
 

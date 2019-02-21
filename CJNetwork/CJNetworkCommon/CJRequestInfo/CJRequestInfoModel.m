@@ -210,7 +210,8 @@
     if ([NSJSONSerialization isValidJSONObject:responseObject]) {
         recognizableResponseObject = responseObject;
     } else {
-        recognizableResponseObject = [NSJSONSerialization JSONObjectWithData:(NSData *)responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSError *jsonError = nil;
+        recognizableResponseObject = [NSJSONSerialization JSONObjectWithData:(NSData *)responseObject options:NSJSONReadingMutableContainers error:&jsonError];
     }
     networkInfoModel.responseObject = recognizableResponseObject;
     

@@ -26,13 +26,17 @@ typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
 @interface CJNetworkClient : NSObject {
     
 }
-// 一定要执行
+// 执行请求的Manager(一定要执行)
 - (void)setupCleanHTTPSessionManager:(AFHTTPSessionManager *)cleanHTTPSessionManager
              cryptHTTPSessionManager:(AFHTTPSessionManager *)cryptHTTPSessionManager;
 
-- (void)setupCompleteFullUrlBlock:(NSString * (^)(NSString *apiSuffix))completeFullUrlBlock
-           completeAllParamsBlock:(NSDictionary * (^)(NSDictionary *customParams))completeAllParamsBlock;
+// 外界环境变化的时候要修改的值(一定要执行)
+/**< 共有Url，形如@"http://xxx.xxx.xxx"，会通过baseUrl与apiSuffix组成fullUrl */
+@property (nonatomic, copy) NSString *baseUrl;
+/**< 公共参数 */
+@property (nonatomic, strong) NSDictionary *commonParams;
 
+// 服务器返回值处理方法设置(一定要执行)
 - (void)setupResponseConvertBlock:(CJResponseModel *(^)(id responseObject, BOOL isCacheData))responseConvertBlock
                checkIsCommonBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonBlock
     getRequestFailureMessageBlock:(NSString* (^)(NSError *error))getRequestFailureMessageBlock;

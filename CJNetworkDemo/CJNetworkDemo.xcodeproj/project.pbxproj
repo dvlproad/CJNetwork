@@ -32,6 +32,7 @@
 		78590BD3215B275B00F45AD5 /* HealthResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590BD2215B275B00F45AD5 /* HealthResponseModel.m */; };
 		785AB2F821C01318009938A4 /* TestNetworkEnvironmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AB2F721C01318009938A4 /* TestNetworkEnvironmentModel.m */; };
 		785AB2FD21C013B6009938A4 /* TestNetworkEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AB2FC21C013B6009938A4 /* TestNetworkEnvironmentManager.m */; };
+		785FECE421DDEDFC00975192 /* AppDelegate+StartUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 785FECE321DDEDFC00975192 /* AppDelegate+StartUp.m */; };
 		7868F1382121C61400A283EB /* AppDelegate+WindowRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1372121C61400A283EB /* AppDelegate+WindowRootViewController.m */; };
 		7868F1782121C79A00A283EB /* UploadHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1452121C79A00A283EB /* UploadHomeViewController.m */; };
 		7868F1792121C79A00A283EB /* SocketHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1482121C79A00A283EB /* SocketHomeViewController.m */; };
@@ -70,7 +71,6 @@
 		78FC91FD1F54481E00033DEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91FC1F54481E00033DEF /* AppDelegate.m */; };
 		78FC92001F54481E00033DEF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91FF1F54481E00033DEF /* ViewController.m */; };
 		78FC92031F54481E00033DEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78FC92011F54481E00033DEF /* Main.storyboard */; };
-		78FC92081F54481E00033DEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78FC92061F54481E00033DEF /* LaunchScreen.storyboard */; };
 		78FC92131F54481E00033DEF /* CJNetworkDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC92121F54481E00033DEF /* CJNetworkDemoTests.m */; };
 		78FC921E1F54481E00033DEF /* CJNetworkDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC921D1F54481E00033DEF /* CJNetworkDemoUITests.m */; };
 		78FF35E721A91F07006DCEE7 /* SemaphoreHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FF35E521A91F06006DCEE7 /* SemaphoreHomeViewController.m */; };
@@ -148,6 +148,8 @@
 		785AB2FA21C0135F009938A4 /* CJNetworkEnvironmentManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkEnvironmentManagerProtocol.h; sourceTree = "<group>"; };
 		785AB2FB21C013B6009938A4 /* TestNetworkEnvironmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNetworkEnvironmentManager.h; sourceTree = "<group>"; };
 		785AB2FC21C013B6009938A4 /* TestNetworkEnvironmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNetworkEnvironmentManager.m; sourceTree = "<group>"; };
+		785FECE221DDEDFC00975192 /* AppDelegate+StartUp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+StartUp.h"; sourceTree = "<group>"; };
+		785FECE321DDEDFC00975192 /* AppDelegate+StartUp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+StartUp.m"; sourceTree = "<group>"; };
 		7868F1362121C61400A283EB /* AppDelegate+WindowRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+WindowRootViewController.h"; sourceTree = "<group>"; };
 		7868F1372121C61400A283EB /* AppDelegate+WindowRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+WindowRootViewController.m"; sourceTree = "<group>"; };
 		7868F1442121C79A00A283EB /* UploadHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadHomeViewController.h; sourceTree = "<group>"; };
@@ -212,7 +214,6 @@
 		78FC91FE1F54481E00033DEF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		78FC91FF1F54481E00033DEF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		78FC92021F54481E00033DEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		78FC92071F54481E00033DEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78FC92091F54481E00033DEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78FC920E1F54481E00033DEF /* CJNetworkDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CJNetworkDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FC92121F54481E00033DEF /* CJNetworkDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJNetworkDemoTests.m; sourceTree = "<group>"; };
@@ -313,8 +314,6 @@
 				784652D71F5448FB00E20A27 /* HealthyHTTPSessionManager.m */,
 				784652D81F5448FB00E20A27 /* HealthyNetworkClient.h */,
 				784652D91F5448FB00E20A27 /* HealthyNetworkClient.m */,
-				78B6C2FD215AAA8900D5864E /* HealthyNetworkClient+Login.h */,
-				78B6C2FE215AAA8900D5864E /* HealthyNetworkClient+Login.m */,
 				78590BCD215B272100F45AD5 /* Models */,
 			);
 			path = HealthyNetwork;
@@ -327,14 +326,14 @@
 				785AB2FA21C0135F009938A4 /* CJNetworkEnvironmentManagerProtocol.h */,
 				784652F61F5448FB00E20A27 /* TestHTTPSessionManager.h */,
 				784652F71F5448FB00E20A27 /* TestHTTPSessionManager.m */,
-				785AB2FB21C013B6009938A4 /* TestNetworkEnvironmentManager.h */,
-				785AB2FC21C013B6009938A4 /* TestNetworkEnvironmentManager.m */,
 				784652F81F5448FB00E20A27 /* TestNetworkClient.h */,
 				784652F91F5448FB00E20A27 /* TestNetworkClient.m */,
-				785AB2F621C01317009938A4 /* TestNetworkEnvironmentModel.h */,
-				785AB2F721C01318009938A4 /* TestNetworkEnvironmentModel.m */,
 				7801C0D821AD1EA100045114 /* TestNetworkClient+MethodEncrypt.h */,
 				7801C0D921AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m */,
+				785AB2FB21C013B6009938A4 /* TestNetworkEnvironmentManager.h */,
+				785AB2FC21C013B6009938A4 /* TestNetworkEnvironmentManager.m */,
+				785AB2F621C01317009938A4 /* TestNetworkEnvironmentModel.h */,
+				785AB2F721C01318009938A4 /* TestNetworkEnvironmentModel.m */,
 			);
 			path = TestNetwork;
 			sourceTree = "<group>";
@@ -516,6 +515,8 @@
 				7868F1952121CC2600A283EB /* LoginViewController.m */,
 				7868F1982121CC2600A283EB /* LoginViewController+Event.h */,
 				7868F1942121CC2600A283EB /* LoginViewController+Event.m */,
+				78B6C2FD215AAA8900D5864E /* HealthyNetworkClient+Login.h */,
+				78B6C2FE215AAA8900D5864E /* HealthyNetworkClient+Login.m */,
 				784652C51F5448FB00E20A27 /* AccountInfo.h */,
 				784652C61F5448FB00E20A27 /* AccountInfo.m */,
 			);
@@ -557,8 +558,8 @@
 		78EB550521A280C200EEB853 /* DemoBarButtonItemFactory */ = {
 			isa = PBXGroup;
 			children = (
-				78EB550621A280C200EEB853 /* DemoBarButtonItemFactory.m */,
 				78EB550721A280C200EEB853 /* DemoBarButtonItemFactory.h */,
+				78EB550621A280C200EEB853 /* DemoBarButtonItemFactory.m */,
 			);
 			path = DemoBarButtonItemFactory;
 			sourceTree = "<group>";
@@ -629,6 +630,8 @@
 				78FC91FC1F54481E00033DEF /* AppDelegate.m */,
 				7868F1362121C61400A283EB /* AppDelegate+WindowRootViewController.h */,
 				7868F1372121C61400A283EB /* AppDelegate+WindowRootViewController.m */,
+				785FECE221DDEDFC00975192 /* AppDelegate+StartUp.h */,
+				785FECE321DDEDFC00975192 /* AppDelegate+StartUp.m */,
 				7868F1392121C79A00A283EB /* Modules */,
 				784652C71F5448FB00E20A27 /* Service */,
 				7801C0C821ABE04400045114 /* TempUtil */,
@@ -648,7 +651,6 @@
 			isa = PBXGroup;
 			children = (
 				78FC92011F54481E00033DEF /* Main.storyboard */,
-				78FC92061F54481E00033DEF /* LaunchScreen.storyboard */,
 				78FC92091F54481E00033DEF /* Info.plist */,
 				78FC91F91F54481E00033DEF /* main.m */,
 				784653791F544A6400E20A27 /* PrefixHeader.pch */,
@@ -823,7 +825,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7868F17A2121C79A00A283EB /* SocketDemoViewController.xib in Resources */,
-				78FC92081F54481E00033DEF /* LaunchScreen.storyboard in Resources */,
 				7842989F21C1F991003198FB /* AppAssets.xcassets in Resources */,
 				784298A021C1F991003198FB /* MainAsset.xcassets in Resources */,
 				7868F1872121C79A00A283EB /* DownloadTableViewCell.xib in Resources */,
@@ -960,6 +961,7 @@
 				7868F19B2121CC2600A283EB /* LoginViewController+Event.m in Sources */,
 				7846533E1F5448FB00E20A27 /* TestNetworkClient.m in Sources */,
 				7868F19C2121CC2600A283EB /* LoginViewController.m in Sources */,
+				785FECE421DDEDFC00975192 /* AppDelegate+StartUp.m in Sources */,
 				7868F1892121C79A00A283EB /* DownloadTableViewCell.m in Sources */,
 				78EB551F21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m in Sources */,
 				7846E38821A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.m in Sources */,
@@ -1022,14 +1024,6 @@
 				78FC92021F54481E00033DEF /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		78FC92061F54481E00033DEF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				78FC92071F54481E00033DEF /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1148,6 +1142,7 @@
 			baseConfigurationReference = 77134D72A7065F0DD4229D2D /* Pods-CJNetworkDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = FZ5YDHE5JZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CJNetworkDemo/PrefixHeader.pch";
@@ -1164,6 +1159,7 @@
 			baseConfigurationReference = C11239993D822E171AABD0F4 /* Pods-CJNetworkDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = FZ5YDHE5JZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CJNetworkDemo/PrefixHeader.pch";

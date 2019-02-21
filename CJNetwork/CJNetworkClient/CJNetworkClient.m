@@ -39,6 +39,30 @@
 
 @implementation CJNetworkClient
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _completeFullUrlBlock = ^NSString *(NSString *apiSuffix) {
+            NSMutableString *fullUrl = [NSMutableString string];
+            [fullUrl appendFormat:@"%@", self.baseUrl];
+            if (![self.baseUrl hasSuffix:@"/"]) {
+                [fullUrl appendFormat:@"/"];
+            }
+            [fullUrl appendFormat:@"%@", apiSuffix];
+            return [fullUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            //return [environmentManager completeUrlWithApiSuffix:apiSuffix];
+        };
+        
+        _completeAllParamsBlock = ^NSDictionary *(NSDictionary *customParams) {
+            NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:customParams];
+            [allParams addEntriesFromDictionary:self.commonParams];
+            return allParams;
+            //return [environmentManager completeParamsWithCustomParams:customParams];
+        };
+    }
+    return self;
+}
+
 - (void)setupCleanHTTPSessionManager:(AFHTTPSessionManager *)cleanHTTPSessionManager
              cryptHTTPSessionManager:(AFHTTPSessionManager *)cryptHTTPSessionManager
 {
@@ -47,13 +71,13 @@
     self.cryptHTTPSessionManager = cryptHTTPSessionManager;
 }
 
-- (void)setupCompleteFullUrlBlock:(NSString * (^)(NSString *apiSuffix))completeFullUrlBlock
-           completeAllParamsBlock:(NSDictionary * (^)(NSDictionary *customParams))completeAllParamsBlock
-{
-    NSAssert(completeFullUrlBlock, @"Url 的获取方法都不能为空");
-    _completeFullUrlBlock = completeFullUrlBlock;
-    _completeAllParamsBlock = completeAllParamsBlock;
-}
+//- (void)setupCompleteFullUrlBlock:(NSString * (^)(NSString *apiSuffix))completeFullUrlBlock
+//           completeAllParamsBlock:(NSDictionary * (^)(NSDictionary *customParams))completeAllParamsBlock
+//{
+//    NSAssert(completeFullUrlBlock, @"Url 的获取方法都不能为空");
+//    _completeFullUrlBlock = completeFullUrlBlock;
+//    _completeAllParamsBlock = completeAllParamsBlock;
+//}
 
 - (void)setupResponseConvertBlock:(CJResponseModel *(^)(id responseObject, BOOL isCacheData))responseConvertBlock
                checkIsCommonBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonBlock

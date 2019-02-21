@@ -8,7 +8,6 @@
 
 #import "TestNetworkClient.h"
 #import "TestHTTPSessionManager.h"
-//#import "TestNetworkEnvironmentManager.h"
 
 @implementation TestNetworkClient
 
@@ -28,23 +27,6 @@
         AFHTTPSessionManager *cryptHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
         [self setupCleanHTTPSessionManager:cleanHTTPSessionManager cryptHTTPSessionManager:cryptHTTPSessionManager];
         
-        //TestNetworkEnvironmentManager *environmentManager = [TestNetworkEnvironmentManager sharedInstance];
-        [self setupCompleteFullUrlBlock:^NSString *(NSString *apiSuffix) {
-            NSMutableString *fullUrl = [NSMutableString string];
-            [fullUrl appendFormat:@"%@", self.baseUrl];
-            if (![self.baseUrl hasSuffix:@"/"]) {
-                [fullUrl appendFormat:@"/"];
-            }
-            [fullUrl appendFormat:@"%@", apiSuffix];
-            return [fullUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            //return [environmentManager completeUrlWithApiSuffix:apiSuffix];
-        } completeAllParamsBlock:^NSDictionary *(NSDictionary *customParams) {
-            NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:customParams];
-            [allParams addEntriesFromDictionary:self.commonParams];
-            return allParams;
-            //return [environmentManager completeParamsWithCustomParams:customParams];
-        }];
-        
         [self setupResponseConvertBlock:^CJResponseModel *(id responseObject, BOOL isCacheData) {
             NSDictionary *responseDictionary = responseObject;
             //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
@@ -58,10 +40,20 @@
             return responseModel;
             
         } checkIsCommonBlock:^BOOL(CJResponseModel *responseModel) {
-            return NO;
+            //必须实现：对"请求成功的success回调"做初次判断
+            if (responseModel.statusCode == 1) {
+                return YES;
+            } else {
+                if (responseModel.statusCode == 5) { //执行退出登录
+                    //[CJToast shortShowMessage:@"账号异地登录"];
+                    //[[CJDemoUserManager sharedInstance] logout:YES completed:nil];
+                }
+                return NO;
+            }
             
         } getRequestFailureMessageBlock:^NSString *(NSError *error) {
-            return @"网络错误";
+            //可选实现：获取"请求失败的回调"的错误信息
+            return NSLocalizedString(@"网络链接失败，请检查您的网络链接", nil);
         }];
         
         NSString *simulateDomain = @"http://localhost/CJDemoDataSimulationDemo";
