@@ -36,13 +36,13 @@ typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
 /**< 公共参数 */
 @property (nonatomic, strong) NSDictionary *commonParams;
 
+// 可选设置(当你需要执行本地模拟(有服务器时候)的时候才需要)
+@property (nonatomic, copy) NSString *simulateDomain;   /**< 本地模拟(有服务器时候)，模拟接口所在的域名 */
+
 // 服务器返回值处理方法设置(一定要执行)
 - (void)setupResponseConvertBlock:(CJResponseModel *(^)(id responseObject, BOOL isCacheData))responseConvertBlock
                checkIsCommonBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonBlock
     getRequestFailureMessageBlock:(NSString* (^)(NSError *error))getRequestFailureMessageBlock;
-
-// 可选执行(当你需要执行模拟的时候才需要)
-- (void)setupSimulateDomain:(NSString *)simulateDomain;
 
 #pragma mark - Real
 - (NSURLSessionDataTask *)real_getApi:(NSString *)apiSuffix

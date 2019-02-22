@@ -38,6 +38,14 @@
     }
     NSString *jsonName = [apiSuffix stringByReplacingOccurrencesOfString:@"/" withString:@":"];
     NSData *responseObject = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:jsonName ofType:nil]];
+    if (!responseObject) { //不设置会崩溃
+        NSDictionary *lackOfLocalResponseDic =
+        @{@"status" : @"0",
+          @"message": @"本地请求模拟：却未实现模拟的请求文件",
+          @"result" : @""
+          };
+        responseObject = [NSJSONSerialization dataWithJSONObject:lackOfLocalResponseDic options:NSJSONWritingPrettyPrinted error:nil];
+    }
     
     NSDictionary *recognizableResponseObject = nil;
     //if ([NSJSONSerialization isValidJSONObject:responseObject]) {

@@ -30,9 +30,6 @@
 //可选实现：获取"请求失败的回调"的错误信息
 @property (nonatomic, copy) NSString* (^getRequestFailureMessageBlock)(NSError *error);
 
-#pragma mark - 网络模拟
-@property (nonatomic, copy) NSString *simulateDomain;   /**< 模拟接口所在的域名 */
-
 @end
 
 
@@ -42,10 +39,11 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        __weak typeof(self)weakSelf = self;
         _completeFullUrlBlock = ^NSString *(NSString *apiSuffix) {
             NSMutableString *fullUrl = [NSMutableString string];
-            [fullUrl appendFormat:@"%@", self.baseUrl];
-            if (![self.baseUrl hasSuffix:@"/"]) {
+            [fullUrl appendFormat:@"%@", weakSelf.baseUrl];
+            if (![weakSelf.baseUrl hasSuffix:@"/"]) {
                 [fullUrl appendFormat:@"/"];
             }
             [fullUrl appendFormat:@"%@", apiSuffix];
@@ -55,7 +53,7 @@
         
         _completeAllParamsBlock = ^NSDictionary *(NSDictionary *customParams) {
             NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:customParams];
-            [allParams addEntriesFromDictionary:self.commonParams];
+            [allParams addEntriesFromDictionary:weakSelf.commonParams];
             return allParams;
             //return [environmentManager completeParamsWithCustomParams:customParams];
         };
@@ -87,10 +85,6 @@
     self.responseConvertBlock = responseConvertBlock;
     self.checkIsCommonBlock = checkIsCommonBlock;
     self.getRequestFailureMessageBlock = getRequestFailureMessageBlock;
-}
-
-- (void)setupSimulateDomain:(NSString *)simulateDomain {
-    self.simulateDomain = simulateDomain;
 }
 
 /*
