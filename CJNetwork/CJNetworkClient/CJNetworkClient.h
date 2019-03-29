@@ -13,6 +13,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFHTTPSessionManager+CJSerializerEncrypt.h"
+#import "AFHTTPSessionManager+CJUploadFile.h"
 #import "CJResponseModel.h"
 
 typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
@@ -55,6 +56,27 @@ typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
                           settingModel:(CJRequestSettingModel *)settingModel
                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
+/**
+ *  上传文件的请求方法：只是上传文件，不对上传过程中的各个时刻信息的进行保存
+ *
+ *  @param Url              Url
+ *  @param customParams     customParams
+ *  @param settingModel     settingModel
+ *  @param fileKey          文件参数：有些人会用file,有些人用upfile
+ *  @param uploadFileModels 文件数据：要上传的数据组uploadFileModels
+ *  @param uploadProgress   uploadProgress
+ *  @param completeBlock    上传结束执行的回调
+ *
+ *  @return 上传文件的请求
+ */
+- (NSURLSessionDataTask *)real_postUploadUrl:(nullable NSString *)Url
+                                      params:(nullable NSDictionary *)customParams
+                                settingModel:(CJRequestSettingModel *)settingModel
+                                     fileKey:(nullable NSString *)fileKey
+                                   fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                    progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                               completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+
 
 #pragma mark simulate
 - (NSURLSessionDataTask *)simulate_getApi:(NSString *)apiSuffix
@@ -67,6 +89,14 @@ typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
                               settingModel:(CJRequestSettingModel *)settingModel
                              completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
+- (NSURLSessionDataTask *)simulate_postUploadUrl:(nullable NSString *)Url
+                                          params:(nullable NSDictionary *)customParams
+                                    settingModel:(CJRequestSettingModel *)settingModel
+                                         fileKey:(nullable NSString *)fileKey
+                                       fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                        progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                   completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+
 #pragma mark - localApi
 - (NSURLSessionDataTask *)local_getApi:(NSString *)apiSuffix
                                 params:(NSDictionary *)params
@@ -77,5 +107,13 @@ typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
                                  params:(id)params
                            settingModel:(CJRequestSettingModel *)settingModel
                           completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+
+- (NSURLSessionDataTask *)local_postUploadUrl:(nullable NSString *)Url
+                                       params:(nullable NSDictionary *)customParams
+                                 settingModel:(CJRequestSettingModel *)settingModel
+                                      fileKey:(nullable NSString *)fileKey
+                                    fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
 @end

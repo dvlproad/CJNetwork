@@ -14,10 +14,11 @@
 /* 完整的描述请参见文件头部 */
 - (nullable NSURLSessionDataTask *)cj_postUploadUrl:(nullable NSString *)Url
                                              params:(nullable id)params
+                                       settingModel:(CJRequestSettingModel *)settingModel
                                             fileKey:(nullable NSString *)fileKey
                                      fileValueOwner:(nullable CJUploadFileModelsOwner *)fileValueOwner
                         uploadMomentInfoChangeBlock:(nullable void(^)(CJUploadFileModelsOwner * _Nonnull momentInfoOwner))uploadMomentInfoChangeBlock
-               getUploadMomentInfoFromResopnseBlock:(nullable CJUploadMomentInfo * _Nonnull (^)(id _Nonnull responseObject))getUploadMomentInfoFromResopnseBlock;
+               getUploadMomentInfoFromResopnseBlock:(nullable CJUploadMomentInfo * _Nonnull (^)(id _Nonnull responseObject))getUploadMomentInfoFromResopnseBlock
 {
     __weak typeof(fileValueOwner)weakFileValueOwner = fileValueOwner;
     
@@ -54,13 +55,13 @@
     
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [self cj_postUploadUrl:Url params:params fileKey:fileKey fileValue:fileValueOwner.uploadFileModels progress:uploadingBlock success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
+    [self cj_postUploadUrl:Url params:params settingModel:settingModel fileKey:fileKey fileValue:fileValueOwner.uploadFileModels progress:uploadingBlock success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         if (getUploadMomentInfoFromResopnseBlock) {
-            CJUploadMomentInfo *momentInfo = getUploadMomentInfoFromResopnseBlock(responseObject);
+            CJUploadMomentInfo *momentInfo = getUploadMomentInfoFromResopnseBlock(successRequestInfo.responseObject);
             uploadCompleteBlock(momentInfo);
         }
         
-    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+    } failure:^(CJFailureRequestInfo * _Nullable failureRequestInfo) {
         CJUploadMomentInfo *momentInfo = [[CJUploadMomentInfo alloc] init];
         momentInfo.responseModel = nil;
         momentInfo.uploadState = CJUploadMomentStateFailure;
@@ -68,23 +69,25 @@
         
         uploadCompleteBlock(momentInfo);
         
-        NSLog(@"error: %@", [error localizedDescription]);
+        NSLog(@"error: %@", [failureRequestInfo.error localizedDescription]);
     }];
     
     return URLSessionDataTask;
 }
 
+
 /* 完整的描述请参见文件头部 */
 - (nullable NSURLSessionDataTask *)cj_postUploadUrl:(nullable NSString *)Url
-                                             params:(nullable id)parameters
+                                             params:(nullable id)allParams
+                                       settingModel:(CJRequestSettingModel *)settingModel
                                             fileKey:(nullable NSString *)fileKey
                                           fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                            success:(nullable void (^)(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject))success
-                                            failure:(nullable void (^)(NSURLSessionDataTask *_Nonnull task, NSError *_Nonnull error))failure
+                                            success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+                                            failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
 {
     NSURLSessionDataTask *URLSessionDataTask =
-    [self POST:Url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+    [self POST:Url parameters:allParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
     {
         for (CJUploadFileModel *uploadFileModel in uploadFileModels) {
             NSData *data = uploadFileModel.uploadItemData;
@@ -125,7 +128,12 @@
             }
         }
         
-    } progress:uploadProgress success:success failure:failure];
+    } progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:allParams settingModel:settingModel success:success];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self __didRequestFailureForTask:task withResponseError:error forUrl:Url params:allParams settingModel:settingModel failure:failure];
+    }];
     
     return URLSessionDataTask;
 }

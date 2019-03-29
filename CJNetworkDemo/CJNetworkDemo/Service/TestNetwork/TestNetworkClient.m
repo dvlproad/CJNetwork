@@ -56,8 +56,7 @@
             return NSLocalizedString(@"网络链接失败，请检查您的网络链接", nil);
         }];
         
-        NSString *simulateDomain = @"http://localhost/CJDemoDataSimulationDemo";
-        [self setupSimulateDomain:simulateDomain];
+        self.simulateDomain = @"http://localhost/CJDemoDataSimulationDemo";
     }
     return self;
 }

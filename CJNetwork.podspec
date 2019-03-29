@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   #验证方法：pod lib lint CJNetwork.podspec --allow-warnings --use-libraries --verbose
   s.name         = "CJNetwork"
-  s.version      = "0.6.6"
+  s.version      = "0.6.7"
   s.summary      = "一个AFNetworking应用的封装(支持加解密、缓存、并发数控制)"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.6.6" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.6.7" }
   s.source_files  = "CJNetwork/*.{h,m}"
   s.frameworks = 'UIKit'
 
@@ -52,22 +52,19 @@ Pod::Spec.new do |s|
   # AFN的请求方法(加解密方法卸载Serializer方法中)
   s.subspec 'AFNetworkingSerializerEncrypt' do |ss|
     ss.source_files = "CJNetwork/AFNetworkingSerializerEncrypt/**/*.{h,m}"
-
     ss.dependency 'CJNetwork/CJNetworkCommon'
   end
 
   # AFN的请求方法(加解密方法卸载Method方法中)
   s.subspec 'AFNetworkingMethodEncrypt' do |ss|
     ss.source_files = "CJNetwork/AFNetworkingMethodEncrypt/**/*.{h,m}"
-
     ss.dependency 'CJNetwork/CJNetworkCommon'
   end
 
   # 文件的上传请求方法(使用AFN)（子类会自称父类的s.dependency）
   s.subspec 'AFNetworkingUploadComponent' do |ss|
     ss.source_files = "CJNetwork/AFNetworkingUploadComponent/**/*.{h,m}"
-
-    ss.dependency 'AFNetworking'
+    ss.dependency 'CJNetwork/CJNetworkCommon'
   end
 
   # 网络请求的管理类，其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现

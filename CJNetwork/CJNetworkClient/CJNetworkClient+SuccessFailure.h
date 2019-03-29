@@ -24,6 +24,16 @@
                                 success:(void (^)(CJResponseModel *responseModel))success
                                 failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
+- (NSURLSessionDataTask *)real2_postUploadUrl:(nullable NSString *)Url
+                                       params:(nullable NSDictionary *)customParams
+                                 settingModel:(CJRequestSettingModel *)settingModel
+                                      fileKey:(nullable NSString *)fileKey
+                                    fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                      success:(void (^)(CJResponseModel *responseModel))success
+                                      failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
+
+
 #pragma mark simulate
 - (NSURLSessionDataTask *)simulate2_getApi:(NSString *)apiSuffix
                                     params:(NSDictionary *)params
@@ -37,6 +47,15 @@
                                     success:(void (^)(CJResponseModel *responseModel))success
                                     failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
+- (NSURLSessionDataTask *)simulate2_postUploadUrl:(nullable NSString *)Url
+                                           params:(nullable NSDictionary *)customParams
+                                     settingModel:(CJRequestSettingModel *)settingModel
+                                          fileKey:(nullable NSString *)fileKey
+                                        fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                         progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                          success:(void (^)(CJResponseModel *responseModel))success
+                                          failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
+
 #pragma mark - localApi
 - (NSURLSessionDataTask *)local2_getApi:(NSString *)apiSuffix
                                  params:(NSDictionary *)params
@@ -49,5 +68,14 @@
                             settingModel:(CJRequestSettingModel *)settingModel
                                  success:(void (^)(CJResponseModel *responseModel))success
                                  failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
+
+- (NSURLSessionDataTask *)local2_postUploadUrl:(nullable NSString *)Url
+                                        params:(nullable NSDictionary *)customParams
+                                  settingModel:(CJRequestSettingModel *)settingModel
+                                       fileKey:(nullable NSString *)fileKey
+                                     fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                       success:(void (^)(CJResponseModel *responseModel))success
+                                       failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 @end
