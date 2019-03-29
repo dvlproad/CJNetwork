@@ -25,7 +25,20 @@
 @property (nonatomic, copy) CJResponseModel *(^responseConvertBlock)(id responseObject, BOOL isCacheData);
 
 //必须实现：检查是否是共同错误并在此对共同错误做处理，如statusCode == -5 为异地登录(可为ni,非nil时一般返回值为NO)
-@property (nonatomic, copy) BOOL(^checkIsCommonBlock)(CJResponseModel *responseModel);
+//未设置时候 CJResponeFailureType 为 CJResponeFailureTypeNeedFurtherJudgeFailure
+//设置时候 返回YES,则即为CJResponeFailureTypeCommonFailure，其会走failure回调;
+//设置时候 返回NO,则即为CJResponeFailureTypeNeedFurtherJudgeFailure，其会走success回调；
+//详细的走法如下代码所示：
+//if (failureType == CJResponeFailureTypeCommonFailure) {
+//    !failure ?: failure(NO, responseModel.message);
+//
+//} else if (failureType == CJResponeFailureTypeRequestFailure) {
+//    !failure ?: failure(YES, responseModel.message);
+//
+//} else {
+//    !success ?: success(responseModel);
+//}
+@property (nonatomic, copy) BOOL(^checkIsCommonFailureBlock)(CJResponseModel *responseModel);
 
 //可选实现：获取"请求失败的回调"的错误信息
 @property (nonatomic, copy) NSString* (^getRequestFailureMessageBlock)(NSError *error);
@@ -77,13 +90,14 @@
 //    _completeAllParamsBlock = completeAllParamsBlock;
 //}
 
-- (void)setupResponseConvertBlock:(CJResponseModel *(^)(id responseObject, BOOL isCacheData))responseConvertBlock
-               checkIsCommonBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonBlock
+
+- (void)setupResponseConvertBlock:(CJNetworkClientResponseConvertBlock)responseConvertBlock
+        checkIsCommonFailureBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonFailureBlock
     getRequestFailureMessageBlock:(NSString* (^)(NSError *error))getRequestFailureMessageBlock
 {
     NSAssert(responseConvertBlock, @"responseConvertBlock不能为空");
     self.responseConvertBlock = responseConvertBlock;
-    self.checkIsCommonBlock = checkIsCommonBlock;
+    self.checkIsCommonFailureBlock = checkIsCommonFailureBlock;
     self.getRequestFailureMessageBlock = getRequestFailureMessageBlock;
 }
 
@@ -288,8 +302,8 @@
     //responseModel.result = responseDictionary[@"result"];
     //responseModel.isCacheData = isCacheData;
     
-    if (self.checkIsCommonBlock) {
-        BOOL isCommonFailure = self.checkIsCommonBlock(responseModel);
+    if (self.checkIsCommonFailureBlock) {
+        BOOL isCommonFailure = self.checkIsCommonFailureBlock(responseModel);
         CJResponeFailureType failureType = isCommonFailure ? CJResponeFailureTypeCommonFailure : CJResponeFailureTypeNeedFurtherJudgeFailure;
         if (completeBlock) {
             completeBlock(failureType, responseModel);

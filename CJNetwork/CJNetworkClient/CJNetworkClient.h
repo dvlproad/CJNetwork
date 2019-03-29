@@ -23,6 +23,18 @@ typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
     CJResponeFailureTypeNeedFurtherJudgeFailure,/**< 需要进一步判断是否错误的那些(在未进行归类或者未归类进指定错误的时候，都是这个值) */
 };
 
+/**
+ *  将"网络成功返回的数据"转换为"模型"的方法
+ *
+ *  @param responseObject   网络成功返回的数据
+ *  @param isCacheData      是否是缓存数据
+ *
+ *  @return 数据模型
+ */
+typedef CJResponseModel *(^CJNetworkClientResponseConvertBlock)(id responseObject, BOOL isCacheData);
+//typedef BOOL(^CJNetworkClientCheckIsCommonFailureBlock)(CJResponseModel *responseModel);
+//typedef NSString* (^CJNetworkClientGetRequestFailureMessageBlock)(NSError *error);
+
 
 @interface CJNetworkClient : NSObject {
     
@@ -40,10 +52,18 @@ typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
 // 可选设置(当你需要执行本地模拟(有服务器时候)的时候才需要)
 @property (nonatomic, copy) NSString *simulateDomain;   /**< 本地模拟(有服务器时候)，模拟接口所在的域名 */
 
-// 服务器返回值处理方法设置(一定要执行)
-- (void)setupResponseConvertBlock:(CJResponseModel *(^)(id responseObject, BOOL isCacheData))responseConvertBlock
-               checkIsCommonBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonBlock
+/**
+ *  服务器返回值处理方法设置(一定要执行)
+ *
+ *  @param responseConvertBlock             将"网络成功返回的数据"转换为"模型"的方法
+ *  @param checkIsCommonFailureBlock        对"已转换为模型的网络数据"判断当前是否是"异地登录"等公共错误结果
+ *  @param getRequestFailureMessageBlock    对"网络失败返回的error"转换为"错误信息字符串"的方法
+ */
+- (void)setupResponseConvertBlock:(CJNetworkClientResponseConvertBlock)responseConvertBlock
+        checkIsCommonFailureBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonFailureBlock
     getRequestFailureMessageBlock:(NSString* (^)(NSError *error))getRequestFailureMessageBlock;
+
+
 
 #pragma mark - Real
 - (NSURLSessionDataTask *)real1_getApi:(NSString *)apiSuffix

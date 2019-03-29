@@ -62,7 +62,7 @@
         }
         /* // responseDictionary --> responseModel
         CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-        responseModel.status = [responseDictionary[@"status"] integerValue];
+        responseModel.statusCode = [responseDictionary[@"status"] integerValue];
         responseModel.message = responseDictionary[@"message"];
         responseModel.result = responseDictionary[@"result"];
         responseModel.isCacheData = NO;

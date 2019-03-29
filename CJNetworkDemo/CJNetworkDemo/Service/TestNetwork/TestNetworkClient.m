@@ -39,15 +39,13 @@
 
             return responseModel;
             
-        } checkIsCommonBlock:^BOOL(CJResponseModel *responseModel) {
-            //必须实现：对"请求成功的success回调"做初次判断
-            if (responseModel.statusCode == 1) {
+        } checkIsCommonFailureBlock:^BOOL(CJResponseModel *responseModel) {
+            // 检查是否是共同错误并在此对共同错误做处理，如statusCode == -5 为异地登录(可为ni,非nil时一般返回值为NO)
+            if (responseModel.statusCode == 5) { //执行退出登录
+                //[CJToast shortShowMessage:@"账号异地登录"];
+                //[[CJDemoUserManager sharedInstance] logout:YES completed:nil];
                 return YES;
             } else {
-                if (responseModel.statusCode == 5) { //执行退出登录
-                    //[CJToast shortShowMessage:@"账号异地登录"];
-                    //[[CJDemoUserManager sharedInstance] logout:YES completed:nil];
-                }
                 return NO;
             }
             

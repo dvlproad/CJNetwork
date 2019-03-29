@@ -51,7 +51,7 @@
     
     } failure:^(NSString *errorMessage) {
         //HealthResponseModel *responseModel = [[CJResponseModel alloc] init];
-        //responseModel.status = -1;
+        //responseModel.statusCode = -1;
         //responseModel.message = NSLocalizedString(@"网络请求失败", nil);
         //responseModel.result = nil;
         //responseModel.cjNetworkLog = error.userInfo[@"cjNetworkLog"];
