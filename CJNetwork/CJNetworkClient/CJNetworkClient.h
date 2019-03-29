@@ -24,16 +24,31 @@ typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
 };
 
 /**
- *  将"网络成功返回的数据"转换为"模型"的方法
+ *  必须实现：将"网络请求成功返回的数据responseObject"转换为"模型"的方法
  *
- *  @param responseObject   网络成功返回的数据
+ *  @param responseObject   网络请求成功返回的数据
  *  @param isCacheData      是否是缓存数据
  *
  *  @return 数据模型
  */
-typedef CJResponseModel *(^CJNetworkClientResponseConvertBlock)(id responseObject, BOOL isCacheData);
-//typedef BOOL(^CJNetworkClientCheckIsCommonFailureBlock)(CJResponseModel *responseModel);
-//typedef NSString* (^CJNetworkClientGetRequestFailureMessageBlock)(NSError *error);
+typedef CJResponseModel *(^CJNetworkClientGetSuccessResponseModelBlock)(id responseObject, BOOL isCacheData);
+
+
+/**
+ *  必须实现：将"网络请求失败返回的数据error"转换为"模型"的方法
+ *
+ *  @param error            网络请求失败返回的数据
+ *  @param errorMessage     从网络中获取到错误信息getErrorMessageFromHTTPURLResponse
+ *
+ *  @return 数据模型
+ */
+typedef CJResponseModel* (^CJNetworkClientGetFailureResponseModelBlock)(NSError *error, NSString *errorMessage);
+
+
+
+
+
+
 
 
 @interface CJNetworkClient : NSObject {
@@ -52,16 +67,17 @@ typedef CJResponseModel *(^CJNetworkClientResponseConvertBlock)(id responseObjec
 // 可选设置(当你需要执行本地模拟(有服务器时候)的时候才需要)
 @property (nonatomic, copy) NSString *simulateDomain;   /**< 本地模拟(有服务器时候)，模拟接口所在的域名 */
 
+
 /**
- *  服务器返回值处理方法设置(一定要执行)
+ *  设置服务器返回值的各种处理方法(一定要执行)
  *
- *  @param responseConvertBlock             将"网络成功返回的数据"转换为"模型"的方法
- *  @param checkIsCommonFailureBlock        对"已转换为模型的网络数据"判断当前是否是"异地登录"等公共错误结果
- *  @param getRequestFailureMessageBlock    对"网络失败返回的error"转换为"错误信息字符串"的方法
+ *  @param getSuccessResponseModelBlock 将"网络请求成功返回的数据responseObject"转换为"模型"的方法
+ *  @param checkIsCommonFailureBlock    在"网络请求成功并转换为模型"后判断其是否是"异地登录"等共同错误并在此对共同错误做处理(可为nil)
+ *  @param getFailureResponseModelBlock 将"网络请求失败返回的数据error"转换为"模型"的方法
  */
-- (void)setupResponseConvertBlock:(CJNetworkClientResponseConvertBlock)responseConvertBlock
-        checkIsCommonFailureBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonFailureBlock
-    getRequestFailureMessageBlock:(NSString* (^)(NSError *error))getRequestFailureMessageBlock;
+- (void)setupGetSuccessResponseModelBlock:(CJNetworkClientGetSuccessResponseModelBlock)getSuccessResponseModelBlock
+                checkIsCommonFailureBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonFailureBlock
+             getFailureResponseModelBlock:(CJNetworkClientGetFailureResponseModelBlock)getFailureResponseModelBlock;
 
 
 

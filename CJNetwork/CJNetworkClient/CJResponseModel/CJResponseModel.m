@@ -42,15 +42,4 @@
 }
 
 
-+ (CJResponseModel *)responseModelWithRequestFailureMessage:(NSString *)requestFailureMessage {
-    CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-    responseModel.statusCode = -1;
-    responseModel.message = requestFailureMessage;
-    responseModel.result = nil;
-    
-    return responseModel;
-}
-
-
-
 @end

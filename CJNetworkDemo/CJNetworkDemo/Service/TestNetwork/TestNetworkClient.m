@@ -27,7 +27,7 @@
         AFHTTPSessionManager *cryptHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
         [self setupCleanHTTPSessionManager:cleanHTTPSessionManager cryptHTTPSessionManager:cryptHTTPSessionManager];
         
-        [self setupResponseConvertBlock:^CJResponseModel *(id responseObject, BOOL isCacheData) {
+        [self setupGetSuccessResponseModelBlock:^CJResponseModel *(id responseObject, BOOL isCacheData) {
             NSDictionary *responseDictionary = responseObject;
             //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
             //CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:isCacheData];
@@ -49,9 +49,16 @@
                 return NO;
             }
             
-        } getRequestFailureMessageBlock:^NSString *(NSError *error) {
-            //可选实现：获取"请求失败的回调"的错误信息
-            return NSLocalizedString(@"网络链接失败，请检查您的网络链接", nil);
+        } getFailureResponseModelBlock:^CJResponseModel *(NSError *error, NSString *errorMessage) {
+            if (errorMessage == nil || errorMessage.length == 0) {
+                errorMessage = NSLocalizedString(@"网络链接失败，请检查您的网络链接", nil);
+            }
+            CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+            responseModel.statusCode = -1;
+            responseModel.message = errorMessage;
+            responseModel.result = nil;
+            
+            return responseModel;
         }];
         
         self.simulateDomain = @"http://localhost/CJDemoDataSimulationDemo";

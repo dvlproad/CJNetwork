@@ -21,13 +21,16 @@
 @property (nonatomic, copy) NSDictionary *(^completeAllParamsBlock)(NSDictionary *customParams);
 
 #pragma mark - 请求判断
-//必须实现：将responseObject转为CJResponseModel
-@property (nonatomic, copy) CJResponseModel *(^responseConvertBlock)(id responseObject, BOOL isCacheData);
+//必须实现：将"网络请求成功返回的数据responseObject"转换为"模型"的方法
+@property (nonatomic, copy) CJResponseModel *(^getSuccessResponseModelBlock)(id responseObject, BOOL isCacheData);
 
-//必须实现：检查是否是共同错误并在此对共同错误做处理，如statusCode == -5 为异地登录(可为ni,非nil时一般返回值为NO)
+//必须实现：将"网络请求失败返回的数据error"转换为"模型"的方法
+@property (nonatomic, copy) CJResponseModel* (^getFailureResponseModelBlock)(NSError *error, NSString *errorMessage);
+
+//可选实现：在"网络请求成功并转换为模型"后判断其是否是"异地登录"等共同错误并在此对共同错误做处理，如statusCode == -5 为异地登录(可为ni,非nil时一般返回值为NO)
 //未设置时候 CJResponeFailureType 为 CJResponeFailureTypeNeedFurtherJudgeFailure
-//设置时候 返回YES,则即为CJResponeFailureTypeCommonFailure，其会走failure回调;
-//设置时候 返回NO,则即为CJResponeFailureTypeNeedFurtherJudgeFailure，其会走success回调；
+//设置时候 若返回YES,则即为CJResponeFailureTypeCommonFailure，其会走failure回调;
+//设置时候 若返回NO,则即为CJResponeFailureTypeNeedFurtherJudgeFailure，其会走success回调；
 //详细的走法如下代码所示：
 //if (failureType == CJResponeFailureTypeCommonFailure) {
 //    !failure ?: failure(NO, responseModel.message);
@@ -39,9 +42,6 @@
 //    !success ?: success(responseModel);
 //}
 @property (nonatomic, copy) BOOL(^checkIsCommonFailureBlock)(CJResponseModel *responseModel);
-
-//可选实现：获取"请求失败的回调"的错误信息
-@property (nonatomic, copy) NSString* (^getRequestFailureMessageBlock)(NSError *error);
 
 @end
 
@@ -91,14 +91,15 @@
 //}
 
 
-- (void)setupResponseConvertBlock:(CJNetworkClientResponseConvertBlock)responseConvertBlock
-        checkIsCommonFailureBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonFailureBlock
-    getRequestFailureMessageBlock:(NSString* (^)(NSError *error))getRequestFailureMessageBlock
+- (void)setupGetSuccessResponseModelBlock:(CJNetworkClientGetSuccessResponseModelBlock)getSuccessResponseModelBlock
+                checkIsCommonFailureBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonFailureBlock
+             getFailureResponseModelBlock:(CJNetworkClientGetFailureResponseModelBlock)getFailureResponseModelBlock
 {
-    NSAssert(responseConvertBlock, @"responseConvertBlock不能为空");
-    self.responseConvertBlock = responseConvertBlock;
+    NSAssert(getSuccessResponseModelBlock, @"getSuccessResponseModelBlock不能为空");
+    NSAssert(getFailureResponseModelBlock, @"getFailureResponseModelBlock不能为空");
+    self.getSuccessResponseModelBlock = getSuccessResponseModelBlock;
     self.checkIsCommonFailureBlock = checkIsCommonFailureBlock;
-    self.getRequestFailureMessageBlock = getRequestFailureMessageBlock;
+    self.getFailureResponseModelBlock = getFailureResponseModelBlock;
 }
 
 /*
@@ -129,7 +130,7 @@
 {
     NSString *Url = self.completeFullUrlBlock(apiSuffix);
     
-    return [self requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
+    return [self __requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
 }
 
 - (NSURLSessionDataTask *)real1_postApi:(NSString *)apiSuffix
@@ -139,7 +140,7 @@
 {
     NSString *Url = self.completeFullUrlBlock(apiSuffix);
     
-    return [self requestUrl:Url params:params method:CJRequestMethodPOST settingModel:settingModel completeBlock:completeBlock];
+    return [self __requestUrl:Url params:params method:CJRequestMethodPOST settingModel:settingModel completeBlock:completeBlock];
 }
 
 - (NSURLSessionDataTask *)real1_postUploadUrl:(nullable NSString *)Url
@@ -172,7 +173,7 @@
 {
     NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
     
-    return [self requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
+    return [self __requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
 }
 
 
@@ -183,7 +184,7 @@
 {
     NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
     
-    return [self requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
+    return [self __requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
 }
 
 - (NSURLSessionDataTask *)simulate1_postUploadUrl:(nullable NSString *)Url
@@ -197,7 +198,7 @@
     NSString *apiSuffix = @"upload_api/image"; //图片上传暂时固定写死
     Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
     
-    return [self requestUrl:Url params:customParams method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
+    return [self __requestUrl:Url params:customParams method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
 }
 
 #pragma mark - localApi
@@ -208,7 +209,7 @@
 {
     [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
-        CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
+        CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
         
         if (completeBlock) {
             completeBlock(CJResponeFailureTypeUncheck, responseModel);
@@ -225,7 +226,7 @@
 {
     [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
-        CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
+        CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
         
         if (completeBlock) {
             completeBlock(CJResponeFailureTypeUncheck, responseModel);
@@ -245,7 +246,7 @@
     NSString *apiSuffix = @"upload_api/image"; //图片上传暂时固定写死
     [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
-        CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
+        CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
         
         if (completeBlock) {
             completeBlock(CJResponeFailureTypeUncheck, responseModel);
@@ -256,11 +257,11 @@
 
 
 #pragma mark - Base
-- (nullable NSURLSessionDataTask *)requestUrl:(nullable NSString *)Url
-                                       params:(nullable id)customParams
-                                       method:(CJRequestMethod)method
-                                 settingModel:(CJRequestSettingModel *)settingModel
-                                completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+- (nullable NSURLSessionDataTask *)__requestUrl:(nullable NSString *)Url
+                                         params:(nullable id)customParams
+                                         method:(CJRequestMethod)method
+                                   settingModel:(CJRequestSettingModel *)settingModel
+                                  completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     AFHTTPSessionManager *manager = nil;
     if (method == CJRequestMethodGET) {
@@ -290,7 +291,7 @@
 - (void)__dealSuccessRequestInfo:(CJSuccessRequestInfo *)successNetworkInfo completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock {
     NSDictionary *responseDictionary = successNetworkInfo.responseObject;
     BOOL isCacheData = successNetworkInfo.isCacheData;
-    CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
+    CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
     //方式①
     //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
     //方式②
@@ -302,17 +303,14 @@
     //responseModel.result = responseDictionary[@"result"];
     //responseModel.isCacheData = isCacheData;
     
+    CJResponeFailureType failureType = CJResponeFailureTypeNeedFurtherJudgeFailure;
     if (self.checkIsCommonFailureBlock) {
         BOOL isCommonFailure = self.checkIsCommonFailureBlock(responseModel);
-        CJResponeFailureType failureType = isCommonFailure ? CJResponeFailureTypeCommonFailure : CJResponeFailureTypeNeedFurtherJudgeFailure;
-        if (completeBlock) {
-            completeBlock(failureType, responseModel);
-        }
-        
-    } else {
-        if (completeBlock) {
-            completeBlock(CJResponeFailureTypeNeedFurtherJudgeFailure, responseModel);
-        }
+        failureType = isCommonFailure ? CJResponeFailureTypeCommonFailure : CJResponeFailureTypeNeedFurtherJudgeFailure;
+    }
+    
+    if (completeBlock) {
+        completeBlock(failureType, responseModel);
     }
 }
 
@@ -320,11 +318,9 @@
 - (void)__dealFailureNetworkInfo:(CJFailureRequestInfo *)failureNetworkInfo completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock {
     NSError *error = failureNetworkInfo.error;
     NSString *errorMessage = failureNetworkInfo.errorMessage;
-    if (self.getRequestFailureMessageBlock) {
-        errorMessage = self.getRequestFailureMessageBlock(error);
-    }
-    
-    CJResponseModel *responseModel = [CJResponseModel responseModelWithRequestFailureMessage:errorMessage];
+
+    CJResponseModel *responseModel = self.getFailureResponseModelBlock(error, errorMessage);
+    //responseModel.isCacheData = NO;
     CJResponeFailureType failureType = CJResponeFailureTypeRequestFailure;
     if (completeBlock) {
         completeBlock(failureType, responseModel);

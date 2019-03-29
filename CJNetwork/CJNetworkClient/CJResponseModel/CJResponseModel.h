@@ -27,6 +27,4 @@ responseModel.isCacheData = isCacheData;
 //- (instancetype)initWithResponseDictionary:(NSDictionary *)responseDictionary isCacheData:(BOOL)isCacheData;
 - (BOOL)isNoNullForObject:(id)object;
 
-+ (CJResponseModel *)responseModelWithRequestFailureMessage:(NSString *)requestFailureMessage;
-
 @end
