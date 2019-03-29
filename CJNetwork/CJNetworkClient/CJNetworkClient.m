@@ -108,33 +108,33 @@
 */
 
 #pragma mark - Real
-- (NSURLSessionDataTask *)real_getApi:(NSString *)apiSuffix
-                               params:(NSDictionary *)params
-                         settingModel:(CJRequestSettingModel *)settingModel
-                        completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+- (NSURLSessionDataTask *)real1_getApi:(NSString *)apiSuffix
+                                params:(NSDictionary *)params
+                          settingModel:(CJRequestSettingModel *)settingModel
+                         completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSString *Url = self.completeFullUrlBlock(apiSuffix);
     
     return [self requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
 }
 
-- (NSURLSessionDataTask *)real_postApi:(NSString *)apiSuffix
-                                params:(id)params
-                          settingModel:(CJRequestSettingModel *)settingModel
-                         completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+- (NSURLSessionDataTask *)real1_postApi:(NSString *)apiSuffix
+                                 params:(id)params
+                           settingModel:(CJRequestSettingModel *)settingModel
+                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSString *Url = self.completeFullUrlBlock(apiSuffix);
     
     return [self requestUrl:Url params:params method:CJRequestMethodPOST settingModel:settingModel completeBlock:completeBlock];
 }
 
-- (NSURLSessionDataTask *)real_postUploadUrl:(nullable NSString *)Url
-                                      params:(nullable NSDictionary *)customParams
-                                settingModel:(CJRequestSettingModel *)settingModel
-                                     fileKey:(nullable NSString *)fileKey
-                                   fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                    progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                               completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+- (NSURLSessionDataTask *)real1_postUploadUrl:(nullable NSString *)Url
+                                       params:(nullable NSDictionary *)customParams
+                                 settingModel:(CJRequestSettingModel *)settingModel
+                                      fileKey:(nullable NSString *)fileKey
+                                    fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     AFHTTPSessionManager *manager = settingModel.shouldEncrypt ? self.cryptHTTPSessionManager : self.cleanHTTPSessionManager;
     
@@ -143,7 +143,7 @@
         allParams = self.completeAllParamsBlock(customParams);
     }
     return [manager cj_postUploadUrl:Url params:customParams settingModel:settingModel fileKey:fileKey fileValue:uploadFileModels progress:uploadProgress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
-         [self __dealSuccessRequestInfo:successNetworkInfo completeBlock:completeBlock];
+        [self __dealSuccessRequestInfo:successNetworkInfo completeBlock:completeBlock];
         
     } failure:^(CJFailureRequestInfo * _Nullable failureNetworkInfo) {
         [self __dealFailureNetworkInfo:failureNetworkInfo completeBlock:completeBlock];
@@ -151,19 +151,8 @@
 }
 
 #pragma mark simulate
-- (NSURLSessionDataTask *)simulate_getApi:(NSString *)apiSuffix
-                                   params:(NSDictionary *)params
-                             settingModel:(CJRequestSettingModel *)settingModel
-                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
-{
-    NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
-    
-    return [self requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
-}
-
-
-- (NSURLSessionDataTask *)simulate_postApi:(NSString *)apiSuffix
-                                    params:(id)params
+- (NSURLSessionDataTask *)simulate1_getApi:(NSString *)apiSuffix
+                                    params:(NSDictionary *)params
                               settingModel:(CJRequestSettingModel *)settingModel
                              completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
@@ -172,13 +161,24 @@
     return [self requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
 }
 
-- (NSURLSessionDataTask *)simulate_postUploadUrl:(nullable NSString *)Url
-                                       params:(nullable NSDictionary *)customParams
-                                 settingModel:(CJRequestSettingModel *)settingModel
-                                      fileKey:(nullable NSString *)fileKey
-                                    fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+
+- (NSURLSessionDataTask *)simulate1_postApi:(NSString *)apiSuffix
+                                     params:(id)params
+                               settingModel:(CJRequestSettingModel *)settingModel
+                              completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+{
+    NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
+    
+    return [self requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
+}
+
+- (NSURLSessionDataTask *)simulate1_postUploadUrl:(nullable NSString *)Url
+                                           params:(nullable NSDictionary *)customParams
+                                     settingModel:(CJRequestSettingModel *)settingModel
+                                          fileKey:(nullable NSString *)fileKey
+                                        fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                         progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                    completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSString *apiSuffix = @"upload_api/image"; //图片上传暂时固定写死
     Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
@@ -187,25 +187,8 @@
 }
 
 #pragma mark - localApi
-- (NSURLSessionDataTask *)local_getApi:(NSString *)apiSuffix
-                                params:(NSDictionary *)params
-                          settingModel:(CJRequestSettingModel *)settingModel
-                         completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
-{
-    [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
-        BOOL isCacheData = NO;
-        CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
-        
-        if (completeBlock) {
-            completeBlock(CJResponeFailureTypeUncheck, responseModel);
-        }
-    }];
-    return nil;
-}
-
-
-- (NSURLSessionDataTask *)local_postApi:(NSString *)apiSuffix
-                                 params:(id)params
+- (NSURLSessionDataTask *)local1_getApi:(NSString *)apiSuffix
+                                 params:(NSDictionary *)params
                            settingModel:(CJRequestSettingModel *)settingModel
                           completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
@@ -220,13 +203,30 @@
     return nil;
 }
 
-- (nullable NSURLSessionDataTask *)local_postUploadUrl:(nullable NSString *)Url
-                                               params:(nullable NSDictionary *)customParams
-                                         settingModel:(CJRequestSettingModel *)settingModel
-                                              fileKey:(nullable NSString *)fileKey
-                                            fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                             progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                        completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+
+- (NSURLSessionDataTask *)local1_postApi:(NSString *)apiSuffix
+                                  params:(id)params
+                            settingModel:(CJRequestSettingModel *)settingModel
+                           completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+{
+    [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
+        BOOL isCacheData = NO;
+        CJResponseModel *responseModel = self.responseConvertBlock(responseDictionary, isCacheData);
+        
+        if (completeBlock) {
+            completeBlock(CJResponeFailureTypeUncheck, responseModel);
+        }
+    }];
+    return nil;
+}
+
+- (nullable NSURLSessionDataTask *)local1_postUploadUrl:(nullable NSString *)Url
+                                                 params:(nullable NSDictionary *)customParams
+                                           settingModel:(CJRequestSettingModel *)settingModel
+                                                fileKey:(nullable NSString *)fileKey
+                                              fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                               progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSString *apiSuffix = @"upload_api/image"; //图片上传暂时固定写死
     [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
@@ -301,7 +301,7 @@
         }
     }
 }
-    
+
 
 - (void)__dealFailureNetworkInfo:(CJFailureRequestInfo *)failureNetworkInfo completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock {
     NSError *error = failureNetworkInfo.error;
