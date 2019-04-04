@@ -15,6 +15,8 @@
 #endif
 
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  系统的请求方法
  */
@@ -72,5 +74,6 @@
           success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
           failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
 
+NS_ASSUME_NONNULL_END
 
 @end

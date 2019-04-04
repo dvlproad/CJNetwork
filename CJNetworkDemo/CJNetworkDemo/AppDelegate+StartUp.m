@@ -17,7 +17,7 @@
     //NSString *fullUrl = [environmentManager completeUrlWithApiSuffix:apiSuffix];
     //NSMutableDictionary *allParams = [environmentManager completeParamsWithCustomParams:customParams];
     [TestNetworkClient sharedInstance].baseUrl = @"";
-    [TestNetworkClient sharedInstance].commonParams = @{};
+    [TestNetworkClient sharedInstance].commonParams = [NSMutableDictionary dictionaryWithDictionary:@{}];
 }
 
 @end

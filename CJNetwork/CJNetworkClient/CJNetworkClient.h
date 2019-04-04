@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
  *
  *  @return 数据模型
  */
-typedef CJResponseModel *(^CJNetworkClientGetSuccessResponseModelBlock)(id responseObject, BOOL isCacheData);
+typedef CJResponseModel * _Nullable (^CJNetworkClientGetSuccessResponseModelBlock)(id _Nullable responseObject, BOOL isCacheData);
 
 
 /**
@@ -42,7 +42,7 @@ typedef CJResponseModel *(^CJNetworkClientGetSuccessResponseModelBlock)(id respo
  *
  *  @return 数据模型
  */
-typedef CJResponseModel* (^CJNetworkClientGetFailureResponseModelBlock)(NSError *error, NSString *errorMessage);
+typedef CJResponseModel * _Nullable (^CJNetworkClientGetFailureResponseModelBlock)(NSError * _Nullable error, NSString * _Nullable errorMessage);
 
 
 
@@ -50,6 +50,7 @@ typedef CJResponseModel* (^CJNetworkClientGetFailureResponseModelBlock)(NSError 
 
 
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface CJNetworkClient : NSObject {
     
@@ -61,8 +62,8 @@ typedef CJResponseModel* (^CJNetworkClientGetFailureResponseModelBlock)(NSError 
 // 外界环境变化的时候要修改的值(一定要执行)
 /**< 共有Url，形如@"http://xxx.xxx.xxx"，会通过baseUrl与apiSuffix组成fullUrl */
 @property (nonatomic, copy) NSString *baseUrl;
-/**< 公共参数 */
-@property (nonatomic, strong) NSDictionary *commonParams;
+/**< 公共参数(可变类型，如登录之后需要追加uid，退出时候需要remove uid) */
+@property (nonatomic, strong) NSMutableDictionary *commonParams;
 
 // 可选设置(当你需要执行本地模拟(有服务器时候)的时候才需要)
 @property (nonatomic, copy) NSString *simulateDomain;   /**< 本地模拟(有服务器时候)，模拟接口所在的域名 */
@@ -105,7 +106,7 @@ typedef CJResponseModel* (^CJNetworkClientGetFailureResponseModelBlock)(NSError 
  *
  *  @return 上传文件的请求
  */
-- (NSURLSessionDataTask *)real1_postUploadUrl:(nullable NSString *)Url
+- (NSURLSessionDataTask *)real1_uploadUrl:(nullable NSString *)Url
                                        params:(nullable NSDictionary *)customParams
                                  settingModel:(CJRequestSettingModel *)settingModel
                                       fileKey:(nullable NSString *)fileKey
@@ -125,7 +126,7 @@ typedef CJResponseModel* (^CJNetworkClientGetFailureResponseModelBlock)(NSError 
                                settingModel:(CJRequestSettingModel *)settingModel
                               completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
-- (NSURLSessionDataTask *)simulate1_postUploadUrl:(nullable NSString *)Url
+- (NSURLSessionDataTask *)simulate1_uploadUrl:(nullable NSString *)Url
                                            params:(nullable NSDictionary *)customParams
                                      settingModel:(CJRequestSettingModel *)settingModel
                                           fileKey:(nullable NSString *)fileKey
@@ -134,22 +135,24 @@ typedef CJResponseModel* (^CJNetworkClientGetFailureResponseModelBlock)(NSError 
                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
 #pragma mark - localApi
-- (NSURLSessionDataTask *)local1_getApi:(NSString *)apiSuffix
-                                 params:(NSDictionary *)params
-                           settingModel:(CJRequestSettingModel *)settingModel
-                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+- (nullable NSURLSessionDataTask *)local1_getApi:(NSString *)apiSuffix
+                                          params:(NSDictionary *)params
+                                    settingModel:(CJRequestSettingModel *)settingModel
+                                   completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
-- (NSURLSessionDataTask *)local1_postApi:(NSString *)apiSuffix
-                                  params:(id)params
-                            settingModel:(CJRequestSettingModel *)settingModel
-                           completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+- (nullable NSURLSessionDataTask *)local1_postApi:(NSString *)apiSuffix
+                                           params:(id)params
+                                     settingModel:(CJRequestSettingModel *)settingModel
+                                    completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
-- (NSURLSessionDataTask *)local1_postUploadUrl:(nullable NSString *)Url
-                                        params:(nullable NSDictionary *)customParams
-                                  settingModel:(CJRequestSettingModel *)settingModel
-                                       fileKey:(nullable NSString *)fileKey
-                                     fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                 completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+- (nullable NSURLSessionDataTask *)local1_uploadUrl:(nullable NSString *)Url
+                                                 params:(nullable NSDictionary *)customParams
+                                           settingModel:(CJRequestSettingModel *)settingModel
+                                                fileKey:(nullable NSString *)fileKey
+                                              fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                               progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+
+NS_ASSUME_NONNULL_END
 
 @end

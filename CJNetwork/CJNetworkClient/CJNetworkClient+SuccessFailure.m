@@ -34,7 +34,7 @@
     }];
 }
 
-- (NSURLSessionDataTask *)real2_postUploadUrl:(nullable NSString *)Url
+- (NSURLSessionDataTask *)real2_uploadUrl:(nullable NSString *)Url
                                        params:(nullable NSDictionary *)customParams
                                  settingModel:(CJRequestSettingModel *)settingModel
                                       fileKey:(nullable NSString *)fileKey
@@ -43,7 +43,7 @@
                                       success:(void (^)(CJResponseModel *responseModel))success
                                       failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
-    return [self real1_postUploadUrl:Url params:customParams settingModel:settingModel fileKey:fileKey fileValue:uploadFileModels progress:uploadProgress completeBlock:^(CJResponeFailureType failureType, CJResponseModel *responseModel) {
+    return [self real1_uploadUrl:Url params:customParams settingModel:settingModel fileKey:fileKey fileValue:uploadFileModels progress:uploadProgress completeBlock:^(CJResponeFailureType failureType, CJResponseModel *responseModel) {
         [self splitCompleteBlockWithFailureType:failureType responseModel:responseModel toSuccess:success failure:failure];
     }];
 }
@@ -72,7 +72,7 @@
     }];
 }
 
-- (NSURLSessionDataTask *)simulate2_postUploadUrl:(nullable NSString *)Url
+- (NSURLSessionDataTask *)simulate2_uploadUrl:(nullable NSString *)Url
                                            params:(nullable NSDictionary *)customParams
                                      settingModel:(CJRequestSettingModel *)settingModel
                                           fileKey:(nullable NSString *)fileKey
@@ -81,7 +81,7 @@
                                           success:(void (^)(CJResponseModel *responseModel))success
                                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
-    return [self simulate1_postUploadUrl:Url params:customParams settingModel:settingModel fileKey:fileKey fileValue:uploadFileModels progress:uploadProgress completeBlock:^(CJResponeFailureType failureType, CJResponseModel *responseModel) {
+    return [self simulate1_uploadUrl:Url params:customParams settingModel:settingModel fileKey:fileKey fileValue:uploadFileModels progress:uploadProgress completeBlock:^(CJResponeFailureType failureType, CJResponseModel *responseModel) {
         [self splitCompleteBlockWithFailureType:failureType responseModel:responseModel toSuccess:success failure:failure];
     }];
 }
@@ -109,7 +109,7 @@
     }];
 }
 
-- (NSURLSessionDataTask *)local2_postUploadUrl:(nullable NSString *)Url
+- (NSURLSessionDataTask *)local2_uploadUrl:(nullable NSString *)Url
                                         params:(nullable NSDictionary *)customParams
                                   settingModel:(CJRequestSettingModel *)settingModel
                                        fileKey:(nullable NSString *)fileKey
@@ -118,7 +118,7 @@
                                        success:(void (^)(CJResponseModel *responseModel))success
                                        failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
-    return [self local1_postUploadUrl:Url params:customParams settingModel:settingModel fileKey:fileKey fileValue:uploadFileModels progress:uploadProgress completeBlock:^(CJResponeFailureType failureType, CJResponseModel *responseModel) {
+    return [self local1_uploadUrl:Url params:customParams settingModel:settingModel fileKey:fileKey fileValue:uploadFileModels progress:uploadProgress completeBlock:^(CJResponeFailureType failureType, CJResponseModel *responseModel) {
         [self splitCompleteBlockWithFailureType:failureType responseModel:responseModel toSuccess:success failure:failure];
     }];
 }

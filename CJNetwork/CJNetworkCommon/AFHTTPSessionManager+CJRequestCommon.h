@@ -10,6 +10,8 @@
 #import "CJRequestSettingModel.h"
 #import "CJRequestInfoModel.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface AFHTTPSessionManager (CJRequestCommon) {
     
 }
@@ -37,5 +39,7 @@
                             params:(nullable id)params
                       settingModel:(CJRequestSettingModel *)settingModel
                            failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
+
+NS_ASSUME_NONNULL_END
 
 @end

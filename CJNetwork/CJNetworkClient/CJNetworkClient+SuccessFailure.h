@@ -9,6 +9,8 @@
 
 #import "CJNetworkClient.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface CJNetworkClient (SuccessFailure)
 
 #pragma mark - Real
@@ -24,7 +26,7 @@
                                 success:(void (^)(CJResponseModel *responseModel))success
                                 failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
-- (NSURLSessionDataTask *)real2_postUploadUrl:(nullable NSString *)Url
+- (NSURLSessionDataTask *)real2_uploadUrl:(nullable NSString *)Url
                                        params:(nullable NSDictionary *)customParams
                                  settingModel:(CJRequestSettingModel *)settingModel
                                       fileKey:(nullable NSString *)fileKey
@@ -47,7 +49,7 @@
                                     success:(void (^)(CJResponseModel *responseModel))success
                                     failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
-- (NSURLSessionDataTask *)simulate2_postUploadUrl:(nullable NSString *)Url
+- (NSURLSessionDataTask *)simulate2_uploadUrl:(nullable NSString *)Url
                                            params:(nullable NSDictionary *)customParams
                                      settingModel:(CJRequestSettingModel *)settingModel
                                           fileKey:(nullable NSString *)fileKey
@@ -69,7 +71,7 @@
                                  success:(void (^)(CJResponseModel *responseModel))success
                                  failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
-- (NSURLSessionDataTask *)local2_postUploadUrl:(nullable NSString *)Url
+- (NSURLSessionDataTask *)local2_uploadUrl:(nullable NSString *)Url
                                         params:(nullable NSDictionary *)customParams
                                   settingModel:(CJRequestSettingModel *)settingModel
                                        fileKey:(nullable NSString *)fileKey
@@ -77,5 +79,7 @@
                                       progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                        success:(void (^)(CJResponseModel *responseModel))success
                                        failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
+
+NS_ASSUME_NONNULL_END
 
 @end

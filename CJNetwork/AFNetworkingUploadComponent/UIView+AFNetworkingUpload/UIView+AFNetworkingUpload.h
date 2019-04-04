@@ -10,6 +10,8 @@
 #import "AFHTTPSessionManager+CJUploadFile.h"
 #import "CJUploadProgressView.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIView (AFNetworkingUpload)
 
 #pragma mark - TODO:有上传操作的那个视图要重写的方法
@@ -35,5 +37,7 @@
                        fileValueOwner:(CJUploadFileModelsOwner *)fileValueOwner
           uploadMomentInfoChangeBlock:(void(^)(CJUploadFileModelsOwner *momentInfoOwner))uploadMomentInfoChangeBlock
  getUploadMomentInfoFromResopnseBlock:(CJUploadMomentInfo * (^)(id responseObject))getUploadMomentInfoFromResopnseBlock;
+
+NS_ASSUME_NONNULL_END
 
 @end

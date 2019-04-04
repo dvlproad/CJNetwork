@@ -25,12 +25,12 @@
     NSURLSessionDataTask *operation = fileValueOwner.operation;
     if (operation == nil) {
         operation =
-        [manager cj_postUploadUrl:Url
-                           params:params
-                     settingModel:settingModel
-                          fileKey:fileKey
-                   fileValueOwner:fileValueOwner
-      uploadMomentInfoChangeBlock:uploadMomentInfoChangeBlock
+        [manager cj_uploadUrl:Url
+                       params:params
+                 settingModel:settingModel
+                      fileKey:fileKey
+               fileValueOwner:fileValueOwner
+  uploadMomentInfoChangeBlock:uploadMomentInfoChangeBlock
 getUploadMomentInfoFromResopnseBlock:getUploadMomentInfoFromResopnseBlock];
         
         fileValueOwner.operation = operation;
@@ -45,12 +45,12 @@ getUploadMomentInfoFromResopnseBlock:getUploadMomentInfoFromResopnseBlock];
         [strongFileValueOwner.operation cancel];
         
         NSURLSessionDataTask *newOperation =
-        [manager cj_postUploadUrl:Url
-                           params:params
-                     settingModel:settingModel
-                          fileKey:fileKey
-                   fileValueOwner:fileValueOwner
-      uploadMomentInfoChangeBlock:uploadMomentInfoChangeBlock
+        [manager cj_uploadUrl:Url
+                       params:params
+                 settingModel:settingModel
+                      fileKey:fileKey
+               fileValueOwner:fileValueOwner
+  uploadMomentInfoChangeBlock:uploadMomentInfoChangeBlock
 getUploadMomentInfoFromResopnseBlock:getUploadMomentInfoFromResopnseBlock];
         
         strongFileValueOwner.operation = newOperation;

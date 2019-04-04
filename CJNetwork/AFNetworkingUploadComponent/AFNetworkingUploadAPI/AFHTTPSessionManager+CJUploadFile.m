@@ -12,13 +12,13 @@
 
 #pragma mark - 上传文件请求的接口
 /* 完整的描述请参见文件头部 */
-- (nullable NSURLSessionDataTask *)cj_postUploadUrl:(nullable NSString *)Url
-                                             params:(nullable id)params
-                                       settingModel:(CJRequestSettingModel *)settingModel
-                                            fileKey:(nullable NSString *)fileKey
-                                     fileValueOwner:(nullable CJUploadFileModelsOwner *)fileValueOwner
-                        uploadMomentInfoChangeBlock:(nullable void(^)(CJUploadFileModelsOwner * _Nonnull momentInfoOwner))uploadMomentInfoChangeBlock
-               getUploadMomentInfoFromResopnseBlock:(nullable CJUploadMomentInfo * _Nonnull (^)(id _Nonnull responseObject))getUploadMomentInfoFromResopnseBlock
+- (nullable NSURLSessionDataTask *)cj_uploadUrl:(nullable NSString *)Url
+                                         params:(nullable id)params
+                                   settingModel:(CJRequestSettingModel *)settingModel
+                                        fileKey:(nullable NSString *)fileKey
+                                 fileValueOwner:(nullable CJUploadFileModelsOwner *)fileValueOwner
+                    uploadMomentInfoChangeBlock:(nullable void(^)(CJUploadFileModelsOwner * _Nonnull momentInfoOwner))uploadMomentInfoChangeBlock
+           getUploadMomentInfoFromResopnseBlock:(nullable CJUploadMomentInfo * _Nonnull (^)(id _Nonnull responseObject))getUploadMomentInfoFromResopnseBlock
 {
     __weak typeof(fileValueOwner)weakFileValueOwner = fileValueOwner;
     
@@ -55,7 +55,7 @@
     
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [self cj_postUploadUrl:Url params:params settingModel:settingModel fileKey:fileKey fileValue:fileValueOwner.uploadFileModels progress:uploadingBlock success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
+    [self cj_uploadUrl:Url params:params settingModel:settingModel fileKey:fileKey fileValue:fileValueOwner.uploadFileModels progress:uploadingBlock success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         if (getUploadMomentInfoFromResopnseBlock) {
             CJUploadMomentInfo *momentInfo = getUploadMomentInfoFromResopnseBlock(successRequestInfo.responseObject);
             uploadCompleteBlock(momentInfo);
@@ -77,14 +77,14 @@
 
 
 /* 完整的描述请参见文件头部 */
-- (nullable NSURLSessionDataTask *)cj_postUploadUrl:(nullable NSString *)Url
-                                             params:(nullable id)allParams
-                                       settingModel:(CJRequestSettingModel *)settingModel
-                                            fileKey:(nullable NSString *)fileKey
-                                          fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                           progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                            success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
-                                            failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
+- (nullable NSURLSessionDataTask *)cj_uploadUrl:(nullable NSString *)Url
+                                         params:(nullable id)allParams
+                                   settingModel:(CJRequestSettingModel *)settingModel
+                                        fileKey:(nullable NSString *)fileKey
+                                      fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                       progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                        success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+                                        failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
 {
     NSURLSessionDataTask *URLSessionDataTask =
     [self POST:Url parameters:allParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)

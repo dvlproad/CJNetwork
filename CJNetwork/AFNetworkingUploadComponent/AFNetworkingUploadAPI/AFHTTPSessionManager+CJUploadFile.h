@@ -10,6 +10,7 @@
 #import "AFHTTPSessionManager+CJRequestCommon.h"
 #import "CJUploadFileModelsOwner.h"    //上传请求的时刻信息要保存到的位置
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface AFHTTPSessionManager (CJUploadFile)
 
@@ -27,13 +28,13 @@
  *
  *  @return 上传文件的请求
  */
-- (nullable NSURLSessionDataTask *)cj_postUploadUrl:(nullable NSString *)Url
-                                             params:(nullable id)params
-                                       settingModel:(CJRequestSettingModel *)settingModel
-                                            fileKey:(nullable NSString *)fileKey
-                                     fileValueOwner:(nullable CJUploadFileModelsOwner *)fileValueOwner
-                        uploadMomentInfoChangeBlock:(nullable void(^)(CJUploadFileModelsOwner * _Nonnull momentInfoOwner))uploadMomentInfoChangeBlock
-               getUploadMomentInfoFromResopnseBlock:(nullable CJUploadMomentInfo * _Nonnull (^)(id _Nonnull responseObject))getUploadMomentInfoFromResopnseBlock;
+- (nullable NSURLSessionDataTask *)cj_uploadUrl:(nullable NSString *)Url
+                                         params:(nullable id)params
+                                   settingModel:(CJRequestSettingModel *)settingModel
+                                        fileKey:(nullable NSString *)fileKey
+                                 fileValueOwner:(nullable CJUploadFileModelsOwner *)fileValueOwner
+                    uploadMomentInfoChangeBlock:(nullable void(^)(CJUploadFileModelsOwner * _Nonnull momentInfoOwner))uploadMomentInfoChangeBlock
+           getUploadMomentInfoFromResopnseBlock:(nullable CJUploadMomentInfo * _Nonnull (^)(id _Nonnull responseObject))getUploadMomentInfoFromResopnseBlock;
 
 /**
  *  上传文件的请求方法：只是上传文件，不对上传过程中的各个时刻信息的进行保存
@@ -49,13 +50,15 @@
  *
  *  @return 上传文件的请求
  */
-- (nullable NSURLSessionDataTask *)cj_postUploadUrl:(nullable NSString *)Url
-                                             params:(nullable id)allParams
-                                       settingModel:(CJRequestSettingModel *)settingModel
-                                            fileKey:(nullable NSString *)fileKey
-                                          fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                           progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                            success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
-                                            failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
+- (nullable NSURLSessionDataTask *)cj_uploadUrl:(nullable NSString *)Url
+                                         params:(nullable id)allParams
+                                   settingModel:(CJRequestSettingModel *)settingModel
+                                        fileKey:(nullable NSString *)fileKey
+                                      fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                       progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                        success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+                                        failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
+
+NS_ASSUME_NONNULL_END
 
 @end

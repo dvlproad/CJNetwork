@@ -9,6 +9,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "AFHTTPSessionManager+CJRequestCommon.h"
 
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  AFN的请求方法(包含缓存和加密方法)
@@ -40,5 +41,8 @@
                                       decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
                                            success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
                                            failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
+
+
+NS_ASSUME_NONNULL_END
 
 @end

@@ -13,6 +13,8 @@
 //    CJRequestCacheFailureTypeCacheDataNil,           /**< 未读到缓存数据,如第一次就是无网请求,提示网络不给力 */
 //};
 
+NS_ASSUME_NONNULL_BEGIN
+
 
 @interface CJNetworkCacheUtil : NSObject
 
@@ -54,5 +56,7 @@
  *  清空所有缓存数据
  */
 + (void)clearAllCache;
+
+NS_ASSUME_NONNULL_END
 
 @end

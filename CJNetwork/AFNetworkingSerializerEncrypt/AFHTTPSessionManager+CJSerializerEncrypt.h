@@ -9,6 +9,8 @@
 #import <AFNetworking/AFNetworking.h>
 #import "AFHTTPSessionManager+CJRequestCommon.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface AFHTTPSessionManager (CJSerializerEncrypt)
 
 /**
@@ -64,5 +66,7 @@
                                          success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
                                          failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
 
+
+NS_ASSUME_NONNULL_END
 
 @end
