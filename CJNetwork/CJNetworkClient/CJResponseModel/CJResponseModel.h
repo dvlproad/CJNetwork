@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CJResponseModel : NSObject
+@interface CJResponseModel : NSObject {
+    
+}
+@property (nonatomic, copy) NSString *version;
+@property (nonatomic, strong) NSDictionary *responseDictionary; /**< 返回的总信息(请自己完善该属性的赋值) */
 
 @property (nonatomic, assign) NSInteger statusCode;
 @property (nonatomic, copy) NSString *message;
@@ -24,7 +28,6 @@ responseModel.message = responseDictionary[@"message"];
 responseModel.result = responseDictionary[@"result"];
 responseModel.isCacheData = isCacheData;
 */
-//- (instancetype)initWithResponseDictionary:(NSDictionary *)responseDictionary isCacheData:(BOOL)isCacheData;
 - (BOOL)isNoNullForObject:(id)object;
 
 @end

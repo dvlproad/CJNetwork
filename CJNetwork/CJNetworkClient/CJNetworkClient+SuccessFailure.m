@@ -53,7 +53,7 @@
 - (NSURLSessionDataTask *)simulate2_getApi:(NSString *)apiSuffix
                                     params:(NSDictionary *)params
                               settingModel:(CJRequestSettingModel *)settingModel
-                                   success:(void (^)(CJResponseModel *responseModel))success
+                                   success:(void (^)(id responseModel))success
                                    failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     return [self simulate1_getApi:apiSuffix params:params settingModel:settingModel completeBlock:^(CJResponeFailureType failureType, CJResponseModel *responseModel) {
@@ -64,7 +64,7 @@
 - (NSURLSessionDataTask *)simulate2_postApi:(NSString *)apiSuffix
                                      params:(id)params
                                settingModel:(CJRequestSettingModel *)settingModel
-                                    success:(void (^)(CJResponseModel *responseModel))success
+                                    success:(void (^)(id responseModel))success
                                     failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     return [self simulate1_postApi:apiSuffix params:params settingModel:settingModel completeBlock:^(CJResponeFailureType failureType, CJResponseModel *responseModel) {
@@ -78,7 +78,7 @@
                                           fileKey:(nullable NSString *)fileKey
                                         fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                          progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                          success:(void (^)(CJResponseModel *responseModel))success
+                                          success:(void (^)(id responseModel))success
                                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     return [self simulate1_uploadUrl:Url params:customParams settingModel:settingModel fileKey:fileKey fileValue:uploadFileModels progress:uploadProgress completeBlock:^(CJResponeFailureType failureType, CJResponseModel *responseModel) {
@@ -90,7 +90,7 @@
 - (NSURLSessionDataTask *)local2_getApi:(NSString *)apiSuffix
                                  params:(NSDictionary *)params
                            settingModel:(CJRequestSettingModel *)settingModel
-                                success:(void (^)(CJResponseModel *responseModel))success
+                                success:(void (^)(id responseModel))success
                                 failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     return [self local1_getApi:apiSuffix params:params settingModel:settingModel completeBlock:^(CJResponeFailureType failureType, CJResponseModel *responseModel) {
@@ -101,7 +101,7 @@
 - (NSURLSessionDataTask *)local2_postApi:(NSString *)apiSuffix
                                   params:(id)params
                             settingModel:(CJRequestSettingModel *)settingModel
-                                 success:(void (^)(CJResponseModel *responseModel))success
+                                 success:(void (^)(id responseModel))success
                                  failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     return [self local1_postApi:apiSuffix params:params settingModel:settingModel completeBlock:^(CJResponeFailureType failureType, CJResponseModel *responseModel) {
@@ -115,7 +115,7 @@
                                        fileKey:(nullable NSString *)fileKey
                                      fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                       progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                       success:(void (^)(CJResponseModel *responseModel))success
+                                       success:(void (^)(id responseModel))success
                                        failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     return [self local1_uploadUrl:Url params:customParams settingModel:settingModel fileKey:fileKey fileValue:uploadFileModels progress:uploadProgress completeBlock:^(CJResponeFailureType failureType, CJResponseModel *responseModel) {

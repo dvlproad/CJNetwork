@@ -179,7 +179,7 @@
 - (NSURLSessionDataTask *)simulate1_getApi:(NSString *)apiSuffix
                                     params:(NSDictionary *)params
                               settingModel:(CJRequestSettingModel *)settingModel
-                             completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+                             completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
     NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
     
@@ -190,7 +190,7 @@
 - (NSURLSessionDataTask *)simulate1_postApi:(NSString *)apiSuffix
                                      params:(id)params
                                settingModel:(CJRequestSettingModel *)settingModel
-                              completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+                              completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
     NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
     
@@ -203,7 +203,7 @@
                                           fileKey:(nullable NSString *)fileKey
                                         fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                          progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                    completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+                                    completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
     NSString *apiSuffix = @"upload_api/image"; //图片上传暂时固定写死
     Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
@@ -215,7 +215,7 @@
 - (nullable NSURLSessionDataTask *)local1_getApi:(NSString *)apiSuffix
                                           params:(NSDictionary *)params
                                     settingModel:(CJRequestSettingModel *)settingModel
-                                   completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+                                   completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
     [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
@@ -232,7 +232,7 @@
 - (nullable NSURLSessionDataTask *)local1_postApi:(NSString *)apiSuffix
                                            params:(id)params
                                      settingModel:(CJRequestSettingModel *)settingModel
-                                    completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+                                    completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
     [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
@@ -251,7 +251,7 @@
                                                 fileKey:(nullable NSString *)fileKey
                                               fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                                progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+                                          completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
     NSString *apiSuffix = @"upload_api/image"; //图片上传暂时固定写死
     [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {

@@ -10,29 +10,6 @@
 
 @implementation CJResponseModel
 
-/*
-- (instancetype)initWithResponseDictionary:(NSDictionary *)responseDictionary isCacheData:(BOOL)isCacheData {
-    self = [super init];
-    if (self) {
-        NSInteger statusCode = [[responseDictionary objectForKey:@"status"] integerValue];
-        self.statusCode = statusCode;
-        
-        NSString *message = responseDictionary[@"message"];
-        if ([self isNoNullForObject:message]) {
-            self.message = message;
-        }
-        
-        id result = responseDictionary[@"result"];
-        if ([self isNoNullForObject:result]) {
-            self.result = result;
-        }
-        
-        self.isCacheData = isCacheData;
-    }
-    return self;
-}
-*/
-
 - (BOOL)isNoNullForObject:(id)object {
     if ([object isKindOfClass:[NSNull class]]) {
         return NO;
@@ -40,6 +17,5 @@
         return YES;
     }
 }
-
 
 @end
