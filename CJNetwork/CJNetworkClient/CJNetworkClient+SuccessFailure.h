@@ -35,6 +35,13 @@ NS_ASSUME_NONNULL_BEGIN
                                       success:(void (^)(CJResponseModel *responseModel))success
                                       failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
+// the cjdemo app's upload image example, other app can refer to it
+- (NSURLSessionDataTask *)cjdemo2_uploadImageUrl:(NSString *)Url
+                                          params:(nullable NSDictionary *)customParams
+                                      imageDatas:(NSArray<NSData *> *)imageDatas
+                                    settingModel:(CJRequestSettingModel *)settingModel
+                                         success:(void (^)(CJResponseModel *responseModel))success
+                                         failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 #pragma mark simulate
 // 为方便接口的重复利用回调中的responseModel使用id类型

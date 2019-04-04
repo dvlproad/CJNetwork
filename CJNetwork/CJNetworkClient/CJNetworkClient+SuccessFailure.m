@@ -48,6 +48,18 @@
     }];
 }
 
+- (NSURLSessionDataTask *)cjdemo2_uploadImageUrl:(NSString *)Url
+                                          params:(nullable NSDictionary *)customParams
+                                      imageDatas:(NSArray<NSData *> *)imageDatas
+                                    settingModel:(CJRequestSettingModel *)settingModel
+                                         success:(void (^)(CJResponseModel *responseModel))success
+                                         failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
+{
+    return [self cjdemo1_uploadImageUrl:Url params:customParams imageDatas:imageDatas settingModel:settingModel completeBlock:^(CJResponeFailureType failureType, CJResponseModel * _Nonnull responseModel) {
+        [self splitCompleteBlockWithFailureType:failureType responseModel:responseModel toSuccess:success failure:failure];
+    }];
+}
+
 
 #pragma mark simulate
 - (NSURLSessionDataTask *)simulate2_getApi:(NSString *)apiSuffix

@@ -114,6 +114,13 @@ NS_ASSUME_NONNULL_BEGIN
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                 completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
+// the cjdemo app's upload image example, other app can refer to it
+- (NSURLSessionDataTask *)cjdemo1_uploadImageUrl:(NSString *)Url
+                                          params:(nullable NSDictionary *)customParams
+                                      imageDatas:(NSArray<NSData *> *)imageDatas
+                                    settingModel:(CJRequestSettingModel *)settingModel
+                                   completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+
 
 #pragma mark simulate
 // 为方便接口的重复利用回调中的responseModel使用id类型

@@ -175,6 +175,29 @@
     }];
 }
 
+- (NSURLSessionDataTask *)cjdemo1_uploadImageUrl:(NSString *)Url
+                                          params:(nullable NSDictionary *)customParams
+                                      imageDatas:(NSArray<NSData *> *)imageDatas
+                                    settingModel:(CJRequestSettingModel *)settingModel
+                                   completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+{
+    NSString *imagePrefixName = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]*1000];
+    
+    NSMutableArray<CJUploadFileModel *> *uploadFileModels = [[NSMutableArray alloc] init];
+    NSInteger imageCount = imageDatas.count;
+    for (NSInteger i = 0; i < imageCount; i++) {
+        NSString *imageSuffixName = [NSString stringWithFormat:@"_%ld.jpg", i];
+        NSString *imageName = [imagePrefixName stringByAppendingString:imageSuffixName];
+        
+        NSData *imageData = [imageDatas objectAtIndex:i];
+        
+        CJUploadFileModel *imageUploadModel = [[CJUploadFileModel alloc] initWithItemType:CJUploadItemTypeImage itemName:imageName itemData:imageData];
+        [uploadFileModels addObject:imageUploadModel];
+    }
+    
+    return [self real1_uploadUrl:Url params:customParams settingModel:settingModel fileKey:@"file" fileValue:uploadFileModels progress:nil completeBlock:completeBlock];
+}
+
 #pragma mark simulate
 - (NSURLSessionDataTask *)simulate1_getApi:(NSString *)apiSuffix
                                     params:(NSDictionary *)params
