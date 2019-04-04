@@ -56,10 +56,20 @@
         _completeFullUrlBlock = ^NSString *(NSString *apiSuffix) {
             NSMutableString *fullUrl = [NSMutableString string];
             [fullUrl appendFormat:@"%@", weakSelf.baseUrl];
-            if (![weakSelf.baseUrl hasSuffix:@"/"]) {
-                [fullUrl appendFormat:@"/"];
+            
+            if ([weakSelf.baseUrl hasSuffix:@"/"] == NO) {
+                if ([apiSuffix hasPrefix:@"/"]) {
+                    [fullUrl appendFormat:@"%@", apiSuffix];
+                } else { //shouldAddSlash
+                    [fullUrl appendFormat:@"/%@", apiSuffix];
+                }
+            } else {
+                if ([apiSuffix hasPrefix:@"/"]) {//shouldRemoveSlash
+                    [fullUrl appendFormat:@"%@", [apiSuffix substringFromIndex:1]];
+                } else {
+                    [fullUrl appendFormat:@"%@", apiSuffix];
+                }
             }
-            [fullUrl appendFormat:@"%@", apiSuffix];
             return [fullUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             //return [environmentManager completeUrlWithApiSuffix:apiSuffix];
         };
