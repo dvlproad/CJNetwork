@@ -81,8 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
              getFailureResponseModelBlock:(CJNetworkClientGetFailureResponseModelBlock)getFailureResponseModelBlock;
 
 
-
-#pragma mark - Real
+#pragma mark - RealApi
 - (NSURLSessionDataTask *)real1_getApi:(NSString *)apiSuffix
                                 params:(NSDictionary *)params
                           settingModel:(CJRequestSettingModel *)settingModel
@@ -93,6 +92,13 @@ NS_ASSUME_NONNULL_BEGIN
                            settingModel:(CJRequestSettingModel *)settingModel
                           completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
+- (NSURLSessionDataTask *)real1_uploadApi:(NSString *)apiSuffix
+                                   params:(nullable NSDictionary *)customParams
+                             settingModel:(CJRequestSettingModel *)settingModel
+                                  fileKey:(nullable NSString *)fileKey
+                                fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                 progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 /**
  *  上传文件的请求方法：只是上传文件，不对上传过程中的各个时刻信息的进行保存
  *
@@ -106,41 +112,35 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return 上传文件的请求
  */
-- (NSURLSessionDataTask *)real1_uploadUrl:(nullable NSString *)Url
+- (NSURLSessionDataTask *)real1_uploadUrl:(NSString *)Url
+                                   params:(nullable NSDictionary *)customParams
+                             settingModel:(CJRequestSettingModel *)settingModel
+                                  fileKey:(nullable NSString *)fileKey
+                                fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                 progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+
+
+#pragma mark - simulateApi
+// 为方便接口的重复利用回调中的responseModel使用id类型
+- (NSURLSessionDataTask *)simulate1_getApi:(NSString *)apiSuffix
+                                    params:(nullable NSDictionary *)params
+                              settingModel:(CJRequestSettingModel *)settingModel
+                             completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
+
+- (NSURLSessionDataTask *)simulate1_postApi:(NSString *)apiSuffix
+                                     params:(nullable id)params
+                               settingModel:(CJRequestSettingModel *)settingModel
+                              completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
+
+- (NSURLSessionDataTask *)simulate1_uploadApi:(NSString *)apiSuffix
                                        params:(nullable NSDictionary *)customParams
                                  settingModel:(CJRequestSettingModel *)settingModel
                                       fileKey:(nullable NSString *)fileKey
                                     fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+                                completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
 
-// the cjdemo app's upload image example, other app can refer to it
-- (NSURLSessionDataTask *)cjdemo1_uploadImageUrl:(NSString *)Url
-                                          params:(nullable NSDictionary *)customParams
-                                      imageDatas:(NSArray<NSData *> *)imageDatas
-                                    settingModel:(CJRequestSettingModel *)settingModel
-                                   completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
-
-
-#pragma mark simulate
-// 为方便接口的重复利用回调中的responseModel使用id类型
-- (NSURLSessionDataTask *)simulate1_getApi:(NSString *)apiSuffix
-                                    params:(NSDictionary *)params
-                              settingModel:(CJRequestSettingModel *)settingModel
-                             completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
-
-- (NSURLSessionDataTask *)simulate1_postApi:(NSString *)apiSuffix
-                                     params:(id)params
-                               settingModel:(CJRequestSettingModel *)settingModel
-                              completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
-
-- (NSURLSessionDataTask *)simulate1_uploadUrl:(nullable NSString *)Url
-                                           params:(nullable NSDictionary *)customParams
-                                     settingModel:(CJRequestSettingModel *)settingModel
-                                          fileKey:(nullable NSString *)fileKey
-                                        fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                         progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                    completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
 
 #pragma mark - localApi
 // 为方便接口的重复利用回调中的responseModel使用id类型
@@ -154,13 +154,13 @@ NS_ASSUME_NONNULL_BEGIN
                                      settingModel:(CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
 
-- (nullable NSURLSessionDataTask *)local1_uploadUrl:(nullable NSString *)Url
-                                                 params:(nullable NSDictionary *)customParams
-                                           settingModel:(CJRequestSettingModel *)settingModel
-                                                fileKey:(nullable NSString *)fileKey
-                                              fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                               progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                          completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
+- (nullable NSURLSessionDataTask *)local1_uploadApi:(NSString *)apiSuffix
+                                             params:(nullable NSDictionary *)customParams
+                                       settingModel:(CJRequestSettingModel *)settingModel
+                                            fileKey:(nullable NSString *)fileKey
+                                          fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                           progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                      completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
 
 NS_ASSUME_NONNULL_END
 

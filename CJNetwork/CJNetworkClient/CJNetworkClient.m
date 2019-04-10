@@ -54,24 +54,7 @@
     if (self) {
         __weak typeof(self)weakSelf = self;
         _completeFullUrlBlock = ^NSString *(NSString *apiSuffix) {
-            NSMutableString *fullUrl = [NSMutableString string];
-            [fullUrl appendFormat:@"%@", weakSelf.baseUrl];
-            
-            if ([weakSelf.baseUrl hasSuffix:@"/"] == NO) {
-                if ([apiSuffix hasPrefix:@"/"]) {
-                    [fullUrl appendFormat:@"%@", apiSuffix];
-                } else { //shouldAddSlash
-                    [fullUrl appendFormat:@"/%@", apiSuffix];
-                }
-            } else {
-                if ([apiSuffix hasPrefix:@"/"]) {//shouldRemoveSlash
-                    [fullUrl appendFormat:@"%@", [apiSuffix substringFromIndex:1]];
-                } else {
-                    [fullUrl appendFormat:@"%@", apiSuffix];
-                }
-            }
-            return [fullUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            //return [environmentManager completeUrlWithApiSuffix:apiSuffix];
+            [weakSelf __completeFullUrlWithApiSuffix:apiSuffix];
         };
         
         _completeAllParamsBlock = ^NSDictionary *(NSDictionary *customParams) {
@@ -132,7 +115,8 @@
 }
 */
 
-#pragma mark - Real
+
+#pragma mark - RealApi
 - (NSURLSessionDataTask *)real1_getApi:(NSString *)apiSuffix
                                 params:(NSDictionary *)params
                           settingModel:(CJRequestSettingModel *)settingModel
@@ -153,13 +137,26 @@
     return [self __requestUrl:Url params:params method:CJRequestMethodPOST settingModel:settingModel completeBlock:completeBlock];
 }
 
-- (NSURLSessionDataTask *)real1_uploadUrl:(nullable NSString *)Url
-                                       params:(nullable NSDictionary *)customParams
-                                 settingModel:(CJRequestSettingModel *)settingModel
-                                      fileKey:(nullable NSString *)fileKey
-                                    fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+- (NSURLSessionDataTask *)real1_uploadApi:(NSString *)apiSuffix
+                                   params:(nullable NSDictionary *)customParams
+                             settingModel:(CJRequestSettingModel *)settingModel
+                                  fileKey:(nullable NSString *)fileKey
+                                fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                 progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+{
+    NSString *Url = self.completeFullUrlBlock(apiSuffix);
+    
+    return [self real1_uploadUrl:Url params:customParams settingModel:settingModel fileKey:fileKey fileValue:uploadFileModels progress:uploadProgress completeBlock:completeBlock];
+}
+
+- (NSURLSessionDataTask *)real1_uploadUrl:(NSString *)Url
+                                   params:(nullable NSDictionary *)customParams
+                             settingModel:(CJRequestSettingModel *)settingModel
+                                  fileKey:(nullable NSString *)fileKey
+                                fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                 progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     AFHTTPSessionManager *manager = settingModel.shouldEncrypt ? self.cryptHTTPSessionManager : self.cleanHTTPSessionManager;
     
@@ -175,30 +172,8 @@
     }];
 }
 
-- (NSURLSessionDataTask *)cjdemo1_uploadImageUrl:(NSString *)Url
-                                          params:(nullable NSDictionary *)customParams
-                                      imageDatas:(NSArray<NSData *> *)imageDatas
-                                    settingModel:(CJRequestSettingModel *)settingModel
-                                   completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
-{
-    NSString *imagePrefixName = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]*1000];
-    
-    NSMutableArray<CJUploadFileModel *> *uploadFileModels = [[NSMutableArray alloc] init];
-    NSInteger imageCount = imageDatas.count;
-    for (NSInteger i = 0; i < imageCount; i++) {
-        NSString *imageSuffixName = [NSString stringWithFormat:@"_%ld.jpg", i];
-        NSString *imageName = [imagePrefixName stringByAppendingString:imageSuffixName];
-        
-        NSData *imageData = [imageDatas objectAtIndex:i];
-        
-        CJUploadFileModel *imageUploadModel = [[CJUploadFileModel alloc] initWithItemType:CJUploadItemTypeImage itemName:imageName itemData:imageData];
-        [uploadFileModels addObject:imageUploadModel];
-    }
-    
-    return [self real1_uploadUrl:Url params:customParams settingModel:settingModel fileKey:@"file" fileValue:uploadFileModels progress:nil completeBlock:completeBlock];
-}
 
-#pragma mark simulate
+#pragma mark - simulateApi
 - (NSURLSessionDataTask *)simulate1_getApi:(NSString *)apiSuffix
                                     params:(NSDictionary *)params
                               settingModel:(CJRequestSettingModel *)settingModel
@@ -220,19 +195,19 @@
     return [self __requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
 }
 
-- (NSURLSessionDataTask *)simulate1_uploadUrl:(nullable NSString *)Url
-                                           params:(nullable NSDictionary *)customParams
-                                     settingModel:(CJRequestSettingModel *)settingModel
-                                          fileKey:(nullable NSString *)fileKey
-                                        fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                         progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                    completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
+- (NSURLSessionDataTask *)simulate1_uploadApi:(NSString *)apiSuffix
+                                       params:(nullable NSDictionary *)customParams
+                                 settingModel:(CJRequestSettingModel *)settingModel
+                                      fileKey:(nullable NSString *)fileKey
+                                    fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
-    NSString *apiSuffix = @"upload_api/image"; //图片上传暂时固定写死
-    Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
+    NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
     
     return [self __requestUrl:Url params:customParams method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
 }
+
 
 #pragma mark - localApi
 - (nullable NSURLSessionDataTask *)local1_getApi:(NSString *)apiSuffix
@@ -268,15 +243,14 @@
     return nil;
 }
 
-- (nullable NSURLSessionDataTask *)local1_uploadUrl:(nullable NSString *)Url
-                                                 params:(nullable NSDictionary *)customParams
-                                           settingModel:(CJRequestSettingModel *)settingModel
-                                                fileKey:(nullable NSString *)fileKey
-                                              fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                               progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                          completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
+- (nullable NSURLSessionDataTask *)local1_uploadApi:(NSString *)apiSuffix
+                                             params:(nullable NSDictionary *)customParams
+                                       settingModel:(CJRequestSettingModel *)settingModel
+                                            fileKey:(nullable NSString *)fileKey
+                                          fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                           progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                      completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
-    NSString *apiSuffix = @"upload_api/image"; //图片上传暂时固定写死
     [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
         CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
@@ -321,6 +295,27 @@
 }
 
 #pragma mark - Private
+- (NSString *)__completeFullUrlWithApiSuffix:(NSString *)apiSuffix {
+    NSMutableString *fullUrl = [NSMutableString string];
+    [fullUrl appendFormat:@"%@", self.baseUrl];
+    
+    if ([self.baseUrl hasSuffix:@"/"] == NO) {
+        if ([apiSuffix hasPrefix:@"/"]) {
+            [fullUrl appendFormat:@"%@", apiSuffix];
+        } else { //shouldAddSlash
+            [fullUrl appendFormat:@"/%@", apiSuffix];
+        }
+    } else {
+        if ([apiSuffix hasPrefix:@"/"]) {//shouldRemoveSlash
+            [fullUrl appendFormat:@"%@", [apiSuffix substringFromIndex:1]];
+        } else {
+            [fullUrl appendFormat:@"%@", apiSuffix];
+        }
+    }
+    return [fullUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //return [environmentManager completeUrlWithApiSuffix:apiSuffix];
+}
+
 - (void)__dealSuccessRequestInfo:(CJSuccessRequestInfo *)successNetworkInfo completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock {
     NSDictionary *responseDictionary = successNetworkInfo.responseObject;
     BOOL isCacheData = successNetworkInfo.isCacheData;

@@ -150,6 +150,8 @@
 		7628BCA48AF961A18FE085945F3DD614 /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 27785D88393C5976AAA2A1693F73F201 /* NSObject+MJCoding.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7765973E85EC4122D5A3F2E5085B94AC /* CJDataUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = F86FB6DA6CBA6AF081D14DF1B1A73550 /* CJDataUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		77C502B858F53713DAF1E34F8CFBFDE4 /* CJUploadFileModelsOwner.m in Sources */ = {isa = PBXBuildFile; fileRef = EE620E67EC5D7DAEAF079604C0CBBA9A /* CJUploadFileModelsOwner.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		78AE16F5225DEAB400430DD9 /* CJNetworkClient+CJDemoApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 78AE16F3225DEAB400430DD9 /* CJNetworkClient+CJDemoApp.h */; };
+		78AE16F6225DEAB400430DD9 /* CJNetworkClient+CJDemoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AE16F4225DEAB400430DD9 /* CJNetworkClient+CJDemoApp.m */; };
 		7A323F7415D6821718000F8E9BFD47AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D03549ADDAA1A7A233F0BD88225BEF /* Foundation.framework */; };
 		7ABCEF7397AB0CBFEB57D75A66BF362C /* CJNetworkCacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = AFACC4152B10E03A62E2FBFF9AF90883 /* CJNetworkCacheManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7B2FC429C87CFE7170C9E7C2ACAC3B3D /* CJChooseTextTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9168128EB0719BEE9ADF25855E05EE /* CJChooseTextTextField.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -623,6 +625,8 @@
 		767AA6B96C739A74341CF9931539A3BD /* AuthorizationCJHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AuthorizationCJHelper.m; path = CJBaseHelper/AuthorizationCJHelper/AuthorizationCJHelper.m; sourceTree = "<group>"; };
 		783AEA36E8BA3F750B04AD4713DA22A1 /* CJDataUtil+NormalSearch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CJDataUtil+NormalSearch.m"; path = "CJBaseUtil/CJDataUtil/CJDataUtil+NormalSearch.m"; sourceTree = "<group>"; };
 		784835C10AC9DF550DA33F2D857829BB /* Pods-CJNetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CJNetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
+		78AE16F3225DEAB400430DD9 /* CJNetworkClient+CJDemoApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+CJDemoApp.h"; path = "CJNetwork/CJNetworkClient/CJNetworkClient+CJDemoApp.h"; sourceTree = "<group>"; };
+		78AE16F4225DEAB400430DD9 /* CJNetworkClient+CJDemoApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CJNetworkClient+CJDemoApp.m"; path = "CJNetwork/CJNetworkClient/CJNetworkClient+CJDemoApp.m"; sourceTree = "<group>"; };
 		7961E317CE7A789F2121A9525CE8AD24 /* CJDataUtil+Value.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJDataUtil+Value.h"; path = "CJBaseUtil/CJDataUtil/CJDataUtil+Value.h"; sourceTree = "<group>"; };
 		7975D197518EEE75F3BF727273AC23D3 /* UIButton+CJMoreProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+CJMoreProperty.m"; path = "CJBaseUIKit/UIButton/UIButton+CJMoreProperty.m"; sourceTree = "<group>"; };
 		7994CFE09EEEEE06B60496AAC8B323F7 /* NSObject+SearchProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+SearchProperty.h"; path = "CJBaseUtil/CJDataUtil/Models/Search/NSObject+SearchProperty.h"; sourceTree = "<group>"; };
@@ -1801,6 +1805,8 @@
 			children = (
 				6A9FBF020F66708ADE2B0CD6C144B584 /* CJNetworkClient.h */,
 				1FE84C938C09CF04A71DD38DFBEB330A /* CJNetworkClient.m */,
+				78AE16F3225DEAB400430DD9 /* CJNetworkClient+CJDemoApp.h */,
+				78AE16F4225DEAB400430DD9 /* CJNetworkClient+CJDemoApp.m */,
 				5F8B043E257BBBD9C82773E206A50D94 /* CJNetworkClient+SuccessFailure.h */,
 				60518EBA3D6E8DBB0870282188EAD668 /* CJNetworkClient+SuccessFailure.m */,
 				15DF64C1E6F0D554EE646238D01EE392 /* CJResponseModel */,
@@ -1959,6 +1965,7 @@
 				8B3A9D07C4F622FDB95D4CE6CC3C73B9 /* UIImageView+AFNetworking.h in Headers */,
 				F96F80C73456E5D813B71A183A573929 /* UIKit+AFNetworking.h in Headers */,
 				627B8656D435FF535E04971E846DA3A3 /* UIProgressView+AFNetworking.h in Headers */,
+				78AE16F5225DEAB400430DD9 /* CJNetworkClient+CJDemoApp.h in Headers */,
 				68AACE5658A5E7D246D4D46818BC10E8 /* UIRefreshControl+AFNetworking.h in Headers */,
 				553287D4AA043EFB3585DD432BE1DEF7 /* UIWebView+AFNetworking.h in Headers */,
 			);
@@ -2689,6 +2696,7 @@
 				833028FE237EDF8A662DDB0DE9DCFF19 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				E022CC757BD8E8445771A6D3FD236A8E /* UIButton+AFNetworking.m in Sources */,
 				86D6EED752501BDDF6C92ED8A9BA9065 /* UIImageView+AFNetworking.m in Sources */,
+				78AE16F6225DEAB400430DD9 /* CJNetworkClient+CJDemoApp.m in Sources */,
 				93FD8A9A6AB5DEFE8A2DF3B75D2ECB41 /* UIProgressView+AFNetworking.m in Sources */,
 				D25F522D6E4ACBBE23DFE69BE83DFAF0 /* UIRefreshControl+AFNetworking.m in Sources */,
 				D97CEDFC9CB1173DA28838D0CEE22775 /* UIWebView+AFNetworking.m in Sources */,
