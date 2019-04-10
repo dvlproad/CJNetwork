@@ -54,7 +54,7 @@
     if (self) {
         __weak typeof(self)weakSelf = self;
         _completeFullUrlBlock = ^NSString *(NSString *apiSuffix) {
-            [weakSelf __completeFullUrlWithApiSuffix:apiSuffix];
+            return [weakSelf __completeFullUrlWithApiSuffix:apiSuffix];
         };
         
         _completeAllParamsBlock = ^NSDictionary *(NSDictionary *customParams) {
