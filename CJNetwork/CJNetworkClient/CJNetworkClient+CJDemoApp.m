@@ -95,7 +95,7 @@
     NSMutableArray<CJUploadFileModel *> *uploadFileModels = [[NSMutableArray alloc] init];
     NSInteger imageCount = imageDatas.count;
     for (NSInteger i = 0; i < imageCount; i++) {
-        NSString *imageSuffixName = [NSString stringWithFormat:@"_%ld.jpg", i];
+        NSString *imageSuffixName = [NSString stringWithFormat:@"_%zd.jpg", i];
         NSString *imageName = [imagePrefixName stringByAppendingString:imageSuffixName];
         
         NSData *imageData = [imageDatas objectAtIndex:i];

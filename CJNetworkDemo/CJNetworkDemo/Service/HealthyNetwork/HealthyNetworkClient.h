@@ -12,6 +12,8 @@
 
 #import "HealthResponseModel.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface HealthyNetworkClient : NSObject
 
 + (HealthyNetworkClient *)sharedInstance;
@@ -23,3 +25,5 @@
                                  failure:(nullable void (^)(NSString *errorMessage))failure;
 
 @end
+
+NS_ASSUME_NONNULL_END

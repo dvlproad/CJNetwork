@@ -8,6 +8,8 @@
 
 #import "HealthyNetworkClient.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface HealthyNetworkClient (Login)
 
 //健康软件中的API
@@ -17,3 +19,5 @@
                      failure:(nullable void (^)(NSString *errorMessage))failure;
 
 @end
+
+NS_ASSUME_NONNULL_END
