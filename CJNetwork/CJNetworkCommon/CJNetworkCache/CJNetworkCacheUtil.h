@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param cacheTimeInterval    cacheTimeInterval
  */
 + (void)cacheResponseObject:(nullable id)responseObject
-                     forUrl:(nullable NSString *)Url
+                     forUrl:(NSString *)Url
                      params:(nullable NSDictionary *)params
           cacheTimeInterval:(NSTimeInterval)cacheTimeInterval;
 
@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  return 获取到缓存数据
  */
-+ (id<NSCoding>)requestCacheDataByUrl:(nullable NSString *)Url params:(nullable id)params;
++ (id<NSCoding>)requestCacheDataByUrl:(NSString *)Url params:(nullable id)params;
 
 
 /**
@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  return  是否删除成功
  */
-+ (BOOL)removeCacheForUrl:(nullable NSString *)Url params:(nullable id)params;
++ (BOOL)removeCacheForUrl:(NSString *)Url params:(nullable id)params;
 
 /**
  *  清空所有缓存数据

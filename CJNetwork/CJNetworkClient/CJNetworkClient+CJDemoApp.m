@@ -14,7 +14,7 @@
 - (NSURLSessionDataTask *)cjdemoR1_uploadImageApi:(NSString *)apiSuffix
                                            params:(nullable NSDictionary *)customParams
                                        imageDatas:(NSArray<NSData *> *)imageDatas
-                                     settingModel:(CJRequestSettingModel *)settingModel
+                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSMutableArray<CJUploadFileModel *> *uploadFileModels = [self __uploadFileModelsFromImageDatas:imageDatas];
@@ -26,7 +26,7 @@
 - (NSURLSessionDataTask *)cjdemoR2_uploadImageApi:(NSString *)apiSuffix
                                            params:(nullable NSDictionary *)customParams
                                        imageDatas:(NSArray<NSData *> *)imageDatas
-                                     settingModel:(CJRequestSettingModel *)settingModel
+                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                           success:(void (^)(CJResponseModel *responseModel))success
                                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
@@ -40,7 +40,7 @@
 - (NSURLSessionDataTask *)cjdemoS1_uploadImageApi:(NSString *)apiSuffix
                                            params:(nullable NSDictionary *)customParams
                                        imageDatas:(NSArray<NSData *> *)imageDatas
-                                     settingModel:(CJRequestSettingModel *)settingModel
+                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSMutableArray<CJUploadFileModel *> *uploadFileModels = nil;
@@ -52,7 +52,7 @@
 - (NSURLSessionDataTask *)cjdemoS2_uploadImageApi:(NSString *)apiSuffix
                                            params:(nullable NSDictionary *)customParams
                                        imageDatas:(NSArray<NSData *> *)imageDatas
-                                     settingModel:(CJRequestSettingModel *)settingModel
+                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                           success:(void (^)(CJResponseModel *responseModel))success
                                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
@@ -66,7 +66,7 @@
 - (nullable NSURLSessionDataTask *)cjdemoL1_uploadImageApi:(NSString *)apiSuffix
                                                     params:(nullable NSDictionary *)customParams
                                                 imageDatas:(NSArray<NSData *> *)imageDatas
-                                              settingModel:(CJRequestSettingModel *)settingModel
+                                              settingModel:(nullable CJRequestSettingModel *)settingModel
                                              completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSMutableArray<CJUploadFileModel *> *uploadFileModels = nil;
@@ -78,7 +78,7 @@
 - (nullable NSURLSessionDataTask *)cjdemoL2_uploadImageApi:(NSString *)apiSuffix
                                                     params:(nullable NSDictionary *)customParams
                                                 imageDatas:(NSArray<NSData *> *)imageDatas
-                                              settingModel:(CJRequestSettingModel *)settingModel
+                                              settingModel:(nullable CJRequestSettingModel *)settingModel
                                                    success:(void (^)(CJResponseModel *responseModel))success
                                                    failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {

@@ -58,8 +58,13 @@
         };
         
         _completeAllParamsBlock = ^NSDictionary *(NSDictionary *customParams) {
-            NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:customParams];
-            [allParams addEntriesFromDictionary:weakSelf.commonParams];
+            NSMutableDictionary *allParams = [[NSMutableDictionary alloc] init];
+            if (weakSelf.commonParams) {
+                [allParams addEntriesFromDictionary:weakSelf.commonParams];
+            }
+            if (customParams) {
+                [allParams addEntriesFromDictionary:customParams];
+            }
             return allParams;
             //return [environmentManager completeParamsWithCustomParams:customParams];
         };
@@ -119,7 +124,7 @@
 #pragma mark - RealApi
 - (NSURLSessionDataTask *)real1_getApi:(NSString *)apiSuffix
                                 params:(NSDictionary *)params
-                          settingModel:(CJRequestSettingModel *)settingModel
+                          settingModel:(nullable CJRequestSettingModel *)settingModel
                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSString *Url = self.completeFullUrlBlock(apiSuffix);
@@ -129,7 +134,7 @@
 
 - (NSURLSessionDataTask *)real1_postApi:(NSString *)apiSuffix
                                  params:(id)params
-                           settingModel:(CJRequestSettingModel *)settingModel
+                           settingModel:(nullable CJRequestSettingModel *)settingModel
                           completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSString *Url = self.completeFullUrlBlock(apiSuffix);
@@ -139,7 +144,7 @@
 
 - (NSURLSessionDataTask *)real1_uploadApi:(NSString *)apiSuffix
                                    params:(nullable NSDictionary *)customParams
-                             settingModel:(CJRequestSettingModel *)settingModel
+                             settingModel:(nullable CJRequestSettingModel *)settingModel
                                   fileKey:(nullable NSString *)fileKey
                                 fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
@@ -152,7 +157,7 @@
 
 - (NSURLSessionDataTask *)real1_uploadUrl:(NSString *)Url
                                    params:(nullable NSDictionary *)customParams
-                             settingModel:(CJRequestSettingModel *)settingModel
+                             settingModel:(nullable CJRequestSettingModel *)settingModel
                                   fileKey:(nullable NSString *)fileKey
                                 fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
@@ -176,7 +181,7 @@
 #pragma mark - simulateApi
 - (NSURLSessionDataTask *)simulate1_getApi:(NSString *)apiSuffix
                                     params:(NSDictionary *)params
-                              settingModel:(CJRequestSettingModel *)settingModel
+                              settingModel:(nullable CJRequestSettingModel *)settingModel
                              completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
     NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
@@ -187,7 +192,7 @@
 
 - (NSURLSessionDataTask *)simulate1_postApi:(NSString *)apiSuffix
                                      params:(id)params
-                               settingModel:(CJRequestSettingModel *)settingModel
+                               settingModel:(nullable CJRequestSettingModel *)settingModel
                               completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
     NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
@@ -197,7 +202,7 @@
 
 - (NSURLSessionDataTask *)simulate1_uploadApi:(NSString *)apiSuffix
                                        params:(nullable NSDictionary *)customParams
-                                 settingModel:(CJRequestSettingModel *)settingModel
+                                 settingModel:(nullable CJRequestSettingModel *)settingModel
                                       fileKey:(nullable NSString *)fileKey
                                     fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
@@ -212,7 +217,7 @@
 #pragma mark - localApi
 - (nullable NSURLSessionDataTask *)local1_getApi:(NSString *)apiSuffix
                                           params:(NSDictionary *)params
-                                    settingModel:(CJRequestSettingModel *)settingModel
+                                    settingModel:(nullable CJRequestSettingModel *)settingModel
                                    completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
     [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
@@ -229,7 +234,7 @@
 
 - (nullable NSURLSessionDataTask *)local1_postApi:(NSString *)apiSuffix
                                            params:(id)params
-                                     settingModel:(CJRequestSettingModel *)settingModel
+                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
     [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
@@ -245,7 +250,7 @@
 
 - (nullable NSURLSessionDataTask *)local1_uploadApi:(NSString *)apiSuffix
                                              params:(nullable NSDictionary *)customParams
-                                       settingModel:(CJRequestSettingModel *)settingModel
+                                       settingModel:(nullable CJRequestSettingModel *)settingModel
                                             fileKey:(nullable NSString *)fileKey
                                           fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
@@ -264,10 +269,10 @@
 
 
 #pragma mark - Base
-- (nullable NSURLSessionDataTask *)__requestUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)__requestUrl:(NSString *)Url
                                          params:(nullable id)customParams
                                          method:(CJRequestMethod)method
-                                   settingModel:(CJRequestSettingModel *)settingModel
+                                   settingModel:(nullable CJRequestSettingModel *)settingModel
                                   completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     AFHTTPSessionManager *manager = nil;

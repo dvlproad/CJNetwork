@@ -15,7 +15,7 @@
            withUploadRequestByManager:(AFHTTPSessionManager *)manager
                                   Url:(NSString *)Url
                                params:(id)params
-                         settingModel:(CJRequestSettingModel *)settingModel
+                         settingModel:(nullable CJRequestSettingModel *)settingModel
                               fileKey:(NSString *)fileKey
                        fileValueOwner:(CJUploadFileModelsOwner *)fileValueOwner
           uploadMomentInfoChangeBlock:(void(^)(CJUploadFileModelsOwner *momentInfoOwner))uploadMomentInfoChangeBlock

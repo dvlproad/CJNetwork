@@ -24,11 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return NSURLSessionDataTask
  */
-- (nullable NSURLSessionDataTask *)cj_getUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cj_getUrl:(NSString *)Url
                                       params:(nullable NSDictionary *)allParams
-                                settingModel:(CJRequestSettingModel *)settingModel
+                                settingModel:(nullable CJRequestSettingModel *)settingModel
                                      success:(nullable void (^)(id _Nullable responseObject))success
-                                     failure:(void (^)(NSString *errorMessage))failure;
+                                     failure:(nullable void (^)(NSString *errorMessage))failure;
 
 /**
  *  发起POST请求(是否加密等都通过Serializer处理)
@@ -41,11 +41,11 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return NSURLSessionDataTask
  */
-- (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cj_postUrl:(NSString *)Url
                                        params:(nullable id)allParams
-                                 settingModel:(CJRequestSettingModel *)settingModel
+                                 settingModel:(nullable CJRequestSettingModel *)settingModel
                                       success:(nullable void (^)(id _Nullable responseObject))success
-                                      failure:(void (^)(NSString *errorMessage))failure;
+                                      failure:(nullable void (^)(NSString *errorMessage))failure;
 
 /**
  *  发起请求(当为GET请求时，不需要加密；而当为POST请求时，是否加密等都通过Serializer处理)
@@ -59,10 +59,10 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return NSURLSessionDataTask
  */
-- (nullable NSURLSessionDataTask *)cj_requestUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cj_requestUrl:(NSString *)Url
                                           params:(nullable id)allParams
                                           method:(CJRequestMethod)method
-                                    settingModel:(CJRequestSettingModel *)settingModel
+                                    settingModel:(nullable CJRequestSettingModel *)settingModel
                                          success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
                                          failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
 

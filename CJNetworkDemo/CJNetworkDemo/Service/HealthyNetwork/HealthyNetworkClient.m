@@ -24,7 +24,7 @@
                                   params:(id)params
                                  encrypt:(BOOL)encrypt
                                  success:(void (^)(HealthResponseModel *responseModel))success
-                                 failure:(void (^)(NSString *errorMessage))failure
+                                 failure:(nullable void (^)(NSString *errorMessage))failure
 {
     //NSString *Url = [[TestNetworkEnvironmentManager sharedInstance] completeUrlWithApiSuffix:apiSuffix];
     NSString *Url = [[@"http://121.40.82.169/drupal/api/" stringByAppendingString:apiSuffix] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -35,7 +35,7 @@
                                   params:(id)params
                                  encrypt:(BOOL)encrypt
                                  success:(void (^)(HealthResponseModel *responseModel))success
-                                 failure:(void (^)(NSString *errorMessage))failure
+                                 failure:(nullable void (^)(NSString *errorMessage))failure
 {
     AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
     

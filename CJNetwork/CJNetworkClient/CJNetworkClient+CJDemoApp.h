@@ -21,14 +21,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSURLSessionDataTask *)cjdemoR1_uploadImageApi:(NSString *)apiSuffix
                                            params:(nullable NSDictionary *)customParams
                                        imageDatas:(NSArray<NSData *> *)imageDatas
-                                     settingModel:(CJRequestSettingModel *)settingModel
+                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
 // the cjdemo app's upload image example, other app can refer to it
 - (NSURLSessionDataTask *)cjdemoR2_uploadImageApi:(NSString *)apiSuffix
                                            params:(nullable NSDictionary *)customParams
                                        imageDatas:(NSArray<NSData *> *)imageDatas
-                                     settingModel:(CJRequestSettingModel *)settingModel
+                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                           success:(void (^)(CJResponseModel *responseModel))success
                                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
@@ -37,14 +37,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSURLSessionDataTask *)cjdemoS1_uploadImageApi:(NSString *)apiSuffix
                                            params:(nullable NSDictionary *)customParams
                                        imageDatas:(NSArray<NSData *> *)imageDatas
-                                     settingModel:(CJRequestSettingModel *)settingModel
+                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
 // the cjdemo app's upload image example, other app can refer to it
 - (NSURLSessionDataTask *)cjdemoS2_uploadImageApi:(NSString *)apiSuffix
                                            params:(nullable NSDictionary *)customParams
                                        imageDatas:(NSArray<NSData *> *)imageDatas
-                                     settingModel:(CJRequestSettingModel *)settingModel
+                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                           success:(void (^)(CJResponseModel *responseModel))success
                                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
@@ -53,14 +53,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSURLSessionDataTask *)cjdemoL1_uploadImageApi:(NSString *)apiSuffix
                                            params:(nullable NSDictionary *)customParams
                                        imageDatas:(NSArray<NSData *> *)imageDatas
-                                     settingModel:(CJRequestSettingModel *)settingModel
+                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
 // the cjdemo app's upload image example, other app can refer to it
 - (nullable NSURLSessionDataTask *)cjdemoL2_uploadImageApi:(NSString *)apiSuffix
                                            params:(nullable NSDictionary *)customParams
                                        imageDatas:(NSArray<NSData *> *)imageDatas
-                                     settingModel:(CJRequestSettingModel *)settingModel
+                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                           success:(void (^)(CJResponseModel *responseModel))success
                                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 

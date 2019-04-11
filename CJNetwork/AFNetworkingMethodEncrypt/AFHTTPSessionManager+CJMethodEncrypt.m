@@ -19,9 +19,9 @@
 
 #pragma mark - CJCacheEncrypt
 /** 完整的描述请参见文件头部 */
-- (nullable NSURLSessionDataTask *)cjMethodEncrypt_postUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cjMethodEncrypt_postUrl:(NSString *)Url
                                             params:(nullable id)params
-                                      settingModel:(CJRequestSettingModel *)settingModel
+                                      settingModel:(nullable CJRequestSettingModel *)settingModel
                                            encrypt:(BOOL)encrypt
                                       encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
                                       decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock

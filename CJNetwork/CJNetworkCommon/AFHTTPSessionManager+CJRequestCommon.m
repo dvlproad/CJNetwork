@@ -14,9 +14,9 @@
 
 #pragma mark - 网络操作
 /// 在请求前根据设置做相应处理
-- (BOOL)__didEventBeforeStartRequestWithUrl:(nullable NSString *)Url
+- (BOOL)__didEventBeforeStartRequestWithUrl:(NSString *)Url
                                      params:(nullable NSDictionary *)params
-                               settingModel:(CJRequestSettingModel *)settingModel
+                               settingModel:(nullable CJRequestSettingModel *)settingModel
                                     success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
 {
     CJRequestCacheStrategy cacheStrategy = settingModel.cacheStrategy;
@@ -52,9 +52,9 @@
 
 ///得到缓存数据时候执行的方法
 - (void)__didGetCacheSuccessWithResponseObject:(nullable id)responseObject
-                            forUrl:(nullable NSString *)Url
+                            forUrl:(NSString *)Url
                             params:(nullable id)params
-                      settingModel:(CJRequestSettingModel *)settingModel
+                      settingModel:(nullable CJRequestSettingModel *)settingModel
                            success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
 {
     NSURLRequest *request = nil;
@@ -71,9 +71,9 @@
 - (void)__didRequestSuccessForTask:(NSURLSessionDataTask * _Nonnull)task
                 withResponseObject:(nullable id)responseObject
                        isCacheData:(BOOL)isCacheData
-                            forUrl:(nullable NSString *)Url
+                            forUrl:(NSString *)Url
                             params:(nullable id)params
-                      settingModel:(CJRequestSettingModel *)settingModel
+                      settingModel:(nullable CJRequestSettingModel *)settingModel
                            success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
 {
     CJRequestCacheStrategy cacheStrategy = settingModel.cacheStrategy;
@@ -94,9 +94,9 @@
 ///网络请求不到数据的时候（无网 或者 有网但服务器异常等无数据时候）执行的方法
 - (void)__didRequestFailureForTask:(NSURLSessionDataTask * _Nonnull)task
                  withResponseError:(NSError * _Nullable)error
-                            forUrl:(nullable NSString *)Url
+                            forUrl:(NSString *)Url
                             params:(nullable id)params
-                      settingModel:(CJRequestSettingModel *)settingModel
+                      settingModel:(nullable CJRequestSettingModel *)settingModel
                            failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
 {
     NSURLRequest *request = task.originalRequest;

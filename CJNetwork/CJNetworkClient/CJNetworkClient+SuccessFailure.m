@@ -14,7 +14,7 @@
 #pragma mark - RealApi
 - (NSURLSessionDataTask *)real2_getApi:(NSString *)apiSuffix
                                 params:(NSDictionary *)params
-                          settingModel:(CJRequestSettingModel *)settingModel
+                          settingModel:(nullable CJRequestSettingModel *)settingModel
                                success:(void (^)(CJResponseModel *responseModel))success
                                failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
@@ -25,7 +25,7 @@
 
 - (NSURLSessionDataTask *)real2_postApi:(NSString *)apiSuffix
                                  params:(id)params
-                           settingModel:(CJRequestSettingModel *)settingModel
+                           settingModel:(nullable CJRequestSettingModel *)settingModel
                                 success:(void (^)(CJResponseModel *responseModel))success
                                 failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
@@ -36,7 +36,7 @@
 
 - (NSURLSessionDataTask *)real2_uploadApi:(NSString *)apiSuffix
                                    params:(nullable NSDictionary *)customParams
-                             settingModel:(CJRequestSettingModel *)settingModel
+                             settingModel:(nullable CJRequestSettingModel *)settingModel
                                   fileKey:(nullable NSString *)fileKey
                                 fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
@@ -49,7 +49,7 @@
 }
 - (NSURLSessionDataTask *)real2_uploadUrl:(NSString *)Url
                                    params:(nullable NSDictionary *)customParams
-                             settingModel:(CJRequestSettingModel *)settingModel
+                             settingModel:(nullable CJRequestSettingModel *)settingModel
                                   fileKey:(nullable NSString *)fileKey
                                 fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
@@ -64,7 +64,7 @@
 #pragma mark - simulateApi
 - (NSURLSessionDataTask *)simulate2_getApi:(NSString *)apiSuffix
                                     params:(NSDictionary *)params
-                              settingModel:(CJRequestSettingModel *)settingModel
+                              settingModel:(nullable CJRequestSettingModel *)settingModel
                                    success:(void (^)(id responseModel))success
                                    failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
@@ -75,7 +75,7 @@
 
 - (NSURLSessionDataTask *)simulate2_postApi:(NSString *)apiSuffix
                                      params:(id)params
-                               settingModel:(CJRequestSettingModel *)settingModel
+                               settingModel:(nullable CJRequestSettingModel *)settingModel
                                     success:(void (^)(id responseModel))success
                                     failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
@@ -86,7 +86,7 @@
 
 - (NSURLSessionDataTask *)simulate2_uploadApi:(NSString *)apiSuffix
                                        params:(nullable NSDictionary *)customParams
-                                 settingModel:(CJRequestSettingModel *)settingModel
+                                 settingModel:(nullable CJRequestSettingModel *)settingModel
                                       fileKey:(nullable NSString *)fileKey
                                     fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
@@ -101,7 +101,7 @@
 #pragma mark - localApi
 - (nullable NSURLSessionDataTask *)local2_getApi:(NSString *)apiSuffix
                                  params:(NSDictionary *)params
-                           settingModel:(CJRequestSettingModel *)settingModel
+                           settingModel:(nullable CJRequestSettingModel *)settingModel
                                 success:(void (^)(id responseModel))success
                                 failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
@@ -112,7 +112,7 @@
 
 - (nullable NSURLSessionDataTask *)local2_postApi:(NSString *)apiSuffix
                                   params:(id)params
-                            settingModel:(CJRequestSettingModel *)settingModel
+                            settingModel:(nullable CJRequestSettingModel *)settingModel
                                  success:(void (^)(id responseModel))success
                                  failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
@@ -123,7 +123,7 @@
 
 - (nullable NSURLSessionDataTask *)local2_uploadApi:(NSString *)apiSuffix
                                              params:(nullable NSDictionary *)customParams
-                                       settingModel:(CJRequestSettingModel *)settingModel
+                                       settingModel:(nullable CJRequestSettingModel *)settingModel
                                             fileKey:(nullable NSString *)fileKey
                                           fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
@@ -146,10 +146,10 @@
 // *  @param success      success(CJResponeFailureTypeNeedFurtherJudgeFailure走的方法)
 // *  @param failure      failure(CJResponeFailureTypeRequestFailure和CJResponeFailureTypeCommonFailure走的方法)
 // */
-//- (nullable NSURLSessionDataTask *)requestUrl:(nullable NSString *)Url
+//- (nullable NSURLSessionDataTask *)requestUrl:(NSString *)Url
 //                                       params:(nullable id)customParams
 //                                       method:(CJRequestMethod)method
-//                                 settingModel:(CJRequestSettingModel *)settingModel
+//                                 settingModel:(nullable CJRequestSettingModel *)settingModel
 //                                      success:(void (^)(CJResponseModel *responseModel))success
 //                                      failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 //{

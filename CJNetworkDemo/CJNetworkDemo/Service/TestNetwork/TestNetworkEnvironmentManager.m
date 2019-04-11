@@ -62,11 +62,13 @@
 
 #pragma mark - Params
 - (NSDictionary *)completeParamsWithCustomParams:(NSDictionary *)customParams {
-    NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:customParams];
-    
-    NSDictionary *commonParams = [self completeCommonParamsWithSpecificCommonParams:self.specificCommonParams];
-    [allParams addEntriesFromDictionary:commonParams];
-    
+    NSMutableDictionary *allParams = [[NSMutableDictionary alloc] init];
+    if (self.specificCommonParams) {
+        [allParams addEntriesFromDictionary:self.specificCommonParams];
+    }
+    if (customParams) {
+        [allParams addEntriesFromDictionary:customParams];
+    }
     return allParams;
 }
 

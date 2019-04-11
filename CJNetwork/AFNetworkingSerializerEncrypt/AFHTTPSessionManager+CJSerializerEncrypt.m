@@ -11,11 +11,11 @@
 @implementation AFHTTPSessionManager (CJSerializerEncrypt)
 
 /* 完整的描述请参见文件头部 */
-- (nullable NSURLSessionDataTask *)cj_getUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cj_getUrl:(NSString *)Url
                                       params:(nullable NSDictionary *)allParams
-                                settingModel:(CJRequestSettingModel *)settingModel
+                                settingModel:(nullable CJRequestSettingModel *)settingModel
                                      success:(nullable void (^)(id _Nullable responseObject))success
-                                     failure:(void (^)(NSString *errorMessage))failure
+                                     failure:(nullable void (^)(NSString *errorMessage))failure
 {
     return [self cj_requestUrl:Url params:allParams method:CJRequestMethodGET settingModel:settingModel success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSDictionary *responseDictionary = successRequestInfo.responseObject;
@@ -32,11 +32,11 @@
 }
 
 /** 完整的描述请参见文件头部 */
-- (nullable NSURLSessionDataTask *)cj_postUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cj_postUrl:(NSString *)Url
                                        params:(nullable id)allParams
-                                 settingModel:(CJRequestSettingModel *)settingModel
+                                 settingModel:(nullable CJRequestSettingModel *)settingModel
                                       success:(nullable void (^)(id _Nullable responseObject))success
-                                      failure:(void (^)(NSString *errorMessage))failure
+                                      failure:(nullable void (^)(NSString *errorMessage))failure
 {
     return [self cj_requestUrl:Url params:allParams method:CJRequestMethodPOST settingModel:settingModel success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSDictionary *responseDictionary = successRequestInfo.responseObject;
@@ -53,10 +53,10 @@
 }
 
 
-- (nullable NSURLSessionDataTask *)cj_requestUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cj_requestUrl:(NSString *)Url
                                           params:(nullable id)allParams
                                           method:(CJRequestMethod)method
-                                    settingModel:(CJRequestSettingModel *)settingModel
+                                    settingModel:(nullable CJRequestSettingModel *)settingModel
                                          success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
                                          failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
 {

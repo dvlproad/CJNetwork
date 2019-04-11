@@ -12,9 +12,9 @@
 
 #pragma mark - 上传文件请求的接口
 /* 完整的描述请参见文件头部 */
-- (nullable NSURLSessionDataTask *)cj_uploadUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cj_uploadUrl:(NSString *)Url
                                          params:(nullable id)params
-                                   settingModel:(CJRequestSettingModel *)settingModel
+                                   settingModel:(nullable CJRequestSettingModel *)settingModel
                                         fileKey:(nullable NSString *)fileKey
                                  fileValueOwner:(nullable CJUploadFileModelsOwner *)fileValueOwner
                     uploadMomentInfoChangeBlock:(nullable void(^)(CJUploadFileModelsOwner * _Nonnull momentInfoOwner))uploadMomentInfoChangeBlock
@@ -77,9 +77,9 @@
 
 
 /* 完整的描述请参见文件头部 */
-- (nullable NSURLSessionDataTask *)cj_uploadUrl:(nullable NSString *)Url
+- (nullable NSURLSessionDataTask *)cj_uploadUrl:(NSString *)Url
                                          params:(nullable id)allParams
-                                   settingModel:(CJRequestSettingModel *)settingModel
+                                   settingModel:(nullable CJRequestSettingModel *)settingModel
                                         fileKey:(nullable NSString *)fileKey
                                       fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                        progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
