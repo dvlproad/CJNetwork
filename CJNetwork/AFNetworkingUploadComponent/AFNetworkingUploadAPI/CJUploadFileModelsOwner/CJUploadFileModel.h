@@ -14,6 +14,8 @@ typedef NS_ENUM(NSUInteger, CJUploadItemType) {
     CJUploadItemTypeAttach, /**< 附件 */
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  上传的每个数据的模型(在CJFile库中还有一个CJFilePathModel是针对路径的)
  *
@@ -56,3 +58,5 @@ typedef NS_ENUM(NSUInteger, CJUploadItemType) {
                                     itemKey:(NSString *)itemKey;
 
 @end
+
+NS_ASSUME_NONNULL_END

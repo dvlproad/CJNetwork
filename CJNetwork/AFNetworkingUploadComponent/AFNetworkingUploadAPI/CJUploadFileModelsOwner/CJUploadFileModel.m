@@ -26,6 +26,7 @@
         _uploadItemType = uploadItemType;
         _uploadItemData = data;
         _uploadItemName = fileName;
+        _uploadItemKey = itemKey;
     }
     return self;
 }
