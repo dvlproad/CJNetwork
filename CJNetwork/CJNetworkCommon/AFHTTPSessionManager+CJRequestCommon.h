@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
     
 }
 #pragma mark - 网络操作
+/// 将params拼接到Url后
+- (NSString *)__appendUrl:(NSString *)Url withParams:(NSDictionary *)urlParams;
 
 /// 在请求前根据设置做相应处理
 - (BOOL)__didEventBeforeStartRequestWithUrl:(NSString *)Url

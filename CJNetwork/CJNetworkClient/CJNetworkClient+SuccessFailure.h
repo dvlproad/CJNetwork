@@ -27,18 +27,18 @@ NS_ASSUME_NONNULL_BEGIN
                                 failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 - (NSURLSessionDataTask *)real2_uploadApi:(NSString *)apiSuffix
-                                   params:(nullable NSDictionary *)customParams
+                                urlParams:(nullable id)urlParams
+                               formParams:(nullable id)formParams
                              settingModel:(nullable CJRequestSettingModel *)settingModel
-                                  fileKey:(nullable NSString *)fileKey
-                                fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                         uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                   success:(void (^)(CJResponseModel *responseModel))success
                                   failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 - (NSURLSessionDataTask *)real2_uploadUrl:(NSString *)Url
-                                   params:(nullable NSDictionary *)customParams
+                                urlParams:(nullable id)urlParams
+                               formParams:(nullable id)formParams
                              settingModel:(nullable CJRequestSettingModel *)settingModel
-                                  fileKey:(nullable NSString *)fileKey
-                                fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                         uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                   success:(void (^)(CJResponseModel *responseModel))success
                                   failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
@@ -59,10 +59,10 @@ NS_ASSUME_NONNULL_BEGIN
                                     failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 - (NSURLSessionDataTask *)simulate2_uploadApi:(NSString *)apiSuffix
-                                       params:(nullable NSDictionary *)customParams
+                                    urlParams:(nullable id)urlParams
+                                   formParams:(nullable id)formParams
                                  settingModel:(nullable CJRequestSettingModel *)settingModel
-                                      fileKey:(nullable NSString *)fileKey
-                                    fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                             uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                       success:(void (^)(id responseModel))success
                                       failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
@@ -82,10 +82,10 @@ NS_ASSUME_NONNULL_BEGIN
                                  failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 - (nullable NSURLSessionDataTask *)local2_uploadApi:(NSString *)apiSuffix
-                                             params:(nullable NSDictionary *)customParams
+                                          urlParams:(nullable id)urlParams
+                                         formParams:(nullable id)formParams
                                        settingModel:(nullable CJRequestSettingModel *)settingModel
-                                            fileKey:(nullable NSString *)fileKey
-                                          fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                   uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                             success:(void (^)(id responseModel))success
                                             failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;

@@ -17,6 +17,10 @@
 #pragma mark - 整体网络
 @property (nonatomic, strong) AFHTTPSessionManager *cleanHTTPSessionManager;
 @property (nonatomic, strong) AFHTTPSessionManager *cryptHTTPSessionManager;
+//@property (nonatomic, strong) AFHTTPSessionManager *httpSessionManager;
+//@property (nonatomic, copy) NSDictionary *(^paramsCryptHandle)(id params);      /**< 加密之参数加密 */
+//@property (nonatomic, copy) id (^responseDataDecryptHandle)(id responseData);   /**< 加密之值解密 */
+
 @property (nonatomic, copy) NSString *(^completeFullUrlBlock)(NSString *apiSuffix);
 @property (nonatomic, copy) NSDictionary *(^completeAllParamsBlock)(NSDictionary *customParams);
 
@@ -80,14 +84,14 @@
     self.cryptHTTPSessionManager = cryptHTTPSessionManager;
 }
 
-//- (void)setupCompleteFullUrlBlock:(NSString * (^)(NSString *apiSuffix))completeFullUrlBlock
-//           completeAllParamsBlock:(NSDictionary * (^)(NSDictionary *customParams))completeAllParamsBlock
-//{
-//    NSAssert(completeFullUrlBlock, @"Url 的获取方法都不能为空");
-//    _completeFullUrlBlock = completeFullUrlBlock;
-//    _completeAllParamsBlock = completeAllParamsBlock;
-//}
-
+/*
+- (void)setupHTTPSessionManager:(AFHTTPSessionManager *)httpSessionManager cryptWithParamsEncryptHandle:(NSDictionary * _Nonnull (^)(id _Nonnull))paramsCryptHandle responseDataDecryptHandle:(id  _Nonnull (^)(id _Nonnull))responseDataDecryptHandle
+{
+    _httpSessionManager = httpSessionManager;
+    _paramsCryptHandle = paramsCryptHandle;
+    _responseDataDecryptHandle = responseDataDecryptHandle;
+}
+//*/
 
 - (void)setupGetSuccessResponseModelBlock:(CJNetworkClientGetSuccessResponseModelBlock)getSuccessResponseModelBlock
                 checkIsCommonFailureBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonFailureBlock
@@ -143,33 +147,29 @@
 }
 
 - (NSURLSessionDataTask *)real1_uploadApi:(NSString *)apiSuffix
-                                   params:(nullable NSDictionary *)customParams
+                                urlParams:(nullable id)urlParams
+                               formParams:(nullable id)formParams
                              settingModel:(nullable CJRequestSettingModel *)settingModel
-                                  fileKey:(nullable NSString *)fileKey
-                                fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                         uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                             completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSString *Url = self.completeFullUrlBlock(apiSuffix);
     
-    return [self real1_uploadUrl:Url params:customParams settingModel:settingModel fileKey:fileKey fileValue:uploadFileModels progress:uploadProgress completeBlock:completeBlock];
+    return [self real1_uploadUrl:Url urlParams:urlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:uploadProgress completeBlock:completeBlock];
 }
 
 - (NSURLSessionDataTask *)real1_uploadUrl:(NSString *)Url
-                                   params:(nullable NSDictionary *)customParams
+                                urlParams:(nullable id)urlParams
+                               formParams:(nullable id)formParams
                              settingModel:(nullable CJRequestSettingModel *)settingModel
-                                  fileKey:(nullable NSString *)fileKey
-                                fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                         uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                             completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     AFHTTPSessionManager *manager = settingModel.shouldEncrypt ? self.cryptHTTPSessionManager : self.cleanHTTPSessionManager;
     
-    NSDictionary *allParams = customParams;
-    if (self.completeAllParamsBlock) {
-        allParams = self.completeAllParamsBlock(customParams);
-    }
-    return [manager cj_uploadUrl:Url params:customParams settingModel:settingModel fileKey:fileKey fileValue:uploadFileModels progress:uploadProgress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
+    return [manager cj_uploadUrl:Url urlParams:urlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:uploadProgress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
         [self __dealSuccessRequestInfo:successNetworkInfo completeBlock:completeBlock];
         
     } failure:^(CJFailureRequestInfo * _Nullable failureNetworkInfo) {
@@ -201,16 +201,16 @@
 }
 
 - (NSURLSessionDataTask *)simulate1_uploadApi:(NSString *)apiSuffix
-                                       params:(nullable NSDictionary *)customParams
+                                    urlParams:(nullable id)urlParams
+                                   formParams:(nullable id)formParams
                                  settingModel:(nullable CJRequestSettingModel *)settingModel
-                                      fileKey:(nullable NSString *)fileKey
-                                    fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                             uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                 completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
     NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
     
-    return [self __requestUrl:Url params:customParams method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
+    return [self __requestUrl:Url params:formParams method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
 }
 
 
@@ -249,10 +249,10 @@
 }
 
 - (nullable NSURLSessionDataTask *)local1_uploadApi:(NSString *)apiSuffix
-                                             params:(nullable NSDictionary *)customParams
+                                          urlParams:(nullable id)urlParams
+                                         formParams:(nullable id)formParams
                                        settingModel:(nullable CJRequestSettingModel *)settingModel
-                                            fileKey:(nullable NSString *)fileKey
-                                          fileValue:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                   uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                       completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {

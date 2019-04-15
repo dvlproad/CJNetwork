@@ -14,9 +14,9 @@
 - (void)cjConfigureUploadProgressView:(CJUploadProgressView *)uploadProgressView
            withUploadRequestByManager:(AFHTTPSessionManager *)manager
                                   Url:(NSString *)Url
-                               params:(id)params
+                            urlParams:(nullable id)urlParams
+                           formParams:(nullable id)formParams
                          settingModel:(nullable CJRequestSettingModel *)settingModel
-                              fileKey:(NSString *)fileKey
                        fileValueOwner:(CJUploadFileModelsOwner *)fileValueOwner
           uploadMomentInfoChangeBlock:(void(^)(CJUploadFileModelsOwner *momentInfoOwner))uploadMomentInfoChangeBlock
  getUploadMomentInfoFromResopnseBlock:(CJUploadMomentInfo * (^)(id responseObject))getUploadMomentInfoFromResopnseBlock
@@ -26,9 +26,9 @@
     if (operation == nil) {
         operation =
         [manager cj_uploadUrl:Url
-                       params:params
+                    urlParams:urlParams
+                   formParams:formParams
                  settingModel:settingModel
-                      fileKey:fileKey
                fileValueOwner:fileValueOwner
   uploadMomentInfoChangeBlock:uploadMomentInfoChangeBlock
 getUploadMomentInfoFromResopnseBlock:getUploadMomentInfoFromResopnseBlock];
@@ -46,9 +46,9 @@ getUploadMomentInfoFromResopnseBlock:getUploadMomentInfoFromResopnseBlock];
         
         NSURLSessionDataTask *newOperation =
         [manager cj_uploadUrl:Url
-                       params:params
+                    urlParams:urlParams
+                   formParams:formParams
                  settingModel:settingModel
-                      fileKey:fileKey
                fileValueOwner:fileValueOwner
   uploadMomentInfoChangeBlock:uploadMomentInfoChangeBlock
 getUploadMomentInfoFromResopnseBlock:getUploadMomentInfoFromResopnseBlock];

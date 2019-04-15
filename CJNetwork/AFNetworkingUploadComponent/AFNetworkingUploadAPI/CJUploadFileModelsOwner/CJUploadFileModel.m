@@ -19,6 +19,7 @@
 - (instancetype)initWithItemType:(CJUploadItemType)uploadItemType
                         itemName:(NSString *)fileName
                         itemData:(NSData *)data
+                         itemKey:(NSString *)itemKey
 {
     self = [super init];
     if (self) {
@@ -29,8 +30,9 @@
     return self;
 }
 
-+ (CJUploadFileModel *)createFromLocalRelativePath:(NSString *)localRelativePath
-                                          itemType:(CJUploadItemType)uploadItemType
++ (CJUploadFileModel *)localUploadFileModel:(NSString *)localRelativePath
+                                   itemType:(CJUploadItemType)uploadItemType
+                                    itemKey:(NSString *)itemKey
 {
     NSAssert(localRelativePath != nil, @"本地相对路径错误");
     
@@ -47,7 +49,7 @@
     
     NSString *fileName = localAbsolutePath.lastPathComponent;
     
-    CJUploadFileModel *uploadFileModel = [[CJUploadFileModel alloc] initWithItemType:uploadItemType itemName:fileName itemData:data];
+    CJUploadFileModel *uploadFileModel = [[CJUploadFileModel alloc] initWithItemType:uploadItemType itemName:fileName itemData:data itemKey:itemKey];
     
     return uploadFileModel;
 }

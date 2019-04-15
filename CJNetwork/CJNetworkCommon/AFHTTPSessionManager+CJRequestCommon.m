@@ -13,6 +13,26 @@
 @implementation AFHTTPSessionManager (CJRequestCommon)
 
 #pragma mark - 网络操作
+/// 将params拼接到Url后
+- (NSString *)__appendUrl:(NSString *)Url withParams:(NSDictionary *)urlParams {
+    NSMutableString *newUrl = [[NSMutableString alloc] initWithString:Url];
+    if (urlParams == nil || urlParams.allKeys.count == 0) {
+        return newUrl;
+    }
+    
+    [newUrl appendString:@"?"];
+    NSInteger keyCount = urlParams.allKeys.count;
+    for (NSInteger i = 0; i < keyCount; i++) {
+        NSString *key = urlParams.allKeys[i];
+        if (i != 0) {
+            [newUrl appendString:@"&"];
+        }
+        NSString *string = [NSString stringWithFormat:@"%@=%@", key, urlParams[key]];
+        [newUrl appendString:string];
+    }
+    return newUrl;
+}
+
 /// 在请求前根据设置做相应处理
 - (BOOL)__didEventBeforeStartRequestWithUrl:(NSString *)Url
                                      params:(nullable NSDictionary *)params

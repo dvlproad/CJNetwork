@@ -17,49 +17,49 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CJNetworkClient (CJDemoApp)
 
 #pragma mark - RealApi
-// the cjdemo app's upload image example, other app can refer to it
 - (NSURLSessionDataTask *)cjdemoR1_uploadImageApi:(NSString *)apiSuffix
-                                           params:(nullable NSDictionary *)customParams
+                                        urlParams:(nullable id)urlParams
+                                       formParams:(nullable id)formParams
                                        imageDatas:(NSArray<NSData *> *)imageDatas
                                      settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
-// the cjdemo app's upload image example, other app can refer to it
 - (NSURLSessionDataTask *)cjdemoR2_uploadImageApi:(NSString *)apiSuffix
-                                           params:(nullable NSDictionary *)customParams
-                                       imageDatas:(NSArray<NSData *> *)imageDatas
+                                        urlParams:(nullable id)urlParams
+                                       formParams:(nullable id)formParams
+                          imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
                                      settingModel:(nullable CJRequestSettingModel *)settingModel
                                           success:(void (^)(CJResponseModel *responseModel))success
                                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 #pragma mark - simulateApi
-// the cjdemo app's upload image example, other app can refer to it
 - (NSURLSessionDataTask *)cjdemoS1_uploadImageApi:(NSString *)apiSuffix
-                                           params:(nullable NSDictionary *)customParams
-                                       imageDatas:(NSArray<NSData *> *)imageDatas
+                                        urlParams:(nullable id)urlParams
+                                       formParams:(nullable id)formParams
+                          imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
                                      settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
-// the cjdemo app's upload image example, other app can refer to it
 - (NSURLSessionDataTask *)cjdemoS2_uploadImageApi:(NSString *)apiSuffix
-                                           params:(nullable NSDictionary *)customParams
-                                       imageDatas:(NSArray<NSData *> *)imageDatas
+                                        urlParams:(nullable id)urlParams
+                                       formParams:(nullable id)formParams
+                          imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
                                      settingModel:(nullable CJRequestSettingModel *)settingModel
                                           success:(void (^)(CJResponseModel *responseModel))success
                                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 #pragma mark - localApi
-// the cjdemo app's upload image example, other app can refer to it
 - (nullable NSURLSessionDataTask *)cjdemoL1_uploadImageApi:(NSString *)apiSuffix
-                                           params:(nullable NSDictionary *)customParams
-                                       imageDatas:(NSArray<NSData *> *)imageDatas
+                                                 urlParams:(nullable id)urlParams
+                                                formParams:(nullable id)formParams
+                                   imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
                                      settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
-// the cjdemo app's upload image example, other app can refer to it
 - (nullable NSURLSessionDataTask *)cjdemoL2_uploadImageApi:(NSString *)apiSuffix
-                                           params:(nullable NSDictionary *)customParams
-                                       imageDatas:(NSArray<NSData *> *)imageDatas
+                                                 urlParams:(nullable id)urlParams
+                                                formParams:(nullable id)formParams
+                                   imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
                                      settingModel:(nullable CJRequestSettingModel *)settingModel
                                           success:(void (^)(CJResponseModel *responseModel))success
                                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
