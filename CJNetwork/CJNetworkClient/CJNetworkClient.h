@@ -70,6 +70,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**< 公共参数(可变类型，如登录之后需要追加uid，退出时候需要remove uid) */
 @property (nullable, nonatomic, strong) NSMutableDictionary *commonParams;
 
+// Option
+@property (nonatomic, copy) id (^ _Nullable urlParamsHandle)(id _Nullable urlParams);  /**< if has urlParams, deal them before append them to Url */
+
 // 可选设置(当你需要执行本地模拟(有服务器时候)的时候才需要)
 @property (nonatomic, copy) NSString *simulateDomain;   /**< 本地模拟(有服务器时候)，模拟接口所在的域名 */
 

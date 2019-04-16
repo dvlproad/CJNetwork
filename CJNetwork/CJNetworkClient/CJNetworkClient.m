@@ -17,6 +17,7 @@
 #pragma mark - 整体网络
 @property (nonatomic, strong) AFHTTPSessionManager *cleanHTTPSessionManager;
 @property (nonatomic, strong) AFHTTPSessionManager *cryptHTTPSessionManager;
+//@property (nonatomic, strong) AFHTTPSessionManager *uploadHTTPSessionManager;
 //@property (nonatomic, strong) AFHTTPSessionManager *httpSessionManager;
 //@property (nonatomic, copy) NSDictionary *(^paramsCryptHandle)(id params);      /**< 加密之参数加密 */
 //@property (nonatomic, copy) id (^responseDataDecryptHandle)(id responseData);   /**< 加密之值解密 */
@@ -169,7 +170,12 @@
 {
     AFHTTPSessionManager *manager = settingModel.shouldEncrypt ? self.cryptHTTPSessionManager : self.cleanHTTPSessionManager;
     
-    return [manager cj_uploadUrl:Url urlParams:urlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:uploadProgress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
+    id lastUrlParams = urlParams;
+    if (urlParams && self.urlParamsHandle) {
+        lastUrlParams = self.urlParamsHandle(urlParams);
+    }
+    
+    return [manager cj_uploadUrl:Url urlParams:lastUrlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:uploadProgress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
         [self __dealSuccessRequestInfo:successNetworkInfo completeBlock:completeBlock];
         
     } failure:^(CJFailureRequestInfo * _Nullable failureNetworkInfo) {
