@@ -171,9 +171,9 @@
     AFHTTPSessionManager *manager = settingModel.shouldEncrypt ? self.cryptHTTPSessionManager : self.cleanHTTPSessionManager;
     
     id lastUrlParams = urlParams;
-    if (urlParams && self.urlParamsHandle) {
-        lastUrlParams = self.urlParamsHandle(urlParams);
-    }
+//    if (urlParams && self.urlParamsHandle) {
+//        lastUrlParams = self.urlParamsHandle(urlParams);
+//    }
     
     return [manager cj_uploadUrl:Url urlParams:lastUrlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:uploadProgress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
         [self __dealSuccessRequestInfo:successNetworkInfo completeBlock:completeBlock];

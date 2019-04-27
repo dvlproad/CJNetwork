@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSURLSessionDataTask *)cjdemoR1_uploadImageApi:(NSString *)apiSuffix
                                         urlParams:(nullable id)urlParams
                                        formParams:(nullable id)formParams
-                                       imageDatas:(NSArray<NSData *> *)imageDatas
+                          imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
                                      settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
