@@ -1,6 +1,6 @@
 {
   "name": "CJNetwork",
-  "version": "0.6.4",
+  "version": "0.7.0-beta.7",
   "summary": "一个AFNetworking应用的封装(支持加解密、缓存、并发数控制)",
   "homepage": "https://github.com/dvlproad/CJNetwork",
   "license": "MIT",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/dvlproad/CJNetwork.git",
-    "tag": "CJNetwork_0.6.4"
+    "tag": "CJNetwork_0.7.0-beta.7"
   },
   "source_files": "CJNetwork/*.{h,m}",
   "frameworks": "UIKit",
@@ -56,7 +56,7 @@
       "name": "AFNetworkingUploadComponent",
       "source_files": "CJNetwork/AFNetworkingUploadComponent/**/*.{h,m}",
       "dependencies": {
-        "AFNetworking": [
+        "CJNetwork/CJNetworkCommon": [
 
         ]
       }
@@ -66,6 +66,9 @@
       "source_files": "CJNetwork/CJNetworkClient/**/*.{h,m}",
       "dependencies": {
         "CJNetwork/AFNetworkingSerializerEncrypt": [
+
+        ],
+        "CJNetwork/AFNetworkingUploadComponent": [
 
         ]
       }
