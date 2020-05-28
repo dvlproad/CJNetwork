@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 dvlproad. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <CQDemoKit/CJUIKitBaseViewController.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
-@interface LoginViewController : UIViewController{
+@interface LoginViewController : CJUIKitBaseViewController{
     MBProgressHUD *HUD;
 }
 @property(nonatomic, strong) IBOutlet UITextField *nameTextField;

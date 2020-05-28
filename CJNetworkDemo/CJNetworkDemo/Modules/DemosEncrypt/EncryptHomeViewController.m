@@ -7,6 +7,8 @@
 //
 
 #import "EncryptHomeViewController.h"
+#import <CQDemoKit/CJUIKitToastUtil.h>
+#import <CQDemoKit/CJUIKitAlertUtil.h>
 
 #import "LoginViewController.h"
 
@@ -46,10 +48,10 @@
         }
         
         {
-            CJModuleModel *toastUtilModule = [[CJModuleModel alloc] init];
-            toastUtilModule.title = @"LoginViewController";
-            toastUtilModule.classEntry = [LoginViewController class];
-            [sectionDataModel.values addObject:toastUtilModule];
+            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            loginModule.title = @"LoginViewController";
+            loginModule.classEntry = [LoginViewController class];
+            [sectionDataModel.values addObject:loginModule];
         }
         
         [sectionDataModels addObject:sectionDataModel];
@@ -89,7 +91,11 @@
         
     } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
         if (isRequestFailure) {
-            [CJAlert showIKnowWithTitle:@"网络请求失败，无法测试'设置的缓存过期时间是否有效'的问题，请先保证网络请求成功" message:errorMessage okHandle:nil];
+            [CJUIKitAlertUtil showAlertInViewController:self
+                                              withTitle:@"网络请求失败，无法测试'设置的缓存过期时间是否有效'的问题，请先保证网络请求成功"
+                                                message:errorMessage
+                                            cancleBlock:nil
+                                                okBlock:nil];
         }
     }];
 }
@@ -101,9 +107,13 @@
     
     [[TestNetworkClient sharedInstance] testEndWithCacheIfExistWithSuccess:^(CJResponseModel *responseModel) {
         if (responseModel.isCacheData == NO) {
-            [CJToast shortShowMessage:@"①测试通过：第一次请求到的肯定是非缓存的数据"];
+            [CJUIKitToastUtil showMessage:@"①测试通过：第一次请求到的肯定是非缓存的数据"];
         } else {
-            [DemoAlert showIKnowAlertViewWithTitle:@"①测试不通过：第一次请求到的不是非缓存的数据"];
+            [CJUIKitAlertUtil showAlertInViewController:self
+                                              withTitle:@"①测试不通过：第一次请求到的不是非缓存的数据"
+                                                message:nil
+                                            cancleBlock:nil
+                                                okBlock:nil];
         }
     } failure:nil];
     
@@ -111,9 +121,13 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[TestNetworkClient sharedInstance] testEndWithCacheIfExistWithSuccess:^(CJResponseModel *responseModel) {
             if (responseModel.isCacheData == YES) {
-                [CJToast shortShowMessage:@"②测试通过：在缓存过期10秒内(现在是5秒)，请求到的肯定是缓存的数据"];
+                [CJUIKitToastUtil showMessage:@"②测试通过：在缓存过期10秒内(现在是5秒)，请求到的肯定是缓存的数据"];
             } else {
-                [DemoAlert showIKnowAlertViewWithTitle:@"②测试不通过：在缓存过期10秒内(现在是5秒)，请求到的不是缓存的数据"];
+                [CJUIKitAlertUtil showAlertInViewController:self
+                                                  withTitle:@"②测试不通过：在缓存过期10秒内(现在是5秒)，请求到的不是缓存的数据"
+                                                    message:nil
+                                                cancleBlock:nil
+                                                    okBlock:nil];
             }
         } failure:nil];
     });
@@ -122,10 +136,18 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(11 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[TestNetworkClient sharedInstance] testEndWithCacheIfExistWithSuccess:^(CJResponseModel *responseModel) {
             if (responseModel.isCacheData == NO) {
-                [CJToast shortShowMessage:@"③测试通过：在缓存过期10秒后(现在是11秒)，请求到的肯定是非缓存的数据"];
-                [DemoAlert showIKnowAlertViewWithTitle:@"测试缓存时间通过"];
+                [CJUIKitToastUtil showMessage:@"③测试通过：在缓存过期10秒后(现在是11秒)，请求到的肯定是非缓存的数据"];
+                [CJUIKitAlertUtil showAlertInViewController:self
+                                                  withTitle:@"测试缓存时间通过"
+                                                    message:nil
+                                                cancleBlock:nil
+                                                    okBlock:nil];
             } else {
-                [DemoAlert showIKnowAlertViewWithTitle:@"③测试不通过：在缓存过期10秒后(现在是11秒)，请求到的不是非缓存的数据"];
+                [CJUIKitAlertUtil showAlertInViewController:self
+                                                  withTitle:@"③测试不通过：在缓存过期10秒后(现在是11秒)，请求到的不是非缓存的数据"
+                                                    message:nil
+                                                cancleBlock:nil
+                                                    okBlock:nil];
             }
         } failure:nil];
     });
@@ -138,7 +160,11 @@
         if (responseModel.statusCode == 0) {
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
             if (responseModel.cjNetworkLog) {
-                [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                [CJUIKitAlertUtil showAlertInViewController:self
+                                                  withTitle:@"登录提醒"
+                                                    message:responseModel.cjNetworkLog
+                                                cancleBlock:nil
+                                                    okBlock:nil];
                 [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
             }
             
@@ -147,7 +173,11 @@
             
             [CJLogViewWindow appendObject:@"加密页面的健康登录失败"];
             if (responseModel.cjNetworkLog) {
-                [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                [CJUIKitAlertUtil showAlertInViewController:self
+                                                  withTitle:@"登录提醒"
+                                                    message:responseModel.cjNetworkLog
+                                                cancleBlock:nil
+                                                    okBlock:nil];
                 [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
             }
         }
@@ -155,7 +185,7 @@
 }
 
 - (void)loginHealthWithCompleteBlock:(void (^)(CJResponseModel *responseModel))completeBlock {
-    NSString *apiName = @"http://121.40.82.169/drupal/api/login";
+    NSString *apiName = @"/login";
     NSDictionary *params = @{@"username" : @"test",
                              @"password" : @"test",
                              };

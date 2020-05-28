@@ -17,16 +17,12 @@ PODS:
   - CJBaseHelper/AuthorizationCJHelper (0.0.8)
   - CJBaseHelper/DeviceCJHelper (0.0.8)
   - CJBaseHelper/NSObjectCJHelper (0.0.8)
-  - CJBaseUIKit/CJAlert (0.3.0):
+  - CJBaseUIKit/UIButton (0.6.0)
+  - CJBaseUIKit/UIColor (0.6.0)
+  - CJBaseUIKit/UITextField (0.6.0):
     - CJBaseUIKit/UIView/CJPopupAction
-    - Masonry
-  - CJBaseUIKit/CJToast (0.3.0):
-    - MBProgressHUD
-  - CJBaseUIKit/UIButton (0.3.0)
-  - CJBaseUIKit/UIColor (0.3.0)
-  - CJBaseUIKit/UITextField (0.3.0)
-  - CJBaseUIKit/UIView/CJDragAction (0.3.0)
-  - CJBaseUIKit/UIView/CJPopupAction (0.3.0)
+  - CJBaseUIKit/UIView/CJDragAction (0.6.0)
+  - CJBaseUIKit/UIView/CJPopupAction (0.6.0)
   - CJBaseUtil/CJDataUtil (0.4.4)
   - CJBaseUtil/CJIndentedStringUtil (0.4.4)
   - CJBaseUtil/CJLog (0.4.4):
@@ -64,6 +60,9 @@ PODS:
     - CocoaAsyncSocket/RunLoop
   - CocoaAsyncSocket/GCD (7.4.3)
   - CocoaAsyncSocket/RunLoop (7.4.3)
+  - CQDemoKit/Home_Base (0.3.1):
+    - CJBaseUtil/CJDataUtil
+    - Masonry
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MJExtension (3.0.15.1)
@@ -75,8 +74,6 @@ DEPENDENCIES:
   - CJBaseHelper/AuthorizationCJHelper
   - CJBaseHelper/DeviceCJHelper
   - CJBaseHelper/NSObjectCJHelper
-  - CJBaseUIKit/CJAlert
-  - CJBaseUIKit/CJToast
   - CJBaseUIKit/UIButton
   - CJBaseUIKit/UIColor
   - CJBaseUIKit/UITextField
@@ -86,6 +83,7 @@ DEPENDENCIES:
   - CJFoundation/NSString
   - CJNetwork (from `~/Project/Github/CJNetwork`)
   - CocoaAsyncSocket (~> 7.4.1)
+  - CQDemoKit/Home_Base (~> 0.3.1)
   - Masonry
   - MBProgressHUD
   - MJExtension
@@ -96,7 +94,6 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - CJBaseHelper
-    - CJBaseUIKit
     - CJBaseUtil
     - CJFoundation
     - CocoaAsyncSocket
@@ -106,6 +103,9 @@ SPEC REPOS:
     - OpenUDID
     - SVProgressHUD
     - YYCache
+  trunk:
+    - CJBaseUIKit
+    - CQDemoKit
 
 EXTERNAL SOURCES:
   CJNetwork:
@@ -114,11 +114,12 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CJBaseHelper: f39e78d52837f3d325170f1e4660f7e9e5a183cb
-  CJBaseUIKit: 6706574187fb6beb8adcc5c72d70f1815ec232cc
+  CJBaseUIKit: d4945467678c73b872c7ddfb5367d4063ff28add
   CJBaseUtil: 842f44965ee18787f17199677bfb78d2bf6d15df
   CJFoundation: 2c27b7ad85ec0cc5ac24aa112867971e01ae3ea3
   CJNetwork: c5dc78713a8e65ae4022025e998f48c2fa11b72d
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
+  CQDemoKit: 939ad9b106b105b875a77a3e1ab21bfbed964c27
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
@@ -126,6 +127,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 1ce6af0cea685f1d43fee72e49b44a1cd61c8a36
+PODFILE CHECKSUM: 73520bd98538a3e91ea0b4736a0af51b7ebaf053
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

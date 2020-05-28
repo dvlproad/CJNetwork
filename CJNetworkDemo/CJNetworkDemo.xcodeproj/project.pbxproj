@@ -13,7 +13,6 @@
 		7801C0DA21AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0D921AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m */; };
 		7801C0DD21AD1F4C00045114 /* TestNetworkClient+TestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0DC21AD1F4C00045114 /* TestNetworkClient+TestCache.m */; };
 		7801C0E021AD225100045114 /* TestNetworkClient+TestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0DF21AD225100045114 /* TestNetworkClient+TestRequest.m */; };
-		78226A9421A424B0002167F2 /* DemoAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 78226A9321A424B0002167F2 /* DemoAlert.m */; };
 		7842989F21C1F991003198FB /* AppAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7842989D21C1F990003198FB /* AppAssets.xcassets */; };
 		784298A021C1F991003198FB /* MainAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7842989E21C1F990003198FB /* MainAsset.xcassets */; };
 		7846532A1F5448FB00E20A27 /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652C61F5448FB00E20A27 /* AccountInfo.m */; };
@@ -58,14 +57,6 @@
 		7868F1A92121D06C00A283EB /* RepeatRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1A52121D06C00A283EB /* RepeatRequestViewController.m */; };
 		7868F1AA2121D06C00A283EB /* AFNDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1A62121D06C00A283EB /* AFNDemoViewController.xib */; };
 		78B6C2FF215AAA8900D5864E /* HealthyNetworkClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B6C2FE215AAA8900D5864E /* HealthyNetworkClient+Login.m */; };
-		78EB551421A280C300EEB853 /* DemoBarButtonItemFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB550621A280C200EEB853 /* DemoBarButtonItemFactory.m */; };
-		78EB551521A280C300EEB853 /* badgeButton_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EB550921A280C200EEB853 /* badgeButton_normal@2x.png */; };
-		78EB551621A280C300EEB853 /* badgeButton_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EB550B21A280C200EEB853 /* badgeButton_normal@3x.png */; };
-		78EB551721A280C300EEB853 /* badgeButton_highlighted@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EB550C21A280C200EEB853 /* badgeButton_highlighted@3x.png */; };
-		78EB551821A280C300EEB853 /* badgeButton_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EB550D21A280C200EEB853 /* badgeButton_highlighted@2x.png */; };
-		78EB551921A280C300EEB853 /* DemoButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB550E21A280C200EEB853 /* DemoButtonFactory.m */; };
-		78EB551A21A280C300EEB853 /* CJUIKitBaseHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB551121A280C200EEB853 /* CJUIKitBaseHomeViewController.m */; };
-		78EB551B21A280C300EEB853 /* CJUIKitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB551321A280C200EEB853 /* CJUIKitBaseViewController.m */; };
 		78EB551F21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB551E21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m */; };
 		78FC91FA1F54481E00033DEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91F91F54481E00033DEF /* main.m */; };
 		78FC91FD1F54481E00033DEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91FC1F54481E00033DEF /* AppDelegate.m */; };
@@ -109,8 +100,6 @@
 		7801C0DC21AD1F4C00045114 /* TestNetworkClient+TestCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestCache.m"; sourceTree = "<group>"; };
 		7801C0DE21AD225100045114 /* TestNetworkClient+TestRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+TestRequest.h"; sourceTree = "<group>"; };
 		7801C0DF21AD225100045114 /* TestNetworkClient+TestRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestRequest.m"; sourceTree = "<group>"; };
-		78226A9221A424B0002167F2 /* DemoAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoAlert.h; sourceTree = "<group>"; };
-		78226A9321A424B0002167F2 /* DemoAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoAlert.m; sourceTree = "<group>"; };
 		7842989D21C1F990003198FB /* AppAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppAssets.xcassets; sourceTree = "<group>"; };
 		7842989E21C1F990003198FB /* MainAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MainAsset.xcassets; sourceTree = "<group>"; };
 		784652C51F5448FB00E20A27 /* AccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfo.h; sourceTree = "<group>"; };
@@ -193,18 +182,6 @@
 		7868F1A72121D06C00A283EB /* AFNDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNDemoViewController.h; sourceTree = "<group>"; };
 		78B6C2FD215AAA8900D5864E /* HealthyNetworkClient+Login.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HealthyNetworkClient+Login.h"; sourceTree = "<group>"; };
 		78B6C2FE215AAA8900D5864E /* HealthyNetworkClient+Login.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HealthyNetworkClient+Login.m"; sourceTree = "<group>"; };
-		78EB550621A280C200EEB853 /* DemoBarButtonItemFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoBarButtonItemFactory.m; sourceTree = "<group>"; };
-		78EB550721A280C200EEB853 /* DemoBarButtonItemFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoBarButtonItemFactory.h; sourceTree = "<group>"; };
-		78EB550921A280C200EEB853 /* badgeButton_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "badgeButton_normal@2x.png"; sourceTree = "<group>"; };
-		78EB550A21A280C200EEB853 /* DemoButtonFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoButtonFactory.h; sourceTree = "<group>"; };
-		78EB550B21A280C200EEB853 /* badgeButton_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "badgeButton_normal@3x.png"; sourceTree = "<group>"; };
-		78EB550C21A280C200EEB853 /* badgeButton_highlighted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "badgeButton_highlighted@3x.png"; sourceTree = "<group>"; };
-		78EB550D21A280C200EEB853 /* badgeButton_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "badgeButton_highlighted@2x.png"; sourceTree = "<group>"; };
-		78EB550E21A280C200EEB853 /* DemoButtonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoButtonFactory.m; sourceTree = "<group>"; };
-		78EB551021A280C200EEB853 /* CJUIKitBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUIKitBaseViewController.h; sourceTree = "<group>"; };
-		78EB551121A280C200EEB853 /* CJUIKitBaseHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUIKitBaseHomeViewController.m; sourceTree = "<group>"; };
-		78EB551221A280C200EEB853 /* CJUIKitBaseHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJUIKitBaseHomeViewController.h; sourceTree = "<group>"; };
-		78EB551321A280C200EEB853 /* CJUIKitBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJUIKitBaseViewController.m; sourceTree = "<group>"; };
 		78EB551D21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+TestConcurrence.h"; sourceTree = "<group>"; };
 		78EB551E21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestConcurrence.m"; sourceTree = "<group>"; };
 		78FC91F51F54481E00033DEF /* CJNetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CJNetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -286,15 +263,6 @@
 				7801C0D221ABE04400045114 /* NSString+URLEncoding.m */,
 			);
 			path = CJJSONResponseSerializer;
-			sourceTree = "<group>";
-		};
-		78226A9121A424B0002167F2 /* DemoAlert */ = {
-			isa = PBXGroup;
-			children = (
-				78226A9221A424B0002167F2 /* DemoAlert.h */,
-				78226A9321A424B0002167F2 /* DemoAlert.m */,
-			);
-			path = DemoAlert;
 			sourceTree = "<group>";
 		};
 		784652C71F5448FB00E20A27 /* Service */ = {
@@ -544,50 +512,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		78EB550421A280C200EEB853 /* CommonUI */ = {
-			isa = PBXGroup;
-			children = (
-				78226A9121A424B0002167F2 /* DemoAlert */,
-				78EB550521A280C200EEB853 /* DemoBarButtonItemFactory */,
-				78EB550821A280C200EEB853 /* DemoButtonFactory */,
-				78EB550F21A280C200EEB853 /* Base */,
-			);
-			path = CommonUI;
-			sourceTree = "<group>";
-		};
-		78EB550521A280C200EEB853 /* DemoBarButtonItemFactory */ = {
-			isa = PBXGroup;
-			children = (
-				78EB550721A280C200EEB853 /* DemoBarButtonItemFactory.h */,
-				78EB550621A280C200EEB853 /* DemoBarButtonItemFactory.m */,
-			);
-			path = DemoBarButtonItemFactory;
-			sourceTree = "<group>";
-		};
-		78EB550821A280C200EEB853 /* DemoButtonFactory */ = {
-			isa = PBXGroup;
-			children = (
-				78EB550D21A280C200EEB853 /* badgeButton_highlighted@2x.png */,
-				78EB550C21A280C200EEB853 /* badgeButton_highlighted@3x.png */,
-				78EB550921A280C200EEB853 /* badgeButton_normal@2x.png */,
-				78EB550B21A280C200EEB853 /* badgeButton_normal@3x.png */,
-				78EB550A21A280C200EEB853 /* DemoButtonFactory.h */,
-				78EB550E21A280C200EEB853 /* DemoButtonFactory.m */,
-			);
-			path = DemoButtonFactory;
-			sourceTree = "<group>";
-		};
-		78EB550F21A280C200EEB853 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				78EB551221A280C200EEB853 /* CJUIKitBaseHomeViewController.h */,
-				78EB551121A280C200EEB853 /* CJUIKitBaseHomeViewController.m */,
-				78EB551021A280C200EEB853 /* CJUIKitBaseViewController.h */,
-				78EB551321A280C200EEB853 /* CJUIKitBaseViewController.m */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
 		78EB551C21A29A7800EEB853 /* NDM */ = {
 			isa = PBXGroup;
 			children = (
@@ -637,7 +561,6 @@
 				7801C0C821ABE04400045114 /* TempUtil */,
 				7846E39221A6B29100D73F51 /* CJRequestConcurrence */,
 				8050036621192C1E002A2306 /* CJObjectConvertUtil */,
-				78EB550421A280C200EEB853 /* CommonUI */,
 				784653691F544A0100E20A27 /* 断点续传组件 */,
 				78FC91FE1F54481E00033DEF /* ViewController.h */,
 				78FC91FF1F54481E00033DEF /* ViewController.m */,
@@ -829,15 +752,11 @@
 				7842989F21C1F991003198FB /* AppAssets.xcassets in Resources */,
 				784298A021C1F991003198FB /* MainAsset.xcassets in Resources */,
 				7868F1872121C79A00A283EB /* DownloadTableViewCell.xib in Resources */,
-				78EB551521A280C300EEB853 /* badgeButton_normal@2x.png in Resources */,
-				78EB551821A280C300EEB853 /* badgeButton_highlighted@2x.png in Resources */,
 				7868F1832121C79A00A283EB /* SessionDownloadTaskDownloadViewController.xib in Resources */,
 				7868F1882121C79A00A283EB /* DownloadListViewController.xib in Resources */,
-				78EB551621A280C300EEB853 /* badgeButton_normal@3x.png in Resources */,
 				7868F1AA2121D06C00A283EB /* AFNDemoViewController.xib in Resources */,
 				78FC92031F54481E00033DEF /* Main.storyboard in Resources */,
 				7868F1842121C79A00A283EB /* BaseDownloadViewController.xib in Resources */,
-				78EB551721A280C300EEB853 /* badgeButton_highlighted@3x.png in Resources */,
 				7868F19E2121CC2600A283EB /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -902,22 +821,10 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo-resources.sh",
-				"${PODS_ROOT}/CJBaseUIKit/CJBaseUIKit/CJToast/Resources/CJToast_error.png",
-				"${PODS_ROOT}/CJBaseUIKit/CJBaseUIKit/CJToast/Resources/CJToast_error@2x.png",
-				"${PODS_ROOT}/CJBaseUIKit/CJBaseUIKit/CJToast/Resources/CJToast_error@3x.png",
-				"${PODS_ROOT}/CJBaseUIKit/CJBaseUIKit/CJToast/Resources/CJToast_success.png",
-				"${PODS_ROOT}/CJBaseUIKit/CJBaseUIKit/CJToast/Resources/CJToast_success@2x.png",
-				"${PODS_ROOT}/CJBaseUIKit/CJBaseUIKit/CJToast/Resources/CJToast_success@3x.png",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CJToast_error.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CJToast_error@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CJToast_error@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CJToast_success.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CJToast_success@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CJToast_success@3x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -933,7 +840,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7868F19D2121CC2600A283EB /* LoginHelper.m in Sources */,
-				78EB551421A280C300EEB853 /* DemoBarButtonItemFactory.m in Sources */,
 				784653761F544A0100E20A27 /* HSDownloadManager.m in Sources */,
 				8050036921192C1E002A2306 /* CJObjectConvertUtil.m in Sources */,
 				78B6C2FF215AAA8900D5864E /* HealthyNetworkClient+Login.m in Sources */,
@@ -952,12 +858,8 @@
 				78FF35E721A91F07006DCEE7 /* SemaphoreHomeViewController.m in Sources */,
 				78FC91FA1F54481E00033DEF /* main.m in Sources */,
 				7868F1822121C79A00A283EB /* SessionDataTaskDownloadViewController.m in Sources */,
-				78EB551921A280C300EEB853 /* DemoButtonFactory.m in Sources */,
 				7801C0D721ABE04400045114 /* NSString+URLEncoding.m in Sources */,
-				78EB551B21A280C300EEB853 /* CJUIKitBaseViewController.m in Sources */,
-				78EB551A21A280C300EEB853 /* CJUIKitBaseHomeViewController.m in Sources */,
 				785AB2FD21C013B6009938A4 /* TestNetworkEnvironmentManager.m in Sources */,
-				78226A9421A424B0002167F2 /* DemoAlert.m in Sources */,
 				7868F1382121C61400A283EB /* AppDelegate+WindowRootViewController.m in Sources */,
 				7868F19B2121CC2600A283EB /* LoginViewController+Event.m in Sources */,
 				7846533E1F5448FB00E20A27 /* TestNetworkClient.m in Sources */,

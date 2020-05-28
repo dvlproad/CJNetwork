@@ -27,7 +27,7 @@
                                  failure:(nullable void (^)(NSString *errorMessage))failure
 {
     //NSString *Url = [[TestNetworkEnvironmentManager sharedInstance] completeUrlWithApiSuffix:apiSuffix];
-    NSString *Url = [[@"http://121.40.82.169/drupal/api/" stringByAppendingString:apiSuffix] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *Url = [[@"http://121.40.82.169/drupal/api/" stringByAppendingPathComponent:apiSuffix] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     return [self health_postUrl:Url params:params encrypt:encrypt success:success failure:failure];
 }
 
@@ -40,7 +40,7 @@
     AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
     
     CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    settingModel.logType = CJRequestLogTypeConsoleLog;
+    settingModel.logType = CJRequestLogTypeSuppendWindow;
     
     return [manager cj_postUrl:Url params:params settingModel:settingModel success:^(id  _Nullable responseObject) {
         NSDictionary *responseDictionary = responseObject;

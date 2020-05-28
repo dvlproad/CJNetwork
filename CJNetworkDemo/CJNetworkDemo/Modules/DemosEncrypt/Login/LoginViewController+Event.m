@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController+Event.h"
+#import <CQDemoKit/CJUIKitAlertUtil.h>
 
 #import "HealthyNetworkClient+Login.h"
 
@@ -64,7 +65,11 @@
         if (responseModel.statusCode == 0) {
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"登录成功", nil)];
             if (responseModel.cjNetworkLog) {
-                [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                [CJUIKitAlertUtil showAlertInViewController:self
+                                                  withTitle:@"登录提醒"
+                                                    message:responseModel.cjNetworkLog
+                                                cancleBlock:nil
+                                                    okBlock:nil];
                 [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
             }
             /*
@@ -87,7 +92,11 @@
             
             [CJLogViewWindow appendObject:@"缓存页面的健康登录失败"];
             if (responseModel.cjNetworkLog) {
-                [CJAlert showDebugViewWithTitle:@"登录提醒" message:responseModel.cjNetworkLog];
+                [CJUIKitAlertUtil showAlertInViewController:self
+                                                  withTitle:@"登录提醒"
+                                                    message:responseModel.cjNetworkLog
+                                                cancleBlock:nil
+                                                    okBlock:nil];
                 [CJLogViewWindow appendObject:responseModel.cjNetworkLog];
             }
         }

@@ -7,6 +7,8 @@
 //
 
 #import "SemaphoreHomeViewController.h"
+#import <CQDemoKit/CJUIKitToastUtil.h>
+#import <CQDemoKit/CJUIKitAlertUtil.h>
 
 #import "TestConcurrenceModel.h"
 #import "TestConcurrenceManager.h"
@@ -509,7 +511,11 @@
         [self startTestConcurrenceCount];
     } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
         if (isRequestFailure) {
-            [CJAlert showIKnowWithTitle:@"网络请求失败，无法测试'网络相关'的问题，请先保证网络请求成功" message:errorMessage okHandle:nil];
+            [CJUIKitAlertUtil showAlertInViewController:self
+                                              withTitle:@"网络请求失败，无法测试'网络相关'的问题，请先保证网络请求成功"
+                                                message:errorMessage
+                                            cancleBlock:nil
+                                                okBlock:nil];
         }
     }];
 }
@@ -517,10 +523,10 @@
 - (void)startTestConcurrenceCount {
     if (![NSThread isMainThread]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [CJToast shortShowMessage:@"开始测试并发数设置"];
+            [CJUIKitToastUtil showMessage:@"开始测试并发数设置"];
         });
     } else {
-        [CJToast shortShowMessage:@"开始测试并发数设置"];
+        [CJUIKitToastUtil showMessage:@"开始测试并发数设置"];
     }
     
     
