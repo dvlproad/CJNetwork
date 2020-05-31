@@ -13,7 +13,8 @@
 
 - (NSURLSessionDataTask *)testMethodEncrypt_postApi:(NSString *)apiSuffix
                                              params:(id)params
-                                       settingModel:(CJRequestSettingModel *)settingModel
+                                  cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
+                                            logType:(CJRequestLogType)logType
                                       completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
 {
     NSString *domain = @"https://localhost/simulateApi/CJDemoDataSimulationDemo";
@@ -22,7 +23,7 @@
     AFHTTPSessionManager *manager = [TestHTTPSessionManager sharedInstance];
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cjMethodEncrypt_postUrl:Url params:params settingModel:settingModel encrypt:NO encryptBlock:nil decryptBlock:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
+    [manager cjMethodEncrypt_postUrl:Url params:params cacheSettingModel:cacheSettingModel logType:logType encrypt:NO encryptBlock:nil decryptBlock:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSDictionary *responseDictionary = successRequestInfo.responseObject;
         CJResponseModel *responseModel = [[CJResponseModel alloc] init];
         responseModel.statusCode = [responseDictionary[@"status"] integerValue];

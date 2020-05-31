@@ -39,10 +39,10 @@
 {
     AFHTTPSessionManager *manager = [HealthyHTTPSessionManager sharedInstance];
     
-    CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    settingModel.logType = CJRequestLogTypeSuppendWindow;
+    CJRequestCacheSettingModel *cacheSettingModel = [[CJRequestCacheSettingModel alloc] init];
+    CJRequestLogType logType = CJRequestLogTypeSuppendWindow;
     
-    return [manager cj_postUrl:Url params:params settingModel:settingModel success:^(id  _Nullable responseObject) {
+    return [manager cj_postUrl:Url params:params cacheSettingModel:cacheSettingModel logType:logType progress:nil success:^(id  _Nullable responseObject) {
         NSDictionary *responseDictionary = responseObject;
         HealthResponseModel *responseModel = [[HealthResponseModel alloc] initWithResponseDictionary:responseDictionary];
         if (success) {

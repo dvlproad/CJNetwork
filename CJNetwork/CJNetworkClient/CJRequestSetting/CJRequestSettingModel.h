@@ -14,6 +14,7 @@
 @interface CJRequestSettingModel : NSObject {
     
 }
+//@property (nonatomic, copy) NSString *ownBaseUrl;   /**< 该请求使用的baseUrl */
 
 #pragma mark - 上传
 // 上传请求进度

@@ -30,8 +30,12 @@
     NSDictionary *params = @{@"test": @"test"};
     
     CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    settingModel.cacheStrategy = CJRequestCacheStrategyEndWithCacheIfExist;
-    settingModel.cacheTimeInterval = 10;
+    
+    CJRequestCacheSettingModel *requestCacheModel = [[CJRequestCacheSettingModel alloc] init];
+    requestCacheModel.cacheStrategy = CJRequestCacheStrategyEndWithCacheIfExist;
+    requestCacheModel.cacheTimeInterval = 10;
+    settingModel.requestCacheModel = requestCacheModel;
+    
     settingModel.logType = CJRequestLogTypeConsoleLog;
     
     [self simulate2_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
@@ -45,8 +49,12 @@
     NSDictionary *params = nil;
     
     CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    settingModel.cacheStrategy = CJRequestCacheStrategyNoneCache;
-    //settingModel.cacheTimeInterval = 10;
+    
+    CJRequestCacheSettingModel *requestCacheModel = [[CJRequestCacheSettingModel alloc] init];
+    requestCacheModel.cacheStrategy = CJRequestCacheStrategyNoneCache;
+//    requestCacheModel.cacheTimeInterval = 10;
+    settingModel.requestCacheModel = requestCacheModel;
+    
     settingModel.logType = CJRequestLogTypeConsoleLog;
     
     [self simulate2_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];

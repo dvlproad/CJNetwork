@@ -15,7 +15,7 @@
                                       params:(nullable NSDictionary *)allParams
                            cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                      logType:(CJRequestLogType)logType
-                                    progress:(void (^)(NSProgress * _Nonnull))progress
+                                    progress:(void (^)(NSProgress * _Nullable))progress
                                      success:(nullable void (^)(id _Nullable responseObject))success
                                      failure:(nullable void (^)(NSString *errorMessage))failure
 {
@@ -38,7 +38,7 @@
                                        params:(nullable id)allParams
                             cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                       logType:(CJRequestLogType)logType
-                                     progress:(void (^)(NSProgress * _Nonnull))progress
+                                     progress:(void (^)(NSProgress * _Nullable))progress
                                       success:(nullable void (^)(id _Nullable responseObject))success
                                       failure:(nullable void (^)(NSString *errorMessage))failure
 {
@@ -62,7 +62,7 @@
                                           method:(CJRequestMethod)method
                               cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                          logType:(CJRequestLogType)logType
-                                        progress:(void (^)(NSProgress * _Nonnull))progress
+                                        progress:(void (^)(NSProgress * _Nullable))progress
                                          success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
                                          failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
 {

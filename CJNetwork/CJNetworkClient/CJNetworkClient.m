@@ -22,7 +22,7 @@
 //@property (nonatomic, copy) NSDictionary *(^paramsCryptHandle)(id params);      /**< 加密之参数加密 */
 //@property (nonatomic, copy) id (^responseDataDecryptHandle)(id responseData);   /**< 加密之值解密 */
 
-@property (nonatomic, copy) NSString *(^completeFullUrlBlock)(NSString *apiSuffix);
+@property (nonatomic, copy) NSString *(^completeFullUrlBlock)(NSString *baseUrl, NSString *apiSuffix);
 @property (nonatomic, copy) NSDictionary *(^completeAllParamsBlock)(NSDictionary *customParams);
 
 #pragma mark - 请求判断
@@ -58,8 +58,8 @@
     self = [super init];
     if (self) {
         __weak typeof(self)weakSelf = self;
-        _completeFullUrlBlock = ^NSString *(NSString *apiSuffix) {
-            return [weakSelf __completeFullUrlWithApiSuffix:apiSuffix];
+        _completeFullUrlBlock = ^NSString *(NSString *baseUrl, NSString *apiSuffix) {
+            return [weakSelf __completeFullUrlWithBaseUrl:baseUrl apiSuffix:apiSuffix];
         };
         
         _completeAllParamsBlock = ^NSDictionary *(NSDictionary *customParams) {
@@ -132,7 +132,9 @@
                           settingModel:(nullable CJRequestSettingModel *)settingModel
                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
-    NSString *Url = self.completeFullUrlBlock(apiSuffix);
+    NSString *baseUrl = self.baseUrl;
+    //NSString *baseUrl = settingModel.ownBaseUrl ? settingModel.ownBaseUrl : self.baseUrl;
+    NSString *Url = self.completeFullUrlBlock(baseUrl, apiSuffix);
     
     return [self __requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
 }
@@ -142,7 +144,9 @@
                            settingModel:(nullable CJRequestSettingModel *)settingModel
                           completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
-    NSString *Url = self.completeFullUrlBlock(apiSuffix);
+    NSString *baseUrl = self.baseUrl;
+    //NSString *baseUrl = settingModel.ownBaseUrl ? settingModel.ownBaseUrl : self.baseUrl;
+    NSString *Url = self.completeFullUrlBlock(baseUrl, apiSuffix);
     
     return [self __requestUrl:Url params:params method:CJRequestMethodPOST settingModel:settingModel completeBlock:completeBlock];
 }
@@ -155,7 +159,9 @@
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                             completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
-    NSString *Url = self.completeFullUrlBlock(apiSuffix);
+    NSString *baseUrl = self.baseUrl;
+    //NSString *baseUrl = settingModel.ownBaseUrl ? settingModel.ownBaseUrl : self.baseUrl;
+    NSString *Url = self.completeFullUrlBlock(baseUrl, apiSuffix);
     
     return [self real1_uploadUrl:Url urlParams:urlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:uploadProgress completeBlock:completeBlock];
 }
@@ -177,9 +183,11 @@
     CJRequestCacheSettingModel *cacheSettingModel = settingModel.requestCacheModel;
     CJRequestLogType logType = settingModel.logType;
     
-    return [manager cj_uploadUrl:Url urlParams:lastUrlParams formParams:formParams uploadFileModels:uploadFileModels cacheSettingModel:cacheSettingModel
-    logType:logType progress:uploadProgress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
-        [self __dealSuccessRequestInfo:successNetworkInfo completeBlock:completeBlock];
+    return [manager cj_uploadUrl:Url urlParams:lastUrlParams formParams:formParams uploadFileModels:uploadFileModels cacheSettingModel:cacheSettingModel logType:logType progress:uploadProgress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
+        [self __dealSuccessRequestInfo:successNetworkInfo
+          getSuccessResponseModelBlock:self.getSuccessResponseModelBlock
+             checkIsCommonFailureBlock:self.checkIsCommonFailureBlock
+                         completeBlock:completeBlock];
         
     } failure:^(CJFailureRequestInfo * _Nullable failureNetworkInfo) {
         [self __dealFailureNetworkInfo:failureNetworkInfo completeBlock:completeBlock];
@@ -303,7 +311,10 @@
     
     NSURLSessionDataTask *URLSessionDataTask =
     [manager cj_requestUrl:Url params:allParams method:method cacheSettingModel:cacheSettingModel logType:logType progress:progress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
-        [self __dealSuccessRequestInfo:successNetworkInfo completeBlock:completeBlock];
+        [self __dealSuccessRequestInfo:successNetworkInfo
+          getSuccessResponseModelBlock:self.getSuccessResponseModelBlock
+             checkIsCommonFailureBlock:self.checkIsCommonFailureBlock
+                         completeBlock:completeBlock];
         
     } failure:^(CJFailureRequestInfo * _Nullable failureNetworkInfo) {
         [self __dealFailureNetworkInfo:failureNetworkInfo completeBlock:completeBlock];
@@ -313,9 +324,9 @@
 }
 
 #pragma mark - Private
-- (NSString *)__completeFullUrlWithApiSuffix:(NSString *)apiSuffix {
+- (NSString *)__completeFullUrlWithBaseUrl:(NSString *)baseUrl apiSuffix:(NSString *)apiSuffix {
     NSMutableString *fullUrl = [NSMutableString string];
-    [fullUrl appendFormat:@"%@", self.baseUrl];
+    [fullUrl appendFormat:@"%@", baseUrl];
     
     if ([self.baseUrl hasSuffix:@"/"] == NO) {
         if ([apiSuffix hasPrefix:@"/"]) {
@@ -334,10 +345,14 @@
     //return [environmentManager completeUrlWithApiSuffix:apiSuffix];
 }
 
-- (void)__dealSuccessRequestInfo:(CJSuccessRequestInfo *)successNetworkInfo completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock {
+- (void)__dealSuccessRequestInfo:(CJSuccessRequestInfo *)successNetworkInfo
+    getSuccessResponseModelBlock:(CJResponseModel *(^)(id responseObject, BOOL isCacheData))getSuccessResponseModelBlock
+       checkIsCommonFailureBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonFailureBlock
+                   completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+{
     NSDictionary *responseDictionary = successNetworkInfo.responseObject;
     BOOL isCacheData = successNetworkInfo.isCacheData;
-    CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
+    CJResponseModel *responseModel = getSuccessResponseModelBlock(responseDictionary, isCacheData);
     //方式①
     //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
     //方式②
@@ -350,8 +365,8 @@
     //responseModel.isCacheData = isCacheData;
     
     CJResponeFailureType failureType = CJResponeFailureTypeNeedFurtherJudgeFailure;
-    if (self.checkIsCommonFailureBlock) {
-        BOOL isCommonFailure = self.checkIsCommonFailureBlock(responseModel);
+    if (checkIsCommonFailureBlock) {
+        BOOL isCommonFailure = checkIsCommonFailureBlock(responseModel);
         failureType = isCommonFailure ? CJResponeFailureTypeCommonFailure : CJResponeFailureTypeNeedFurtherJudgeFailure;
     }
     

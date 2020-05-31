@@ -18,8 +18,6 @@
     NSDictionary *params = nil;
     
     CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    settingModel.cacheStrategy = CJRequestCacheStrategyNoneCache;
-    //settingModel.cacheTimeInterval = 10;
     settingModel.logType = CJRequestLogTypeConsoleLog;
     
     [self simulate2_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
@@ -34,11 +32,10 @@
     NSDictionary *params = @{
         @"page": @(1),
         @"count": @(5)
-    };;
+    };
     
     CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    settingModel.cacheStrategy = CJRequestCacheStrategyNoneCache;
-    //settingModel.cacheTimeInterval = 10;
+//    settingModel.ownBaseUrl = @"https://api.apiopen.top";
     settingModel.logType = CJRequestLogTypeConsoleLog;
     
     [self real2_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];

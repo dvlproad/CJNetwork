@@ -13,7 +13,8 @@
 
 - (NSURLSessionDataTask *)testMethodEncrypt_postApi:(NSString *)apiSuffix
                                              params:(id)params
-                                       settingModel:(CJRequestSettingModel *)settingModel
+                                  cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
+                                            logType:(CJRequestLogType)logType
                                       completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock;
 
 @end

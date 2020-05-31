@@ -20,7 +20,6 @@
     NSDictionary *params = @{@"test": @"test"};
     
     CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    settingModel.cacheStrategy = CJRequestCacheStrategyNoneCache;
     settingModel.logType = CJRequestLogTypeNone;
     
     [self simulate2_postApi:apiSuffix params:params settingModel:settingModel success:^(CJResponseModel *responseModel) {

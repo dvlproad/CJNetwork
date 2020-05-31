@@ -16,6 +16,7 @@ typedef NS_ENUM(NSUInteger, CJRequestMethod) {
 };
 
 
+/// 网络请求的整体信息(包括请求前的request信息和请求后的reponse信息)
 @interface CJRequestInfoModel : NSObject
 
 @property (nonatomic, copy) NSString *Url;              /**< 请求的地址 */

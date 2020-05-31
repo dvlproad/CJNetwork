@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFHTTPSessionManager+CJSerializerEncrypt.h"
 #import "AFHTTPSessionManager+CJMethodEncrypt.h"
+#import "CJRequestSettingModel.h"
 
 #import "HealthResponseModel.h"
 
