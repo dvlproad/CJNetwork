@@ -20,8 +20,9 @@
 #pragma mark - CJCacheEncrypt
 /** 完整的描述请参见文件头部 */
 - (nullable NSURLSessionDataTask *)cjMethodEncrypt_postUrl:(NSString *)Url
-                                            params:(nullable id)params
-                                      settingModel:(nullable CJRequestSettingModel *)settingModel
+                                                    params:(nullable id)params
+                                         cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
+                                                   logType:(CJRequestLogType)logType
                                            encrypt:(BOOL)encrypt
                                       encryptBlock:(nullable NSData * _Nullable (^)(NSDictionary * _Nullable requestParmas))encryptBlock
                                       decryptBlock:(nullable NSDictionary * _Nullable (^)(NSString * _Nullable responseString))decryptBlock
@@ -59,12 +60,12 @@
                 recognizableResponseObject = responseObject;
             }
             
-            [self __didRequestSuccessForTask:URLSessionDataTask withResponseObject:recognizableResponseObject isCacheData:YES forUrl:Url params:params settingModel:settingModel success:success];
+            [self __didRequestSuccessForTask:URLSessionDataTask withResponseObject:recognizableResponseObject isCacheData:YES forUrl:Url params:params cacheSettingModel:cacheSettingModel logType:logType success:success];
             
         }
         else
         {
-            [self __didRequestFailureForTask:URLSessionDataTask withResponseError:error forUrl:Url params:params settingModel:settingModel failure:failure];
+            [self __didRequestFailureForTask:URLSessionDataTask withResponseError:error forUrl:Url params:params logType:logType failure:failure];
         }
     }];
     [URLSessionDataTask resume];

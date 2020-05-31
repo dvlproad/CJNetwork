@@ -16,7 +16,7 @@
                                        settingModel:(CJRequestSettingModel *)settingModel
                                       completeBlock:(void (^)(CJResponseModel *responseModel))completeBlock
 {
-    NSString *domain = @"https://localhost/CJDemoDataSimulationDemo";
+    NSString *domain = @"https://localhost/simulateApi/CJDemoDataSimulationDemo";
     NSString *Url = [domain stringByAppendingString:apiSuffix];
     
     AFHTTPSessionManager *manager = [TestHTTPSessionManager sharedInstance];

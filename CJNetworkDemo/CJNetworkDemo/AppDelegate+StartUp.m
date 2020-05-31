@@ -16,7 +16,7 @@
     //TestNetworkEnvironmentManager *environmentManager = [TestNetworkEnvironmentManager sharedInstance];
     //NSString *fullUrl = [environmentManager completeUrlWithApiSuffix:apiSuffix];
     //NSMutableDictionary *allParams = [environmentManager completeParamsWithCustomParams:customParams];
-    [TestNetworkClient sharedInstance].baseUrl = @"";
+//    [TestNetworkClient sharedInstance].baseUrl = @"";
     [TestNetworkClient sharedInstance].commonParams = [NSMutableDictionary dictionaryWithDictionary:@{}];
 }
 

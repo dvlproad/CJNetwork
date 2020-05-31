@@ -1,1 +1,1 @@
-../../../../../CJNetwork/CJNetworkCommon/CJRequestSetting/CJRequestSettingModel.h
+../../../../../CJNetwork/CJNetworkClient/CJRequestSetting/CJRequestSettingModel.h

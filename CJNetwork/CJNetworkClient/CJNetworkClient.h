@@ -16,6 +16,8 @@
 #import "AFHTTPSessionManager+CJUploadFile.h"
 #import "CJResponseModel.h"
 
+#import "CJRequestSettingModel.h"
+
 typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
     CJResponeFailureTypeUncheck = 0,            /**< 未进行是否等失败判断 */
     CJResponeFailureTypeRequestFailure,         /**< 请求失败 */

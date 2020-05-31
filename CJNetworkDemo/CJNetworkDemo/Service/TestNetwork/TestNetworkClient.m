@@ -32,7 +32,7 @@
             //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
             //CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:isCacheData];
             CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-            responseModel.statusCode = [responseDictionary[@"status"] integerValue];
+            responseModel .statusCode = [responseDictionary[@"status"] integerValue];
             responseModel.message = responseDictionary[@"message"];
             responseModel.result = responseDictionary[@"result"];
             responseModel.isCacheData = isCacheData;
@@ -44,7 +44,7 @@
             if (responseModel.statusCode == 5) { //执行退出登录
                 //[CJToast shortShowMessage:@"账号异地登录"];
                 //[[CJDemoUserManager sharedInstance] logout:YES completed:nil];
-                return YES;
+                return YES;  
             } else {
                 return NO;
             }
@@ -61,7 +61,8 @@
             return responseModel;
         }];
         
-        self.simulateDomain = @"http://localhost/CJDemoDataSimulationDemo";
+        self.baseUrl = @"https://api.apiopen.top";
+        self.simulateDomain = @"http://localhost/simulateApi/CJDemoDataSimulationDemo";
     }
     return self;
 }

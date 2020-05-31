@@ -12,6 +12,7 @@
 
 #import "LoginViewController.h"
 
+#import "TestNetworkClient+TestRequest.h"
 #import "TestNetworkClient+TestCache.h"
 
 
@@ -51,6 +52,27 @@
             CJModuleModel *loginModule = [[CJModuleModel alloc] init];
             loginModule.title = @"LoginViewController";
             loginModule.classEntry = [LoginViewController class];
+            [sectionDataModel.values addObject:loginModule];
+        }
+        
+        [sectionDataModels addObject:sectionDataModel];
+    }
+    
+    //网络请求
+    {
+        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        sectionDataModel.theme = @"网络请求";
+        
+        {
+            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            loginModule.title = @"测试网络请求";
+            loginModule.actionBlock = ^{
+                [[TestNetworkClient sharedInstance] testRequestWithSuccess:^(CJResponseModel *responseModel) {
+                    NSLog(@"接口测试成功。。。%@", responseModel.responseDictionary);
+                } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
+                    NSLog(@"接口测试失败。。。");
+                }];
+            };
             [sectionDataModel.values addObject:loginModule];
         }
         

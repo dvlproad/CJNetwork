@@ -16,7 +16,7 @@
     NSString *apiSuffix = @"/api/testCache";
     NSDictionary *params = @{@"test": @"test"};
     
-    NSString *domain = @"http://localhost/CJDemoDataSimulationDemo";
+    NSString *domain = @"http://localhost/simulateApi/CJDemoDataSimulationDemo";
     NSString *Url = [domain stringByAppendingString:apiSuffix];
     
     return [CJNetworkCacheUtil removeCacheForUrl:Url params:params];
