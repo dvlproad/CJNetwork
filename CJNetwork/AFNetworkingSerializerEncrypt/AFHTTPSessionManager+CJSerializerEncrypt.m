@@ -15,12 +15,13 @@
                                       params:(nullable NSDictionary *)allParams
                            cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                      logType:(CJRequestLogType)logType
-                                    progress:(void (^)(NSProgress * _Nullable))progress
+                                    progress:(nullable void (^)(NSProgress * _Nullable))progress
                                      success:(nullable void (^)(id _Nullable responseObject))success
                                      failure:(nullable void (^)(NSString *errorMessage))failure
 {
     return [self cj_requestUrl:Url params:allParams method:CJRequestMethodGET cacheSettingModel:cacheSettingModel logType:logType progress:progress success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSDictionary *responseDictionary = successRequestInfo.responseObject;
+        //NSDictionary *networkLogString = successRequestInfo.networkLogString;
         if (success) {
             success(responseDictionary);
         }
@@ -38,12 +39,13 @@
                                        params:(nullable id)allParams
                             cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                       logType:(CJRequestLogType)logType
-                                     progress:(void (^)(NSProgress * _Nullable))progress
+                                     progress:(void (^)(NSProgress * _Nonnull))progress
                                       success:(nullable void (^)(id _Nullable responseObject))success
                                       failure:(nullable void (^)(NSString *errorMessage))failure
 {
     return [self cj_requestUrl:Url params:allParams method:CJRequestMethodPOST cacheSettingModel:cacheSettingModel logType:logType progress:progress success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSDictionary *responseDictionary = successRequestInfo.responseObject;
+        //NSDictionary *networkLogString = successRequestInfo.networkLogString;
         if (success) {
             success(responseDictionary);
         }
@@ -62,7 +64,7 @@
                                           method:(CJRequestMethod)method
                               cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                          logType:(CJRequestLogType)logType
-                                        progress:(void (^)(NSProgress * _Nullable))progress
+                                        progress:(nullable void (^)(NSProgress * _Nonnull))progress
                                          success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
                                          failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
 {

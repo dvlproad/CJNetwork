@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
                                       params:(nullable NSDictionary *)allParams
                            cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                      logType:(CJRequestLogType)logType
-                                    progress:(void (^)(NSProgress * _Nullable))progress
+                                    progress:(nullable void (^)(NSProgress * _Nullable))progress
                                      success:(nullable void (^)(id _Nullable responseObject))success
                                      failure:(nullable void (^)(NSString *errorMessage))failure;
 
@@ -51,7 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
                                        params:(nullable id)allParams
                             cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                       logType:(CJRequestLogType)logType
-                                     progress:(void (^)(NSProgress * _Nullable))progress
+                                     progress:(nullable void (^)(NSProgress * _Nullable))progress
                                       success:(nullable void (^)(id _Nullable responseObject))success
                                       failure:(nullable void (^)(NSString *errorMessage))failure;
 
@@ -74,7 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
                                           method:(CJRequestMethod)method
                                cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                          logType:(CJRequestLogType)logType
-                                        progress:(void (^)(NSProgress * _Nullable))progress
+                                        progress:(nullable void (^)(NSProgress * _Nullable))progress
                                          success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
                                          failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
 

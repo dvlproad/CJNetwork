@@ -1,1 +1,1 @@
-../../../CJBaseHelper/CJBaseHelper/DeviceCJHelper/DeviceCJHelper.h
+../../../CJBaseHelper/CJBaseHelper/CJBaseHelper/DeviceCJHelper/DeviceCJHelper.h

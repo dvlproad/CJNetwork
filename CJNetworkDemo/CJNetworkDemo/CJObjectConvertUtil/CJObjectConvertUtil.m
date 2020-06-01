@@ -22,7 +22,7 @@
 }
 
 + (NSString *)stringFromDictionary:(NSDictionary *)dictionary {
-    NSString *resultString = nil;
+    NSString *resultString = @"";
     if ([NSJSONSerialization isValidJSONObject:dictionary]) {
         NSError *error;
         NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:&error];

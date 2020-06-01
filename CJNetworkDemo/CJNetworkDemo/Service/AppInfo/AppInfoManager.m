@@ -9,8 +9,6 @@
 #import "AppInfoManager.h"
 #import <SystemConfiguration/CaptiveNetwork.h>
 
-#import "LoginViewController.h"
-
 
 @interface AppInfoManager ()
 
@@ -113,7 +111,7 @@
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     if (!currentNetworkEnable) {
         UIViewController *topViewController = [self getTopViewController];
-        if (![topViewController isKindOfClass:[LoginViewController class]]) {
+        if (![topViewController isKindOfClass:[UIViewController class]]) {
             [self showNoNetworkAlert];
         } else {
             [defaultCenter postNotificationName:@"NetworkEnableChange" object:nil];

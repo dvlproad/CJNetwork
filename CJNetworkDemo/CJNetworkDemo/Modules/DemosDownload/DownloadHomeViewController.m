@@ -17,7 +17,6 @@
 #import "DownloadListViewController.h"
 
 #import "AFNDemoViewController.h"
-#import "RepeatRequestViewController.h"
 
 @interface DownloadHomeViewController ()
 
@@ -80,14 +79,6 @@
             toastUtilModule.isCreateByXib = YES;
             [sectionDataModel.values addObject:toastUtilModule];
         }
-        {
-            CJModuleModel *alertUtilModule = [[CJModuleModel alloc] init];
-            alertUtilModule.title = @"请求的重复发送问题";
-            alertUtilModule.classEntry = [RepeatRequestViewController class];
-            alertUtilModule.isCreateByXib = NO;
-            [sectionDataModel.values addObject:alertUtilModule];
-        }
-        
         [sectionDataModels addObject:sectionDataModel];
     }
     

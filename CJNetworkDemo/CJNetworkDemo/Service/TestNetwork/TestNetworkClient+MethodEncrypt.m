@@ -25,6 +25,7 @@
     NSURLSessionDataTask *URLSessionDataTask =
     [manager cjMethodEncrypt_postUrl:Url params:params cacheSettingModel:cacheSettingModel logType:logType encrypt:NO encryptBlock:nil decryptBlock:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSDictionary *responseDictionary = successRequestInfo.responseObject;
+        
         CJResponseModel *responseModel = [[CJResponseModel alloc] init];
         responseModel.statusCode = [responseDictionary[@"status"] integerValue];
         responseModel.message = responseDictionary[@"message"];

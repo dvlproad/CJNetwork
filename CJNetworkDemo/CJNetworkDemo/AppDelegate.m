@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <CJMonitor/CJLogSuspendWindow.h>
+
 #import "AppDelegate+WindowRootViewController.h"
 #import "AppDelegate+StartUp.h"
 

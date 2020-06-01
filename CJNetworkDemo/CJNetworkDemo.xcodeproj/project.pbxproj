@@ -7,19 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		158259DA2484E8F500BA4B3D /* TestNetworkClient+TestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259BC2484E8F500BA4B3D /* TestNetworkClient+TestCache.m */; };
+		158259DB2484E8F500BA4B3D /* TestHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259BD2484E8F500BA4B3D /* TestHTTPSessionManager.m */; };
+		158259DC2484E8F500BA4B3D /* TestNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259BF2484E8F500BA4B3D /* TestNetworkClient.m */; };
+		158259DD2484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259C32484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.m */; };
+		158259DE2484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259C62484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.m */; };
+		158259DF2484E8F500BA4B3D /* TSCleanRequestHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259C82484E8F500BA4B3D /* TSCleanRequestHomeViewController.m */; };
+		158259E02484E8F500BA4B3D /* TSCleanHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259C92484E8F500BA4B3D /* TSCleanHTTPSessionManager.m */; };
+		158259E12484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259CE2484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.m */; };
+		158259E22484E8F500BA4B3D /* HealthyNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259D12484E8F500BA4B3D /* HealthyNetworkClient.m */; };
+		158259E32484E8F500BA4B3D /* HealthResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259D32484E8F500BA4B3D /* HealthResponseModel.m */; };
+		158259E42484E8F500BA4B3D /* HealthyHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259D52484E8F500BA4B3D /* HealthyHTTPSessionManager.m */; };
+		158259E52484E8F500BA4B3D /* RequestCacheHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259D82484E8F500BA4B3D /* RequestCacheHomeViewController.m */; };
 		6BB55F47EDA2461A6F1BDB89 /* libPods-CJNetworkDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5E7F97EF39C0473AB7ABAD /* libPods-CJNetworkDemo.a */; };
 		7801C0D621ABE04400045114 /* CJJSONResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0D121ABE04400045114 /* CJJSONResponseSerializer.m */; };
 		7801C0D721ABE04400045114 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0D221ABE04400045114 /* NSString+URLEncoding.m */; };
 		7801C0DA21AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0D921AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m */; };
-		7801C0DD21AD1F4C00045114 /* TestNetworkClient+TestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0DC21AD1F4C00045114 /* TestNetworkClient+TestCache.m */; };
-		7801C0E021AD225100045114 /* TestNetworkClient+TestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7801C0DF21AD225100045114 /* TestNetworkClient+TestRequest.m */; };
 		7842989F21C1F991003198FB /* AppAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7842989D21C1F990003198FB /* AppAssets.xcassets */; };
 		784298A021C1F991003198FB /* MainAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7842989E21C1F990003198FB /* MainAsset.xcassets */; };
-		7846532A1F5448FB00E20A27 /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652C61F5448FB00E20A27 /* AccountInfo.m */; };
-		784653301F5448FB00E20A27 /* HealthyHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652D71F5448FB00E20A27 /* HealthyHTTPSessionManager.m */; };
-		784653311F5448FB00E20A27 /* HealthyNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652D91F5448FB00E20A27 /* HealthyNetworkClient.m */; };
-		7846533D1F5448FB00E20A27 /* TestHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652F71F5448FB00E20A27 /* TestHTTPSessionManager.m */; };
-		7846533E1F5448FB00E20A27 /* TestNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 784652F91F5448FB00E20A27 /* TestNetworkClient.m */; };
 		784653751F544A0100E20A27 /* MQLResumeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846536C1F544A0100E20A27 /* MQLResumeManager.m */; };
 		784653761F544A0100E20A27 /* HSDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846536F1F544A0100E20A27 /* HSDownloadManager.m */; };
 		784653771F544A0100E20A27 /* HSSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 784653711F544A0100E20A27 /* HSSessionModel.m */; };
@@ -28,7 +33,6 @@
 		7846E38B21A6A56900D73F51 /* TestConcurrenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E38A21A6A56900D73F51 /* TestConcurrenceManager.m */; };
 		7846E38E21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E38D21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m */; };
 		7846E39121A6AD5500D73F51 /* TestConcurrenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E39021A6AD5500D73F51 /* TestConcurrenceModel.m */; };
-		78590BD3215B275B00F45AD5 /* HealthResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78590BD2215B275B00F45AD5 /* HealthResponseModel.m */; };
 		785AB2F821C01318009938A4 /* TestNetworkEnvironmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AB2F721C01318009938A4 /* TestNetworkEnvironmentModel.m */; };
 		785AB2FD21C013B6009938A4 /* TestNetworkEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AB2FC21C013B6009938A4 /* TestNetworkEnvironmentManager.m */; };
 		785FECE421DDEDFC00975192 /* AppDelegate+StartUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 785FECE321DDEDFC00975192 /* AppDelegate+StartUp.m */; };
@@ -49,14 +53,8 @@
 		7868F1892121C79A00A283EB /* DownloadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1672121C79A00A283EB /* DownloadTableViewCell.m */; };
 		7868F18A2121C79A00A283EB /* EncryptHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F16A2121C79A00A283EB /* EncryptHomeViewController.m */; };
 		7868F1922121C80500A283EB /* DownloadHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1902121C80500A283EB /* DownloadHomeViewController.m */; };
-		7868F19B2121CC2600A283EB /* LoginViewController+Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1942121CC2600A283EB /* LoginViewController+Event.m */; };
-		7868F19C2121CC2600A283EB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1952121CC2600A283EB /* LoginViewController.m */; };
-		7868F19D2121CC2600A283EB /* LoginHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1962121CC2600A283EB /* LoginHelper.m */; };
-		7868F19E2121CC2600A283EB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1972121CC2600A283EB /* Login.storyboard */; };
 		7868F1A82121D06C00A283EB /* AFNDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1A42121D06C00A283EB /* AFNDemoViewController.m */; };
-		7868F1A92121D06C00A283EB /* RepeatRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1A52121D06C00A283EB /* RepeatRequestViewController.m */; };
 		7868F1AA2121D06C00A283EB /* AFNDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1A62121D06C00A283EB /* AFNDemoViewController.xib */; };
-		78B6C2FF215AAA8900D5864E /* HealthyNetworkClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B6C2FE215AAA8900D5864E /* HealthyNetworkClient+Login.m */; };
 		78EB551F21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB551E21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m */; };
 		78FC91FA1F54481E00033DEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91F91F54481E00033DEF /* main.m */; };
 		78FC91FD1F54481E00033DEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91FC1F54481E00033DEF /* AppDelegate.m */; };
@@ -88,6 +86,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		158259BC2484E8F500BA4B3D /* TestNetworkClient+TestCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestCache.m"; sourceTree = "<group>"; };
+		158259BD2484E8F500BA4B3D /* TestHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHTTPSessionManager.m; sourceTree = "<group>"; };
+		158259BE2484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS31CJNetworkClientHomeViewController.h; sourceTree = "<group>"; };
+		158259BF2484E8F500BA4B3D /* TestNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNetworkClient.m; sourceTree = "<group>"; };
+		158259C02484E8F500BA4B3D /* TestHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHTTPSessionManager.h; sourceTree = "<group>"; };
+		158259C12484E8F500BA4B3D /* TestNetworkClient+TestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+TestCache.h"; sourceTree = "<group>"; };
+		158259C22484E8F500BA4B3D /* TestNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNetworkClient.h; sourceTree = "<group>"; };
+		158259C32484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TS31CJNetworkClientHomeViewController.m; sourceTree = "<group>"; };
+		158259C52484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS11CleanRequestRepeatHomeViewController.h; sourceTree = "<group>"; };
+		158259C62484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TS11CleanRequestRepeatHomeViewController.m; sourceTree = "<group>"; };
+		158259C82484E8F500BA4B3D /* TSCleanRequestHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCleanRequestHomeViewController.m; sourceTree = "<group>"; };
+		158259C92484E8F500BA4B3D /* TSCleanHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCleanHTTPSessionManager.m; sourceTree = "<group>"; };
+		158259CA2484E8F500BA4B3D /* TSCleanRequestHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCleanRequestHomeViewController.h; sourceTree = "<group>"; };
+		158259CB2484E8F500BA4B3D /* TSCleanHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCleanHTTPSessionManager.h; sourceTree = "<group>"; };
+		158259CD2484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS12MyNetworkClientHomeViewController.h; sourceTree = "<group>"; };
+		158259CE2484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TS12MyNetworkClientHomeViewController.m; sourceTree = "<group>"; };
+		158259D02484E8F500BA4B3D /* HealthyHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthyHTTPSessionManager.h; sourceTree = "<group>"; };
+		158259D12484E8F500BA4B3D /* HealthyNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthyNetworkClient.m; sourceTree = "<group>"; };
+		158259D32484E8F500BA4B3D /* HealthResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthResponseModel.m; sourceTree = "<group>"; };
+		158259D42484E8F500BA4B3D /* HealthResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthResponseModel.h; sourceTree = "<group>"; };
+		158259D52484E8F500BA4B3D /* HealthyHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthyHTTPSessionManager.m; sourceTree = "<group>"; };
+		158259D62484E8F500BA4B3D /* HealthyNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthyNetworkClient.h; sourceTree = "<group>"; };
+		158259D82484E8F500BA4B3D /* RequestCacheHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestCacheHomeViewController.m; sourceTree = "<group>"; };
+		158259D92484E8F500BA4B3D /* RequestCacheHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestCacheHomeViewController.h; sourceTree = "<group>"; };
 		3D5E7F97EF39C0473AB7ABAD /* libPods-CJNetworkDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CJNetworkDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77134D72A7065F0DD4229D2D /* Pods-CJNetworkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		7801C0D021ABE04400045114 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -96,22 +118,8 @@
 		7801C0D321ABE04400045114 /* CJJSONResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJJSONResponseSerializer.h; sourceTree = "<group>"; };
 		7801C0D821AD1EA100045114 /* TestNetworkClient+MethodEncrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+MethodEncrypt.h"; sourceTree = "<group>"; };
 		7801C0D921AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+MethodEncrypt.m"; sourceTree = "<group>"; };
-		7801C0DB21AD1F4C00045114 /* TestNetworkClient+TestCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+TestCache.h"; sourceTree = "<group>"; };
-		7801C0DC21AD1F4C00045114 /* TestNetworkClient+TestCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestCache.m"; sourceTree = "<group>"; };
-		7801C0DE21AD225100045114 /* TestNetworkClient+TestRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+TestRequest.h"; sourceTree = "<group>"; };
-		7801C0DF21AD225100045114 /* TestNetworkClient+TestRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestRequest.m"; sourceTree = "<group>"; };
 		7842989D21C1F990003198FB /* AppAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppAssets.xcassets; sourceTree = "<group>"; };
 		7842989E21C1F990003198FB /* MainAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MainAsset.xcassets; sourceTree = "<group>"; };
-		784652C51F5448FB00E20A27 /* AccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfo.h; sourceTree = "<group>"; };
-		784652C61F5448FB00E20A27 /* AccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfo.m; sourceTree = "<group>"; };
-		784652D61F5448FB00E20A27 /* HealthyHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthyHTTPSessionManager.h; sourceTree = "<group>"; };
-		784652D71F5448FB00E20A27 /* HealthyHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthyHTTPSessionManager.m; sourceTree = "<group>"; };
-		784652D81F5448FB00E20A27 /* HealthyNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthyNetworkClient.h; sourceTree = "<group>"; };
-		784652D91F5448FB00E20A27 /* HealthyNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthyNetworkClient.m; sourceTree = "<group>"; };
-		784652F61F5448FB00E20A27 /* TestHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHTTPSessionManager.h; sourceTree = "<group>"; };
-		784652F71F5448FB00E20A27 /* TestHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHTTPSessionManager.m; sourceTree = "<group>"; };
-		784652F81F5448FB00E20A27 /* TestNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNetworkClient.h; sourceTree = "<group>"; };
-		784652F91F5448FB00E20A27 /* TestNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNetworkClient.m; sourceTree = "<group>"; };
 		7846536B1F544A0100E20A27 /* MQLResumeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQLResumeManager.h; sourceTree = "<group>"; };
 		7846536C1F544A0100E20A27 /* MQLResumeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQLResumeManager.m; sourceTree = "<group>"; };
 		7846536E1F544A0100E20A27 /* HSDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSDownloadManager.h; sourceTree = "<group>"; };
@@ -129,8 +137,6 @@
 		7846E38D21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CJConcurrenceControl.m"; sourceTree = "<group>"; };
 		7846E38F21A6AD5500D73F51 /* TestConcurrenceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestConcurrenceModel.h; sourceTree = "<group>"; };
 		7846E39021A6AD5500D73F51 /* TestConcurrenceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestConcurrenceModel.m; sourceTree = "<group>"; };
-		78590BD1215B275B00F45AD5 /* HealthResponseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HealthResponseModel.h; sourceTree = "<group>"; };
-		78590BD2215B275B00F45AD5 /* HealthResponseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthResponseModel.m; sourceTree = "<group>"; };
 		785AB2F621C01317009938A4 /* TestNetworkEnvironmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNetworkEnvironmentModel.h; sourceTree = "<group>"; };
 		785AB2F721C01318009938A4 /* TestNetworkEnvironmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNetworkEnvironmentModel.m; sourceTree = "<group>"; };
 		785AB2F921C0135E009938A4 /* CJNetworkCryptHTTPSessionManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkCryptHTTPSessionManagerProtocol.h; sourceTree = "<group>"; };
@@ -168,20 +174,9 @@
 		7868F16A2121C79A00A283EB /* EncryptHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptHomeViewController.m; sourceTree = "<group>"; };
 		7868F1902121C80500A283EB /* DownloadHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadHomeViewController.m; sourceTree = "<group>"; };
 		7868F1912121C80500A283EB /* DownloadHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadHomeViewController.h; sourceTree = "<group>"; };
-		7868F1942121CC2600A283EB /* LoginViewController+Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LoginViewController+Event.m"; sourceTree = "<group>"; };
-		7868F1952121CC2600A283EB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		7868F1962121CC2600A283EB /* LoginHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginHelper.m; sourceTree = "<group>"; };
-		7868F1972121CC2600A283EB /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		7868F1982121CC2600A283EB /* LoginViewController+Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LoginViewController+Event.h"; sourceTree = "<group>"; };
-		7868F1992121CC2600A283EB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		7868F19A2121CC2600A283EB /* LoginHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginHelper.h; sourceTree = "<group>"; };
-		7868F1A32121D06C00A283EB /* RepeatRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepeatRequestViewController.h; sourceTree = "<group>"; };
 		7868F1A42121D06C00A283EB /* AFNDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNDemoViewController.m; sourceTree = "<group>"; };
-		7868F1A52121D06C00A283EB /* RepeatRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepeatRequestViewController.m; sourceTree = "<group>"; };
 		7868F1A62121D06C00A283EB /* AFNDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AFNDemoViewController.xib; sourceTree = "<group>"; };
 		7868F1A72121D06C00A283EB /* AFNDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNDemoViewController.h; sourceTree = "<group>"; };
-		78B6C2FD215AAA8900D5864E /* HealthyNetworkClient+Login.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HealthyNetworkClient+Login.h"; sourceTree = "<group>"; };
-		78B6C2FE215AAA8900D5864E /* HealthyNetworkClient+Login.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HealthyNetworkClient+Login.m"; sourceTree = "<group>"; };
 		78EB551D21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+TestConcurrence.h"; sourceTree = "<group>"; };
 		78EB551E21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestConcurrence.m"; sourceTree = "<group>"; };
 		78FC91F51F54481E00033DEF /* CJNetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CJNetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,6 +232,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		158259BB2484E8F500BA4B3D /* TS311CJNetworkClientRequestDemo */ = {
+			isa = PBXGroup;
+			children = (
+				158259C02484E8F500BA4B3D /* TestHTTPSessionManager.h */,
+				158259BD2484E8F500BA4B3D /* TestHTTPSessionManager.m */,
+				158259C22484E8F500BA4B3D /* TestNetworkClient.h */,
+				158259BF2484E8F500BA4B3D /* TestNetworkClient.m */,
+				158259C12484E8F500BA4B3D /* TestNetworkClient+TestCache.h */,
+				158259BC2484E8F500BA4B3D /* TestNetworkClient+TestCache.m */,
+				158259BE2484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.h */,
+				158259C32484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.m */,
+			);
+			path = TS311CJNetworkClientRequestDemo;
+			sourceTree = "<group>";
+		};
+		158259C42484E8F500BA4B3D /* TS112ManagerRequestRepeatDemo */ = {
+			isa = PBXGroup;
+			children = (
+				158259C52484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.h */,
+				158259C62484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.m */,
+			);
+			path = TS112ManagerRequestRepeatDemo;
+			sourceTree = "<group>";
+		};
+		158259C72484E8F500BA4B3D /* TS111ManagerRequestDemo */ = {
+			isa = PBXGroup;
+			children = (
+				158259CB2484E8F500BA4B3D /* TSCleanHTTPSessionManager.h */,
+				158259C92484E8F500BA4B3D /* TSCleanHTTPSessionManager.m */,
+				158259CA2484E8F500BA4B3D /* TSCleanRequestHomeViewController.h */,
+				158259C82484E8F500BA4B3D /* TSCleanRequestHomeViewController.m */,
+			);
+			path = TS111ManagerRequestDemo;
+			sourceTree = "<group>";
+		};
+		158259CC2484E8F500BA4B3D /* TS211MyNetworkClientRequestDemo */ = {
+			isa = PBXGroup;
+			children = (
+				158259CD2484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.h */,
+				158259CE2484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.m */,
+				158259CF2484E8F500BA4B3D /* HealthyNetwork */,
+			);
+			path = TS211MyNetworkClientRequestDemo;
+			sourceTree = "<group>";
+		};
+		158259CF2484E8F500BA4B3D /* HealthyNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				158259D02484E8F500BA4B3D /* HealthyHTTPSessionManager.h */,
+				158259D12484E8F500BA4B3D /* HealthyNetworkClient.m */,
+				158259D22484E8F500BA4B3D /* Models */,
+				158259D52484E8F500BA4B3D /* HealthyHTTPSessionManager.m */,
+				158259D62484E8F500BA4B3D /* HealthyNetworkClient.h */,
+			);
+			path = HealthyNetwork;
+			sourceTree = "<group>";
+		};
+		158259D22484E8F500BA4B3D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				158259D32484E8F500BA4B3D /* HealthResponseModel.m */,
+				158259D42484E8F500BA4B3D /* HealthResponseModel.h */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		158259D72484E8F500BA4B3D /* TS113ManagerRequestCacheDemo */ = {
+			isa = PBXGroup;
+			children = (
+				158259D92484E8F500BA4B3D /* RequestCacheHomeViewController.h */,
+				158259D82484E8F500BA4B3D /* RequestCacheHomeViewController.m */,
+			);
+			path = TS113ManagerRequestCacheDemo;
+			sourceTree = "<group>";
+		};
 		7801C0C821ABE04400045114 /* TempUtil */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,22 +339,9 @@
 			isa = PBXGroup;
 			children = (
 				80E7E62620ABCFBB000F762D /* AppInfo */,
-				784652D51F5448FB00E20A27 /* HealthyNetwork */,
 				784652F51F5448FB00E20A27 /* TestNetwork */,
 			);
 			path = Service;
-			sourceTree = "<group>";
-		};
-		784652D51F5448FB00E20A27 /* HealthyNetwork */ = {
-			isa = PBXGroup;
-			children = (
-				784652D61F5448FB00E20A27 /* HealthyHTTPSessionManager.h */,
-				784652D71F5448FB00E20A27 /* HealthyHTTPSessionManager.m */,
-				784652D81F5448FB00E20A27 /* HealthyNetworkClient.h */,
-				784652D91F5448FB00E20A27 /* HealthyNetworkClient.m */,
-				78590BCD215B272100F45AD5 /* Models */,
-			);
-			path = HealthyNetwork;
 			sourceTree = "<group>";
 		};
 		784652F51F5448FB00E20A27 /* TestNetwork */ = {
@@ -292,10 +349,6 @@
 			children = (
 				785AB2F921C0135E009938A4 /* CJNetworkCryptHTTPSessionManagerProtocol.h */,
 				785AB2FA21C0135F009938A4 /* CJNetworkEnvironmentManagerProtocol.h */,
-				784652F61F5448FB00E20A27 /* TestHTTPSessionManager.h */,
-				784652F71F5448FB00E20A27 /* TestHTTPSessionManager.m */,
-				784652F81F5448FB00E20A27 /* TestNetworkClient.h */,
-				784652F91F5448FB00E20A27 /* TestNetworkClient.m */,
 				7801C0D821AD1EA100045114 /* TestNetworkClient+MethodEncrypt.h */,
 				7801C0D921AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m */,
 				785AB2FB21C013B6009938A4 /* TestNetworkEnvironmentManager.h */,
@@ -355,15 +408,6 @@
 				7846E38D21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m */,
 			);
 			path = CJRequestConcurrence;
-			sourceTree = "<group>";
-		};
-		78590BCD215B272100F45AD5 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				78590BD1215B275B00F45AD5 /* HealthResponseModel.h */,
-				78590BD2215B275B00F45AD5 /* HealthResponseModel.m */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		7868F1392121C79A00A283EB /* Modules */ = {
@@ -464,31 +508,13 @@
 			children = (
 				7868F1692121C79A00A283EB /* EncryptHomeViewController.h */,
 				7868F16A2121C79A00A283EB /* EncryptHomeViewController.m */,
-				7801C0DB21AD1F4C00045114 /* TestNetworkClient+TestCache.h */,
-				7801C0DC21AD1F4C00045114 /* TestNetworkClient+TestCache.m */,
-				7801C0DE21AD225100045114 /* TestNetworkClient+TestRequest.h */,
-				7801C0DF21AD225100045114 /* TestNetworkClient+TestRequest.m */,
-				7868F1932121CC2600A283EB /* Login */,
+				158259C72484E8F500BA4B3D /* TS111ManagerRequestDemo */,
+				158259C42484E8F500BA4B3D /* TS112ManagerRequestRepeatDemo */,
+				158259D72484E8F500BA4B3D /* TS113ManagerRequestCacheDemo */,
+				158259CC2484E8F500BA4B3D /* TS211MyNetworkClientRequestDemo */,
+				158259BB2484E8F500BA4B3D /* TS311CJNetworkClientRequestDemo */,
 			);
 			path = DemosEncrypt;
-			sourceTree = "<group>";
-		};
-		7868F1932121CC2600A283EB /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				7868F1972121CC2600A283EB /* Login.storyboard */,
-				7868F19A2121CC2600A283EB /* LoginHelper.h */,
-				7868F1962121CC2600A283EB /* LoginHelper.m */,
-				7868F1992121CC2600A283EB /* LoginViewController.h */,
-				7868F1952121CC2600A283EB /* LoginViewController.m */,
-				7868F1982121CC2600A283EB /* LoginViewController+Event.h */,
-				7868F1942121CC2600A283EB /* LoginViewController+Event.m */,
-				78B6C2FD215AAA8900D5864E /* HealthyNetworkClient+Login.h */,
-				78B6C2FE215AAA8900D5864E /* HealthyNetworkClient+Login.m */,
-				784652C51F5448FB00E20A27 /* AccountInfo.h */,
-				784652C61F5448FB00E20A27 /* AccountInfo.m */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		7868F1A22121D06C00A283EB /* AFNTest */ = {
@@ -497,8 +523,6 @@
 				7868F1A72121D06C00A283EB /* AFNDemoViewController.h */,
 				7868F1A42121D06C00A283EB /* AFNDemoViewController.m */,
 				7868F1A62121D06C00A283EB /* AFNDemoViewController.xib */,
-				7868F1A32121D06C00A283EB /* RepeatRequestViewController.h */,
-				7868F1A52121D06C00A283EB /* RepeatRequestViewController.m */,
 			);
 			path = AFNTest;
 			sourceTree = "<group>";
@@ -757,7 +781,6 @@
 				7868F1AA2121D06C00A283EB /* AFNDemoViewController.xib in Resources */,
 				78FC92031F54481E00033DEF /* Main.storyboard in Resources */,
 				7868F1842121C79A00A283EB /* BaseDownloadViewController.xib in Resources */,
-				7868F19E2121CC2600A283EB /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,19 +862,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7868F19D2121CC2600A283EB /* LoginHelper.m in Sources */,
 				784653761F544A0100E20A27 /* HSDownloadManager.m in Sources */,
 				8050036921192C1E002A2306 /* CJObjectConvertUtil.m in Sources */,
-				78B6C2FF215AAA8900D5864E /* HealthyNetworkClient+Login.m in Sources */,
 				7846E38E21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m in Sources */,
-				7801C0E021AD225100045114 /* TestNetworkClient+TestRequest.m in Sources */,
 				7868F1792121C79A00A283EB /* SocketHomeViewController.m in Sources */,
+				158259DA2484E8F500BA4B3D /* TestNetworkClient+TestCache.m in Sources */,
 				78FC92001F54481E00033DEF /* ViewController.m in Sources */,
 				7868F1812121C79A00A283EB /* AFDownloadViewController.m in Sources */,
-				78590BD3215B275B00F45AD5 /* HealthResponseModel.m in Sources */,
 				7801C0DA21AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m in Sources */,
 				7801C0D621ABE04400045114 /* CJJSONResponseSerializer.m in Sources */,
-				7846533D1F5448FB00E20A27 /* TestHTTPSessionManager.m in Sources */,
+				158259E12484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.m in Sources */,
 				7868F17F2121C79A00A283EB /* SessionDownloadTaskDownloadViewController.m in Sources */,
 				80E7E62920ABCFBC000F762D /* AppInfoManager.m in Sources */,
 				78FC91FD1F54481E00033DEF /* AppDelegate.m in Sources */,
@@ -860,32 +880,34 @@
 				7868F1822121C79A00A283EB /* SessionDataTaskDownloadViewController.m in Sources */,
 				7801C0D721ABE04400045114 /* NSString+URLEncoding.m in Sources */,
 				785AB2FD21C013B6009938A4 /* TestNetworkEnvironmentManager.m in Sources */,
+				158259E32484E8F500BA4B3D /* HealthResponseModel.m in Sources */,
+				158259DC2484E8F500BA4B3D /* TestNetworkClient.m in Sources */,
 				7868F1382121C61400A283EB /* AppDelegate+WindowRootViewController.m in Sources */,
-				7868F19B2121CC2600A283EB /* LoginViewController+Event.m in Sources */,
-				7846533E1F5448FB00E20A27 /* TestNetworkClient.m in Sources */,
-				7868F19C2121CC2600A283EB /* LoginViewController.m in Sources */,
 				785FECE421DDEDFC00975192 /* AppDelegate+StartUp.m in Sources */,
 				7868F1892121C79A00A283EB /* DownloadTableViewCell.m in Sources */,
 				78EB551F21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m in Sources */,
+				158259DE2484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.m in Sources */,
 				7846E38821A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.m in Sources */,
 				784653771F544A0100E20A27 /* HSSessionModel.m in Sources */,
 				785AB2F821C01318009938A4 /* TestNetworkEnvironmentModel.m in Sources */,
 				7868F18A2121C79A00A283EB /* EncryptHomeViewController.m in Sources */,
 				7868F1922121C80500A283EB /* DownloadHomeViewController.m in Sources */,
+				158259DB2484E8F500BA4B3D /* TestHTTPSessionManager.m in Sources */,
 				7868F1782121C79A00A283EB /* UploadHomeViewController.m in Sources */,
 				7868F17B2121C79A00A283EB /* SocketDemoViewController.m in Sources */,
 				7846E39121A6AD5500D73F51 /* TestConcurrenceModel.m in Sources */,
-				7868F1A92121D06C00A283EB /* RepeatRequestViewController.m in Sources */,
+				158259DF2484E8F500BA4B3D /* TSCleanRequestHomeViewController.m in Sources */,
 				7868F1802121C79A00A283EB /* BaseDownloadViewController.m in Sources */,
 				784653781F544A0100E20A27 /* NSString+Hash.m in Sources */,
 				7846E38B21A6A56900D73F51 /* TestConcurrenceManager.m in Sources */,
-				7846532A1F5448FB00E20A27 /* AccountInfo.m in Sources */,
 				784653751F544A0100E20A27 /* MQLResumeManager.m in Sources */,
-				784653311F5448FB00E20A27 /* HealthyNetworkClient.m in Sources */,
-				7801C0DD21AD1F4C00045114 /* TestNetworkClient+TestCache.m in Sources */,
+				158259E02484E8F500BA4B3D /* TSCleanHTTPSessionManager.m in Sources */,
+				158259DD2484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.m in Sources */,
+				158259E22484E8F500BA4B3D /* HealthyNetworkClient.m in Sources */,
+				158259E42484E8F500BA4B3D /* HealthyHTTPSessionManager.m in Sources */,
 				7868F1A82121D06C00A283EB /* AFNDemoViewController.m in Sources */,
+				158259E52484E8F500BA4B3D /* RequestCacheHomeViewController.m in Sources */,
 				7868F1862121C79A00A283EB /* DownloadListViewController.m in Sources */,
-				784653301F5448FB00E20A27 /* HealthyHTTPSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
