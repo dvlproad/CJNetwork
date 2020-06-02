@@ -55,6 +55,7 @@
 		7868F1922121C80500A283EB /* DownloadHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1902121C80500A283EB /* DownloadHomeViewController.m */; };
 		7868F1A82121D06C00A283EB /* AFNDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1A42121D06C00A283EB /* AFNDemoViewController.m */; };
 		7868F1AA2121D06C00A283EB /* AFNDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1A62121D06C00A283EB /* AFNDemoViewController.xib */; };
+		789486272486BE330067AEE3 /* TS113CacheResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 789486262486BE330067AEE3 /* TS113CacheResponseModel.m */; };
 		78EB551F21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB551E21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m */; };
 		78FC91FA1F54481E00033DEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91F91F54481E00033DEF /* main.m */; };
 		78FC91FD1F54481E00033DEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91FC1F54481E00033DEF /* AppDelegate.m */; };
@@ -177,6 +178,8 @@
 		7868F1A42121D06C00A283EB /* AFNDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNDemoViewController.m; sourceTree = "<group>"; };
 		7868F1A62121D06C00A283EB /* AFNDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AFNDemoViewController.xib; sourceTree = "<group>"; };
 		7868F1A72121D06C00A283EB /* AFNDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNDemoViewController.h; sourceTree = "<group>"; };
+		789486252486BE330067AEE3 /* TS113CacheResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS113CacheResponseModel.h; sourceTree = "<group>"; };
+		789486262486BE330067AEE3 /* TS113CacheResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TS113CacheResponseModel.m; sourceTree = "<group>"; };
 		78EB551D21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+TestConcurrence.h"; sourceTree = "<group>"; };
 		78EB551E21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestConcurrence.m"; sourceTree = "<group>"; };
 		78FC91F51F54481E00033DEF /* CJNetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CJNetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,10 +284,10 @@
 			isa = PBXGroup;
 			children = (
 				158259D02484E8F500BA4B3D /* HealthyHTTPSessionManager.h */,
-				158259D12484E8F500BA4B3D /* HealthyNetworkClient.m */,
-				158259D22484E8F500BA4B3D /* Models */,
 				158259D52484E8F500BA4B3D /* HealthyHTTPSessionManager.m */,
 				158259D62484E8F500BA4B3D /* HealthyNetworkClient.h */,
+				158259D12484E8F500BA4B3D /* HealthyNetworkClient.m */,
+				158259D22484E8F500BA4B3D /* Models */,
 			);
 			path = HealthyNetwork;
 			sourceTree = "<group>";
@@ -303,6 +306,8 @@
 			children = (
 				158259D92484E8F500BA4B3D /* RequestCacheHomeViewController.h */,
 				158259D82484E8F500BA4B3D /* RequestCacheHomeViewController.m */,
+				789486252486BE330067AEE3 /* TS113CacheResponseModel.h */,
+				789486262486BE330067AEE3 /* TS113CacheResponseModel.m */,
 			);
 			path = TS113ManagerRequestCacheDemo;
 			sourceTree = "<group>";
@@ -907,6 +912,7 @@
 				158259E42484E8F500BA4B3D /* HealthyHTTPSessionManager.m in Sources */,
 				7868F1A82121D06C00A283EB /* AFNDemoViewController.m in Sources */,
 				158259E52484E8F500BA4B3D /* RequestCacheHomeViewController.m in Sources */,
+				789486272486BE330067AEE3 /* TS113CacheResponseModel.m in Sources */,
 				7868F1862121C79A00A283EB /* DownloadListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

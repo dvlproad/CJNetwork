@@ -23,7 +23,8 @@ end
 
 
 target 'CJNetworkDemo' do
-    pod 'CJNetwork',      :path => '~/Project/Github/CJNetwork’
+    pod 'CJNetwork',        :path => '~/Project/Github/CJNetwork’
+    pod 'CJNetworkClient',  :path => '~/Project/Github/CJNetwork’
     pod 'CocoaAsyncSocket', '~> 7.4.1'
     pod 'MJExtension'
 #    pod 'JSONModel', '~> 1.1.0'

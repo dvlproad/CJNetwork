@@ -14,9 +14,7 @@
 #import <CJNetwork/CJNetworkCacheUtil.h>
 #import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
 #import "TSCleanHTTPSessionManager.h"
-#import <CJNetwork/CJResponseModel.h>
-
-//#import "TestNetworkClient+TestCache.h"
+#import "TS113CacheResponseModel.h"
 
 @interface RequestCacheHomeViewController ()
 
@@ -58,7 +56,7 @@
 - (void)testCacheTime {
     // checkTestCacheTime 检查是否可以开始测试'设置的缓存过期时间是否有效'的问题
     
-    [self __testGetRequestWithIndex:0 useCache:YES success:^(CJResponseModel *responseModel) {
+    [self __testGetRequestWithIndex:0 useCache:YES success:^(TS113CacheResponseModel *responseModel) {
         [self startTestCacheTime];
         
     } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
@@ -109,7 +107,7 @@
 /// 在第0秒的时候开始发起第一个请求
 - (void)__requestANewInSecond00:(dispatch_group_t)group {
     dispatch_group_enter(group);
-    [self __testGetRequestWithIndex:0 useCache:YES success:^(CJResponseModel *responseModel) {
+    [self __testGetRequestWithIndex:0 useCache:YES success:^(TS113CacheResponseModel *responseModel) {
         if (responseModel.isCacheData == NO) {
             [self __showResponseLogMessage:@"①测试通过：第一次请求到的肯定是非缓存的数据" useAlert:NO];
         } else {
@@ -126,7 +124,7 @@
 - (void)__requestANewInSecond05:(dispatch_group_t)group {
     dispatch_group_enter(group);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self __testGetRequestWithIndex:0 useCache:YES success:^(CJResponseModel *responseModel) {
+        [self __testGetRequestWithIndex:0 useCache:YES success:^(TS113CacheResponseModel *responseModel) {
             if (responseModel.isCacheData == YES) {
                 [self __showResponseLogMessage:@"②测试通过：在缓存过期10秒内(现在是5秒)，请求到的肯定是缓存的数据" useAlert:NO];
             } else {
@@ -144,7 +142,7 @@
 - (void)__requestANewInSecond11:(dispatch_group_t)group {
     dispatch_group_enter(group);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(11 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self __testGetRequestWithIndex:0 useCache:YES success:^(CJResponseModel *responseModel) {
+        [self __testGetRequestWithIndex:0 useCache:YES success:^(TS113CacheResponseModel *responseModel) {
             if (responseModel.isCacheData == NO) {
                 [self __showResponseLogMessage:@"③测试通过：在缓存过期10秒后(现在是11秒)，请求到的肯定是非缓存的数据" useAlert:NO];
             } else {
@@ -174,7 +172,7 @@
 // 测试GET网络请求
 - (void)__testGetRequestWithIndex:(NSInteger)requestIndex
                          useCache:(BOOL)useCache
-                          success:(void (^)(CJResponseModel *responseModel))success
+                          success:(void (^)(TS113CacheResponseModel *responseModel))success
                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     // [淘宝宝贝名称查询GET](https://api.you-fire.com/youapi/api/detail/b5d2217f923e11e986e700163e0e0ef0)
@@ -197,7 +195,7 @@
     [manager cj_requestUrl:Url params:allParams method:CJRequestMethodGET cacheSettingModel:requestCacheModel logType:CJRequestLogTypeSuppendWindow progress:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSDictionary *responseDictionary = successRequestInfo.responseObject;
         
-        CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+        TS113CacheResponseModel *responseModel = [[TS113CacheResponseModel alloc] init];
         responseModel.statusCode = [responseDictionary[@"status"] integerValue];
         responseModel.message = responseDictionary[@"message"];
         responseModel.result = responseDictionary[@"result"];

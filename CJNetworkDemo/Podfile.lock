@@ -31,30 +31,31 @@ PODS:
   - CJMonitor/CJLog (0.0.1):
     - CJBaseUIKit/UIView/CJDragAction
     - Masonry
-  - CJNetwork (0.7.0-beta.7):
-    - CJNetwork/AFNetworkingMethodEncrypt (= 0.7.0-beta.7)
-    - CJNetwork/AFNetworkingSerializerEncrypt (= 0.7.0-beta.7)
-    - CJNetwork/AFNetworkingUploadComponent (= 0.7.0-beta.7)
-    - CJNetwork/CJCacheManager (= 0.7.0-beta.7)
-    - CJNetwork/CJNetworkClient (= 0.7.0-beta.7)
-    - CJNetwork/CJNetworkCommon (= 0.7.0-beta.7)
-    - CJNetwork/CJRequestUtil (= 0.7.0-beta.7)
-  - CJNetwork/AFNetworkingMethodEncrypt (0.7.0-beta.7):
+  - CJNetwork (0.7.1-beta.1):
+    - CJNetwork/AFNetworkingMethodEncrypt (= 0.7.1-beta.1)
+    - CJNetwork/AFNetworkingSerializerEncrypt (= 0.7.1-beta.1)
+    - CJNetwork/AFNetworkingUploadComponent (= 0.7.1-beta.1)
+    - CJNetwork/CJCacheManager (= 0.7.1-beta.1)
+    - CJNetwork/CJNetworkCommon (= 0.7.1-beta.1)
+    - CJNetwork/CJRequestUtil (= 0.7.1-beta.1)
+  - CJNetwork/AFNetworkingMethodEncrypt (0.7.1-beta.1):
     - CJNetwork/CJNetworkCommon
-  - CJNetwork/AFNetworkingSerializerEncrypt (0.7.0-beta.7):
+  - CJNetwork/AFNetworkingSerializerEncrypt (0.7.1-beta.1):
     - CJNetwork/CJNetworkCommon
-  - CJNetwork/AFNetworkingUploadComponent (0.7.0-beta.7):
+  - CJNetwork/AFNetworkingUploadComponent (0.7.1-beta.1):
     - CJNetwork/CJNetworkCommon
-  - CJNetwork/CJCacheManager (0.7.0-beta.7)
-  - CJNetwork/CJNetworkClient (0.7.0-beta.7):
-    - CJNetwork/AFNetworkingSerializerEncrypt
-    - CJNetwork/AFNetworkingUploadComponent
-  - CJNetwork/CJNetworkCommon (0.7.0-beta.7):
+  - CJNetwork/CJCacheManager (0.7.1-beta.1)
+  - CJNetwork/CJNetworkCommon (0.7.1-beta.1):
     - AFNetworking
     - MJExtension
     - YYCache
-  - CJNetwork/CJRequestUtil (0.7.0-beta.7):
+  - CJNetwork/CJRequestUtil (0.7.1-beta.1):
     - CJNetwork/CJNetworkCommon
+  - CJNetworkClient (1.1.0-beta.1):
+    - CJNetworkClient/CJNetworkClient (= 1.1.0-beta.1)
+  - CJNetworkClient/CJNetworkClient (1.1.0-beta.1):
+    - CJNetwork/AFNetworkingSerializerEncrypt (~> 0.7.1-beta.1)
+    - CJNetwork/AFNetworkingUploadComponent (~> 0.7.1-beta.1)
   - CocoaAsyncSocket (7.4.3):
     - CocoaAsyncSocket/All (= 7.4.3)
   - CocoaAsyncSocket/All (7.4.3):
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - CJFoundation/NSString
   - CJMonitor
   - CJNetwork (from `~/Project/Github/CJNetwork`)
+  - CJNetworkClient (from `~/Project/Github/CJNetwork`)
   - CocoaAsyncSocket (~> 7.4.1)
   - CQDemoKit/Home_Base (~> 0.3.1)
   - Masonry
@@ -112,6 +114,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   CJNetwork:
     :path: "~/Project/Github/CJNetwork"
+  CJNetworkClient:
+    :path: "~/Project/Github/CJNetwork"
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -120,7 +124,8 @@ SPEC CHECKSUMS:
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
   CJFoundation: 53b4df7152c6d6fd776f55f387c67f431b8574bd
   CJMonitor: 9f770c8334f07f237281775b50f0597e5c50b3a0
-  CJNetwork: c5dc78713a8e65ae4022025e998f48c2fa11b72d
+  CJNetwork: 44d3056c70d4f09eed7cce16aef8deb999400376
+  CJNetworkClient: 8b684dd29b696f84146772731eaafe6a9588021e
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQDemoKit: 939ad9b106b105b875a77a3e1ab21bfbed964c27
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -130,6 +135,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: fa55ae599f987ee36859d30fb4b74311ce2f650c
+PODFILE CHECKSUM: c8797829087d30eca3f18c6ef2f2fe75857d28a6
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

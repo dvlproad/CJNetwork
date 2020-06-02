@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CJNetwork/CJNetworkClient+SuccessFailure.h>
+#import <CJNetworkClient/CJNetworkClient+SuccessFailure.h>
 
 @interface TestNetworkClient : CJNetworkClient {
     
