@@ -12,11 +12,11 @@
 //  或者您进一步的自己通过实现一个NetworkEnvironmentManager来控制着这两个参数的变化
 
 #import <Foundation/Foundation.h>
-#import "AFHTTPSessionManager+CJSerializerEncrypt.h"
-#import "AFHTTPSessionManager+CJUploadFile.h"
-#import "CJResponseModel.h"
+#import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
+#import <CJNetwork/AFHTTPSessionManager+CJUploadFile.h>
 
 #import "CJRequestSettingModel.h"
+#import "CJResponseModel.h"
 
 typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
     CJResponeFailureTypeUncheck = 0,            /**< 未进行是否等失败判断 */

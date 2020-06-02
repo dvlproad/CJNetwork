@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CJRequestCacheSettingModel.h"  // 网络请求中的缓存相关设置
-#import "CJRequestLogSettingModel.h"    // 网络请求中的Log相关设置
-#import "CJRequestInfoModel.h"
+#import <CJNetwork/CJRequestCacheSettingModel.h>    // 网络请求中的缓存相关设置
+#import <CJNetwork/CJRequestLogSettingModel.h>      // 网络请求中的Log相关设置
+#import <CJNetwork/CJRequestInfoModel.h>            // 网络请求的整体信息(包括请求前的request信息和请求后的reponse信息)
 
 @interface CJRequestSettingModel : NSObject {
     

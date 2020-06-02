@@ -8,8 +8,7 @@
 
 #import "CJNetworkClient.h"
 #import <objc/runtime.h>
-
-#import "CJRequestSimulateUtil.h"
+#import <CJNetwork/CJRequestSimulateUtil.h>
 
 @interface CJNetworkClient () {
     

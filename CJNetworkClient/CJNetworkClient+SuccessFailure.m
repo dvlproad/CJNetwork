@@ -7,7 +7,7 @@
 //
 
 #import "CJNetworkClient+SuccessFailure.h"
-#import "CJRequestSimulateUtil.h"
+#import <CJNetwork/CJRequestSimulateUtil.h>
 
 @implementation CJNetworkClient (SuccessFailure)
 
