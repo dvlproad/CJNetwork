@@ -14,13 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AFHTTPSessionManager (CJUploadFile)
 
-/**
+/*
  *  上传文件的请求方法：除了上传文件，还对上传过程中的各个时刻信息的进行保存(momentInfo：上传请求的各个时刻信息）
  *  @brief 回调中momentInfoOwner其实就是传进来的fileValueOwner
  *
  *  @param Url                  Url
  *  @param urlParams            urlParams(需要拼接到url后的参数)
  *  @param formParams           formParams(除uploadFileModels中的key之外需要作为表单提交的参数)
+ *  @param headers              headers
  *  @param cacheSettingModel    cacheSettingModel
  *  @param logType              logType
  *  @param fileValueOwner       要操作的上传模型组uploadFileModels的拥有者，fileValueOwner的uploadFileModels有值，而uploadFileModels中的operation和momentInfo是在请求过程中生成的（在执行过程中上传请求的各个时刻信息(正在上传、上传完成)的保存位置会被保存到此拥有者下）
@@ -32,18 +33,20 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSURLSessionDataTask *)cj_uploadUrl:(NSString *)Url
                                       urlParams:(nullable id)urlParams
                                      formParams:(nullable id)formParams
+                                        headers:(nullable NSDictionary <NSString *, NSString *> *)headers
                               cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                         logType:(CJRequestLogType)logType
                                  fileValueOwner:(nullable CJUploadFileModelsOwner *)fileValueOwner
                     uploadMomentInfoChangeBlock:(nullable void(^)(CJUploadFileModelsOwner * _Nonnull momentInfoOwner))uploadMomentInfoChangeBlock
            getUploadMomentInfoFromResopnseBlock:(nullable CJUploadMomentInfo * _Nonnull (^)(id _Nonnull responseObject))getUploadMomentInfoFromResopnseBlock;
 
-/**
+/*
  *  上传文件的请求方法：只是上传文件，不对上传过程中的各个时刻信息的进行保存
  *
  *  @param Url                  Url
  *  @param urlParams            urlParams(需要拼接到url后的参数)
  *  @param formParams           formParams(除uploadFileModels中的key之外需要作为表单提交的参数)
+ *  @param headers              headers
  *  @param uploadFileModels     文件数据：要上传的数据组uploadFileModels
  *  @param cacheSettingModel    cacheSettingModel
  *  @param logType              logType
@@ -56,6 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSURLSessionDataTask *)cj_uploadUrl:(NSString *)Url
                                       urlParams:(nullable id)urlParams
                                      formParams:(nullable id)formParams
+                                        headers:(nullable NSDictionary <NSString *, NSString *> *)headers
                                uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                               cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                         logType:(CJRequestLogType)logType

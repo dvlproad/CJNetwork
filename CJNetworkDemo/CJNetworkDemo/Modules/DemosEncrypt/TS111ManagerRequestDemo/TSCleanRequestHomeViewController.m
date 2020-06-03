@@ -70,7 +70,9 @@
         @"code": @"utf-8",
         @"q": @"玩具车"
     };
-    [manager cj_requestUrl:Url params:allParams method:CJRequestMethodGET cacheSettingModel:nil logType:CJRequestLogTypeSuppendWindow progress:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
+    NSDictionary<NSString *, NSString *> *headers = @{};
+    
+    [manager cj_requestUrl:Url params:allParams headers:headers method:CJRequestMethodGET cacheSettingModel:nil logType:CJRequestLogTypeSuppendWindow progress:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSString *message = [NSString stringWithFormat:@"GET请求测试成功。。。\n%@", successRequestInfo.networkLogString];
         [self __showResponseLogMessage:message];
     } failure:^(CJFailureRequestInfo * _Nullable failureRequestInfo) {
@@ -89,7 +91,9 @@
         @"page": @(1),
         @"count": @(5)
     };
-    [manager cj_requestUrl:Url params:allParams method:CJRequestMethodPOST cacheSettingModel:nil logType:CJRequestLogTypeSuppendWindow progress:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
+    NSDictionary<NSString *, NSString *> *headers = @{};
+    
+    [manager cj_requestUrl:Url params:allParams headers:headers method:CJRequestMethodPOST cacheSettingModel:nil logType:CJRequestLogTypeSuppendWindow progress:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSString *message = [NSString stringWithFormat:@"POST请求测试成功。。。\n%@", successRequestInfo.networkLogString];
         [self __showResponseLogMessage:message];
     } failure:^(CJFailureRequestInfo * _Nullable failureRequestInfo) {

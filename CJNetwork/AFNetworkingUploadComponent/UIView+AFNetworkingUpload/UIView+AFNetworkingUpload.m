@@ -16,6 +16,7 @@
                                   Url:(NSString *)Url
                             urlParams:(nullable id)urlParams
                            formParams:(nullable id)formParams
+                              headers:(nullable NSDictionary <NSString *, NSString *> *)headers
                     cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                               logType:(CJRequestLogType)logType
                        fileValueOwner:(CJUploadFileModelsOwner *)fileValueOwner
@@ -29,6 +30,7 @@
         [manager cj_uploadUrl:Url
                     urlParams:urlParams
                    formParams:formParams
+                      headers:headers
             cacheSettingModel:cacheSettingModel
                       logType:logType
                fileValueOwner:fileValueOwner
@@ -50,6 +52,7 @@ getUploadMomentInfoFromResopnseBlock:getUploadMomentInfoFromResopnseBlock];
         [manager cj_uploadUrl:Url
                     urlParams:urlParams
                    formParams:formParams
+                      headers:headers
             cacheSettingModel:cacheSettingModel
                       logType:logType
                fileValueOwner:fileValueOwner

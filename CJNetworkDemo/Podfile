@@ -1,4 +1,4 @@
-platform :ios, '8.0'
+platform :ios, '9.0'
 #use_frameworks!
 inhibit_all_warnings!
 
@@ -29,6 +29,7 @@ target 'CJNetworkDemo' do
     pod 'MJExtension'
 #    pod 'JSONModel', '~> 1.1.0'
 #    pod 'Mantle', '~> 2.1.0'
+  pod 'AFNetworking', '~> 4.0.1'
 
     pod 'MBProgressHUD'
     pod 'SVProgressHUD'
@@ -38,7 +39,7 @@ target 'CJNetworkDemo' do
     pod 'CJBaseUtil',     :subspecs => ['CJIndentedStringUtil', 'CJDataUtil']
     pod 'CJFoundation',   :subspecs => ['NSString']
     pod 'CJBaseHelper',   :subspecs => ['DeviceCJHelper', 'NSObjectCJHelper', 'AuthorizationCJHelper']
-    pod 'CQDemoKit',      '~> 0.3.1',      :subspecs => ['Home_Base']
+    pod 'CQDemoKit',      '~> 0.3.2',      :subspecs => ['Home_Base']
     
     pod 'CJMonitor'
     

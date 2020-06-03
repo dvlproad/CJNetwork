@@ -179,10 +179,12 @@
 //    if (urlParams && self.urlParamsHandle) {
 //        lastUrlParams = self.urlParamsHandle(urlParams);
 //    }
+    NSDictionary<NSString *, NSString *> *headers = @{};
+    
     CJRequestCacheSettingModel *cacheSettingModel = settingModel.requestCacheModel;
     CJRequestLogType logType = settingModel.logType;
     
-    return [manager cj_uploadUrl:Url urlParams:lastUrlParams formParams:formParams uploadFileModels:uploadFileModels cacheSettingModel:cacheSettingModel logType:logType progress:uploadProgress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
+    return [manager cj_uploadUrl:Url urlParams:lastUrlParams formParams:formParams headers:headers uploadFileModels:uploadFileModels cacheSettingModel:cacheSettingModel logType:logType progress:uploadProgress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
         [self __dealSuccessRequestInfo:successNetworkInfo
           getSuccessResponseModelBlock:self.getSuccessResponseModelBlock
              checkIsCommonFailureBlock:self.checkIsCommonFailureBlock
@@ -308,8 +310,10 @@
     CJRequestLogType logType = settingModel.logType;
     void (^progress)(NSProgress * _Nonnull) = settingModel.uploadProgress;
     
+    NSDictionary<NSString *, NSString *> *headers = @{};
+    
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cj_requestUrl:Url params:allParams method:method cacheSettingModel:cacheSettingModel logType:logType progress:progress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
+    [manager cj_requestUrl:Url params:allParams headers:headers method:method cacheSettingModel:cacheSettingModel logType:logType progress:progress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
         [self __dealSuccessRequestInfo:successNetworkInfo
           getSuccessResponseModelBlock:self.getSuccessResponseModelBlock
              checkIsCommonFailureBlock:self.checkIsCommonFailureBlock

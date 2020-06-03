@@ -183,6 +183,7 @@
         @"q": @"玩具车",
 //        @"m_requestIndex": @(requestIndex),
     };
+    NSDictionary<NSString *, NSString *> *headers = @{};
     
     CJRequestCacheSettingModel *requestCacheModel = [[CJRequestCacheSettingModel alloc] init];
     if (useCache) {
@@ -192,7 +193,7 @@
         requestCacheModel.cacheStrategy = CJRequestCacheStrategyNoneCache;
     }
     
-    [manager cj_requestUrl:Url params:allParams method:CJRequestMethodGET cacheSettingModel:requestCacheModel logType:CJRequestLogTypeSuppendWindow progress:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
+    [manager cj_requestUrl:Url params:allParams headers:headers method:CJRequestMethodGET cacheSettingModel:requestCacheModel logType:CJRequestLogTypeSuppendWindow progress:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSDictionary *responseDictionary = successRequestInfo.responseObject;
         
         TS113CacheResponseModel *responseModel = [[TS113CacheResponseModel alloc] init];

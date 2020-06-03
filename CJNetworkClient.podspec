@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   #验证方法：pod lib lint CJNetworkClient.podspec --allow-warnings --use-libraries --verbose
   s.name         = "CJNetworkClient"
-  s.version      = "1.1.0-beta.1"
+  s.version      = "1.2.0-beta.1"
   s.summary      = "网络请求的管理类：一个基于CJNetwork而封装的网络请求接口管理库"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -19,9 +19,9 @@ Pod::Spec.new do |s|
                    * Finally, don't worry about the indent, CocoaPods strips it!
                    DESC
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "9.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkClient_1.1.0-beta.1" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkClient_1.2.0-beta.1" }
   # s.source_files  = "CJNetworkClient/*.{h,m}"
   s.frameworks = 'UIKit'
 

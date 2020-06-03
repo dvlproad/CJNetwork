@@ -1,18 +1,18 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - CJBaseHelper/AuthorizationCJHelper (0.1.4)
   - CJBaseHelper/DeviceCJHelper (0.1.4)
@@ -63,7 +63,7 @@ PODS:
     - CocoaAsyncSocket/RunLoop
   - CocoaAsyncSocket/GCD (7.4.3)
   - CocoaAsyncSocket/RunLoop (7.4.3)
-  - CQDemoKit/Home_Base (0.3.1):
+  - CQDemoKit/Home_Base (0.3.2):
     - CJBaseUtil/CJDataUtil
     - Masonry
   - Masonry (1.1.0)
@@ -74,6 +74,7 @@ PODS:
   - YYCache (1.0.4)
 
 DEPENDENCIES:
+  - AFNetworking (~> 4.0.1)
   - CJBaseHelper/AuthorizationCJHelper
   - CJBaseHelper/DeviceCJHelper
   - CJBaseHelper/NSObjectCJHelper
@@ -87,7 +88,7 @@ DEPENDENCIES:
   - CJNetwork (from `~/Project/Github/CJNetwork`)
   - CJNetworkClient (from `~/Project/Github/CJNetwork`)
   - CocoaAsyncSocket (~> 7.4.1)
-  - CQDemoKit/Home_Base (~> 0.3.1)
+  - CQDemoKit/Home_Base (~> 0.3.2)
   - Masonry
   - MBProgressHUD
   - MJExtension
@@ -118,16 +119,16 @@ EXTERNAL SOURCES:
     :path: "~/Project/Github/CJNetwork"
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   CJBaseHelper: dd715e18591da9df5d06364098300591220f0535
   CJBaseUIKit: d4945467678c73b872c7ddfb5367d4063ff28add
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
   CJFoundation: 53b4df7152c6d6fd776f55f387c67f431b8574bd
   CJMonitor: 9f770c8334f07f237281775b50f0597e5c50b3a0
-  CJNetwork: 44d3056c70d4f09eed7cce16aef8deb999400376
+  CJNetwork: 4a77e589b995206c518e7bf1076860c182458e07
   CJNetworkClient: 8b684dd29b696f84146772731eaafe6a9588021e
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
-  CQDemoKit: 939ad9b106b105b875a77a3e1ab21bfbed964c27
+  CQDemoKit: 35f518bd6537667e72aad0e682e57cd32dde4a03
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
@@ -135,6 +136,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: c8797829087d30eca3f18c6ef2f2fe75857d28a6
+PODFILE CHECKSUM: 050d6dc44269266748838b5b554edf3527b07da4
 
 COCOAPODS: 1.9.3

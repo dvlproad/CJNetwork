@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIView (AFNetworkingUpload)
 
 #pragma mark - TODO:有上传操作的那个视图要重写的方法
-/**
+/*
  *  创建上传请求，并利用请求过程中的各个时刻数据同步更新uploadProgressView视图
  *
  *  @param uploadProgressView   上传请求的各个时刻信息(正在上传、上传完成)要用来设置的视图
@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param Url                  Url
  *  @param urlParams            urlParams(需要拼接到url后的参数)
  *  @param formParams           formParams(除uploadFileModels中的key之外需要作为表单提交的参数)
+ *  @param headers              headers
  *  @param cacheSettingModel    cacheSettingModel
  *  @param logType              logType
  *  @param fileValueOwner       要操作的上传模型组uploadFileModels的拥有者，fileValueOwner的uploadFileModels有值，而uploadFileModels中的operation和momentInfo是在请求过程中生成的（在执行过程中上传请求的各个时刻信息(正在上传、上传完成)的保存位置会被保存到此拥有者下）
@@ -34,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
                                   Url:(NSString *)Url
                             urlParams:(nullable id)urlParams
                            formParams:(nullable id)formParams
+                              headers:(nullable NSDictionary <NSString *, NSString *> *)headers
                     cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                               logType:(CJRequestLogType)logType
                        fileValueOwner:(CJUploadFileModelsOwner *)fileValueOwner

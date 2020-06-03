@@ -13,13 +13,14 @@
 /* 完整的描述请参见文件头部 */
 - (nullable NSURLSessionDataTask *)cj_getUrl:(NSString *)Url
                                       params:(nullable NSDictionary *)allParams
+                                     headers:(nullable NSDictionary <NSString *, NSString *> *)headers
                            cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                      logType:(CJRequestLogType)logType
                                     progress:(nullable void (^)(NSProgress * _Nullable))progress
                                      success:(nullable void (^)(id _Nullable responseObject))success
                                      failure:(nullable void (^)(NSString *errorMessage))failure
 {
-    return [self cj_requestUrl:Url params:allParams method:CJRequestMethodGET cacheSettingModel:cacheSettingModel logType:logType progress:progress success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
+    return [self cj_requestUrl:Url params:allParams headers:headers method:CJRequestMethodGET cacheSettingModel:cacheSettingModel logType:logType progress:progress success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSDictionary *responseDictionary = successRequestInfo.responseObject;
         //NSDictionary *networkLogString = successRequestInfo.networkLogString;
         if (success) {
@@ -37,13 +38,14 @@
 /** 完整的描述请参见文件头部 */
 - (nullable NSURLSessionDataTask *)cj_postUrl:(NSString *)Url
                                        params:(nullable id)allParams
+                                      headers:(nullable NSDictionary <NSString *, NSString *> *)headers
                             cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                       logType:(CJRequestLogType)logType
                                      progress:(void (^)(NSProgress * _Nonnull))progress
                                       success:(nullable void (^)(id _Nullable responseObject))success
                                       failure:(nullable void (^)(NSString *errorMessage))failure
 {
-    return [self cj_requestUrl:Url params:allParams method:CJRequestMethodPOST cacheSettingModel:cacheSettingModel logType:logType progress:progress success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
+    return [self cj_requestUrl:Url params:allParams headers:headers method:CJRequestMethodPOST cacheSettingModel:cacheSettingModel logType:logType progress:progress success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSDictionary *responseDictionary = successRequestInfo.responseObject;
         //NSDictionary *networkLogString = successRequestInfo.networkLogString;
         if (success) {
@@ -61,6 +63,7 @@
 
 - (nullable NSURLSessionDataTask *)cj_requestUrl:(NSString *)Url
                                           params:(nullable id)allParams
+                                         headers:(nullable NSDictionary <NSString *, NSString *> *)headers
                                           method:(CJRequestMethod)method
                               cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                          logType:(CJRequestLogType)logType
@@ -77,7 +80,7 @@
         void (^downloadProgress)(NSProgress * _Nonnull) = progress;
         
         NSURLSessionDataTask *URLSessionDataTask =
-        [self GET:Url parameters:allParams progress:downloadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self GET:Url parameters:allParams headers:headers progress:downloadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [self __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:allParams cacheSettingModel:cacheSettingModel logType:logType success:success];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -90,7 +93,7 @@
         void (^uploadProgress)(NSProgress * _Nonnull) = progress;
         
         NSURLSessionDataTask *URLSessionDataTask =
-        [self POST:Url parameters:allParams progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self POST:Url parameters:allParams headers:headers progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [self __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:allParams cacheSettingModel:cacheSettingModel logType:logType success:success];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

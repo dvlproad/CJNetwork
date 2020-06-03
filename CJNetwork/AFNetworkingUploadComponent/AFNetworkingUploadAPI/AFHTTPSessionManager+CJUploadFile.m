@@ -15,6 +15,7 @@
 - (nullable NSURLSessionDataTask *)cj_uploadUrl:(NSString *)Url
                                       urlParams:(nullable id)urlParams
                                      formParams:(nullable id)formParams
+                                        headers:(nullable NSDictionary <NSString *, NSString *> *)headers
                               cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                         logType:(CJRequestLogType)logType
                                  fileValueOwner:(nullable CJUploadFileModelsOwner *)fileValueOwner
@@ -56,7 +57,7 @@
     
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [self cj_uploadUrl:Url urlParams:urlParams formParams:formParams uploadFileModels:fileValueOwner.uploadFileModels cacheSettingModel:cacheSettingModel logType:logType progress:uploadingBlock success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
+    [self cj_uploadUrl:Url urlParams:urlParams formParams:formParams headers:headers uploadFileModels:fileValueOwner.uploadFileModels cacheSettingModel:cacheSettingModel logType:logType progress:uploadingBlock success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         if (getUploadMomentInfoFromResopnseBlock) {
             CJUploadMomentInfo *momentInfo = getUploadMomentInfoFromResopnseBlock(successRequestInfo.responseObject);
             uploadCompleteBlock(momentInfo);
@@ -81,6 +82,7 @@
 - (nullable NSURLSessionDataTask *)cj_uploadUrl:(NSString *)Url
                                       urlParams:(nullable id)urlParams
                                      formParams:(nullable id)formParams
+                                        headers:(nullable NSDictionary <NSString *, NSString *> *)headers
                                uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                               cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                         logType:(CJRequestLogType)logType
@@ -93,7 +95,7 @@
     }
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [self POST:Url parameters:formParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+    [self POST:Url parameters:formParams headers:headers constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
     {
         for (CJUploadFileModel *uploadFileModel in uploadFileModels) {
             NSData *data = uploadFileModel.uploadItemData;
@@ -134,7 +136,6 @@
                 }
             }
         }
-        
     } progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:formParams cacheSettingModel:cacheSettingModel logType:logType success:success];
         
