@@ -51,9 +51,9 @@ PODS:
     - YYCache
   - CJNetwork/CJRequestUtil (0.7.1-beta.1):
     - CJNetwork/CJNetworkCommon
-  - CJNetworkClient (1.1.0-beta.1):
-    - CJNetworkClient/CJNetworkClient (= 1.1.0-beta.1)
-  - CJNetworkClient/CJNetworkClient (1.1.0-beta.1):
+  - CJNetworkClient (1.2.0-beta.1):
+    - CJNetworkClient/CJNetworkClient (= 1.2.0-beta.1)
+  - CJNetworkClient/CJNetworkClient (1.2.0-beta.1):
     - CJNetwork/AFNetworkingSerializerEncrypt (~> 0.7.1-beta.1)
     - CJNetwork/AFNetworkingUploadComponent (~> 0.7.1-beta.1)
   - CocoaAsyncSocket (7.4.3):
@@ -63,9 +63,27 @@ PODS:
     - CocoaAsyncSocket/RunLoop
   - CocoaAsyncSocket/GCD (7.4.3)
   - CocoaAsyncSocket/RunLoop (7.4.3)
-  - CQDemoKit/Home_Base (0.3.2):
-    - CJBaseUtil/CJDataUtil
+  - CQDemoKit/BaseUtil (0.5.2)
+  - CQDemoKit/BaseVC (0.5.2):
+    - CQDemoKit/BaseVC/Base (= 0.5.2)
+    - CQDemoKit/BaseVC/Collection (= 0.5.2)
+    - CQDemoKit/BaseVC/ScrollView (= 0.5.2)
+    - CQDemoKit/BaseVC/TableView (= 0.5.2)
+    - CQDemoKit/BaseVC/TextView (= 0.5.2)
+  - CQDemoKit/BaseVC/Base (0.5.2):
     - Masonry
+  - CQDemoKit/BaseVC/Collection (0.5.2):
+    - CJBaseUtil/CJDataUtil
+    - CQDemoKit/BaseVC/Base
+  - CQDemoKit/BaseVC/ScrollView (0.5.2):
+    - CQDemoKit/BaseVC/Base
+  - CQDemoKit/BaseVC/TableView (0.5.2):
+    - CJBaseUtil/CJDataUtil
+    - CQDemoKit/BaseVC/Base
+  - CQDemoKit/BaseVC/TextView (0.5.2):
+    - CJBaseUtil/CJDataUtil
+    - CQDemoKit/BaseUtil
+    - CQDemoKit/BaseVC/Base
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJExtension (3.2.1)
@@ -88,7 +106,7 @@ DEPENDENCIES:
   - CJNetwork (from `~/Project/Github/CJNetwork`)
   - CJNetworkClient (from `~/Project/Github/CJNetwork`)
   - CocoaAsyncSocket (~> 7.4.1)
-  - CQDemoKit/Home_Base (~> 0.3.2)
+  - CQDemoKit/BaseVC (~> 0.5.2)
   - Masonry
   - MBProgressHUD
   - MJExtension
@@ -96,6 +114,8 @@ DEPENDENCIES:
   - SVProgressHUD
 
 SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - CQDemoKit
   trunk:
     - AFNetworking
     - CJBaseHelper
@@ -104,7 +124,6 @@ SPEC REPOS:
     - CJFoundation
     - CJMonitor
     - CocoaAsyncSocket
-    - CQDemoKit
     - Masonry
     - MBProgressHUD
     - MJExtension
@@ -126,9 +145,9 @@ SPEC CHECKSUMS:
   CJFoundation: 53b4df7152c6d6fd776f55f387c67f431b8574bd
   CJMonitor: 9f770c8334f07f237281775b50f0597e5c50b3a0
   CJNetwork: 4a77e589b995206c518e7bf1076860c182458e07
-  CJNetworkClient: 8b684dd29b696f84146772731eaafe6a9588021e
+  CJNetworkClient: f511c88a87a8b9a0753856131be3bd79cb32fa58
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
-  CQDemoKit: 35f518bd6537667e72aad0e682e57cd32dde4a03
+  CQDemoKit: 94f6c3052a056481c0d79e2db5d50130d9e99a91
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
@@ -136,6 +155,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 050d6dc44269266748838b5b554edf3527b07da4
+PODFILE CHECKSUM: bcdf013707a1739182647ca320cf553e96e305ea
 
 COCOAPODS: 1.9.3

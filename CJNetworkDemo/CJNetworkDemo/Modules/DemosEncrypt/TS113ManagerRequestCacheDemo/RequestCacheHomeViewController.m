@@ -61,7 +61,7 @@
         
     } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
         if (isRequestFailure) {
-            [CJUIKitAlertUtil showAlertInViewController:self
+            [CJUIKitAlertUtil showCancleOKAlertInViewController:self
                                               withTitle:@"网络请求失败，无法测试'设置的缓存过期时间是否有效'的问题，请先保证网络请求成功"
                                                 message:errorMessage
                                             cancleBlock:nil
@@ -221,7 +221,7 @@
     if (!useAlert) {
         [CJUIKitToastUtil showMessage:message];
     } else {
-        [CJUIKitAlertUtil showAlertInViewController:self
+        [CJUIKitAlertUtil showCancleOKAlertInViewController:self
                                           withTitle:message
                                             message:nil
                                         cancleBlock:nil

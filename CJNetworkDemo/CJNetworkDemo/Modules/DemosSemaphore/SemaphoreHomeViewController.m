@@ -511,7 +511,7 @@
         [self startTestConcurrenceCount];
     } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
         if (isRequestFailure) {
-            [CJUIKitAlertUtil showAlertInViewController:self
+            [CJUIKitAlertUtil showCancleOKAlertInViewController:self
                                               withTitle:@"网络请求失败，无法测试'网络相关'的问题，请先保证网络请求成功"
                                                 message:errorMessage
                                             cancleBlock:nil

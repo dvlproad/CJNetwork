@@ -11,12 +11,29 @@
 @implementation CJUIKitAlertUtil
 
 #pragma mark - Alert
-/// 显示系统AlertType弹框
-+ (void)showAlertInViewController:(UIViewController *)viewController
-                        withTitle:(NSString *)title
-                          message:(NSString *)message
-                      cancleBlock:(void(^)(void))cancleBlock
-                          okBlock:(void(^)(void))okBlock
+/// 显示系统AlertType弹框（我知道了）
++ (void)showIKnowAlertInViewController:(UIViewController *)viewController
+                             withTitle:(NSString *)title
+                            iKnowBlock:(void(^)(void))iKnowBlock
+{
+    UIAlertAction *iKnowAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"我知道了", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        iKnowBlock ? iKnowBlock():nil;
+    }];
+    
+    NSArray<UIAlertAction *> *alertActions = @[iKnowAction];
+    [self __showControllerWithTitle:title
+                            message:nil
+                     preferredStyle:UIAlertControllerStyleAlert
+                       alertActions:(NSArray<UIAlertAction *> *)alertActions
+                   inViewController:viewController];
+}
+
+/// 显示系统AlertType弹框（取消+确认）
++ (void)showCancleOKAlertInViewController:(UIViewController *)viewController
+                                withTitle:(NSString *)title
+                                  message:(NSString *)message
+                              cancleBlock:(void(^)(void))cancleBlock
+                                  okBlock:(void(^)(void))okBlock;
 {
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"取消", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         cancleBlock ? cancleBlock():nil;
