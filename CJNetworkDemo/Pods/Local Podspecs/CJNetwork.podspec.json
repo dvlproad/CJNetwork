@@ -58,6 +58,9 @@
       "dependencies": {
         "CJNetwork/CJNetworkCommon": [
 
+        ],
+        "CJNetworkFileModel": [
+
         ]
       }
     },

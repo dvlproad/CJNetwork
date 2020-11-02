@@ -25,8 +25,9 @@ end
 target 'CJNetworkDemo' do
   pod 'CQDemoKit',      '~> 0.5.2',     :subspecs => ['BaseVC']
   
-  pod 'CJNetwork',        :path => '~/Project/Github/CJNetwork’
-  pod 'CJNetworkClient',  :path => '~/Project/Github/CJNetwork’
+  pod 'CJNetwork',          :path => '../'
+  pod 'CJNetworkClient',    :path => '../'
+  pod 'CJNetworkFileModel', :path => '../'
   pod 'CocoaAsyncSocket', '~> 7.4.1'
   pod 'AFNetworking',     '~> 4.0.1'
   pod 'MJExtension'

@@ -64,6 +64,7 @@ Pod::Spec.new do |s|
   s.subspec 'AFNetworkingUploadComponent' do |ss|
     ss.source_files = "CJNetwork/AFNetworkingUploadComponent/**/*.{h,m}"
     ss.dependency 'CJNetwork/CJNetworkCommon'
+    ss.dependency "CJNetworkFileModel"
   end
 
 

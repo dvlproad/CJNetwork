@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AFNetworking/AFNetworking.h>
 
 #import "CJUploadFileModel.h"   //要上传的数据模型
 #import "CJUploadMomentInfo.h"  //上传请求的时刻信息（已包括 CJUploadMomentState 和 responseModel(已转换成对象后的model)）

@@ -44,6 +44,7 @@ PODS:
     - CJNetwork/CJNetworkCommon
   - CJNetwork/AFNetworkingUploadComponent (0.7.1-beta.1):
     - CJNetwork/CJNetworkCommon
+    - CJNetworkFileModel
   - CJNetwork/CJCacheManager (0.7.1-beta.1)
   - CJNetwork/CJNetworkCommon (0.7.1-beta.1):
     - AFNetworking
@@ -56,6 +57,9 @@ PODS:
   - CJNetworkClient/CJNetworkClient (1.2.0-beta.1):
     - CJNetwork/AFNetworkingSerializerEncrypt (~> 0.7.1-beta.1)
     - CJNetwork/AFNetworkingUploadComponent (~> 0.7.1-beta.1)
+  - CJNetworkFileModel (0.1.0):
+    - CJNetworkFileModel/Upload (= 0.1.0)
+  - CJNetworkFileModel/Upload (0.1.0)
   - CocoaAsyncSocket (7.4.3):
     - CocoaAsyncSocket/All (= 7.4.3)
   - CocoaAsyncSocket/All (7.4.3):
@@ -103,8 +107,9 @@ DEPENDENCIES:
   - CJBaseUtil/CJIndentedStringUtil
   - CJFoundation/NSString
   - CJMonitor
-  - CJNetwork (from `~/Project/Github/CJNetwork`)
-  - CJNetworkClient (from `~/Project/Github/CJNetwork`)
+  - CJNetwork (from `../`)
+  - CJNetworkClient (from `../`)
+  - CJNetworkFileModel (from `../`)
   - CocoaAsyncSocket (~> 7.4.1)
   - CQDemoKit/BaseVC (~> 0.5.2)
   - Masonry
@@ -133,9 +138,11 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   CJNetwork:
-    :path: "~/Project/Github/CJNetwork"
+    :path: "../"
   CJNetworkClient:
-    :path: "~/Project/Github/CJNetwork"
+    :path: "../"
+  CJNetworkFileModel:
+    :path: "../"
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -144,8 +151,9 @@ SPEC CHECKSUMS:
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
   CJFoundation: 53b4df7152c6d6fd776f55f387c67f431b8574bd
   CJMonitor: 9f770c8334f07f237281775b50f0597e5c50b3a0
-  CJNetwork: 4a77e589b995206c518e7bf1076860c182458e07
+  CJNetwork: 594d52f7de18dbb1756b3d29f97b3fd137a647f8
   CJNetworkClient: f511c88a87a8b9a0753856131be3bd79cb32fa58
+  CJNetworkFileModel: c6c1a8c324a5b424b5318a5c2348b3937277ab33
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQDemoKit: 94f6c3052a056481c0d79e2db5d50130d9e99a91
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -155,6 +163,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: bcdf013707a1739182647ca320cf553e96e305ea
+PODFILE CHECKSUM: e2f8764eaafd61f4d8254f1afd9340d60401fe02
 
 COCOAPODS: 1.9.3
