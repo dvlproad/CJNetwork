@@ -8,7 +8,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import "AFHTTPSessionManager+CJRequestCommon.h"
-#import "CJUploadFileModelsOwner.h"    //上传请求的时刻信息要保存到的位置
+#import <CJNetworkFileModel/CJUploadFileModelsOwner.h>    //上传请求的时刻信息要保存到的位置
 
 NS_ASSUME_NONNULL_BEGIN
 

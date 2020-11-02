@@ -1,7 +1,8 @@
 Pod::Spec.new do |s|
-  #验证方法：pod lib lint CJNetwork.podspec --allow-warnings --use-libraries --verbose
+  #验证方法： pod lib lint CJNetwork.podspec --allow-warnings --use-libraries --verbose
+  #提交方法： pod trunk push CJNetwork.podspec --allow-warnings --use-libraries --verbose
   s.name         = "CJNetwork"
-  s.version      = "0.7.1-beta.1"
+  s.version      = "0.8.0-beta.2"
   s.summary      = "一个AFNetworking应用的封装(支持加解密、缓存、并发数控制)"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -26,7 +27,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "9.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.8.0-beta.1" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.8.0-beta.2" }
   s.source_files  = "CJNetwork/*.{h,m}"
   s.frameworks = 'UIKit'
 

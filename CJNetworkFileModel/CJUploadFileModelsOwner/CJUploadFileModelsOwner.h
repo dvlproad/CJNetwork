@@ -5,6 +5,9 @@
 //  Created by ciyouzen on 2016/06/07.
 //  Copyright © 2016年 dvlproad. All rights reserved.
 //
+//  要上传的文件的数据模型。目前会使用到本类的库目前有如下：
+//  ①网络请求库 CJNetwork
+//  ②图片选择上传库 CQImageAddDeleteListKit/AddDeletePickUpload
 
 #import <UIKit/UIKit.h>
 

@@ -28,8 +28,8 @@ target 'CJNetworkDemo' do
   pod 'CJNetwork',          :path => '../'
   pod 'CJNetworkClient',    :path => '../'
   pod 'CJNetworkFileModel', :path => '../'
-  pod 'CocoaAsyncSocket', '~> 7.4.1'
-  pod 'AFNetworking',     '~> 4.0.1'
+  pod 'CocoaAsyncSocket',   '~> 7.4.1'
+  pod 'AFNetworking',       '~> 4.0.1'
   pod 'MJExtension'
   
   pod 'MBProgressHUD'
