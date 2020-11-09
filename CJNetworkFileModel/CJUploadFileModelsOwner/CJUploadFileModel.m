@@ -37,7 +37,7 @@
 {
     NSAssert(localRelativePath != nil, @"本地相对路径错误");
     
-    NSString *localAbsolutePath = [[NSHomeDirectory() stringByAppendingPathComponent:localRelativePath] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *localAbsolutePath = [[NSHomeDirectory() stringByAppendingPathComponent:localRelativePath] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:localAbsolutePath];
     if (fileExists == NO) {
         NSAssert(NO, @"Error：要上传的文件不存在");

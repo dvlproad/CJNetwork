@@ -34,7 +34,7 @@
 - (NSString *)completeUrlWithApiSuffix:(NSString *)apiSuffix {
     NSString *baseUrl = [self getBaseUrl];
     
-    NSString *mainUrl = [[baseUrl stringByAppendingString:apiSuffix] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *mainUrl = [[baseUrl stringByAppendingString:apiSuffix] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     return mainUrl;
 }
 
@@ -56,7 +56,7 @@
 //    }
     
     NSString *baseUrl = [NSString stringWithFormat:@"%@://%@", environmentModel.schema, hostName];
-    baseUrl = [baseUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    baseUrl = [baseUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     return baseUrl;
 }
 

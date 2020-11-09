@@ -344,7 +344,7 @@
             [fullUrl appendFormat:@"%@", apiSuffix];
         }
     }
-    return [fullUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    return [fullUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     //return [environmentManager completeUrlWithApiSuffix:apiSuffix];
 }
 

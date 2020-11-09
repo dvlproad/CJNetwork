@@ -27,7 +27,7 @@
                                  failure:(nullable void (^)(NSString *errorMessage))failure
 {
     //NSString *Url = [[TestNetworkEnvironmentManager sharedInstance] completeUrlWithApiSuffix:apiSuffix];
-    NSString *Url = [[@"https://api.apiopen.top" stringByAppendingPathComponent:apiSuffix] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *Url = [[@"https://api.apiopen.top" stringByAppendingPathComponent:apiSuffix] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     return [self health_postUrl:Url params:params encrypt:encrypt success:success failure:failure];
 }
 
