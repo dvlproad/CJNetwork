@@ -35,23 +35,23 @@
     
     //异步任务的semaphore信号量使用
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"异步任务的semaphore信号量使用";
         
         {
-            CJModuleModel *semaphoreModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *semaphoreModule = [[CQDMModuleModel alloc] init];
             semaphoreModule.title = @"异步任务的semaphore:串行队列(正常使用)";
             semaphoreModule.selector = @selector(test_semaphore_asyncTask_serialQueue_normal);
             [sectionDataModel.values addObject:semaphoreModule];
         }
         {
-            CJModuleModel *semaphoreModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *semaphoreModule = [[CQDMModuleModel alloc] init];
             semaphoreModule.title = @"异步任务的semaphore:串行队列(特殊使用)";
             semaphoreModule.selector = @selector(test_semaphore_asyncTask_serialQueue_special);
             [sectionDataModel.values addObject:semaphoreModule];
         }
         {
-            CJModuleModel *semaphoreModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *semaphoreModule = [[CQDMModuleModel alloc] init];
             semaphoreModule.title = @"异步任务的semaphore:并发队列(特殊使用)";
             semaphoreModule.selector = @selector(test_semaphore_asyncTask_concurrentQueue_special);
             [sectionDataModel.values addObject:semaphoreModule];
@@ -62,23 +62,23 @@
     
     //同步任务的semaphore信号量使用
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"同步任务的semaphore信号量使用";
         
         {
-            CJModuleModel *semaphoreModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *semaphoreModule = [[CQDMModuleModel alloc] init];
             semaphoreModule.title = @"同步任务的semaphore:主队列";
             semaphoreModule.selector = @selector(test_semaphore_syncTask_mainQueue);
             [sectionDataModel.values addObject:semaphoreModule];
         }
         {
-            CJModuleModel *semaphoreModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *semaphoreModule = [[CQDMModuleModel alloc] init];
             semaphoreModule.title = @"同步任务的semaphore:串行队列";
             semaphoreModule.selector = @selector(test_semaphore_syncTask_serialQueue);
             [sectionDataModel.values addObject:semaphoreModule];
         }
         {
-            CJModuleModel *semaphoreModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *semaphoreModule = [[CQDMModuleModel alloc] init];
             semaphoreModule.title = @"同步任务的semaphore:并发队列";
             semaphoreModule.selector = @selector(test_semaphore_syncTask_concurrentQueue);
             [sectionDataModel.values addObject:semaphoreModule];
@@ -89,22 +89,22 @@
     
     // 测试更新Semaphore的值
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"测试更新Semaphore的值";
         {
-            CJModuleModel *semaphoreModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *semaphoreModule = [[CQDMModuleModel alloc] init];
             semaphoreModule.title = @"同步任务的semaphore:并发队列(错误示例!)";
             semaphoreModule.selector = @selector(test_updateSemaphoreCount_wrong);
             [sectionDataModel.values addObject:semaphoreModule];
         }
         {
-            CJModuleModel *semaphoreModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *semaphoreModule = [[CQDMModuleModel alloc] init];
             semaphoreModule.title = @"同步任务的semaphore:并发队列(错误示例修正!)";
             semaphoreModule.selector = @selector(test_updateSemaphoreCount_correct);
             [sectionDataModel.values addObject:semaphoreModule];
         }
         {
-            CJModuleModel *semaphoreModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *semaphoreModule = [[CQDMModuleModel alloc] init];
             semaphoreModule.title = @"同步任务的semaphore:并发队列(不加锁正确吗?)";
             semaphoreModule.selector = @selector(test_updateSemaphoreCount_nolock);
             [sectionDataModel.values addObject:semaphoreModule];
@@ -114,24 +114,24 @@
     
     //model模拟网络测试并发及拦截(Concurrence&Intercept)
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"model模拟网络测试并发及拦截(Concurrence&Intercept)";
         {
-            CJModuleModel *concurrenceModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *concurrenceModule = [[CQDMModuleModel alloc] init];
             concurrenceModule.title = @"model并发测试:设置(请一定要执行验证)";
             concurrenceModule.selector = @selector(model_testConcurrenceCount_setting);
             [sectionDataModel.values addObject:concurrenceModule];
         }
         
         {
-            CJModuleModel *concurrenceModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *concurrenceModule = [[CQDMModuleModel alloc] init];
             concurrenceModule.title = @"model并发测试:设置+改变(请一定要执行验证)";
             concurrenceModule.selector = @selector(model_testConcurrenceCount_setting_change);
             [sectionDataModel.values addObject:concurrenceModule];
         }
         
         {
-            CJModuleModel *concurrenceModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *concurrenceModule = [[CQDMModuleModel alloc] init];
             concurrenceModule.title = @"model并发测试:设置+改变+恢复(请一定要执行验证)";
             concurrenceModule.selector = @selector(model_testConcurrenceCount_setting_change_recover);
             [sectionDataModel.values addObject:concurrenceModule];
@@ -142,17 +142,17 @@
     
     //manager模拟网络测试并发及拦截(Concurrence&Intercept)
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"manager模拟网络测试并发及拦截(Concurrence&Intercept)";
         {
-            CJModuleModel *concurrenceModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *concurrenceModule = [[CQDMModuleModel alloc] init];
             concurrenceModule.title = @"manager并发测试:设置(请一定要执行验证)";
             concurrenceModule.selector = @selector(manager_testConcurrenceCount_simulateNetwork_withoutKepper);
             [sectionDataModel.values addObject:concurrenceModule];
         }
         
         {
-            CJModuleModel *interceptModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *interceptModule = [[CQDMModuleModel alloc] init];
             interceptModule.title = @"manager并发测试:设置+改变+恢复(请一定要执行验证)";
             interceptModule.selector = @selector(manager_testConcurrenceCount_simulateNetwork_withKepper);
             [sectionDataModel.values addObject:interceptModule];
@@ -163,11 +163,11 @@
     
     //自我服务器模拟网络并发及拦截测试(Concurrence&Intercept)
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"自我服务器模拟网络并发及拦截测试(Concurrence&Intercept)";
         
         {
-            CJModuleModel *concurrenceModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *concurrenceModule = [[CQDMModuleModel alloc] init];
             concurrenceModule.title = @"myNetwork并发测试:设置+改变+恢复(请一定要执行验证)";
             concurrenceModule.selector = @selector(realNetwork_testConcurrenceCount_withoutKepper);
             [sectionDataModel.values addObject:concurrenceModule];

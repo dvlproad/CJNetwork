@@ -33,10 +33,10 @@
     NSMutableArray *sectionDataModels = [[NSMutableArray alloc] init];
     //弹窗
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"断点续传相关(包含进度显示)";
         {
-            CJModuleModel *toastUtilModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *toastUtilModule = [[CQDMModuleModel alloc] init];
             toastUtilModule.title = @"使用AFN进行下载";
             //toastUtilModule.classEntry = [AFDownloadViewController class];
             toastUtilModule.selector = @selector(goAFDownloadViewController);
@@ -44,14 +44,14 @@
             [sectionDataModel.values addObject:toastUtilModule];
         }
         {
-            CJModuleModel *alertUtilModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *alertUtilModule = [[CQDMModuleModel alloc] init];
             alertUtilModule.title = @"断点续传(MQLResumeManager)";
             alertUtilModule.classEntry = [SessionDataTaskDownloadViewController class];
             alertUtilModule.isCreateByXib = YES;
             [sectionDataModel.values addObject:alertUtilModule];
         }
         {
-            CJModuleModel *alertUtilModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *alertUtilModule = [[CQDMModuleModel alloc] init];
             alertUtilModule.title = @"SessionDownloadTaskDownloadViewController";
             //alertUtilModule.classEntry = [SessionDownloadTaskDownloadViewController class];
             alertUtilModule.selector = @selector(goSessionDataTaskDownloadViewController);
@@ -59,7 +59,7 @@
             [sectionDataModel.values addObject:alertUtilModule];
         }
         {
-            CJModuleModel *alertUtilModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *alertUtilModule = [[CQDMModuleModel alloc] init];
             alertUtilModule.title = @"断点续传(HSDownloadManager)";
             alertUtilModule.classEntry = [DownloadListViewController class];
             alertUtilModule.isCreateByXib = YES;
@@ -70,10 +70,10 @@
     }
     
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"其他相关";
         {
-            CJModuleModel *toastUtilModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *toastUtilModule = [[CQDMModuleModel alloc] init];
             toastUtilModule.title = @"AFNDemoViewController";
             toastUtilModule.classEntry = [AFNDemoViewController class];
             toastUtilModule.isCreateByXib = YES;

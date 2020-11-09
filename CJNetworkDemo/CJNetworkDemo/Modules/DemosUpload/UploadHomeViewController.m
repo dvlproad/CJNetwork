@@ -23,10 +23,10 @@
     NSMutableArray *sectionDataModels = [[NSMutableArray alloc] init];
     //弹窗
     {
-//        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+//        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
 //        sectionDataModel.theme = @"Upload相关";
 //        {
-//            CJModuleModel *toastUtilModule = [[CJModuleModel alloc] init];
+//            CQDMModuleModel *toastUtilModule = [[CQDMModuleModel alloc] init];
 //            toastUtilModule.title = @"UploadViewController";
 //            toastUtilModule.classEntry = [UploadViewController class];
 //            [sectionDataModel.values addObject:toastUtilModule];

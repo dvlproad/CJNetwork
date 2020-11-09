@@ -12,7 +12,4 @@
     
 }
 
-/// 测试缓存
-- (void)testCacheTime;
-
 @end

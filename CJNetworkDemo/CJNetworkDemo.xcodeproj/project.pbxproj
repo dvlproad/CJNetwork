@@ -35,8 +35,6 @@
 		7846E39121A6AD5500D73F51 /* TestConcurrenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846E39021A6AD5500D73F51 /* TestConcurrenceModel.m */; };
 		785AB2F821C01318009938A4 /* TestNetworkEnvironmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AB2F721C01318009938A4 /* TestNetworkEnvironmentModel.m */; };
 		785AB2FD21C013B6009938A4 /* TestNetworkEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 785AB2FC21C013B6009938A4 /* TestNetworkEnvironmentManager.m */; };
-		785FECE421DDEDFC00975192 /* AppDelegate+StartUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 785FECE321DDEDFC00975192 /* AppDelegate+StartUp.m */; };
-		7868F1382121C61400A283EB /* AppDelegate+WindowRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1372121C61400A283EB /* AppDelegate+WindowRootViewController.m */; };
 		7868F1782121C79A00A283EB /* UploadHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1452121C79A00A283EB /* UploadHomeViewController.m */; };
 		7868F1792121C79A00A283EB /* SocketHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1482121C79A00A283EB /* SocketHomeViewController.m */; };
 		7868F17A2121C79A00A283EB /* SocketDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F14A2121C79A00A283EB /* SocketDemoViewController.xib */; };
@@ -55,10 +53,13 @@
 		7868F1922121C80500A283EB /* DownloadHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1902121C80500A283EB /* DownloadHomeViewController.m */; };
 		7868F1A82121D06C00A283EB /* AFNDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1A42121D06C00A283EB /* AFNDemoViewController.m */; };
 		7868F1AA2121D06C00A283EB /* AFNDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1A62121D06C00A283EB /* AFNDemoViewController.xib */; };
+		78715CC72559771100E32CD1 /* UIWindow+RootSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 78715CBD2559771100E32CD1 /* UIWindow+RootSetting.m */; };
+		78715CC82559771100E32CD1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78715CC12559771100E32CD1 /* MainViewController.m */; };
+		78715CC92559771100E32CD1 /* AppDelegate+StartUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 78715CC22559771100E32CD1 /* AppDelegate+StartUp.m */; };
+		78715CCB2559771100E32CD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78715CC52559771100E32CD1 /* AppDelegate.m */; };
 		789486272486BE330067AEE3 /* TS113CacheResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 789486262486BE330067AEE3 /* TS113CacheResponseModel.m */; };
 		78EB551F21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EB551E21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m */; };
 		78FC91FA1F54481E00033DEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91F91F54481E00033DEF /* main.m */; };
-		78FC91FD1F54481E00033DEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91FC1F54481E00033DEF /* AppDelegate.m */; };
 		78FC92001F54481E00033DEF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC91FF1F54481E00033DEF /* ViewController.m */; };
 		78FC92031F54481E00033DEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78FC92011F54481E00033DEF /* Main.storyboard */; };
 		78FC92131F54481E00033DEF /* CJNetworkDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC92121F54481E00033DEF /* CJNetworkDemoTests.m */; };
@@ -144,10 +145,6 @@
 		785AB2FA21C0135F009938A4 /* CJNetworkEnvironmentManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJNetworkEnvironmentManagerProtocol.h; sourceTree = "<group>"; };
 		785AB2FB21C013B6009938A4 /* TestNetworkEnvironmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNetworkEnvironmentManager.h; sourceTree = "<group>"; };
 		785AB2FC21C013B6009938A4 /* TestNetworkEnvironmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNetworkEnvironmentManager.m; sourceTree = "<group>"; };
-		785FECE221DDEDFC00975192 /* AppDelegate+StartUp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+StartUp.h"; sourceTree = "<group>"; };
-		785FECE321DDEDFC00975192 /* AppDelegate+StartUp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+StartUp.m"; sourceTree = "<group>"; };
-		7868F1362121C61400A283EB /* AppDelegate+WindowRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+WindowRootViewController.h"; sourceTree = "<group>"; };
-		7868F1372121C61400A283EB /* AppDelegate+WindowRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+WindowRootViewController.m"; sourceTree = "<group>"; };
 		7868F1442121C79A00A283EB /* UploadHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadHomeViewController.h; sourceTree = "<group>"; };
 		7868F1452121C79A00A283EB /* UploadHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadHomeViewController.m; sourceTree = "<group>"; };
 		7868F1472121C79A00A283EB /* SocketHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketHomeViewController.h; sourceTree = "<group>"; };
@@ -178,14 +175,20 @@
 		7868F1A42121D06C00A283EB /* AFNDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNDemoViewController.m; sourceTree = "<group>"; };
 		7868F1A62121D06C00A283EB /* AFNDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AFNDemoViewController.xib; sourceTree = "<group>"; };
 		7868F1A72121D06C00A283EB /* AFNDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNDemoViewController.h; sourceTree = "<group>"; };
+		78715CBD2559771100E32CD1 /* UIWindow+RootSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RootSetting.m"; sourceTree = "<group>"; };
+		78715CBE2559771100E32CD1 /* AppDelegate+StartUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+StartUp.h"; sourceTree = "<group>"; };
+		78715CBF2559771100E32CD1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		78715CC12559771100E32CD1 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		78715CC22559771100E32CD1 /* AppDelegate+StartUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+StartUp.m"; sourceTree = "<group>"; };
+		78715CC32559771100E32CD1 /* UIWindow+RootSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+RootSetting.h"; sourceTree = "<group>"; };
+		78715CC52559771100E32CD1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		78715CC62559771100E32CD1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		789486252486BE330067AEE3 /* TS113CacheResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS113CacheResponseModel.h; sourceTree = "<group>"; };
 		789486262486BE330067AEE3 /* TS113CacheResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TS113CacheResponseModel.m; sourceTree = "<group>"; };
 		78EB551D21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+TestConcurrence.h"; sourceTree = "<group>"; };
 		78EB551E21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestConcurrence.m"; sourceTree = "<group>"; };
 		78FC91F51F54481E00033DEF /* CJNetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CJNetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FC91F91F54481E00033DEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		78FC91FB1F54481E00033DEF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		78FC91FC1F54481E00033DEF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		78FC91FE1F54481E00033DEF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		78FC91FF1F54481E00033DEF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		78FC92021F54481E00033DEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -541,6 +544,21 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		78715CBC2559771100E32CD1 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				78715CBF2559771100E32CD1 /* AppDelegate.h */,
+				78715CC52559771100E32CD1 /* AppDelegate.m */,
+				78715CBE2559771100E32CD1 /* AppDelegate+StartUp.h */,
+				78715CC22559771100E32CD1 /* AppDelegate+StartUp.m */,
+				78715CC62559771100E32CD1 /* MainViewController.h */,
+				78715CC12559771100E32CD1 /* MainViewController.m */,
+				78715CC32559771100E32CD1 /* UIWindow+RootSetting.h */,
+				78715CBD2559771100E32CD1 /* UIWindow+RootSetting.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
 		78EB551C21A29A7800EEB853 /* NDM */ = {
 			isa = PBXGroup;
 			children = (
@@ -579,12 +597,7 @@
 		78FC91F71F54481E00033DEF /* CJNetworkDemo */ = {
 			isa = PBXGroup;
 			children = (
-				78FC91FB1F54481E00033DEF /* AppDelegate.h */,
-				78FC91FC1F54481E00033DEF /* AppDelegate.m */,
-				7868F1362121C61400A283EB /* AppDelegate+WindowRootViewController.h */,
-				7868F1372121C61400A283EB /* AppDelegate+WindowRootViewController.m */,
-				785FECE221DDEDFC00975192 /* AppDelegate+StartUp.h */,
-				785FECE321DDEDFC00975192 /* AppDelegate+StartUp.m */,
+				78715CBC2559771100E32CD1 /* AppDelegate */,
 				7868F1392121C79A00A283EB /* Modules */,
 				784652C71F5448FB00E20A27 /* Service */,
 				7801C0C821ABE04400045114 /* TempUtil */,
@@ -677,7 +690,6 @@
 				78FC91F11F54481E00033DEF /* Sources */,
 				78FC91F21F54481E00033DEF /* Frameworks */,
 				78FC91F31F54481E00033DEF /* Resources */,
-				DB2A29892A9970859113E842 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -842,24 +854,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DB2A29892A9970859113E842 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo-resources.sh",
-				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -879,7 +873,6 @@
 				158259E12484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.m in Sources */,
 				7868F17F2121C79A00A283EB /* SessionDownloadTaskDownloadViewController.m in Sources */,
 				80E7E62920ABCFBC000F762D /* AppInfoManager.m in Sources */,
-				78FC91FD1F54481E00033DEF /* AppDelegate.m in Sources */,
 				78FF35E721A91F07006DCEE7 /* SemaphoreHomeViewController.m in Sources */,
 				78FC91FA1F54481E00033DEF /* main.m in Sources */,
 				7868F1822121C79A00A283EB /* SessionDataTaskDownloadViewController.m in Sources */,
@@ -887,11 +880,12 @@
 				785AB2FD21C013B6009938A4 /* TestNetworkEnvironmentManager.m in Sources */,
 				158259E32484E8F500BA4B3D /* HealthResponseModel.m in Sources */,
 				158259DC2484E8F500BA4B3D /* TestNetworkClient.m in Sources */,
-				7868F1382121C61400A283EB /* AppDelegate+WindowRootViewController.m in Sources */,
-				785FECE421DDEDFC00975192 /* AppDelegate+StartUp.m in Sources */,
+				78715CCB2559771100E32CD1 /* AppDelegate.m in Sources */,
 				7868F1892121C79A00A283EB /* DownloadTableViewCell.m in Sources */,
 				78EB551F21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m in Sources */,
 				158259DE2484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.m in Sources */,
+				78715CC82559771100E32CD1 /* MainViewController.m in Sources */,
+				78715CC92559771100E32CD1 /* AppDelegate+StartUp.m in Sources */,
 				7846E38821A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.m in Sources */,
 				784653771F544A0100E20A27 /* HSSessionModel.m in Sources */,
 				785AB2F821C01318009938A4 /* TestNetworkEnvironmentModel.m in Sources */,
@@ -903,6 +897,7 @@
 				7846E39121A6AD5500D73F51 /* TestConcurrenceModel.m in Sources */,
 				158259DF2484E8F500BA4B3D /* TSCleanRequestHomeViewController.m in Sources */,
 				7868F1802121C79A00A283EB /* BaseDownloadViewController.m in Sources */,
+				78715CC72559771100E32CD1 /* UIWindow+RootSetting.m in Sources */,
 				784653781F544A0100E20A27 /* NSString+Hash.m in Sources */,
 				7846E38B21A6A56900D73F51 /* TestConcurrenceManager.m in Sources */,
 				784653751F544A0100E20A27 /* MQLResumeManager.m in Sources */,

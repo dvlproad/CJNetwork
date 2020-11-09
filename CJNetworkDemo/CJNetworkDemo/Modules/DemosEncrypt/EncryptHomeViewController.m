@@ -35,23 +35,23 @@
     
     // 网络请求(未封装时候)
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"未封装时候";
         
         {
-            CJModuleModel *requestModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];
             requestModule.title = @"测试网络请求(Manager)";
             requestModule.classEntry = [TSCleanRequestHomeViewController class];
             [sectionDataModel.values addObject:requestModule];
         }
         {
-            CJModuleModel *requestModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];
             requestModule.title = @"测试网络请求进阶之重复Repeat发送问题(Manager)";
             requestModule.classEntry = [TS11CleanRequestRepeatHomeViewController class];
             [sectionDataModel.values addObject:requestModule];
         }
         {
-            CJModuleModel *requestModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];
             requestModule.title = @"测试网络请求进阶之缓存Cache处理问题(Manager)";
             requestModule.content = @"(请一定要执行验证)";
             requestModule.classEntry = [RequestCacheHomeViewController class];
@@ -64,11 +64,11 @@
     
     // 网络请求(未封装时候)
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"自己一层封装";
         
         {
-            CJModuleModel *requestModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];
             requestModule.title = @"测试网络请求(MyNetworkClient)";
             requestModule.classEntry = [TS12MyNetworkClientHomeViewController class];
             [sectionDataModel.values addObject:requestModule];
@@ -79,11 +79,11 @@
     
     // 网络请求(未封装时候)
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"两层封装";
         
         {
-            CJModuleModel *requestModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];
             requestModule.title = @"测试网络请求(CJNetworkClient)--待添加";
 //            requestModule.classEntry = [TSCleanRequestHomeViewController class];
             [sectionDataModel.values addObject:requestModule];

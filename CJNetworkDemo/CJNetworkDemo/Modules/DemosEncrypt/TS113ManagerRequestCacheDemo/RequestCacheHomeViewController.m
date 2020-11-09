@@ -35,11 +35,11 @@
     
     //网络缓存时间相关(Cache)
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"网络缓存时间相关(Cache)";
         
         {
-            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
             loginModule.title = @"测试缓存时间(请一定要执行验证)";
             loginModule.selector = @selector(testCacheTime);
             [sectionDataModel.values addObject:loginModule];

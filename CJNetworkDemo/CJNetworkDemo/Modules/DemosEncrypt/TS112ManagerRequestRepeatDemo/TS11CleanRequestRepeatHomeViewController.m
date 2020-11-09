@@ -32,11 +32,11 @@
     
     // 发起多个相同的请求
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"测试发起多个相同的请求，得到的结果次数";
         
         {
-            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
             loginModule.title = @"测试多个相同的GET请求(多次)";
             loginModule.actionBlock = ^{
                 [self __testManySameRequest];

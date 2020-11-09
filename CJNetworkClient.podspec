@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   #验证方法： pod lib lint CJNetworkClient.podspec --allow-warnings --use-libraries --verbose
   #提交方法： pod trunk push CJNetworkClient.podspec --allow-warnings --use-libraries --verbose
   s.name         = "CJNetworkClient"
-  s.version      = "1.2.0-beta.1"
+  s.version      = "1.2.0"
   s.summary      = "网络请求的管理类：一个基于CJNetwork而封装的网络请求接口管理库"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "9.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkClient_1.2.0-beta.1" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkClient_1.2.0" }
   # s.source_files  = "CJNetworkClient/*.{h,m}"
   s.frameworks = 'UIKit'
 
@@ -38,8 +38,8 @@ Pod::Spec.new do |s|
   # 网络请求的管理类，其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现
   s.subspec 'CJNetworkClient' do |ss|
     ss.source_files = "CJNetworkClient/**/*.{h,m}"
-    ss.dependency 'CJNetwork/AFNetworkingSerializerEncrypt', "~> 0.8.0-beta.2"
-    ss.dependency 'CJNetwork/AFNetworkingUploadComponent', "~> 0.8.0-beta.2"
+    ss.dependency 'CJNetwork/AFNetworkingSerializerEncrypt'
+    ss.dependency 'CJNetwork/AFNetworkingUploadComponent'
   end
 
 

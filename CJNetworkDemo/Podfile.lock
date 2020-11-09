@@ -31,32 +31,32 @@ PODS:
   - CJMonitor/CJLog (0.0.1):
     - CJBaseUIKit/UIView/CJDragAction
     - Masonry
-  - CJNetwork (0.8.0-beta.2):
-    - CJNetwork/AFNetworkingMethodEncrypt (= 0.8.0-beta.2)
-    - CJNetwork/AFNetworkingSerializerEncrypt (= 0.8.0-beta.2)
-    - CJNetwork/AFNetworkingUploadComponent (= 0.8.0-beta.2)
-    - CJNetwork/CJCacheManager (= 0.8.0-beta.2)
-    - CJNetwork/CJNetworkCommon (= 0.8.0-beta.2)
-    - CJNetwork/CJRequestUtil (= 0.8.0-beta.2)
-  - CJNetwork/AFNetworkingMethodEncrypt (0.8.0-beta.2):
+  - CJNetwork (0.8.0):
+    - CJNetwork/AFNetworkingMethodEncrypt (= 0.8.0)
+    - CJNetwork/AFNetworkingSerializerEncrypt (= 0.8.0)
+    - CJNetwork/AFNetworkingUploadComponent (= 0.8.0)
+    - CJNetwork/CJCacheManager (= 0.8.0)
+    - CJNetwork/CJNetworkCommon (= 0.8.0)
+    - CJNetwork/CJRequestUtil (= 0.8.0)
+  - CJNetwork/AFNetworkingMethodEncrypt (0.8.0):
     - CJNetwork/CJNetworkCommon
-  - CJNetwork/AFNetworkingSerializerEncrypt (0.8.0-beta.2):
+  - CJNetwork/AFNetworkingSerializerEncrypt (0.8.0):
     - CJNetwork/CJNetworkCommon
-  - CJNetwork/AFNetworkingUploadComponent (0.8.0-beta.2):
+  - CJNetwork/AFNetworkingUploadComponent (0.8.0):
     - CJNetwork/CJNetworkCommon
     - CJNetworkFileModel
-  - CJNetwork/CJCacheManager (0.8.0-beta.2)
-  - CJNetwork/CJNetworkCommon (0.8.0-beta.2):
+  - CJNetwork/CJCacheManager (0.8.0)
+  - CJNetwork/CJNetworkCommon (0.8.0):
     - AFNetworking
     - MJExtension
     - YYCache
-  - CJNetwork/CJRequestUtil (0.8.0-beta.2):
+  - CJNetwork/CJRequestUtil (0.8.0):
     - CJNetwork/CJNetworkCommon
-  - CJNetworkClient (1.2.0-beta.1):
-    - CJNetworkClient/CJNetworkClient (= 1.2.0-beta.1)
-  - CJNetworkClient/CJNetworkClient (1.2.0-beta.1):
-    - CJNetwork/AFNetworkingSerializerEncrypt (~> 0.8.0-beta.2)
-    - CJNetwork/AFNetworkingUploadComponent (~> 0.8.0-beta.2)
+  - CJNetworkClient (1.2.0):
+    - CJNetworkClient/CJNetworkClient (= 1.2.0)
+  - CJNetworkClient/CJNetworkClient (1.2.0):
+    - CJNetwork/AFNetworkingSerializerEncrypt
+    - CJNetwork/AFNetworkingUploadComponent
   - CJNetworkFileModel (0.1.0):
     - CJNetworkFileModel/Upload (= 0.1.0)
   - CJNetworkFileModel/Upload (0.1.0)
@@ -67,36 +67,30 @@ PODS:
     - CocoaAsyncSocket/RunLoop
   - CocoaAsyncSocket/GCD (7.4.3)
   - CocoaAsyncSocket/RunLoop (7.4.3)
-  - CQDemoKit/BaseUtil (0.5.2)
-  - CQDemoKit/BaseVC (0.5.2):
-    - CQDemoKit/BaseVC/Base (= 0.5.2)
-    - CQDemoKit/BaseVC/Collection (= 0.5.2)
-    - CQDemoKit/BaseVC/ScrollView (= 0.5.2)
-    - CQDemoKit/BaseVC/TableView (= 0.5.2)
-    - CQDemoKit/BaseVC/TextView (= 0.5.2)
-  - CQDemoKit/BaseVC/Base (0.5.2):
+  - CQDemoKit/BaseUtil (0.5.6)
+  - CQDemoKit/BaseVC (0.5.6):
+    - CQDemoKit/BaseVC/Base (= 0.5.6)
+    - CQDemoKit/BaseVC/Collection (= 0.5.6)
+    - CQDemoKit/BaseVC/ScrollView (= 0.5.6)
+    - CQDemoKit/BaseVC/TableView (= 0.5.6)
+    - CQDemoKit/BaseVC/TextView (= 0.5.6)
+  - CQDemoKit/BaseVC/Base (0.5.6):
     - Masonry
-  - CQDemoKit/BaseVC/Collection (0.5.2):
-    - CJBaseUtil/CJDataUtil
+  - CQDemoKit/BaseVC/Collection (0.5.6):
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/BaseVC/ScrollView (0.5.2):
+  - CQDemoKit/BaseVC/ScrollView (0.5.6):
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/BaseVC/TableView (0.5.2):
-    - CJBaseUtil/CJDataUtil
+  - CQDemoKit/BaseVC/TableView (0.5.6):
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/BaseVC/TextView (0.5.2):
-    - CJBaseUtil/CJDataUtil
+  - CQDemoKit/BaseVC/TextView (0.5.6):
     - CQDemoKit/BaseUtil
     - CQDemoKit/BaseVC/Base
   - Masonry (1.1.0)
-  - MBProgressHUD (1.2.0)
-  - MJExtension (3.2.1)
+  - MJExtension (3.2.2)
   - OpenUDID (1.0.0)
-  - SVProgressHUD (2.2.5)
   - YYCache (1.0.4)
 
 DEPENDENCIES:
-  - AFNetworking (~> 4.0.1)
   - CJBaseHelper/AuthorizationCJHelper
   - CJBaseHelper/DeviceCJHelper
   - CJBaseHelper/NSObjectCJHelper
@@ -111,16 +105,12 @@ DEPENDENCIES:
   - CJNetworkClient (from `../`)
   - CJNetworkFileModel (from `../`)
   - CocoaAsyncSocket (~> 7.4.1)
-  - CQDemoKit/BaseVC (~> 0.5.2)
+  - CQDemoKit/BaseVC (~> 0.5.6)
   - Masonry
-  - MBProgressHUD
   - MJExtension
   - OpenUDID (~> 1.0.0)
-  - SVProgressHUD
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - CQDemoKit
   trunk:
     - AFNetworking
     - CJBaseHelper
@@ -129,11 +119,10 @@ SPEC REPOS:
     - CJFoundation
     - CJMonitor
     - CocoaAsyncSocket
+    - CQDemoKit
     - Masonry
-    - MBProgressHUD
     - MJExtension
     - OpenUDID
-    - SVProgressHUD
     - YYCache
 
 EXTERNAL SOURCES:
@@ -151,18 +140,16 @@ SPEC CHECKSUMS:
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
   CJFoundation: 53b4df7152c6d6fd776f55f387c67f431b8574bd
   CJMonitor: 9f770c8334f07f237281775b50f0597e5c50b3a0
-  CJNetwork: d056360a15eeb94039676897c4219a8aed89e8f6
-  CJNetworkClient: a4bfdfe8ec78cd8feec22dc990c4a029dd961784
+  CJNetwork: 3f7b9840d21bab76b87eba2db456d3f2d86078f6
+  CJNetworkClient: f56d4896c907f444bf79d01947957d036af08717
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
-  CQDemoKit: 94f6c3052a056481c0d79e2db5d50130d9e99a91
+  CQDemoKit: 07874548bcda546e1c4d714cd73b66fd9207a707
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
+  MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 9324de19c59aec02777c010e0aa0c71d0d951010
+PODFILE CHECKSUM: 9fc0474d63a9f428f6cdd9964069da1278fe373a
 
 COCOAPODS: 1.9.3

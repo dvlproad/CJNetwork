@@ -32,11 +32,11 @@
     
     // 单个请求
     {
-        CJSectionDataModel *sectionDataModel = [[CJSectionDataModel alloc] init];
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"测试请求(单次)";
         
         {
-            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
             loginModule.title = @"测试网络请求GET(单次)";
             loginModule.actionBlock = ^{
                 [self __testGetRequest];
@@ -44,7 +44,7 @@
             [sectionDataModel.values addObject:loginModule];
         }
         {
-            CJModuleModel *loginModule = [[CJModuleModel alloc] init];
+            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
             loginModule.title = @"测试网络请求POST(单次)";
             loginModule.actionBlock = ^{
                 [self __testPostRequest];
