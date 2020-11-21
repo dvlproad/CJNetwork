@@ -12,15 +12,20 @@
 
 #pragma mark - remoteSimulateApi
 /**
- *  获取模拟接口的完整模拟Url
+ *  获取模拟接口的完整模拟Url(如果接口名包含域名了，则直接使用接口名)
  *
  *  @param simulateDomain   设置模拟接口所在的域名(若未设置则将使用http://localhost/+类名作为域名)
- *  @param apiSuffix        接口名
+ *  @param apiSuffix        接口名(如果接口名包含域名了，则直接使用接口名)
  *
  *  return  模拟接口的完整模拟Url
  */
 + (NSString *)remoteSimulateUrlWithDomain:(NSString *)simulateDomain apiSuffix:(NSString *)apiSuffix
 {
+    BOOL existDomain = [apiSuffix hasPrefix:@"http"];
+    if (existDomain) {
+        return apiSuffix;
+    }
+    
     if (!simulateDomain || simulateDomain.length == 0) {
         simulateDomain = [@"http://localhost/" stringByAppendingString:NSStringFromClass([self class])];
     }
@@ -30,7 +35,12 @@
 
 #pragma mark - localSimulateApi
 
-/// 开始本地模拟接口请求
+/*
+ *  开始本地模拟接口请求
+ *
+ *  @param apiSuffix        api文件的本地路径(可以不带.json，也可以带)
+ *  @param completeBlock    获取到数据的回调
+ */
 + (void)localSimulateApi:(NSString *)apiSuffix completeBlock:(void (^)(NSDictionary *responseDictionary))completeBlock
 {
     if ([apiSuffix hasPrefix:@"/"]) {
@@ -38,7 +48,13 @@
     }
     NSString *jsonName = [apiSuffix stringByReplacingOccurrencesOfString:@"/" withString:@":"];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:jsonName ofType:nil];
-    //BOOL exists = [[NSFileManager new] fileExistsAtPath:filePath];
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+    if (exists == NO) {
+        jsonName = [jsonName stringByAppendingPathExtension:@"json"];
+        filePath = [[NSBundle mainBundle] pathForResource:jsonName ofType:nil];
+        exists = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+    }
+    
     NSData *responseObject = [NSData dataWithContentsOfFile:filePath];
     if (!responseObject) { //不设置会崩溃
         NSDictionary *lackOfLocalResponseDic =
