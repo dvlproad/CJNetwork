@@ -10,6 +10,8 @@
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/CJUIKitAlertUtil.h>
 
+#import "SimulationHomeViewController.h"
+
 #import "TSCleanRequestHomeViewController.h"
 #import "TS11CleanRequestRepeatHomeViewController.h"
 #import "RequestCacheHomeViewController.h"
@@ -32,6 +34,22 @@
     
     
     NSMutableArray *sectionDataModels = [[NSMutableArray alloc] init];
+    
+    
+    // 本地模拟网络请求
+    {
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
+        sectionDataModel.theme = @"本地模拟网络请求";
+        
+        {
+            CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];
+            requestModule.title = @"本地模拟网络请求";
+            requestModule.classEntry = [SimulationHomeViewController class];
+            [sectionDataModel.values addObject:requestModule];
+        }
+        
+        [sectionDataModels addObject:sectionDataModel];
+    }
     
     // 网络请求(未封装时候)
     {

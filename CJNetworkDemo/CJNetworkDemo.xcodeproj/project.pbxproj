@@ -67,6 +67,8 @@
 		78FF35E721A91F07006DCEE7 /* SemaphoreHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FF35E521A91F06006DCEE7 /* SemaphoreHomeViewController.m */; };
 		8050036921192C1E002A2306 /* CJObjectConvertUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8050036721192C1E002A2306 /* CJObjectConvertUtil.m */; };
 		80E7E62920ABCFBC000F762D /* AppInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E7E62820ABCFBB000F762D /* AppInfoManager.m */; };
+		97216B0B2570AAC60006E1C2 /* SimulationHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97216B092570AAC60006E1C2 /* SimulationHomeViewController.m */; };
+		97216B112570AC4D0006E1C2 /* api:card:cardlist in Resources */ = {isa = PBXBuildFile; fileRef = 97216B102570AC4D0006E1C2 /* api:card:cardlist */; };
 		FE2ABDE4BA0BFA3A4E890E9C /* libPods-CJNetworkDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 950ACC5ADCD7E563531771DD /* libPods-CJNetworkDemoTests.a */; };
 /* End PBXBuildFile section */
 
@@ -207,6 +209,9 @@
 		80E7E62820ABCFBB000F762D /* AppInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfoManager.m; sourceTree = "<group>"; };
 		90255310EA6CED3E04FA1CEB /* Pods-CJNetworkDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemoTests/Pods-CJNetworkDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		950ACC5ADCD7E563531771DD /* libPods-CJNetworkDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CJNetworkDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		97216B092570AAC60006E1C2 /* SimulationHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulationHomeViewController.m; sourceTree = "<group>"; };
+		97216B0A2570AAC60006E1C2 /* SimulationHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationHomeViewController.h; sourceTree = "<group>"; };
+		97216B102570AC4D0006E1C2 /* api:card:cardlist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "api:card:cardlist"; sourceTree = "<group>"; };
 		C11239993D822E171AABD0F4 /* Pods-CJNetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F1F8B8F4FF9EBFC0F62ED2D0 /* Pods-CJNetworkDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemoTests/Pods-CJNetworkDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -421,6 +426,7 @@
 		7868F1392121C79A00A283EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				97216B082570AA980006E1C2 /* DemoSimulation */,
 				7868F13A2121C79A00A283EB /* DemosSemaphore */,
 				7868F1522121C79A00A283EB /* DemosDownload */,
 				7868F1682121C79A00A283EB /* DemosEncrypt */,
@@ -659,6 +665,24 @@
 			path = AppInfo;
 			sourceTree = "<group>";
 		};
+		97216B082570AA980006E1C2 /* DemoSimulation */ = {
+			isa = PBXGroup;
+			children = (
+				97216B0A2570AAC60006E1C2 /* SimulationHomeViewController.h */,
+				97216B092570AAC60006E1C2 /* SimulationHomeViewController.m */,
+				97216B0F2570AC3F0006E1C2 /* Resources */,
+			);
+			path = DemoSimulation;
+			sourceTree = "<group>";
+		};
+		97216B0F2570AC3F0006E1C2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				97216B102570AC4D0006E1C2 /* api:card:cardlist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		B62537BB601228A564AEACA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -792,6 +816,7 @@
 				7868F17A2121C79A00A283EB /* SocketDemoViewController.xib in Resources */,
 				7842989F21C1F991003198FB /* AppAssets.xcassets in Resources */,
 				784298A021C1F991003198FB /* MainAsset.xcassets in Resources */,
+				97216B112570AC4D0006E1C2 /* api:card:cardlist in Resources */,
 				7868F1872121C79A00A283EB /* DownloadTableViewCell.xib in Resources */,
 				7868F1832121C79A00A283EB /* SessionDownloadTaskDownloadViewController.xib in Resources */,
 				7868F1882121C79A00A283EB /* DownloadListViewController.xib in Resources */,
@@ -894,6 +919,7 @@
 				158259DB2484E8F500BA4B3D /* TestHTTPSessionManager.m in Sources */,
 				7868F1782121C79A00A283EB /* UploadHomeViewController.m in Sources */,
 				7868F17B2121C79A00A283EB /* SocketDemoViewController.m in Sources */,
+				97216B0B2570AAC60006E1C2 /* SimulationHomeViewController.m in Sources */,
 				7846E39121A6AD5500D73F51 /* TestConcurrenceModel.m in Sources */,
 				158259DF2484E8F500BA4B3D /* TSCleanRequestHomeViewController.m in Sources */,
 				7868F1802121C79A00A283EB /* BaseDownloadViewController.m in Sources */,
