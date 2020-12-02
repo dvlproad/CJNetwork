@@ -31,26 +31,26 @@ PODS:
   - CJMonitor/CJLog (0.0.1):
     - CJBaseUIKit/UIView/CJDragAction
     - Masonry
-  - CJNetwork (0.8.0):
-    - CJNetwork/AFNetworkingMethodEncrypt (= 0.8.0)
-    - CJNetwork/AFNetworkingSerializerEncrypt (= 0.8.0)
-    - CJNetwork/AFNetworkingUploadComponent (= 0.8.0)
-    - CJNetwork/CJCacheManager (= 0.8.0)
-    - CJNetwork/CJNetworkCommon (= 0.8.0)
-    - CJNetwork/CJRequestUtil (= 0.8.0)
-  - CJNetwork/AFNetworkingMethodEncrypt (0.8.0):
+  - CJNetwork (0.8.1):
+    - CJNetwork/AFNetworkingMethodEncrypt (= 0.8.1)
+    - CJNetwork/AFNetworkingSerializerEncrypt (= 0.8.1)
+    - CJNetwork/AFNetworkingUploadComponent (= 0.8.1)
+    - CJNetwork/CJCacheManager (= 0.8.1)
+    - CJNetwork/CJNetworkCommon (= 0.8.1)
+    - CJNetwork/CJRequestUtil (= 0.8.1)
+  - CJNetwork/AFNetworkingMethodEncrypt (0.8.1):
     - CJNetwork/CJNetworkCommon
-  - CJNetwork/AFNetworkingSerializerEncrypt (0.8.0):
+  - CJNetwork/AFNetworkingSerializerEncrypt (0.8.1):
     - CJNetwork/CJNetworkCommon
-  - CJNetwork/AFNetworkingUploadComponent (0.8.0):
+  - CJNetwork/AFNetworkingUploadComponent (0.8.1):
     - CJNetwork/CJNetworkCommon
     - CJNetworkFileModel
-  - CJNetwork/CJCacheManager (0.8.0)
-  - CJNetwork/CJNetworkCommon (0.8.0):
+  - CJNetwork/CJCacheManager (0.8.1)
+  - CJNetwork/CJNetworkCommon (0.8.1):
     - AFNetworking
     - MJExtension
     - YYCache
-  - CJNetwork/CJRequestUtil (0.8.0):
+  - CJNetwork/CJRequestUtil (0.8.1):
     - CJNetwork/CJNetworkCommon
   - CJNetworkClient (1.2.0):
     - CJNetworkClient/CJNetworkClient (= 1.2.0)
@@ -60,6 +60,7 @@ PODS:
   - CJNetworkFileModel (0.1.0):
     - CJNetworkFileModel/Upload (= 0.1.0)
   - CJNetworkFileModel/Upload (0.1.0)
+  - CJNetworkSimulate (0.1.0)
   - CocoaAsyncSocket (7.4.3):
     - CocoaAsyncSocket/All (= 7.4.3)
   - CocoaAsyncSocket/All (7.4.3):
@@ -104,6 +105,7 @@ DEPENDENCIES:
   - CJNetwork (from `../`)
   - CJNetworkClient (from `../`)
   - CJNetworkFileModel (from `../`)
+  - CJNetworkSimulate (from `../`)
   - CocoaAsyncSocket (~> 7.4.1)
   - CQDemoKit/BaseVC (~> 0.5.6)
   - Masonry
@@ -132,6 +134,8 @@ EXTERNAL SOURCES:
     :path: "../"
   CJNetworkFileModel:
     :path: "../"
+  CJNetworkSimulate:
+    :path: "../"
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -140,9 +144,10 @@ SPEC CHECKSUMS:
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
   CJFoundation: 53b4df7152c6d6fd776f55f387c67f431b8574bd
   CJMonitor: 9f770c8334f07f237281775b50f0597e5c50b3a0
-  CJNetwork: 3f7b9840d21bab76b87eba2db456d3f2d86078f6
-  CJNetworkClient: f56d4896c907f444bf79d01947957d036af08717
+  CJNetwork: b35363a02eff89c59558216a884be8bc23b2b3f5
+  CJNetworkClient: b5b943a8efc92884e802cdd8b63e22aa915ee784
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
+  CJNetworkSimulate: 0bab87223bfc37573dcc5f5a85487ca87484eae4
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQDemoKit: 07874548bcda546e1c4d714cd73b66fd9207a707
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -150,6 +155,6 @@ SPEC CHECKSUMS:
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 9fc0474d63a9f428f6cdd9964069da1278fe373a
+PODFILE CHECKSUM: be94c3778850f983b889735c1f6d5c1497c0c316
 
 COCOAPODS: 1.9.3

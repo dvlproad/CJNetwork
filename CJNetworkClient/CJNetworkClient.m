@@ -8,7 +8,7 @@
 
 #import "CJNetworkClient.h"
 #import <objc/runtime.h>
-#import <CJNetwork/CJRequestSimulateUtil.h>
+#import <CJNetworkSimulate/CJSimulateUtil.h>
 
 @interface CJNetworkClient () {
     
@@ -202,7 +202,7 @@
                               settingModel:(nullable CJRequestSettingModel *)settingModel
                              completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
-    NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
+    NSString *Url = [self remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
     
     return [self __requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
 }
@@ -213,7 +213,7 @@
                                settingModel:(nullable CJRequestSettingModel *)settingModel
                               completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
-    NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
+    NSString *Url = [self remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
     
     return [self __requestUrl:Url params:params method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
 }
@@ -226,9 +226,35 @@
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                 completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
-    NSString *Url = [CJRequestSimulateUtil remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
+    NSString *Url = [self remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
     
     return [self __requestUrl:Url params:formParams method:CJRequestMethodGET settingModel:settingModel completeBlock:completeBlock];
+}
+
+/**
+ *  获取模拟接口的完整模拟Url(如果接口名包含域名了，则直接使用接口名)
+ *
+ *  @param simulateDomain   设置模拟接口所在的域名(若未设置则将使用http://localhost/+类名作为域名)
+ *  @param apiSuffix        接口名(如果接口名包含域名了，则直接使用接口名)
+ *
+ *  return  模拟接口的完整模拟Url
+ */
+- (NSString *)remoteSimulateUrlWithDomain:(NSString *)simulateDomain apiSuffix:(NSString *)apiSuffix
+{
+    NSString *Url = nil;
+    if ([apiSuffix hasPrefix:@"http"]) {
+        Url = apiSuffix;
+    } else {
+        NSString *urlDomain = nil;
+        if (simulateDomain.length > 0) {
+            urlDomain = simulateDomain;
+        } else {
+            urlDomain = @"http://localhost/";
+        }
+        Url = [urlDomain stringByAppendingString:apiSuffix];
+    }
+    
+    return Url;
 }
 
 
@@ -238,7 +264,7 @@
                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                    completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
-    [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
+    [CJSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
         CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
         
@@ -255,7 +281,7 @@
                                      settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
-    [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
+    [CJSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
         CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
         
@@ -274,7 +300,7 @@
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                       completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
-    [CJRequestSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
+    [CJSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
         CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
         

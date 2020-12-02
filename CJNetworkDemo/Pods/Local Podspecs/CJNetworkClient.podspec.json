@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/dvlproad/CJNetwork.git",
-    "tag": "CJNetworkClient_1.2.0"
+    "tag": "CJNetworkClient_1.2.0_1"
   },
   "frameworks": "UIKit",
   "requires_arc": true,

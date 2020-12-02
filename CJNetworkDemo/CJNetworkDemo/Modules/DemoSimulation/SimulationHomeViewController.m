@@ -10,7 +10,7 @@
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/CJUIKitAlertUtil.h>
 
-#import <CJNetwork/CJRequestSimulateUtil.h>
+#import <CJNetworkSimulate/CJSimulateUtil.h>
 
 @interface SimulationHomeViewController ()
 
@@ -62,7 +62,7 @@
 }
 
 - (void)similuteApi {
-    [CJRequestSimulateUtil localSimulateApi:@"api/card/cardlist" completeBlock:^(NSDictionary * _Nonnull responseDictionary) {
+    [CJSimulateUtil localSimulateApi:@"api/card/cardlist" completeBlock:^(NSDictionary * _Nonnull responseDictionary) {
         NSArray *dictionarys = responseDictionary[@"result"];
         NSLog(@"dictionarys = %@", dictionarys);
     }];

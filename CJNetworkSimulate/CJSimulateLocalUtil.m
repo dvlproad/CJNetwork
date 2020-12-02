@@ -1,39 +1,16 @@
 //
-//  CJRequestSimulateUtil.m
+//  CJSimulateLocalUtil.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2018/4/8.
 //  Copyright © 2018年 dvlproad. All rights reserved.
 //
 
-#import "CJRequestSimulateUtil.h"
+#import "CJSimulateLocalUtil.h"
 
-@implementation CJRequestSimulateUtil
+@implementation CJSimulateLocalUtil
 
-#pragma mark - remoteSimulateApi
-/**
- *  获取模拟接口的完整模拟Url(如果接口名包含域名了，则直接使用接口名)
- *
- *  @param simulateDomain   设置模拟接口所在的域名(若未设置则将使用http://localhost/+类名作为域名)
- *  @param apiSuffix        接口名(如果接口名包含域名了，则直接使用接口名)
- *
- *  return  模拟接口的完整模拟Url
- */
-+ (NSString *)remoteSimulateUrlWithDomain:(NSString *)simulateDomain apiSuffix:(NSString *)apiSuffix
-{
-    BOOL existDomain = [apiSuffix hasPrefix:@"http"];
-    if (existDomain) {
-        return apiSuffix;
-    }
-    
-    if (!simulateDomain || simulateDomain.length == 0) {
-        simulateDomain = [@"http://localhost/" stringByAppendingString:NSStringFromClass([self class])];
-    }
-    NSString *Url = [simulateDomain stringByAppendingString:apiSuffix];
-    return Url;
-}
-
-#pragma mark - localSimulateApi
+#pragma mark - Local请求模拟
 
 /*
  *  开始本地模拟接口请求

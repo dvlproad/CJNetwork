@@ -1,1 +1,1 @@
-../../../../../CJNetwork/CJRequestUtil/CJRequestUtil.h
+../../../../../CJNetwork/CJNetworkCommon/CJRequestUtil/CJRequestUtil.h
