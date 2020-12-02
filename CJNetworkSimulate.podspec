@@ -3,8 +3,8 @@ Pod::Spec.new do |s|
   #提交方法： pod trunk push CJNetworkSimulate.podspec --allow-warnings --use-libraries --verbose
   s.name         = "CJNetworkSimulate"
   s.version      = "0.1.0"
-  s.summary      = "一个AFNetworking应用的封装(支持加解密、缓存、并发数控制)"
-  s.homepage     = "https://github.com/dvlproad/CJNetworkSimulate"
+  s.summary      = "一个网络模拟库（常用于为了功能快速开发中的临时网络模拟）"
+  s.homepage     = "https://github.com/dvlproad/CJNetwork.git"
   s.license      = "MIT"
   s.author             = { "dvlproad" => "studyroad@qq.com" }
   # s.social_media_url   = "http://twitter.com/dvlproad"
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "9.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetworkSimulate.git", :tag => "CJNetworkSimulate_0.1.0" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkSimulate_0.1.0" }
   # s.source_files  = "CJNetworkSimulate/*.{h,m}"
   s.frameworks = 'UIKit'
 
