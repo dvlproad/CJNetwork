@@ -14,16 +14,9 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - CJBaseHelper/AuthorizationCJHelper (0.1.4)
   - CJBaseHelper/DeviceCJHelper (0.1.4)
   - CJBaseHelper/NSObjectCJHelper (0.1.4)
-  - CJBaseUIKit/UIButton (0.6.0)
-  - CJBaseUIKit/UIColor (0.6.0)
-  - CJBaseUIKit/UITextField (0.6.0):
-    - CJBaseUIKit/UIView/CJPopupAction
-  - CJBaseUIKit/UIView/CJDragAction (0.6.0)
-  - CJBaseUIKit/UIView/CJPopupAction (0.6.0)
-  - CJBaseUtil/CJDataUtil (0.5.1)
+  - CJBaseUIKit/UIView/CJDragAction (0.6.7)
   - CJBaseUtil/CJIndentedStringUtil (0.5.1)
   - CJFoundation/NSString (0.1.3)
   - CJMonitor (0.0.1):
@@ -92,13 +85,8 @@ PODS:
   - YYCache (1.0.4)
 
 DEPENDENCIES:
-  - CJBaseHelper/AuthorizationCJHelper
   - CJBaseHelper/DeviceCJHelper
   - CJBaseHelper/NSObjectCJHelper
-  - CJBaseUIKit/UIButton
-  - CJBaseUIKit/UIColor
-  - CJBaseUIKit/UITextField
-  - CJBaseUtil/CJDataUtil
   - CJBaseUtil/CJIndentedStringUtil
   - CJFoundation/NSString
   - CJMonitor
@@ -108,7 +96,6 @@ DEPENDENCIES:
   - CJNetworkSimulate (from `../`)
   - CocoaAsyncSocket (~> 7.4.1)
   - CQDemoKit/BaseVC (~> 0.5.6)
-  - Masonry
   - MJExtension
   - OpenUDID (~> 1.0.0)
 
@@ -140,14 +127,14 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   CJBaseHelper: dd715e18591da9df5d06364098300591220f0535
-  CJBaseUIKit: d4945467678c73b872c7ddfb5367d4063ff28add
+  CJBaseUIKit: c0bc758fc94b0be3fcbffb77c0f25325d03e7a6c
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
   CJFoundation: 53b4df7152c6d6fd776f55f387c67f431b8574bd
   CJMonitor: 9f770c8334f07f237281775b50f0597e5c50b3a0
   CJNetwork: b35363a02eff89c59558216a884be8bc23b2b3f5
   CJNetworkClient: b5b943a8efc92884e802cdd8b63e22aa915ee784
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
-  CJNetworkSimulate: 0bab87223bfc37573dcc5f5a85487ca87484eae4
+  CJNetworkSimulate: bfde8b21d86d0c5c36cc340770e851c3da60059f
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQDemoKit: 07874548bcda546e1c4d714cd73b66fd9207a707
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -155,6 +142,6 @@ SPEC CHECKSUMS:
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: be94c3778850f983b889735c1f6d5c1497c0c316
+PODFILE CHECKSUM: 90904e1bb433533c0c368477c96f2f5ee18832db
 
 COCOAPODS: 1.9.3

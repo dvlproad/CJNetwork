@@ -1,8 +1,8 @@
 {
   "name": "CJNetworkSimulate",
   "version": "0.1.0",
-  "summary": "一个AFNetworking应用的封装(支持加解密、缓存、并发数控制)",
-  "homepage": "https://github.com/dvlproad/CJNetworkSimulate",
+  "summary": "一个网络模拟库（常用于为了功能快速开发中的临时网络模拟）",
+  "homepage": "https://github.com/dvlproad/CJNetwork.git",
   "license": "MIT",
   "authors": {
     "dvlproad": "studyroad@qq.com"
@@ -12,7 +12,7 @@
     "ios": "9.0"
   },
   "source": {
-    "git": "https://github.com/dvlproad/CJNetworkSimulate.git",
+    "git": "https://github.com/dvlproad/CJNetwork.git",
     "tag": "CJNetworkSimulate_0.1.0"
   },
   "frameworks": "UIKit",
