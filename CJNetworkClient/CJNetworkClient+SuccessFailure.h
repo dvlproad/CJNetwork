@@ -8,10 +8,11 @@
 //  有两个回调，分别为 success + failure
 
 #import "CJNetworkClient.h"
+#import <CQNetworkRequestPublic/CQNetworkRequestSuccessFailureClientProtocal.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CJNetworkClient (SuccessFailure)
+@interface CJNetworkClient (SuccessFailure) <CQNetworkRequestSuccessFailureClientProtocal>
 
 #pragma mark - RealApi
 - (NSURLSessionDataTask *)real2_getApi:(NSString *)apiSuffix

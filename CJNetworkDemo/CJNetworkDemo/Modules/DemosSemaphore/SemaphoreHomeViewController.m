@@ -20,13 +20,40 @@
 @property (nonatomic, strong) dispatch_queue_t commonConcurrentQueue;   //创建并发队列
 @property (nonatomic, strong) dispatch_queue_t commonSerialQueue;       //串行队列
 
+@property (nonatomic, strong) NSLock *lock;
+
 @end
 
+NSInteger total = 0;
+
 @implementation SemaphoreHomeViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self threadSafe];
+}
+
+
+
+- (void)threadSafe {
+    for (NSInteger index = 0; index < 3; index++) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self.lock lock];
+            total += 1;
+            NSLog(@"total: %ld", total);
+            total -= 1;
+            NSLog(@"total: %ld", total);
+            [self.lock unlock];
+        });
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.lock = [[NSLock alloc] init];
     
     self.navigationItem.title = NSLocalizedString(@"Semaphore首页", nil);
     

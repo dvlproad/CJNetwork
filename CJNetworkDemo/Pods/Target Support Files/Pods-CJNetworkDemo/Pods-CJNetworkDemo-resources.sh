@@ -97,10 +97,18 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
+  install_resource "${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-calendar.png"
+  install_resource "${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-folder.png"
+  install_resource "${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-home.png"
+  install_resource "${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-menu.png"
+  install_resource "${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-settings.png"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
+  install_resource "${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-calendar.png"
+  install_resource "${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-folder.png"
+  install_resource "${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-home.png"
+  install_resource "${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-menu.png"
+  install_resource "${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-settings.png"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

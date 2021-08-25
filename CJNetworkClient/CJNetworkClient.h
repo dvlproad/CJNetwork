@@ -18,12 +18,8 @@
 #import "CJRequestSettingModel.h"
 #import "CJResponseModel.h"
 
-typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
-    CJResponeFailureTypeUncheck = 0,            /**< 未进行是否等失败判断 */
-    CJResponeFailureTypeRequestFailure,         /**< 请求失败 */
-    CJResponeFailureTypeCommonFailure,          /**< 通用失败 */
-    CJResponeFailureTypeNeedFurtherJudgeFailure,/**< 需要进一步判断是否错误的那些(在未进行归类或者未归类进指定错误的时候，都是这个值) */
-};
+#import <CQNetworkRequestPublic/CQNetworkRequestEnum.h>
+#import <CQNetworkRequestPublic/CQNetworkRequestCompletionClientProtocal.h>
 
 /**
  *  必须实现：将"网络请求成功返回的数据responseObject"转换为"模型"的方法
@@ -54,7 +50,7 @@ typedef CJResponseModel * _Nullable (^CJNetworkClientGetFailureResponseModelBloc
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CJNetworkClient : NSObject {
+@interface CJNetworkClient : NSObject<CQNetworkRequestCompletionClientProtocal> {
     
 }
 // 执行请求的Manager(一定要执行)

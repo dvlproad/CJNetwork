@@ -18,7 +18,6 @@ PODS:
   - CJBaseHelper/NSObjectCJHelper (0.1.4)
   - CJBaseUIKit/UIView/CJDragAction (0.6.7)
   - CJBaseUtil/CJIndentedStringUtil (0.5.1)
-  - CJFoundation/NSString (0.1.3)
   - CJMonitor (0.0.1):
     - CJMonitor/CJLog (= 0.0.1)
   - CJMonitor/CJLog (0.0.1):
@@ -61,24 +60,58 @@ PODS:
     - CocoaAsyncSocket/RunLoop
   - CocoaAsyncSocket/GCD (7.4.3)
   - CocoaAsyncSocket/RunLoop (7.4.3)
-  - CQDemoKit/BaseUtil (0.5.6)
-  - CQDemoKit/BaseVC (0.5.6):
-    - CQDemoKit/BaseVC/Base (= 0.5.6)
-    - CQDemoKit/BaseVC/Collection (= 0.5.6)
-    - CQDemoKit/BaseVC/ScrollView (= 0.5.6)
-    - CQDemoKit/BaseVC/TableView (= 0.5.6)
-    - CQDemoKit/BaseVC/TextView (= 0.5.6)
-  - CQDemoKit/BaseVC/Base (0.5.6):
+  - CQDemoKit/BaseUIKit (0.6.2):
     - Masonry
-  - CQDemoKit/BaseVC/Collection (0.5.6):
+  - CQDemoKit/BaseUtil (0.6.2)
+  - CQDemoKit/BaseVC (0.6.2):
+    - CQDemoKit/BaseVC/Base (= 0.6.2)
+    - CQDemoKit/BaseVC/Collection (= 0.6.2)
+    - CQDemoKit/BaseVC/ScrollView (= 0.6.2)
+    - CQDemoKit/BaseVC/TabBar (= 0.6.2)
+    - CQDemoKit/BaseVC/TableView (= 0.6.2)
+    - CQDemoKit/BaseVC/TextView (= 0.6.2)
+    - CQDemoKit/Helper
+  - CQDemoKit/BaseVC/Base (0.6.2):
+    - CQDemoKit/BaseUIKit
+    - CQDemoKit/Helper
+    - Masonry
+  - CQDemoKit/BaseVC/Collection (0.6.2):
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/BaseVC/ScrollView (0.5.6):
+    - CQDemoKit/Helper
+  - CQDemoKit/BaseVC/ScrollView (0.6.2):
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/BaseVC/TableView (0.5.6):
+    - CQDemoKit/Helper
+  - CQDemoKit/BaseVC/TabBar (0.6.2):
+    - CQDemoKit/Helper
+  - CQDemoKit/BaseVC/TableView (0.6.2):
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/BaseVC/TextView (0.5.6):
+    - CQDemoKit/Helper
+  - CQDemoKit/BaseVC/TextView (0.6.2):
     - CQDemoKit/BaseUtil
     - CQDemoKit/BaseVC/Base
+    - CQDemoKit/Helper
+  - CQDemoKit/Helper (0.6.2)
+  - CQNetworkRequestPublic (0.0.1):
+    - CQNetworkRequestPublic/Base (= 0.0.1)
+    - CQNetworkRequestPublic/Client (= 0.0.1)
+    - CQNetworkRequestPublic/Helper (= 0.0.1)
+  - CQNetworkRequestPublic/Base (0.0.1)
+  - CQNetworkRequestPublic/Client (0.0.1):
+    - CQNetworkRequestPublic/Client/Request (= 0.0.1)
+    - CQNetworkRequestPublic/Client/Upload (= 0.0.1)
+  - CQNetworkRequestPublic/Client/Request (0.0.1):
+    - CQNetworkRequestPublic/Base
+  - CQNetworkRequestPublic/Client/Upload (0.0.1):
+    - CJNetworkFileModel
+    - CQNetworkRequestPublic/Base
+  - CQNetworkRequestPublic/Helper (0.0.1):
+    - CQNetworkRequestPublic/Helper/Request (= 0.0.1)
+    - CQNetworkRequestPublic/Helper/Upload (= 0.0.1)
+  - CQNetworkRequestPublic/Helper/Request (0.0.1):
+    - CQNetworkRequestPublic/Base
+  - CQNetworkRequestPublic/Helper/Upload (0.0.1):
+    - CJNetworkFileModel
+    - CQNetworkRequestPublic/Base
   - Masonry (1.1.0)
   - MJExtension (3.2.2)
   - OpenUDID (1.0.0)
@@ -88,14 +121,14 @@ DEPENDENCIES:
   - CJBaseHelper/DeviceCJHelper
   - CJBaseHelper/NSObjectCJHelper
   - CJBaseUtil/CJIndentedStringUtil
-  - CJFoundation/NSString
   - CJMonitor
   - CJNetwork (from `../`)
   - CJNetworkClient (from `../`)
   - CJNetworkFileModel (from `../`)
   - CJNetworkSimulate (from `../`)
   - CocoaAsyncSocket (~> 7.4.1)
-  - CQDemoKit/BaseVC (~> 0.5.6)
+  - CQDemoKit/BaseVC (~> 0.6.2)
+  - CQNetworkRequestPublic (from `../`)
   - MJExtension
   - OpenUDID (~> 1.0.0)
 
@@ -105,7 +138,6 @@ SPEC REPOS:
     - CJBaseHelper
     - CJBaseUIKit
     - CJBaseUtil
-    - CJFoundation
     - CJMonitor
     - CocoaAsyncSocket
     - CQDemoKit
@@ -123,25 +155,27 @@ EXTERNAL SOURCES:
     :path: "../"
   CJNetworkSimulate:
     :path: "../"
+  CQNetworkRequestPublic:
+    :path: "../"
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   CJBaseHelper: dd715e18591da9df5d06364098300591220f0535
   CJBaseUIKit: c0bc758fc94b0be3fcbffb77c0f25325d03e7a6c
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
-  CJFoundation: 53b4df7152c6d6fd776f55f387c67f431b8574bd
   CJMonitor: 9f770c8334f07f237281775b50f0597e5c50b3a0
   CJNetwork: b35363a02eff89c59558216a884be8bc23b2b3f5
   CJNetworkClient: b5b943a8efc92884e802cdd8b63e22aa915ee784
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
   CJNetworkSimulate: bfde8b21d86d0c5c36cc340770e851c3da60059f
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
-  CQDemoKit: 07874548bcda546e1c4d714cd73b66fd9207a707
+  CQDemoKit: f0fe8ab090a1ebd9f9526224c3abd384d7c4ebc0
+  CQNetworkRequestPublic: a083953318d73855335b8a53c43294d96947f91f
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 90904e1bb433533c0c368477c96f2f5ee18832db
+PODFILE CHECKSUM: 9910adad1055a6d60658bed215769b7e500372b4
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1

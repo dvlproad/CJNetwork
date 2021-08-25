@@ -16,6 +16,8 @@
 #import "TSCleanHTTPSessionManager.h"
 #import "TS113CacheResponseModel.h"
 
+#import <CJNetwork/CJNetworkCacheUtil.h>
+
 @interface RequestCacheHomeViewController ()
 
 @property (nonatomic, strong) dispatch_queue_t commonConcurrentQueue; //创建并发队列
@@ -42,6 +44,21 @@
             CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
             loginModule.title = @"测试缓存时间(请一定要执行验证)";
             loginModule.selector = @selector(testCacheTime);
+            [sectionDataModel.values addObject:loginModule];
+        }
+        
+        {
+            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
+            loginModule.title = @"缓存Key";
+            loginModule.actionBlock = ^{
+                NSString *Url = @"/getWangYiNews";
+                NSDictionary *params = @{
+                    @"page": @(1),
+                    @"count": @(2)
+                };
+                NSString *cacheKey = [CJNetworkCacheUtil getRequestCacheKeyByRequestUrl:Url parameters:params];
+                NSLog(@"cacheKey = %@", cacheKey);
+            };
             [sectionDataModel.values addObject:loginModule];
         }
         

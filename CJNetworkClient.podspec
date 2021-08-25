@@ -40,6 +40,7 @@ Pod::Spec.new do |s|
     ss.source_files = "CJNetworkClient/**/*.{h,m}"
     ss.dependency 'CJNetwork/AFNetworkingSerializerEncrypt'
     ss.dependency 'CJNetwork/AFNetworkingUploadComponent'
+#    ss.dependency 'CQNetworkRequestPublic/Client'
   end
 
 

@@ -23,11 +23,12 @@ end
 
 
 target 'CJNetworkDemo' do
-  pod 'CQDemoKit',          '~> 0.5.10',      :subspecs => ['BaseVC']
+  pod 'CQDemoKit',          '~> 0.6.2',      :subspecs => ['BaseVC']
   
   pod 'CJNetworkSimulate',  :path => '../'
   
-  pod 'CJNetwork',          :path => '../'
+  pod 'CJNetwork',              :path => '../'
+  pod 'CQNetworkRequestPublic', :path => '../'
   pod 'CJNetworkClient',    :path => '../'
   pod 'CJNetworkFileModel', :path => '../'
   pod 'CocoaAsyncSocket',   '~> 7.4.1'

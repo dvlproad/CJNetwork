@@ -714,6 +714,7 @@
 				78FC91F11F54481E00033DEF /* Sources */,
 				78FC91F21F54481E00033DEF /* Frameworks */,
 				78FC91F31F54481E00033DEF /* Resources */,
+				A72F3ECB57E84154C550EF12 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -877,6 +878,32 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A72F3ECB57E84154C550EF12 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo-resources.sh",
+				"${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-calendar.png",
+				"${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-folder.png",
+				"${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-home.png",
+				"${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-menu.png",
+				"${PODS_ROOT}/CQDemoKit/CQDemoKit/BaseVC/TabBar/Resources/icons8-settings.png",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icons8-calendar.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icons8-folder.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icons8-home.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icons8-menu.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icons8-settings.png",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
