@@ -19,7 +19,7 @@
   "requires_arc": true,
   "subspecs": [
     {
-      "name": "CJNetworkClient",
+      "name": "NetworkClient",
       "source_files": "CJNetworkClient/**/*.{h,m}",
       "dependencies": {
         "CQNetworkPublic/Client": [

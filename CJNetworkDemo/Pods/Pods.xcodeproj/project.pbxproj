@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		017898970F200020E1D2D6A07E0AFF40 /* CJNetworkClient+CJDemoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD6CE736139E45CE1D861B24AA00E48 /* CJNetworkClient+CJDemoApp.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		017898970F200020E1D2D6A07E0AFF40 /* CJNetworkClient+CJDemoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C75AC1C7CDADA35137D6B31656C54D /* CJNetworkClient+CJDemoApp.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		034003EB32CC417A0B7ADC5F9EB8BD81 /* CJLogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3401442774B09BC0D54F14CEE6C269 /* CJLogUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		03828CDEA263FC90D29177534CFD60F3 /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = C9756329A8005EE63DEB986D3C1FE104 /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		05F19F18ED53DBA79B90CF42B5EB70FC /* CJUploadMomentState.h in Headers */ = {isa = PBXBuildFile; fileRef = 683998B607AFF37B1A0272F345F2F5CE /* CJUploadMomentState.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		061B3CE9FC28CE2481BDF289E2151FB1 /* CJNetworkClient+CJDemoApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AD7A94CE0894AFDC0C08CC8E92E9F53 /* CJNetworkClient+CJDemoApp.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		061B3CE9FC28CE2481BDF289E2151FB1 /* CJNetworkClient+CJDemoApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 2149C78C5540ED85F4600BC4E753548D /* CJNetworkClient+CJDemoApp.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		074D5ABC9187D4D087A512A323D4D88C /* CQNetworkRequestEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = 3017B99024730854AC790BB9F1E116DD /* CQNetworkRequestEnum.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		099C1CA8F4E4F4D8A6DF646483477C4B /* CJUIKitCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 215CEEEBCEFD1DD3F5209229B75ACB75 /* CJUIKitCollectionViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		0AD4905F3FF0F5A744489CF9BF75F2BE /* YYCache-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A027602D4891F0BCF11D088B4ECF7D4A /* YYCache-dummy.m */; };
@@ -21,7 +21,7 @@
 		0E40959BF21B70021583CDD4CD5825DC /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B362376C25B26B3D2BACEA0173161A /* MJFoundation.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0F7876DF641108E8A8AFF393E4935D7A /* CJResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E11858B821ADFCC79DB69E778F276B0 /* CJResponseModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		0F9C0DB6B0AEFF8D10F5B87E7ADFE5A2 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A2AEE4B0624BDACDB541B5D827B762 /* AFAutoPurgingImageCache.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		0FBF79C9E56018196C0DAE766203F5EF /* CJNetworkClient+Upload1.m in Sources */ = {isa = PBXBuildFile; fileRef = B779B9E84C3FC308E46EF30970C21334 /* CJNetworkClient+Upload1.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		0FBF79C9E56018196C0DAE766203F5EF /* CJNetworkClient+Upload1.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C966D7DEFB89C683940CBC62DB1542A /* CJNetworkClient+Upload1.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		100C923851CB5A0EC4A456ABD9ECED8B /* CJLogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BAB8624869C688A26895D94EBF8A74 /* CJLogView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		100DEC70025E04A0B2D59B8034CBBC32 /* CJDealTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A70139B96EF0BE358388D03C759B28AB /* CJDealTextModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		11A896545B49FDF8BE4594CC01DD0EDD /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F901E51AC4C4E9D61D0CEF9814A702A /* NSObject+MJKeyValue.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -45,7 +45,7 @@
 		23CDADE25548BC4E906AACDFF9EC8437 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = 169B24C43D0DC5B9EFAB74C20FE3CFE7 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		245929B89B30F58CC8ECAD846E4B9B79 /* CJUploadMomentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A15ACC0788AF83B0B3B3C9F78944DA /* CJUploadMomentInfo.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		24ACDB52E5E66FB9CC1BF1142D04D848 /* CJUIKitBaseScrollViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C63A4D339EB7B48CE2D3FF25E467918B /* CJUIKitBaseScrollViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		250F0A6C2A3EFFBE874B1EE0A905B18B /* CJNetworkClient+Upload1.h in Headers */ = {isa = PBXBuildFile; fileRef = 15D5C6508EF87C993DCD1DD42B2AA34E /* CJNetworkClient+Upload1.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		250F0A6C2A3EFFBE874B1EE0A905B18B /* CJNetworkClient+Upload1.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B3DFFF35048369B6FBA39C1D4374C73 /* CJNetworkClient+Upload1.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2541BECC935C6FCC169FE401B1373574 /* CJBaseUtil-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E0193FE87B2354F1796D42550813A90E /* CJBaseUtil-dummy.m */; };
 		25BDE68C15F69C0BA1B719A9993E8A81 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B551D4879A24D935186EA2D24D71861C /* AFNetworking.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		25FBB4C0EAC418670A205A4011148D28 /* NSObject+MJClass.h in Headers */ = {isa = PBXBuildFile; fileRef = CE1AEEF07B62E92D8AA26AD0452404EA /* NSObject+MJClass.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -82,7 +82,7 @@
 		4763307A20C59386E6F675599CA36B20 /* NSObject+MJKeyValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CD73C60C18E6744EAA661D207ABC0BE /* NSObject+MJKeyValue.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4A250241540729E2B55C6771D61E0E56 /* CJUIKitBaseCollectionHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B16712CFBC6E4DBBE01DAB94DC6CE1 /* CJUIKitBaseCollectionHomeViewController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4B12CBA693B6C36E63D1E3B51B1D10AC /* UISwitch+CQTSMoreProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 34286DFC17E4B88B0028164B58693193 /* UISwitch+CQTSMoreProperty.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		4B781176D624D9AA84B7C01744F1E4A8 /* CJResponseHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 74D8DA43660FFE49E01AD760CAA08278 /* CJResponseHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		4B781176D624D9AA84B7C01744F1E4A8 /* CJResponseHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D3240DFA6C27B6EA8C9F6638DE1210C /* CJResponseHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4BBCC2520227B472562FA1B57A827907 /* NSFileManagerCJHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C5C3007BE4CF58E51D348C331C1FABD /* NSFileManagerCJHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4C4DC9DFDDB4DA10813F99F24B1B8D37 /* MJFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1835A5C3CAAAD6BCA0B43EF7B6C78323 /* MJFoundation.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4CFCDADB6BB6D1A067F107479FDBE136 /* NSFileManagerCJHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7F04C0546E0E4DAF9EB5B9AB369C2D /* NSFileManagerCJHelper.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -94,10 +94,10 @@
 		520D2A91692E185032C148ABDE2AED8C /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = EF568022E381DDAAF080C0E1F58B3059 /* OpenUDID.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		53E2441244C019637FF5EA64D19850D7 /* YYMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FB22B279444295E642BC0D933B090BE /* YYMemoryCache.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		544F21743DF2F5713E0D175CDA11F578 /* CQTSContainerViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4269E60B7D8AB36C7F0E18F868084BCF /* CQTSContainerViewFactory.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		55A3D4A18AE3CA41BBC628E0A9031235 /* CJNetworkClient+Upload2.h in Headers */ = {isa = PBXBuildFile; fileRef = 94FF11EDEA92BEBB803C85541D41111B /* CJNetworkClient+Upload2.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		55A3D4A18AE3CA41BBC628E0A9031235 /* CJNetworkClient+Upload2.h in Headers */ = {isa = PBXBuildFile; fileRef = BF7E2C35FC02B9837AB54DEBEF10A3F0 /* CJNetworkClient+Upload2.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5731A866DFDCFB1CD73500690A1F79CC /* CQDMModuleModel.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8B5E7DAF3DEED362BAB3B4D0F7F9EC /* CQDMModuleModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		58218C490EE72C3926DD2D55C57EA85A /* CJDataMemoryDictionaryManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DA35B54C1E3835158D9E23DC8B4E2D69 /* CJDataMemoryDictionaryManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		5A6BE8EFC4DA76178D111A9443C9E822 /* CJNetworkClient-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4451C764D559FF04B500478B8F0E3A /* CJNetworkClient-dummy.m */; };
+		5A6BE8EFC4DA76178D111A9443C9E822 /* CJNetworkClient-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8C97CD365F9A13371876B981BDBB7D /* CJNetworkClient-dummy.m */; };
 		5ABF649DBBFBE20E41924FF55ABAFC90 /* CQNetworkUploadHelperSetGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D3B7086E6836FF77A718D2BFC30A47 /* CQNetworkUploadHelperSetGetter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5AD109D8CD2C6BA5F8C385B3F309771C /* WKWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8090A46BB49A1FC4989DDBE9646413FC /* WKWebView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5D2211A91F01D48CF5268F9B2BE472D5 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 569F3556730319BF1CFECB5190E0FF88 /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -141,9 +141,9 @@
 		7FEDB68B713AB373C2EAD2A81E5896BF /* CQNetworkUploadClientSetGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8CBB50B91A1C5EC2DEAA998178BF18D /* CQNetworkUploadClientSetGetter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8037C4CDC3A806AA4CA0201B3D3453D0 /* CJLogUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DA450E0E7E03E6A4B5A55E78681A7E16 /* CJLogUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		809D4E69A391E081683695D353E37766 /* CQDMSectionDataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DB81595F972B05A49354B211868419 /* CQDMSectionDataModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		82B4AD7317E720D5AAE18740C3FBC7DD /* CJNetworkClient+SuccessFailure.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CCD3FA89250DD27877F9B32187F18A /* CJNetworkClient+SuccessFailure.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		82B4AD7317E720D5AAE18740C3FBC7DD /* CJNetworkClient+SuccessFailure.m in Sources */ = {isa = PBXBuildFile; fileRef = B269652886224C03B93623485DD708BD /* CJNetworkClient+SuccessFailure.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		85E576B6CC890BC3329520602BA40077 /* AsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F17701F5B0C9E4F8BF0C582706EAC13 /* AsyncUdpSocket.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		86DCA642C0FD8950C179B48218B8852E /* CJRequestSettingModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C092BFC56896EA1A657CD25703D3B8B /* CJRequestSettingModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		86DCA642C0FD8950C179B48218B8852E /* CJRequestSettingModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B96A8B956C135A12EE52DECE71AF87A9 /* CJRequestSettingModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		86F0EC9CD9F4294EB55CEAD9E1EA6E0A /* CJIndentedStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1E93C0425B46C2CB6FA68698BB9626 /* CJIndentedStringUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		875EB3F99014E59480A8F4C7EC2FD954 /* MJExtension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 033408E4F1696FEB0E5CACB7C1286DA2 /* MJExtension-dummy.m */; };
 		89454A024E035C82E3063B9CD82A26A5 /* CJDataMemoryCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B4F75A4BF4709E92B03A48082C420B /* CJDataMemoryCacheManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -151,7 +151,7 @@
 		89F4D246D61128E7224E16952F9DA28F /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C5F215487E9F16EF82F575E265877E96 /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		89F78066144CFDBD90D296CFF193744C /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = ED873A0DA4E9564928C765E622B8A4B1 /* UIActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8A4D4C559A2BAFD45317243FCFF284F4 /* CJUploadMomentInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BE426D9A178788CB6350733BB10AD43 /* CJUploadMomentInfo.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		8A9E5A606E3F8AACAB862A2BE39FE349 /* CJResponseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEBC5E2EDE2F44D2EFA3620EA6C2EA3 /* CJResponseHelper.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		8A9E5A606E3F8AACAB862A2BE39FE349 /* CJResponseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD0E2805CF23F74EB1B7E1294DDF01 /* CJResponseHelper.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8B1F97DCAAD070A3CAEE4854825F6756 /* Pods-CJNetworkDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F775222A976497C0C8F811F8836E25 /* Pods-CJNetworkDemo-dummy.m */; };
 		8B4220997379AD6EDBD0C7982B676C9D /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AE992EEC8855852418E666403832DAE8 /* NSLayoutConstraint+MASDebugAdditions.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8C5A8537CDE3911C599A80D98C68BFE1 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAC00279BCB19F00976DB9D3D0BDC7F /* ViewController+MASAdditions.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -171,7 +171,7 @@
 		97FA87FB0C76D71782BD43B448D5B508 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A67E5839CE44A9BBB5BBA07D2EFD9E12 /* NSArray+MASAdditions.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		983DEBBC0450921FEB8CD456220D609F /* OpenUDID-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AF78D6D53B717D421B443E121169B0 /* OpenUDID-dummy.m */; };
 		989DC1B0903C393718F4FE667BBEF753 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 19B57E17AC29E3E9B058ED48B1029F7B /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		9A330420820ECC681438052A8B2F0E8C /* CJNetworkClient+Completion.h in Headers */ = {isa = PBXBuildFile; fileRef = 012F6AEC8D3FC7128E810FF709CC52B5 /* CJNetworkClient+Completion.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9A330420820ECC681438052A8B2F0E8C /* CJNetworkClient+Completion.h in Headers */ = {isa = PBXBuildFile; fileRef = 64BB991BA453E63F21CA567BFE7FDD54 /* CJNetworkClient+Completion.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9A55AC694D13642F55C911667D875998 /* NSObject+MJCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = E02E3424239A33B81FF73C255B3851C4 /* NSObject+MJCoding.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9B21A0501844D4694A30F3EE7282519D /* CJCacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C125F9CEBDFE06ABF14F8C90216391E6 /* CJCacheManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9B7A8750BF446B285124F75376FEA5D1 /* AFHTTPSessionManager+CJRequestCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D4B7D388209B492FBEB9A415B9147C2C /* AFHTTPSessionManager+CJRequestCommon.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -182,7 +182,7 @@
 		A5149065FD422FAEC69E1423160A437D /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 78996FEF5B4AC2FF0589508B6BE18C8F /* AsyncSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A58D961B3131B67678B39D582FF72B46 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DD51282F59840998AEC64415019963D3 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A693E7C90C6AC5D000CAED3CF677AF36 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AF7A6335BA0547EC83B994D75F8BF28 /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A6BBAD7AF29C9F357A2E62CF47752AF5 /* CJNetworkClient+Completion.m in Sources */ = {isa = PBXBuildFile; fileRef = 12276CE13F74E156DDDF35A13FC33EEA /* CJNetworkClient+Completion.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A6BBAD7AF29C9F357A2E62CF47752AF5 /* CJNetworkClient+Completion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A36766D83AD8F01F27D5A0F5C594031 /* CJNetworkClient+Completion.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A71AF70FF5A138A69DF3B3BD4722BEA7 /* Pods-CJNetworkDemoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3290FB2535C989864838B790ECD28FE1 /* Pods-CJNetworkDemoTests-dummy.m */; };
 		A75908DF2FF057462BFD936FB37C03E2 /* CJNetworkCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BADA9CA80554B28AB05537EF569713 /* CJNetworkCacheManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A8C3BCFD99342D24CF59B8E333EF900D /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3787A756DCB3B52A3379EFA3A306F2EF /* AsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -237,9 +237,9 @@
 		D2C95E08745D35FB40593F552258D843 /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = DB10CC9DD56F9B8A2D7258EAA7580FED /* MJExtensionConst.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D31C6ABC78DB335EB4067D8C94264061 /* MJPropertyKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C86F4FFF9696FA4D5C01E3FC0BAB33 /* MJPropertyKey.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D42439DE1BAA17AC1E4AF83B38427C24 /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 7605191D11149D529BFA860856236D6D /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D4276299E3D49ED6E59E8E7634FD7263 /* CJNetworkClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 8972F6C27A6A0200701995DCE9CCD561 /* CJNetworkClient.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D4276299E3D49ED6E59E8E7634FD7263 /* CJNetworkClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 21B6FD3A16F6BFB59A849CF782749806 /* CJNetworkClient.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D4547A41AE423F7D01F4E5EDBB7B5B46 /* CQNetworkRequestCompletionHelperProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 7579DBB7C732A2A6BBD06D1FB0A8E8CD /* CQNetworkRequestCompletionHelperProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D8256F91D13A5AA6C8BFE5496EA67BBC /* CJNetworkClient+SuccessFailure.h in Headers */ = {isa = PBXBuildFile; fileRef = E841F6C1E4606B044882317D77A3D255 /* CJNetworkClient+SuccessFailure.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D8256F91D13A5AA6C8BFE5496EA67BBC /* CJNetworkClient+SuccessFailure.h in Headers */ = {isa = PBXBuildFile; fileRef = 80820AC9012874AF462B66C7E675D9D9 /* CJNetworkClient+SuccessFailure.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D9665AF628E1DE9BA88EB9965128D89C /* CJNetworkCacheUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 365E296C7CC3C5D3947674B8FFD1C9B3 /* CJNetworkCacheUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D9F099831ADDD849367D4AF66BFE3913 /* CQTSSuspendWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C18A6A1D23D8CD91471440C991AB58E /* CQTSSuspendWindow.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DA6EDE1D3B5A97F18037E2F253B62586 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B0400C70073C2BE7AA0BC07A40395B34 /* UIProgressView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -260,10 +260,10 @@
 		E5118CB15F1EF2E20CC58EA2EB9109B9 /* NSString+MJExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = D73410465A8A61DCFA9A6B6C5EDAEB3F /* NSString+MJExtension.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E56AB80586834F443EC63AC45452CB8F /* AFHTTPSessionManager+CJRequestCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DCDBD8284CF7FC5B38C4007274A2F /* AFHTTPSessionManager+CJRequestCommon.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E700D209497E847267E64DAF010E04CB /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 1908B6F0919C0CCA4870FC7F14D41A53 /* UIRefreshControl+AFNetworking.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		E765ED23A942DEE4356C80F65D4F0CAB /* CJNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB8416914A5667C707C7B13F7C2246D /* CJNetworkClient.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E765ED23A942DEE4356C80F65D4F0CAB /* CJNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C09D69FDFF86958AAC5E425221B1E6 /* CJNetworkClient.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		EB947B49EEA9DEAF61FAF4C117565002 /* UISwitch+CQTSMoreProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E52A7073B724DB4D2687F26A5B65A52 /* UISwitch+CQTSMoreProperty.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		EBB208A80068563D8BB5FF63E953070D /* CJUIKitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52222A7A71AA87ECC22D277C757EECB9 /* CJUIKitBaseViewController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		EC48C47FB4E022CE34D0C7D95A91AF00 /* CJNetworkClient+Upload2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2584F8B2E333D9409960D6581C47F80F /* CJNetworkClient+Upload2.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EC48C47FB4E022CE34D0C7D95A91AF00 /* CJNetworkClient+Upload2.m in Sources */ = {isa = PBXBuildFile; fileRef = DF81FE9301D78DF241A284774E5369DD /* CJNetworkClient+Upload2.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		EE48C82AC2A02C3FCEE6941AD8C9A024 /* CJSimulateRemoteUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 0904CD128C33BC25927B8F1688752F73 /* CJSimulateRemoteUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F007737C3C5621D1D64DFAD4CC87E32A /* CJDealTextModel.h in Headers */ = {isa = PBXBuildFile; fileRef = CB29CD5230E281B6E007634087D41866 /* CJDealTextModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F03B276745F37E505667479C9DE0C7F2 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F8DC460EE4C98F5FE4C9A26AD1F97702 /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -278,7 +278,7 @@
 		F83F7E88B47CE82B610A837CD0EE482F /* CJUIKitBaseHomeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 43FCF2970F558FB45F9678E48EC9CB20 /* CJUIKitBaseHomeViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FB3FAD31ABEB8BA2778A8A6888647884 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 485BAD0BC63CACEB39264E03A35CDD32 /* MASConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FDB769E62E7B694F13E673497AD2E7C6 /* CQTSSuspendWindowFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 082803CA4B5841BC77A71F50777FB44C /* CQTSSuspendWindowFactory.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		FEA5BF9A0288D5A654587AD1F3FF18A7 /* CJRequestSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C44521E4E77E89350B5374527F0B1EFC /* CJRequestSettingModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		FEA5BF9A0288D5A654587AD1F3FF18A7 /* CJRequestSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8949D2957FB7B66827469562BAB5270B /* CJRequestSettingModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		FF0162370E2C38B2B4974E209BBA0D33 /* CQNetworkPublic-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB460855AA38569E1AC22E7E6C877B26 /* CQNetworkPublic-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -462,8 +462,8 @@
 
 /* Begin PBXFileReference section */
 		00AA574BEDA8CA9764F21F89F37964D8 /* CJIndentedStringUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJIndentedStringUtil.h; path = CJBaseUtil/CJIndentedStringUtil/CJIndentedStringUtil.h; sourceTree = "<group>"; };
+		010AD78454ED2EA85F3DB2917CB6F4E8 /* CJNetworkClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJNetworkClient.debug.xcconfig; sourceTree = "<group>"; };
 		011373C851BF8EC61A99EDCB7A7F922C /* CJUIKitBaseViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJUIKitBaseViewController.h; path = CQDemoKit/BaseVC/Base/CJUIKitBaseViewController.h; sourceTree = "<group>"; };
-		012F6AEC8D3FC7128E810FF709CC52B5 /* CJNetworkClient+Completion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+Completion.h"; path = "CJNetworkClient/CJNetworkClient+Completion.h"; sourceTree = "<group>"; };
 		0323343362E01D92FDB8BD57521503E1 /* CJRequestCacheSettingModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CJRequestCacheSettingModel.h; sourceTree = "<group>"; };
 		033408E4F1696FEB0E5CACB7C1286DA2 /* MJExtension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MJExtension-dummy.m"; sourceTree = "<group>"; };
 		03ABE7F8FF15463426C9E4863629793C /* CJDataMemoryDictionaryManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CJDataMemoryDictionaryManager.m; sourceTree = "<group>"; };
@@ -485,9 +485,7 @@
 		100F72D0A1C8838F994FC2D8314DC4BB /* CQTSSwitchViewFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQTSSwitchViewFactory.h; path = CQDemoKit/BaseUIKit/CQTSSwitchViewFactory.h; sourceTree = "<group>"; };
 		1107801FEEAC7A8823FA378B76A6FB89 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		11CFE31219C4299A8E241DE3495CDAC6 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
-		12276CE13F74E156DDDF35A13FC33EEA /* CJNetworkClient+Completion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CJNetworkClient+Completion.m"; path = "CJNetworkClient/CJNetworkClient+Completion.m"; sourceTree = "<group>"; };
 		14264EDC5ED3F9253D591B7161EF8CC6 /* CJMonitor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CJMonitor-dummy.m"; sourceTree = "<group>"; };
-		15D5C6508EF87C993DCD1DD42B2AA34E /* CJNetworkClient+Upload1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+Upload1.h"; path = "CJNetworkClient/CJNetworkClient+Upload1.h"; sourceTree = "<group>"; };
 		169B24C43D0DC5B9EFAB74C20FE3CFE7 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
 		172FEBFFCFC975B09E4958AC3918D3AB /* CJDealTextModelFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJDealTextModelFactory.h; path = CQDemoKit/BaseVC/TextView/Model/CJDealTextModelFactory.h; sourceTree = "<group>"; };
 		17328A377A6698A251E244B6C1AEDF69 /* CQNetworkUploadCompletionHelperProtocal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQNetworkUploadCompletionHelperProtocal.h; path = CQNetworkPublic/Helper/Upload/CQNetworkUploadCompletionHelperProtocal.h; sourceTree = "<group>"; };
@@ -500,18 +498,20 @@
 		1A892825FEC0EA3B9D3BD5DDF25E83A1 /* Pods-CJNetworkDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CJNetworkDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1ADB60598E079648AFC6237E04B3E8D0 /* AFHTTPSessionManager+CJSerializerEncrypt.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "AFHTTPSessionManager+CJSerializerEncrypt.m"; path = "CJNetwork/AFNetworkingSerializerEncrypt/AFHTTPSessionManager+CJSerializerEncrypt.m"; sourceTree = "<group>"; };
 		1B967198A3D34950A2F2ABC588F38DCF /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
-		1C092BFC56896EA1A657CD25703D3B8B /* CJRequestSettingModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CJRequestSettingModel.h; sourceTree = "<group>"; };
 		1C18A6A1D23D8CD91471440C991AB58E /* CQTSSuspendWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CQTSSuspendWindow.m; path = CQDemoKit/BaseVC/Base/BaseWindow/CQTSSuspendWindow.m; sourceTree = "<group>"; };
 		1CAA09978A6F9C3CC35B718F4FD11359 /* DeviceCJHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DeviceCJHelper.m; path = CJBaseHelper/CJBaseHelper/DeviceCJHelper/DeviceCJHelper.m; sourceTree = "<group>"; };
 		1FFED36A657123030ABB700256D73F15 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMasonry.a; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		20411A609324C10637C2FD0A61BE0388 /* CJUIKitToastUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJUIKitToastUtil.m; path = CQDemoKit/BaseUtil/CJUIKitToastUtil.m; sourceTree = "<group>"; };
 		2131160366546B057C12BF280A61D9AA /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		2149C78C5540ED85F4600BC4E753548D /* CJNetworkClient+CJDemoApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+CJDemoApp.h"; path = "CJNetworkClient/CJNetworkClient+CJDemoApp.h"; sourceTree = "<group>"; };
 		215CEEEBCEFD1DD3F5209229B75ACB75 /* CJUIKitCollectionViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJUIKitCollectionViewCell.h; path = CQDemoKit/BaseVC/Collection/CJUIKitCollectionViewCell.h; sourceTree = "<group>"; };
+		21B6FD3A16F6BFB59A849CF782749806 /* CJNetworkClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJNetworkClient.h; path = CJNetworkClient/CJNetworkClient.h; sourceTree = "<group>"; };
 		2241029DE777A902191A62AEEACA0207 /* Masonry-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
+		22BCB2892B129A4A54118FAC7B079062 /* CJNetworkClient.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = CJNetworkClient.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		22D3B7086E6836FF77A718D2BFC30A47 /* CQNetworkUploadHelperSetGetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CQNetworkUploadHelperSetGetter.m; path = CQNetworkPublic/Helper/Upload/CQNetworkUploadHelperSetGetter.m; sourceTree = "<group>"; };
 		24B071857F6E12ABD04187018C83C3AA /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
 		2581E43E49AFD3ADC5B804FEFB782232 /* CJUIKitBaseTabBarViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJUIKitBaseTabBarViewController.h; path = CQDemoKit/BaseVC/TabBar/CJUIKitBaseTabBarViewController.h; sourceTree = "<group>"; };
-		2584F8B2E333D9409960D6581C47F80F /* CJNetworkClient+Upload2.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CJNetworkClient+Upload2.m"; path = "CJNetworkClient/CJNetworkClient+Upload2.m"; sourceTree = "<group>"; };
+		26C09D69FDFF86958AAC5E425221B1E6 /* CJNetworkClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJNetworkClient.m; path = CJNetworkClient/CJNetworkClient.m; sourceTree = "<group>"; };
 		27F11C6257BF9719E80F9F61385D7668 /* CQNetworkRequestClientSetGetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CQNetworkRequestClientSetGetter.m; path = CQNetworkPublic/Client/Request/CQNetworkRequestClientSetGetter.m; sourceTree = "<group>"; };
 		29AD95DB0D58235BBA18FC7CFC354DDB /* CJBaseHelper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CJBaseHelper-dummy.m"; sourceTree = "<group>"; };
 		2AA4C5E3CC02ECC17DA10B45DD4BEFB9 /* CJUIKitAlertUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJUIKitAlertUtil.m; path = CQDemoKit/BaseUtil/CJUIKitAlertUtil.m; sourceTree = "<group>"; };
@@ -532,11 +532,11 @@
 		3744C752F76F9FF677E9646F28357963 /* CJValidateStringTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJValidateStringTableViewCell.m; path = CQDemoKit/BaseVC/TextView/View/CJValidateStringTableViewCell.m; sourceTree = "<group>"; };
 		3787A756DCB3B52A3379EFA3A306F2EF /* AsyncUdpSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AsyncUdpSocket.m; path = Source/RunLoop/AsyncUdpSocket.m; sourceTree = "<group>"; };
 		384EB7D20C0E0066A76C1A045595CC88 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Source/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
-		3AD7A94CE0894AFDC0C08CC8E92E9F53 /* CJNetworkClient+CJDemoApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+CJDemoApp.h"; path = "CJNetworkClient/CJNetworkClient+CJDemoApp.h"; sourceTree = "<group>"; };
 		3B96B5C47356C964AF4EDB423B05149B /* CQNetworkRequestCompletionClientProtocal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQNetworkRequestCompletionClientProtocal.h; path = CQNetworkPublic/Client/Request/CQNetworkRequestCompletionClientProtocal.h; sourceTree = "<group>"; };
 		3C0E7A3583AC5069025B3CB0548F5DCA /* UIButton+CQTSMoreProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+CQTSMoreProperty.m"; path = "CQDemoKit/BaseUIKit/UIButton+CQTSMoreProperty.m"; sourceTree = "<group>"; };
 		3C1403ABF39C9A66F7DF20009FD2B0A1 /* CJNetworkSimulate-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CJNetworkSimulate-dummy.m"; sourceTree = "<group>"; };
 		3C8947BC320575A522A026916E7CB932 /* AFImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageDownloader.h; path = "UIKit+AFNetworking/AFImageDownloader.h"; sourceTree = "<group>"; };
+		3C966D7DEFB89C683940CBC62DB1542A /* CJNetworkClient+Upload1.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CJNetworkClient+Upload1.m"; path = "CJNetworkClient/CJNetworkClient+Upload1.m"; sourceTree = "<group>"; };
 		3C9D2E0C5955D5D21DB5AF1ADA8C052A /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
 		3CD73C60C18E6744EAA661D207ABC0BE /* NSObject+MJKeyValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MJKeyValue.h"; path = "MJExtension/NSObject+MJKeyValue.h"; sourceTree = "<group>"; };
 		3CF03D26BFC7F056EEFB337B8F3C537E /* CJUIKitBaseCollectionHomeViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJUIKitBaseCollectionHomeViewController.h; path = CQDemoKit/BaseVC/Collection/CJUIKitBaseCollectionHomeViewController.h; sourceTree = "<group>"; };
@@ -562,7 +562,6 @@
 		4FC4BA4629BEF73704471288AF94BA38 /* Pods-CJNetworkDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CJNetworkDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5063AF5AD178EAE14B088E11CAB06409 /* CJBaseUtil-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CJBaseUtil-prefix.pch"; sourceTree = "<group>"; };
 		50A255A3C28B680EB23E1F2C1AEA795A /* CQNetworkUploadClientSetGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQNetworkUploadClientSetGetter.h; path = CQNetworkPublic/Client/Upload/CQNetworkUploadClientSetGetter.h; sourceTree = "<group>"; };
-		51261F8E1A577CAE00F8C80D22B295DC /* CJNetworkClient-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CJNetworkClient-prefix.pch"; sourceTree = "<group>"; };
 		514257EBE53442D875BCCA96E91FA854 /* UIButton+CQTSMoreProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+CQTSMoreProperty.h"; path = "CQDemoKit/BaseUIKit/UIButton+CQTSMoreProperty.h"; sourceTree = "<group>"; };
 		514706927E080A2BEB7EB17A97B05F83 /* CocoaAsyncSocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaAsyncSocket.release.xcconfig; sourceTree = "<group>"; };
 		52222A7A71AA87ECC22D277C757EECB9 /* CJUIKitBaseViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJUIKitBaseViewController.m; path = CQDemoKit/BaseVC/Base/CJUIKitBaseViewController.m; sourceTree = "<group>"; };
@@ -572,21 +571,21 @@
 		54EA8E79FC5462B46AD61D9E12504C90 /* UIImage+CQDemoKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+CQDemoKit.h"; path = "CQDemoKit/Helper/UIImage+CQDemoKit.h"; sourceTree = "<group>"; };
 		5544772E6D1F040DB3F93DD0D1F7E535 /* CQDemoKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CQDemoKit.debug.xcconfig; sourceTree = "<group>"; };
 		569F3556730319BF1CFECB5190E0FF88 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
-		57EEC760F7D1C2A4B41DE6429DEDD744 /* CJNetworkClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJNetworkClient.release.xcconfig; sourceTree = "<group>"; };
 		57FEEE30EC110D63CF646FB983CE9B1B /* YYDiskCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYDiskCache.h; path = YYCache/YYDiskCache.h; sourceTree = "<group>"; };
 		58B2780CAA9F5EECC7C54E46909EE79C /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
 		5912D0854F5FCEFAFA65DD58B27A6971 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = Source/GCD/GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		5C7F04C0546E0E4DAF9EB5B9AB369C2D /* NSFileManagerCJHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NSFileManagerCJHelper.m; sourceTree = "<group>"; };
 		5E11858B821ADFCC79DB69E778F276B0 /* CJResponseModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJResponseModel.h; path = CQNetworkPublic/Base/CJResponseModel.h; sourceTree = "<group>"; };
+		5E8C97CD365F9A13371876B981BDBB7D /* CJNetworkClient-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CJNetworkClient-dummy.m"; sourceTree = "<group>"; };
 		5FA01D937297A1362B1AF6F71B0714F9 /* MJPropertyKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJPropertyKey.h; path = MJExtension/MJPropertyKey.h; sourceTree = "<group>"; };
 		5FB22B279444295E642BC0D933B090BE /* YYMemoryCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYMemoryCache.h; path = YYCache/YYMemoryCache.h; sourceTree = "<group>"; };
-		5FD6CE736139E45CE1D861B24AA00E48 /* CJNetworkClient+CJDemoApp.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CJNetworkClient+CJDemoApp.m"; path = "CJNetworkClient/CJNetworkClient+CJDemoApp.m"; sourceTree = "<group>"; };
 		5FE8755A5F6CDD20A77E141DAFA83733 /* CJLogSuspendWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJLogSuspendWindow.h; path = CJMonitor/CJLog/CJLogSuspendWindow.h; sourceTree = "<group>"; };
 		606F9DCAABBC780A3A580705144A7C65 /* MJExtensionConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJExtensionConst.h; path = MJExtension/MJExtensionConst.h; sourceTree = "<group>"; };
 		60A35CF3648ECA28A3C9584B85833486 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
 		62043656392B851B0C44B348566D8545 /* libCJBaseHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCJBaseHelper.a; path = libCJBaseHelper.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6230139D7705701C2E26BE4B323A9E2C /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		63C51CC38F14D2FC3F058F8F9B1E1904 /* MJPropertyType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJPropertyType.m; path = MJExtension/MJPropertyType.m; sourceTree = "<group>"; };
+		64BB991BA453E63F21CA567BFE7FDD54 /* CJNetworkClient+Completion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+Completion.h"; path = "CJNetworkClient/CJNetworkClient+Completion.h"; sourceTree = "<group>"; };
 		65DB81595F972B05A49354B211868419 /* CQDMSectionDataModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQDMSectionDataModel.h; path = CQDemoKit/BaseVC/Base/Model/CQDMSectionDataModel.h; sourceTree = "<group>"; };
 		66E62883B405BC0605A3D49928948C71 /* CJUIKitBaseTextViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJUIKitBaseTextViewController.m; path = CQDemoKit/BaseVC/TextView/CJUIKitBaseTextViewController.m; sourceTree = "<group>"; };
 		671D686DAB03F16D3DD41EED91AE7955 /* CQDemoKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CQDemoKit-dummy.m"; sourceTree = "<group>"; };
@@ -613,7 +612,6 @@
 		73392F4CEF263187AE1500D38D040425 /* YYDiskCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYDiskCache.m; path = YYCache/YYDiskCache.m; sourceTree = "<group>"; };
 		738CB2C53D356110AE86A78C9AD3166E /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		73E211646DC21644AC73B4A369922E06 /* libOpenUDID.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libOpenUDID.a; path = libOpenUDID.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		74D8DA43660FFE49E01AD760CAA08278 /* CJResponseHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CJResponseHelper.h; sourceTree = "<group>"; };
 		7547C3BB6846979839F0FB23817E8552 /* YYKVStorage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYKVStorage.m; path = YYCache/YYKVStorage.m; sourceTree = "<group>"; };
 		7579DBB7C732A2A6BBD06D1FB0A8E8CD /* CQNetworkRequestCompletionHelperProtocal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQNetworkRequestCompletionHelperProtocal.h; path = CQNetworkPublic/Helper/Request/CQNetworkRequestCompletionHelperProtocal.h; sourceTree = "<group>"; };
 		7605191D11149D529BFA860856236D6D /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -622,7 +620,6 @@
 		79C59D4F6F7B4B08C11194DFE549B8AD /* libPods-CJNetworkDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-CJNetworkDemo.a"; path = "libPods-CJNetworkDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A077193394C99412514B83087B9E07F /* CJMonitor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CJMonitor-prefix.pch"; sourceTree = "<group>"; };
 		7B171EF5A2E156DF7DB957866E1C0897 /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
-		7B4451C764D559FF04B500478B8F0E3A /* CJNetworkClient-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CJNetworkClient-dummy.m"; sourceTree = "<group>"; };
 		7B4BFA647FDE7A1AFFDC4BBD6063CE3F /* YYCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYCache.h; path = YYCache/YYCache.h; sourceTree = "<group>"; };
 		7BAC822A13B9224DCB801789B5973903 /* CJBaseUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJBaseUtil.release.xcconfig; sourceTree = "<group>"; };
 		7CAAD930DD8A6B738E689FFCA34B2983 /* YYCache-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YYCache-prefix.pch"; sourceTree = "<group>"; };
@@ -632,18 +629,20 @@
 		7ECF692969DE45730F060CEAD753567C /* DeviceCJHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DeviceCJHelper.h; path = CJBaseHelper/CJBaseHelper/DeviceCJHelper/DeviceCJHelper.h; sourceTree = "<group>"; };
 		7F2D11B184CAD4AEF629FC3007DC1E22 /* CJNetworkFileModel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CJNetworkFileModel-prefix.pch"; sourceTree = "<group>"; };
 		7FFE967D6E184302BE6BDA915A4E788A /* CQDMSectionDataModel+CJDealTextModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CQDMSectionDataModel+CJDealTextModel.m"; path = "CQDemoKit/BaseVC/TextView/Model/CQDMSectionDataModel+CJDealTextModel.m"; sourceTree = "<group>"; };
+		80820AC9012874AF462B66C7E675D9D9 /* CJNetworkClient+SuccessFailure.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+SuccessFailure.h"; path = "CJNetworkClient/CJNetworkClient+SuccessFailure.h"; sourceTree = "<group>"; };
 		8090A46BB49A1FC4989DDBE9646413FC /* WKWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WKWebView+AFNetworking.m"; path = "UIKit+AFNetworking/WKWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		82392707857526A0F67EF1E8A14E8112 /* CJLogSuspendWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJLogSuspendWindow.m; path = CJMonitor/CJLog/CJLogSuspendWindow.m; sourceTree = "<group>"; };
-		83CCD3FA89250DD27877F9B32187F18A /* CJNetworkClient+SuccessFailure.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CJNetworkClient+SuccessFailure.m"; path = "CJNetworkClient/CJNetworkClient+SuccessFailure.m"; sourceTree = "<group>"; };
+		82C75AC1C7CDADA35137D6B31656C54D /* CJNetworkClient+CJDemoApp.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CJNetworkClient+CJDemoApp.m"; path = "CJNetworkClient/CJNetworkClient+CJDemoApp.m"; sourceTree = "<group>"; };
 		847EB635B90EBD526DD6BF472E8CC834 /* AFHTTPSessionManager+CJUploadFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+CJUploadFile.m"; sourceTree = "<group>"; };
 		84C8DF08F440150950FB9416833F363E /* Pods-CJNetworkDemoTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CJNetworkDemoTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		853773E53FEC2FEFEEEABC06CA63E1ED /* CQTSSuspendWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQTSSuspendWindow.h; path = CQDemoKit/BaseVC/Base/BaseWindow/CQTSSuspendWindow.h; sourceTree = "<group>"; };
 		88BADA9CA80554B28AB05537EF569713 /* CJNetworkCacheManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CJNetworkCacheManager.m; sourceTree = "<group>"; };
+		8949D2957FB7B66827469562BAB5270B /* CJRequestSettingModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CJRequestSettingModel.m; sourceTree = "<group>"; };
 		895F8B4FFC40C383A577D0B20BB8331C /* Masonry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.release.xcconfig; sourceTree = "<group>"; };
-		8972F6C27A6A0200701995DCE9CCD561 /* CJNetworkClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJNetworkClient.h; path = CJNetworkClient/CJNetworkClient.h; sourceTree = "<group>"; };
 		8A1E93C0425B46C2CB6FA68698BB9626 /* CJIndentedStringUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJIndentedStringUtil.m; path = CJBaseUtil/CJIndentedStringUtil/CJIndentedStringUtil.m; sourceTree = "<group>"; };
 		8A5B3A6209CB9CCC92B11BC7EFFA2554 /* CQNetworkUploadSuccessFailureHelperProtocal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQNetworkUploadSuccessFailureHelperProtocal.h; path = CQNetworkPublic/Helper/Upload/CQNetworkUploadSuccessFailureHelperProtocal.h; sourceTree = "<group>"; };
 		8B1387AB67525C121EDE76FA3AD20DE9 /* CJUIKitBaseScrollViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJUIKitBaseScrollViewController.m; path = CQDemoKit/BaseVC/ScrollView/CJUIKitBaseScrollViewController.m; sourceTree = "<group>"; };
+		8B3DFFF35048369B6FBA39C1D4374C73 /* CJNetworkClient+Upload1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+Upload1.h"; path = "CJNetworkClient/CJNetworkClient+Upload1.h"; sourceTree = "<group>"; };
 		8B68009879A459A966C3D06506D741C7 /* CJBaseHelper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CJBaseHelper-prefix.pch"; sourceTree = "<group>"; };
 		8BB2A6E7D29ADA6FAF6558892F382D46 /* CJBaseHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJBaseHelper.debug.xcconfig; sourceTree = "<group>"; };
 		8CD3C73574727FFEB31F8FDF21E6404A /* Pods-CJNetworkDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CJNetworkDemo-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -655,12 +654,12 @@
 		8FF6B9B3CCFA7B4BA1D50B21E143F534 /* CJLogModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJLogModel.m; path = CJMonitor/CJLog/CJLogModel.m; sourceTree = "<group>"; };
 		93131E7EE3DC7CBB9F861197B3F06F84 /* CJLogViewWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJLogViewWindow.h; path = CJMonitor/CJLog/CJLogViewWindow.h; sourceTree = "<group>"; };
 		9488CC7A1ABDF16AD8BD6A8A2B346DAB /* Pods-CJNetworkDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CJNetworkDemo-resources.sh"; sourceTree = "<group>"; };
-		94FF11EDEA92BEBB803C85541D41111B /* CJNetworkClient+Upload2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+Upload2.h"; path = "CJNetworkClient/CJNetworkClient+Upload2.h"; sourceTree = "<group>"; };
 		95561B6562D8A96DFDBCC9DEAD99C47B /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
 		97A104288B9E8C541840993E53E5D7FE /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
 		97A981DB084B98AF84430577AF978738 /* icons8-settings.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "icons8-settings.png"; path = "CQDemoKit/BaseVC/TabBar/Resources/icons8-settings.png"; sourceTree = "<group>"; };
 		988F75F1E1C4D18E600DD93491D1393B /* CJUploadProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CJUploadProgressView.m; sourceTree = "<group>"; };
 		994BC857E7228997D16234263D8F1CAE /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
+		9A36766D83AD8F01F27D5A0F5C594031 /* CJNetworkClient+Completion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CJNetworkClient+Completion.m"; path = "CJNetworkClient/CJNetworkClient+Completion.m"; sourceTree = "<group>"; };
 		9A5AC28253620A7D60F3400A5E5E32C5 /* CJNetworkSimulate.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = CJNetworkSimulate.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9A704C7B8DE586769481F7BB14BC6E97 /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
 		9AED6EBCBBDCE66AC3B3C14A4F2ECDE6 /* CJUIKitBaseBigTextViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJUIKitBaseBigTextViewController.m; path = CQDemoKit/BaseVC/TextView/CJUIKitBaseBigTextViewController.m; sourceTree = "<group>"; };
@@ -668,10 +667,11 @@
 		9B3B07CC7B34572404F9A24906DCEEFB /* CQNetworkRequestHelperSetGetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQNetworkRequestHelperSetGetter.h; path = CQNetworkPublic/Helper/Request/CQNetworkRequestHelperSetGetter.h; sourceTree = "<group>"; };
 		9B79554AEAD727564E93E950109B1E75 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
 		9B8D73A81ADCB14C6E2915914E766D53 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
+		9D3240DFA6C27B6EA8C9F6638DE1210C /* CJResponseHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CJResponseHelper.h; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9EB8416914A5667C707C7B13F7C2246D /* CJNetworkClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJNetworkClient.m; path = CJNetworkClient/CJNetworkClient.m; sourceTree = "<group>"; };
 		9F17701F5B0C9E4F8BF0C582706EAC13 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AsyncUdpSocket.h; path = Source/RunLoop/AsyncUdpSocket.h; sourceTree = "<group>"; };
 		9F4DCDBD8284CF7FC5B38C4007274A2F /* AFHTTPSessionManager+CJRequestCommon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "AFHTTPSessionManager+CJRequestCommon.m"; path = "CJNetwork/CJNetworkCommon/AFHTTPSessionManager+CJRequestCommon.m"; sourceTree = "<group>"; };
+		9FBD0E2805CF23F74EB1B7E1294DDF01 /* CJResponseHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CJResponseHelper.m; sourceTree = "<group>"; };
 		A027602D4891F0BCF11D088B4ECF7D4A /* YYCache-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YYCache-dummy.m"; sourceTree = "<group>"; };
 		A23DBD6416C4FFAB3BBE573D46ECD3E3 /* CJBaseHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJBaseHelper.release.xcconfig; sourceTree = "<group>"; };
 		A33C5AF06B07D620280EAD502FCBD440 /* libCJNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCJNetwork.a; path = libCJNetwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -696,7 +696,7 @@
 		AE992EEC8855852418E666403832DAE8 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
 		B0400C70073C2BE7AA0BC07A40395B34 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		B065892C6A85B7A194BAE728E25A7AC8 /* AsyncSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AsyncSocket.h; path = Source/RunLoop/AsyncSocket.h; sourceTree = "<group>"; };
-		B0E1D73B34C9C1FA8DF083788D33E55D /* CJNetworkClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJNetworkClient.debug.xcconfig; sourceTree = "<group>"; };
+		B269652886224C03B93623485DD708BD /* CJNetworkClient+SuccessFailure.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CJNetworkClient+SuccessFailure.m"; path = "CJNetworkClient/CJNetworkClient+SuccessFailure.m"; sourceTree = "<group>"; };
 		B283BBA6266318C451C06877D2C59A1D /* YYKVStorage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYKVStorage.h; path = YYCache/YYKVStorage.h; sourceTree = "<group>"; };
 		B28B106E4FAC6F94D35E6F337C54F6DF /* Pods-CJNetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CJNetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
 		B2B1F3DF4EA97ED1947FB13983619169 /* CQDMSectionDataModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CQDMSectionDataModel.m; path = CQDemoKit/BaseVC/Base/Model/CQDMSectionDataModel.m; sourceTree = "<group>"; };
@@ -707,11 +707,11 @@
 		B530A2301638EC2C85732A7930A46C12 /* CJUploadFileModelsOwner.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJUploadFileModelsOwner.m; path = CJNetworkFileModel/CJUploadFileModelsOwner/CJUploadFileModelsOwner.m; sourceTree = "<group>"; };
 		B551D4879A24D935186EA2D24D71861C /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
 		B639F30E1AEB6E4551E0475810344315 /* CJDealTextModelFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJDealTextModelFactory.m; path = CQDemoKit/BaseVC/TextView/Model/CJDealTextModelFactory.m; sourceTree = "<group>"; };
-		B779B9E84C3FC308E46EF30970C21334 /* CJNetworkClient+Upload1.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CJNetworkClient+Upload1.m"; path = "CJNetworkClient/CJNetworkClient+Upload1.m"; sourceTree = "<group>"; };
 		B7A44CC680303020979206EBA6831A77 /* CJBaseUtil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJBaseUtil.debug.xcconfig; sourceTree = "<group>"; };
 		B7D088C88D86D24F86BD03E4688962EF /* CJNetworkFileModel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CJNetworkFileModel-dummy.m"; sourceTree = "<group>"; };
 		B8A15ACC0788AF83B0B3B3C9F78944DA /* CJUploadMomentInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJUploadMomentInfo.m; path = CJNetworkFileModel/CJUploadFileModelsOwner/CJUploadMomentInfo.m; sourceTree = "<group>"; };
 		B8EAF660C60728B2EF2E4F90CFD39DC5 /* CJRequestErrorUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CJRequestErrorUtil.h; sourceTree = "<group>"; };
+		B96A8B956C135A12EE52DECE71AF87A9 /* CJRequestSettingModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CJRequestSettingModel.h; sourceTree = "<group>"; };
 		B98E32EB919A58BAEA78BB813EE709FB /* CJRequestErrorUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CJRequestErrorUtil.m; sourceTree = "<group>"; };
 		B9B41C65197E9853C21D203C4DA841A9 /* CJRequestLogSettingModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CJRequestLogSettingModel.m; sourceTree = "<group>"; };
 		BAC013ED8DB3B539801872BA4BB3317E /* CJNetworkSimulate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJNetworkSimulate.debug.xcconfig; sourceTree = "<group>"; };
@@ -722,6 +722,7 @@
 		BC965D0E1955E6599DED5E59CDEC84AB /* NSObjectCJHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSObjectCJHelper.h; path = CJBaseHelper/CJBaseHelper/NSObjectCJHelper/NSObjectCJHelper.h; sourceTree = "<group>"; };
 		BE00E0A074F0929DFDF1B5690BBFE5C6 /* CJValidateStringBigTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJValidateStringBigTableViewCell.m; path = CQDemoKit/BaseVC/TextView/View/CJValidateStringBigTableViewCell.m; sourceTree = "<group>"; };
 		BE3401442774B09BC0D54F14CEE6C269 /* CJLogUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJLogUtil.m; path = CJMonitor/CJLog/CJLogUtil.m; sourceTree = "<group>"; };
+		BF7E2C35FC02B9837AB54DEBEF10A3F0 /* CJNetworkClient+Upload2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+Upload2.h"; path = "CJNetworkClient/CJNetworkClient+Upload2.h"; sourceTree = "<group>"; };
 		C09A64D3FBF1B7507C23E807DBC81854 /* AFHTTPSessionManager+CJMethodEncrypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "AFHTTPSessionManager+CJMethodEncrypt.h"; path = "CJNetwork/AFNetworkingMethodEncrypt/AFHTTPSessionManager+CJMethodEncrypt.h"; sourceTree = "<group>"; };
 		C0DD6C0A0DF0EF13472117C5067743B6 /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAutoPurgingImageCache.h; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.h"; sourceTree = "<group>"; };
 		C125F9CEBDFE06ABF14F8C90216391E6 /* CJCacheManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJCacheManager.h; path = CJCacheManager/CJCacheManager.h; sourceTree = "<group>"; };
@@ -729,7 +730,6 @@
 		C1517AB3B5B9B39F04C8D320557A6E9E /* CQNetworkPublic-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CQNetworkPublic-prefix.pch"; sourceTree = "<group>"; };
 		C347D8F0C3124E6FBD3EA943D1AC5B11 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		C3600BDBCC4B9CB0764A0D1A7B467A78 /* CocoaAsyncSocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaAsyncSocket-dummy.m"; sourceTree = "<group>"; };
-		C44521E4E77E89350B5374527F0B1EFC /* CJRequestSettingModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CJRequestSettingModel.m; sourceTree = "<group>"; };
 		C5B362376C25B26B3D2BACEA0173161A /* MJFoundation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJFoundation.m; path = MJExtension/MJFoundation.m; sourceTree = "<group>"; };
 		C5F215487E9F16EF82F575E265877E96 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
 		C63A4D339EB7B48CE2D3FF25E467918B /* CJUIKitBaseScrollViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJUIKitBaseScrollViewController.h; path = CQDemoKit/BaseVC/ScrollView/CJUIKitBaseScrollViewController.h; sourceTree = "<group>"; };
@@ -743,12 +743,14 @@
 		C94B919F9869B5FA821B9A7883B00F72 /* YYCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYCache.m; path = YYCache/YYCache.m; sourceTree = "<group>"; };
 		C9756329A8005EE63DEB986D3C1FE104 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
 		CA799CF326FFEB7E4008D35F73038B92 /* NSObject+MJClass.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MJClass.m"; path = "MJExtension/NSObject+MJClass.m"; sourceTree = "<group>"; };
+		CAC2A173CCCFFB0DCCB8B8AB2478B480 /* CJNetworkClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJNetworkClient.release.xcconfig; sourceTree = "<group>"; };
 		CB29CD5230E281B6E007634087D41866 /* CJDealTextModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJDealTextModel.h; path = CQDemoKit/BaseVC/TextView/Model/CJDealTextModel.h; sourceTree = "<group>"; };
 		CD7D0979E96D69504D1E83D62231C540 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Source/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
 		CE1AEEF07B62E92D8AA26AD0452404EA /* NSObject+MJClass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MJClass.h"; path = "MJExtension/NSObject+MJClass.h"; sourceTree = "<group>"; };
 		CE3C84193C53D7CECCE937A3E816A9C1 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
 		CE69EDA3C62854258A880F1A5C892990 /* MJExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MJExtension.debug.xcconfig; sourceTree = "<group>"; };
 		CF82ACE8C69123E64886259106887E7A /* YYCache.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YYCache.release.xcconfig; sourceTree = "<group>"; };
+		CF988F76FD1CABFD0A4B9433298A83F7 /* CJNetworkClient-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CJNetworkClient-prefix.pch"; sourceTree = "<group>"; };
 		CFEF915ED069E0B98E7EE635453C65F7 /* CJNetworkFileModel.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = CJNetworkFileModel.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D0C065E80A797FA075686BBDB4BFCE5F /* CJValidateStringBigTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJValidateStringBigTableViewCell.h; path = CQDemoKit/BaseVC/TextView/View/CJValidateStringBigTableViewCell.h; sourceTree = "<group>"; };
 		D0EABC496CFCF39EC521108B03522EE5 /* NSObject+MJProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MJProperty.m"; path = "MJExtension/NSObject+MJProperty.m"; sourceTree = "<group>"; };
@@ -771,8 +773,7 @@
 		DC3EBF76DFD7C5196E682E4411D55BC0 /* libPods-CJNetworkDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-CJNetworkDemoTests.a"; path = "libPods-CJNetworkDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD51282F59840998AEC64415019963D3 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
 		DD8B5E7DAF3DEED362BAB3B4D0F7F9EC /* CQDMModuleModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQDMModuleModel.h; path = CQDemoKit/BaseVC/Base/Model/CQDMModuleModel.h; sourceTree = "<group>"; };
-		DDEBC5E2EDE2F44D2EFA3620EA6C2EA3 /* CJResponseHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CJResponseHelper.m; sourceTree = "<group>"; };
-		DF7BAC08F7838D1450DAC7461C09A0B2 /* CJNetworkClient.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = CJNetworkClient.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		DF81FE9301D78DF241A284774E5369DD /* CJNetworkClient+Upload2.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CJNetworkClient+Upload2.m"; path = "CJNetworkClient/CJNetworkClient+Upload2.m"; sourceTree = "<group>"; };
 		DFAC00279BCB19F00976DB9D3D0BDC7F /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		E0193FE87B2354F1796D42550813A90E /* CJBaseUtil-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CJBaseUtil-dummy.m"; sourceTree = "<group>"; };
 		E02E3424239A33B81FF73C255B3851C4 /* NSObject+MJCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MJCoding.h"; path = "MJExtension/NSObject+MJCoding.h"; sourceTree = "<group>"; };
@@ -787,7 +788,6 @@
 		E6A2AEE4B0624BDACDB541B5D827B762 /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFAutoPurgingImageCache.m; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.m"; sourceTree = "<group>"; };
 		E7CBE53227E734E13082C90D0DBF7C55 /* CQDMSectionDataModel+CJDealTextModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CQDMSectionDataModel+CJDealTextModel.h"; path = "CQDemoKit/BaseVC/TextView/Model/CQDMSectionDataModel+CJDealTextModel.h"; sourceTree = "<group>"; };
 		E7FB48988926B659B32EFD40F559F0BA /* libCJNetworkClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCJNetworkClient.a; path = libCJNetworkClient.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E841F6C1E4606B044882317D77A3D255 /* CJNetworkClient+SuccessFailure.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+SuccessFailure.h"; path = "CJNetworkClient/CJNetworkClient+SuccessFailure.h"; sourceTree = "<group>"; };
 		E88985E8A2DE921817119314066E0E77 /* AFNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.debug.xcconfig; sourceTree = "<group>"; };
 		E89B219A2FD9F6CCC44BB76B57A17565 /* libCQNetworkPublic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCQNetworkPublic.a; path = libCQNetworkPublic.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96D24AA446BBBEE6553F992C5FEE2ED /* CQTSBorderStateButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQTSBorderStateButton.h; path = CQDemoKit/BaseUIKit/CQTSBorderStateButton.h; sourceTree = "<group>"; };
@@ -1056,6 +1056,17 @@
 			name = BaseUIKit;
 			sourceTree = "<group>";
 		};
+		11510A86DFF7487CE2C819F93AFE15D6 /* CJNetworkClient */ = {
+			isa = PBXGroup;
+			children = (
+				2789157DCEEC66199F4ED06B14235AE3 /* NetworkClient */,
+				45CDF40D6F85DEB7AA799A46EC80C75E /* Pod */,
+				FF073C7BC2871C12CCC629B34E8B27F4 /* Support Files */,
+			);
+			name = CJNetworkClient;
+			path = ../..;
+			sourceTree = "<group>";
+		};
 		12BE6ED1BB4E9D9948D5B98472900478 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1066,14 +1077,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/CJBaseHelper";
-			sourceTree = "<group>";
-		};
-		15341BE9B024B3658E5CFFBA401F760B /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				DF7BAC08F7838D1450DAC7461C09A0B2 /* CJNetworkClient.podspec */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		1A7081727467850C8581451D89A33DC0 /* AFNetworkingMethodEncrypt */ = {
@@ -1172,16 +1175,6 @@
 			name = ScrollView;
 			sourceTree = "<group>";
 		};
-		26E8D8CFAD7926D83838AD69D438F6EA /* CJResponseModel */ = {
-			isa = PBXGroup;
-			children = (
-				74D8DA43660FFE49E01AD760CAA08278 /* CJResponseHelper.h */,
-				DDEBC5E2EDE2F44D2EFA3620EA6C2EA3 /* CJResponseHelper.m */,
-			);
-			name = CJResponseModel;
-			path = CJNetworkClient/CJResponseModel;
-			sourceTree = "<group>";
-		};
 		2755A6198E7DE4081D3D3A3E2E3E107C /* Collection */ = {
 			isa = PBXGroup;
 			children = (
@@ -1191,6 +1184,27 @@
 				FA0CB509ADDAA3EF7F0AF87DED8D83ED /* CJUIKitCollectionViewCell.m */,
 			);
 			name = Collection;
+			sourceTree = "<group>";
+		};
+		2789157DCEEC66199F4ED06B14235AE3 /* NetworkClient */ = {
+			isa = PBXGroup;
+			children = (
+				21B6FD3A16F6BFB59A849CF782749806 /* CJNetworkClient.h */,
+				26C09D69FDFF86958AAC5E425221B1E6 /* CJNetworkClient.m */,
+				2149C78C5540ED85F4600BC4E753548D /* CJNetworkClient+CJDemoApp.h */,
+				82C75AC1C7CDADA35137D6B31656C54D /* CJNetworkClient+CJDemoApp.m */,
+				64BB991BA453E63F21CA567BFE7FDD54 /* CJNetworkClient+Completion.h */,
+				9A36766D83AD8F01F27D5A0F5C594031 /* CJNetworkClient+Completion.m */,
+				80820AC9012874AF462B66C7E675D9D9 /* CJNetworkClient+SuccessFailure.h */,
+				B269652886224C03B93623485DD708BD /* CJNetworkClient+SuccessFailure.m */,
+				8B3DFFF35048369B6FBA39C1D4374C73 /* CJNetworkClient+Upload1.h */,
+				3C966D7DEFB89C683940CBC62DB1542A /* CJNetworkClient+Upload1.m */,
+				BF7E2C35FC02B9837AB54DEBEF10A3F0 /* CJNetworkClient+Upload2.h */,
+				DF81FE9301D78DF241A284774E5369DD /* CJNetworkClient+Upload2.m */,
+				2CF8F0FE077BD9BD8D71D68F542E8942 /* CJRequestSetting */,
+				6315AC766F4935694390A716AB211C83 /* CJResponseModel */,
+			);
+			name = NetworkClient;
 			sourceTree = "<group>";
 		};
 		2B3E85A52FD58EF3DA747424547263B3 /* Support Files */ = {
@@ -1216,6 +1230,16 @@
 				7041F67CC395FCFAFC2E63B49F18CE44 /* TextView */,
 			);
 			name = BaseVC;
+			sourceTree = "<group>";
+		};
+		2CF8F0FE077BD9BD8D71D68F542E8942 /* CJRequestSetting */ = {
+			isa = PBXGroup;
+			children = (
+				B96A8B956C135A12EE52DECE71AF87A9 /* CJRequestSettingModel.h */,
+				8949D2957FB7B66827469562BAB5270B /* CJRequestSettingModel.m */,
+			);
+			name = CJRequestSetting;
+			path = CJNetworkClient/CJRequestSetting;
 			sourceTree = "<group>";
 		};
 		333581CA8D17ECD0F6B60D50967C1C50 /* AFNetworkingUploadAPI */ = {
@@ -1283,14 +1307,12 @@
 			name = Client;
 			sourceTree = "<group>";
 		};
-		46CFB6A79F44B11FC5F5BAE150EC7DF8 /* CJRequestSetting */ = {
+		45CDF40D6F85DEB7AA799A46EC80C75E /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				1C092BFC56896EA1A657CD25703D3B8B /* CJRequestSettingModel.h */,
-				C44521E4E77E89350B5374527F0B1EFC /* CJRequestSettingModel.m */,
+				22BCB2892B129A4A54118FAC7B079062 /* CJNetworkClient.podspec */,
 			);
-			name = CJRequestSetting;
-			path = CJNetworkClient/CJRequestSetting;
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		4FDD6F65B935EA500C6FE16CC9E108F9 /* CQDemoKit */ = {
@@ -1346,25 +1368,14 @@
 			path = "Target Support Files/Pods-CJNetworkDemo";
 			sourceTree = "<group>";
 		};
-		6155266C73F639FB496CBD7449DD6F3E /* CJNetworkClient */ = {
+		6315AC766F4935694390A716AB211C83 /* CJResponseModel */ = {
 			isa = PBXGroup;
 			children = (
-				8972F6C27A6A0200701995DCE9CCD561 /* CJNetworkClient.h */,
-				9EB8416914A5667C707C7B13F7C2246D /* CJNetworkClient.m */,
-				3AD7A94CE0894AFDC0C08CC8E92E9F53 /* CJNetworkClient+CJDemoApp.h */,
-				5FD6CE736139E45CE1D861B24AA00E48 /* CJNetworkClient+CJDemoApp.m */,
-				012F6AEC8D3FC7128E810FF709CC52B5 /* CJNetworkClient+Completion.h */,
-				12276CE13F74E156DDDF35A13FC33EEA /* CJNetworkClient+Completion.m */,
-				E841F6C1E4606B044882317D77A3D255 /* CJNetworkClient+SuccessFailure.h */,
-				83CCD3FA89250DD27877F9B32187F18A /* CJNetworkClient+SuccessFailure.m */,
-				15D5C6508EF87C993DCD1DD42B2AA34E /* CJNetworkClient+Upload1.h */,
-				B779B9E84C3FC308E46EF30970C21334 /* CJNetworkClient+Upload1.m */,
-				94FF11EDEA92BEBB803C85541D41111B /* CJNetworkClient+Upload2.h */,
-				2584F8B2E333D9409960D6581C47F80F /* CJNetworkClient+Upload2.m */,
-				46CFB6A79F44B11FC5F5BAE150EC7DF8 /* CJRequestSetting */,
-				26E8D8CFAD7926D83838AD69D438F6EA /* CJResponseModel */,
+				9D3240DFA6C27B6EA8C9F6638DE1210C /* CJResponseHelper.h */,
+				9FBD0E2805CF23F74EB1B7E1294DDF01 /* CJResponseHelper.m */,
 			);
-			name = CJNetworkClient;
+			name = CJResponseModel;
+			path = CJNetworkClient/CJResponseModel;
 			sourceTree = "<group>";
 		};
 		66D8095306C5A81CACAB1F45B85E3E3F /* Pod */ = {
@@ -1536,23 +1547,11 @@
 			name = CJLog;
 			sourceTree = "<group>";
 		};
-		8817BC63005041ED50C6648126F4AC21 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7B4451C764D559FF04B500478B8F0E3A /* CJNetworkClient-dummy.m */,
-				51261F8E1A577CAE00F8C80D22B295DC /* CJNetworkClient-prefix.pch */,
-				B0E1D73B34C9C1FA8DF083788D33E55D /* CJNetworkClient.debug.xcconfig */,
-				57EEC760F7D1C2A4B41DE6429DEDD744 /* CJNetworkClient.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "CJNetworkDemo/Pods/Target Support Files/CJNetworkClient";
-			sourceTree = "<group>";
-		};
 		881D71C3631ED9345F379271E9FF7D44 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
 				EAD1A671E539EDAAD16ACC3065B3937B /* CJNetwork */,
-				8EE5E5CEF44F89F4E92859CB83D3B6DF /* CJNetworkClient */,
+				11510A86DFF7487CE2C819F93AFE15D6 /* CJNetworkClient */,
 				3E5924FC3DE2E0E1BD7297F0D54BF067 /* CJNetworkFileModel */,
 				E2DECDB90E0CB62FB3D6D323F31C2201 /* CJNetworkSimulate */,
 				71706BEAB2E60E581ECA0DD700DD2C66 /* CQNetworkPublic */,
@@ -1570,17 +1569,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/CJMonitor";
-			sourceTree = "<group>";
-		};
-		8EE5E5CEF44F89F4E92859CB83D3B6DF /* CJNetworkClient */ = {
-			isa = PBXGroup;
-			children = (
-				6155266C73F639FB496CBD7449DD6F3E /* CJNetworkClient */,
-				15341BE9B024B3658E5CFFBA401F760B /* Pod */,
-				8817BC63005041ED50C6648126F4AC21 /* Support Files */,
-			);
-			name = CJNetworkClient;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		8FBF1952BC0EA549AE8F3D8DB61A5B6B /* Helper */ = {
@@ -2028,6 +2016,18 @@
 			);
 			name = Masonry;
 			path = Masonry;
+			sourceTree = "<group>";
+		};
+		FF073C7BC2871C12CCC629B34E8B27F4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5E8C97CD365F9A13371876B981BDBB7D /* CJNetworkClient-dummy.m */,
+				CF988F76FD1CABFD0A4B9433298A83F7 /* CJNetworkClient-prefix.pch */,
+				010AD78454ED2EA85F3DB2917CB6F4E8 /* CJNetworkClient.debug.xcconfig */,
+				CAC2A173CCCFFB0DCCB8B8AB2478B480 /* CJNetworkClient.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "CJNetworkDemo/Pods/Target Support Files/CJNetworkClient";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3239,7 +3239,7 @@
 		};
 		2ADF7601907932D2C0C491F4751080F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0E1D73B34C9C1FA8DF083788D33E55D /* CJNetworkClient.debug.xcconfig */;
+			baseConfigurationReference = 010AD78454ED2EA85F3DB2917CB6F4E8 /* CJNetworkClient.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -3440,7 +3440,7 @@
 		};
 		6EFA00492AFBD3C098B1B9B7E99DECBE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57EEC760F7D1C2A4B41DE6429DEDD744 /* CJNetworkClient.release.xcconfig */;
+			baseConfigurationReference = CAC2A173CCCFFB0DCCB8B8AB2478B480 /* CJNetworkClient.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

@@ -42,7 +42,7 @@ Pod::Spec.new do |s|
 
 
   # 网络请求的管理类，其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现
-  s.subspec 'CJNetworkClient' do |ss|
+  s.subspec 'NetworkClient' do |ss|
     ss.source_files = "CJNetworkClient/**/*.{h,m}"
     ss.dependency 'CQNetworkPublic/Client'
     ss.dependency 'CJNetwork/AFNetworkingSerializerEncrypt'
