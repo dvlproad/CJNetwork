@@ -1,4 +1,8 @@
 Pod::Spec.new do |s|
+  # 目前传到github开源
+  #验证方法： pod lib lint CQNetworkPublic.podspec --allow-warnings --use-libraries --verbose
+  #提交方法： pod trunk push CQNetworkPublic.podspec --allow-warnings --use-libraries --verbose
+  
   #验证方法1：pod lib lint CQNetworkPublic.podspec --sources='https://github.com/CocoaPods/Specs.git,https://gitee.com/dvlproad/dvlproadSpecs' --allow-warnings --use-libraries --verbose
   #验证方法2：pod lib lint CQNetworkPublic.podspec --sources=master,dvlproad --allow-warnings --use-libraries --verbose
   #提交方法： pod repo push dvlproad CQNetworkPublic.podspec --sources=master,dvlproad --allow-warnings --use-libraries --verbose

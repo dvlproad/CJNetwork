@@ -22,13 +22,16 @@
       "name": "CJNetworkClient",
       "source_files": "CJNetworkClient/**/*.{h,m}",
       "dependencies": {
+        "CQNetworkPublic/Client": [
+
+        ],
         "CJNetwork/AFNetworkingSerializerEncrypt": [
 
         ],
         "CJNetwork/AFNetworkingUploadComponent": [
 
         ],
-        "CQNetworkPublic/Client": [
+        "CJNetworkSimulate": [
 
         ]
       }

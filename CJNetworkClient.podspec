@@ -1,4 +1,5 @@
 Pod::Spec.new do |s|
+  # 目前传到github开源
   #验证方法： pod lib lint CJNetworkClient.podspec --allow-warnings --use-libraries --verbose
   #提交方法： pod trunk push CJNetworkClient.podspec --allow-warnings --use-libraries --verbose
   
@@ -43,9 +44,10 @@ Pod::Spec.new do |s|
   # 网络请求的管理类，其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现
   s.subspec 'CJNetworkClient' do |ss|
     ss.source_files = "CJNetworkClient/**/*.{h,m}"
+    ss.dependency 'CQNetworkPublic/Client'
     ss.dependency 'CJNetwork/AFNetworkingSerializerEncrypt'
     ss.dependency 'CJNetwork/AFNetworkingUploadComponent'
-    ss.dependency 'CQNetworkPublic/Client'
+    ss.dependency 'CJNetworkSimulate'
   end
 
 

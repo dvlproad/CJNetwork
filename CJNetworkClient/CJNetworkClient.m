@@ -59,6 +59,13 @@
 }
 //*/
 
+/*
+ *  设置服务器返回值的各种处理方法(一定要执行)
+ *
+ *  @param getSuccessResponseModelBlock 将"网络请求成功返回的数据responseObject"转换为"模型"的方法
+ *  @param checkIsCommonFailureBlock    在"网络请求成功并转换为模型"后判断其是否是"异地登录"等共同错误并在此对共同错误做处理(可为nil)
+ *  @param getFailureResponseModelBlock 将"网络请求失败返回的数据error"转换为"模型"的方法
+ */
 - (void)setupGetSuccessResponseModelBlock:(CJNetworkClientGetSuccessResponseModelBlock)getSuccessResponseModelBlock
                 checkIsCommonFailureBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonFailureBlock
              getFailureResponseModelBlock:(CJNetworkClientGetFailureResponseModelBlock)getFailureResponseModelBlock
