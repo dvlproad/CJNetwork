@@ -1,11 +1,10 @@
 Pod::Spec.new do |s|
-  # 为防止登录信息(如用户信息)变化时候，其他被依赖的库也要频繁跟着变化，这边将其独立出
   #验证方法1：pod lib lint CQNetworkPublic.podspec --sources='https://github.com/CocoaPods/Specs.git,https://gitee.com/dvlproad/dvlproadSpecs' --allow-warnings --use-libraries --verbose
   #验证方法2：pod lib lint CQNetworkPublic.podspec --sources=master,dvlproad --allow-warnings --use-libraries --verbose
   #提交方法： pod repo push dvlproad CQNetworkPublic.podspec --sources=master,dvlproad --allow-warnings --use-libraries --verbose
   s.name         = "CQNetworkPublic"
   s.version      = "0.1.0"
-  s.summary      = "网络请求公共"
+  s.summary      = "网络请求公共-可以解耦底层，使得底层使用任意的网络框架"
   s.homepage     = "https://github.com/dvlproad/CJNetwork.git"
 
   #s.license      = "MIT"

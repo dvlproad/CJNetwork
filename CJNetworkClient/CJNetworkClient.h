@@ -12,23 +12,15 @@
 //  或者您进一步的自己通过实现一个NetworkEnvironmentManager来控制着这两个参数的变化
 
 #import <Foundation/Foundation.h>
-#import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
-#import <CJNetwork/AFHTTPSessionManager+CJUploadFile.h>
+#import <AFNetworking/AFHTTPSessionManager.h>
 
 #import "CJRequestSettingModel.h"
 #import "CJResponseHelper.h"
 
-#import <CQNetworkPublic/CQNetworkRequestCompletionClientProtocal.h>
-
-
-
-
-
-
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CJNetworkClient : NSObject<CQNetworkRequestCompletionClientProtocal> {
+@interface CJNetworkClient : NSObject {
     
 }
 // 执行请求的Manager(一定要执行)

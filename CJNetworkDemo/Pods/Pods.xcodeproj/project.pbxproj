@@ -10,6 +10,7 @@
 		034003EB32CC417A0B7ADC5F9EB8BD81 /* CJLogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3401442774B09BC0D54F14CEE6C269 /* CJLogUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		03828CDEA263FC90D29177534CFD60F3 /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = C9756329A8005EE63DEB986D3C1FE104 /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		05F19F18ED53DBA79B90CF42B5EB70FC /* CJUploadMomentState.h in Headers */ = {isa = PBXBuildFile; fileRef = 683998B607AFF37B1A0272F345F2F5CE /* CJUploadMomentState.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		079876768441813FD0BAD860FDCE0C0F /* CJNetworkClient-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4451C764D559FF04B500478B8F0E3A /* CJNetworkClient-dummy.m */; };
 		099C1CA8F4E4F4D8A6DF646483477C4B /* CJUIKitCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 215CEEEBCEFD1DD3F5209229B75ACB75 /* CJUIKitCollectionViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		0AD4905F3FF0F5A744489CF9BF75F2BE /* YYCache-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A027602D4891F0BCF11D088B4ECF7D4A /* YYCache-dummy.m */; };
 		0C9EED6C3DE3F283D933A53930638FE9 /* CJRequestErrorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B98E32EB919A58BAEA78BB813EE709FB /* CJRequestErrorUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -23,15 +24,11 @@
 		127A822E8DE920F361F4B1DFA3F6B883 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = C7538D772457CE5E1E006F4CC7E52CE7 /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		12DF3801D6CE95A40F3F3F3023A7D1E9 /* CJCacheDataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = AB3C2A386DE8D394ABFDDD0B1AE05047 /* CJCacheDataModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		134D231907B04AEE80B2A0291EB88F1E /* CJDataMemoryDictionaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ABE7F8FF15463426C9E4863629793C /* CJDataMemoryDictionaryManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		14147A4CC8F1B1E9448430575F7FA8D0 /* CQNetworkRequestCompletionHelperProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 7579DBB7C732A2A6BBD06D1FB0A8E8CD /* CQNetworkRequestCompletionHelperProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1631FF083C3F678C11B1AAA359572A5B /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D351B90A42C1DAA40AD8D9773566D458 /* AFNetworkReachabilityManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		166663879E8F516231CC6DF5D5E8E5CB /* NSObjectCJHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = BC965D0E1955E6599DED5E59CDEC84AB /* NSObjectCJHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		170A325979C25C3D5B423BA587E2A0CA /* CQNetworkRequestClientSetGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B3F59B6BFF65D3FEBBDB630B61F907AA /* CQNetworkRequestClientSetGetter.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1734C98A63481239FD388203046CC148 /* CJUIKitToastUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 20411A609324C10637C2FD0A61BE0388 /* CJUIKitToastUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		17C9BB9D422C138AE8E07494770D6F78 /* CQNetworkRequestSuccessFailureHelperProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3286540CF9234ECDF3C7606DD0FDC2A3 /* CQNetworkRequestSuccessFailureHelperProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		18842840524F3E921E5D1CC54AD5DC8E /* AFHTTPSessionManager+CJMethodEncrypt.h in Headers */ = {isa = PBXBuildFile; fileRef = C09A64D3FBF1B7507C23E807DBC81854 /* AFHTTPSessionManager+CJMethodEncrypt.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		189B9421A3ECCA7567C64166798B22C5 /* CQNetworkRequestHelperSetGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B3B07CC7B34572404F9A24906DCEEFB /* CQNetworkRequestHelperSetGetter.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		18C1F3DE5508BBD85C21542551455274 /* CJRequestSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C44521E4E77E89350B5374527F0B1EFC /* CJRequestSettingModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		1939C99F8E65D74283678C52F63551E4 /* CQNetworkUploadHelperSetGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D3B7086E6836FF77A718D2BFC30A47 /* CQNetworkUploadHelperSetGetter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		19F06D376D6601DB4BC09C5D553EF90E /* CQTSSwitchViewFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 100F72D0A1C8838F994FC2D8314DC4BB /* CQTSSwitchViewFactory.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1A3CFFE08738A2907C4B57A7262B08F0 /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2241029DE777A902191A62AEEACA0207 /* Masonry-dummy.m */; };
 		1C8EBEDDD62B433F840C885817C84DC7 /* YYKVStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = B283BBA6266318C451C06877D2C59A1D /* YYKVStorage.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -40,28 +37,24 @@
 		1D1C72C24D1659D34EC313EC4E551B4E /* CJLogSuspendWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FE8755A5F6CDD20A77E141DAFA83733 /* CJLogSuspendWindow.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1D94CEE1E87A6F83488CEEB7E7625EB4 /* DeviceCJHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CAA09978A6F9C3CC35B718F4FD11359 /* DeviceCJHelper.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1E0EB029AC985B41DDD33A5C2824509E /* CJUIKitCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0CB509ADDAA3EF7F0AF87DED8D83ED /* CJUIKitCollectionViewCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		1E9722DF44B51C2E068A9A0921348792 /* CQNetworkRequestSuccessFailureClientProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 05799B30943073D762F05771A73E8023 /* CQNetworkRequestSuccessFailureClientProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		1EDF3CFBF7CECDC50A602079FE583AD2 /* CJNetworkClient+Upload1.m in Sources */ = {isa = PBXBuildFile; fileRef = B779B9E84C3FC308E46EF30970C21334 /* CJNetworkClient+Upload1.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		209769DD894C029CA8BADA80B2E6CBA6 /* CJResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E11858B821ADFCC79DB69E778F276B0 /* CJResponseModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		22A9FBE01E59DF3F00F2D3FC860C16B8 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = CD7D0979E96D69504D1E83D62231C540 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		22CD28593C0B60AA9DD87409F326A7F6 /* CJNetworkClient+Completion.m in Sources */ = {isa = PBXBuildFile; fileRef = 12276CE13F74E156DDDF35A13FC33EEA /* CJNetworkClient+Completion.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		22DA8DDB6258001665C92FDD26C81AC2 /* CJRequestErrorUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = B8EAF660C60728B2EF2E4F90CFD39DC5 /* CJRequestErrorUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		234C5A5F1DD83014206BD53048A03814 /* CJNetworkClient+Upload1.h in Headers */ = {isa = PBXBuildFile; fileRef = 15D5C6508EF87C993DCD1DD42B2AA34E /* CJNetworkClient+Upload1.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		23CDADE25548BC4E906AACDFF9EC8437 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = 169B24C43D0DC5B9EFAB74C20FE3CFE7 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		2415B306ECCB69C18A4622D517F56723 /* CQNetworkRequestEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = 3017B99024730854AC790BB9F1E116DD /* CQNetworkRequestEnum.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		244C7F317AA29C0EF1E24FDBEB1289E5 /* CJNetworkClient+Completion.h in Headers */ = {isa = PBXBuildFile; fileRef = 012F6AEC8D3FC7128E810FF709CC52B5 /* CJNetworkClient+Completion.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		245929B89B30F58CC8ECAD846E4B9B79 /* CJUploadMomentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A15ACC0788AF83B0B3B3C9F78944DA /* CJUploadMomentInfo.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		24ACDB52E5E66FB9CC1BF1142D04D848 /* CJUIKitBaseScrollViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C63A4D339EB7B48CE2D3FF25E467918B /* CJUIKitBaseScrollViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2541BECC935C6FCC169FE401B1373574 /* CJBaseUtil-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E0193FE87B2354F1796D42550813A90E /* CJBaseUtil-dummy.m */; };
 		25BDE68C15F69C0BA1B719A9993E8A81 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B551D4879A24D935186EA2D24D71861C /* AFNetworking.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		25FBB4C0EAC418670A205A4011148D28 /* NSObject+MJClass.h in Headers */ = {isa = PBXBuildFile; fileRef = CE1AEEF07B62E92D8AA26AD0452404EA /* NSObject+MJClass.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		278CABF1C77BD2CF309DAD56998A123B /* CQNetworkUploadHelperSetGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D3B7086E6836FF77A718D2BFC30A47 /* CQNetworkUploadHelperSetGetter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2777B124CF8A02F6B2530092DF7EA0AE /* CQNetworkUploadClientSetGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8CBB50B91A1C5EC2DEAA998178BF18D /* CQNetworkUploadClientSetGetter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		28CA5B84C790A0539C943A022491AFD8 /* NSObjectCJHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E87E8346B79B1B6FA75B4FD7298CA84 /* NSObjectCJHelper.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2A6FED0BB40881CCC211CA8C8E9F8149 /* MJPropertyType.h in Headers */ = {isa = PBXBuildFile; fileRef = E69554EEF7552E5956C0C1B2FDDE1781 /* MJPropertyType.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2A81FDACD780D464240208CD45C40996 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 994BC857E7228997D16234263D8F1CAE /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2A9F2BCC2AB3EECB599DE3D2F236A207 /* CJResponseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEBC5E2EDE2F44D2EFA3620EA6C2EA3 /* CJResponseHelper.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2B0AFFB59A9CFB45899AA0A319269DBB /* MJProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = C7C69BED325624CC7DE9549B457DB2C9 /* MJProperty.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		2BBB912D3616BA48115A3C3AC1E6DA3C /* CJNetworkClient-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4451C764D559FF04B500478B8F0E3A /* CJNetworkClient-dummy.m */; };
 		2CFB2C7225F0ADC3FD2009508C78569A /* AFHTTPSessionManager+CJMethodEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = B49EC9C05D76FB9E3EABC138E258A251 /* AFHTTPSessionManager+CJMethodEncrypt.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2D4EBEC73B4057574798CC1D402236F2 /* CJDealTextModelFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B639F30E1AEB6E4551E0475810344315 /* CJDealTextModelFactory.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		2D53933930B74620AE8A26EFBA448B94 /* CJResponseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E11858B821ADFCC79DB69E778F276B0 /* CJResponseModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2E2D786CF1C8CC697D789B0E15D6E264 /* CQTSSuspendWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 853773E53FEC2FEFEEEABC06CA63E1ED /* CQTSSuspendWindow.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		2F9019D0A975C4DC317AC8EE34A78C2D /* CJNetworkSimulate-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1403ABF39C9A66F7DF20009FD2B0A1 /* CJNetworkSimulate-dummy.m */; };
 		300DEEE0731D3FAB1593CBAC0CA03367 /* DeviceCJHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ECF692969DE45730F060CEAD753567C /* DeviceCJHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -73,45 +66,47 @@
 		3561739573757FF363DDEA8297B2F379 /* CQDMModuleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 694F1716D2B30E064700129D3D37522F /* CQDMModuleModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		368ADD95D86AA10C951C6A3E7B88DC8D /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F84C861E1739C045ACD0B86C3E9AB7 /* NSString+MJExtension.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		36965AA11CEDDA6FF7515B6395900643 /* CQTSSwitchViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D4505979F923BF852B5081D7C5E8BAD1 /* CQTSSwitchViewFactory.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		371E41848F247590D428ADA59471A0A9 /* CJNetworkClient+Upload2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2584F8B2E333D9409960D6581C47F80F /* CJNetworkClient+Upload2.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		377E7E260FE7C97F10CCA91488A323EF /* CJNetworkClient+CJDemoApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AD7A94CE0894AFDC0C08CC8E92E9F53 /* CJNetworkClient+CJDemoApp.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		3827FBF12B27889129D1E8B3C2DF3662 /* CQNetworkRequestClientSetGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F11C6257BF9719E80F9F61385D7668 /* CQNetworkRequestClientSetGetter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		387197A424FEBB664369483CF123F818 /* CQNetworkRequestCompletionClientProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B96B5C47356C964AF4EDB423B05149B /* CQNetworkRequestCompletionClientProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		38890AA76B1007FD00EAC96A04789F85 /* CJRequestCacheSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CF4BD70394EAC779E8C2CA133465B7 /* CJRequestCacheSettingModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3A9C905A446D5AE9DB4D693DC397A042 /* CJResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E3DB6267791233207EA64636B32E61 /* CJResponseModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3AC04950219087A0C1E557DC60CA082D /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1107801FEEAC7A8823FA378B76A6FB89 /* AFHTTPSessionManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3B97FCA69778BF8BF288D26DB2FDD0B6 /* YYDiskCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 57FEEE30EC110D63CF646FB983CE9B1B /* YYDiskCache.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		3D04EA28386CF6E7534842392F264442 /* CJResponseHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 74D8DA43660FFE49E01AD760CAA08278 /* CJResponseHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		3D241E71B0CB3BA8080035DD2C6CF40F /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 738CB2C53D356110AE86A78C9AD3166E /* UIButton+AFNetworking.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3DE6CA9EEFEA245FCA996435B6FEC02B /* CJUIKitBaseCollectionHomeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CF03D26BFC7F056EEFB337B8F3C537E /* CJUIKitBaseCollectionHomeViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		3E2F5D0D390454BC04DAC6D221489BCE /* CQNetworkUploadCompletionHelperProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 17328A377A6698A251E244B6C1AEDF69 /* CQNetworkUploadCompletionHelperProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		3E810B450F5776164ED2B2136F376988 /* AFAutoPurgingImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = C0DD6C0A0DF0EF13472117C5067743B6 /* AFAutoPurgingImageCache.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		3FD19541F89C0F959110BC95CE677BEC /* CJUIKitBaseTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4D16EFA28E75B0BC1062C34C09CABE /* CJUIKitBaseTabBarViewController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		41B5A8C84E39EC2C69C58B705B39F16E /* CQNetworkUploadClientSetGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = 50A255A3C28B680EB23E1F2C1AEA795A /* CQNetworkUploadClientSetGetter.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4238CDCD55FBFD83CCDFB6F5C4150747 /* CJSimulateLocalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D4BE770503E02581B3C2E75E96F8AC /* CJSimulateLocalUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4295CA347A18095C81BB78580F5225D2 /* CJRequestUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 338F947F469A64538C21FDF7E0777D7B /* CJRequestUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		44208B94C1028898C5632116F579B236 /* CJUIKitBaseTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E62883B405BC0605A3D49928948C71 /* CJUIKitBaseTextViewController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		45053C92E0D25119026452C5B2057EFC /* CJNetworkClient+Upload1.h in Headers */ = {isa = PBXBuildFile; fileRef = 15D5C6508EF87C993DCD1DD42B2AA34E /* CJNetworkClient+Upload1.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4687695E510DE292960B15CE77A1066A /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = A4547461FE12F62328DB846B1650D158 /* MJProperty.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4763307A20C59386E6F675599CA36B20 /* NSObject+MJKeyValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CD73C60C18E6744EAA661D207ABC0BE /* NSObject+MJKeyValue.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		47A58CA366C3AC0FFA85F638A0A1ADB8 /* CQNetworkUploadHelperSetGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = 36BCFF6F899D3B1074CB7AF52CABDFCC /* CQNetworkUploadHelperSetGetter.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		48922D304C58DEF17846C18258EAE66E /* CQNetworkUploadCompletionClientProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ED0F61AAAEC00761D118C66B3935B57 /* CQNetworkUploadCompletionClientProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4A250241540729E2B55C6771D61E0E56 /* CJUIKitBaseCollectionHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B16712CFBC6E4DBBE01DAB94DC6CE1 /* CJUIKitBaseCollectionHomeViewController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4B12CBA693B6C36E63D1E3B51B1D10AC /* UISwitch+CQTSMoreProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 34286DFC17E4B88B0028164B58693193 /* UISwitch+CQTSMoreProperty.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		4BB0495DB4BA73E9AC1F9496C414782E /* CQNetworkUploadCompletionHelperProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 17328A377A6698A251E244B6C1AEDF69 /* CQNetworkUploadCompletionHelperProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4BBCC2520227B472562FA1B57A827907 /* NSFileManagerCJHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C5C3007BE4CF58E51D348C331C1FABD /* NSFileManagerCJHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4C4DC9DFDDB4DA10813F99F24B1B8D37 /* MJFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1835A5C3CAAAD6BCA0B43EF7B6C78323 /* MJFoundation.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4CFCDADB6BB6D1A067F107479FDBE136 /* NSFileManagerCJHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7F04C0546E0E4DAF9EB5B9AB369C2D /* NSFileManagerCJHelper.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		4F0208D3C3F0A20359111FAE5800AD9E /* CJRequestInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 707DD31D28739FC43BDF765FA27374FC /* CJRequestInfoModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		4F1BA96AF71EDE3AC7B8AEBB3E785480 /* CQNetworkRequestHelperSetGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B3B07CC7B34572404F9A24906DCEEFB /* CQNetworkRequestHelperSetGetter.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4FB6DE15F33C7D18362A41AAC0007CCE /* UIButton+CQTSMoreProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 514257EBE53442D875BCCA96E91FA854 /* UIButton+CQTSMoreProperty.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		50D18EE2C3B7106ED45F9FCDA035AC03 /* CQDMSectionDataModel+CJDealTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFE967D6E184302BE6BDA915A4E788A /* CQDMSectionDataModel+CJDealTextModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		51753A2331CF95A12729A7CAF12DF0E3 /* MJExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EB9A4CA4A667E90B1D9FFD52A5245D4 /* MJExtension.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		51FB4CD537BB890FC2E319721606F4D7 /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7547C3BB6846979839F0FB23817E8552 /* YYKVStorage.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		520D2A91692E185032C148ABDE2AED8C /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = EF568022E381DDAAF080C0E1F58B3059 /* OpenUDID.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		521167A891EA2527CF4FEF286B33B701 /* CQNetworkRequestEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = 3017B99024730854AC790BB9F1E116DD /* CQNetworkRequestEnum.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		53E2441244C019637FF5EA64D19850D7 /* YYMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FB22B279444295E642BC0D933B090BE /* YYMemoryCache.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		544F21743DF2F5713E0D175CDA11F578 /* CQTSContainerViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4269E60B7D8AB36C7F0E18F868084BCF /* CQTSContainerViewFactory.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		5469E8FEF59DB15077E7397EF39786D8 /* CJResponseHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 74D8DA43660FFE49E01AD760CAA08278 /* CJResponseHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		550C3F7DFC226D56E69E7DA55957CCA1 /* CJSimulateUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = C90382FBF8F4C68785DC9F6885B7207A /* CJSimulateUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		550F249C62C377D68A58F4A1DABE00AC /* CJResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E3DB6267791233207EA64636B32E61 /* CJResponseModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5731A866DFDCFB1CD73500690A1F79CC /* CQDMModuleModel.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8B5E7DAF3DEED362BAB3B4D0F7F9EC /* CQDMModuleModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		57FF5AC68FF67C138AD39D73A7F475D0 /* CQNetworkPublic-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB460855AA38569E1AC22E7E6C877B26 /* CQNetworkPublic-dummy.m */; };
 		58218C490EE72C3926DD2D55C57EA85A /* CJDataMemoryDictionaryManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DA35B54C1E3835158D9E23DC8B4E2D69 /* CJDataMemoryDictionaryManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		588FBA9B385A2D3E050E15FC631477FB /* CJNetworkClient+Upload1.m in Sources */ = {isa = PBXBuildFile; fileRef = B779B9E84C3FC308E46EF30970C21334 /* CJNetworkClient+Upload1.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5AD109D8CD2C6BA5F8C385B3F309771C /* WKWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8090A46BB49A1FC4989DDBE9646413FC /* WKWebView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		5CD26E5392E199528EAD69698B6B423E /* CQNetworkRequestClientSetGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F11C6257BF9719E80F9F61385D7668 /* CQNetworkRequestClientSetGetter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5D2211A91F01D48CF5268F9B2BE472D5 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 569F3556730319BF1CFECB5190E0FF88 /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		5D2BAAB601C46F3B7D8CE39B58E3F61F /* CJNetworkClient+SuccessFailure.h in Headers */ = {isa = PBXBuildFile; fileRef = E841F6C1E4606B044882317D77A3D255 /* CJNetworkClient+SuccessFailure.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		5DC7CAD92B610C94CC010850ACC96B36 /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D2E0C5955D5D21DB5AF1ADA8C052A /* AFNetworking-dummy.m */; };
 		5F36D9BE2B41CC4E4A9BE720903FF606 /* CJRequestLogSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B41C65197E9853C21D203C4DA841A9 /* CJRequestLogSettingModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5FE37868D6E1A94760AE1083C989BEDD /* UIView+AFNetworkingUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE8C06AE813F834C529FC136281505D /* UIView+AFNetworkingUpload.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -132,12 +127,10 @@
 		72346507AC9F01211FB2448682283ED3 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 720DD900826EA81915294DF3B3F86AC4 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7240C9447319D53CF454CB3623855E7A /* CJValidateStringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3744C752F76F9FF677E9646F28357963 /* CJValidateStringTableViewCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		74A05966E618DE3EFB4BD7C74C4B196A /* CQTSBorderStateButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E96D24AA446BBBEE6553F992C5FEE2ED /* CQTSBorderStateButton.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		75083634F63A7CD80FAE26BFF6D31082 /* CQNetworkUploadSuccessFailureHelperProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5B3A6209CB9CCC92B11BC7EFFA2554 /* CQNetworkUploadSuccessFailureHelperProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		760E1899AEAA102651CB096F14BE60AA /* AFCompatibilityMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = EF2450614E666A23F4667D89BBA2BCC9 /* AFCompatibilityMacros.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		7648C756715C8D6940847643059926FF /* CJValidateStringBigTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D0C065E80A797FA075686BBDB4BFCE5F /* CJValidateStringBigTableViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		76A436B4F9D41A9C55ACBBDCFBD6DB04 /* CQTSButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD35C2BD9AAA415E859ECDC26FDEC39 /* CQTSButtonFactory.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		770BC027D60F3B78267EFF7B4C9345C0 /* CJRequestSettingModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C092BFC56896EA1A657CD25703D3B8B /* CJRequestSettingModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		773039EDA0874601468CEE293A01549F /* CJResponseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEBC5E2EDE2F44D2EFA3620EA6C2EA3 /* CJResponseHelper.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		77218A13B800CD69F7A6405F2B4C2B7C /* CQNetworkRequestClientSetGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = B3F59B6BFF65D3FEBBDB630B61F907AA /* CQNetworkRequestClientSetGetter.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		77D0B8FEAB357D925ED9F9F54E78F3DD /* AsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = B065892C6A85B7A194BAE728E25A7AC8 /* AsyncSocket.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		78081DB8D9B393F88FDB79EF14E40918 /* UIImage+CQDemoKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E546E83DE242F0DA8CF314EF117EEF7 /* UIImage+CQDemoKit.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7858352BD5E876A0CE3B6C26EDDA0E14 /* CQDMSectionDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1F3DF4EA97ED1947FB13983619169 /* CQDMSectionDataModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -149,7 +142,7 @@
 		7EEA72F08FBC1CC662B4127D9152E054 /* CJRequestCacheSettingModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0323343362E01D92FDB8BD57521503E1 /* CJRequestCacheSettingModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8037C4CDC3A806AA4CA0201B3D3453D0 /* CJLogUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DA450E0E7E03E6A4B5A55E78681A7E16 /* CJLogUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		809D4E69A391E081683695D353E37766 /* CQDMSectionDataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DB81595F972B05A49354B211868419 /* CQDMSectionDataModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		838FDE29979031D11475A92044BDFE45 /* CJNetworkClient+SuccessFailure.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CCD3FA89250DD27877F9B32187F18A /* CJNetworkClient+SuccessFailure.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		85367BED11C2F78226E067FBB135192E /* CQNetworkRequestHelperSetGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D6DB38BD2D110899564B6CC56CC21D /* CQNetworkRequestHelperSetGetter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		85E576B6CC890BC3329520602BA40077 /* AsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F17701F5B0C9E4F8BF0C582706EAC13 /* AsyncUdpSocket.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		86F0EC9CD9F4294EB55CEAD9E1EA6E0A /* CJIndentedStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1E93C0425B46C2CB6FA68698BB9626 /* CJIndentedStringUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		875EB3F99014E59480A8F4C7EC2FD954 /* MJExtension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 033408E4F1696FEB0E5CACB7C1286DA2 /* MJExtension-dummy.m */; };
@@ -169,9 +162,9 @@
 		8FDB85FB21FC47EC794745DDDA1A504D /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B2780CAA9F5EECC7C54E46909EE79C /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8FF03359E8DB5301B3560DA59EDA28A6 /* CJLogView.h in Headers */ = {isa = PBXBuildFile; fileRef = E9AF3904BB00CFF499D315CA7390B36D /* CJLogView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9061B81A17A92EFB92D786BC226BB81F /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = EA4696C90B6B8917B3A4B5D6D0E6B909 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		90D1825E47E9AA34B5FCD3709BC8808F /* CJNetworkClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 8972F6C27A6A0200701995DCE9CCD561 /* CJNetworkClient.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9105766BD7763D05B17611F34FA4C916 /* CJIndentedStringUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 00AA574BEDA8CA9764F21F89F37964D8 /* CJIndentedStringUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		945A0072EA9959104268F41446E12361 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 95561B6562D8A96DFDBCC9DEAD99C47B /* AFURLRequestSerialization.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		9475A89271CF6F6BC2352924D77ED510 /* CJNetworkClient+Upload2.h in Headers */ = {isa = PBXBuildFile; fileRef = 94FF11EDEA92BEBB803C85541D41111B /* CJNetworkClient+Upload2.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		97FA87FB0C76D71782BD43B448D5B508 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A67E5839CE44A9BBB5BBA07D2EFD9E12 /* NSArray+MASAdditions.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		983DEBBC0450921FEB8CD456220D609F /* OpenUDID-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3AF78D6D53B717D421B443E121169B0 /* OpenUDID-dummy.m */; };
 		989DC1B0903C393718F4FE667BBEF753 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 19B57E17AC29E3E9B058ED48B1029F7B /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -179,12 +172,12 @@
 		9B21A0501844D4694A30F3EE7282519D /* CJCacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C125F9CEBDFE06ABF14F8C90216391E6 /* CJCacheManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9B7A8750BF446B285124F75376FEA5D1 /* AFHTTPSessionManager+CJRequestCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D4B7D388209B492FBEB9A415B9147C2C /* AFHTTPSessionManager+CJRequestCommon.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9E7BBC8005595CA007792E4C3FE0E773 /* YYMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 04990AA9A7B06AD4D645AC94FE61DAB3 /* YYMemoryCache.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		9EA2D9CDE1BDF68E6868CAFE425EEB81 /* CQNetworkUploadSuccessFailureHelperProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5B3A6209CB9CCC92B11BC7EFFA2554 /* CQNetworkUploadSuccessFailureHelperProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9EF201BD1EB210AE9C05C7CE6D653BB2 /* CJNetworkClient+Completion.h in Headers */ = {isa = PBXBuildFile; fileRef = 012F6AEC8D3FC7128E810FF709CC52B5 /* CJNetworkClient+Completion.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9F416D6585641B54DD80E267EB27692E /* NSObject+MJProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = C91CD2B6B887FA095466F0418959A15A /* NSObject+MJProperty.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A2C5A7121C7EE060C2967706E2EE6F51 /* CJNetworkClient+CJDemoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD6CE736139E45CE1D861B24AA00E48 /* CJNetworkClient+CJDemoApp.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A492CF7CC5DE66EF182E7C3941C82293 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3C84193C53D7CECCE937A3E816A9C1 /* AFURLSessionManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A5149065FD422FAEC69E1423160A437D /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 78996FEF5B4AC2FF0589508B6BE18C8F /* AsyncSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A58D961B3131B67678B39D582FF72B46 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DD51282F59840998AEC64415019963D3 /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A5B49AABE665947544CAA10024045CF8 /* CJNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB8416914A5667C707C7B13F7C2246D /* CJNetworkClient.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A693E7C90C6AC5D000CAED3CF677AF36 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AF7A6335BA0547EC83B994D75F8BF28 /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A71AF70FF5A138A69DF3B3BD4722BEA7 /* Pods-CJNetworkDemoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3290FB2535C989864838B790ECD28FE1 /* Pods-CJNetworkDemoTests-dummy.m */; };
 		A75908DF2FF057462BFD936FB37C03E2 /* CJNetworkCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BADA9CA80554B28AB05537EF569713 /* CJNetworkCacheManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -200,7 +193,6 @@
 		B542C669422B32981D4A7B9B33CE50B7 /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 60A35CF3648ECA28A3C9584B85833486 /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B55C7AF8C15B0836584AC100EDF19F5D /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = 1913EE7158CBAD0543280729153E06F6 /* Masonry.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B72DDFE939DA6F78454D621734B79463 /* CJUploadProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = B433DB722D588CFD4F4C5F8563EA90A6 /* CJUploadProgressView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B77040CD50A2D4370F29ED460AEC016C /* CQNetworkUploadClientSetGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8CBB50B91A1C5EC2DEAA998178BF18D /* CQNetworkUploadClientSetGetter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B7B82E12541B71F6BCADF0129AF754C9 /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C8947BC320575A522A026916E7CB932 /* AFImageDownloader.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B830ECBE90B052CFB34C161F7573D183 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B071857F6E12ABD04187018C83C3AA /* MASLayoutConstraint.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B872999A49CCE6CB81189EC94119F1DD /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E1430DA9306B87D1D28EEE2EB03C941A /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -212,6 +204,7 @@
 		BC71ADFAE509F6DE8C73D33CCC920ACB /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EDF6A0A35C7D66700CF0B843271009A /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		BCD9FD6D06688FFE66AE3B058F37F43A /* CJRequestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4361FA64D9D4E88638F4EDF5CDF2728D /* CJRequestUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		BD033114BF6FE98E603023FCF913A437 /* AFHTTPSessionManager+CJSerializerEncrypt.h in Headers */ = {isa = PBXBuildFile; fileRef = E289F5FF95B5C4FAC05348A44724CFDB /* AFHTTPSessionManager+CJSerializerEncrypt.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		BDB2E33B784705AE8F73CA6D29B866FD /* CJRequestSettingModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C092BFC56896EA1A657CD25703D3B8B /* CJRequestSettingModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		BFEF1D8CF82271F5C05318B9302BA07A /* CQTSSuspendButtonRootViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D71E66201D1A7C5A9F7E97D2D35BDDF2 /* CQTSSuspendButtonRootViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C1D8CAD22B539A1591B9542E1545504D /* CJNetworkCacheUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 44359A8FAACE7E3970DE1A72BC0FD3D1 /* CJNetworkCacheUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C1F2337DE85BB6A73C101EE62D03BB22 /* AFHTTPSessionManager+CJUploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 847EB635B90EBD526DD6BF472E8CC834 /* AFHTTPSessionManager+CJUploadFile.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -219,10 +212,10 @@
 		C33A921B2A99620DDF49B5031E715CD8 /* UIButton+CQTSMoreProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0E7A3583AC5069025B3CB0548F5DCA /* UIButton+CQTSMoreProperty.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C3434B4906AADE23924DF99295A3AA92 /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 73392F4CEF263187AE1500D38D040425 /* YYDiskCache.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C3E3E9458D9D226B07B5CEDFF2E16AD1 /* CJDataDiskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C05D8A6E36BCA7A9CBF8370FB445E9 /* CJDataDiskManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		C4197441E7B5ADD179ABC9F7C9A4AC7B /* CQNetworkRequestCompletionClientProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B96B5C47356C964AF4EDB423B05149B /* CQNetworkRequestCompletionClientProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C4704BFB5882E31A6FE4EB3121AB6175 /* CJValidateStringTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5FE3377C44922331C55F0BA9FE65A3 /* CJValidateStringTableViewCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C4F52CE39D21EB1694AE04A5C88BAB1A /* UIView+AFNetworkingUpload.h in Headers */ = {isa = PBXBuildFile; fileRef = 4140C07C93EBDB244B8F1E11A3D7AA94 /* UIView+AFNetworkingUpload.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C53724481EDE8B6D88B45CE0B587AEFC /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F9ABD91D7320DB3A4FE34AEAD36689D0 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C5646CC3C7774844C246243C91DE4D8F /* CQNetworkRequestSuccessFailureClientProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 05799B30943073D762F05771A73E8023 /* CQNetworkRequestSuccessFailureClientProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C5B75B4A486E69A88662139E57D07AC4 /* CJUploadFileModelsOwner.h in Headers */ = {isa = PBXBuildFile; fileRef = E07A5AAA8F310493F81DC4352BFED202 /* CJUploadFileModelsOwner.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C775ABC857CF53E3DB3939DB2EEBDF92 /* CJCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E192A527DADBE23A10D6200CD2EE31 /* CJCacheManager.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C83A46DCEEC16CCC16ACD6F9AA277BCE /* MJPropertyKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FA01D937297A1362B1AF6F71B0714F9 /* MJPropertyKey.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -232,8 +225,9 @@
 		CAF8580D6ED4980C7ADF9DE194F85650 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C6A09E89BA14D17D9B8607E679BF57A0 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CB442E6FA31C7EA4769421BF0739C3C8 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C12AC2A3F7B9122AF27314D1BD51E483 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CB80F2C1DD7019CF43ADF7DDCA1B003F /* CJUIKitAlertUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4C5E3CC02ECC17DA10B45DD4BEFB9 /* CJUIKitAlertUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		CBA83DCF082EDD76402938CD6C221952 /* CQNetworkRequestSuccessFailureHelperProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3286540CF9234ECDF3C7606DD0FDC2A3 /* CQNetworkRequestSuccessFailureHelperProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CEC6C3A97C6FAEDDA72CF2FE4384B3B3 /* CQDMSectionDataModel+CJDealTextModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CBE53227E734E13082C90D0DBF7C55 /* CQDMSectionDataModel+CJDealTextModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		CF20179106BF0D3278C2393B8C458DED /* CJNetworkClient+Completion.m in Sources */ = {isa = PBXBuildFile; fileRef = 12276CE13F74E156DDDF35A13FC33EEA /* CJNetworkClient+Completion.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		CEE9082BC87573CD2D8AEB7B6D147BB5 /* CQNetworkUploadCompletionClientProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ED0F61AAAEC00761D118C66B3935B57 /* CQNetworkUploadCompletionClientProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D03201B62CC19C70BB34DC0FF52A3B43 /* CJLogModel.h in Headers */ = {isa = PBXBuildFile; fileRef = BC076CA2ED2DFA59200110453AADA1DD /* CJLogModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D0BCC4E7B3A0147FEF3F282B595BE294 /* CJLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF6B9B3CCFA7B4BA1D50B21E143F534 /* CJLogModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D13D2247CB23F4E8CEC5411CA165E560 /* CJBaseHelper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD95DB0D58235BBA18FC7CFC354DDB /* CJBaseHelper-dummy.m */; };
@@ -243,42 +237,48 @@
 		D31C6ABC78DB335EB4067D8C94264061 /* MJPropertyKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C86F4FFF9696FA4D5C01E3FC0BAB33 /* MJPropertyKey.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D42439DE1BAA17AC1E4AF83B38427C24 /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 7605191D11149D529BFA860856236D6D /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D4F621E15857190861ECCBAD87DB080A /* CJSimulateRemoteUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E99CC9B8F6D39CF233ACF82C75E638 /* CJSimulateRemoteUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		D4FEFF61FD31EC3AE01BC182044D9DD2 /* CQNetworkUploadClientSetGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = 50A255A3C28B680EB23E1F2C1AEA795A /* CQNetworkUploadClientSetGetter.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D9665AF628E1DE9BA88EB9965128D89C /* CJNetworkCacheUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 365E296C7CC3C5D3947674B8FFD1C9B3 /* CJNetworkCacheUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D9F099831ADDD849367D4AF66BFE3913 /* CQTSSuspendWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C18A6A1D23D8CD91471440C991AB58E /* CQTSSuspendWindow.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		DA423193299B71B3DC85424AD83CA92E /* CJNetworkClient+CJDemoApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AD7A94CE0894AFDC0C08CC8E92E9F53 /* CJNetworkClient+CJDemoApp.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		DA6EDE1D3B5A97F18037E2F253B62586 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B0400C70073C2BE7AA0BC07A40395B34 /* UIProgressView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DCB2568CE55D784C8878EEF09E89335B /* CJSimulateRemoteUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 0904CD128C33BC25927B8F1688752F73 /* CJSimulateRemoteUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		DCB4E89CDF066B2BC85384987C62842F /* CJSimulateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E540D97CC01302DC3F22EBFAAB3924A7 /* CJSimulateUtil.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DD1A986FD2559A841D8F83A409FD3E1B /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F09043935AEE39E13DA7658074344 /* AFImageDownloader.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		DD831A2A2C49699CE3FF265C5FCCA683 /* CQNetworkUploadSuccessFailureClientProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C51CC62A3CB18CC9CFF63378DB299ED /* CQNetworkUploadSuccessFailureClientProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		DD98803B487F424E2993D9459F19EC88 /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C94B919F9869B5FA821B9A7883B00F72 /* YYCache.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		DDCD2DC5B6E1447120ADA54C6ED44D27 /* CJNetworkClient+SuccessFailure.h in Headers */ = {isa = PBXBuildFile; fileRef = E841F6C1E4606B044882317D77A3D255 /* CJNetworkClient+SuccessFailure.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		DEE3CBDA2426FB23A0FFC4D00CFDFF23 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DFC5132F24F7E3657CE56C3C7245419 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		DFB3A1B371D91DA8033FB726A4E83573 /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 97A104288B9E8C541840993E53E5D7FE /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E003E4334981F03568D10062549FE484 /* MJPropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C51CC38F14D2FC3F058F8F9B1E1904 /* MJPropertyType.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		E04E06E9C865B40AF9658E5C52A21BCD /* CQNetworkRequestHelperSetGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D6DB38BD2D110899564B6CC56CC21D /* CQNetworkRequestHelperSetGetter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E064B77B2012EE15B47F55AF4ECBE395 /* CJUIKitAlertUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EB497DAC1C9281AE8EE3E0F27990285 /* CJUIKitAlertUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		E06BC78E4115E1B3C15C0E4325190545 /* CJNetworkClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 8972F6C27A6A0200701995DCE9CCD561 /* CJNetworkClient.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E0908454E53FE60CAF6630F153A3B1A6 /* CQTSContainerViewFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = B4F67A09119E729E41BA649B8507A11E /* CQTSContainerViewFactory.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E31DD2D534C2517AA9A2A359AF372A57 /* CJNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB8416914A5667C707C7B13F7C2246D /* CJNetworkClient.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E3254A8420C35AE5AAE667470DBB4A85 /* CJValidateStringBigTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE00E0A074F0929DFDF1B5690BBFE5C6 /* CJValidateStringBigTableViewCell.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E347ACA114A7426226F8B113CC762DAD /* CJRequestLogSettingModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FD887B51567A59D779928127D4CCE09 /* CJRequestLogSettingModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E35B18F3C68CF5322580BA66FD1C3D65 /* UIImage+CQDemoKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 54EA8E79FC5462B46AD61D9E12504C90 /* UIImage+CQDemoKit.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E3882E31967B0B349841B89C41712188 /* CQNetworkUploadHelperSetGetter.h in Headers */ = {isa = PBXBuildFile; fileRef = 36BCFF6F899D3B1074CB7AF52CABDFCC /* CQNetworkUploadHelperSetGetter.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E40D0C63F6BF634213E81CD823B36E9F /* CJCacheDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A904F91AEFCFEBE3D7846B74AEAAB946 /* CJCacheDataModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E42C2A9DDE8BF50E242988FC543DDED3 /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B967198A3D34950A2F2ABC588F38DCF /* MASUtilities.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E5118CB15F1EF2E20CC58EA2EB9109B9 /* NSString+MJExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = D73410465A8A61DCFA9A6B6C5EDAEB3F /* NSString+MJExtension.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		E56AB80586834F443EC63AC45452CB8F /* AFHTTPSessionManager+CJRequestCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F4DCDBD8284CF7FC5B38C4007274A2F /* AFHTTPSessionManager+CJRequestCommon.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E700D209497E847267E64DAF010E04CB /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 1908B6F0919C0CCA4870FC7F14D41A53 /* UIRefreshControl+AFNetworking.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E75AD945C0ECF84729DFEE6B0418CC2A /* CQNetworkRequestCompletionHelperProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 7579DBB7C732A2A6BBD06D1FB0A8E8CD /* CQNetworkRequestCompletionHelperProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		EB947B49EEA9DEAF61FAF4C117565002 /* UISwitch+CQTSMoreProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E52A7073B724DB4D2687F26A5B65A52 /* UISwitch+CQTSMoreProperty.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		EBB208A80068563D8BB5FF63E953070D /* CJUIKitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52222A7A71AA87ECC22D277C757EECB9 /* CJUIKitBaseViewController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EC7A57F8B5BEB97CCBAF0A574FA99D5E /* CJNetworkClient+Upload2.h in Headers */ = {isa = PBXBuildFile; fileRef = 94FF11EDEA92BEBB803C85541D41111B /* CJNetworkClient+Upload2.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		ECD1D76CFB3B4F9BFF2CB2AED8920ECC /* CJNetworkClient+CJDemoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD6CE736139E45CE1D861B24AA00E48 /* CJNetworkClient+CJDemoApp.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EFDED473196AA4917C7CD29C597B522A /* CJNetworkClient+Upload2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2584F8B2E333D9409960D6581C47F80F /* CJNetworkClient+Upload2.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F007737C3C5621D1D64DFAD4CC87E32A /* CJDealTextModel.h in Headers */ = {isa = PBXBuildFile; fileRef = CB29CD5230E281B6E007634087D41866 /* CJDealTextModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F03B276745F37E505667479C9DE0C7F2 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F8DC460EE4C98F5FE4C9A26AD1F97702 /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F04542FFBD41909615F8FD7A13F39FAD /* CQTSSuspendWindowFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D2EFEA12130C68AE9343829F1DC8132D /* CQTSSuspendWindowFactory.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F12D6C04108B907D4FD6C337CE739560 /* CQTSButtonFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D5D867DA7EA9859F6EB13F9A8D2020 /* CQTSButtonFactory.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		F1D3912C225DBAAE439389C96AE12B18 /* CQNetworkUploadSuccessFailureClientProtocal.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C51CC62A3CB18CC9CFF63378DB299ED /* CQNetworkUploadSuccessFailureClientProtocal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F230651AA688822E164FB72EDA55F3C4 /* CJUIKitToastUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E49601F62CB9AB816F418DA7D7F299E /* CJUIKitToastUtil.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F2E26FF19743194D4D6B0177A598BC30 /* CQDMTabBarModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 42128EC721967E1AE34EC0F988C6001E /* CQDMTabBarModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		F3FAB20E74C9DD37E3DD36F42046EF97 /* CQNetworkPublic-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB460855AA38569E1AC22E7E6C877B26 /* CQNetworkPublic-dummy.m */; };
+		F4553600B3C2F0BA543276B9C988CAB2 /* CJRequestSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C44521E4E77E89350B5374527F0B1EFC /* CJRequestSettingModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F5156528064709D2645691F01909D079 /* CJNetworkCacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BB44C83D8C9B8035D3193E81B6F4AF87 /* CJNetworkCacheManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F83F7E88B47CE82B610A837CD0EE482F /* CJUIKitBaseHomeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 43FCF2970F558FB45F9678E48EC9CB20 /* CJUIKitBaseHomeViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FB3FAD31ABEB8BA2778A8A6888647884 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 485BAD0BC63CACEB39264E03A35CDD32 /* MASConstraint.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		FB7828F743CB6430496B91D507271CA8 /* CJNetworkClient+SuccessFailure.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CCD3FA89250DD27877F9B32187F18A /* CJNetworkClient+SuccessFailure.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		FDB769E62E7B694F13E673497AD2E7C6 /* CQTSSuspendWindowFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 082803CA4B5841BC77A71F50777FB44C /* CQTSSuspendWindowFactory.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 /* End PBXBuildFile section */
 
@@ -296,13 +296,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4D3BA58D0583DF37575CACAB3DDADC85;
 			remoteInfo = MJExtension;
-		};
-		1A82D48023D6773123B4073C6B10E100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F5ACFA03546AA92B6FF9A5E09456D8F3;
-			remoteInfo = CJNetworkFileModel;
 		};
 		1CB15D37BDF5FE13768A760A7E79851D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -324,13 +317,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 21517B5E5A3551D6D46F4061D1FCEB4B;
 			remoteInfo = CQNetworkPublic;
-		};
-		3AF2285C34EB2C70DE3D38FC76358FAC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1B14095811754F236459B08977DD655B;
-			remoteInfo = CJNetwork;
 		};
 		54545C1027F4762AC715E61BB7AB749E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -402,6 +388,13 @@
 			remoteGlobalIDString = 55AF53E6C77A10ED4985E04D74A8878E;
 			remoteInfo = Masonry;
 		};
+		A7621C06DF4B3B8A4E2F36366915F3B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5ACFA03546AA92B6FF9A5E09456D8F3;
+			remoteInfo = CJNetworkFileModel;
+		};
 		B90EE405E7A94BB8AC7B54CA49978F79 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -423,6 +416,13 @@
 			remoteGlobalIDString = 8EAC078A06609A8FD16E6539DB497666;
 			remoteInfo = CJMonitor;
 		};
+		BFD24255417F743877E1556F40622A78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21517B5E5A3551D6D46F4061D1FCEB4B;
+			remoteInfo = CQNetworkPublic;
+		};
 		DF7AA9D394C99ECF9A8476E1039205EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -436,6 +436,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 55AF53E6C77A10ED4985E04D74A8878E;
 			remoteInfo = Masonry;
+		};
+		E9FE81EA32E2AD428F7DACBE86ED272D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B14095811754F236459B08977DD655B;
+			remoteInfo = CJNetwork;
 		};
 		F5C31925E9D60CAD7FE84425CDF510E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -805,6 +812,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1D32D20C280F026138BB7291837516A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		229DC371E3D505AA83F0C48B99596504 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -833,13 +847,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5182085EC39CDF902FD54F092DBF16D6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6A08B208727CE1CBB5163ECA4B68D8C5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -848,6 +855,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7214C2D16C1F3D58AFE4EF4D5B0180FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		849252DA116BD69F20CBD0801240F14A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -890,13 +904,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AECA8745EC816793EF331164B515D374 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AF571FE6418EC9116A8BC84F030C62E6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2019,6 +2026,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		02B7A6FE957757514E0F24F06145F2B1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA423193299B71B3DC85424AD83CA92E /* CJNetworkClient+CJDemoApp.h in Headers */,
+				9EF201BD1EB210AE9C05C7CE6D653BB2 /* CJNetworkClient+Completion.h in Headers */,
+				DDCD2DC5B6E1447120ADA54C6ED44D27 /* CJNetworkClient+SuccessFailure.h in Headers */,
+				45053C92E0D25119026452C5B2057EFC /* CJNetworkClient+Upload1.h in Headers */,
+				EC7A57F8B5BEB97CCBAF0A574FA99D5E /* CJNetworkClient+Upload2.h in Headers */,
+				90D1825E47E9AA34B5FCD3709BC8808F /* CJNetworkClient.h in Headers */,
+				BDB2E33B784705AE8F73CA6D29B866FD /* CJRequestSettingModel.h in Headers */,
+				5469E8FEF59DB15077E7397EF39786D8 /* CJResponseHelper.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04C77F2D8B29B01AE63B3FC48350519D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -2082,6 +2104,27 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		219D1DE7FF9FA332F97A137D2A53EF0D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				209769DD894C029CA8BADA80B2E6CBA6 /* CJResponseModel.h in Headers */,
+				77218A13B800CD69F7A6405F2B4C2B7C /* CQNetworkRequestClientSetGetter.h in Headers */,
+				387197A424FEBB664369483CF123F818 /* CQNetworkRequestCompletionClientProtocal.h in Headers */,
+				E75AD945C0ECF84729DFEE6B0418CC2A /* CQNetworkRequestCompletionHelperProtocal.h in Headers */,
+				521167A891EA2527CF4FEF286B33B701 /* CQNetworkRequestEnum.h in Headers */,
+				4F1BA96AF71EDE3AC7B8AEBB3E785480 /* CQNetworkRequestHelperSetGetter.h in Headers */,
+				C5646CC3C7774844C246243C91DE4D8F /* CQNetworkRequestSuccessFailureClientProtocal.h in Headers */,
+				CBA83DCF082EDD76402938CD6C221952 /* CQNetworkRequestSuccessFailureHelperProtocal.h in Headers */,
+				41B5A8C84E39EC2C69C58B705B39F16E /* CQNetworkUploadClientSetGetter.h in Headers */,
+				CEE9082BC87573CD2D8AEB7B6D147BB5 /* CQNetworkUploadCompletionClientProtocal.h in Headers */,
+				4BB0495DB4BA73E9AC1F9496C414782E /* CQNetworkUploadCompletionHelperProtocal.h in Headers */,
+				E3882E31967B0B349841B89C41712188 /* CQNetworkUploadHelperSetGetter.h in Headers */,
+				DD831A2A2C49699CE3FF265C5FCCA683 /* CQNetworkUploadSuccessFailureClientProtocal.h in Headers */,
+				9EA2D9CDE1BDF68E6868CAFE425EEB81 /* CQNetworkUploadSuccessFailureHelperProtocal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2211,42 +2254,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9BF0EF23D2B051786DCDC17080E6BF92 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2D53933930B74620AE8A26EFBA448B94 /* CJResponseModel.h in Headers */,
-				170A325979C25C3D5B423BA587E2A0CA /* CQNetworkRequestClientSetGetter.h in Headers */,
-				C4197441E7B5ADD179ABC9F7C9A4AC7B /* CQNetworkRequestCompletionClientProtocal.h in Headers */,
-				14147A4CC8F1B1E9448430575F7FA8D0 /* CQNetworkRequestCompletionHelperProtocal.h in Headers */,
-				2415B306ECCB69C18A4622D517F56723 /* CQNetworkRequestEnum.h in Headers */,
-				189B9421A3ECCA7567C64166798B22C5 /* CQNetworkRequestHelperSetGetter.h in Headers */,
-				1E9722DF44B51C2E068A9A0921348792 /* CQNetworkRequestSuccessFailureClientProtocal.h in Headers */,
-				17C9BB9D422C138AE8E07494770D6F78 /* CQNetworkRequestSuccessFailureHelperProtocal.h in Headers */,
-				D4FEFF61FD31EC3AE01BC182044D9DD2 /* CQNetworkUploadClientSetGetter.h in Headers */,
-				48922D304C58DEF17846C18258EAE66E /* CQNetworkUploadCompletionClientProtocal.h in Headers */,
-				3E2F5D0D390454BC04DAC6D221489BCE /* CQNetworkUploadCompletionHelperProtocal.h in Headers */,
-				47A58CA366C3AC0FFA85F638A0A1ADB8 /* CQNetworkUploadHelperSetGetter.h in Headers */,
-				F1D3912C225DBAAE439389C96AE12B18 /* CQNetworkUploadSuccessFailureClientProtocal.h in Headers */,
-				75083634F63A7CD80FAE26BFF6D31082 /* CQNetworkUploadSuccessFailureHelperProtocal.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6BF78D875CB333903B5F561C98ED7E9 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				377E7E260FE7C97F10CCA91488A323EF /* CJNetworkClient+CJDemoApp.h in Headers */,
-				244C7F317AA29C0EF1E24FDBEB1289E5 /* CJNetworkClient+Completion.h in Headers */,
-				5D2BAAB601C46F3B7D8CE39B58E3F61F /* CJNetworkClient+SuccessFailure.h in Headers */,
-				234C5A5F1DD83014206BD53048A03814 /* CJNetworkClient+Upload1.h in Headers */,
-				9475A89271CF6F6BC2352924D77ED510 /* CJNetworkClient+Upload2.h in Headers */,
-				E06BC78E4115E1B3C15C0E4325190545 /* CJNetworkClient.h in Headers */,
-				770BC027D60F3B78267EFF7B4C9345C0 /* CJRequestSettingModel.h in Headers */,
-				3D04EA28386CF6E7534842392F264442 /* CJResponseHelper.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BF68759284BC9D7FDAE93871DEFF9570 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -2319,16 +2326,16 @@
 		};
 		21517B5E5A3551D6D46F4061D1FCEB4B /* CQNetworkPublic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D205DC855A775E32580D99C66DB91C03 /* Build configuration list for PBXNativeTarget "CQNetworkPublic" */;
+			buildConfigurationList = 9D23095CC815D21BD9C17D44F9686123 /* Build configuration list for PBXNativeTarget "CQNetworkPublic" */;
 			buildPhases = (
-				9BF0EF23D2B051786DCDC17080E6BF92 /* Headers */,
-				08FDDEDD6BBD001B6824C184B5CB32BA /* Sources */,
-				AF571FE6418EC9116A8BC84F030C62E6 /* Frameworks */,
+				219D1DE7FF9FA332F97A137D2A53EF0D /* Headers */,
+				C079E4C7164CB10C6F2F8D7E83FFD12C /* Sources */,
+				1D32D20C280F026138BB7291837516A4 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				41A074A660AFF982C6B7B2B4E4E2D025 /* PBXTargetDependency */,
+				17F5BD5C5B9435551AFEBF8B1CE21F89 /* PBXTargetDependency */,
 			);
 			name = CQNetworkPublic;
 			productName = CQNetworkPublic;
@@ -2507,16 +2514,17 @@
 		};
 		C7298A27623298641D86A93C1D042A48 /* CJNetworkClient */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DE7878D7B2C23D2741BF0964280E782E /* Build configuration list for PBXNativeTarget "CJNetworkClient" */;
+			buildConfigurationList = 9062B681917B1FCAEFB4816AE7D18696 /* Build configuration list for PBXNativeTarget "CJNetworkClient" */;
 			buildPhases = (
-				A6BF78D875CB333903B5F561C98ED7E9 /* Headers */,
-				0610321F8F297CCA276B07445DAD0727 /* Sources */,
-				5182085EC39CDF902FD54F092DBF16D6 /* Frameworks */,
+				02B7A6FE957757514E0F24F06145F2B1 /* Headers */,
+				0F61C75B8815913923D46D565AD4710B /* Sources */,
+				849252DA116BD69F20CBD0801240F14A /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				20E3E567BAB98EF27834ABC7BE385496 /* PBXTargetDependency */,
+				EA58D66EF6615B601D517F230FDD7B12 /* PBXTargetDependency */,
+				22CD0582E1F66BF0B0E59F81C786D40E /* PBXTargetDependency */,
 			);
 			name = CJNetworkClient;
 			productName = CJNetworkClient;
@@ -2658,41 +2666,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0610321F8F297CCA276B07445DAD0727 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A2C5A7121C7EE060C2967706E2EE6F51 /* CJNetworkClient+CJDemoApp.m in Sources */,
-				CF20179106BF0D3278C2393B8C458DED /* CJNetworkClient+Completion.m in Sources */,
-				838FDE29979031D11475A92044BDFE45 /* CJNetworkClient+SuccessFailure.m in Sources */,
-				1EDF3CFBF7CECDC50A602079FE583AD2 /* CJNetworkClient+Upload1.m in Sources */,
-				371E41848F247590D428ADA59471A0A9 /* CJNetworkClient+Upload2.m in Sources */,
-				2BBB912D3616BA48115A3C3AC1E6DA3C /* CJNetworkClient-dummy.m in Sources */,
-				A5B49AABE665947544CAA10024045CF8 /* CJNetworkClient.m in Sources */,
-				18C1F3DE5508BBD85C21542551455274 /* CJRequestSettingModel.m in Sources */,
-				773039EDA0874601468CEE293A01549F /* CJResponseHelper.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		08FDDEDD6BBD001B6824C184B5CB32BA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				550F249C62C377D68A58F4A1DABE00AC /* CJResponseModel.m in Sources */,
-				F3FAB20E74C9DD37E3DD36F42046EF97 /* CQNetworkPublic-dummy.m in Sources */,
-				3827FBF12B27889129D1E8B3C2DF3662 /* CQNetworkRequestClientSetGetter.m in Sources */,
-				E04E06E9C865B40AF9658E5C52A21BCD /* CQNetworkRequestHelperSetGetter.m in Sources */,
-				B77040CD50A2D4370F29ED460AEC016C /* CQNetworkUploadClientSetGetter.m in Sources */,
-				278CABF1C77BD2CF309DAD56998A123B /* CQNetworkUploadHelperSetGetter.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0B8A46BABD3674C9D5C32BD05F6709F6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				983DEBBC0450921FEB8CD456220D609F /* OpenUDID-dummy.m in Sources */,
 				127A822E8DE920F361F4B1DFA3F6B883 /* OpenUDID.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F61C75B8815913923D46D565AD4710B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECD1D76CFB3B4F9BFF2CB2AED8920ECC /* CJNetworkClient+CJDemoApp.m in Sources */,
+				22CD28593C0B60AA9DD87409F326A7F6 /* CJNetworkClient+Completion.m in Sources */,
+				FB7828F743CB6430496B91D507271CA8 /* CJNetworkClient+SuccessFailure.m in Sources */,
+				588FBA9B385A2D3E050E15FC631477FB /* CJNetworkClient+Upload1.m in Sources */,
+				EFDED473196AA4917C7CD29C597B522A /* CJNetworkClient+Upload2.m in Sources */,
+				079876768441813FD0BAD860FDCE0C0F /* CJNetworkClient-dummy.m in Sources */,
+				E31DD2D534C2517AA9A2A359AF372A57 /* CJNetworkClient.m in Sources */,
+				F4553600B3C2F0BA543276B9C988CAB2 /* CJRequestSettingModel.m in Sources */,
+				2A9F2BCC2AB3EECB599DE3D2F236A207 /* CJResponseHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2843,6 +2838,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C079E4C7164CB10C6F2F8D7E83FFD12C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A9C905A446D5AE9DB4D693DC397A042 /* CJResponseModel.m in Sources */,
+				57FF5AC68FF67C138AD39D73A7F475D0 /* CQNetworkPublic-dummy.m in Sources */,
+				5CD26E5392E199528EAD69698B6B423E /* CQNetworkRequestClientSetGetter.m in Sources */,
+				85367BED11C2F78226E067FBB135192E /* CQNetworkRequestHelperSetGetter.m in Sources */,
+				2777B124CF8A02F6B2530092DF7EA0AE /* CQNetworkUploadClientSetGetter.m in Sources */,
+				1939C99F8E65D74283678C52F63551E4 /* CQNetworkUploadHelperSetGetter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1A671127222E2CE9E21DB824159C8B8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2898,6 +2906,12 @@
 			target = 55AF53E6C77A10ED4985E04D74A8878E /* Masonry */;
 			targetProxy = 93C70975279F15DD831FD4418A72E078 /* PBXContainerItemProxy */;
 		};
+		17F5BD5C5B9435551AFEBF8B1CE21F89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CJNetworkFileModel;
+			target = F5ACFA03546AA92B6FF9A5E09456D8F3 /* CJNetworkFileModel */;
+			targetProxy = A7621C06DF4B3B8A4E2F36366915F3B4 /* PBXContainerItemProxy */;
+		};
 		180550D5E0A861CB2E378D4339A89306 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Masonry;
@@ -2916,23 +2930,17 @@
 			target = AC509E0B2457961842D06F82D4E8C691 /* CQDemoKit */;
 			targetProxy = DF7AA9D394C99ECF9A8476E1039205EE /* PBXContainerItemProxy */;
 		};
-		20E3E567BAB98EF27834ABC7BE385496 /* PBXTargetDependency */ = {
+		22CD0582E1F66BF0B0E59F81C786D40E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = CJNetwork;
-			target = 1B14095811754F236459B08977DD655B /* CJNetwork */;
-			targetProxy = 3AF2285C34EB2C70DE3D38FC76358FAC /* PBXContainerItemProxy */;
+			name = CQNetworkPublic;
+			target = 21517B5E5A3551D6D46F4061D1FCEB4B /* CQNetworkPublic */;
+			targetProxy = BFD24255417F743877E1556F40622A78 /* PBXContainerItemProxy */;
 		};
 		3471D14712D240EFDC0DF4C8CC830C84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CJNetworkFileModel;
 			target = F5ACFA03546AA92B6FF9A5E09456D8F3 /* CJNetworkFileModel */;
 			targetProxy = 76E185B02EFC0EF395E4B938C8BE80D1 /* PBXContainerItemProxy */;
-		};
-		41A074A660AFF982C6B7B2B4E4E2D025 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CJNetworkFileModel;
-			target = F5ACFA03546AA92B6FF9A5E09456D8F3 /* CJNetworkFileModel */;
-			targetProxy = 1A82D48023D6773123B4073C6B10E100 /* PBXContainerItemProxy */;
 		};
 		57713BE95BDB2B81E9D56ACA84332439 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3012,6 +3020,12 @@
 			target = 5693C314031FD61B7E4FF25D196ED379 /* CJBaseUtil */;
 			targetProxy = F5C31925E9D60CAD7FE84425CDF510E8 /* PBXContainerItemProxy */;
 		};
+		EA58D66EF6615B601D517F230FDD7B12 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CJNetwork;
+			target = 1B14095811754F236459B08977DD655B /* CJNetwork */;
+			targetProxy = E9FE81EA32E2AD428F7DACBE86ED272D /* PBXContainerItemProxy */;
+		};
 		EE3DE4468E5295673CDC70EB0F42D462 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = YYCache;
@@ -3033,6 +3047,28 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		03B5EA8EDB93A3CB02D81B779C7799E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6ED76452B5FA71C2BC768A452128C142 /* CQNetworkPublic.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/CQNetworkPublic/CQNetworkPublic-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = CQNetworkPublic;
+				PRODUCT_NAME = CQNetworkPublic;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		0BFA4F2BFF9842DC8D16E5AD285F7733 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B28B106E4FAC6F94D35E6F337C54F6DF /* Pods-CJNetworkDemo.release.xcconfig */;
@@ -3209,29 +3245,6 @@
 			};
 			name = Debug;
 		};
-		2B43F819A280AF243D2E5C81FE9B9DF7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70A64DEA0B6987AA9C5D696FBCADB404 /* CQNetworkPublic.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/CQNetworkPublic/CQNetworkPublic-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = CQNetworkPublic;
-				PRODUCT_NAME = CQNetworkPublic;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		2CA48E521B3F9BCBEFE29EA3A7DAB9BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5544772E6D1F040DB3F93DD0D1F7E535 /* CQDemoKit.debug.xcconfig */;
@@ -3366,28 +3379,6 @@
 			};
 			name = Release;
 		};
-		51B0259D5D129092521548731AD89EE0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6ED76452B5FA71C2BC768A452128C142 /* CQNetworkPublic.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/CQNetworkPublic/CQNetworkPublic-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = CQNetworkPublic;
-				PRODUCT_NAME = CQNetworkPublic;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 		53E0357908C129C56722CB838D078155 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D984C2F8696AA3AFCFF1C8552D84C929 /* CJNetworkFileModel.release.xcconfig */;
@@ -3433,9 +3424,9 @@
 			};
 			name = Debug;
 		};
-		74094CE7936DCDF0709B6B2DED305CDE /* Debug */ = {
+		7EECD71FDBB78FE50CDE9C19FE3E9F76 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0E1D73B34C9C1FA8DF083788D33E55D /* CJNetworkClient.debug.xcconfig */;
+			baseConfigurationReference = 57EEC760F7D1C2A4B41DE6429DEDD744 /* CJNetworkClient.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -3452,8 +3443,9 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
 		836CAD40A10E9BC06BC84481ACADE6A2 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -3492,6 +3484,28 @@
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_MODULE_NAME = CJNetworkFileModel;
 				PRODUCT_NAME = CJNetworkFileModel;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		889295E76751BAAEEC7EF9C1A267E3F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0E1D73B34C9C1FA8DF083788D33E55D /* CJNetworkClient.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/CJNetworkClient/CJNetworkClient-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = CJNetworkClient;
+				PRODUCT_NAME = CJNetworkClient;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -3562,6 +3576,29 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A612E4688066BC9E763562CF8A5D4130 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70A64DEA0B6987AA9C5D696FBCADB404 /* CQNetworkPublic.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/CQNetworkPublic/CQNetworkPublic-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = CQNetworkPublic;
+				PRODUCT_NAME = CQNetworkPublic;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3785,29 +3822,6 @@
 			};
 			name = Debug;
 		};
-		E0CE3F91A66926423E195D32E1768F94 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57EEC760F7D1C2A4B41DE6429DEDD744 /* CJNetworkClient.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/CJNetworkClient/CJNetworkClient-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = CJNetworkClient;
-				PRODUCT_NAME = CJNetworkClient;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		E71F54680EAFA127B31BEA8D1466FE3B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0C8E2A630B7790C14FBBE8325B35CF98 /* YYCache.debug.xcconfig */;
@@ -4022,20 +4036,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		9062B681917B1FCAEFB4816AE7D18696 /* Build configuration list for PBXNativeTarget "CJNetworkClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				889295E76751BAAEEC7EF9C1A267E3F8 /* Debug */,
+				7EECD71FDBB78FE50CDE9C19FE3E9F76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9D23095CC815D21BD9C17D44F9686123 /* Build configuration list for PBXNativeTarget "CQNetworkPublic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03B5EA8EDB93A3CB02D81B779C7799E4 /* Debug */,
+				A612E4688066BC9E763562CF8A5D4130 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A14B6672136B506B1248D4521A272B8C /* Build configuration list for PBXNativeTarget "CJNetwork" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1516BAB34E26F738AAA6ECF769813380 /* Debug */,
 				1A6DAA0CFF7B01F70B40802A11D55FC4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D205DC855A775E32580D99C66DB91C03 /* Build configuration list for PBXNativeTarget "CQNetworkPublic" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				51B0259D5D129092521548731AD89EE0 /* Debug */,
-				2B43F819A280AF243D2E5C81FE9B9DF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4054,15 +4077,6 @@
 			buildConfigurations = (
 				2DA4B41EACB41209EAEE602573BAE7D2 /* Debug */,
 				9A55BB77883C480645AD279847A0C231 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DE7878D7B2C23D2741BF0964280E782E /* Build configuration list for PBXNativeTarget "CJNetworkClient" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				74094CE7936DCDF0709B6B2DED305CDE /* Debug */,
-				E0CE3F91A66926423E195D32E1768F94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

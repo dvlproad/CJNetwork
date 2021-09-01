@@ -1,7 +1,7 @@
 {
   "name": "CQNetworkPublic",
   "version": "0.1.0",
-  "summary": "网络请求公共",
+  "summary": "网络请求公共-可以解耦底层，使得底层使用任意的网络框架",
   "homepage": "https://github.com/dvlproad/CJNetwork.git",
   "license": {
     "type": "Copyright",

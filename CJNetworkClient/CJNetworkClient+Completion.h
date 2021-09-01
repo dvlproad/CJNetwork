@@ -8,11 +8,12 @@
 //  有两个回调，分别为 success + failure
 
 #import "CJNetworkClient.h"
-#import <CQNetworkPublic/CQNetworkRequestSuccessFailureClientProtocal.h>
+#import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
+#import <CQNetworkPublic/CQNetworkRequestCompletionClientProtocal.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CJNetworkClient (Completion) <CQNetworkRequestSuccessFailureClientProtocal>
+@interface CJNetworkClient (Completion) <CQNetworkRequestCompletionClientProtocal>
 
 
 #pragma mark - RealApi
@@ -51,22 +52,6 @@ NS_ASSUME_NONNULL_BEGIN
                                            params:(id)params
                                      settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
-
-#pragma mark - Base
-- (NSURLSessionDataTask *)real1_uploadUrl:(NSString *)Url
-                                urlParams:(nullable id)urlParams
-                               formParams:(nullable id)formParams
-                             settingModel:(nullable CJRequestSettingModel *)settingModel
-                         uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                 progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
-- (nullable NSURLSessionDataTask *)__requestUrl:(NSString *)Url
-                                         params:(nullable id)customParams
-                                         method:(CJRequestMethod)method
-                                   settingModel:(nullable CJRequestSettingModel *)settingModel
-                                  completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
-- (NSURLSessionDataTask *)__localApi:(NSString *)apiSuffix
-                       completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
 
 @end
 

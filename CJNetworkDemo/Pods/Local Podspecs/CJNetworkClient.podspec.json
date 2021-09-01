@@ -27,6 +27,9 @@
         ],
         "CJNetwork/AFNetworkingUploadComponent": [
 
+        ],
+        "CQNetworkPublic/Client": [
+
         ]
       }
     }

@@ -8,11 +8,12 @@
 //  有两个回调，分别为 success + failure
 
 #import "CJNetworkClient.h"
+#import <CJNetwork/AFHTTPSessionManager+CJUploadFile.h>
 #import <CQNetworkPublic/CQNetworkUploadCompletionClientProtocal.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CJNetworkClient (Upload1) <CQNetworkRequestCompletionClientProtocal>
+@interface CJNetworkClient (Upload1) <CQNetworkUploadCompletionClientProtocal>
 
 #pragma mark - RealApi
 

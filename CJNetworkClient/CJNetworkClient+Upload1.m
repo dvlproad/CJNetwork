@@ -182,12 +182,6 @@
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                       completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
-    return [self __localApi:apiSuffix completeBlock:completeBlock];
-}
-
-- (NSURLSessionDataTask *)__localApi:(NSString *)apiSuffix
-                       completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
-{
     [CJSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
         CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
