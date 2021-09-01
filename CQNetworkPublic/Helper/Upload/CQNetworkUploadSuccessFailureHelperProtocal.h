@@ -13,6 +13,8 @@
 #import "CJResponseModel.h"
 #import <CJNetworkFileModel/CJUploadFileModel.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol CQNetworkUploadSuccessFailureHelperProtocal <NSObject>
 
 #pragma mark - Protocal为了解耦需要由分类来实现的方法
@@ -65,3 +67,5 @@
 
 
 #endif /* CQNetworkUploadSuccessFailureHelperProtocal_h */
+
+NS_ASSUME_NONNULL_END

@@ -8,6 +8,7 @@
 
 #import "CJNetworkClient+Completion.h"
 #import <CJNetworkSimulate/CJSimulateUtil.h>
+#import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
 
 @implementation CJNetworkClient (Completion)
 

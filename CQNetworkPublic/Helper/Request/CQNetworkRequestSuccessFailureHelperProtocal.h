@@ -12,6 +12,8 @@
 #import "CQNetworkRequestEnum.h"
 #import "CJResponseModel.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol CQNetworkRequestSuccessFailureHelperProtocal <NSObject>
 
 #pragma mark - Protocal为了解耦需要由分类来实现的方法
@@ -59,3 +61,5 @@
 
 
 #endif /* CQNetworkRequestSuccessFailureHelperProtocal_h */
+
+NS_ASSUME_NONNULL_END

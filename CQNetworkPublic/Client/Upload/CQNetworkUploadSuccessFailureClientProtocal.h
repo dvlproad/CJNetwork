@@ -12,6 +12,9 @@
 #import "CQNetworkRequestEnum.h"
 #import "CJResponseModel.h"
 #import <CJNetworkFileModel/CJUploadFileModel.h>
+//#import <CJNetworkFileModel/CJUploadFileModelsOwner.h>    //上传请求的时刻信息要保存到的位置
+
+NS_ASSUME_NONNULL_BEGIN
 
 @protocol CQNetworkUploadSuccessFailureClientProtocal <NSObject>
 
@@ -65,3 +68,5 @@
 
 
 #endif /* CQNetworkUploadSuccessFailureClientProtocal_h */
+
+NS_ASSUME_NONNULL_END

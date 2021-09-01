@@ -8,7 +8,7 @@
 
 #import "CJNetworkClient+Upload1.h"
 #import <CJNetworkSimulate/CJSimulateUtil.h>
-#import <AFNetworking/AFHTTPSessionManager.h>
+#import <CJNetwork/AFHTTPSessionManager+CJUploadFile.h>
 
 @implementation CJNetworkClient (Upload1)
 

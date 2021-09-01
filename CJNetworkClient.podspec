@@ -1,8 +1,13 @@
 Pod::Spec.new do |s|
   #验证方法： pod lib lint CJNetworkClient.podspec --allow-warnings --use-libraries --verbose
   #提交方法： pod trunk push CJNetworkClient.podspec --allow-warnings --use-libraries --verbose
+  
+  #验证方法1：pod lib lint CJNetworkClient.podspec --sources='https://github.com/CocoaPods/Specs.git,https://gitee.com/dvlproad/dvlproadSpecs' --allow-warnings --use-libraries --verbose
+  #验证方法2：pod lib lint CJNetworkClient.podspec --sources=master,dvlproad --allow-warnings --use-libraries --verbose
+  #提交方法： pod repo push dvlproad CJNetworkClient.podspec --sources=master,dvlproad --allow-warnings --use-libraries --verbose
+  
   s.name         = "CJNetworkClient"
-  s.version      = "1.2.0"
+  s.version      = "1.3.0"
   s.summary      = "网络请求的管理类：一个基于CJNetwork而封装的网络请求接口管理库"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -22,7 +27,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "9.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkClient_1.2.0_1" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkClient_1.3.0" }
   # s.source_files  = "CJNetworkClient/*.{h,m}"
   s.frameworks = 'UIKit'
 

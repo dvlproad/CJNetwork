@@ -42,9 +42,9 @@ PODS:
     - YYCache
   - CJNetwork/CJRequestUtil (0.8.1):
     - CJNetwork/CJNetworkCommon
-  - CJNetworkClient (1.2.0):
-    - CJNetworkClient/CJNetworkClient (= 1.2.0)
-  - CJNetworkClient/CJNetworkClient (1.2.0):
+  - CJNetworkClient (1.3.0):
+    - CJNetworkClient/CJNetworkClient (= 1.3.0)
+  - CJNetworkClient/CJNetworkClient (1.3.0):
     - CJNetwork/AFNetworkingSerializerEncrypt
     - CJNetwork/AFNetworkingUploadComponent
     - CQNetworkPublic/Client
@@ -90,25 +90,25 @@ PODS:
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
   - CQDemoKit/Helper (0.6.2)
-  - CQNetworkPublic (0.1.0):
-    - CQNetworkPublic/Base (= 0.1.0)
-    - CQNetworkPublic/Client (= 0.1.0)
-    - CQNetworkPublic/Helper (= 0.1.0)
-  - CQNetworkPublic/Base (0.1.0)
-  - CQNetworkPublic/Client (0.1.0):
-    - CQNetworkPublic/Client/Request (= 0.1.0)
-    - CQNetworkPublic/Client/Upload (= 0.1.0)
-  - CQNetworkPublic/Client/Request (0.1.0):
+  - CQNetworkPublic (0.1.1):
+    - CQNetworkPublic/Base (= 0.1.1)
+    - CQNetworkPublic/Client (= 0.1.1)
+    - CQNetworkPublic/Helper (= 0.1.1)
+  - CQNetworkPublic/Base (0.1.1)
+  - CQNetworkPublic/Client (0.1.1):
+    - CQNetworkPublic/Client/Request (= 0.1.1)
+    - CQNetworkPublic/Client/Upload (= 0.1.1)
+  - CQNetworkPublic/Client/Request (0.1.1):
     - CQNetworkPublic/Base
-  - CQNetworkPublic/Client/Upload (0.1.0):
+  - CQNetworkPublic/Client/Upload (0.1.1):
     - CJNetworkFileModel
     - CQNetworkPublic/Base
-  - CQNetworkPublic/Helper (0.1.0):
-    - CQNetworkPublic/Helper/Request (= 0.1.0)
-    - CQNetworkPublic/Helper/Upload (= 0.1.0)
-  - CQNetworkPublic/Helper/Request (0.1.0):
+  - CQNetworkPublic/Helper (0.1.1):
+    - CQNetworkPublic/Helper/Request (= 0.1.1)
+    - CQNetworkPublic/Helper/Upload (= 0.1.1)
+  - CQNetworkPublic/Helper/Request (0.1.1):
     - CQNetworkPublic/Base
-  - CQNetworkPublic/Helper/Upload (0.1.0):
+  - CQNetworkPublic/Helper/Upload (0.1.1):
     - CJNetworkFileModel
     - CQNetworkPublic/Base
   - Masonry (1.1.0)
@@ -162,12 +162,12 @@ SPEC CHECKSUMS:
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
   CJMonitor: cbec62179b877a476f84249ff268c765a66d6687
   CJNetwork: b35363a02eff89c59558216a884be8bc23b2b3f5
-  CJNetworkClient: c2bc92a4028f7b19d2f883c16c76b08a36dbc099
+  CJNetworkClient: 7af9d4d53c81b338d7d127c105a8c0db50ae3471
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
   CJNetworkSimulate: 05ec607cca182214548e8933a792ef1ff1dd2860
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQDemoKit: f0fe8ab090a1ebd9f9526224c3abd384d7c4ebc0
-  CQNetworkPublic: 738027fdb4ece276309b890976dba7037792f17f
+  CQNetworkPublic: 25114b7f3d2144730be464758c3b7f6a46447fce
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 01704cca2b60a214c10761b6491eab74069d68a9
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b

@@ -11,6 +11,7 @@
 #import <CQNetworkPublic/CJResponseModel.h>
 #import <CQNetworkPublic/CQNetworkRequestEnum.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 /*
  *  必须实现：将"网络请求成功返回的数据responseObject"转换为"模型"的方法
@@ -32,8 +33,6 @@ typedef CJResponseModel * _Nullable (^CJNetworkClientGetSuccessResponseModelBloc
  */
 typedef CJResponseModel * _Nullable (^CJNetworkClientGetFailureResponseModelBlock)(NSError * _Nullable error, NSString * _Nullable errorMessage);
 
-
-NS_ASSUME_NONNULL_BEGIN
 
 @interface CJResponseHelper : NSObject
 
