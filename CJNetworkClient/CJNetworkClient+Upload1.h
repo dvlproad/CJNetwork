@@ -8,7 +8,7 @@
 //  有两个回调，分别为 success + failure
 
 #import "CJNetworkClient.h"
-#import <CQNetworkRequestPublic/CQNetworkUploadCompletionClientProtocal.h>
+#import <CQNetworkPublic/CQNetworkUploadCompletionClientProtocal.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

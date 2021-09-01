@@ -1,6 +1,6 @@
 {
   "name": "CQNetworkRequestPublic",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "summary": "个人Demo模块化开发--登录模块",
   "homepage": "https://gitee.com/dvlproad/AppLoginCollect.git",
   "license": {
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://gitee.com/dvlproad/AppLoginCollect.git",
-    "tag": "CQNetworkRequestPublic_0.0.1"
+    "tag": "CQNetworkRequestPublic_0.1.0"
   },
   "frameworks": "UIKit",
   "requires_arc": true,

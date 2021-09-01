@@ -28,10 +28,10 @@ target 'CJNetworkDemo' do
   pod 'CJNetworkSimulate',  :path => '../'
   
   pod 'CJNetwork',              :path => '../'
-  pod 'CQNetworkRequestPublic', :path => '../'
-  pod 'CJNetworkClient',    :path => '../'
-  pod 'CJNetworkFileModel', :path => '../'
-  pod 'CocoaAsyncSocket',   '~> 7.4.1'
+  pod 'CQNetworkPublic',        :path => '../'
+  pod 'CJNetworkClient',        :path => '../'
+  pod 'CJNetworkFileModel',     :path => '../'
+  pod 'CocoaAsyncSocket',       '~> 7.4.1'
   pod 'MJExtension'
     
   pod 'CJBaseUtil',     :subspecs => ['CJIndentedStringUtil']

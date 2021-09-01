@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CJNetwork/CJRequestInfoModel.h>
-#import "CJResponseModel.h"
-
-#import <CQNetworkRequestPublic/CQNetworkRequestEnum.h>
+#import <CQNetworkPublic/CJResponseModel.h>
+#import <CQNetworkPublic/CQNetworkRequestEnum.h>
 
 
 /*

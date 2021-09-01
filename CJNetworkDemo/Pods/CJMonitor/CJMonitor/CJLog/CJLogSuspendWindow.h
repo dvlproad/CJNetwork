@@ -7,16 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Masonry/Masonry.h>
-
-#ifdef CJTESTPOD
-#import "UIView+CJDragAction.h"
-#import "UIView+CJKeepBounds.h"
-#else
-#import <CJBaseUIKit/UIView+CJDragAction.h>
-#import <CJBaseUIKit/UIView+CJKeepBounds.h>
-#endif
-
 #import "CJLogViewWindow.h"
 
 /**
@@ -29,8 +19,13 @@
 @property (nonatomic, copy) void (^clickWindowBlock)(UIButton *clickButton);
 @property (nonatomic, copy) void (^closeWindowBlock)(void);
 
-///显示
-+ (void)showWithFrame:(CGRect)frame;
+/*
+ *  显示
+ *
+ *  @param frame            要显示到的位置
+ *  @param configBlock      对这个按钮窗口的定制(可拖动、拖动吸附等)
+ */
++ (void)showWithFrame:(CGRect)frame configBlock:(void(^ _Nullable)(CJLogSuspendWindow *bSuspendWindow))configBlock;
 
 ///移除
 + (void)removeFromScreen;

@@ -31,9 +31,17 @@ static dispatch_once_t onceToken;
     return _sharedInstance;
 }
 
-///显示
-+ (void)showWithFrame:(CGRect)frame {
-    [[CJLogSuspendWindow sharedInstance] setFrame:frame];
+/*
+ *  显示
+ *
+ *  @param frame            要显示到的位置
+ *  @param configBlock      对这个按钮窗口的定制(可拖动、拖动吸附等)
+ */
++ (void)showWithFrame:(CGRect)frame configBlock:(void(^ _Nullable)(CJLogSuspendWindow *bSuspendWindow))configBlock {
+    CJLogSuspendWindow *suspendWindow = [CJLogSuspendWindow sharedInstance];
+    [suspendWindow setFrame:frame];
+    
+    !configBlock ?: configBlock(suspendWindow);
 }
 
 ///移除
@@ -58,15 +66,6 @@ static dispatch_once_t onceToken;
     self.clipsToBounds = YES;
     self.rootViewController = [[UIViewController alloc] init];
     self.backgroundColor = [UIColor lightGrayColor];
-    
-    self.cjDragEnable = YES;
-    [self setCjDragBeginBlock:^(UIView *view) {
-        NSLog(@"开始拖曳CJLogSuspendWindow");
-    }];
-    [self setCjDragEndBlock:^(UIView *view) {
-        NSLog(@"结束拖曳CJLogSuspendWindow");
-        [view cjKeepBounds];
-    }];
     
     [self setupViews];
 }
