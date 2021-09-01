@@ -1,65 +1,71 @@
 //
-//  CQNetworkUploadSuccessFailureClientProtocal.h
+//  CJNetworkClient+Upload1.h
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2018/6/3.
 //  Copyright © 2018年 dvlproad. All rights reserved.
 //
+//  有两个回调，分别为 success + failure
 
-#ifndef CQNetworkUploadSuccessFailureClientProtocal_h
-#define CQNetworkUploadSuccessFailureClientProtocal_h
+#import "CJNetworkClient.h"
+#import <CQNetworkRequestPublic/CQNetworkUploadCompletionClientProtocal.h>
 
-#import "CQNetworkRequestEnum.h"
+NS_ASSUME_NONNULL_BEGIN
 
-@protocol CQNetworkUploadSuccessFailureClientProtocal <NSObject>
+@interface CJNetworkClient (Upload1) <CQNetworkRequestCompletionClientProtocal>
 
-#pragma mark - Protocal为了解耦需要由分类来实现的方法
-@required
 #pragma mark - RealApi
-/*
+
+- (NSURLSessionDataTask *)real1_uploadApi:(NSString *)apiSuffix
+                                urlParams:(nullable id)urlParams
+                               formParams:(nullable id)formParams
+                             settingModel:(nullable CJRequestSettingModel *)settingModel
+                         uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                 progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+/**
  *  上传文件的请求方法：只是上传文件，不对上传过程中的各个时刻信息的进行保存
  *
- *  @param apiSuffix        apiSuffix
+ *  @param Url              Url
  *  @param urlParams        urlParams(需要拼接到url后的参数)
  *  @param formParams       formParams(除fileKey之外需要作为表单提交的参数)
+ *  @param settingModel     settingModel
  *  @param uploadFileModels 文件数据：要上传的数据组uploadFileModels
  *  @param uploadProgress   uploadProgress
  *  @param completeBlock    上传结束执行的回调
  *
  *  @return 上传文件的请求
  */
-- (nullable NSURLSessionDataTask *)real2_uploadApi:(NSString *)apiSuffix
+- (NSURLSessionDataTask *)real1_uploadUrl:(NSString *)Url
                                 urlParams:(nullable id)urlParams
                                formParams:(nullable id)formParams
+                             settingModel:(nullable CJRequestSettingModel *)settingModel
                          uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                  success:(void (^)(CJResponseModel *responseModel))success
-                                  failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;;
+                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 
-@optional
+
 #pragma mark - simulateApi
 // 为方便接口的重复利用回调中的responseModel使用id类型
-- (NSURLSessionDataTask *)simulate2_uploadApi:(NSString *)apiSuffix
+- (NSURLSessionDataTask *)simulate1_uploadApi:(NSString *)apiSuffix
                                     urlParams:(nullable id)urlParams
                                    formParams:(nullable id)formParams
+                                 settingModel:(nullable CJRequestSettingModel *)settingModel
                              uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                      success:(void (^)(id responseModel))success
-                                      failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
+                                completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
 
 
-@optional
 #pragma mark - localApi
 // 为方便接口的重复利用回调中的responseModel使用id类型
-- (nullable NSURLSessionDataTask *)local2_uploadApi:(NSString *)apiSuffix
+- (nullable NSURLSessionDataTask *)local1_uploadApi:(NSString *)apiSuffix
                                           urlParams:(nullable id)urlParams
                                          formParams:(nullable id)formParams
+                                       settingModel:(nullable CJRequestSettingModel *)settingModel
                                    uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                            success:(void (^)(id responseModel))success
-                                            failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
+                                      completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
 
 @end
 
-
-#endif /* CQNetworkUploadSuccessFailureClientProtocal_h */
+NS_ASSUME_NONNULL_END

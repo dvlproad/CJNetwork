@@ -10,7 +10,6 @@
 //  below are the cjdemo app's upload image example, other app can refer to it
 
 #import "CJNetworkClient.h"
-#import "CJNetworkClient+SuccessFailure.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -7,6 +7,8 @@
 //
 
 #import "CJNetworkClient+CJDemoApp.h"
+#import "CJNetworkClient+Upload1.h"
+#import "CJNetworkClient+Upload2.h"
 
 @implementation CJNetworkClient (CJDemoApp)
 

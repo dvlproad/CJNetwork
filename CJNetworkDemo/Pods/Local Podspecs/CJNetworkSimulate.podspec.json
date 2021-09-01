@@ -1,6 +1,6 @@
 {
   "name": "CJNetworkSimulate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "summary": "一个网络模拟库（常用于为了功能快速开发中的临时网络模拟）",
   "homepage": "https://github.com/dvlproad/CJNetwork.git",
   "license": "MIT",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/dvlproad/CJNetwork.git",
-    "tag": "CJNetworkSimulate_0.1.0"
+    "tag": "CJNetworkSimulate_0.2.0"
   },
   "frameworks": "UIKit",
   "requires_arc": true,

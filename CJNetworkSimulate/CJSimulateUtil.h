@@ -21,33 +21,33 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)localSimulateApi:(NSString *)apiSuffix completeBlock:(void (^)(NSDictionary *responseDictionary))completeBlock;
 
+#pragma mark - GET请求
+/*
+ *  发起GET请求
+ *
+ *  @param apiSuffix    apiSuffix(不是http开头时,会自动加域名前缀)
+ *  @param params       params
+ *  @param success      请求成功的回调failure
+ *  @param failure      请求失败的回调failure(error已判断为非空)
+ */
++ (void)getSimulateApi:(NSString *)apiSuffix
+               success:(nullable void (^)(NSDictionary *responseDictionary))success
+               failure:(nullable void (^)(NSError * _Nonnull error, NSString * _Nullable errorMessage))failure;
+
 #pragma mark - POST请求
 /*
  *  发起POST请求
  *
- *  @param Url          Url
+ *  @param apiSuffix    apiSuffix(不是http开头时,会自动加域名前缀)
  *  @param params       params
  *  @param success      请求成功的回调failure
- *  @param failure      请求失败的回调failure
+ *  @param failure      请求失败的回调failure(error已判断为非空)
  *
  *  @return 请求的task
  */
 + (void)postSimulateApi:(NSString *)apiSuffix
                 success:(nullable void (^)(NSDictionary *responseDictionary))success
-                failure:(nullable void (^)(NSString * _Nullable message))failure;
-
-#pragma mark - GET请求
-/*
- *  发起GET请求
- *
- *  @param Url          Url
- *  @param params       params
- *  @param success      请求成功的回调failure
- *  @param failure      请求失败的回调failure
- */
-+ (void)getSimulateApi:(NSString *)apiSuffix
-               success:(nullable void (^)(NSDictionary *responseDictionary))success
-               failure:(nullable void (^)(NSString * _Nullable message))failure;
+                failure:(nullable void (^)(NSError * _Nonnull error, NSString * _Nullable errorMessage))failure;
 
 
 NS_ASSUME_NONNULL_END

@@ -16,31 +16,9 @@
 #import <CJNetwork/AFHTTPSessionManager+CJUploadFile.h>
 
 #import "CJRequestSettingModel.h"
-#import "CJResponseModel.h"
+#import "CJResponseHelper.h"
 
-#import <CQNetworkRequestPublic/CQNetworkRequestEnum.h>
 #import <CQNetworkRequestPublic/CQNetworkRequestCompletionClientProtocal.h>
-
-/**
- *  必须实现：将"网络请求成功返回的数据responseObject"转换为"模型"的方法
- *
- *  @param responseObject   网络请求成功返回的数据
- *  @param isCacheData      是否是缓存数据
- *
- *  @return 数据模型
- */
-typedef CJResponseModel * _Nullable (^CJNetworkClientGetSuccessResponseModelBlock)(id _Nullable responseObject, BOOL isCacheData);
-
-
-/**
- *  必须实现：将"网络请求失败返回的数据error"转换为"模型"的方法
- *
- *  @param error            网络请求失败返回的数据
- *  @param errorMessage     从网络中获取到错误信息getErrorMessageFromHTTPURLResponse
- *
- *  @return 数据模型
- */
-typedef CJResponseModel * _Nullable (^CJNetworkClientGetFailureResponseModelBlock)(NSError * _Nullable error, NSString * _Nullable errorMessage);
 
 
 
@@ -62,11 +40,46 @@ NS_ASSUME_NONNULL_BEGIN
 //   cryptWithParamsEncryptHandle:(NSDictionary *(^)(id params))paramsCryptHandle
 //      responseDataDecryptHandle:(id (^)(id responseData))responseDataDecryptHandle;
 
+
+#pragma mark - 整体网络
+@property (nonatomic, strong, readonly) AFHTTPSessionManager *cleanHTTPSessionManager;
+@property (nonatomic, strong, readonly) AFHTTPSessionManager *cryptHTTPSessionManager;
+//@property (nonatomic, strong) AFHTTPSessionManager *uploadHTTPSessionManager;
+//@property (nonatomic, strong) AFHTTPSessionManager *httpSessionManager;
+//@property (nonatomic, copy) NSDictionary *(^paramsCryptHandle)(id params);      /**< 加密之参数加密 */
+//@property (nonatomic, copy) id (^responseDataDecryptHandle)(id responseData);   /**< 加密之值解密 */
+
 // 外界环境变化的时候要修改的值(一定要执行)
 /**< 共有Url，形如@"http://xxx.xxx.xxx"，会通过baseUrl与apiSuffix组成fullUrl */
-@property (nonatomic, copy) NSString *baseUrl;
+@property (nonatomic, copy, readonly) NSString *baseUrl;
 /**< 公共参数(可变类型，如登录之后需要追加uid，退出时候需要remove uid) */
+@property (nonatomic, copy, readonly) NSString *(^completeFullUrlBlock)(NSString *baseUrl, NSString *apiSuffix);
 @property (nullable, nonatomic, strong) NSMutableDictionary *commonParams;
+@property (nonatomic, copy, readonly) NSDictionary *(^completeAllParamsBlock)(NSDictionary *customParams);
+
+#pragma mark - 请求判断
+//必须实现：将"网络请求成功返回的数据responseObject"转换为"模型"的方法
+@property (nonatomic, copy, readonly) CJResponseModel *(^getSuccessResponseModelBlock)(id responseObject, BOOL isCacheData);
+
+//必须实现：将"网络请求失败返回的数据error"转换为"模型"的方法
+@property (nonatomic, copy, readonly) CJResponseModel* (^getFailureResponseModelBlock)(NSError *error, NSString *errorMessage);
+
+//可选实现：在"网络请求成功并转换为模型"后判断其是否是"异地登录"等共同错误并在此对共同错误做处理，如statusCode == -5 为异地登录(可为ni,非nil时一般返回值为NO)
+//未设置时候 CJResponeFailureType 为 CJResponeFailureTypeNeedFurtherJudgeFailure
+//设置时候 若返回YES,则即为CJResponeFailureTypeCommonFailure，其会走failure回调;
+//设置时候 若返回NO,则即为CJResponeFailureTypeNeedFurtherJudgeFailure，其会走success回调；
+//详细的走法如下代码所示：
+//if (failureType == CJResponeFailureTypeCommonFailure) {
+//    !failure ?: failure(NO, responseModel.message);
+//
+//} else if (failureType == CJResponeFailureTypeRequestFailure) {
+//    !failure ?: failure(YES, responseModel.message);
+//
+//} else {
+//    !success ?: success(responseModel);
+//}
+@property (nonatomic, copy, readonly) BOOL(^checkIsCommonFailureBlock)(CJResponseModel *responseModel);
+
 
 // Option
 //@property (nonatomic, copy) id (^ _Nullable urlParamsHandle)(id _Nullable urlParams);  /**< if has urlParams, deal them before append them to Url */
@@ -87,87 +100,6 @@ NS_ASSUME_NONNULL_BEGIN
              getFailureResponseModelBlock:(CJNetworkClientGetFailureResponseModelBlock)getFailureResponseModelBlock;
 
 
-#pragma mark - RealApi
-- (NSURLSessionDataTask *)real1_getApi:(NSString *)apiSuffix
-                                params:(NSDictionary *)params
-                          settingModel:(nullable CJRequestSettingModel *)settingModel
-                         completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
-
-- (NSURLSessionDataTask *)real1_postApi:(NSString *)apiSuffix
-                                 params:(id)params
-                           settingModel:(nullable CJRequestSettingModel *)settingModel
-                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
-
-- (NSURLSessionDataTask *)real1_uploadApi:(NSString *)apiSuffix
-                                urlParams:(nullable id)urlParams
-                               formParams:(nullable id)formParams
-                             settingModel:(nullable CJRequestSettingModel *)settingModel
-                         uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                 progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
-/**
- *  上传文件的请求方法：只是上传文件，不对上传过程中的各个时刻信息的进行保存
- *
- *  @param Url              Url
- *  @param urlParams        urlParams(需要拼接到url后的参数)
- *  @param formParams       formParams(除fileKey之外需要作为表单提交的参数)
- *  @param settingModel     settingModel
- *  @param uploadFileModels 文件数据：要上传的数据组uploadFileModels
- *  @param uploadProgress   uploadProgress
- *  @param completeBlock    上传结束执行的回调
- *
- *  @return 上传文件的请求
- */
-- (NSURLSessionDataTask *)real1_uploadUrl:(NSString *)Url
-                                urlParams:(nullable id)urlParams
-                               formParams:(nullable id)formParams
-                             settingModel:(nullable CJRequestSettingModel *)settingModel
-                         uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                 progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
-
-
-#pragma mark - simulateApi
-// 为方便接口的重复利用回调中的responseModel使用id类型
-- (NSURLSessionDataTask *)simulate1_getApi:(NSString *)apiSuffix
-                                    params:(nullable NSDictionary *)params
-                              settingModel:(nullable CJRequestSettingModel *)settingModel
-                             completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
-
-- (NSURLSessionDataTask *)simulate1_postApi:(NSString *)apiSuffix
-                                     params:(nullable id)params
-                               settingModel:(nullable CJRequestSettingModel *)settingModel
-                              completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
-
-- (NSURLSessionDataTask *)simulate1_uploadApi:(NSString *)apiSuffix
-                                    urlParams:(nullable id)urlParams
-                                   formParams:(nullable id)formParams
-                                 settingModel:(nullable CJRequestSettingModel *)settingModel
-                             uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                     progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
-
-
-#pragma mark - localApi
-// 为方便接口的重复利用回调中的responseModel使用id类型
-- (nullable NSURLSessionDataTask *)local1_getApi:(NSString *)apiSuffix
-                                          params:(NSDictionary *)params
-                                    settingModel:(nullable CJRequestSettingModel *)settingModel
-                                   completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
-
-- (nullable NSURLSessionDataTask *)local1_postApi:(NSString *)apiSuffix
-                                           params:(id)params
-                                     settingModel:(nullable CJRequestSettingModel *)settingModel
-                                    completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
-
-- (nullable NSURLSessionDataTask *)local1_uploadApi:(NSString *)apiSuffix
-                                          urlParams:(nullable id)urlParams
-                                         formParams:(nullable id)formParams
-                                       settingModel:(nullable CJRequestSettingModel *)settingModel
-                                   uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                           progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                                      completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
+@end
 
 NS_ASSUME_NONNULL_END
-
-@end

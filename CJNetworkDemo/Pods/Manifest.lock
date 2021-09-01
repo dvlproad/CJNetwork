@@ -52,7 +52,7 @@ PODS:
   - CJNetworkFileModel (0.1.0):
     - CJNetworkFileModel/Upload (= 0.1.0)
   - CJNetworkFileModel/Upload (0.1.0)
-  - CJNetworkSimulate (0.1.0)
+  - CJNetworkSimulate (0.2.0)
   - CocoaAsyncSocket (7.4.3):
     - CocoaAsyncSocket/All (= 7.4.3)
   - CocoaAsyncSocket/All (7.4.3):
@@ -167,7 +167,7 @@ SPEC CHECKSUMS:
   CJNetwork: b35363a02eff89c59558216a884be8bc23b2b3f5
   CJNetworkClient: b5b943a8efc92884e802cdd8b63e22aa915ee784
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
-  CJNetworkSimulate: bfde8b21d86d0c5c36cc340770e851c3da60059f
+  CJNetworkSimulate: 05ec607cca182214548e8933a792ef1ff1dd2860
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQDemoKit: f0fe8ab090a1ebd9f9526224c3abd384d7c4ebc0
   CQNetworkRequestPublic: a083953318d73855335b8a53c43294d96947f91f

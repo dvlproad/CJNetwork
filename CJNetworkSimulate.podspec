@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   #验证方法： pod lib lint CJNetworkSimulate.podspec --allow-warnings --use-libraries --verbose
   #提交方法： pod trunk push CJNetworkSimulate.podspec --allow-warnings --use-libraries --verbose
   s.name         = "CJNetworkSimulate"
-  s.version      = "0.1.0"
+  s.version      = "0.2.0"
   s.summary      = "一个网络模拟库（常用于为了功能快速开发中的临时网络模拟）"
   s.homepage     = "https://github.com/dvlproad/CJNetwork.git"
   s.license      = "MIT"
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "9.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkSimulate_0.1.0" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkSimulate_0.2.0" }
   # s.source_files  = "CJNetworkSimulate/*.{h,m}"
   s.frameworks = 'UIKit'
 

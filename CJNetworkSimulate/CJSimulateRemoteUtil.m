@@ -10,6 +10,44 @@
 
 @implementation CJSimulateRemoteUtil
 
+#pragma mark - GET请求
+/*
+ *  发起GET请求
+ *
+ *  @param Url          Url
+ *  @param params       params
+ *  @param success      请求成功的回调failure
+ *  @param failure      请求失败的回调failure(error已判断为非空)
+ */
++ (NSURLSessionDataTask *)getUrl:(NSString *)Url
+                          params:(nullable id)params
+                         success:(nullable void (^)(NSDictionary *responseDictionary))success
+                         failure:(nullable void (^)(NSError * _Nonnull error, NSString * _Nullable errorMessage))failure
+{
+    NSString *fullUrlForGet = [self connectRequestUrl:Url params:params];
+    NSURL *URL = [NSURL URLWithString:fullUrlForGet];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+    [request setHTTPMethod:@"GET"]; //此行可省略，因为默认就是GET方法，附Get方法没有body
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error == nil) {
+            NSError *jsonError = nil;
+            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
+            !success ?: success(responseObject);
+            
+        } else {
+            NSString *message = [self getErrorMessageFromURLResponse:response];
+            !failure ?: failure(error, message);
+        }
+    }];
+    [task resume];
+    
+    return task;
+}
+
+
 #pragma mark - POST请求
 /*
  *  发起POST请求
@@ -17,14 +55,14 @@
  *  @param Url          Url
  *  @param params       params
  *  @param success      请求成功的回调failure
- *  @param failure      请求失败的回调failure
+ *  @param failure      请求失败的回调failure(error已判断为非空)
  *
  *  @return 请求的task
  */
 + (NSURLSessionDataTask *)postUrl:(NSString *)Url
                            params:(nullable id)params
                           success:(nullable void (^)(NSDictionary *responseDictionary))success
-                          failure:(nullable void (^)(NSString * _Nullable message))failure
+                          failure:(nullable void (^)(NSError * _Nonnull error, NSString * _Nullable errorMessage))failure
 {
     /* 利用Url和params，通过加密的方法创建请求 */
     NSData *bodyData = nil;
@@ -45,7 +83,7 @@
             
         } else {
             NSString *message = [self getErrorMessageFromURLResponse:response];
-            !failure ?: failure(message);
+            !failure ?: failure(error, message);
         }
     }];
     [URLSessionDataTask resume];
@@ -53,44 +91,6 @@
     return URLSessionDataTask;
 }
 
-
-
-#pragma mark - GET请求
-/*
- *  发起GET请求
- *
- *  @param Url          Url
- *  @param params       params
- *  @param success      请求成功的回调failure
- *  @param failure      请求失败的回调failure
- */
-+ (NSURLSessionDataTask *)getUrl:(NSString *)Url
-                          params:(nullable id)params
-                         success:(nullable void (^)(NSDictionary *responseDictionary))success
-                         failure:(nullable void (^)(NSString * _Nullable message))failure
-{
-    NSString *fullUrlForGet = [self connectRequestUrl:Url params:params];
-    NSURL *URL = [NSURL URLWithString:fullUrlForGet];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-    [request setHTTPMethod:@"GET"]; //此行可省略，因为默认就是GET方法，附Get方法没有body
-    
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error == nil) {
-            NSError *jsonError = nil;
-            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-            !success ?: success(responseObject);
-            
-        } else {
-            NSString *message = [self getErrorMessageFromURLResponse:response];
-            !failure ?: failure(message);
-        }
-    }];
-    [task resume];
-    
-    return task;
-}
 
 
 /**

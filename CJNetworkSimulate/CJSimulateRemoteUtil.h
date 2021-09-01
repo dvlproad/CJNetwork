@@ -14,20 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CJSimulateRemoteUtil : NSObject
 
 #pragma mark - POST请求
-/*
- *  发起POST请求
- *
- *  @param Url          Url
- *  @param params       params
- *  @param success      请求成功的回调failure
- *  @param failure      请求失败的回调failure
- *
- *  @return 请求的task
- */
-+ (NSURLSessionDataTask *)postUrl:(NSString *)Url
-                           params:(nullable id)params
-                          success:(nullable void (^)(NSDictionary *responseDictionary))success
-                          failure:(nullable void (^)(NSString * _Nullable message))failure;
 
 #pragma mark - GET请求
 /*
@@ -36,12 +22,28 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param Url          Url
  *  @param params       params
  *  @param success      请求成功的回调failure
- *  @param failure      请求失败的回调failure
+ *  @param failure      请求失败的回调failure(error已判断为非空)
  */
 + (NSURLSessionDataTask *)getUrl:(NSString *)Url
                           params:(nullable id)params
                          success:(nullable void (^)(NSDictionary *responseDictionary))success
-                         failure:(nullable void (^)(NSString * _Nullable message))failure;
-NS_ASSUME_NONNULL_END
+                         failure:(nullable void (^)(NSError * _Nonnull error, NSString * _Nullable errorMessage))failure;
+
+/*
+ *  发起POST请求
+ *
+ *  @param Url          Url
+ *  @param params       params
+ *  @param success      请求成功的回调failure
+ *  @param failure      请求失败的回调failure(error已判断为非空)
+ *
+ *  @return 请求的task
+ */
++ (NSURLSessionDataTask *)postUrl:(NSString *)Url
+                           params:(nullable id)params
+                          success:(nullable void (^)(NSDictionary *responseDictionary))success
+                          failure:(nullable void (^)(NSError * _Nonnull error, NSString * _Nullable errorMessage))failure;
 
 @end
+
+NS_ASSUME_NONNULL_END
