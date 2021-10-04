@@ -71,37 +71,37 @@ PODS:
     - CocoaAsyncSocket/RunLoop
   - CocoaAsyncSocket/GCD (7.4.3)
   - CocoaAsyncSocket/RunLoop (7.4.3)
-  - CQDemoKit/BaseUIKit (0.6.4):
+  - CQDemoKit/BaseUIKit (0.6.6):
     - Masonry
-  - CQDemoKit/BaseUtil (0.6.4)
-  - CQDemoKit/BaseVC (0.6.4):
-    - CQDemoKit/BaseVC/Base (= 0.6.4)
-    - CQDemoKit/BaseVC/Collection (= 0.6.4)
-    - CQDemoKit/BaseVC/ScrollView (= 0.6.4)
-    - CQDemoKit/BaseVC/TabBar (= 0.6.4)
-    - CQDemoKit/BaseVC/TableView (= 0.6.4)
-    - CQDemoKit/BaseVC/TextView (= 0.6.4)
+  - CQDemoKit/BaseUtil (0.6.6)
+  - CQDemoKit/BaseVC (0.6.6):
+    - CQDemoKit/BaseVC/Base (= 0.6.6)
+    - CQDemoKit/BaseVC/Collection (= 0.6.6)
+    - CQDemoKit/BaseVC/ScrollView (= 0.6.6)
+    - CQDemoKit/BaseVC/TabBar (= 0.6.6)
+    - CQDemoKit/BaseVC/TableView (= 0.6.6)
+    - CQDemoKit/BaseVC/TextView (= 0.6.6)
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/Base (0.6.4):
+  - CQDemoKit/BaseVC/Base (0.6.6):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/Helper
     - Masonry
-  - CQDemoKit/BaseVC/Collection (0.6.4):
+  - CQDemoKit/BaseVC/Collection (0.6.6):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/ScrollView (0.6.4):
+  - CQDemoKit/BaseVC/ScrollView (0.6.6):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TabBar (0.6.4):
+  - CQDemoKit/BaseVC/TabBar (0.6.6):
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TableView (0.6.4):
+  - CQDemoKit/BaseVC/TableView (0.6.6):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TextView (0.6.4):
+  - CQDemoKit/BaseVC/TextView (0.6.6):
     - CQDemoKit/BaseUtil
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/Helper (0.6.4)
+  - CQDemoKit/Helper (0.6.6)
   - CQNetworkPublic (0.1.1):
     - CQNetworkPublic/Base (= 0.1.1)
     - CQNetworkPublic/Client (= 0.1.1)
@@ -138,7 +138,7 @@ DEPENDENCIES:
   - CJNetworkFileModel (from `../`)
   - CJNetworkSimulate (from `../`)
   - CocoaAsyncSocket (~> 7.4.1)
-  - CQDemoKit/BaseVC (~> 0.6.2)
+  - CQDemoKit/BaseVC (~> 0.6.6)
   - CQNetworkPublic (from `../`)
   - MJExtension
   - OpenUDID (~> 1.0.0)
@@ -178,13 +178,13 @@ SPEC CHECKSUMS:
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
   CJNetworkSimulate: 05ec607cca182214548e8933a792ef1ff1dd2860
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
-  CQDemoKit: 6e16295ac8af3ac7516a561d8562e6d482faec3e
+  CQDemoKit: 5a7e211c4cb1fcd018c81110dd65f26e36bb8014
   CQNetworkPublic: 25114b7f3d2144730be464758c3b7f6a46447fce
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 01704cca2b60a214c10761b6491eab74069d68a9
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 046babce1a54269c4eeecee9c5014bc39ecb8d34
+PODFILE CHECKSUM: 3a6ae14fc751df99d3528e272972d710a60e2872
 
 COCOAPODS: 1.10.1
