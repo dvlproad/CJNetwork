@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   #提交方法： pod repo push dvlproad CJNetworkClient.podspec --sources=master,dvlproad --allow-warnings --use-libraries --verbose
   
   s.name         = "CJNetworkClient"
-  s.version      = "1.3.0"
+  s.version      = "1.4.0"
   s.summary      = "网络请求的管理类：一个基于CJNetwork而封装的网络请求接口管理库"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "9.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkClient_1.3.0" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkClient_1.4.0" }
   # s.source_files  = "CJNetworkClient/*.{h,m}"
   s.frameworks = 'UIKit'
 
@@ -42,13 +42,33 @@ Pod::Spec.new do |s|
 
 
   # 网络请求的管理类，其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现
-  s.subspec 'NetworkClient' do |ss|
-    ss.source_files = "CJNetworkClient/**/*.{h,m}"
-    ss.dependency 'CQNetworkPublic/Client'
-    ss.dependency 'CJNetwork/AFNetworkingSerializerEncrypt'
-    ss.dependency 'CJNetwork/AFNetworkingUploadComponent'
+  s.subspec 'Base' do |ss|
+    ss.source_files = "CJNetworkClient/Base/**/*.{h,m}"
+    
+    ss.dependency 'CJNetwork'
     ss.dependency 'CJNetworkSimulate'
+    ss.dependency 'CQNetworkPublic/Base'
   end
 
+  
+  # Request
+  s.subspec 'Request' do |ss|
+    ss.source_files = "CJNetworkClient/Request/**/*.{h,m}"
+
+    ss.dependency "CJNetworkClient/Base"
+    ss.dependency 'CJNetwork/AFNetworkingSerializerEncrypt'
+    ss.dependency 'CQNetworkPublic/Helper/Request'
+    ss.dependency 'CQNetworkPublic/Client/Request'
+  end
+
+  # Upload
+  s.subspec 'Upload' do |ss|
+    ss.source_files = "CJNetworkClient/Upload/**/*.{h,m}"
+
+    ss.dependency "CJNetworkClient/Base"
+    ss.dependency 'CJNetwork/AFNetworkingUploadComponent'
+    ss.dependency 'CQNetworkPublic/Helper/Upload'
+    ss.dependency 'CQNetworkPublic/Client/Upload'
+  end
 
 end

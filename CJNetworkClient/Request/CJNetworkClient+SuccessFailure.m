@@ -7,8 +7,7 @@
 //
 
 #import "CJNetworkClient+SuccessFailure.h"
-
-#import "CJNetworkClient+Completion.h"
+#import <CJNetworkClient/CJNetworkClient+Completion.h>
 
 @implementation CJNetworkClient (SuccessFailure)
 

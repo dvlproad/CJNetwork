@@ -26,19 +26,19 @@ target 'CJNetworkDemo' do
   pod 'CQDemoKit',          '~> 0.6.2',      :subspecs => ['BaseVC']
   
   pod 'CJNetworkSimulate',  :path => '../'
-  
+
   pod 'CJNetwork',              :path => '../'
   pod 'CQNetworkPublic',        :path => '../'
   pod 'CJNetworkClient',        :path => '../'
   pod 'CJNetworkFileModel',     :path => '../'
   pod 'CocoaAsyncSocket',       '~> 7.4.1'
   pod 'MJExtension'
-    
+
   pod 'CJBaseUtil',     :subspecs => ['CJIndentedStringUtil']
   pod 'CJBaseHelper',   :subspecs => ['DeviceCJHelper', 'NSObjectCJHelper']
-    
+
   pod 'CJMonitor'
-    
+
   pod 'OpenUDID', '~> 1.0.0'
 end
 

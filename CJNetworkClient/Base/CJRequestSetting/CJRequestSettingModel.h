@@ -11,6 +11,8 @@
 #import <CJNetwork/CJRequestLogSettingModel.h>      // 网络请求中的Log相关设置
 #import <CJNetwork/CJRequestInfoModel.h>            // 网络请求的整体信息(包括请求前的request信息和请求后的reponse信息)
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface CJRequestSettingModel : NSObject {
     
 }
@@ -41,3 +43,5 @@
 @property (nonatomic, strong) CJRequestCacheSettingModel *requestCacheModel;
 
 @end
+
+NS_ASSUME_NONNULL_END
