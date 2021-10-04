@@ -22,7 +22,7 @@
       "name": "Base",
       "source_files": "CJNetworkClient/Base/**/*.{h,m}",
       "dependencies": {
-        "CJNetwork": [
+        "CJNetwork/CJNetworkCommon": [
 
         ],
         "CJNetworkSimulate": [
