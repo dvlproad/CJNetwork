@@ -1,1 +1,1 @@
-../../../../../CQNetworkPublic/Base/RequestModel/CJRequestSetting/CJRequestSettingModel.h
+../../../../../CQNetworkPublic/Base/CJRequestSetting/CJRequestSettingModel.h

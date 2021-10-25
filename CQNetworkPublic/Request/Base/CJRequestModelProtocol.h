@@ -14,14 +14,6 @@
 #import "CJRequestNetworkEnum.h"
 #import "CJRequestSettingModel.h"
 
-/// 请求方式
-typedef NS_ENUM(NSUInteger, CQRequestType) {
-    CQRequestTypeReal = 0,      /**< 执行网络请求 */
-    CQRequestTypeSimulate,      /**< 执行模拟请求 */
-    CQRequestTypeLocal,         /**< 执行本地请求 */
-};
-
-
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol CJRequestModelProtocol <NSObject>
@@ -37,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @optional
-@property (nonatomic, strong) NSDictionary *customParams;       /**< 请求参数 */
+@property (nullable, nonatomic, copy) NSDictionary *customParams;   /**< 请求参数 */
 @property (nonatomic, assign) CJRequestEncrypt requestEncrypt;  /**< 参数的加密方式 */
 
 #pragma mark - 上传

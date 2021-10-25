@@ -1,6 +1,6 @@
 {
   "name": "CJNetworkClient",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "summary": "网络请求的管理类：一个基于CJNetwork而封装的网络请求接口管理库",
   "homepage": "https://github.com/dvlproad/CJNetwork",
   "license": "MIT",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/dvlproad/CJNetwork.git",
-    "tag": "CJNetworkClient_1.4.1"
+    "tag": "CJNetworkClient_1.4.2"
   },
   "frameworks": "UIKit",
   "requires_arc": true,
@@ -23,6 +23,9 @@
       "source_files": "CJNetworkClient/Base/**/*.{h,m}",
       "dependencies": {
         "CJNetwork/CJNetworkCommon": [
+
+        ],
+        "AFNetworking": [
 
         ],
         "CJNetworkSimulate": [
@@ -43,10 +46,10 @@
         "CJNetwork/AFNetworkingSerializerEncrypt": [
 
         ],
-        "CQNetworkPublic/Helper/Request": [
+        "CQNetworkPublic/Request/Helper": [
 
         ],
-        "CQNetworkPublic/Client/Request": [
+        "CQNetworkPublic/Request/Client": [
 
         ]
       }
@@ -61,10 +64,10 @@
         "CJNetwork/AFNetworkingUploadComponent": [
 
         ],
-        "CQNetworkPublic/Helper/Upload": [
+        "CQNetworkPublic/Upload/Helper": [
 
         ],
-        "CQNetworkPublic/Client/Upload": [
+        "CQNetworkPublic/Upload/Client": [
 
         ]
       }

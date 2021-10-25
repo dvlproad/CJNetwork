@@ -1,1 +1,1 @@
-../../../../../CQNetworkPublic/Helper/Request/CQNetworkRequestHelperSetGetter.h
+../../../../../CQNetworkPublic/Request/Helper/CQNetworkRequestHelperSetGetter.h

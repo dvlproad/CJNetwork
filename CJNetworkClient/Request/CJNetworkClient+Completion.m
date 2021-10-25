@@ -18,13 +18,13 @@
 {
     CQRequestType requestType = [model requestType];
     if (requestType == CQRequestTypeReal) {
-        [self real1_requestModel:model completeBlock:completeBlock];
+        return [self real1_requestModel:model completeBlock:completeBlock];
         
     } else if (requestType == CQRequestTypeSimulate) {
-        [self simulate1_requestModel:model completeBlock:completeBlock];
+        return [self simulate1_requestModel:model completeBlock:completeBlock];
         
     } else if (requestType == CQRequestTypeLocal) {
-        [self local1_requestModel:model completeBlock:completeBlock];
+        return [self local1_requestModel:model completeBlock:completeBlock];
     }
 }
 
@@ -44,15 +44,12 @@
     
     CJRequestMethod requestMethod = [model requestMethod];
     
-    BOOL shouldEncrypt = YES;
-    CJRequestSettingModel *settingModel = [model settingModel];
-    
-    
     AFHTTPSessionManager *manager = nil;
     if (requestMethod == CJRequestMethodGET) {
         manager = self.cleanHTTPSessionManager;
         
     } else if (requestMethod == CJRequestMethodPOST) {
+        BOOL shouldEncrypt = [model requestEncrypt] == CJRequestEncryptYES;
         manager = shouldEncrypt ? self.cryptHTTPSessionManager : self.cleanHTTPSessionManager;
     }
     
@@ -63,6 +60,7 @@
     
     void (^progressBlock)(NSProgress * _Nonnull) = [model uploadProgress];
     
+    CJRequestSettingModel *settingModel = [model settingModel];
     CJRequestCacheSettingModel *cacheSettingModel = settingModel.requestCacheModel;
     CJRequestLogType logType = settingModel.logType;
     

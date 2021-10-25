@@ -9,6 +9,14 @@
 #ifndef CJRequestNetworkEnum_h
 #define CJRequestNetworkEnum_h
 
+/// 请求方式
+typedef NS_ENUM(NSUInteger, CQRequestType) {
+    CQRequestTypeReal = 0,      /**< 执行网络请求 */
+    CQRequestTypeSimulate,      /**< 执行模拟请求 */
+    CQRequestTypeLocal,         /**< 执行本地请求 */
+};
+
+
 /// 网络请求方法
 typedef NS_ENUM(NSUInteger, CJRequestMethod) {
     CJRequestMethodPOST = 0,

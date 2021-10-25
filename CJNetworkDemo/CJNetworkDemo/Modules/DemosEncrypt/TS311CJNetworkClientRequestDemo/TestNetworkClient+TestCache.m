@@ -14,11 +14,7 @@
 /// 删除缓存
 - (BOOL)removeCacheForEndWithCacheIfExistApi {
     NSString *apiSuffix = @"/api/testCache";
-    NSDictionary *params = @{@"test": @"test",
-                             @"cj_requestSettingModel": @{
-                                 
-                                                        },
-                            };
+    NSDictionary *params = @{@"test": @"test"};
     
     NSString *Url = [self.baseUrl stringByAppendingString:apiSuffix];
     

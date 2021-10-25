@@ -7,86 +7,14 @@
 //
 
 #import "CJNetworkClient+CJDemoApp.h"
-#import "CJNetworkClient+Upload1.h"
-#import "CJNetworkClient+Upload2.h"
 
 @implementation CJNetworkClient (CJDemoApp)
 
-- (NSURLSessionDataTask *)cjdemoR1_uploadImageApi:(NSString *)apiSuffix
-                                        urlParams:(nullable id)urlParams
-                                       formParams:(nullable id)formParams
-                          imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                    completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
-{
-    NSMutableArray<CJUploadFileModel *> *uploadFileModels = [self __uploadFileModels:imageKeyDataDicts];
-    
-    return [self real1_uploadApi:apiSuffix urlParams:urlParams formParams:formParams  uploadFileModels:uploadFileModels progress:nil completeBlock:completeBlock];
-}
-
-- (NSURLSessionDataTask *)cjdemoR2_uploadImageApi:(NSString *)apiSuffix
-                                        urlParams:(nullable id)urlParams
-                                       formParams:(nullable id)formParams
-                          imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                          success:(void (^)(CJResponseModel *responseModel))success
-                                          failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
-{
-    NSMutableArray<CJUploadFileModel *> *uploadFileModels = [self __uploadFileModels:imageKeyDataDicts];
-    
-    return [self real2_uploadApi:apiSuffix urlParams:urlParams formParams:formParams uploadFileModels:uploadFileModels progress:nil success:success failure:failure];
-}
-
-#pragma mark - simulateApi
-- (NSURLSessionDataTask *)cjdemoS1_uploadImageApi:(NSString *)apiSuffix
-                                        urlParams:(nullable id)urlParams
-                                       formParams:(nullable id)formParams
-                          imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                    completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
-{
-    NSMutableArray<CJUploadFileModel *> *uploadFileModels = nil;
-    
-    return [self simulate1_uploadApi:apiSuffix urlParams:urlParams formParams:formParams uploadFileModels:uploadFileModels progress:nil completeBlock:completeBlock];
-}
-
-- (NSURLSessionDataTask *)cjdemoS2_uploadImageApi:(NSString *)apiSuffix
-                                        urlParams:(nullable id)urlParams
-                                       formParams:(nullable id)formParams
-                          imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                          success:(void (^)(CJResponseModel *responseModel))success
-                                          failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
-{
-    NSMutableArray<CJUploadFileModel *> *uploadFileModels = nil;
-    
-    return [self simulate2_uploadApi:apiSuffix urlParams:urlParams formParams:formParams uploadFileModels:uploadFileModels progress:nil success:success failure:failure];
-}
-
-#pragma mark - localApi
-- (nullable NSURLSessionDataTask *)cjdemoL1_uploadImageApi:(NSString *)apiSuffix
-                                                 urlParams:(nullable id)urlParams
-                                                formParams:(nullable id)formParams
-                                   imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                              settingModel:(nullable CJRequestSettingModel *)settingModel
-                                             completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
-{
-    NSMutableArray<CJUploadFileModel *> *uploadFileModels = nil;
-    
-    return [self local1_uploadApi:apiSuffix urlParams:urlParams formParams:formParams uploadFileModels:uploadFileModels progress:nil completeBlock:completeBlock];
-}
-
-- (nullable NSURLSessionDataTask *)cjdemoL2_uploadImageApi:(NSString *)apiSuffix
-                                                 urlParams:(nullable id)urlParams
-                                                formParams:(nullable id)formParams
-                                   imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                              settingModel:(nullable CJRequestSettingModel *)settingModel
-                                                   success:(void (^)(CJResponseModel *responseModel))success
-                                                   failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
-{
-    NSMutableArray<CJUploadFileModel *> *uploadFileModels = nil;
-    
-    return [self local2_uploadApi:apiSuffix urlParams:urlParams formParams:formParams uploadFileModels:uploadFileModels progress:nil success:success failure:failure];
-}
-
-
-#pragma mark - Private
+//NSMutableDictionary *imageKeyDataDicts = [[NSMutableDictionary alloc] init];
+//if (image) {
+//    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+//    [imageKeyDataDicts setObject:imageData forKey:@"upfile"];
+//}
 - (NSMutableArray<CJUploadFileModel *> *)__uploadFileModels:(NSDictionary *)imageKeyDataDicts {
     NSString *imagePrefixName = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]*1000];
     

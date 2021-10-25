@@ -1,1 +1,1 @@
-../../../../../CQNetworkPublic/Helper/Upload/CQNetworkUploadSuccessFailureHelperProtocal.h
+../../../../../CQNetworkPublic/Upload/Helper/CQNetworkUploadSuccessFailureHelperProtocal.h

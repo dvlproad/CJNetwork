@@ -1,1 +1,1 @@
-../../../../../CQNetworkPublic/Client/Request/CQNetworkRequestSuccessFailureClientProtocal.h
+../../../../../CQNetworkPublic/Request/Client/CQNetworkRequestSuccessFailureClientProtocal.h

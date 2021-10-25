@@ -10,58 +10,19 @@
 //  below are the cjdemo app's upload image example, other app can refer to it
 
 #import "CJNetworkClient.h"
+#import "CJNetworkClient+Upload1.h"
+#import "CJNetworkClient+Upload2.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CJNetworkClient (CJDemoApp)
 
-#pragma mark - RealApi
-- (NSURLSessionDataTask *)cjdemoR1_uploadImageApi:(NSString *)apiSuffix
-                                        urlParams:(nullable id)urlParams
-                                       formParams:(nullable id)formParams
-                          imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                     settingModel:(nullable CJRequestSettingModel *)settingModel
-                                    completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
-
-- (NSURLSessionDataTask *)cjdemoR2_uploadImageApi:(NSString *)apiSuffix
-                                        urlParams:(nullable id)urlParams
-                                       formParams:(nullable id)formParams
-                          imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                     settingModel:(nullable CJRequestSettingModel *)settingModel
-                                          success:(void (^)(CJResponseModel *responseModel))success
-                                          failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
-
-#pragma mark - simulateApi
-- (NSURLSessionDataTask *)cjdemoS1_uploadImageApi:(NSString *)apiSuffix
-                                        urlParams:(nullable id)urlParams
-                                       formParams:(nullable id)formParams
-                          imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                     settingModel:(nullable CJRequestSettingModel *)settingModel
-                                    completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
-
-- (NSURLSessionDataTask *)cjdemoS2_uploadImageApi:(NSString *)apiSuffix
-                                        urlParams:(nullable id)urlParams
-                                       formParams:(nullable id)formParams
-                          imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                     settingModel:(nullable CJRequestSettingModel *)settingModel
-                                          success:(void (^)(CJResponseModel *responseModel))success
-                                          failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
-
-#pragma mark - localApi
-- (nullable NSURLSessionDataTask *)cjdemoL1_uploadImageApi:(NSString *)apiSuffix
-                                                 urlParams:(nullable id)urlParams
-                                                formParams:(nullable id)formParams
-                                   imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                     settingModel:(nullable CJRequestSettingModel *)settingModel
-                                    completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
-
-- (nullable NSURLSessionDataTask *)cjdemoL2_uploadImageApi:(NSString *)apiSuffix
-                                                 urlParams:(nullable id)urlParams
-                                                formParams:(nullable id)formParams
-                                   imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                     settingModel:(nullable CJRequestSettingModel *)settingModel
-                                          success:(void (^)(CJResponseModel *responseModel))success
-                                          failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
+//NSMutableDictionary *imageKeyDataDicts = [[NSMutableDictionary alloc] init];
+//if (image) {
+//    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+//    [imageKeyDataDicts setObject:imageData forKey:@"upfile"];
+//}
+- (NSMutableArray<CJUploadFileModel *> *)__uploadFileModels:(NSDictionary *)imageKeyDataDicts;
 
 @end
 

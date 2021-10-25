@@ -1,1 +1,1 @@
-../../../../../CQNetworkPublic/Base/ResponseModel/CJResponseModel.h
+../../../../../CQNetworkPublic/Request/Base/ResponseModel/CJResponseModel.h

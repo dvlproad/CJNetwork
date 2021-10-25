@@ -14,48 +14,53 @@
 @implementation CJNetworkClient (Upload1)
 
 #pragma mark - RealApi
-
-- (NSURLSessionDataTask *)real1_uploadApi:(NSString *)apiSuffix
-                                urlParams:(nullable id)urlParams
-                               formParams:(nullable id)formParams
-                         uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
-                                 progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
-                            completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+/*
+ *  上传文件的请求方法：只是上传文件，不对上传过程中的各个时刻信息的进行保存
+ *
+ *  @param model            上传请求相关的信息(包含请求方法、请求地址、请求参数等)real\simulate\local
+ *  @param progress         上传请求过程的回调
+ *  @param completeBlock    上传请求结束的回调(为方便接口的重复利用回调中的responseModel使用id类型)
+ *
+ *  @return 上传文件的请求
+ */
+- (NSURLSessionDataTask *)uploadModel:(__kindof NSObject<CJUploadModelProtocol> *)model
+                             progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                        completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
-    NSString *baseUrl = self.baseUrl;
-    //NSString *baseUrl = settingModel.ownBaseUrl ? settingModel.ownBaseUrl : self.baseUrl;
-    NSString *Url = self.completeFullUrlBlock(baseUrl, apiSuffix);
-    
-    
-    return [self real1_uploadUrl:Url urlParams:urlParams formParams:formParams uploadFileModels:uploadFileModels progress:uploadProgress completeBlock:completeBlock];
+    CQRequestType requestType = [model requestType];
+    if (requestType == CQRequestTypeReal) {
+        return [self real1_uploadModel:model progress:uploadProgress completeBlock:completeBlock];
+        
+    } else if (requestType == CQRequestTypeSimulate) {
+        return [self simulate1_uploadModel:model progress:uploadProgress completeBlock:completeBlock];
+        
+    } else if (requestType == CQRequestTypeLocal) {
+        return [self local1_uploadModel:model progress:uploadProgress completeBlock:completeBlock];
+    }
 }
 
-- (NSURLSessionDataTask *)real1_uploadUrl:(NSString *)Url
-                                urlParams:(nullable id)urlParams
-                               formParams:(nullable id)formParams
-                         uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+- (NSURLSessionDataTask *)real1_uploadModel:(__kindof NSObject<CJUploadModelProtocol> *)model
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                             completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
-    BOOL shouldEncrypt = YES;
-    CJRequestLogType logType = CJRequestLogTypeNone;
-    CJRequestCacheSettingModel *cacheSettingModel = nil;
-    void (^progressBlock)(NSProgress * _Nonnull) = nil;
-    NSDictionary *requestSettingDictionary = urlParams[@"cj_requestSettingModel"];
-    if (requestSettingDictionary) {
-        shouldEncrypt = [requestSettingDictionary[@"shouldEncrypt"] boolValue];
-        logType = [requestSettingDictionary[@"logType"] integerValue];
-        
-        NSDictionary *requestCacheDictionary = requestSettingDictionary[@"requestCache"];
-        if (requestCacheDictionary) {
-            cacheSettingModel = [[CJRequestCacheSettingModel alloc] init];
-            cacheSettingModel.cacheStrategy = [requestCacheDictionary[@"cacheStrategy"] integerValue];
-            cacheSettingModel.cacheTimeInterval = [requestCacheDictionary[@"cacheTimeInterval"] integerValue];
-        }
-        
-//        progressBlock = settingModel.uploadProgress;
+    NSString *baseUrl = [model ownBaseUrl];
+    if (baseUrl) {
+        baseUrl = self.baseUrl;
     }
     
+    NSString *apiSuffix = [model apiSuffix];
+    NSString *Url = self.completeFullUrlBlock(baseUrl, apiSuffix);
+    
+    id urlParams = [model urlParams];
+    id formParams = [model formParams];
+    
+    NSArray<CJUploadFileModel *> *uploadFileModels = [model uploadFileModels];
+    
+    CJRequestSettingModel *settingModel = [model settingModel];
+    CJRequestCacheSettingModel *cacheSettingModel = settingModel.requestCacheModel;
+    CJRequestLogType logType = settingModel.logType;
+    
+    BOOL shouldEncrypt = [model requestEncrypt] == CJRequestEncryptYES;
     AFHTTPSessionManager *manager = shouldEncrypt ? self.cryptHTTPSessionManager : self.cleanHTTPSessionManager;
     
     id lastUrlParams = urlParams;
@@ -82,19 +87,20 @@
 
 #pragma mark - simulateApi
 
-- (NSURLSessionDataTask *)simulate1_uploadApi:(NSString *)apiSuffix
-                                    urlParams:(nullable id)urlParams
-                                   formParams:(nullable id)formParams
-                             uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+- (NSURLSessionDataTask *)simulate1_uploadModel:(__kindof NSObject<CJUploadModelProtocol> *)model
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                 completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
+    NSString *apiSuffix = [model apiSuffix];
     NSString *Url = [@"http://localhost/" stringByAppendingString:apiSuffix];
     
     NSMutableDictionary *allParams = [[NSMutableDictionary alloc] init];
     //if (weakSelf.commonParams) {
     //    [allParams addEntriesFromDictionary:weakSelf.commonParams];
     //}
+    
+    id urlParams = [model urlParams];
+    id formParams = [model formParams];
     if (formParams) {
         [allParams addEntriesFromDictionary:formParams];
     }
@@ -188,13 +194,11 @@
 
 #pragma mark - localApi
 
-- (nullable NSURLSessionDataTask *)local1_uploadApi:(NSString *)apiSuffix
-                                          urlParams:(nullable id)urlParams
-                                         formParams:(nullable id)formParams
-                                   uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+- (nullable NSURLSessionDataTask *)local1_uploadModel:(__kindof NSObject<CJUploadModelProtocol> *)model
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                       completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
+    NSString *apiSuffix = [model apiSuffix];
     [CJSimulateLocalUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
         CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);

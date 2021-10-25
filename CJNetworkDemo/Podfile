@@ -23,7 +23,7 @@ end
 
 
 target 'CJNetworkDemo' do
-  pod 'CQDemoKit',          '~> 0.6.6',      :subspecs => ['BaseVC']
+  pod 'CQDemoKit',          '~> 0.6.7',      :subspecs => ['BaseVC']
   
   pod 'CJNetworkSimulate',  :path => '../'
 

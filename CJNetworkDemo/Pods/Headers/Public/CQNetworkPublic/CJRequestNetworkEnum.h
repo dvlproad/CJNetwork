@@ -1,1 +1,1 @@
-../../../../../CQNetworkPublic/Base/RequestModel/CJRequestNetworkEnum.h
+../../../../../CQNetworkPublic/Base/CJRequestNetworkEnum.h

@@ -1,1 +1,1 @@
-../../../../../CQNetworkPublic/Base/RequestModel/CJRequestURLHelper.h
+../../../../../CQNetworkPublic/Base/CJRequestURLHelper.h
