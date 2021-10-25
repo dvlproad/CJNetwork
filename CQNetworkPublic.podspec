@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "9.0"
  
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CQNetworkPublic_0.2.2" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CQNetworkPublic_0.2.2_1" }
   #s.source_files  = "CJCustomView/CJChat/*.{h,m}"
   #s.source_files = "CJChat/TestOSChinaPod.{h,m}"
 
