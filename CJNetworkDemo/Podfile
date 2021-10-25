@@ -25,12 +25,23 @@ end
 target 'CJNetworkDemo' do
   pod 'CQDemoKit',          '~> 0.6.7',      :subspecs => ['BaseVC']
   
+  # 模拟请求
   pod 'CJNetworkSimulate',  :path => '../'
 
-  pod 'CJNetwork',              :path => '../'
-  pod 'CQNetworkPublic',        :path => '../'
-  pod 'CJNetworkClient',        :path => '../'
+  # 普通请求
+  pod 'CQNetworkPublic',        :path => '../',     :subspecs => ['Request']
+  pod 'CJNetwork',              :path => '../',     :subspecs => ['AFNetworkingSerializerEncrypt', 'AFNetworkingMethodEncrypt']
+  pod 'CJNetworkClient',        :path => '../',     :subspecs => ['Request']
+
+  # 上传请求
+  pod 'CQNetworkPublic',        :path => '../',     :subspecs => ['Upload']
+  pod 'CJNetwork',              :path => '../',     :subspecs => ['AFNetworkingUploadComponent']
+  pod 'CJNetworkClient',        :path => '../',     :subspecs => ['Upload']
   pod 'CJNetworkFileModel',     :path => '../'
+  
+  # 其他
+  pod 'CJNetwork',              :path => '../',     :subspecs => ['CJRequestUtil', 'CJCacheManager']
+  
   pod 'CocoaAsyncSocket',       '~> 7.4.1'
   pod 'MJExtension'
 
