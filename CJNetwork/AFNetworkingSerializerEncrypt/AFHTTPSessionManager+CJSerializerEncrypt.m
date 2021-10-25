@@ -22,7 +22,7 @@
                                          success:(nullable void (^)(id _Nullable responseObject))success
                                          failure:(nullable void (^)(NSString *errorMessage))failure
 {
-    return [self __cj_requestUrl:Url params:allParams headers:headers method:CJRequestMethodPOST cacheSettingModel:cacheSettingModel logType:logType progress:progress success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
+    return [self __cj_requestUrl:Url params:allParams headers:headers method:method cacheSettingModel:cacheSettingModel logType:logType progress:progress success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
         NSDictionary *responseDictionary = successRequestInfo.responseObject;
         //NSDictionary *networkLogString = successRequestInfo.networkLogString;
         if (success) {

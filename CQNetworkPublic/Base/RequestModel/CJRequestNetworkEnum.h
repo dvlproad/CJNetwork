@@ -15,6 +15,12 @@ typedef NS_ENUM(NSUInteger, CJRequestMethod) {
     CJRequestMethodGET,
 };
 
+/// 请求加密方式
+typedef NS_ENUM(NSUInteger, CJRequestEncrypt) {
+    CJRequestEncryptNone = 0,   /**< 不加密 */
+    CJRequestEncryptYES,        /**< 加密 */
+};
+
 typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
     CJResponeFailureTypeUncheck = 0,            /**< 未进行是否等失败判断 */
     CJResponeFailureTypeRequestFailure,         /**< 请求失败 */

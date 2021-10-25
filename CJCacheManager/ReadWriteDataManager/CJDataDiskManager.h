@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 ///数据在磁盘上的存储与获取 CJReadWriteDataDiskManager
 @interface CJDataDiskManager : NSObject
 
@@ -35,3 +37,5 @@
 - (NSData *)readFileDataWithFileName:(NSString *)fileName;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -7,7 +7,8 @@
 //
 
 #import "CJNetworkClient+Upload1.h"
-#import <CJNetworkSimulate/CJSimulateUtil.h>
+#import <CJNetworkSimulate/CJSimulateRemoteUtil.h>
+#import <CJNetworkSimulate/CJSimulateLocalUtil.h>
 #import <CJNetwork/AFHTTPSessionManager+CJUploadFile.h>
 
 @implementation CJNetworkClient (Upload1)
@@ -194,7 +195,7 @@
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                       completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
 {
-    [CJSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
+    [CJSimulateLocalUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
         CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
         

@@ -5,6 +5,7 @@
 //  Created by ciyouzen on 6/25/15.
 //  Copyright (c) 2015 dvlproad. All rights reserved.
 //
+//  通过传进去的方法，单独处理加密问题，如果不想单独设置而是全局设置，请使用AFHTTPSessionManager+CJSerializerEncrypt.h
 
 #import <AFNetworking/AFNetworking.h>
 #import "AFHTTPSessionManager+CJRequestCommon.h"
@@ -19,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 #pragma mark - CJEncrypt
-/**
+/*
  *  发起POST请求
  *
  *  @param Url                  Url

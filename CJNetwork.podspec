@@ -46,6 +46,7 @@ Pod::Spec.new do |s|
     ss.dependency 'AFNetworking'
     ss.dependency 'YYCache'
     ss.dependency 'MJExtension'
+    ss.dependency 'CQNetworkPublic'
   end
 
 

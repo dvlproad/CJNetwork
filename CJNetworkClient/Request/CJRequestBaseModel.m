@@ -10,8 +10,19 @@
 
 @implementation CJRequestBaseModel
 
+@synthesize ownBaseUrl;
 @synthesize apiSuffix;
 
 @synthesize requestMethod;
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.ownBaseUrl     = nil;
+        self.requestMethod  = CJRequestMethodPOST;
+        self.requestEncrypt = CJRequestEncryptYES;
+    }
+    return self;
+}
 
 @end

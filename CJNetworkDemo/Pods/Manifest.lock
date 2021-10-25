@@ -38,6 +38,7 @@ PODS:
   - CJNetwork/CJCacheManager (0.8.1)
   - CJNetwork/CJNetworkCommon (0.8.1):
     - AFNetworking
+    - CQNetworkPublic
     - MJExtension
     - YYCache
   - CJNetwork/CJRequestUtil (0.8.1):
@@ -63,7 +64,7 @@ PODS:
   - CJNetworkFileModel (0.1.0):
     - CJNetworkFileModel/Upload (= 0.1.0)
   - CJNetworkFileModel/Upload (0.1.0)
-  - CJNetworkSimulate (0.2.0)
+  - CJNetworkSimulate (0.2.2)
   - CocoaAsyncSocket (7.4.3):
     - CocoaAsyncSocket/All (= 7.4.3)
   - CocoaAsyncSocket/All (7.4.3):
@@ -173,13 +174,13 @@ SPEC CHECKSUMS:
   CJBaseHelper: 71c9d695c76736b2fc66123157d5626da4556177
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
   CJMonitor: cbec62179b877a476f84249ff268c765a66d6687
-  CJNetwork: b35363a02eff89c59558216a884be8bc23b2b3f5
+  CJNetwork: 71b693196c1f195b9a43f930f6460b2c83d6dc5c
   CJNetworkClient: fd22ab190ce86fea8c3b2860c1163ebbceef570b
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
-  CJNetworkSimulate: 05ec607cca182214548e8933a792ef1ff1dd2860
+  CJNetworkSimulate: 0c8e89ee82db12816cabdce4f3d6dcab1d30ee5b
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQDemoKit: 5a7e211c4cb1fcd018c81110dd65f26e36bb8014
-  CQNetworkPublic: ec8f5e2d9ca6236030f9b3403ee5fddce3f0cf3e
+  CQNetworkPublic: 9fb3717f98ca98db9a27e981ce7317484f2600a1
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 01704cca2b60a214c10761b6491eab74069d68a9
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b

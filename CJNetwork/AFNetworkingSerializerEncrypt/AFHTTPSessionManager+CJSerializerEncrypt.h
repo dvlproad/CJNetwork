@@ -5,6 +5,7 @@
 //  Created by ciyouzen on 2017/6/13.
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
+//  通过Serializer来处理加密问题，所有使用的都进行加密，如果要单独加解密，请使用AFHTTPSessionManager+CJMethodEncrypt.h
 
 #import <AFNetworking/AFNetworking.h>
 #import "AFHTTPSessionManager+CJRequestCommon.h"

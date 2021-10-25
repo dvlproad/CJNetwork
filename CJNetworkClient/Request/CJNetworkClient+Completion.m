@@ -7,7 +7,8 @@
 //
 
 #import "CJNetworkClient+Completion.h"
-#import <CJNetworkSimulate/CJSimulateUtil.h>
+#import <CJNetworkSimulate/CJSimulateRemoteUtil.h>
+#import <CJNetworkSimulate/CJSimulateLocalUtil.h>
 #import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
 
 @implementation CJNetworkClient (Completion)
@@ -31,8 +32,11 @@
 - (NSURLSessionDataTask *)real1_requestModel:(__kindof NSObject<CJRequestModelProtocol> *)model
                                completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
-    NSString *baseUrl = self.baseUrl;
-    //NSString *baseUrl = settingModel.ownBaseUrl ? settingModel.ownBaseUrl : self.baseUrl;
+    NSString *baseUrl = [model ownBaseUrl];
+    if (baseUrl) {
+        baseUrl = self.baseUrl;
+    }
+    
     NSString *apiSuffix = [model apiSuffix];
     NSString *Url = self.completeFullUrlBlock(baseUrl, apiSuffix);
     
@@ -57,9 +61,11 @@
         allParams = self.completeAllParamsBlock(customParams);
     }
     
+    void (^progressBlock)(NSProgress * _Nonnull) = [model uploadProgress];
+    
     CJRequestCacheSettingModel *cacheSettingModel = settingModel.requestCacheModel;
     CJRequestLogType logType = settingModel.logType;
-    void (^progressBlock)(NSProgress * _Nonnull) = settingModel.uploadProgress;
+    
     
     NSDictionary<NSString *, NSString *> *headers = @{};
     
@@ -87,11 +93,11 @@
     NSString *apiSuffix = [model apiSuffix];
     NSString *Url = [self __remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
     
-    //id params = [model params];
+    id params = [model params];
     
     CJRequestMethod requestMethod = [model requestMethod];
     if (requestMethod == CJRequestMethodGET) {
-        [CJSimulateUtil getSimulateApi:Url success:^(NSDictionary * _Nonnull responseDictionary) {
+        [CJSimulateRemoteUtil getUrl:Url params:params success:^(NSDictionary * _Nonnull responseDictionary) {
             CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, NO);
             if (completeBlock) {
                 completeBlock(CJResponeFailureTypeUncheck, responseModel);
@@ -106,7 +112,7 @@
         return nil;
         
     } else {
-        [CJSimulateUtil postSimulateApi:Url success:^(NSDictionary * _Nonnull responseDictionary) {
+        [CJSimulateRemoteUtil postUrl:Url params:params success:^(NSDictionary * _Nonnull responseDictionary) {
             CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, NO);
             if (completeBlock) {
                 completeBlock(CJResponeFailureTypeUncheck, responseModel);
@@ -159,7 +165,7 @@
 {
     NSString *apiSuffix = [model apiSuffix];
 
-    [CJSimulateUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
+    [CJSimulateLocalUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         BOOL isCacheData = NO;
         CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
         

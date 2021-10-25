@@ -15,20 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CJRequestSettingModel : NSObject {
     
 }
-//@property (nonatomic, copy) NSString *ownBaseUrl;   /**< 该请求使用的baseUrl */
-
-#pragma mark - 上传
-// 上传请求进度
-@property (nonatomic, copy) void (^uploadProgress)(NSProgress *progress);
-
 #pragma mark log相关
 // log类型(默认CJRequestLogTypeConsoleLog)
 @property (nonatomic, assign) CJRequestLogType logType;
 
 #pragma mark 加密相关
-
-// 是否需要加密
-@property (nonatomic, assign) BOOL shouldEncrypt;
 
 // 加密方法
 @property (nullable, nonatomic, copy) NSData* (^encryptBlock)(NSDictionary *requestParmas);

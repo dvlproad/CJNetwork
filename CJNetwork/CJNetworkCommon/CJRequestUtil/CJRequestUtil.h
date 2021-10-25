@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 */
 
 
-/**
+/*
  *  发起请求
  *
  *  @param Url          Url
@@ -60,7 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - GET请求
-/**
+/*
  *  发起GET请求
  *
  *  @param Url          Url

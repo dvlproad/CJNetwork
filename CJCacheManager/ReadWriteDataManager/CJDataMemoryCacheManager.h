@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  可拓展的内存缓存策略
  */
@@ -31,3 +33,5 @@
 + (id)readDataWithKey:(NSString *)key;
 
 @end
+
+NS_ASSUME_NONNULL_END

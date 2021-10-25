@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/dvlproad/CJNetwork.git",
-    "tag": "CQNetworkPublic_0.1.1"
+    "tag": "CQNetworkPublic_0.2.0"
   },
   "frameworks": "UIKit",
   "requires_arc": true,

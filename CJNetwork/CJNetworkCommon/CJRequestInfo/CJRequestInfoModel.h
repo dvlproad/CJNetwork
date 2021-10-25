@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CQNetworkPublic/CJRequestNetworkEnum.h>               // 网络请求中的请求方式相关设置
-#import <CQNetworkPublic/CJRequestSettingEnum.h>               // 网络请求中的Log显示等相关设置
+#import <CQNetworkPublic/CJRequestNetworkEnum.h>        // 网络请求中的请求方式相关设置
+#import <CQNetworkPublic/CJRequestSettingEnum.h>        // 网络请求中的Log显示等相关设置
+
+NS_ASSUME_NONNULL_BEGIN
 
 /// 网络请求的整体信息(包括请求前的request信息和请求后的reponse信息)
 @interface CJRequestInfoModel : NSObject
@@ -59,4 +61,6 @@
                   URLResponse:(NSURLResponse *)URLResponse;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
