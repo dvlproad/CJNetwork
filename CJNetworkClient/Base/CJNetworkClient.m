@@ -8,6 +8,7 @@
 
 #import "CJNetworkClient.h"
 #import <objc/runtime.h>
+#import <CQNetworkPublic/CJRequestURLHelper.h>
 
 @interface CJNetworkClient () {
     
@@ -24,7 +25,7 @@
     if (self) {
         __weak typeof(self)weakSelf = self;
         _completeFullUrlBlock = ^NSString *(NSString *baseUrl, NSString *apiSuffix) {
-            return [weakSelf __completeFullUrlWithBaseUrl:baseUrl apiSuffix:apiSuffix];
+            return [CJRequestURLHelper requestUrlWithBaseUrl:baseUrl apiSuffix:apiSuffix];
         };
         
         _completeAllParamsBlock = ^NSDictionary *(NSDictionary *customParams) {
@@ -97,28 +98,5 @@
 }
 */
 
-
-
-#pragma mark - Private
-- (NSString *)__completeFullUrlWithBaseUrl:(NSString *)baseUrl apiSuffix:(NSString *)apiSuffix {
-    NSMutableString *fullUrl = [NSMutableString string];
-    [fullUrl appendFormat:@"%@", baseUrl];
-    
-    if ([self.baseUrl hasSuffix:@"/"] == NO) {
-        if ([apiSuffix hasPrefix:@"/"]) {
-            [fullUrl appendFormat:@"%@", apiSuffix];
-        } else { //shouldAddSlash
-            [fullUrl appendFormat:@"/%@", apiSuffix];
-        }
-    } else {
-        if ([apiSuffix hasPrefix:@"/"]) {//shouldRemoveSlash
-            [fullUrl appendFormat:@"%@", [apiSuffix substringFromIndex:1]];
-        } else {
-            [fullUrl appendFormat:@"%@", apiSuffix];
-        }
-    }
-    return [fullUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    //return [environmentManager completeUrlWithApiSuffix:apiSuffix];
-}
 
 @end

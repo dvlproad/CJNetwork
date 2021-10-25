@@ -103,25 +103,25 @@ PODS:
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
   - CQDemoKit/Helper (0.6.6)
-  - CQNetworkPublic (0.2.0):
-    - CQNetworkPublic/Base (= 0.2.0)
-    - CQNetworkPublic/Client (= 0.2.0)
-    - CQNetworkPublic/Helper (= 0.2.0)
-  - CQNetworkPublic/Base (0.2.0)
-  - CQNetworkPublic/Client (0.2.0):
-    - CQNetworkPublic/Client/Request (= 0.2.0)
-    - CQNetworkPublic/Client/Upload (= 0.2.0)
-  - CQNetworkPublic/Client/Request (0.2.0):
+  - CQNetworkPublic (0.2.1):
+    - CQNetworkPublic/Base (= 0.2.1)
+    - CQNetworkPublic/Client (= 0.2.1)
+    - CQNetworkPublic/Helper (= 0.2.1)
+  - CQNetworkPublic/Base (0.2.1)
+  - CQNetworkPublic/Client (0.2.1):
+    - CQNetworkPublic/Client/Request (= 0.2.1)
+    - CQNetworkPublic/Client/Upload (= 0.2.1)
+  - CQNetworkPublic/Client/Request (0.2.1):
     - CQNetworkPublic/Base
-  - CQNetworkPublic/Client/Upload (0.2.0):
+  - CQNetworkPublic/Client/Upload (0.2.1):
     - CJNetworkFileModel
     - CQNetworkPublic/Base
-  - CQNetworkPublic/Helper (0.2.0):
-    - CQNetworkPublic/Helper/Request (= 0.2.0)
-    - CQNetworkPublic/Helper/Upload (= 0.2.0)
-  - CQNetworkPublic/Helper/Request (0.2.0):
+  - CQNetworkPublic/Helper (0.2.1):
+    - CQNetworkPublic/Helper/Request (= 0.2.1)
+    - CQNetworkPublic/Helper/Upload (= 0.2.1)
+  - CQNetworkPublic/Helper/Request (0.2.1):
     - CQNetworkPublic/Base
-  - CQNetworkPublic/Helper/Upload (0.2.0):
+  - CQNetworkPublic/Helper/Upload (0.2.1):
     - CJNetworkFileModel
     - CQNetworkPublic/Base
   - Masonry (1.1.0)
@@ -180,7 +180,7 @@ SPEC CHECKSUMS:
   CJNetworkSimulate: 0c8e89ee82db12816cabdce4f3d6dcab1d30ee5b
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQDemoKit: 5a7e211c4cb1fcd018c81110dd65f26e36bb8014
-  CQNetworkPublic: 9fb3717f98ca98db9a27e981ce7317484f2600a1
+  CQNetworkPublic: 2283fb18e02c23ec828c708a9e30a54f8a9c62ec
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 01704cca2b60a214c10761b6491eab74069d68a9
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b

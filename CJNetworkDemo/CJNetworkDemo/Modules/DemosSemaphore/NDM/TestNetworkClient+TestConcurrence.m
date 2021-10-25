@@ -21,7 +21,7 @@
     
     CJRequestBaseModel *requestModel = [[CJRequestBaseModel alloc] init];
     requestModel.apiSuffix = apiSuffix;
-    requestModel.param = params;
+    requestModel.customParams = params;
     requestModel.requestMethod = CJRequestMethodPOST;
     
     [self requestModel:requestModel success:^(CJResponseModel *responseModel) {

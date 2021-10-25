@@ -7,6 +7,7 @@
 //
 
 #import "CJRequestUtil.h"
+#import <CQNetworkPublic/CJRequestURLHelper.h>
 
 @implementation CJRequestUtil
 
@@ -105,7 +106,7 @@
           success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
           failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
 {
-    NSString *fullUrlForGet = [self connectRequestUrl:Url params:params];
+    NSString *fullUrlForGet = [CJRequestURLHelper connectRequestUrl:Url params:params];
     NSURL *URL = [NSURL URLWithString:fullUrlForGet];
     
     
@@ -135,64 +136,6 @@
         }
     }];
     [task resume];
-}
-
-
-/**
- *  连接请求的地址与参数，返回连接后所形成的字符串
- *
- *  @param requestUrl       请求的地址
- *  @param requestParams    请求的参数
- *
- *  @return 连接后所形成的字符串
- */
-+ (NSString *)connectRequestUrl:(NSString *)requestUrl params:(NSDictionary *)requestParams {
-    if (requestParams == nil) {
-        return requestUrl;
-    }
-    
-    //获取GET方法的参数组成的字符串requestParmasString
-    NSMutableString *requestParmasString = [NSMutableString new];
-    for (NSString *key in [requestParams allKeys]) {
-        id obj = [requestParams valueForKey:key];
-        if ([obj isKindOfClass:[NSString class]]) { //NSString
-            if (requestParmasString.length != 0) {
-                [requestParmasString appendString:@"&"];
-            } else {
-                [requestParmasString appendString:@"?"];
-            }
-            
-            NSString *keyValueString = obj;
-            [requestParmasString appendFormat:@"%@=%@", key, keyValueString];
-            
-        } else if ([obj isKindOfClass:[NSNumber class]]) {
-            if (requestParmasString.length != 0) {
-                [requestParmasString appendString:@"&"];
-            } else {
-                [requestParmasString appendString:@"?"];
-            }
-            
-            NSString *keyValueString = [obj stringValue];
-            [requestParmasString appendFormat:@"%@=%@", key, keyValueString];
-            
-        } else if ([obj isKindOfClass:[NSArray class]]) { //NSArray
-            for (NSString *value in obj) {
-                if (requestParmasString.length != 0) {
-                    [requestParmasString appendString:@"&"];
-                } else {
-                    [requestParmasString appendString:@"?"];
-                }
-                
-                NSString *keyValueString = value;
-                [requestParmasString appendFormat:@"%@=%@", key, keyValueString];
-            }
-        } else {
-            
-        }
-    }
-    
-    NSString *fullUrlForGet = [NSString stringWithFormat:@"%@%@", requestUrl, requestParmasString];
-    return fullUrlForGet;
 }
 
 

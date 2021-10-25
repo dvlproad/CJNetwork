@@ -33,11 +33,12 @@ NS_ASSUME_NONNULL_BEGIN
                                           params:(nullable id)allParams
                                          headers:(nullable NSDictionary <NSString *, NSString *> *)headers
                                           method:(CJRequestMethod)method
-                               cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
+                              cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                          logType:(CJRequestLogType)logType
-                                        progress:(nullable void (^)(NSProgress * _Nullable))progress
+                                        progress:(nullable void (^)(NSProgress * _Nonnull))progress
                                          success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
-                                         failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
+                                         failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
+;
 
 
 NS_ASSUME_NONNULL_END

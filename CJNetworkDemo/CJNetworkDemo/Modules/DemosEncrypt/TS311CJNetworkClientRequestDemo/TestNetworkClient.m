@@ -76,7 +76,7 @@
 {
     CJRequestBaseModel *requestModel = [[CJRequestBaseModel alloc] init];
     requestModel.apiSuffix = apiSuffix;
-    requestModel.param = params;
+    requestModel.customParams = params;
     
     return [self requestModel:requestModel success:^(CJResponseModel * _Nonnull responseModel) {
         if (success) {

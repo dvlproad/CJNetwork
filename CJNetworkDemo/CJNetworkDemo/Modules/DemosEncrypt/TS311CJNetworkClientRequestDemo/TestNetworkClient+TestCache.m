@@ -31,7 +31,7 @@
 {
     CJRequestBaseModel *requestModel = [[CJRequestBaseModel alloc] init];
     requestModel.apiSuffix = @"/api/testCache";
-    requestModel.param = @{@"test": @"test"};
+    requestModel.customParams = @{@"test": @"test"};
     requestModel.requestMethod = CJRequestMethodPOST;
     
     CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
@@ -54,7 +54,7 @@
     
     CJRequestBaseModel *requestModel = [[CJRequestBaseModel alloc] init];
     requestModel.apiSuffix = apiSuffix;
-    requestModel.param = params;
+    requestModel.customParams = params;
     requestModel.requestMethod = CJRequestMethodPOST;
     
     CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];

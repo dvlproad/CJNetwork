@@ -53,7 +53,7 @@
  *
  *  @return NSURLSessionDataTask
  */
-- (nullable NSURLSessionDataTask *)__cj_requestUrl:(NSString *)Url
+- (nullable NSURLSessionDataTask *)cj_requestUrl:(NSString *)Url
                                           params:(nullable id)allParams
                                          headers:(nullable NSDictionary <NSString *, NSString *> *)headers
                                           method:(CJRequestMethod)method
