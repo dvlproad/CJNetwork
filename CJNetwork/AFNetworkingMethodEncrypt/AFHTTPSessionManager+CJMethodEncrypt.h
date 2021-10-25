@@ -8,7 +8,7 @@
 //  通过传进去的方法，单独处理加密问题，如果不想单独设置而是全局设置，请使用AFHTTPSessionManager+CJSerializerEncrypt.h
 
 #import <AFNetworking/AFNetworking.h>
-#import "AFHTTPSessionManager+CJRequestCommon.h"
+#import "CJRequestCommonHelper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

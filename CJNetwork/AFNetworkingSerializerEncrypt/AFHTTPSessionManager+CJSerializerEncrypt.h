@@ -8,7 +8,7 @@
 //  通过Serializer来处理加密问题，所有使用的都进行加密，如果要单独加解密，请使用AFHTTPSessionManager+CJMethodEncrypt.h
 
 #import <AFNetworking/AFNetworking.h>
-#import "AFHTTPSessionManager+CJRequestCommon.h"
+#import "CJRequestCommonHelper.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

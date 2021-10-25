@@ -21,27 +21,29 @@ PODS:
     - CJMonitor/CJLog (= 0.0.2)
   - CJMonitor/CJLog (0.0.2):
     - Masonry
-  - CJNetwork (0.8.1):
-    - CJNetwork/AFNetworkingMethodEncrypt (= 0.8.1)
-    - CJNetwork/AFNetworkingSerializerEncrypt (= 0.8.1)
-    - CJNetwork/AFNetworkingUploadComponent (= 0.8.1)
-    - CJNetwork/CJCacheManager (= 0.8.1)
-    - CJNetwork/CJNetworkCommon (= 0.8.1)
-    - CJNetwork/CJRequestUtil (= 0.8.1)
-  - CJNetwork/AFNetworkingMethodEncrypt (0.8.1):
+  - CJNetwork (0.8.2):
+    - CJNetwork/AFNetworkingMethodEncrypt (= 0.8.2)
+    - CJNetwork/AFNetworkingSerializerEncrypt (= 0.8.2)
+    - CJNetwork/AFNetworkingUploadComponent (= 0.8.2)
+    - CJNetwork/CJCacheManager (= 0.8.2)
+    - CJNetwork/CJNetworkCommon (= 0.8.2)
+    - CJNetwork/CJRequestUtil (= 0.8.2)
+  - CJNetwork/AFNetworkingMethodEncrypt (0.8.2):
+    - AFNetworking
     - CJNetwork/CJNetworkCommon
-  - CJNetwork/AFNetworkingSerializerEncrypt (0.8.1):
+  - CJNetwork/AFNetworkingSerializerEncrypt (0.8.2):
+    - AFNetworking
     - CJNetwork/CJNetworkCommon
-  - CJNetwork/AFNetworkingUploadComponent (0.8.1):
+  - CJNetwork/AFNetworkingUploadComponent (0.8.2):
+    - AFNetworking
     - CJNetwork/CJNetworkCommon
     - CJNetworkFileModel
-  - CJNetwork/CJCacheManager (0.8.1)
-  - CJNetwork/CJNetworkCommon (0.8.1):
-    - AFNetworking
+  - CJNetwork/CJCacheManager (0.8.2)
+  - CJNetwork/CJNetworkCommon (0.8.2):
     - CQNetworkPublic
     - MJExtension
     - YYCache
-  - CJNetwork/CJRequestUtil (0.8.1):
+  - CJNetwork/CJRequestUtil (0.8.2):
     - CJNetwork/CJNetworkCommon
   - CJNetworkClient (1.4.1):
     - CJNetworkClient/Base (= 1.4.1)
@@ -72,37 +74,37 @@ PODS:
     - CocoaAsyncSocket/RunLoop
   - CocoaAsyncSocket/GCD (7.4.3)
   - CocoaAsyncSocket/RunLoop (7.4.3)
-  - CQDemoKit/BaseUIKit (0.6.6):
+  - CQDemoKit/BaseUIKit (0.6.7):
     - Masonry
-  - CQDemoKit/BaseUtil (0.6.6)
-  - CQDemoKit/BaseVC (0.6.6):
-    - CQDemoKit/BaseVC/Base (= 0.6.6)
-    - CQDemoKit/BaseVC/Collection (= 0.6.6)
-    - CQDemoKit/BaseVC/ScrollView (= 0.6.6)
-    - CQDemoKit/BaseVC/TabBar (= 0.6.6)
-    - CQDemoKit/BaseVC/TableView (= 0.6.6)
-    - CQDemoKit/BaseVC/TextView (= 0.6.6)
+  - CQDemoKit/BaseUtil (0.6.7)
+  - CQDemoKit/BaseVC (0.6.7):
+    - CQDemoKit/BaseVC/Base (= 0.6.7)
+    - CQDemoKit/BaseVC/Collection (= 0.6.7)
+    - CQDemoKit/BaseVC/ScrollView (= 0.6.7)
+    - CQDemoKit/BaseVC/TabBar (= 0.6.7)
+    - CQDemoKit/BaseVC/TableView (= 0.6.7)
+    - CQDemoKit/BaseVC/TextView (= 0.6.7)
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/Base (0.6.6):
+  - CQDemoKit/BaseVC/Base (0.6.7):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/Helper
     - Masonry
-  - CQDemoKit/BaseVC/Collection (0.6.6):
+  - CQDemoKit/BaseVC/Collection (0.6.7):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/ScrollView (0.6.6):
+  - CQDemoKit/BaseVC/ScrollView (0.6.7):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TabBar (0.6.6):
+  - CQDemoKit/BaseVC/TabBar (0.6.7):
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TableView (0.6.6):
+  - CQDemoKit/BaseVC/TableView (0.6.7):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TextView (0.6.6):
+  - CQDemoKit/BaseVC/TextView (0.6.7):
     - CQDemoKit/BaseUtil
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/Helper (0.6.6)
+  - CQDemoKit/Helper (0.6.7)
   - CQNetworkPublic (0.2.1):
     - CQNetworkPublic/Base (= 0.2.1)
     - CQNetworkPublic/Client (= 0.2.1)
@@ -174,12 +176,12 @@ SPEC CHECKSUMS:
   CJBaseHelper: 71c9d695c76736b2fc66123157d5626da4556177
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
   CJMonitor: cbec62179b877a476f84249ff268c765a66d6687
-  CJNetwork: 71b693196c1f195b9a43f930f6460b2c83d6dc5c
+  CJNetwork: ad966555021e44c12ae5ad0736314ff95215ae5a
   CJNetworkClient: fd22ab190ce86fea8c3b2860c1163ebbceef570b
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
   CJNetworkSimulate: 0c8e89ee82db12816cabdce4f3d6dcab1d30ee5b
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
-  CQDemoKit: 5a7e211c4cb1fcd018c81110dd65f26e36bb8014
+  CQDemoKit: e56f4ebcc7898d0a7dbe6dc5ff50fe80c94e3e2d
   CQNetworkPublic: 2283fb18e02c23ec828c708a9e30a54f8a9c62ec
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 01704cca2b60a214c10761b6491eab74069d68a9

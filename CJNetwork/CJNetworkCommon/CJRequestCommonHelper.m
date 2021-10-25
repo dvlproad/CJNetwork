@@ -1,20 +1,20 @@
 //
-//  AFHTTPSessionManager+CJRequestCommon.m
+//  CJRequestCommonHelper.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2017/6/13.
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
-#import "AFHTTPSessionManager+CJRequestCommon.h"
+#import "CJRequestCommonHelper.h"
 #import <objc/runtime.h>
 #import "CJNetworkCacheUtil.h"
 
-@implementation AFHTTPSessionManager (CJRequestCommon)
+@implementation CJRequestCommonHelper
 
 #pragma mark - 网络操作
 /// 将params拼接到Url后
-- (NSString *)__appendUrl:(NSString *)Url withParams:(NSDictionary *)urlParams {
++ (NSString *)__appendUrl:(NSString *)Url withParams:(NSDictionary *)urlParams {
     NSMutableString *newUrl = [[NSMutableString alloc] initWithString:Url];
     if (urlParams == nil || urlParams.allKeys.count == 0) {
         return newUrl;
@@ -34,7 +34,7 @@
 }
 
 /// 在请求前根据设置做相应处理
-- (BOOL)__didEventBeforeStartRequestWithUrl:(NSString *)Url
++ (BOOL)__didEventBeforeStartRequestWithUrl:(NSString *)Url
                                      params:(nullable NSDictionary *)params
                           cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                     logType:(CJRequestLogType)logType
@@ -72,7 +72,7 @@
 }
 
 ///得到缓存数据时候执行的方法(私有方法)
-- (void)__didGetCacheSuccessWithResponseObject:(nullable id)responseObject
++ (void)__didGetCacheSuccessWithResponseObject:(nullable id)responseObject
                                         forUrl:(NSString *)Url
                                         params:(nullable id)params
                                        logType:(CJRequestLogType)logType
@@ -88,7 +88,7 @@
 }
 
 ///网络请求获取到数据时候执行的方法(responseObject必须是解密后的数据)
-- (void)__didRequestSuccessForTask:(NSURLSessionDataTask * _Nonnull)task
++ (void)__didRequestSuccessForTask:(NSURLSessionDataTask * _Nonnull)task
                 withResponseObject:(nullable id)responseObject
                        isCacheData:(BOOL)isCacheData
                             forUrl:(NSString *)Url
@@ -112,7 +112,7 @@
 }
 
 ///网络请求不到数据的时候（无网 或者 有网但服务器异常等无数据时候）执行的方法
-- (void)__didRequestFailureForTask:(NSURLSessionDataTask * _Nonnull)task
++ (void)__didRequestFailureForTask:(NSURLSessionDataTask * _Nonnull)task
                  withResponseError:(NSError * _Nullable)error
                             forUrl:(NSString *)Url
                             params:(nullable id)params

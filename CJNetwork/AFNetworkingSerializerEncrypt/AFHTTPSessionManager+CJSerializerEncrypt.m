@@ -63,7 +63,7 @@
                                          success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
                                          failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
 {
-    BOOL shouldStartRequestNetworkData = [self __didEventBeforeStartRequestWithUrl:Url params:allParams cacheSettingModel:cacheSettingModel logType:logType success:success];
+    BOOL shouldStartRequestNetworkData = [CJRequestCommonHelper __didEventBeforeStartRequestWithUrl:Url params:allParams cacheSettingModel:cacheSettingModel logType:logType success:success];
     if (shouldStartRequestNetworkData == NO) {
         return nil;
     }
@@ -73,10 +73,10 @@
         
         NSURLSessionDataTask *URLSessionDataTask =
         [self GET:Url parameters:allParams headers:headers progress:downloadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            [self __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:allParams cacheSettingModel:cacheSettingModel logType:logType success:success];
+            [CJRequestCommonHelper __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:allParams cacheSettingModel:cacheSettingModel logType:logType success:success];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [self __didRequestFailureForTask:task withResponseError:error forUrl:Url params:allParams logType:logType failure:failure];
+            [CJRequestCommonHelper __didRequestFailureForTask:task withResponseError:error forUrl:Url params:allParams logType:logType failure:failure];
         }];
         
         return URLSessionDataTask;
@@ -86,10 +86,10 @@
         
         NSURLSessionDataTask *URLSessionDataTask =
         [self POST:Url parameters:allParams headers:headers progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            [self __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:allParams cacheSettingModel:cacheSettingModel logType:logType success:success];
+            [CJRequestCommonHelper __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:allParams cacheSettingModel:cacheSettingModel logType:logType success:success];
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [self __didRequestFailureForTask:task withResponseError:error forUrl:Url params:allParams logType:logType failure:failure];
+            [CJRequestCommonHelper __didRequestFailureForTask:task withResponseError:error forUrl:Url params:allParams logType:logType failure:failure];
         }];
         
         return URLSessionDataTask;

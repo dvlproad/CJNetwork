@@ -60,12 +60,12 @@
                 recognizableResponseObject = responseObject;
             }
             
-            [self __didRequestSuccessForTask:URLSessionDataTask withResponseObject:recognizableResponseObject isCacheData:YES forUrl:Url params:params cacheSettingModel:cacheSettingModel logType:logType success:success];
+            [CJRequestCommonHelper __didRequestSuccessForTask:URLSessionDataTask withResponseObject:recognizableResponseObject isCacheData:YES forUrl:Url params:params cacheSettingModel:cacheSettingModel logType:logType success:success];
             
         }
         else
         {
-            [self __didRequestFailureForTask:URLSessionDataTask withResponseError:error forUrl:Url params:params logType:logType failure:failure];
+            [CJRequestCommonHelper __didRequestFailureForTask:URLSessionDataTask withResponseError:error forUrl:Url params:params logType:logType failure:failure];
         }
     }];
     [URLSessionDataTask resume];
