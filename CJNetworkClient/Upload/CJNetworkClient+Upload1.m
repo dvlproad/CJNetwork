@@ -37,6 +37,8 @@
     } else if (requestType == CQRequestTypeLocal) {
         return [self local1_uploadModel:model progress:uploadProgress completeBlock:completeBlock];
     }
+    
+    return [self real1_uploadModel:model progress:uploadProgress completeBlock:completeBlock];
 }
 
 - (NSURLSessionDataTask *)real1_uploadModel:(__kindof NSObject<CJUploadModelProtocol> *)model

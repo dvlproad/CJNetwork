@@ -26,6 +26,8 @@
     } else if (requestType == CQRequestTypeLocal) {
         return [self local1_requestModel:model completeBlock:completeBlock];
     }
+    
+    return [self real1_requestModel:model completeBlock:completeBlock];
 }
 
 #pragma mark - RealApi

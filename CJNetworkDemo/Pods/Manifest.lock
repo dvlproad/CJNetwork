@@ -188,7 +188,7 @@ SPEC CHECKSUMS:
   CJNetworkSimulate: 0c8e89ee82db12816cabdce4f3d6dcab1d30ee5b
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQDemoKit: e56f4ebcc7898d0a7dbe6dc5ff50fe80c94e3e2d
-  CQNetworkPublic: a64e2e2256cdc1026dc21dfe79fac3501f025b04
+  CQNetworkPublic: ef0fd5bb09d89633b722fe113a2d7c640805ea05
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 01704cca2b60a214c10761b6491eab74069d68a9
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
