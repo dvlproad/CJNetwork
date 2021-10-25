@@ -19,10 +19,12 @@
     NSString *apiSuffix = [NSString stringWithFormat:@"/api/testConcurrence%ld", apiIndex];
     NSDictionary *params = @{@"test": @"test"};
     
-    CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    settingModel.logType = CJRequestLogTypeNone;
+    CJRequestBaseModel *requestModel = [[CJRequestBaseModel alloc] init];
+    requestModel.apiSuffix = apiSuffix;
+    requestModel.param = params;
+    requestModel.requestMethod = CJRequestMethodPOST;
     
-    [self simulate2_postApi:apiSuffix params:params settingModel:settingModel success:^(CJResponseModel *responseModel) {
+    [self requestModel:requestModel success:^(CJResponseModel *responseModel) {
         sleep(5);
         if (success) {
             success(responseModel);

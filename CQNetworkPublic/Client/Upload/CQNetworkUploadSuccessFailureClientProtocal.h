@@ -9,7 +9,7 @@
 #ifndef CQNetworkUploadSuccessFailureClientProtocal_h
 #define CQNetworkUploadSuccessFailureClientProtocal_h
 
-#import "CQNetworkRequestEnum.h"
+#import "CJRequestNetworkEnum.h"
 #import "CJResponseModel.h"
 #import <CJNetworkFileModel/CJUploadFileModel.h>
 //#import <CJNetworkFileModel/CJUploadFileModelsOwner.h>    //上传请求的时刻信息要保存到的位置

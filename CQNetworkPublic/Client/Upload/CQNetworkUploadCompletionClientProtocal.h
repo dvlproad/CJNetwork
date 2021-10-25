@@ -9,7 +9,7 @@
 #ifndef CQNetworkUploadCompletionClientProtocal_h
 #define CQNetworkUploadCompletionClientProtocal_h
 
-#import "CQNetworkRequestEnum.h"
+#import "CJRequestNetworkEnum.h"
 #import "CJResponseModel.h"
 #import <CJNetworkFileModel/CJUploadFileModel.h>
 
@@ -33,11 +33,19 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return 上传文件的请求
  */
 - (nullable NSURLSessionDataTask *)real1_uploadApi:(NSString *)apiSuffix
+                                         urlParams:(nullable id)urlParams
+                                        formParams:(nullable id)formParams
+                                  uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
+                                          progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
+                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+
+- (NSURLSessionDataTask *)real1_uploadUrl:(NSString *)Url
                                 urlParams:(nullable id)urlParams
                                formParams:(nullable id)formParams
                          uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                             completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
+
 
 @optional
 #pragma mark - simulateApi
@@ -53,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 #pragma mark - localApi
 // 为方便接口的重复利用回调中的responseModel使用id类型
-- (NSURLSessionDataTask *)local1_uploadApi:(NSString *)apiSuffix
+- (nullable NSURLSessionDataTask *)local1_uploadApi:(NSString *)apiSuffix
                                           urlParams:(nullable id)urlParams
                                          formParams:(nullable id)formParams
                                    uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels

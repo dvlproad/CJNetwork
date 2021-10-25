@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   #验证方法2：pod lib lint CQNetworkPublic.podspec --sources=master,dvlproad --allow-warnings --use-libraries --verbose
   #提交方法： pod repo push dvlproad CQNetworkPublic.podspec --sources=master,dvlproad --allow-warnings --use-libraries --verbose
   s.name         = "CQNetworkPublic"
-  s.version      = "0.1.1"
+  s.version      = "0.2.0"
   s.summary      = "网络请求公共-可以解耦底层，使得底层使用任意的网络框架"
   s.homepage     = "https://github.com/dvlproad/CJNetwork.git"
 

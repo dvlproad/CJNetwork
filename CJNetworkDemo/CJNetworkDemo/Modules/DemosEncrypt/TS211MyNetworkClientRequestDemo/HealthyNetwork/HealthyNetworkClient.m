@@ -44,14 +44,15 @@
     
     NSDictionary<NSString *, NSString *> *headers = @{};
     
-    return [manager cj_postUrl:Url params:params headers:headers cacheSettingModel:cacheSettingModel logType:logType progress:nil success:^(id  _Nullable responseObject) {
-        NSDictionary *responseDictionary = responseObject;
+    return [manager cj_requestUrl:Url params:params headers:headers method:CJRequestMethodPOST cacheSettingModel:cacheSettingModel logType:logType progress:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
+        NSDictionary *responseDictionary = successRequestInfo.responseObject;
         HealthResponseModel *responseModel = [[HealthResponseModel alloc] initWithResponseDictionary:responseDictionary];
         if (success) {
             success(responseModel);
         }
     
-    } failure:^(NSString *errorMessage) {
+    } failure:^(CJFailureRequestInfo * _Nullable failureRequestInfo) {
+        NSString *errorMessage = failureRequestInfo.errorMessage;
         //HealthResponseModel *responseModel = [[CJResponseModel alloc] init];
         //responseModel.statusCode = -1;
         //responseModel.message = NSLocalizedString(@"网络请求失败", nil);

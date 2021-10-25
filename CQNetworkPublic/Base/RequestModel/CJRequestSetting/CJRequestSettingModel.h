@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CJNetwork/CJRequestCacheSettingModel.h>    // 网络请求中的缓存相关设置
-#import <CJNetwork/CJRequestLogSettingModel.h>      // 网络请求中的Log相关设置
-#import <CJNetwork/CJRequestInfoModel.h>            // 网络请求的整体信息(包括请求前的request信息和请求后的reponse信息)
+#import "CJRequestSettingEnum.h"               // 网络请求中的请求方式、Log显示等相关设置
+#import "CJRequestCacheSettingModel.h"  // 网络请求中的缓存相关设置
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,15 +31,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL shouldEncrypt;
 
 // 加密方法
-@property (nonatomic, copy) NSData* (^encryptBlock)(NSDictionary *requestParmas);
+@property (nullable, nonatomic, copy) NSData* (^encryptBlock)(NSDictionary *requestParmas);
 
 // 解密方法
-@property (nonatomic, copy) NSDictionary* (^decryptBlock)(NSString *responseString);
+@property (nullable, nonatomic, copy) NSDictionary* (^decryptBlock)(NSString *responseString);
 
 
 #pragma mark 缓存相关
 // 网络请求中的缓存相关设置
-@property (nonatomic, strong) CJRequestCacheSettingModel *requestCacheModel;
+@property (nullable, nonatomic, strong) CJRequestCacheSettingModel *requestCacheModel;
 
 @end
 

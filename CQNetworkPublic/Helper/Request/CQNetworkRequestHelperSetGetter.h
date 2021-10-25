@@ -14,9 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CQNetworkRequestHelperSetGetter : NSObject
 
-+ (void)setNetworkRequestHelper:(Class<CQNetworkRequestCompletionHelperProtocal, CQNetworkRequestSuccessFailureHelperProtocal>)networkRequestHelper;
++ (void)setNetworkRequestHelper:(id<CQNetworkRequestCompletionHelperProtocal, CQNetworkRequestSuccessFailureHelperProtocal>)networkRequestHelper;
 
-+ (Class<CQNetworkRequestCompletionHelperProtocal, CQNetworkRequestSuccessFailureHelperProtocal>)networkRequestHelper;
++ (id<CQNetworkRequestCompletionHelperProtocal, CQNetworkRequestSuccessFailureHelperProtocal>)networkRequestHelper;
 
 @end
 

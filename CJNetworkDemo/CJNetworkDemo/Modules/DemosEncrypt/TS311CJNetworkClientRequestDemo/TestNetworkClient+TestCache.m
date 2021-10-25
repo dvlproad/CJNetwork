@@ -14,7 +14,11 @@
 /// 删除缓存
 - (BOOL)removeCacheForEndWithCacheIfExistApi {
     NSString *apiSuffix = @"/api/testCache";
-    NSDictionary *params = @{@"test": @"test"};
+    NSDictionary *params = @{@"test": @"test",
+                             @"cj_requestSettingModel": @{
+                                 
+                                                        },
+                            };
     
     NSString *Url = [self.baseUrl stringByAppendingString:apiSuffix];
     
@@ -25,19 +29,20 @@
 - (void)testEndWithCacheIfExistWithSuccess:(void (^)(CJResponseModel *responseModel))success
                                    failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
-    NSString *apiSuffix = @"/api/testCache";
-    NSDictionary *params = @{@"test": @"test"};
+    CJRequestBaseModel *requestModel = [[CJRequestBaseModel alloc] init];
+    requestModel.apiSuffix = @"/api/testCache";
+    requestModel.param = @{@"test": @"test"};
+    requestModel.requestMethod = CJRequestMethodPOST;
     
     CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-    
     CJRequestCacheSettingModel *requestCacheModel = [[CJRequestCacheSettingModel alloc] init];
     requestCacheModel.cacheStrategy = CJRequestCacheStrategyEndWithCacheIfExist;
     requestCacheModel.cacheTimeInterval = 10;
     settingModel.requestCacheModel = requestCacheModel;
+    settingModel.logType = CJRequestLogTypeConsoleLog;;
+    requestModel.settingModel = settingModel;
     
-    settingModel.logType = CJRequestLogTypeConsoleLog;
-    
-    [self simulate2_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
+    [self requestModel:requestModel success:success failure:failure];
 }
 
 /// 测试无缓存
@@ -47,16 +52,20 @@
     NSString *apiSuffix = @"/api/testCache";
     NSDictionary *params = nil;
     
-    CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
+    CJRequestBaseModel *requestModel = [[CJRequestBaseModel alloc] init];
+    requestModel.apiSuffix = apiSuffix;
+    requestModel.param = params;
+    requestModel.requestMethod = CJRequestMethodPOST;
     
+    CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
     CJRequestCacheSettingModel *requestCacheModel = [[CJRequestCacheSettingModel alloc] init];
     requestCacheModel.cacheStrategy = CJRequestCacheStrategyNoneCache;
 //    requestCacheModel.cacheTimeInterval = 10;
     settingModel.requestCacheModel = requestCacheModel;
-    
     settingModel.logType = CJRequestLogTypeConsoleLog;
+    requestModel.settingModel = settingModel;
     
-    [self simulate2_postApi:apiSuffix params:params settingModel:settingModel success:success failure:failure];
+    [self requestModel:requestModel success:success failure:failure];
 }
 
 @end

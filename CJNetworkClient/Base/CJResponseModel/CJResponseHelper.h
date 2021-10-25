@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CJNetwork/CJRequestInfoModel.h>
 #import <CQNetworkPublic/CJResponseModel.h>
-#import <CQNetworkPublic/CQNetworkRequestEnum.h>
+#import <CQNetworkPublic/CJRequestNetworkEnum.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

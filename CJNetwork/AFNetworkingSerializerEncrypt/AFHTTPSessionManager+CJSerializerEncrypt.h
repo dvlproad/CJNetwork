@@ -14,52 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AFHTTPSessionManager (CJSerializerEncrypt)
 
 /*
- *  发起GET请求
- *
- *  @param Url                  Url
- *  @param allParams            allParams
- *  @param headers              headers
- *  @param cacheSettingModel    cacheSettingModel
- *  @param logType              logType
- *  @param progress             progress
- *  @param success              请求成功的回调success
- *  @param failure              请求失败的回调failure
- *
- *  @return NSURLSessionDataTask
- */
-- (nullable NSURLSessionDataTask *)cj_getUrl:(NSString *)Url
-                                      params:(nullable NSDictionary *)allParams
-                                     headers:(nullable NSDictionary <NSString *, NSString *> *)headers
-                           cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
-                                     logType:(CJRequestLogType)logType
-                                    progress:(nullable void (^)(NSProgress * _Nullable))progress
-                                     success:(nullable void (^)(id _Nullable responseObject))success
-                                     failure:(nullable void (^)(NSString *errorMessage))failure;
-
-/*
- *  发起POST请求(是否加密等都通过Serializer处理)
- *
- *  @param Url                  Url
- *  @param allParams            allParams
- *  @param headers              headers
- *  @param cacheSettingModel    cacheSettingModel
- *  @param logType              logType
- *  @param progress             progress
- *  @param success              请求成功的回调success
- *  @param failure              请求失败的回调failure
- *
- *  @return NSURLSessionDataTask
- */
-- (nullable NSURLSessionDataTask *)cj_postUrl:(NSString *)Url
-                                       params:(nullable id)allParams
-                                      headers:(nullable NSDictionary <NSString *, NSString *> *)headers
-                            cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
-                                      logType:(CJRequestLogType)logType
-                                     progress:(nullable void (^)(NSProgress * _Nullable))progress
-                                      success:(nullable void (^)(id _Nullable responseObject))success
-                                      failure:(nullable void (^)(NSString *errorMessage))failure;
-
-/*
  *  发起请求(当为GET请求时，不需要加密；而当为POST请求时，是否加密等都通过Serializer处理)
  *
  *  @param Url                  Url

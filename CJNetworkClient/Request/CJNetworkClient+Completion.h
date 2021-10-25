@@ -9,48 +9,11 @@
 
 #import "CJNetworkClient.h"
 #import <CQNetworkPublic/CQNetworkRequestCompletionClientProtocal.h>
+#import "CJRequestBaseModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CJNetworkClient (Completion) <CQNetworkRequestCompletionClientProtocal>
-
-
-#pragma mark - RealApi
-- (NSURLSessionDataTask *)real1_getApi:(NSString *)apiSuffix
-                                params:(NSDictionary *)params
-                          settingModel:(nullable CJRequestSettingModel *)settingModel
-                         completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
-
-- (NSURLSessionDataTask *)real1_postApi:(NSString *)apiSuffix
-                                 params:(id)params
-                           settingModel:(nullable CJRequestSettingModel *)settingModel
-                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
-
-
-#pragma mark - simulateApi
-// 为方便接口的重复利用回调中的responseModel使用id类型
-- (NSURLSessionDataTask *)simulate1_getApi:(NSString *)apiSuffix
-                                    params:(nullable NSDictionary *)params
-                              settingModel:(nullable CJRequestSettingModel *)settingModel
-                             completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
-
-- (NSURLSessionDataTask *)simulate1_postApi:(NSString *)apiSuffix
-                                     params:(nullable id)params
-                               settingModel:(nullable CJRequestSettingModel *)settingModel
-                              completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
-
-
-#pragma mark - localApi
-// 为方便接口的重复利用回调中的responseModel使用id类型
-- (nullable NSURLSessionDataTask *)local1_getApi:(NSString *)apiSuffix
-                                          params:(NSDictionary *)params
-                                    settingModel:(nullable CJRequestSettingModel *)settingModel
-                                   completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
-
-- (nullable NSURLSessionDataTask *)local1_postApi:(NSString *)apiSuffix
-                                           params:(id)params
-                                     settingModel:(nullable CJRequestSettingModel *)settingModel
-                                    completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock;
 
 @end
 

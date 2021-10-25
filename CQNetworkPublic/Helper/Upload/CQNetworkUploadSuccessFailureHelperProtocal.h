@@ -9,7 +9,7 @@
 #ifndef CQNetworkUploadSuccessFailureHelperProtocal_h
 #define CQNetworkUploadSuccessFailureHelperProtocal_h
 
-#import "CQNetworkRequestEnum.h"
+#import "CJRequestNetworkEnum.h"
 #import "CJResponseModel.h"
 #import <CJNetworkFileModel/CJUploadFileModel.h>
 

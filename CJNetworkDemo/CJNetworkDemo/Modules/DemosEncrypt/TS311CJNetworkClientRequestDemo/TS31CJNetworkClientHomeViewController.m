@@ -60,7 +60,7 @@
         @"count": @(2)
     };
     
-    [[TestNetworkClient sharedInstance] mycj2_postApi:apiName params:params settingModel:nil success:^(CJResponseModel *responseModel) {
+    [[TestNetworkClient sharedInstance] mycj2_postApi:apiName params:params success:^(CJResponseModel *responseModel) {
         NSString *message = [NSString stringWithFormat:@"GET请求测试成功。。。%@", responseModel.cjNetworkLog];
         [self __showResponseLogMessage:message];
         

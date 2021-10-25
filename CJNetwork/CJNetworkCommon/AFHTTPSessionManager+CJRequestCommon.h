@@ -7,8 +7,8 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#import "CJRequestCacheSettingModel.h"
-#import "CJRequestLogSettingModel.h"
+#import <CQNetworkPublic/CJRequestSettingEnum.h>               // 网络请求中的请求方式、Log显示等相关设置
+#import <CQNetworkPublic/CJRequestCacheSettingModel.h>  // 网络请求中的缓存相关设置
 #import "CJRequestInfoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN

@@ -17,7 +17,6 @@
 - (NSURLSessionDataTask *)real1_uploadApi:(NSString *)apiSuffix
                                 urlParams:(nullable id)urlParams
                                formParams:(nullable id)formParams
-                             settingModel:(nullable CJRequestSettingModel *)settingModel
                          uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                             completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
@@ -27,27 +26,42 @@
     NSString *Url = self.completeFullUrlBlock(baseUrl, apiSuffix);
     
     
-    return [self real1_uploadUrl:Url urlParams:urlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:uploadProgress completeBlock:completeBlock];
+    return [self real1_uploadUrl:Url urlParams:urlParams formParams:formParams uploadFileModels:uploadFileModels progress:uploadProgress completeBlock:completeBlock];
 }
 
 - (NSURLSessionDataTask *)real1_uploadUrl:(NSString *)Url
                                 urlParams:(nullable id)urlParams
                                formParams:(nullable id)formParams
-                             settingModel:(nullable CJRequestSettingModel *)settingModel
                          uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                  progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                             completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
-    AFHTTPSessionManager *manager = settingModel.shouldEncrypt ? self.cryptHTTPSessionManager : self.cleanHTTPSessionManager;
+    BOOL shouldEncrypt = YES;
+    CJRequestLogType logType = CJRequestLogTypeNone;
+    CJRequestCacheSettingModel *cacheSettingModel = nil;
+    void (^progressBlock)(NSProgress * _Nonnull) = nil;
+    NSDictionary *requestSettingDictionary = urlParams[@"cj_requestSettingModel"];
+    if (requestSettingDictionary) {
+        shouldEncrypt = [requestSettingDictionary[@"shouldEncrypt"] boolValue];
+        logType = [requestSettingDictionary[@"logType"] integerValue];
+        
+        NSDictionary *requestCacheDictionary = requestSettingDictionary[@"requestCache"];
+        if (requestCacheDictionary) {
+            cacheSettingModel = [[CJRequestCacheSettingModel alloc] init];
+            cacheSettingModel.cacheStrategy = [requestCacheDictionary[@"cacheStrategy"] integerValue];
+            cacheSettingModel.cacheTimeInterval = [requestCacheDictionary[@"cacheTimeInterval"] integerValue];
+        }
+        
+//        progressBlock = settingModel.uploadProgress;
+    }
+    
+    AFHTTPSessionManager *manager = shouldEncrypt ? self.cryptHTTPSessionManager : self.cleanHTTPSessionManager;
     
     id lastUrlParams = urlParams;
 //    if (urlParams && self.urlParamsHandle) {
 //        lastUrlParams = self.urlParamsHandle(urlParams);
 //    }
     NSDictionary<NSString *, NSString *> *headers = @{};
-    
-    CJRequestCacheSettingModel *cacheSettingModel = settingModel.requestCacheModel;
-    CJRequestLogType logType = settingModel.logType;
     
     return [manager cj_uploadUrl:Url urlParams:lastUrlParams formParams:formParams headers:headers uploadFileModels:uploadFileModels cacheSettingModel:cacheSettingModel logType:logType progress:uploadProgress success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
         [CJResponseHelper __dealSuccessRequestInfo:successNetworkInfo
@@ -70,7 +84,6 @@
 - (NSURLSessionDataTask *)simulate1_uploadApi:(NSString *)apiSuffix
                                     urlParams:(nullable id)urlParams
                                    formParams:(nullable id)formParams
-                                 settingModel:(nullable CJRequestSettingModel *)settingModel
                              uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                      progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                 completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
@@ -177,7 +190,6 @@
 - (nullable NSURLSessionDataTask *)local1_uploadApi:(NSString *)apiSuffix
                                           urlParams:(nullable id)urlParams
                                          formParams:(nullable id)formParams
-                                       settingModel:(nullable CJRequestSettingModel *)settingModel
                                    uploadFileModels:(nullable NSArray<CJUploadFileModel *> *)uploadFileModels
                                            progress:(nullable void (^)(NSProgress * _Nonnull))uploadProgress
                                       completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock

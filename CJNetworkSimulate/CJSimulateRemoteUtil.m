@@ -24,27 +24,13 @@
                          success:(nullable void (^)(NSDictionary *responseDictionary))success
                          failure:(nullable void (^)(NSError * _Nonnull error, NSString * _Nullable errorMessage))failure
 {
-    NSString *fullUrlForGet = [self connectRequestUrl:Url params:params];
+    NSString *fullUrlForGet = [self __connectRequestUrl:Url params:params];
     NSURL *URL = [NSURL URLWithString:fullUrlForGet];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPMethod:@"GET"]; //此行可省略，因为默认就是GET方法，附Get方法没有body
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error == nil) {
-            NSError *jsonError = nil;
-            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-            !success ?: success(responseObject);
-            
-        } else {
-            NSString *message = [self getErrorMessageFromURLResponse:response];
-            !failure ?: failure(error, message);
-        }
-    }];
-    [task resume];
-    
-    return task;
+    return [self __startRequest:request success:success failure:failure];
 }
 
 
@@ -73,27 +59,12 @@
     [request setHTTPBody:bodyData];
     [request setHTTPMethod:@"POST"];
     
-    
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *URLSessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error == nil) {
-            NSError *jsonError = nil;
-            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-            !success ?: success(responseObject);
-            
-        } else {
-            NSString *message = [self getErrorMessageFromURLResponse:response];
-            !failure ?: failure(error, message);
-        }
-    }];
-    [URLSessionDataTask resume];
-    
-    return URLSessionDataTask;
+    return [self __startRequest:request success:success failure:failure];
 }
 
 
-
-/**
+#pragma mark - Private Method
+/*
  *  连接请求的地址与参数，返回连接后所形成的字符串
  *
  *  @param requestUrl       请求的地址
@@ -101,7 +72,7 @@
  *
  *  @return 连接后所形成的字符串
  */
-+ (NSString *)connectRequestUrl:(NSString *)requestUrl params:(NSDictionary *)requestParams {
++ (NSString *)__connectRequestUrl:(NSString *)requestUrl params:(NSDictionary *)requestParams {
     if (requestParams == nil) {
         return requestUrl;
     }
@@ -150,9 +121,35 @@
     return fullUrlForGet;
 }
 
+/*
+ *  发起已创建的请求
+ *
+ *  @param request      要发起的请求
+ *  @param success      请求成功的回调failure
+ *  @param failure      请求失败的回调failure(error已判断为非空)
+ */
++ (NSURLSessionDataTask *)__startRequest:(NSMutableURLRequest *)request
+                                 success:(nullable void (^)(NSDictionary *responseDictionary))success
+                                 failure:(nullable void (^)(NSError * _Nonnull error, NSString * _Nullable errorMessage))failure
+{
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error == nil) {
+            NSError *jsonError = nil;
+            NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
+            !success ?: success(responseObject);
+            
+        } else {
+            NSString *message = [self getErrorMessageFromURLResponse:response];
+            !failure ?: failure(error, message);
+        }
+    }];
+    [task resume];
+    
+    return task;
+}
 
 
-#pragma mark - Private Method
 + (NSString *)getErrorMessageFromURLResponse:(NSURLResponse *)URLResponse {
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)URLResponse;
     return [self getErrorMessageFromHTTPURLResponse:response];

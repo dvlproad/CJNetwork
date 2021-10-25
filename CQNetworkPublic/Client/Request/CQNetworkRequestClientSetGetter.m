@@ -11,14 +11,14 @@
 @implementation CQNetworkRequestClientSetGetter
 
 #pragma mark - 网络单例请求服务的设置代理
-static Class _networkRequestClient;
+static id _networkRequestClient;
 
-+ (void)setNetworkRequestClient:(Class<CQNetworkRequestCompletionClientProtocal, CQNetworkRequestSuccessFailureClientProtocal>)networkRequestClient
++ (void)setNetworkRequestClient:(id<CQNetworkRequestCompletionClientProtocal, CQNetworkRequestSuccessFailureClientProtocal>)networkRequestClient
 {
     _networkRequestClient = networkRequestClient;
 }
 
-+ (Class<CQNetworkRequestCompletionClientProtocal, CQNetworkRequestSuccessFailureClientProtocal>)networkRequestClient
++ (id<CQNetworkRequestCompletionClientProtocal, CQNetworkRequestSuccessFailureClientProtocal>)networkRequestClient
 {
     return _networkRequestClient;
 }

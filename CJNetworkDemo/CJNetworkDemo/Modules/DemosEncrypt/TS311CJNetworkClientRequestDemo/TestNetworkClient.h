@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CJNetworkClient/CJNetworkClient+SuccessFailure.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface TestNetworkClient : CJNetworkClient {
     
 }
@@ -18,8 +20,9 @@
 #pragma mark - RealApi
 - (NSURLSessionDataTask *)mycj2_postApi:(NSString *)apiSuffix
                                  params:(id)params
-                           settingModel:(nullable CJRequestSettingModel *)settingModel
                                 success:(void (^)(CJResponseModel *responseModel))success
                                 failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure;
 
 @end
+
+NS_ASSUME_NONNULL_END

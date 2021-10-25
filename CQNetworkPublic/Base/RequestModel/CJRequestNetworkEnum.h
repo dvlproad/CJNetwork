@@ -1,13 +1,19 @@
 //
-//  CQNetworkRequestEnum.h
+//  CJRequestNetworkEnum.h
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2018/6/3.
 //  Copyright © 2018年 dvlproad. All rights reserved.
 //
 
-#ifndef CQNetworkRequestEnum_h
-#define CQNetworkRequestEnum_h
+#ifndef CJRequestNetworkEnum_h
+#define CJRequestNetworkEnum_h
+
+/// 网络请求方法
+typedef NS_ENUM(NSUInteger, CJRequestMethod) {
+    CJRequestMethodPOST = 0,
+    CJRequestMethodGET,
+};
 
 typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
     CJResponeFailureTypeUncheck = 0,            /**< 未进行是否等失败判断 */
@@ -17,4 +23,4 @@ typedef NS_ENUM(NSUInteger, CJResponeFailureType) {
 };
 
 
-#endif /* CQNetworkRequestEnum_h */
+#endif /* CJRequestNetworkEnum_h */

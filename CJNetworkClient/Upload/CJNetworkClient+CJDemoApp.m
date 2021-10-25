@@ -16,25 +16,23 @@
                                         urlParams:(nullable id)urlParams
                                        formParams:(nullable id)formParams
                           imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSMutableArray<CJUploadFileModel *> *uploadFileModels = [self __uploadFileModels:imageKeyDataDicts];
     
-    return [self real1_uploadApi:apiSuffix urlParams:urlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:nil completeBlock:completeBlock];
+    return [self real1_uploadApi:apiSuffix urlParams:urlParams formParams:formParams  uploadFileModels:uploadFileModels progress:nil completeBlock:completeBlock];
 }
 
 - (NSURLSessionDataTask *)cjdemoR2_uploadImageApi:(NSString *)apiSuffix
                                         urlParams:(nullable id)urlParams
                                        formParams:(nullable id)formParams
                           imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                           success:(void (^)(CJResponseModel *responseModel))success
                                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     NSMutableArray<CJUploadFileModel *> *uploadFileModels = [self __uploadFileModels:imageKeyDataDicts];
     
-    return [self real2_uploadApi:apiSuffix urlParams:urlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:nil success:success failure:failure];
+    return [self real2_uploadApi:apiSuffix urlParams:urlParams formParams:formParams uploadFileModels:uploadFileModels progress:nil success:success failure:failure];
 }
 
 #pragma mark - simulateApi
@@ -42,25 +40,23 @@
                                         urlParams:(nullable id)urlParams
                                        formParams:(nullable id)formParams
                           imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                     completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSMutableArray<CJUploadFileModel *> *uploadFileModels = nil;
     
-    return [self simulate1_uploadApi:apiSuffix urlParams:urlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:nil completeBlock:completeBlock];
+    return [self simulate1_uploadApi:apiSuffix urlParams:urlParams formParams:formParams uploadFileModels:uploadFileModels progress:nil completeBlock:completeBlock];
 }
 
 - (NSURLSessionDataTask *)cjdemoS2_uploadImageApi:(NSString *)apiSuffix
                                         urlParams:(nullable id)urlParams
                                        formParams:(nullable id)formParams
                           imageKeyDataDictionarys:(NSDictionary *)imageKeyDataDicts
-                                     settingModel:(nullable CJRequestSettingModel *)settingModel
                                           success:(void (^)(CJResponseModel *responseModel))success
                                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     NSMutableArray<CJUploadFileModel *> *uploadFileModels = nil;
     
-    return [self simulate2_uploadApi:apiSuffix urlParams:urlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:nil success:success failure:failure];
+    return [self simulate2_uploadApi:apiSuffix urlParams:urlParams formParams:formParams uploadFileModels:uploadFileModels progress:nil success:success failure:failure];
 }
 
 #pragma mark - localApi
@@ -73,7 +69,7 @@
 {
     NSMutableArray<CJUploadFileModel *> *uploadFileModels = nil;
     
-    return [self local1_uploadApi:apiSuffix urlParams:urlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:nil completeBlock:completeBlock];
+    return [self local1_uploadApi:apiSuffix urlParams:urlParams formParams:formParams uploadFileModels:uploadFileModels progress:nil completeBlock:completeBlock];
 }
 
 - (nullable NSURLSessionDataTask *)cjdemoL2_uploadImageApi:(NSString *)apiSuffix
@@ -86,7 +82,7 @@
 {
     NSMutableArray<CJUploadFileModel *> *uploadFileModels = nil;
     
-    return [self local2_uploadApi:apiSuffix urlParams:urlParams formParams:formParams settingModel:settingModel uploadFileModels:uploadFileModels progress:nil success:success failure:failure];
+    return [self local2_uploadApi:apiSuffix urlParams:urlParams formParams:formParams uploadFileModels:uploadFileModels progress:nil success:success failure:failure];
 }
 
 

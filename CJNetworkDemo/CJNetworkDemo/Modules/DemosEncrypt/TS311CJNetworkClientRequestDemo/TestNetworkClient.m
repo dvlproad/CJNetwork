@@ -71,11 +71,14 @@
 #pragma mark - RealApi
 - (NSURLSessionDataTask *)mycj2_postApi:(NSString *)apiSuffix
                                  params:(id)params
-                           settingModel:(nullable CJRequestSettingModel *)settingModel
                                 success:(void (^)(CJResponseModel *responseModel))success
                                 failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
-    return [self real2_postApi:apiSuffix params:params settingModel:settingModel success:^(CJResponseModel * _Nonnull responseModel) {
+    CJRequestBaseModel *requestModel = [[CJRequestBaseModel alloc] init];
+    requestModel.apiSuffix = apiSuffix;
+    requestModel.param = params;
+    
+    return [self requestModel:requestModel success:^(CJResponseModel * _Nonnull responseModel) {
         if (success) {
             success(responseModel);
         }
