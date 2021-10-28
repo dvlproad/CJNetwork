@@ -213,4 +213,32 @@
 }
 
 
+
+#pragma mark - Other Helper Method
+//NSMutableDictionary *imageKeyDataDicts = [[NSMutableDictionary alloc] init];
+//if (image) {
+//    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+//    [imageKeyDataDicts setObject:imageData forKey:@"upfile"];
+//}
++ (NSMutableArray<CJUploadFileModel *> *)uploadFileModels:(NSDictionary *)imageKeyDataDicts {
+    NSString *imagePrefixName = [NSString stringWithFormat:@"%zd", (long)[[NSDate date] timeIntervalSince1970]*1000];
+    
+    NSMutableArray<CJUploadFileModel *> *uploadFileModels = [[NSMutableArray alloc] init];
+    NSInteger imageCount = imageKeyDataDicts.allKeys.count;
+    for (NSInteger i = 0; i < imageCount; i++) {
+        NSString *imageSuffixName = [NSString stringWithFormat:@"_%zd.jpg", i];
+        NSString *imageName = [imagePrefixName stringByAppendingString:imageSuffixName];
+        
+        NSString *imageKey = imageKeyDataDicts.allKeys[i];
+        NSData *imageData = [imageKeyDataDicts objectForKey:imageKey];
+        
+        CJUploadFileModel *imageUploadModel = [[CJUploadFileModel alloc] initWithItemType:CJUploadItemTypeImage itemName:imageName itemData:imageData itemKey:imageKey];
+        [uploadFileModels addObject:imageUploadModel];
+    }
+    
+    return uploadFileModels;
+}
+
+
+
 @end

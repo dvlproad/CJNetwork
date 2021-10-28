@@ -10,10 +10,16 @@
 
 @implementation CJRequestBaseModel
 
+@synthesize requestType;
+
 @synthesize ownBaseUrl;
 @synthesize apiSuffix;
-
+@synthesize customParams;
 @synthesize requestMethod;
+
+@synthesize requestEncrypt;
+
+@synthesize settingModel;
 
 - (instancetype)init {
     self = [super init];

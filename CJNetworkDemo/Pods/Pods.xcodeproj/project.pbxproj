@@ -235,13 +235,11 @@
 		C53724481EDE8B6D88B45CE0B587AEFC /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = F9ABD91D7320DB3A4FE34AEAD36689D0 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C5B3394354741D33F138DEB383B0D90E /* CJUploadFileModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 87D3BFF14E0B45506608AEF0D51B0085 /* CJUploadFileModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C744A130F2FA7BD5654FD983B2827B86 /* CJNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9614C9E31BAD0963BBD04271447FF5 /* CJNetworkClient.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		C8882481E83A0DB3C040A204B3D0F3B2 /* CJNetworkClient+CJDemoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A939E7FA647FDBA6C5C1EDF8A1FDF855 /* CJNetworkClient+CJDemoApp.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		CA1B7E824A3B1F1E179E0C999CC12809 /* NSFileManagerCJHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 61644B11B4DBC25C793321571F5850A0 /* NSFileManagerCJHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CA4DDDE9BA6A74E6639760ED5674990B /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D73A81ADCB14C6E2915914E766D53 /* UIActivityIndicatorView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		CAB09959CEF5E3A10E28CB2B9F4F211A /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F633BAA2C3DB5A13BBBA066D6367525F /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CAF8580D6ED4980C7ADF9DE194F85650 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C6A09E89BA14D17D9B8607E679BF57A0 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CC415A4C8ED6BDBB3B9471171997120D /* AFHTTPSessionManager+CJUploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 868E0BC3BCA792BA99A0C61C2E20F8E1 /* AFHTTPSessionManager+CJUploadFile.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		CEEF1971B4F45A5DB80BE6EAD9ED6539 /* CJNetworkClient+CJDemoApp.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB8326BF2F889FE046059B91A9A2820 /* CJNetworkClient+CJDemoApp.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D03201B62CC19C70BB34DC0FF52A3B43 /* CJLogModel.h in Headers */ = {isa = PBXBuildFile; fileRef = BC076CA2ED2DFA59200110453AADA1DD /* CJLogModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D0BCC4E7B3A0147FEF3F282B595BE294 /* CJLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF6B9B3CCFA7B4BA1D50B21E143F534 /* CJLogModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D13D2247CB23F4E8CEC5411CA165E560 /* CJBaseHelper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD95DB0D58235BBA18FC7CFC354DDB /* CJBaseHelper-dummy.m */; };
@@ -494,10 +492,10 @@
 		0941CE2B2CAA575E3936CFBE2317199C /* AFHTTPSessionManager+CJSerializerEncrypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "AFHTTPSessionManager+CJSerializerEncrypt.h"; path = "CJNetwork/AFNetworkingSerializerEncrypt/AFHTTPSessionManager+CJSerializerEncrypt.h"; sourceTree = "<group>"; };
 		0A1CB8B8E10E05D288E620190A1E3AC9 /* CJValidateStringBigTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJValidateStringBigTableViewCell.h; path = CQDemoKit/BaseVC/TextView/View/CJValidateStringBigTableViewCell.h; sourceTree = "<group>"; };
 		0B1DA957B984F683C5F1B13637316D67 /* CJUploadBaseModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJUploadBaseModel.h; path = CJNetworkClient/Upload/CJUploadBaseModel.h; sourceTree = "<group>"; };
-		0C18701028251AE51A03BB48AFFB52B7 /* libCJNetworkFileModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCJNetworkFileModel.a; path = libCJNetworkFileModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C18701028251AE51A03BB48AFFB52B7 /* libCJNetworkFileModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCJNetworkFileModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C8E2A630B7790C14FBBE8325B35CF98 /* YYCache.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YYCache.debug.xcconfig; sourceTree = "<group>"; };
 		0DFC5132F24F7E3657CE56C3C7245419 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		0E2E5EE5CC2BA3AD1F7FC756360A1E19 /* libCQDemoKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCQDemoKit.a; path = libCQDemoKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E2E5EE5CC2BA3AD1F7FC756360A1E19 /* libCQDemoKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCQDemoKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E3AFB510383DFBCA560512111BF034A /* CJUIKitBaseViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJUIKitBaseViewController.m; path = CQDemoKit/BaseVC/Base/CJUIKitBaseViewController.m; sourceTree = "<group>"; };
 		0F89D0B21DC3FE45FCEF2D6EFB4C159A /* CQDMSectionDataModel+CJDealTextModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CQDMSectionDataModel+CJDealTextModel.m"; path = "CQDemoKit/BaseVC/TextView/Model/CQDMSectionDataModel+CJDealTextModel.m"; sourceTree = "<group>"; };
 		0FF168E1E476151DE2AD81E2EFDC46D9 /* CJRequestCacheSettingModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CJRequestCacheSettingModel.m; sourceTree = "<group>"; };
@@ -518,7 +516,7 @@
 		1AE66168744ED2ACD5820C4C2E5BB7C4 /* AFHTTPSessionManager+CJMethodEncrypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "AFHTTPSessionManager+CJMethodEncrypt.h"; path = "CJNetwork/AFNetworkingMethodEncrypt/AFHTTPSessionManager+CJMethodEncrypt.h"; sourceTree = "<group>"; };
 		1B967198A3D34950A2F2ABC588F38DCF /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
 		1CAA09978A6F9C3CC35B718F4FD11359 /* DeviceCJHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DeviceCJHelper.m; path = CJBaseHelper/CJBaseHelper/DeviceCJHelper/DeviceCJHelper.m; sourceTree = "<group>"; };
-		1FFED36A657123030ABB700256D73F15 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMasonry.a; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFED36A657123030ABB700256D73F15 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2131160366546B057C12BF280A61D9AA /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
 		2241029DE777A902191A62AEEACA0207 /* Masonry-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
 		226FE2038550CD4C924F7F169E8FED02 /* UIImageView+CQTSBaseUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+CQTSBaseUtil.m"; path = "CQDemoKit/BaseUIKit/image/UIImageView+CQTSBaseUtil.m"; sourceTree = "<group>"; };
@@ -532,7 +530,7 @@
 		29AD95DB0D58235BBA18FC7CFC354DDB /* CJBaseHelper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CJBaseHelper-dummy.m"; sourceTree = "<group>"; };
 		2A7F596DF2359EBCABD0AD06DC1454BF /* CQNetworkPublic-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CQNetworkPublic-dummy.m"; sourceTree = "<group>"; };
 		2ADE4DB48724A4C958DFD89BF574068D /* CJMonitor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJMonitor.release.xcconfig; sourceTree = "<group>"; };
-		2B276B0A79173A1D6E83C9B4FB9A4A57 /* libMJExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMJExtension.a; path = libMJExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B276B0A79173A1D6E83C9B4FB9A4A57 /* libMJExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMJExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C0C3444E9CA23C53D6AF79FE83E16A4 /* OpenUDID.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OpenUDID.debug.xcconfig; sourceTree = "<group>"; };
 		2DB66E7D6AD53D403CC71BB4A89A8C53 /* CJNetworkClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJNetworkClient.release.xcconfig; sourceTree = "<group>"; };
 		2E311A3A072A033D4C0C63FCE409B3B4 /* icons8-settings.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "icons8-settings.png"; path = "CQDemoKit/BaseVC/TabBar/Resources/icons8-settings.png"; sourceTree = "<group>"; };
@@ -567,7 +565,7 @@
 		455D6D7D83DF8208ACF0B0EA2A76CB6D /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
 		45BAB8624869C688A26895D94EBF8A74 /* CJLogView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJLogView.m; path = CJMonitor/CJLog/CJLogView.m; sourceTree = "<group>"; };
 		485BAD0BC63CACEB39264E03A35CDD32 /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
-		48ACF38225AF5129416A1F090F6D3286 /* libYYCache.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libYYCache.a; path = libYYCache.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		48ACF38225AF5129416A1F090F6D3286 /* libYYCache.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYYCache.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4949C92D3EC6327C774CA0FBE29D08BC /* CJCacheManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJCacheManager.m; path = CJCacheManager/CJCacheManager.m; sourceTree = "<group>"; };
 		496ECA4D2A7D2592026C53B61EFEAD57 /* OpenUDID.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OpenUDID.release.xcconfig; sourceTree = "<group>"; };
 		4A87A032E8E3260BB576D9929BB4CED5 /* CQTSSuspendButtonRootViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQTSSuspendButtonRootViewController.h; path = CQDemoKit/BaseVC/Base/BaseWindow/SuspendWindowFactory/CQTSSuspendButtonRootViewController.h; sourceTree = "<group>"; };
@@ -603,7 +601,7 @@
 		606F9DCAABBC780A3A580705144A7C65 /* MJExtensionConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJExtensionConst.h; path = MJExtension/MJExtensionConst.h; sourceTree = "<group>"; };
 		60A35CF3648ECA28A3C9584B85833486 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
 		61644B11B4DBC25C793321571F5850A0 /* NSFileManagerCJHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NSFileManagerCJHelper.h; sourceTree = "<group>"; };
-		62043656392B851B0C44B348566D8545 /* libCJBaseHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCJBaseHelper.a; path = libCJBaseHelper.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		62043656392B851B0C44B348566D8545 /* libCJBaseHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCJBaseHelper.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		620DFAC453E0C3BCE446E1A1BCD140C9 /* CJDealTextModelFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJDealTextModelFactory.m; path = CQDemoKit/BaseVC/TextView/Model/CJDealTextModelFactory.m; sourceTree = "<group>"; };
 		6230139D7705701C2E26BE4B323A9E2C /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		63C51CC38F14D2FC3F058F8F9B1E1904 /* MJPropertyType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJPropertyType.m; path = MJExtension/MJPropertyType.m; sourceTree = "<group>"; };
@@ -614,7 +612,7 @@
 		69FA7D33E18C137144A7AE8FE5191BAA /* UIImage+CQDemoKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+CQDemoKit.h"; path = "CQDemoKit/Helper/UIImage+CQDemoKit.h"; sourceTree = "<group>"; };
 		6B9FEA94ADFDEAB6087F28F5ABA89299 /* CQTSSwitchViewFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQTSSwitchViewFactory.h; path = CQDemoKit/BaseUIKit/CQTSSwitchViewFactory.h; sourceTree = "<group>"; };
 		6C59777115151D31D0902C53C8653F63 /* CJUIKitToastUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJUIKitToastUtil.h; path = CQDemoKit/BaseUtil/CJUIKitToastUtil.h; sourceTree = "<group>"; };
-		6CBEFE4F9E22AFDC6347A739BB35FF8C /* libCocoaAsyncSocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCocoaAsyncSocket.a; path = libCocoaAsyncSocket.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CBEFE4F9E22AFDC6347A739BB35FF8C /* libCocoaAsyncSocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaAsyncSocket.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5F17CFF0C0EBDEF685B1A4174ADC0E /* CQTSContainerViewFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CQTSContainerViewFactory.m; path = CQDemoKit/BaseUIKit/CQTSContainerViewFactory.m; sourceTree = "<group>"; };
 		6E3F026DE79910C8D84D4C30A4FD0B35 /* CQTSSuspendWindowFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQTSSuspendWindowFactory.h; path = CQDemoKit/BaseVC/Base/BaseWindow/SuspendWindowFactory/CQTSSuspendWindowFactory.h; sourceTree = "<group>"; };
 		6E87E8346B79B1B6FA75B4FD7298CA84 /* NSObjectCJHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NSObjectCJHelper.m; path = CJBaseHelper/CJBaseHelper/NSObjectCJHelper/NSObjectCJHelper.m; sourceTree = "<group>"; };
@@ -630,7 +628,7 @@
 		73392F4CEF263187AE1500D38D040425 /* YYDiskCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYDiskCache.m; path = YYCache/YYDiskCache.m; sourceTree = "<group>"; };
 		737E7B4267044B9E6ABF7C4657C91B0F /* UIButton+CQTSMoreProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+CQTSMoreProperty.m"; path = "CQDemoKit/BaseUIKit/UIButton+CQTSMoreProperty.m"; sourceTree = "<group>"; };
 		738CB2C53D356110AE86A78C9AD3166E /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
-		73E211646DC21644AC73B4A369922E06 /* libOpenUDID.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libOpenUDID.a; path = libOpenUDID.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		73E211646DC21644AC73B4A369922E06 /* libOpenUDID.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOpenUDID.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F55EFA247551228107F783F9EF4108 /* CJDealTextModelFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJDealTextModelFactory.h; path = CQDemoKit/BaseVC/TextView/Model/CJDealTextModelFactory.h; sourceTree = "<group>"; };
 		7547C3BB6846979839F0FB23817E8552 /* YYKVStorage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYKVStorage.m; path = YYCache/YYKVStorage.m; sourceTree = "<group>"; };
 		7605191D11149D529BFA860856236D6D /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -639,7 +637,7 @@
 		7873D177DD20CECA306A73B2D402C625 /* CQTSSuspendWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQTSSuspendWindow.h; path = CQDemoKit/BaseVC/Base/BaseWindow/CQTSSuspendWindow.h; sourceTree = "<group>"; };
 		78996FEF5B4AC2FF0589508B6BE18C8F /* AsyncSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AsyncSocket.m; path = Source/RunLoop/AsyncSocket.m; sourceTree = "<group>"; };
 		79A23CBA6DD85FE89745EC7D0072FC7A /* CJNetworkCacheUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CJNetworkCacheUtil.m; sourceTree = "<group>"; };
-		79C59D4F6F7B4B08C11194DFE549B8AD /* libPods-CJNetworkDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-CJNetworkDemo.a"; path = "libPods-CJNetworkDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79C59D4F6F7B4B08C11194DFE549B8AD /* libPods-CJNetworkDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CJNetworkDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A077193394C99412514B83087B9E07F /* CJMonitor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CJMonitor-prefix.pch"; sourceTree = "<group>"; };
 		7B171EF5A2E156DF7DB957866E1C0897 /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
 		7B4BFA647FDE7A1AFFDC4BBD6063CE3F /* YYCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYCache.h; path = YYCache/YYCache.h; sourceTree = "<group>"; };
@@ -647,7 +645,7 @@
 		7BAC822A13B9224DCB801789B5973903 /* CJBaseUtil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJBaseUtil.release.xcconfig; sourceTree = "<group>"; };
 		7CAAD930DD8A6B738E689FFCA34B2983 /* YYCache-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YYCache-prefix.pch"; sourceTree = "<group>"; };
 		7CC627FF58887E183EAE325E4E4FB0C0 /* UIView+AFNetworkingUpload.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIView+AFNetworkingUpload.m"; sourceTree = "<group>"; };
-		7D6BE330F63D1ACE11648F44F9136EB0 /* libCJNetworkSimulate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCJNetworkSimulate.a; path = libCJNetworkSimulate.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D6BE330F63D1ACE11648F44F9136EB0 /* libCJNetworkSimulate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCJNetworkSimulate.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DD62499BD46805C262A8D47DF8D91DE /* CJUIKitBaseTabBarViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJUIKitBaseTabBarViewController.m; path = CQDemoKit/BaseVC/TabBar/CJUIKitBaseTabBarViewController.m; sourceTree = "<group>"; };
 		7E7BD0D39D236CDA096F92791EE62FE3 /* CJRequestUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJRequestUtil.h; path = CJNetwork/CJRequestUtil/CJRequestUtil.h; sourceTree = "<group>"; };
 		7ECF692969DE45730F060CEAD753567C /* DeviceCJHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DeviceCJHelper.h; path = CJBaseHelper/CJBaseHelper/DeviceCJHelper/DeviceCJHelper.h; sourceTree = "<group>"; };
@@ -668,9 +666,9 @@
 		8B68009879A459A966C3D06506D741C7 /* CJBaseHelper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CJBaseHelper-prefix.pch"; sourceTree = "<group>"; };
 		8BB2A6E7D29ADA6FAF6558892F382D46 /* CJBaseHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJBaseHelper.debug.xcconfig; sourceTree = "<group>"; };
 		8CD3C73574727FFEB31F8FDF21E6404A /* Pods-CJNetworkDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CJNetworkDemo-acknowledgements.plist"; sourceTree = "<group>"; };
-		8D78B3F6BA27376BC90A4D8F970633A5 /* libCJBaseUtil.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCJBaseUtil.a; path = libCJBaseUtil.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D78B3F6BA27376BC90A4D8F970633A5 /* libCJBaseUtil.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCJBaseUtil.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA30E75CF7AC4B0D04A58DFB587B53D /* CQNetworkRequestSuccessFailureHelperProtocal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQNetworkRequestSuccessFailureHelperProtocal.h; path = CQNetworkPublic/Request/Helper/CQNetworkRequestSuccessFailureHelperProtocal.h; sourceTree = "<group>"; };
-		8EEE41EC72CA98BECA71AECCEE798D97 /* libCJMonitor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCJMonitor.a; path = libCJMonitor.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EEE41EC72CA98BECA71AECCEE798D97 /* libCJMonitor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCJMonitor.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FF1658500218D3C3692202ECE05DBE7 /* AFNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.release.xcconfig; sourceTree = "<group>"; };
 		8FF6B9B3CCFA7B4BA1D50B21E143F534 /* CJLogModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJLogModel.m; path = CJMonitor/CJLog/CJLogModel.m; sourceTree = "<group>"; };
 		904AFA38DD4B61CD2BE179B7D36E0973 /* CJRequestSettingEnum.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CJRequestSettingEnum.h; sourceTree = "<group>"; };
@@ -683,7 +681,7 @@
 		94273F2CCB15A0BB231F8B7A47B72B07 /* CJRequestCommonHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJRequestCommonHelper.m; path = CJNetwork/CJNetworkCommon/CJRequestCommonHelper.m; sourceTree = "<group>"; };
 		9488CC7A1ABDF16AD8BD6A8A2B346DAB /* Pods-CJNetworkDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CJNetworkDemo-resources.sh"; sourceTree = "<group>"; };
 		95561B6562D8A96DFDBCC9DEAD99C47B /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
-		959C4E1D1C786C438935973B9F9993A7 /* CJNetworkFileModel.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = CJNetworkFileModel.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		959C4E1D1C786C438935973B9F9993A7 /* CJNetworkFileModel.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = CJNetworkFileModel.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		97048E6978F06AF31F1EB5C3346E5E7A /* CJNetwork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJNetwork.release.xcconfig; sourceTree = "<group>"; };
 		971464ADFFDD62EE9FC001EB0B0B9F3B /* CJUIKitBaseTextViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJUIKitBaseTextViewController.h; path = CQDemoKit/BaseVC/TextView/CJUIKitBaseTextViewController.h; sourceTree = "<group>"; };
 		97A104288B9E8C541840993E53E5D7FE /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
@@ -696,27 +694,26 @@
 		9B79554AEAD727564E93E950109B1E75 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
 		9B8D73A81ADCB14C6E2915914E766D53 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
 		9CE6727202ABC8A3243EE8C9A27E38EC /* CJNetworkClient+Completion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+Completion.h"; path = "CJNetworkClient/Request/CJNetworkClient+Completion.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E18D5D692FE475EC810CF9F2A339941 /* CJRequestUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJRequestUtil.m; path = CJNetwork/CJRequestUtil/CJRequestUtil.m; sourceTree = "<group>"; };
 		9F17701F5B0C9E4F8BF0C582706EAC13 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AsyncUdpSocket.h; path = Source/RunLoop/AsyncUdpSocket.h; sourceTree = "<group>"; };
-		9F59A4EC186D2E4DCACC5F92BB2DF60B /* CJNetworkSimulate.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = CJNetworkSimulate.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F59A4EC186D2E4DCACC5F92BB2DF60B /* CJNetworkSimulate.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = CJNetworkSimulate.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A027602D4891F0BCF11D088B4ECF7D4A /* YYCache-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YYCache-dummy.m"; sourceTree = "<group>"; };
 		A23DBD6416C4FFAB3BBE573D46ECD3E3 /* CJBaseHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJBaseHelper.release.xcconfig; sourceTree = "<group>"; };
 		A29F05C38D51AC35B758FA31CABC7828 /* CQDMSectionDataModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CQDMSectionDataModel.m; path = CQDemoKit/BaseVC/Base/Model/CQDMSectionDataModel.m; sourceTree = "<group>"; };
-		A33C5AF06B07D620280EAD502FCBD440 /* libCJNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCJNetwork.a; path = libCJNetwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A33C5AF06B07D620280EAD502FCBD440 /* libCJNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCJNetwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33E6BC3E5DEFCF9D8EAB9FA6B601FF4 /* CQTSSuspendWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CQTSSuspendWindow.m; path = CQDemoKit/BaseVC/Base/BaseWindow/CQTSSuspendWindow.m; sourceTree = "<group>"; };
 		A35BB011414FC15004BBD3ED7A69B4F1 /* CQNetworkUploadSuccessFailureClientProtocal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQNetworkUploadSuccessFailureClientProtocal.h; path = CQNetworkPublic/Upload/Client/CQNetworkUploadSuccessFailureClientProtocal.h; sourceTree = "<group>"; };
 		A4175D64C4AC87D8E5B63BEED586B8A6 /* CJUIKitCollectionViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJUIKitCollectionViewCell.m; path = CQDemoKit/BaseVC/Collection/CJUIKitCollectionViewCell.m; sourceTree = "<group>"; };
 		A453B4C7FF8181C070969B4B0AFCB72D /* CQNetworkPublic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CQNetworkPublic.release.xcconfig; sourceTree = "<group>"; };
 		A4547461FE12F62328DB846B1650D158 /* MJProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJProperty.m; path = MJExtension/MJProperty.m; sourceTree = "<group>"; };
-		A4FA15D44DF6BAC7550EDEED10862AA3 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFNetworking.a; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FA15D44DF6BAC7550EDEED10862AA3 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67E5839CE44A9BBB5BBA07D2EFD9E12 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
 		A6D400950D81267B7F5F27591E30C961 /* CJDataMemoryCacheManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CJDataMemoryCacheManager.h; sourceTree = "<group>"; };
 		A7116489CB7A0DA07FF3513DAF64EC15 /* CJResponseModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CJResponseModel.h; sourceTree = "<group>"; };
 		A725D361750A30D9BE8BB8579281F721 /* CJRequestURLHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJRequestURLHelper.h; path = CQNetworkPublic/Base/CJRequestURLHelper.h; sourceTree = "<group>"; };
 		A75AAF210B342C64D848617E6D09D182 /* CJLogViewWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJLogViewWindow.m; path = CJMonitor/CJLog/CJLogViewWindow.m; sourceTree = "<group>"; };
 		A77E11C3668E066BC29789735ACD2BA6 /* CQTSImageLoader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQTSImageLoader.h; path = CQDemoKit/BaseUIKit/image/CQTSImageLoader.h; sourceTree = "<group>"; };
-		A939E7FA647FDBA6C5C1EDF8A1FDF855 /* CJNetworkClient+CJDemoApp.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CJNetworkClient+CJDemoApp.m"; path = "CJNetworkClient/Upload/CJNetworkClient+CJDemoApp.m"; sourceTree = "<group>"; };
 		AA058CD73DE8FC8D5BC6A39CB8F71ED1 /* MASViewAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewAttribute.m; path = Masonry/MASViewAttribute.m; sourceTree = "<group>"; };
 		AA51AADBD4F818435FF6D8D47AA55BDD /* UIImageView+CQTSBaseUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+CQTSBaseUtil.h"; path = "CQDemoKit/BaseUIKit/image/UIImageView+CQTSBaseUtil.h"; sourceTree = "<group>"; };
 		AA6DDEAB38D77B5560DCD72D34CAB125 /* CocoaAsyncSocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-prefix.pch"; sourceTree = "<group>"; };
@@ -744,7 +741,6 @@
 		BB3E3770B8AA2FC7664FC5634E6792A2 /* CJMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJMonitor.debug.xcconfig; sourceTree = "<group>"; };
 		BC076CA2ED2DFA59200110453AADA1DD /* CJLogModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJLogModel.h; path = CJMonitor/CJLog/CJLogModel.h; sourceTree = "<group>"; };
 		BC965D0E1955E6599DED5E59CDEC84AB /* NSObjectCJHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSObjectCJHelper.h; path = CJBaseHelper/CJBaseHelper/NSObjectCJHelper/NSObjectCJHelper.h; sourceTree = "<group>"; };
-		BCB8326BF2F889FE046059B91A9A2820 /* CJNetworkClient+CJDemoApp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CJNetworkClient+CJDemoApp.h"; path = "CJNetworkClient/Upload/CJNetworkClient+CJDemoApp.h"; sourceTree = "<group>"; };
 		BE3401442774B09BC0D54F14CEE6C269 /* CJLogUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CJLogUtil.m; path = CJMonitor/CJLog/CJLogUtil.m; sourceTree = "<group>"; };
 		BEAA0002BBE05FA1726414FFE406A205 /* CJNetworkFileModel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJNetworkFileModel.debug.xcconfig; sourceTree = "<group>"; };
 		BF64B86707838337428759ACA484ABF1 /* CJNetworkSimulate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CJNetworkSimulate.debug.xcconfig; sourceTree = "<group>"; };
@@ -801,7 +797,7 @@
 		DB10CC9DD56F9B8A2D7258EAA7580FED /* MJExtensionConst.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJExtensionConst.m; path = MJExtension/MJExtensionConst.m; sourceTree = "<group>"; };
 		DB3F2D1D4B4AD1038038BEAD9D956711 /* CJSimulateRemoteUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJSimulateRemoteUtil.h; path = CJNetworkSimulate/CJSimulateRemoteUtil.h; sourceTree = "<group>"; };
 		DBA36C4F4C6A9EE16BBC4CE6D87BEE02 /* CQDMTabBarModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CQDMTabBarModel.m; path = CQDemoKit/BaseVC/TabBar/Model/CQDMTabBarModel.m; sourceTree = "<group>"; };
-		DC3EBF76DFD7C5196E682E4411D55BC0 /* libPods-CJNetworkDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-CJNetworkDemoTests.a"; path = "libPods-CJNetworkDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC3EBF76DFD7C5196E682E4411D55BC0 /* libPods-CJNetworkDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CJNetworkDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCA627E56246CEF6865A136B37EF5BCC /* CJUIKitBaseScrollViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJUIKitBaseScrollViewController.h; path = CQDemoKit/BaseVC/ScrollView/CJUIKitBaseScrollViewController.h; sourceTree = "<group>"; };
 		DCEEC7C1F8E5039B5B29E3B54F28B25A /* CJUploadMomentInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJUploadMomentInfo.h; path = CJNetworkFileModel/CJUploadFileModelsOwner/CJUploadMomentInfo.h; sourceTree = "<group>"; };
 		DD51282F59840998AEC64415019963D3 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
@@ -817,9 +813,9 @@
 		E69554EEF7552E5956C0C1B2FDDE1781 /* MJPropertyType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJPropertyType.h; path = MJExtension/MJPropertyType.h; sourceTree = "<group>"; };
 		E6A2AEE4B0624BDACDB541B5D827B762 /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFAutoPurgingImageCache.m; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.m"; sourceTree = "<group>"; };
 		E728BD9FFAE96F9924324BA7AACDE908 /* CQNetworkUploadCompletionClientProtocal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CQNetworkUploadCompletionClientProtocal.h; path = CQNetworkPublic/Upload/Client/CQNetworkUploadCompletionClientProtocal.h; sourceTree = "<group>"; };
-		E7FB48988926B659B32EFD40F559F0BA /* libCJNetworkClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCJNetworkClient.a; path = libCJNetworkClient.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7FB48988926B659B32EFD40F559F0BA /* libCJNetworkClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCJNetworkClient.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88985E8A2DE921817119314066E0E77 /* AFNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.debug.xcconfig; sourceTree = "<group>"; };
-		E89B219A2FD9F6CCC44BB76B57A17565 /* libCQNetworkPublic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCQNetworkPublic.a; path = libCQNetworkPublic.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E89B219A2FD9F6CCC44BB76B57A17565 /* libCQNetworkPublic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCQNetworkPublic.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96971404AB27BD14265935B832906D0 /* CJUploadModelProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJUploadModelProtocol.h; path = CQNetworkPublic/Upload/Base/CJUploadModelProtocol.h; sourceTree = "<group>"; };
 		E9AF3904BB00CFF499D315CA7390B36D /* CJLogView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CJLogView.h; path = CJMonitor/CJLog/CJLogView.h; sourceTree = "<group>"; };
 		EA4696C90B6B8917B3A4B5D6D0E6B909 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
@@ -1104,7 +1100,6 @@
 				83D8BE5A0EC1178433C9D90DB90A19F2 /* CJLog */,
 				8DA91875D0F752A725A3FDBEAB2BF5F8 /* Support Files */,
 			);
-			name = CJMonitor;
 			path = CJMonitor;
 			sourceTree = "<group>";
 		};
@@ -1119,7 +1114,6 @@
 				50C97BE9E809E92C51031D0240F86433 /* Support Files */,
 				DB0262FCB5E5B54C4585C57C5EF731DC /* UIKit */,
 			);
-			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -1159,7 +1153,6 @@
 				04990AA9A7B06AD4D645AC94FE61DAB3 /* YYMemoryCache.m */,
 				B13533650F1F6B1FDE4310832A4ABB1E /* Support Files */,
 			);
-			name = YYCache;
 			path = YYCache;
 			sourceTree = "<group>";
 		};
@@ -1347,8 +1340,6 @@
 		51611DE126AA2B8713A177B0ABBEA29B /* Upload */ = {
 			isa = PBXGroup;
 			children = (
-				BCB8326BF2F889FE046059B91A9A2820 /* CJNetworkClient+CJDemoApp.h */,
-				A939E7FA647FDBA6C5C1EDF8A1FDF855 /* CJNetworkClient+CJDemoApp.m */,
 				68BA5909941B8915FDF2426BF63C65F4 /* CJNetworkClient+Upload1.h */,
 				60518A0BD5E25EA3392568C591F160BE /* CJNetworkClient+Upload1.m */,
 				3D6913FD58A9B1DB9E9A025B83B873BA /* CJNetworkClient+Upload2.h */,
@@ -1493,7 +1484,6 @@
 				C7538D772457CE5E1E006F4CC7E52CE7 /* OpenUDID.m */,
 				E3A5A7FA7A06746E26ECEA92E2404B8C /* Support Files */,
 			);
-			name = OpenUDID;
 			path = OpenUDID;
 			sourceTree = "<group>";
 		};
@@ -1602,7 +1592,6 @@
 				449BFB2599CFC9C3D9AD860A4F77F43D /* CJIndentedStringUtil */,
 				A432DCBC879C5F5584A0FCD957DFA0AC /* Support Files */,
 			);
-			name = CJBaseUtil;
 			path = CJBaseUtil;
 			sourceTree = "<group>";
 		};
@@ -1648,7 +1637,6 @@
 				7A8F9D71876C56E03E2761C7189C0519 /* NSObjectCJHelper */,
 				12BE6ED1BB4E9D9948D5B98472900478 /* Support Files */,
 			);
-			name = CJBaseHelper;
 			path = CJBaseHelper;
 			sourceTree = "<group>";
 		};
@@ -1698,7 +1686,6 @@
 				67F84C861E1739C045ACD0B86C3E9AB7 /* NSString+MJExtension.m */,
 				921EC8644C6C78889DEFD3F921ED82D7 /* Support Files */,
 			);
-			name = MJExtension;
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
@@ -1899,7 +1886,6 @@
 				0B23038640FDA4C47BEA7D49A1D8F6A8 /* Helper */,
 				A44663675D8A78886B8298BBB30A6ED6 /* Support Files */,
 			);
-			name = CQDemoKit;
 			path = CQDemoKit;
 			sourceTree = "<group>";
 		};
@@ -2023,7 +2009,6 @@
 				9F07D0373893DF8AFE4C5BF186AC8ADE /* RunLoop */,
 				0F85F46A6796C6A776325BFADDE3A91C /* Support Files */,
 			);
-			name = CocoaAsyncSocket;
 			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
@@ -2066,7 +2051,6 @@
 				DFAC00279BCB19F00976DB9D3D0BDC7F /* ViewController+MASAdditions.m */,
 				F1D77B445B777794487A76924AD786F7 /* Support Files */,
 			);
-			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -2320,7 +2304,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEEF1971B4F45A5DB80BE6EAD9ED6539 /* CJNetworkClient+CJDemoApp.h in Headers */,
 				1C75480B00E58B743661842BB86DA552 /* CJNetworkClient+Completion.h in Headers */,
 				7AF855E05693182C1BB1FAE7C4AAD606 /* CJNetworkClient+SuccessFailure.h in Headers */,
 				72E4F552F1F95C840667D1E48C872D61 /* CJNetworkClient+Upload1.h in Headers */,
@@ -2796,7 +2779,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8882481E83A0DB3C040A204B3D0F3B2 /* CJNetworkClient+CJDemoApp.m in Sources */,
 				9AFFE9B2624F893F2F267F4F2CCDF2EB /* CJNetworkClient+Completion.m in Sources */,
 				A3DE1A59A499B9CAE2A528D76107B8EC /* CJNetworkClient+SuccessFailure.m in Sources */,
 				A48B5D3989C1BFF5559B51DD9A95A5A8 /* CJNetworkClient+Upload1.m in Sources */,
@@ -3855,8 +3837,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

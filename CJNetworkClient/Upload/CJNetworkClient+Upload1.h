@@ -14,6 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CJNetworkClient (Upload1) <CQNetworkUploadCompletionClientProtocal>
 
+#pragma mark - Other Helper Method
+//NSMutableDictionary *imageKeyDataDicts = [[NSMutableDictionary alloc] init];
+//if (image) {
+//    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+//    [imageKeyDataDicts setObject:imageData forKey:@"upfile"];
+//}
++ (NSMutableArray<CJUploadFileModel *> *)uploadFileModels:(NSDictionary *)imageKeyDataDicts;
 
 @end
 
