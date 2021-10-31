@@ -1,6 +1,6 @@
 {
   "name": "CJNetworkClient",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "summary": "网络请求的管理类：一个基于CJNetwork而封装的网络请求接口管理库",
   "homepage": "https://github.com/dvlproad/CJNetwork",
   "license": "MIT",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/dvlproad/CJNetwork.git",
-    "tag": "CJNetworkClient_1.4.2"
+    "tag": "CJNetworkClient_1.4.3"
   },
   "frameworks": "UIKit",
   "requires_arc": true,
