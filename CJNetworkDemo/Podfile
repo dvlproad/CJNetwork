@@ -23,6 +23,8 @@ end
 
 
 target 'CJNetworkDemo' do
+#  plugin 'cocoapods-hmap-prebuilt'
+  
   pod 'CQDemoKit',          '~> 0.6.8',      :subspecs => ['BaseVC']
   
   # 模拟请求
