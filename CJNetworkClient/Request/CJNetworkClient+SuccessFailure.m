@@ -29,5 +29,19 @@
 }
 
 
+- (NSURLSessionDataTask *)requestModel:(__kindof NSObject<CJRequestModelProtocol> *)model
+                         originSuccess:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+                         originFailure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
+{
+    return [self requestModel:model originCompleteBlock:^(CJSuccessRequestInfo * _Nullable successRequestInfo, CJFailureRequestInfo * _Nullable failureRequestInfo) {
+        if (failureRequestInfo != nil) {
+            !failure ?: failure(failureRequestInfo);
+            
+        } else {
+            !success ?: success(successRequestInfo);
+        }
+    }];
+}
+
 
 @end

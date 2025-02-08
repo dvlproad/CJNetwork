@@ -13,8 +13,6 @@
 #import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
 #import "TSCleanHTTPSessionManager.h"
 
-#import "TSVideoUrlAnalyzeHomeViewController.h"
-
 @interface TSCleanRequestHomeViewController ()
 
 @property (nonatomic, strong) dispatch_queue_t commonConcurrentQueue; //创建并发队列
@@ -51,13 +49,6 @@
             loginModule.actionBlock = ^{
                 [self __testPostRequest];
             };
-            [sectionDataModel.values addObject:loginModule];
-        }
-        
-        {
-            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
-            loginModule.title = @"快捷指令：抖音解析 无水印";
-            loginModule.classEntry = [TSVideoUrlAnalyzeHomeViewController class];
             [sectionDataModel.values addObject:loginModule];
         }
         

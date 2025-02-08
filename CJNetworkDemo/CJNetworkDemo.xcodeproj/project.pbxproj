@@ -69,7 +69,7 @@
 		80E7E62920ABCFBC000F762D /* AppInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E7E62820ABCFBB000F762D /* AppInfoManager.m */; };
 		97216B0B2570AAC60006E1C2 /* SimulationHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97216B092570AAC60006E1C2 /* SimulationHomeViewController.m */; };
 		97216B112570AC4D0006E1C2 /* api:card:cardlist in Resources */ = {isa = PBXBuildFile; fileRef = 97216B102570AC4D0006E1C2 /* api:card:cardlist */; };
-		9730F3A92D57E57E008AF628 /* TSVideoUrlAnalyzeHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9730F3A82D57E57E008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */; };
+		9730F3AC2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9730F3AB2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */; };
 		FE2ABDE4BA0BFA3A4E890E9C /* libPods-CJNetworkDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 950ACC5ADCD7E563531771DD /* libPods-CJNetworkDemoTests.a */; };
 /* End PBXBuildFile section */
 
@@ -213,8 +213,8 @@
 		97216B092570AAC60006E1C2 /* SimulationHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulationHomeViewController.m; sourceTree = "<group>"; };
 		97216B0A2570AAC60006E1C2 /* SimulationHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationHomeViewController.h; sourceTree = "<group>"; };
 		97216B102570AC4D0006E1C2 /* api:card:cardlist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "api:card:cardlist"; sourceTree = "<group>"; };
-		9730F3A72D57E57E008AF628 /* TSVideoUrlAnalyzeHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSVideoUrlAnalyzeHomeViewController.h; sourceTree = "<group>"; };
-		9730F3A82D57E57E008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSVideoUrlAnalyzeHomeViewController.m; sourceTree = "<group>"; };
+		9730F3AA2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSVideoUrlAnalyzeHomeViewController.h; sourceTree = "<group>"; };
+		9730F3AB2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSVideoUrlAnalyzeHomeViewController.m; sourceTree = "<group>"; };
 		C11239993D822E171AABD0F4 /* Pods-CJNetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F1F8B8F4FF9EBFC0F62ED2D0 /* Pods-CJNetworkDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemoTests/Pods-CJNetworkDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,6 +257,8 @@
 				158259BC2484E8F500BA4B3D /* TestNetworkClient+TestCache.m */,
 				158259BE2484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.h */,
 				158259C32484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.m */,
+				9730F3AA2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.h */,
+				9730F3AB2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */,
 			);
 			path = TS311CJNetworkClientRequestDemo;
 			sourceTree = "<group>";
@@ -277,8 +279,6 @@
 				158259C92484E8F500BA4B3D /* TSCleanHTTPSessionManager.m */,
 				158259CA2484E8F500BA4B3D /* TSCleanRequestHomeViewController.h */,
 				158259C82484E8F500BA4B3D /* TSCleanRequestHomeViewController.m */,
-				9730F3A72D57E57E008AF628 /* TSVideoUrlAnalyzeHomeViewController.h */,
-				9730F3A82D57E57E008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */,
 			);
 			path = TS111ManagerRequestDemo;
 			sourceTree = "<group>";
@@ -965,7 +965,7 @@
 				158259E42484E8F500BA4B3D /* HealthyHTTPSessionManager.m in Sources */,
 				7868F1A82121D06C00A283EB /* AFNDemoViewController.m in Sources */,
 				158259E52484E8F500BA4B3D /* RequestCacheHomeViewController.m in Sources */,
-				9730F3A92D57E57E008AF628 /* TSVideoUrlAnalyzeHomeViewController.m in Sources */,
+				9730F3AC2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m in Sources */,
 				789486272486BE330067AEE3 /* TS113CacheResponseModel.m in Sources */,
 				7868F1862121C79A00A283EB /* DownloadListViewController.m in Sources */,
 			);

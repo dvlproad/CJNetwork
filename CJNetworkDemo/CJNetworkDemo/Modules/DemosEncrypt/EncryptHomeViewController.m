@@ -18,6 +18,9 @@
 
 #import "TS12MyNetworkClientHomeViewController.h"
 
+#import "TS31CJNetworkClientHomeViewController.h"
+#import "TSVideoUrlAnalyzeHomeViewController.h"
+
 @interface EncryptHomeViewController ()
 
 @property (nonatomic, strong) dispatch_queue_t commonConcurrentQueue; //创建并发队列
@@ -99,12 +102,19 @@
     // 网络请求(未封装时候)
     {
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = @"两层封装(继承 CJNetworkClient)";
+        sectionDataModel.theme = @"两层封装(继承 CJNetworkClient )";
         
         {
             CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];
-            requestModule.title = @"测试网络请求(CJNetworkClient)--待添加";
-//            requestModule.classEntry = [TSCleanRequestHomeViewController class];
+            requestModule.title = @"测试网络请求(继承 CJNetworkClient )";
+            requestModule.classEntry = [TS31CJNetworkClientHomeViewController class];
+            [sectionDataModel.values addObject:requestModule];
+        }
+        {
+            CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];
+            requestModule.title = @"测试网络请求(继承 CJNetworkClient )";
+            requestModule.content = @"快捷指令：抖音解析 无水印";
+            requestModule.classEntry = [TSVideoUrlAnalyzeHomeViewController class];
             [sectionDataModel.values addObject:requestModule];
         }
         

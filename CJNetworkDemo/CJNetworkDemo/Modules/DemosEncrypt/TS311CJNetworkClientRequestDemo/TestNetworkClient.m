@@ -32,9 +32,14 @@
             //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
             //CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:isCacheData];
             CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-            responseModel .statusCode = [responseDictionary[@"status"] integerValue];
-            responseModel.message = responseDictionary[@"message"];
-            responseModel.result = responseDictionary[@"result"];
+            responseModel .statusCode = [responseDictionary[@"code"] integerValue];
+            responseModel.message = responseDictionary[@"msg"];
+            
+            NSMutableDictionary *result = [NSMutableDictionary dictionaryWithDictionary:responseDictionary];
+            [result removeObjectForKey:@"code"];
+            [result removeObjectForKey:@"msg"];
+            responseModel.result = result;
+            
             responseModel.isCacheData = successNetworkInfo.isCacheData;
             responseModel.cjNetworkLog = successNetworkInfo.networkLogString;
 

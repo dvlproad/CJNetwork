@@ -13,8 +13,57 @@
 
 @implementation CJNetworkClient (Completion)
 
+//    [manager cj_requestUrl:Url params:allParams headers:headers method:requestMethod cacheSettingModel:cacheSettingModel logType:logType progress:progressBlock success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
+//        [CJResponseHelper __dealSuccessRequestInfo:successNetworkInfo
+//                      getSuccessResponseModelBlock:weakSelf.getSuccessResponseModelBlock
+//                         checkIsCommonFailureBlock:weakSelf.checkIsCommonFailureBlock
+//                                     completeBlock:completeBlock];
+//
+//    } failure:^(CJFailureRequestInfo * _Nullable failureNetworkInfo) {
+//        [CJResponseHelper __dealFailureNetworkInfo:failureNetworkInfo
+//                      getFailureResponseModelBlock:weakSelf.getFailureResponseModelBlock
+//                                     completeBlock:completeBlock];
+//    }];
 - (NSURLSessionDataTask *)requestModel:(__kindof NSObject<CJRequestModelProtocol> *)model
                          completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+{
+    __weak typeof(self)weakSelf = self;
+    return [self requestModel:model originCompleteBlock:^(CJSuccessRequestInfo * _Nullable successRequestInfo, CJFailureRequestInfo * _Nullable failureRequestInfo) {
+        if (failureRequestInfo != nil) {
+            CJResponseModel *responseModel = weakSelf.getFailureResponseModelBlock(failureRequestInfo);
+            //responseModel.isCacheData = NO;
+            CJResponeFailureType failureType = CJResponeFailureTypeRequestFailure;
+            
+            completeBlock(failureType, responseModel);
+        } else {
+            
+            CJResponseModel *responseModel = weakSelf.getSuccessResponseModelBlock(successRequestInfo);
+            //方式①
+            //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
+            //方式②
+            //CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:successNetworkInfo.isCacheData];
+            //方式③
+            //CJResponseModel *responseModel = [[CJResponseModel alloc] init];
+            //responseModel.statusCode = [responseDictionary[@"status"] integerValue];
+            //responseModel.message = responseDictionary[@"message"];
+            //responseModel.result = responseDictionary[@"result"];
+            //responseModel.isCacheData = isCacheData;
+            
+            CJResponeFailureType failureType = CJResponeFailureTypeNeedFurtherJudgeFailure;
+            if (weakSelf.checkIsCommonFailureBlock) {
+                BOOL isCommonFailure = weakSelf.checkIsCommonFailureBlock(responseModel);
+                failureType = isCommonFailure ? CJResponeFailureTypeCommonFailure : CJResponeFailureTypeNeedFurtherJudgeFailure;
+            }
+            
+            if (completeBlock) {
+                completeBlock(failureType, responseModel);
+            }
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)requestModel:(__kindof NSObject<CJRequestModelProtocol> *)model
+                   originCompleteBlock:(void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo, CJFailureRequestInfo * _Nullable failureRequestInfo))completeBlock
 {
     CQRequestType requestType = [model requestType];
     if (requestType == CQRequestTypeReal) {
@@ -32,7 +81,7 @@
 
 #pragma mark - RealApi
 - (NSURLSessionDataTask *)real1_requestModel:(__kindof NSObject<CJRequestModelProtocol> *)model
-                               completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
+                               completeBlock:(void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo, CJFailureRequestInfo * _Nullable failureRequestInfo))completeBlock
 {
     NSString *baseUrl = [model ownBaseUrl];
     if (baseUrl == nil) {
@@ -75,16 +124,10 @@
     NSDictionary<NSString *, NSString *> *headers = @{};
     
     NSURLSessionDataTask *URLSessionDataTask =
-    [manager cj_requestUrl:Url params:allParams headers:headers method:requestMethod cacheSettingModel:cacheSettingModel logType:logType progress:progressBlock success:^(CJSuccessRequestInfo * _Nullable successNetworkInfo) {
-        [CJResponseHelper __dealSuccessRequestInfo:successNetworkInfo
-                      getSuccessResponseModelBlock:self.getSuccessResponseModelBlock
-                         checkIsCommonFailureBlock:self.checkIsCommonFailureBlock
-                                     completeBlock:completeBlock];
-        
-    } failure:^(CJFailureRequestInfo * _Nullable failureNetworkInfo) {
-        [CJResponseHelper __dealFailureNetworkInfo:failureNetworkInfo
-                      getFailureResponseModelBlock:self.getFailureResponseModelBlock
-                                     completeBlock:completeBlock];
+    [manager cj_requestUrl:Url params:allParams headers:headers method:requestMethod cacheSettingModel:cacheSettingModel logType:logType progress:progressBlock success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
+        completeBlock(successRequestInfo, nil);
+    } failure:^(CJFailureRequestInfo * _Nullable failureRequestInfo) {
+        completeBlock(nil, failureRequestInfo);
     }];
     
     return URLSessionDataTask;
@@ -93,7 +136,7 @@
 
 #pragma mark - simulateApi
 - (NSURLSessionDataTask *)simulate1_requestModel:(__kindof NSObject<CJRequestModelProtocol> *)model
-                                   completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
+                                   completeBlock:(void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo, CJFailureRequestInfo * _Nullable failureRequestInfo))completeBlock
 {
     NSString *apiSuffix = [model apiSuffix];
     NSString *Url = [self __remoteSimulateUrlWithDomain:self.simulateDomain apiSuffix:apiSuffix];
@@ -105,9 +148,8 @@
         CJRequestLogType logType = CJRequestLogTypeConsoleLog;
         [CJSimulateRemoteUtil getUrl:Url params:params success:^(NSDictionary * _Nonnull responseDictionary) {
             CJSuccessRequestInfo *successRequestInfo = [CJSuccessRequestInfo successNetworkLogWithType:logType Url:Url params:params request:nil responseObject:responseDictionary];
-            CJResponseModel *responseModel = self.getSuccessResponseModelBlock(successRequestInfo);
             if (completeBlock) {
-                completeBlock(CJResponeFailureTypeUncheck, responseModel);
+                completeBlock(successRequestInfo, nil);
             }
             
         } failure:^(NSError * _Nonnull error, NSString * _Nullable errorMessage) {
@@ -116,7 +158,7 @@
             
             CJResponseModel *responseModel = self.getFailureResponseModelBlock(failureRequestInfo);
             if (completeBlock) {
-                completeBlock(CJResponeFailureTypeRequestFailure, responseModel);
+                completeBlock(nil, failureRequestInfo);
             }
         }];
         return nil;
@@ -125,9 +167,8 @@
         CJRequestLogType logType = CJRequestLogTypeConsoleLog;
         [CJSimulateRemoteUtil postUrl:Url params:params success:^(NSDictionary * _Nonnull responseDictionary) {
             CJSuccessRequestInfo *successRequestInfo = [CJSuccessRequestInfo successNetworkLogWithType:logType Url:Url params:params request:nil responseObject:responseDictionary];
-            CJResponseModel *responseModel = self.getSuccessResponseModelBlock(successRequestInfo);
             if (completeBlock) {
-                completeBlock(CJResponeFailureTypeUncheck, responseModel);
+                completeBlock(successRequestInfo, nil);
             }
             
         } failure:^(NSError * _Nonnull error, NSString * _Nullable errorMessage) {
@@ -136,7 +177,7 @@
             
             CJResponseModel *responseModel = self.getFailureResponseModelBlock(failureRequestInfo);
             if (completeBlock) {
-                completeBlock(CJResponeFailureTypeRequestFailure, responseModel);
+                completeBlock(nil, failureRequestInfo);
             }
         }];
         return nil;
@@ -176,17 +217,15 @@
 
 #pragma mark - localApi
 - (nullable NSURLSessionDataTask *)local1_requestModel:(__kindof NSObject<CJRequestModelProtocol> *)model
-                                         completeBlock:(void (^)(CJResponeFailureType failureType, id responseModel))completeBlock
+                                         completeBlock:(void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo, CJFailureRequestInfo * _Nullable failureRequestInfo))completeBlock
 {
     NSString *apiSuffix = [model apiSuffix];
 
     [CJSimulateLocalUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
         CJRequestLogType logType = CJRequestLogTypeConsoleLog;
         CJSuccessRequestInfo *successRequestInfo = [CJSuccessRequestInfo successNetworkLogWithType:logType Url:@"local1_requestModel" params:nil request:nil responseObject:responseDictionary];
-        CJResponseModel *responseModel = self.getSuccessResponseModelBlock(successRequestInfo);
-        
         if (completeBlock) {
-            completeBlock(CJResponeFailureTypeUncheck, responseModel);
+            completeBlock(successRequestInfo, nil);
         }
     }];
     return nil;

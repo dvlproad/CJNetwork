@@ -24,6 +24,15 @@
     requestModel.customParams = params;
     requestModel.requestMethod = CJRequestMethodPOST;
     
+    CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
+//    CJRequestCacheSettingModel *requestCacheModel = [[CJRequestCacheSettingModel alloc] init];
+//    requestCacheModel.cacheStrategy = CJRequestCacheStrategyEndWithCacheIfExist;
+//    requestCacheModel.cacheTimeInterval = 10;
+//    settingModel.requestCacheModel = requestCacheModel;
+    settingModel.logType = CJRequestLogTypeConsoleLog;
+    requestModel.settingModel = settingModel;
+    
+    
     [self requestModel:requestModel success:^(CJResponseModel *responseModel) {
         sleep(5);
         if (success) {
