@@ -11,13 +11,11 @@
 @implementation CJResponseHelper
 
 + (void)__dealSuccessRequestInfo:(CJSuccessRequestInfo *)successNetworkInfo
-    getSuccessResponseModelBlock:(CJResponseModel *(^)(id responseObject, BOOL isCacheData))getSuccessResponseModelBlock
+    getSuccessResponseModelBlock:(CJResponseModel *(^)(CJSuccessRequestInfo  * _Nonnull bSuccessRequestInfo))getSuccessResponseModelBlock
        checkIsCommonFailureBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonFailureBlock
                    completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
-    NSDictionary *responseDictionary = successNetworkInfo.responseObject;
-    BOOL isCacheData = successNetworkInfo.isCacheData;
-    CJResponseModel *responseModel = getSuccessResponseModelBlock(responseDictionary, isCacheData);
+    CJResponseModel *responseModel = getSuccessResponseModelBlock(successNetworkInfo);
     //方式①
     //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
     //方式②
@@ -45,10 +43,7 @@
     getFailureResponseModelBlock:(CJNetworkClientGetFailureResponseModelBlock)getFailureResponseModelBlock
                    completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
-    NSError *error = failureNetworkInfo.error;
-    NSString *errorMessage = failureNetworkInfo.errorMessage;
-
-    CJResponseModel *responseModel = getFailureResponseModelBlock(error, errorMessage);
+    CJResponseModel *responseModel = getFailureResponseModelBlock(failureNetworkInfo);
     //responseModel.isCacheData = NO;
     CJResponeFailureType failureType = CJResponeFailureTypeRequestFailure;
     if (completeBlock) {

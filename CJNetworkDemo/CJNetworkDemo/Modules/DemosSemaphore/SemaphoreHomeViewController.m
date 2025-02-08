@@ -538,6 +538,10 @@ NSInteger total = 0;
 - (void)realNetwork_testConcurrenceCount_withoutKepper {
     [[TestNetworkClient sharedInstance] testConcurrenceCountApiIndex:1 success:^(CJResponseModel *responseModel) {
         [CJUIKitToastUtil showMessage:@"真实网络请求成功"];
+        
+        NSString *message = [NSString stringWithFormat:@"GET请求测试成功。。。\n%@", responseModel.cjNetworkLog];
+        [self __showResponseLogMessage:message];
+        
         [self startTestConcurrenceCount];
     } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
         if (isRequestFailure) {

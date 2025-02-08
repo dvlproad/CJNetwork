@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return 数据模型
  */
-typedef CJResponseModel * _Nullable (^CJNetworkClientGetSuccessResponseModelBlock)(id _Nullable responseObject, BOOL isCacheData);
+typedef CJResponseModel * _Nullable (^CJNetworkClientGetSuccessResponseModelBlock)(CJSuccessRequestInfo * _Nonnull successRequestInfo);
 
 /*
  *  必须实现：将"网络请求失败返回的数据error"转换为"模型"的方法
@@ -31,13 +31,13 @@ typedef CJResponseModel * _Nullable (^CJNetworkClientGetSuccessResponseModelBloc
  *
  *  @return 数据模型
  */
-typedef CJResponseModel * _Nullable (^CJNetworkClientGetFailureResponseModelBlock)(NSError * _Nullable error, NSString * _Nullable errorMessage);
+typedef CJResponseModel * _Nullable (^CJNetworkClientGetFailureResponseModelBlock)(CJFailureRequestInfo * _Nonnull failureRequestInfo);
 
 
 @interface CJResponseHelper : NSObject
 
 + (void)__dealSuccessRequestInfo:(CJSuccessRequestInfo *)successNetworkInfo
-    getSuccessResponseModelBlock:(CJResponseModel *(^)(id responseObject, BOOL isCacheData))getSuccessResponseModelBlock
+    getSuccessResponseModelBlock:(CJResponseModel *(^)(CJSuccessRequestInfo *bSuccessRequestInfo))getSuccessResponseModelBlock
        checkIsCommonFailureBlock:(BOOL(^)(CJResponseModel *responseModel))checkIsCommonFailureBlock
                    completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock;
 

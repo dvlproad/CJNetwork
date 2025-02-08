@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///初始化方法
 + (id)successNetworkLogWithType:(CJRequestLogType)logType
                             Url:(NSString *)Url
-                         params:(id)params
+                         params:(nullable id)params
                         request:(NSURLRequest *)request
                  responseObject:(id)responseObject;
 
@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (id)errorNetworkLogWithType:(CJRequestLogType)logType
                           Url:(NSString *)Url
-                       params:(id)params
+                       params:(nullable id)params
                       request:(NSURLRequest *)request
                         error:(NSError *)error
                   URLResponse:(NSURLResponse *)URLResponse;

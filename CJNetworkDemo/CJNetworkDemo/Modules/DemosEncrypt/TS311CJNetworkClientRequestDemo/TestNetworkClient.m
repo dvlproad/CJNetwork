@@ -27,15 +27,16 @@
         AFHTTPSessionManager *cryptHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
         [self setupCleanHTTPSessionManager:cleanHTTPSessionManager cryptHTTPSessionManager:cryptHTTPSessionManager];
         
-        [self setupGetSuccessResponseModelBlock:^CJResponseModel *(id responseObject, BOOL isCacheData) {
-            NSDictionary *responseDictionary = responseObject;
+        [self setupGetSuccessResponseModelBlock:^CJResponseModel *(CJSuccessRequestInfo *successNetworkInfo) {
+            NSDictionary *responseDictionary = successNetworkInfo.responseObject;
             //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
             //CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:isCacheData];
             CJResponseModel *responseModel = [[CJResponseModel alloc] init];
             responseModel .statusCode = [responseDictionary[@"status"] integerValue];
             responseModel.message = responseDictionary[@"message"];
             responseModel.result = responseDictionary[@"result"];
-            responseModel.isCacheData = isCacheData;
+            responseModel.isCacheData = successNetworkInfo.isCacheData;
+            responseModel.cjNetworkLog = successNetworkInfo.networkLogString;
 
             return responseModel;
             
@@ -49,7 +50,8 @@
                 return NO;
             }
             
-        } getFailureResponseModelBlock:^CJResponseModel *(NSError *error, NSString *errorMessage) {
+        } getFailureResponseModelBlock:^CJResponseModel * _Nullable(CJFailureRequestInfo * _Nonnull failureRequestInfo) {
+            NSString *errorMessage = failureRequestInfo.errorMessage;
             if (errorMessage == nil || errorMessage.length == 0) {
                 errorMessage = NSLocalizedString(@"网络链接失败，请检查您的网络链接", nil);
             }
@@ -57,6 +59,7 @@
             responseModel.statusCode = -1;
             responseModel.message = errorMessage;
             responseModel.result = nil;
+            responseModel.cjNetworkLog = failureRequestInfo.networkLogString;
             
             return responseModel;
         }];

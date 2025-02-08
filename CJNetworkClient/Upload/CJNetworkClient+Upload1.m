@@ -120,16 +120,17 @@
         successRequestInfo.isCacheData = NO;
         
         [CJResponseHelper __dealSuccessRequestInfo:successRequestInfo
-                      getSuccessResponseModelBlock:^CJResponseModel * _Nonnull(id  _Nonnull responseObject, BOOL isCacheData) {
+                      getSuccessResponseModelBlock:^CJResponseModel * _Nonnull(CJSuccessRequestInfo  * _Nonnull successRequestInfo) {
             
-            NSDictionary *responseDictionary = responseObject;
+            NSDictionary *responseDictionary = successRequestInfo.responseObject;
             //CJResponseModel *responseModel = [CJResponseModel mj_objectWithKeyValues:responseDictionary];
             //CJResponseModel *responseModel = [[CJResponseModel alloc] initWithResponseDictionary:responseDictionary isCacheData:isCacheData];
             CJResponseModel *responseModel = [[CJResponseModel alloc] init];
-            responseModel .statusCode = [responseDictionary[@"status"] integerValue];
+            responseModel.statusCode = [responseDictionary[@"status"] integerValue];
             responseModel.message = responseDictionary[@"message"];
             responseModel.result = responseDictionary[@"result"];
-            responseModel.isCacheData = isCacheData;
+            responseModel.isCacheData = successRequestInfo.isCacheData;
+            responseModel.cjNetworkLog = successRequestInfo.networkLogString;
             
             return responseModel;
             
@@ -153,7 +154,8 @@
         failureRequestInfo.isRequestFailure = YES;
         
         [CJResponseHelper __dealFailureNetworkInfo:failureRequestInfo
-                      getFailureResponseModelBlock:^CJResponseModel * _Nullable(NSError * _Nullable error, NSString * _Nullable errorMessage) {
+                      getFailureResponseModelBlock:^CJResponseModel * _Nullable(CJFailureRequestInfo * _Nonnull failureRequestInfo) {
+            NSString *errorMessage = failureRequestInfo.errorMessage;
             if (errorMessage == nil || errorMessage.length == 0) {
                 errorMessage = NSLocalizedString(@"网络链接失败，请检查您的网络链接", nil);
             }
@@ -161,6 +163,7 @@
             responseModel.statusCode = -1;
             responseModel.message = errorMessage;
             responseModel.result = nil;
+            responseModel.cjNetworkLog = failureRequestInfo.networkLogString;
             
             return responseModel;
             
@@ -202,8 +205,9 @@
 {
     NSString *apiSuffix = [model apiSuffix];
     [CJSimulateLocalUtil localSimulateApi:apiSuffix completeBlock:^(NSDictionary *responseDictionary) {
-        BOOL isCacheData = NO;
-        CJResponseModel *responseModel = self.getSuccessResponseModelBlock(responseDictionary, isCacheData);
+        CJRequestLogType logType = CJRequestLogTypeConsoleLog;
+        CJSuccessRequestInfo *successRequestInfo = [CJSuccessRequestInfo successNetworkLogWithType:logType Url:@"local1_uploadModel" params:nil request:nil responseObject:responseDictionary];
+        CJResponseModel *responseModel = self.getSuccessResponseModelBlock(successRequestInfo);
         
         if (completeBlock) {
             completeBlock(CJResponeFailureTypeUncheck, responseModel);
