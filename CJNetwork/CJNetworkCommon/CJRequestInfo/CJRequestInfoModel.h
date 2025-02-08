@@ -20,8 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *bodyString;       /**< 请求的最终参数 */
 @property (nonatomic, assign) CJRequestMethod method;   /**< 网络请求方法 */
 
-@property (nonatomic, assign) CJRequestLogType logType; /**< 网络请求结果显示方式 */
-@property (nonatomic, copy) NSString *networkLogString;
+@property (nonatomic, assign) CJRequestLogType logType; /**< 网络请求结果显示方式（来源于请求对象 requestModel 的 settingModel 的 logType ）; */
+@property (nullable, nonatomic, copy) NSString *networkLogString; /**< 网络请求的log信息（仅 logType == CJRequestLogTypeConsoleLog || logType == CJRequestLogTypeSuppendWindow 时候才有值) */
 
 @end
 

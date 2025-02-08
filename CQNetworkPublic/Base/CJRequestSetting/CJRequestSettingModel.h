@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
     
 }
 #pragma mark log相关
-// log类型(默认CJRequestLogTypeConsoleLog)
+// log类型(默认CJRequestLogTypeConsoleLog，但是 requestModel.settingModel 默认值是空的 )
 @property (nonatomic, assign) CJRequestLogType logType;
 
 #pragma mark 加密相关

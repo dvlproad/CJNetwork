@@ -54,7 +54,7 @@
 #pragma mark - Private Method
 // 测试POST网络请求
 - (void)__testPostRequest {
-    NSString *apiName = @"/getWangYiNews";
+    NSString *apiName = @"/api/getImages";
     NSDictionary *params = @{
         @"page": @(1),
         @"count": @(2)

@@ -35,7 +35,7 @@
     requestCacheModel.cacheStrategy = CJRequestCacheStrategyEndWithCacheIfExist;
     requestCacheModel.cacheTimeInterval = 10;
     settingModel.requestCacheModel = requestCacheModel;
-    settingModel.logType = CJRequestLogTypeConsoleLog;;
+    settingModel.logType = CJRequestLogTypeConsoleLog;
     requestModel.settingModel = settingModel;
     
     [self requestModel:requestModel success:success failure:failure];

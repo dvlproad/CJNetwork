@@ -35,7 +35,7 @@
                                completeBlock:(void (^)(CJResponeFailureType failureType, CJResponseModel *responseModel))completeBlock
 {
     NSString *baseUrl = [model ownBaseUrl];
-    if (baseUrl) {
+    if (baseUrl == nil) {
         baseUrl = self.baseUrl;
     }
     
@@ -60,7 +60,12 @@
         allParams = self.completeAllParamsBlock(customParams);
     }
     
-    void (^progressBlock)(NSProgress * _Nonnull) = [model uploadProgress];
+    void (^progressBlock)(NSProgress * _Nonnull);
+    if ([model respondsToSelector:@selector(uploadProgress)]) {
+        progressBlock = model.uploadProgress;
+    } else {
+        progressBlock = nil;
+    }
     
     CJRequestSettingModel *settingModel = [model settingModel];
     CJRequestCacheSettingModel *cacheSettingModel = settingModel.requestCacheModel;

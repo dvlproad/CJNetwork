@@ -54,7 +54,7 @@
     // 网络请求(未封装时候)
     {
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = @"未封装时候";
+        sectionDataModel.theme = @"未封装时候(直接调用 cj_requestUrl)";
         
         {
             CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];
@@ -83,11 +83,12 @@
     // 网络请求(未封装时候)
     {
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = @"自己一层封装";
+        sectionDataModel.theme = @"自己一层封装(封装调用 cj_requestUrl)";
         
         {
             CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];
             requestModule.title = @"测试网络请求(MyNetworkClient)";
+            requestModule.content = @"将 cj_requestUrl 封进 MyNetworkClient";
             requestModule.classEntry = [TS12MyNetworkClientHomeViewController class];
             [sectionDataModel.values addObject:requestModule];
         }
@@ -98,7 +99,7 @@
     // 网络请求(未封装时候)
     {
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = @"两层封装";
+        sectionDataModel.theme = @"两层封装(继承 CJNetworkClient)";
         
         {
             CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];

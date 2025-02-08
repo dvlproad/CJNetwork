@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CJRequestEncrypt requestEncrypt;  /**< 参数的加密方式 */
 
 #pragma mark - 上传
-@property (nullable, nonatomic, copy) void (^uploadProgress)(NSProgress *progress);
+@property (nullable, nonatomic, copy) void (^uploadProgress)(NSProgress * _Nonnull progress);
 
 @optional
 @property (nullable, nonatomic, strong) CJRequestSettingModel *settingModel;

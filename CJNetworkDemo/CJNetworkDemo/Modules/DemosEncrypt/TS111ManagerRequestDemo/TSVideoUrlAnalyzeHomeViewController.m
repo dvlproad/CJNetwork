@@ -1,27 +1,25 @@
 //
-//  TSCleanRequestHomeViewController.m
+//  TSVideoUrlAnalyzeHomeViewController.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2016/3/26.
 //  Copyright © 2016年 dvlproad. All rights reserved.
 //
 
-#import "TSCleanRequestHomeViewController.h"
+#import "TSVideoUrlAnalyzeHomeViewController.h"
 #import <CJMonitor/CJLogSuspendWindow.h>
 //#import <CQDemoKit/CJUIKitToastUtil.h>
 
 #import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
 #import "TSCleanHTTPSessionManager.h"
 
-#import "TSVideoUrlAnalyzeHomeViewController.h"
-
-@interface TSCleanRequestHomeViewController ()
+@interface TSVideoUrlAnalyzeHomeViewController ()
 
 @property (nonatomic, strong) dispatch_queue_t commonConcurrentQueue; //创建并发队列
 
 @end
 
-@implementation TSCleanRequestHomeViewController
+@implementation TSVideoUrlAnalyzeHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,13 +52,6 @@
             [sectionDataModel.values addObject:loginModule];
         }
         
-        {
-            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
-            loginModule.title = @"快捷指令：抖音解析 无水印";
-            loginModule.classEntry = [TSVideoUrlAnalyzeHomeViewController class];
-            [sectionDataModel.values addObject:loginModule];
-        }
-        
         [sectionDataModels addObject:sectionDataModel];
     }
 
@@ -72,12 +63,11 @@
 #pragma mark - Private Method
 // 测试GET网络请求
 - (void)__testGetRequest {
-    // [淘宝宝贝名称查询GET](https://api.you-fire.com/youapi/api/detail/b5d2217f923e11e986e700163e0e0ef0)
     AFHTTPSessionManager *manager = [TSCleanHTTPSessionManager sharedInstance];
-    NSString *Url = @"https://suggest.taobao.com/sug";
+    NSString *Url = @"http://i.rcuts.com/update/247";   // 快捷指令：抖音解析 无水印
     NSDictionary *allParams = @{
-        @"code": @"utf-8",
-        @"q": @"玩具车"
+//        @"code": @"utf-8",
+//        @"q": @"玩具车"
     };
     NSDictionary<NSString *, NSString *> *headers = @{};
     
@@ -92,14 +82,17 @@
 
 // 测试POST网络请求
 - (void)__testPostRequest {
-    // [网易新闻POST](https://api.you-fire.com/youapi/api/detail/63c85ba5a38d40418a786d90c194679b)
-    
     AFHTTPSessionManager *manager = [TSCleanHTTPSessionManager sharedInstance];
-    NSString *Url = @"https://api.apiopen.top/getWangYiNews";
+//    NSString *Url = @"https://api.apiopen.top/getWangYiNews";
+    NSString *Url = @"http://api.rcuts.com/Video/DouYin.php";
     NSDictionary *allParams = @{
-        @"page": @(1),
-        @"count": @(5)
+        @"url": @"https://v.douyin.com/iPY4TLua/",
+        @"token": @"rcuts"
     };
+//    NSDictionary *allParams = @{
+//        @"page": @(1),
+//        @"count": @(5)
+//    };
     NSDictionary<NSString *, NSString *> *headers = @{};
     
     [manager cj_requestUrl:Url params:allParams headers:headers method:CJRequestMethodPOST cacheSettingModel:nil logType:CJRequestLogTypeSuppendWindow progress:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {

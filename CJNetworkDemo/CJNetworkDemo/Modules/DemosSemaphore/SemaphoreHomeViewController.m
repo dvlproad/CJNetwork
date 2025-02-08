@@ -10,6 +10,8 @@
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/CJUIKitAlertUtil.h>
 
+#import <CJMonitor/CJLogSuspendWindow.h>
+
 #import "TestConcurrenceModel.h"
 #import "TestConcurrenceManager.h"
 #import "TestHTTPSessionManager.h"
@@ -535,6 +537,7 @@ NSInteger total = 0;
 #pragma mark - 真正网络并发测试(Concurrence)
 - (void)realNetwork_testConcurrenceCount_withoutKepper {
     [[TestNetworkClient sharedInstance] testConcurrenceCountApiIndex:1 success:^(CJResponseModel *responseModel) {
+        [CJUIKitToastUtil showMessage:@"真实网络请求成功"];
         [self startTestConcurrenceCount];
     } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
         if (isRequestFailure) {
@@ -573,6 +576,14 @@ NSInteger total = 0;
             }
         }
     });
+}
+
+
+/// 显示返回结果log
+- (void)__showResponseLogMessage:(NSString *)message {
+    //[CJUIKitToastUtil showMessage:message];
+    [CJLogViewWindow appendObject:message];
+    NSLog(@"%@", message);
 }
 
 
