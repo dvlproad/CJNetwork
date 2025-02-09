@@ -54,21 +54,24 @@
 
 //下载文件:创建一个下载文件的任务
 - (IBAction)testDownloading:(id)sender{
-    [AFNDemoViewController sessionDownloadWithUrl:Test_ImageUrl2 success:nil fail:nil];
+    [AFNDemoViewController downloadUrl:Test_ImageUrl2 success:^(NSURL *fileURL) {
+        
+    } fail:^{
+        
+    }];
 }
 
-+ (void)sessionDownloadWithUrl:(NSString *)urlStr success:(void (^)(NSURL *fileURL))success fail:(void (^)(void))fail{
+
++ (void)downloadUrl:(NSString *)Url success:(void (^)(NSURL *fileURL))success fail:(void (^)(void))fail{
     
-    NSString *urlString = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSString *requestUrl = [Url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSURL *URL = [NSURL URLWithString:requestUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     
     //AFURLSessionManager创建并完善了一个NSURLSession的对象基于遵从NSURLSessionDelegate与NSURLSessionDataDelegate协议NSURLSessionConfigration对象。
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:config];
-    
-    
     
     NSURLSessionDownloadTask *task = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
         // 指定下载文件保存的路径

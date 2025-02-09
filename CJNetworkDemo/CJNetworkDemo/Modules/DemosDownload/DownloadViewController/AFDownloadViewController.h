@@ -6,8 +6,10 @@
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
-#import "BaseDownloadViewController.h"
+#import "CQTSBaseDownloadViewController.h"
 
-@interface AFDownloadViewController : BaseDownloadViewController
+@interface AFDownloadViewController : CQTSBaseDownloadViewController
+
+- (instancetype)initWithNibName NS_DESIGNATED_INITIALIZER;
 
 @end

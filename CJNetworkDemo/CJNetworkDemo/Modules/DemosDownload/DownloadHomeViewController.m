@@ -30,34 +30,51 @@
     
     self.navigationItem.title = NSLocalizedString(@"Download首页", nil);
     
+    __weak typeof(self)weakSelf = self;
+    
     NSMutableArray *sectionDataModels = [[NSMutableArray alloc] init];
-    //弹窗
+    
+    // 单个文件下载
     {
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = @"断点续传相关(包含进度显示)";
+        sectionDataModel.theme = @"单个文件下载断点续传相关(包含进度显示)";
+        
         {
             CQDMModuleModel *toastUtilModule = [[CQDMModuleModel alloc] init];
-            toastUtilModule.title = @"使用AFN进行下载";
-            //toastUtilModule.classEntry = [AFDownloadViewController class];
-            toastUtilModule.selector = @selector(goAFDownloadViewController);
-            toastUtilModule.isCreateByXib = YES;
+            toastUtilModule.title = @"单个文件：使用AFN进行下载";
+            toastUtilModule.actionBlock = ^{
+                UIViewController *viewController = [[AFDownloadViewController alloc] initWithNibName];
+                viewController.hidesBottomBarWhenPushed = YES;
+                [weakSelf.navigationController pushViewController:viewController animated:YES];
+            };
             [sectionDataModel.values addObject:toastUtilModule];
         }
         {
             CQDMModuleModel *alertUtilModule = [[CQDMModuleModel alloc] init];
-            alertUtilModule.title = @"断点续传(MQLResumeManager)";
-            alertUtilModule.classEntry = [SessionDataTaskDownloadViewController class];
-            alertUtilModule.isCreateByXib = YES;
+            alertUtilModule.title = @"单个文件：使用MQLResumeManager下载(断点续传)";
+            alertUtilModule.actionBlock = ^{
+                UIViewController *viewController = [[SessionDataTaskDownloadViewController alloc] initWithNibName];
+                viewController.hidesBottomBarWhenPushed = YES;
+                [weakSelf.navigationController pushViewController:viewController animated:YES];
+            };
             [sectionDataModel.values addObject:alertUtilModule];
         }
+        
         {
             CQDMModuleModel *alertUtilModule = [[CQDMModuleModel alloc] init];
-            alertUtilModule.title = @"SessionDownloadTaskDownloadViewController";
-            //alertUtilModule.classEntry = [SessionDownloadTaskDownloadViewController class];
-            alertUtilModule.selector = @selector(goSessionDataTaskDownloadViewController);
+            alertUtilModule.title = @"单个文件：AFN";
+            alertUtilModule.classEntry = [SessionDownloadTaskDownloadViewController class];
             alertUtilModule.isCreateByXib = YES;
             [sectionDataModel.values addObject:alertUtilModule];
         }
+        
+        [sectionDataModels addObject:sectionDataModel];
+    }
+    
+    // 文件列表下载
+    {
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
+        sectionDataModel.theme = @"文件列表下载";
         {
             CQDMModuleModel *alertUtilModule = [[CQDMModuleModel alloc] init];
             alertUtilModule.title = @"断点续传(HSDownloadManager)";
@@ -84,18 +101,6 @@
     
     
     self.sectionDataModels = sectionDataModels;
-}
-
-- (void)goAFDownloadViewController {
-    UIViewController *viewController = [[AFDownloadViewController alloc] initWithNibName:@"BaseDownloadViewController" bundle:nil];
-    viewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-
-- (void)goSessionDataTaskDownloadViewController {
-    UIViewController *viewController = [[SessionDataTaskDownloadViewController alloc] initWithNibName:@"BaseDownloadViewController" bundle:nil];
-    viewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

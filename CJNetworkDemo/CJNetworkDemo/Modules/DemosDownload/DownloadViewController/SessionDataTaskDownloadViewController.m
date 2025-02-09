@@ -24,6 +24,23 @@
 
 @implementation SessionDataTaskDownloadViewController
 
+- (instancetype)initWithNibName
+{
+    __weak typeof(self)weakSelf = self;
+    self = [super initWithDownloadHandle:^{
+        [weakSelf download];
+    } pauseHandle:^{
+        [weakSelf pause];
+    } deleteHandle:^{
+        [weakSelf deleteDownloadFile];
+    }];
+    
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -70,8 +87,8 @@
 
 
 
-/** 删除下载的文件(以便重新下载) */
-- (IBAction)deleteDownloadFile:(id)sender {
+/** 删除下载的文件(以便重新下载)  */
+- (void)deleteDownloadFile {
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtPath:self.targetPath error:&error];
     if (error == nil) {

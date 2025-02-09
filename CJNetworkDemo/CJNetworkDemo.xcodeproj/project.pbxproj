@@ -40,11 +40,11 @@
 		7868F17A2121C79A00A283EB /* SocketDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F14A2121C79A00A283EB /* SocketDemoViewController.xib */; };
 		7868F17B2121C79A00A283EB /* SocketDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F14C2121C79A00A283EB /* SocketDemoViewController.m */; };
 		7868F17F2121C79A00A283EB /* SessionDownloadTaskDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1562121C79A00A283EB /* SessionDownloadTaskDownloadViewController.m */; };
-		7868F1802121C79A00A283EB /* BaseDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1572121C79A00A283EB /* BaseDownloadViewController.m */; };
+		7868F1802121C79A00A283EB /* CQTSBaseDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1572121C79A00A283EB /* CQTSBaseDownloadViewController.m */; };
 		7868F1812121C79A00A283EB /* AFDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1592121C79A00A283EB /* AFDownloadViewController.m */; };
 		7868F1822121C79A00A283EB /* SessionDataTaskDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F15C2121C79A00A283EB /* SessionDataTaskDownloadViewController.m */; };
 		7868F1832121C79A00A283EB /* SessionDownloadTaskDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F15D2121C79A00A283EB /* SessionDownloadTaskDownloadViewController.xib */; };
-		7868F1842121C79A00A283EB /* BaseDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F15E2121C79A00A283EB /* BaseDownloadViewController.xib */; };
+		7868F1842121C79A00A283EB /* CQTSBaseDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F15E2121C79A00A283EB /* CQTSBaseDownloadViewController.xib */; };
 		7868F1862121C79A00A283EB /* DownloadListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1622121C79A00A283EB /* DownloadListViewController.m */; };
 		7868F1872121C79A00A283EB /* DownloadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1642121C79A00A283EB /* DownloadTableViewCell.xib */; };
 		7868F1882121C79A00A283EB /* DownloadListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1662121C79A00A283EB /* DownloadListViewController.xib */; };
@@ -157,14 +157,14 @@
 		7868F14C2121C79A00A283EB /* SocketDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketDemoViewController.m; sourceTree = "<group>"; };
 		7868F1552121C79A00A283EB /* SessionDataTaskDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDataTaskDownloadViewController.h; sourceTree = "<group>"; };
 		7868F1562121C79A00A283EB /* SessionDownloadTaskDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDownloadTaskDownloadViewController.m; sourceTree = "<group>"; };
-		7868F1572121C79A00A283EB /* BaseDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDownloadViewController.m; sourceTree = "<group>"; };
+		7868F1572121C79A00A283EB /* CQTSBaseDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQTSBaseDownloadViewController.m; sourceTree = "<group>"; };
 		7868F1582121C79A00A283EB /* AFDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadViewController.h; sourceTree = "<group>"; };
 		7868F1592121C79A00A283EB /* AFDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadViewController.m; sourceTree = "<group>"; };
-		7868F15A2121C79A00A283EB /* BaseDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDownloadViewController.h; sourceTree = "<group>"; };
+		7868F15A2121C79A00A283EB /* CQTSBaseDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQTSBaseDownloadViewController.h; sourceTree = "<group>"; };
 		7868F15B2121C79A00A283EB /* SessionDownloadTaskDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDownloadTaskDownloadViewController.h; sourceTree = "<group>"; };
 		7868F15C2121C79A00A283EB /* SessionDataTaskDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDataTaskDownloadViewController.m; sourceTree = "<group>"; };
 		7868F15D2121C79A00A283EB /* SessionDownloadTaskDownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SessionDownloadTaskDownloadViewController.xib; sourceTree = "<group>"; };
-		7868F15E2121C79A00A283EB /* BaseDownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseDownloadViewController.xib; sourceTree = "<group>"; };
+		7868F15E2121C79A00A283EB /* CQTSBaseDownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CQTSBaseDownloadViewController.xib; sourceTree = "<group>"; };
 		7868F1622121C79A00A283EB /* DownloadListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListViewController.m; sourceTree = "<group>"; };
 		7868F1632121C79A00A283EB /* DownloadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTableViewCell.h; sourceTree = "<group>"; };
 		7868F1642121C79A00A283EB /* DownloadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadTableViewCell.xib; sourceTree = "<group>"; };
@@ -485,6 +485,7 @@
 			children = (
 				7868F1912121C80500A283EB /* DownloadHomeViewController.h */,
 				7868F1902121C80500A283EB /* DownloadHomeViewController.m */,
+				9730F3AD2D58EDEB008AF628 /* Base */,
 				7868F1A22121D06C00A283EB /* AFNTest */,
 				7868F1612121C79A00A283EB /* DownloadListViewController */,
 				7868F1542121C79A00A283EB /* DownloadViewController */,
@@ -497,9 +498,6 @@
 			children = (
 				7868F1582121C79A00A283EB /* AFDownloadViewController.h */,
 				7868F1592121C79A00A283EB /* AFDownloadViewController.m */,
-				7868F15A2121C79A00A283EB /* BaseDownloadViewController.h */,
-				7868F1572121C79A00A283EB /* BaseDownloadViewController.m */,
-				7868F15E2121C79A00A283EB /* BaseDownloadViewController.xib */,
 				7868F1552121C79A00A283EB /* SessionDataTaskDownloadViewController.h */,
 				7868F15C2121C79A00A283EB /* SessionDataTaskDownloadViewController.m */,
 				7868F15B2121C79A00A283EB /* SessionDownloadTaskDownloadViewController.h */,
@@ -515,9 +513,6 @@
 				7868F1652121C79A00A283EB /* DownloadListViewController.h */,
 				7868F1622121C79A00A283EB /* DownloadListViewController.m */,
 				7868F1662121C79A00A283EB /* DownloadListViewController.xib */,
-				7868F1632121C79A00A283EB /* DownloadTableViewCell.h */,
-				7868F1672121C79A00A283EB /* DownloadTableViewCell.m */,
-				7868F1642121C79A00A283EB /* DownloadTableViewCell.xib */,
 			);
 			path = DownloadListViewController;
 			sourceTree = "<group>";
@@ -688,6 +683,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		9730F3AD2D58EDEB008AF628 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7868F15A2121C79A00A283EB /* CQTSBaseDownloadViewController.h */,
+				7868F1572121C79A00A283EB /* CQTSBaseDownloadViewController.m */,
+				7868F15E2121C79A00A283EB /* CQTSBaseDownloadViewController.xib */,
+				7868F1632121C79A00A283EB /* DownloadTableViewCell.h */,
+				7868F1672121C79A00A283EB /* DownloadTableViewCell.m */,
+				7868F1642121C79A00A283EB /* DownloadTableViewCell.xib */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		B62537BB601228A564AEACA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,7 +836,7 @@
 				7868F1882121C79A00A283EB /* DownloadListViewController.xib in Resources */,
 				7868F1AA2121D06C00A283EB /* AFNDemoViewController.xib in Resources */,
 				78FC92031F54481E00033DEF /* Main.storyboard in Resources */,
-				7868F1842121C79A00A283EB /* BaseDownloadViewController.xib in Resources */,
+				7868F1842121C79A00A283EB /* CQTSBaseDownloadViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -954,7 +962,7 @@
 				97216B0B2570AAC60006E1C2 /* SimulationHomeViewController.m in Sources */,
 				7846E39121A6AD5500D73F51 /* TestConcurrenceModel.m in Sources */,
 				158259DF2484E8F500BA4B3D /* TSCleanRequestHomeViewController.m in Sources */,
-				7868F1802121C79A00A283EB /* BaseDownloadViewController.m in Sources */,
+				7868F1802121C79A00A283EB /* CQTSBaseDownloadViewController.m in Sources */,
 				78715CC72559771100E32CD1 /* UIWindow+RootSetting.m in Sources */,
 				784653781F544A0100E20A27 /* NSString+Hash.m in Sources */,
 				7846E38B21A6A56900D73F51 /* TestConcurrenceManager.m in Sources */,

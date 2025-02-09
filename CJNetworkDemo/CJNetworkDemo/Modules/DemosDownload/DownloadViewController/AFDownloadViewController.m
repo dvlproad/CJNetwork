@@ -23,6 +23,38 @@
 
 @implementation AFDownloadViewController
 
+- (instancetype)initWithNibName
+{
+    __weak typeof(self)weakSelf = self;
+    self = [super initWithDownloadHandle:^{
+        [weakSelf download];
+    } pauseHandle:^{
+        [weakSelf pause];
+    } deleteHandle:^{
+        [weakSelf deleteDownloadFile];
+    }];
+    
+    if (self) {
+        
+    }
+    return self;
+}
+
+
+- (void)download {
+    [_downloadTask resume];
+}
+
+- (void)pause {
+    [_downloadTask suspend];
+}
+
+/** 删除下载的文件(以便重新下载)  */
+- (void)deleteDownloadFile {
+    
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -30,8 +62,10 @@
     
     self.progressView.progress = 0;
     
+    
+    NSString *movieUrl = @"https://v9-default.365yg.com/3b1ab8c13231762702f76c102ded6249/67a8a1a2/video/tos/cn/tos-cn-ve-15/ok492pE6eFAoNnDnAv3GD4gIDfA7FAQxqBAnwE/?a=2011&ch=0&cr=0&dr=0&cd=0%7C0%7C0%7C0&cv=1&br=2371&bt=2371&cs=0&ds=3&ft=aT_7TQQqUYqfJEZPo0OW_QYaUqiX1bzQoVJEwDC7MCPD-Ipz&mime_type=video_mp4&qs=0&rc=Ozw2OTQ6Z2g8ODxoPDVnZkBpM2t0OHU5cmtqeDMzNGkzM0A2YGM0Li82XjExYy5jMzQzYSNwaXMtMmRrb2dgLS1kLTBzcw%3D%3D&btag=c0000e00010000&dy_q=1739101057&feature_id=aa7df520beeae8e397df15f38df0454c&l=20250209193737ABBFAE4CBFF775918DE8";
     _downloadTask =
-    [self createDownloadTaskWithUrl:@"http://mw5.dwstatic.com/1/3/1528/133489-99-1436409822.mp4" progress:^(NSProgress *downloadProgress) {
+    [self createDownloadTaskWithUrl:movieUrl progress:^(NSProgress *downloadProgress) {
         NSLog(@"%f",1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);//当前已经下载的大小/文件的总大小
         
         //回到主队列刷新UI
@@ -78,13 +112,6 @@
     return downloadTask;
 }
 
-- (void)download {
-    [_downloadTask resume];
-}
-
-- (void)pause {
-    [_downloadTask suspend];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

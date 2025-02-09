@@ -7,6 +7,8 @@
 //
 
 #import "SessionDownloadTaskDownloadViewController.h"
+#import <CQDemoKit/CJUIKitAlertUtil.h>
+
 #import <AFNetworking/AFNetworking.h>
 
 @interface SessionDownloadTaskDownloadViewController () {
@@ -230,7 +232,7 @@
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     self.downloading = NO;
     
-    [[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"亲，您的文件下载好了，快去看看吧" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"知道了", nil] show];
+    [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"温馨提示" message:@"亲，您的文件下载好了，快去看看吧" cancleBlock:nil okBlock:nil];
     
     //下载完成缓存到以下目录,并删除源文件
     NSString *downloadfileName = downloadTask.response.suggestedFilename;

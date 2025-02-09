@@ -1,14 +1,15 @@
 //
-//  BaseDownloadViewController.m
+//  CQTSBaseDownloadViewController.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2017/3/31.
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
-#import "BaseDownloadViewController.h"
+#import "CQTSBaseDownloadViewController.h"
+#import <Masonry/Masonry.h>
 
-@interface BaseDownloadViewController ()
+@interface CQTSBaseDownloadViewController ()
 
 @property (nonatomic, weak) IBOutlet UIButton *downloadButton;
 @property (nonatomic, weak) IBOutlet UIButton *deleteButton;
@@ -17,43 +18,76 @@
 
 @property (nonatomic, assign) CJFileDownloadState downloadState;
 
+@property (nonatomic, copy) void (^downloadHandle)(void);
+@property (nonatomic, copy) void (^pauseHandle)(void);
+@property (nonatomic, copy) void (^deleteHandle)(void);
+
 @end
 
 
 
-@implementation BaseDownloadViewController
+@implementation CQTSBaseDownloadViewController
+
+- (instancetype)initWithDownloadHandle:(void (^)(void))downloadHandle
+                           pauseHandle:(void (^)(void))pauseHandle
+                          deleteHandle:(void (^)(void))deleteHandle
+{
+    self = [super initWithNibName:@"CQTSBaseDownloadViewController" bundle:nil];
+    if (self) {
+        self.downloadHandle = downloadHandle;
+        self.pauseHandle = pauseHandle;
+        self.deleteHandle = deleteHandle;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
+/*
+- (void)setupViews {
+    UILabel *progressValueLabel = [[UILabel alloc] init];
+    [self.view addSubview:progressValueLabel];
+    [progressValueLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_topLayoutGuide).offset(40);
+        make.height.equalTo(@20);
+        make.left.equalTo(self.view).offset(20);
+        make.centerX.equalTo(self.view);
+    }];
+    progressValueLabel.text = @"0%";
+    self.progressLabel = progressValueLabel;
+    
+    UIProgressView *progressView = [[UIProgressView alloc] init];
+    [self.view addSubview:progressView];
+    [progressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.progressLabel.mas_bottom).offset(10);
+        make.height.equalTo(@2);
+        make.left.equalTo(self.view).offset(20);
+        make.centerX.equalTo(self.view);
+    }];
+    self.progressView = progressView;
+}
+*/
+
 - (IBAction)downloadButtonClick:(UIButton *)button {
     switch (self.downloadState) {
         case CJFileDownloadStateDownloadReadyOrPause:   //准备下载，点击之后开始下载
         {
             [self updateButtonByDownloadState:CJFileDownloadStateDownloading];
-            [self download];
+            self.downloadHandle();
             break;
         }
         case CJFileDownloadStateDownloading: //正在下载，点击之后变成暂停
         {
             [self updateButtonByDownloadState:CJFileDownloadStateDownloadReadyOrPause];
-            [self pause];
+            self.pauseHandle();
             break;
         }
         default:
             break;
     }
-}
-
-- (void)pause {
-    
-}
-
-
-- (void)download {
-    
 }
 
 
@@ -99,8 +133,8 @@
 }
 
 /** 完整的描述请参见文件头部 */
-- (IBAction)deleteDownloadFile:(id)sender {
-    
+- (IBAction)deleteDownloadFileAction:(id)sender {
+    self.deleteHandle();
 }
 
 
