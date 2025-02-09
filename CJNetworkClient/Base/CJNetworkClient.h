@@ -6,10 +6,6 @@
 //  Copyright © 2018年 dvlproad. All rights reserved.
 //
 //  网络请求管理类，其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现。
-//  如果您的app还需要支持网络环境变化，那么由于网络环境变化的时候共有的baseUrl一定会发生变化和共有的commonParams有可能会发生变化，所以您可能需要如下两个参数：
-//  @property (nonatomic, copy) NSString *baseUrl;              /**< 共有Url */
-//  @property (nonatomic, strong) NSDictionary *commonParams;   /**< 共有参数 */
-//  或者您进一步的自己通过实现一个NetworkEnvironmentManager来控制着这两个参数的变化
 
 #import <Foundation/Foundation.h>
 #import "CJNetworkInstance.h"

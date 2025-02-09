@@ -1,4 +1,12 @@
 Pod::Spec.new do |s|
+  #查看本地已同步的pod库：pod repo
+  #清除缓存：pod cache clean CQDemoKit
+  
+#  pod trunk register 邮箱地址 '用户名' --description='描述信息'
+#  pod trunk register dvlproad@163.com 'dvlproad' --description='homeMac'
+#  pod trunk register 913168921@qq.com 'dvlproad' --description='homeMac'
+#  pod trunk me
+
   #验证方法： pod lib lint CJNetwork.podspec --allow-warnings --use-libraries --verbose
   #提交方法： pod trunk push CJNetwork.podspec --allow-warnings --use-libraries --verbose
   s.name         = "CJNetwork"

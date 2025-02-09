@@ -14,15 +14,13 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFHTTPSessionManager.h>
 
-#import <CQNetworkPublic/CJNetworkRequestOriginCallbackProtocal.h>
-
 #import "CJRequestSettingModel.h"
 #import "CJResponseHelper.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CJNetworkInstance : NSObject<CJNetworkRequestOriginCallbackProtocal> {
+@interface CJNetworkInstance : NSObject {
     
 }
 // 执行请求的Manager(一定要执行)

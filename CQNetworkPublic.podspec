@@ -1,5 +1,6 @@
 Pod::Spec.new do |s|
   # 目前传到github开源
+  # pod trunk register 913168921@qq.com '913168921@qq.com' --description='homeMac'
   #验证方法： pod lib lint CQNetworkPublic.podspec --allow-warnings --use-libraries --verbose
   #提交方法： pod trunk push CQNetworkPublic.podspec --allow-warnings --use-libraries --verbose
   

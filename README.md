@@ -40,12 +40,14 @@
 
 #### 1、实现方式
 
-子类直接继承`CJNetworkClient`，并进行如下的初始化后，即可直接使用接口
+子类直接继承`CJNetworkInstance`(自己解析结果)、`CJNetworkClient`(使用CJResponseModel)，并进行如下的初始化后，即可直接使用接口
 
 #### 2、代码示例
 
+继承 `CJNetworkInstance`，返回自己解析结果
+
 ```objective-c
-@interface TestNetworkClient : CJNetworkClient
+@interface TestNetworkClient : CJNetworkInstance
 
 + (TestNetworkClient *)sharedInstance;
 
@@ -80,9 +82,7 @@
 
 
 
-
-
-
+如果继承`CJNetworkClient`，返回结果可直接使用CJResponseModel ，
 
 ```objective-c
 @interface TestNetworkClient : CJNetworkClient
