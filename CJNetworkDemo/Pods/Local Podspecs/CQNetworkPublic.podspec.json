@@ -1,6 +1,6 @@
 {
   "name": "CQNetworkPublic",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "summary": "网络请求公共-可以解耦底层，使得底层使用任意的网络框架",
   "homepage": "https://github.com/dvlproad/CJNetwork.git",
   "license": {
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/dvlproad/CJNetwork.git",
-    "tag": "CQNetworkPublic_0.2.2_1"
+    "tag": "CQNetworkPublic_0.3.0"
   },
   "frameworks": "UIKit",
   "requires_arc": true,

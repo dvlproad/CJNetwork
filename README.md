@@ -71,6 +71,46 @@
         TestHTTPSessionManager *cryptHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
         [self setupCleanHTTPSessionManager:cleanHTTPSessionManager cryptHTTPSessionManager:cryptHTTPSessionManager];
         
+        NSString *simulateDomain = @"http://localhost/CJDemoDataSimulationDemo";
+        [self setupSimulateDomain:simulateDomain];
+    }
+    return self;
+}
+```
+
+
+
+
+
+
+
+```objective-c
+@interface TestNetworkClient : CJNetworkClient
+
++ (TestNetworkClient *)sharedInstance;
+
+@end
+
+
+
+@implementation TestNetworkClient
+
++ (TestNetworkClient *)sharedInstance {
+    static TestNetworkClient *_sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+    return _sharedInstance;
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        AFHTTPSessionManager *cleanHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
+        TestHTTPSessionManager *cryptHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
+        [self setupCleanHTTPSessionManager:cleanHTTPSessionManager cryptHTTPSessionManager:cryptHTTPSessionManager];
+        
         //TestEnvironmentManager *environmentManager = [TestEnvironmentManager sharedInstance];
         [self setupCompleteFullUrlBlock:^NSString *(NSString *apiSuffix) {
             NSString *baseUrl = @"http://xxx.xxx.xxx";
@@ -252,6 +292,11 @@
 
 
 ## 版本介绍/更新记录
+
+* V1.5.0 2025-02-09
+
+> 1. 重构CJNetworkClient，增加回调方式可以使用原始的 `CJNetworkRequestOriginCallbackProtocal` ( CJSuccessRequestInfo * **_Nullable** successRequestInfo, CJFailureRequestInfo * **_Nullable** failureRequestInfo )；也可以使用 `CJNetworkRequestResponseCallbackProtocal`( CJResponeFailureType failureType, CJResponseModel *responseModel )
+
 * V0.6.4 2018-12-12
 
 > 1. 完善CJNetworkClient，增加回调只用一个的情况，并优化接口分类；

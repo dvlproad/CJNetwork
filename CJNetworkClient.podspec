@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   #提交方法： pod repo push dvlproad CJNetworkClient.podspec --sources=master,dvlproad --allow-warnings --use-libraries --verbose
   
   s.name         = "CJNetworkClient"
-  s.version      = "1.4.3"
+  s.version      = "1.5.0"
   s.summary      = "网络请求的管理类：一个基于CJNetwork而封装的网络请求接口管理库"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "9.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkClient_1.4.3" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetworkClient_1.5.0" }
   # s.source_files  = "CJNetworkClient/*.{h,m}"
   s.frameworks = 'UIKit'
 

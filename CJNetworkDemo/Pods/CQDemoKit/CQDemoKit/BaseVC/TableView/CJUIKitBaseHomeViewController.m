@@ -131,6 +131,7 @@
     }
     cell.textLabel.text = moduleModel.title;
     cell.detailTextLabel.text = moduleModel.content;
+    cell.detailTextLabel.numberOfLines = moduleModel.contentLines > 1 ? moduleModel.contentLines : 1;
     
     return cell;
 }

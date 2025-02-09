@@ -7,12 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#ifdef CJNetworkPodTEST
-#import "CJRequestInfoModel.h"
-#else
-#import <CJNetwork/CJRequestInfoModel.h>
-#endif
+#import <CQNetworkPublic/CJRequestInfoModel.h>
 
 
 NS_ASSUME_NONNULL_BEGIN

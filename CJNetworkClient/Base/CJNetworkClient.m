@@ -7,8 +7,6 @@
 //
 
 #import "CJNetworkClient.h"
-#import <objc/runtime.h>
-#import <CQNetworkPublic/CJRequestURLHelper.h>
 
 @interface CJNetworkClient () {
     
@@ -19,46 +17,6 @@
 
 
 @implementation CJNetworkClient
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        __weak typeof(self)weakSelf = self;
-        _completeFullUrlBlock = ^NSString *(NSString *baseUrl, NSString *apiSuffix) {
-            return [CJRequestURLHelper requestUrlWithBaseUrl:baseUrl apiSuffix:apiSuffix];
-        };
-        
-        _completeAllParamsBlock = ^NSDictionary *(NSDictionary *customParams) {
-            NSMutableDictionary *allParams = [[NSMutableDictionary alloc] init];
-            if (weakSelf.commonParams) {
-                [allParams addEntriesFromDictionary:weakSelf.commonParams];
-            }
-            if (customParams) {
-                [allParams addEntriesFromDictionary:customParams];
-            }
-            return allParams;
-            //return [environmentManager completeParamsWithCustomParams:customParams];
-        };
-    }
-    return self;
-}
-
-- (void)setupCleanHTTPSessionManager:(AFHTTPSessionManager *)cleanHTTPSessionManager
-             cryptHTTPSessionManager:(AFHTTPSessionManager *)cryptHTTPSessionManager
-{
-    NSAssert(cleanHTTPSessionManager || cryptHTTPSessionManager, @"不加密和加密的不可以同时都没有");
-    _cleanHTTPSessionManager = cleanHTTPSessionManager;
-    _cryptHTTPSessionManager = cryptHTTPSessionManager;
-}
-
-/*
-- (void)setupHTTPSessionManager:(AFHTTPSessionManager *)httpSessionManager cryptWithParamsEncryptHandle:(NSDictionary * _Nonnull (^)(id _Nonnull))paramsCryptHandle responseDataDecryptHandle:(id  _Nonnull (^)(id _Nonnull))responseDataDecryptHandle
-{
-    _httpSessionManager = httpSessionManager;
-    _paramsCryptHandle = paramsCryptHandle;
-    _responseDataDecryptHandle = responseDataDecryptHandle;
-}
-//*/
 
 /*
  *  设置服务器返回值的各种处理方法(一定要执行)

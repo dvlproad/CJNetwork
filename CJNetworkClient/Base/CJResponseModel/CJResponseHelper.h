@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CJNetwork/CJRequestInfoModel.h>
+#import <CQNetworkPublic/CJRequestInfoModel.h>
 #import <CQNetworkPublic/CJResponseModel.h>
 #import <CQNetworkPublic/CJRequestNetworkEnum.h>
 

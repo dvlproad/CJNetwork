@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *title;
 @property (nullable, nonatomic, copy) NSString *content;
+@property (nonatomic, assign) NSInteger contentLines;
 @property (nullable, nonatomic, strong) UIImage *normalImage;
 @property (nullable, nonatomic, strong) UIImage *selectedImage;
 @property (nullable, nonatomic, copy) NSString *imageUrl;       /**< 有网络图片时候，优先使用网络图片 */
@@ -34,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, assign) NSDictionary *userInfo; /**< 该模块的其他信息 */
 @property (nonatomic, assign) NSInteger unReadNumber;   /**< 未读消息数 */
+
+- (void)updateContent:(NSString *)content;
 
 @end
 

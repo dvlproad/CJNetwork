@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CJNetworkClient/CJNetworkClient+SuccessFailure.h>
+#import <CJNetworkClient/CJNetworkClient+ResponseCallback.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

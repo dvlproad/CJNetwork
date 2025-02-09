@@ -12,42 +12,13 @@
 //  或者您进一步的自己通过实现一个NetworkEnvironmentManager来控制着这两个参数的变化
 
 #import <Foundation/Foundation.h>
-#import <AFNetworking/AFHTTPSessionManager.h>
-
-#import "CJRequestSettingModel.h"
-#import "CJResponseHelper.h"
-
+#import "CJNetworkInstance.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CJNetworkClient : NSObject {
+@interface CJNetworkClient : CJNetworkInstance {
     
 }
-// 执行请求的Manager(一定要执行)
-- (void)setupCleanHTTPSessionManager:(AFHTTPSessionManager *)cleanHTTPSessionManager
-             cryptHTTPSessionManager:(AFHTTPSessionManager *)cryptHTTPSessionManager;
-
-//// 执行请求的Manager(一定要执行)
-//- (void)setupHTTPSessionManager:(AFHTTPSessionManager *)httpSessionManager
-//   cryptWithParamsEncryptHandle:(NSDictionary *(^)(id params))paramsCryptHandle
-//      responseDataDecryptHandle:(id (^)(id responseData))responseDataDecryptHandle;
-
-
-#pragma mark - 整体网络
-@property (nonatomic, strong, readonly) AFHTTPSessionManager *cleanHTTPSessionManager;
-@property (nonatomic, strong, readonly) AFHTTPSessionManager *cryptHTTPSessionManager;
-//@property (nonatomic, strong) AFHTTPSessionManager *uploadHTTPSessionManager;
-//@property (nonatomic, strong) AFHTTPSessionManager *httpSessionManager;
-//@property (nonatomic, copy) NSDictionary *(^paramsCryptHandle)(id params);      /**< 加密之参数加密 */
-//@property (nonatomic, copy) id (^responseDataDecryptHandle)(id responseData);   /**< 加密之值解密 */
-
-// 外界环境变化的时候要修改的值(一定要执行)
-/**< 共有Url，形如@"http://xxx.xxx.xxx"，会通过baseUrl与apiSuffix组成fullUrl */
-@property (nonatomic, copy) NSString *baseUrl;
-@property (nonatomic, copy, readonly) NSString *(^completeFullUrlBlock)(NSString *baseUrl, NSString *apiSuffix);
-/**< 公共参数(可变类型，如登录之后需要追加uid，退出时候需要remove uid) */
-@property (nullable, nonatomic, strong) NSMutableDictionary *commonParams;
-@property (nonatomic, copy, readonly) NSDictionary *(^completeAllParamsBlock)(NSDictionary *customParams);
 
 #pragma mark - 请求判断
 //必须实现：将"网络请求成功返回的数据responseObject"转换为"模型"的方法
@@ -71,13 +42,6 @@ NS_ASSUME_NONNULL_BEGIN
 //    !success ?: success(responseModel);
 //}
 @property (nonatomic, copy, readonly) BOOL(^checkIsCommonFailureBlock)(CJResponseModel *responseModel);
-
-
-// Option
-//@property (nonatomic, copy) id (^ _Nullable urlParamsHandle)(id _Nullable urlParams);  /**< if has urlParams, deal them before append them to Url */
-
-// 可选设置(当你需要执行本地模拟(有服务器时候)的时候才需要)
-@property (nonatomic, copy) NSString *simulateDomain;   /**< 本地模拟(有服务器时候)，模拟接口所在的域名 */
 
 
 /*

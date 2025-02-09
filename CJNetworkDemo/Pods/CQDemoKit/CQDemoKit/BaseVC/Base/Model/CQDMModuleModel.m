@@ -23,4 +23,17 @@
     return xibBundle;
 }
 
+- (void)updateContent:(NSString *)content {
+    NSString *lastContentString = self.content;
+    
+    NSArray<NSString *> *components = [self.content componentsSeparatedByString:@"\n"];
+    if (components.count > self.contentLines) {
+        NSArray *firstTwoComponents = [components subarrayWithRange:NSMakeRange(0, self.contentLines)];
+        lastContentString = [firstTwoComponents componentsJoinedByString:@"\n"];
+    }
+    
+    self.content = content;
+    
+}
+
 @end

@@ -13,12 +13,12 @@
 #pragma mark - 网络单例请求服务的设置代理
 static id _networkRequestClient;
 
-+ (void)setNetworkRequestClient:(id<CQNetworkRequestCompletionClientProtocal, CQNetworkRequestSuccessFailureClientProtocal>)networkRequestClient
++ (void)setNetworkRequestClient:(id<CJNetworkRequestOriginCallbackProtocal, CJNetworkRequestResponseCallbackProtocal>)networkRequestClient
 {
     _networkRequestClient = networkRequestClient;
 }
 
-+ (id<CQNetworkRequestCompletionClientProtocal, CQNetworkRequestSuccessFailureClientProtocal>)networkRequestClient
++ (id<CJNetworkRequestOriginCallbackProtocal, CJNetworkRequestResponseCallbackProtocal>)networkRequestClient
 {
     return _networkRequestClient;
 }

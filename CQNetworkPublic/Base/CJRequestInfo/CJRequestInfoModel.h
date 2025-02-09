@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CQNetworkPublic/CJRequestNetworkEnum.h>        // 网络请求中的请求方式相关设置
-#import <CQNetworkPublic/CJRequestSettingEnum.h>        // 网络请求中的Log显示等相关设置
+#import "CJRequestNetworkEnum.h"        // 网络请求中的请求方式相关设置
+#import "CJRequestSettingEnum.h"        // 网络请求中的Log显示等相关设置
 
 NS_ASSUME_NONNULL_BEGIN
 
