@@ -110,9 +110,18 @@
             requestModule.classEntry = [TS31CJNetworkClientHomeViewController class];
             [sectionDataModel.values addObject:requestModule];
         }
+        
+        [sectionDataModels addObject:sectionDataModel];
+    }
+    
+    // 实际使用示例
+    {
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
+        sectionDataModel.theme = @"实际使用示例";
+        
         {
             CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];
-            requestModule.title = @"测试网络请求(继承 CJNetworkClient )";
+            requestModule.title = @"抖音解析 无水印";
             requestModule.content = @"快捷指令：抖音解析 无水印";
             requestModule.classEntry = [TSVideoUrlAnalyzeHomeViewController class];
             [sectionDataModel.values addObject:requestModule];

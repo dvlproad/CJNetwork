@@ -7,6 +7,8 @@
 //
 
 #import "DownloadHomeViewController.h"
+#import <CQDemoKit/CJUIKitAlertUtil.h>
+#import <CQDemoKit/CQTSSandboxFileUtil.h>
 
 //断点续传
 #import "AFDownloadViewController.h"
@@ -18,7 +20,10 @@
 
 #import "AFNDemoViewController.h"
 
-@interface DownloadHomeViewController ()
+@interface DownloadHomeViewController () {
+    
+}
+@property (nonatomic, copy, nullable) NSString *realDownloadZipRelativePath;
 
 @end
 
@@ -39,6 +44,30 @@
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"单个文件下载断点续传相关(包含进度显示)";
         
+        {
+            CQDMModuleModel *toastUtilModule = [[CQDMModuleModel alloc] init];
+            toastUtilModule.title = @"单个文件：使用系统进行下载";
+            toastUtilModule.content = self.realDownloadZipRelativePath;
+            toastUtilModule.actionBlock = ^{
+                NSString *Url = @"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/1de60c07fba6fa5d29a49e982a4fc02f22e21d9d/CQDemoKit/Demo_Resource/LocDataModel/Resources/mp4/vap.mp4";
+                [CQTSSandboxFileUtil downloadFileWithUrl:Url toSandboxType:CQTSSandboxTypeDocuments
+                                                subDirectory:@"downloadMp4" fileName:nil success:^(NSDictionary *dict) {
+                    NSString *absoluteFilePath = dict[@"absoluteFilePath"];
+                    NSString *relativeFilePath = dict[@"relativeFilePath"];
+                    weakSelf.realDownloadZipRelativePath = relativeFilePath;
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf.tableView reloadData];
+                    });
+                    
+                } failure:^(NSString *errorMessage){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [CJUIKitAlertUtil showIKnowAlertInViewController:weakSelf withTitle:errorMessage iKnowBlock:nil];
+                    });
+                }];
+            };
+            [sectionDataModel.values addObject:toastUtilModule];
+        }
         {
             CQDMModuleModel *toastUtilModule = [[CQDMModuleModel alloc] init];
             toastUtilModule.title = @"单个文件：使用AFN进行下载";

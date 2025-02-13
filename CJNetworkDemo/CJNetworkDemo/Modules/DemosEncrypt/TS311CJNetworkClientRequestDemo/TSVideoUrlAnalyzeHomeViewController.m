@@ -30,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.title = NSLocalizedString(@"Request首页", nil);
+    self.navigationItem.title = NSLocalizedString(@"抖音解析 无水印", nil);
     
     
     NSMutableArray *sectionDataModels = [[NSMutableArray alloc] init];
@@ -38,11 +38,11 @@
     // 单个请求
     {
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = @"测试请求(单次)";
+        sectionDataModel.theme = @"抖音解析 无水印";
         
         {
             CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
-            loginModule.title = @"测试网络请求GET(单次)";
+            loginModule.title = @"获取抖音解析的api";
             loginModule.actionBlock = ^{
                 [self __testGetRequest];
             };
@@ -50,7 +50,7 @@
         }
         {
             CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
-            loginModule.title = @"测试网络请求POST(单次)";
+            loginModule.title = @"利用api解析出视频地址";
             loginModule.actionBlock = ^{
                 [self __testPostRequest];
             };

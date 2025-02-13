@@ -94,6 +94,9 @@ PODS:
     - CQDemoKit/BaseUtil
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
+  - CQDemoKit/Demo_Resource (0.7.2):
+    - CQDemoKit/BaseUIKit
+    - CQDemoKit/Helper
   - CQDemoKit/Helper (0.7.2)
   - CQNetworkPublic/Base (0.3.0)
   - CQNetworkPublic/Request (0.3.0):
@@ -138,6 +141,7 @@ DEPENDENCIES:
   - CJNetworkSimulate (from `../`)
   - CocoaAsyncSocket (~> 7.4.1)
   - CQDemoKit/BaseVC (~> 0.7.2)
+  - CQDemoKit/Demo_Resource (~> 0.7.2)
   - CQNetworkPublic/Request (from `../`)
   - CQNetworkPublic/Upload (from `../`)
   - MJExtension
@@ -185,6 +189,6 @@ SPEC CHECKSUMS:
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 149928928e7fe49cfa9c46abed13ebfb9c52e29b
+PODFILE CHECKSUM: eb88886cb1edad40d1357f4b342b8d5912ae0dd4
 
 COCOAPODS: 1.16.2

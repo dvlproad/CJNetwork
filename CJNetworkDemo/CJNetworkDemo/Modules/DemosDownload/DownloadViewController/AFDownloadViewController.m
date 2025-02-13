@@ -63,7 +63,7 @@
     self.progressView.progress = 0;
     
     
-    NSString *movieUrl = @"https://v9-default.365yg.com/3b1ab8c13231762702f76c102ded6249/67a8a1a2/video/tos/cn/tos-cn-ve-15/ok492pE6eFAoNnDnAv3GD4gIDfA7FAQxqBAnwE/?a=2011&ch=0&cr=0&dr=0&cd=0%7C0%7C0%7C0&cv=1&br=2371&bt=2371&cs=0&ds=3&ft=aT_7TQQqUYqfJEZPo0OW_QYaUqiX1bzQoVJEwDC7MCPD-Ipz&mime_type=video_mp4&qs=0&rc=Ozw2OTQ6Z2g8ODxoPDVnZkBpM2t0OHU5cmtqeDMzNGkzM0A2YGM0Li82XjExYy5jMzQzYSNwaXMtMmRrb2dgLS1kLTBzcw%3D%3D&btag=c0000e00010000&dy_q=1739101057&feature_id=aa7df520beeae8e397df15f38df0454c&l=20250209193737ABBFAE4CBFF775918DE8";
+    NSString *movieUrl = @"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/1de60c07fba6fa5d29a49e982a4fc02f22e21d9d/CQDemoKit/Demo_Resource/LocDataModel/Resources/mp4/vap.mp4";
     _downloadTask =
     [self createDownloadTaskWithUrl:movieUrl progress:^(NSProgress *downloadProgress) {
         NSLog(@"%f",1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);//当前已经下载的大小/文件的总大小
