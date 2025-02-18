@@ -1,0 +1,6 @@
+framework module CJNetwork_Swift {
+  umbrella header "CJNetwork-Swift-umbrella.h"
+
+  export *
+  module * { export * }
+}

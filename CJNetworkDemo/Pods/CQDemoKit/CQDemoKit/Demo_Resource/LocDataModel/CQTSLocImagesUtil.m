@@ -26,7 +26,7 @@
     NSArray<UIImage *> *images = [self cjts_localImages];
     
     NSMutableArray<CQTSLocImageDataModel *> *dataModels = [[NSMutableArray alloc] init];
-    NSArray<NSString *> *titles = @[@"1X透社", @"2新鲜事", @"3XX信", @"4X角信", @"5蓝精灵", @"6年轻范", @"7XX福", @"8X之语"];
+    NSArray<NSString *> *titles = @[@"X透社", @"新鲜事", @"XX信", @"X角信", @"蓝精灵", @"年轻范", @"XX福", @"X之语"];
     
     for (NSInteger i = 0; i < count; i++) {
         CQTSLocImageDataModel *dataModel = [[CQTSLocImageDataModel alloc] init];
@@ -38,7 +38,7 @@
         //NSString *title = [NSString stringWithFormat:@"%zd:第index=%zd张", i, lastImageSelIndex];
         NSString *title = [titles objectAtIndex:lastTitleSelIndex];
         dataModel.image = image;
-        dataModel.name = title;
+        dataModel.name = [NSString stringWithFormat:@"%02zd%@", i+1, title];
         [dataModels addObject:dataModel];
     }
     
@@ -70,10 +70,13 @@
     NSMutableArray<UIImage *> *images = [[NSMutableArray alloc] init];
     
     NSArray<NSString *> *imageNames = [self cjts_localImageNames];
-    NSInteger *imageCount = [imageNames count];
+    NSInteger imageCount = [imageNames count];
     for (int i = 0; i < imageCount; i++) {
         NSString *imageName = [imageNames objectAtIndex:i];
         UIImage *image = [UIImage cqdemokit_xcassetImageNamed:imageName];
+        if (image == nil) {
+            image = [[UIImage alloc] init];
+        }
         [images addObject:image];
     }
     

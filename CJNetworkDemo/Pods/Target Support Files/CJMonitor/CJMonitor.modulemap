@@ -1,0 +1,6 @@
+framework module CJMonitor {
+  umbrella header "CJMonitor-umbrella.h"
+
+  export *
+  module * { export * }
+}

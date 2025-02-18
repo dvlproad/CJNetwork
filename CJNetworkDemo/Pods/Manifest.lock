@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - Alamofire (4.9.1)
   - CJBaseHelper/DeviceCJHelper (0.1.7)
   - CJBaseHelper/NSObjectCJHelper (0.1.7)
   - CJBaseUtil/CJIndentedStringUtil (0.5.1)
@@ -21,6 +22,11 @@ PODS:
     - CJMonitor/CJLog (= 0.0.2)
   - CJMonitor/CJLog (0.0.2):
     - Masonry
+  - CJNetwork-Swift (0.0.1):
+    - CJNetwork-Swift/Download (= 0.0.1)
+  - CJNetwork-Swift/Download (0.0.1):
+    - Moya
+    - SSZipArchive
   - CJNetwork/AFNetworkingMethodEncrypt (0.9.0):
     - AFNetworking
     - CJNetwork/CJNetworkCommon
@@ -64,40 +70,40 @@ PODS:
     - CocoaAsyncSocket/RunLoop
   - CocoaAsyncSocket/GCD (7.4.3)
   - CocoaAsyncSocket/RunLoop (7.4.3)
-  - CQDemoKit/BaseUIKit (0.7.2):
+  - CQDemoKit/BaseUIKit (0.7.4):
     - Masonry
-  - CQDemoKit/BaseUtil (0.7.2)
-  - CQDemoKit/BaseVC (0.7.2):
-    - CQDemoKit/BaseVC/Base (= 0.7.2)
-    - CQDemoKit/BaseVC/Collection (= 0.7.2)
-    - CQDemoKit/BaseVC/ScrollView (= 0.7.2)
-    - CQDemoKit/BaseVC/TabBar (= 0.7.2)
-    - CQDemoKit/BaseVC/TableView (= 0.7.2)
-    - CQDemoKit/BaseVC/TextView (= 0.7.2)
+  - CQDemoKit/BaseUtil (0.7.4)
+  - CQDemoKit/BaseVC (0.7.4):
+    - CQDemoKit/BaseVC/Base (= 0.7.4)
+    - CQDemoKit/BaseVC/Collection (= 0.7.4)
+    - CQDemoKit/BaseVC/ScrollView (= 0.7.4)
+    - CQDemoKit/BaseVC/TabBar (= 0.7.4)
+    - CQDemoKit/BaseVC/TableView (= 0.7.4)
+    - CQDemoKit/BaseVC/TextView (= 0.7.4)
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/Base (0.7.2):
+  - CQDemoKit/BaseVC/Base (0.7.4):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/Helper
     - Masonry
-  - CQDemoKit/BaseVC/Collection (0.7.2):
+  - CQDemoKit/BaseVC/Collection (0.7.4):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/ScrollView (0.7.2):
+  - CQDemoKit/BaseVC/ScrollView (0.7.4):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TabBar (0.7.2):
+  - CQDemoKit/BaseVC/TabBar (0.7.4):
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TableView (0.7.2):
+  - CQDemoKit/BaseVC/TableView (0.7.4):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TextView (0.7.2):
+  - CQDemoKit/BaseVC/TextView (0.7.4):
     - CQDemoKit/BaseUtil
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/Demo_Resource (0.7.2):
+  - CQDemoKit/Demo_Resource (0.7.4):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/Helper
-  - CQDemoKit/Helper (0.7.2)
+  - CQDemoKit/Helper (0.7.4)
   - CQNetworkPublic/Base (0.3.0)
   - CQNetworkPublic/Request (0.3.0):
     - CQNetworkPublic/Request/Base (= 0.3.0)
@@ -122,7 +128,14 @@ PODS:
     - CQNetworkPublic/Upload/Base
   - Masonry (1.1.0)
   - MJExtension (3.3.0)
+  - Moya (13.0.1):
+    - Moya/Core (= 13.0.1)
+  - Moya/Core (13.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
   - OpenUDID (1.0.0)
+  - Result (4.1.0)
+  - SSZipArchive (2.4.3)
   - YYCache (1.0.4)
 
 DEPENDENCIES:
@@ -130,6 +143,7 @@ DEPENDENCIES:
   - CJBaseHelper/NSObjectCJHelper
   - CJBaseUtil/CJIndentedStringUtil
   - CJMonitor
+  - CJNetwork-Swift (from `../`)
   - CJNetwork/AFNetworkingMethodEncrypt (from `../`)
   - CJNetwork/AFNetworkingSerializerEncrypt (from `../`)
   - CJNetwork/AFNetworkingUploadComponent (from `../`)
@@ -140,8 +154,8 @@ DEPENDENCIES:
   - CJNetworkFileModel (from `../`)
   - CJNetworkSimulate (from `../`)
   - CocoaAsyncSocket (~> 7.4.1)
-  - CQDemoKit/BaseVC (~> 0.7.2)
-  - CQDemoKit/Demo_Resource (~> 0.7.2)
+  - CQDemoKit/BaseVC (~> 0.7.4)
+  - CQDemoKit/Demo_Resource (~> 0.7.4)
   - CQNetworkPublic/Request (from `../`)
   - CQNetworkPublic/Upload (from `../`)
   - MJExtension
@@ -150,6 +164,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - Alamofire
     - CJBaseHelper
     - CJBaseUtil
     - CJMonitor
@@ -157,11 +172,16 @@ SPEC REPOS:
     - CQDemoKit
     - Masonry
     - MJExtension
+    - Moya
     - OpenUDID
+    - Result
+    - SSZipArchive
     - YYCache
 
 EXTERNAL SOURCES:
   CJNetwork:
+    :path: "../"
+  CJNetwork-Swift:
     :path: "../"
   CJNetworkClient:
     :path: "../"
@@ -174,21 +194,26 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   CJBaseHelper: 71c9d695c76736b2fc66123157d5626da4556177
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
   CJMonitor: cbec62179b877a476f84249ff268c765a66d6687
   CJNetwork: 097633ff4cd338c3b134c3567cca3b68de8d5178
+  CJNetwork-Swift: e82a5d302c8f5744f6cb6a476e2313efd879c5c6
   CJNetworkClient: ddfe9fc5062d2d9950ed0ca3cb89299fe56ee398
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
   CJNetworkSimulate: 0c8e89ee82db12816cabdce4f3d6dcab1d30ee5b
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
-  CQDemoKit: f68954900d83951fa76bd6f36fb5a0504421661b
+  CQDemoKit: 2df9632969710cb3c8b8090746985247208145f0
   CQNetworkPublic: daa95989c1d6d8f2d1d50f97285f4b88f0e664d3
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 01704cca2b60a214c10761b6491eab74069d68a9
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: eb88886cb1edad40d1357f4b342b8d5912ae0dd4
+PODFILE CHECKSUM: dde449f1f66d40c9db35974a1c76d8ecf55445f0
 
 COCOAPODS: 1.16.2

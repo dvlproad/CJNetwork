@@ -1,0 +1,6 @@
+framework module Pods_CJNetworkDemo {
+  umbrella header "Pods-CJNetworkDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

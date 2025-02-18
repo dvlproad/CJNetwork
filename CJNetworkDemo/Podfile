@@ -1,5 +1,5 @@
 platform :ios, '9.0'
-#use_frameworks!
+use_frameworks!
 inhibit_all_warnings!
 
 post_install do |installer|
@@ -25,7 +25,9 @@ end
 target 'CJNetworkDemo' do
 #  plugin 'cocoapods-hmap-prebuilt'
   
-  pod 'CQDemoKit',          '~> 0.7.2',      :subspecs => ['BaseVC', 'Demo_Resource']
+  pod 'CQDemoKit',          '~> 0.7.4',      :subspecs => ['BaseVC', 'Demo_Resource']
+  
+  pod 'CJNetwork-Swift',        :path => '../'
   
   # 模拟请求
   pod 'CJNetworkSimulate',  :path => '../'

@@ -96,6 +96,32 @@
                     success:(void (^)(NSDictionary *fileDictionary))success
                     failure:(void (^)(NSString *errorMessage))failure
 {
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [weakSelf _downloadFileWithUrl:fileUrl
+                        toSandboxType:sandboxType
+                         subDirectory:subDirectory
+                             fileName:fileNameWithExtension
+                              success:^(NSDictionary * _Nonnull fileDictionary) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                success(fileDictionary);
+            });
+        } failure:^(NSString * _Nonnull errorMessage) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                failure(errorMessage);
+            });
+        }];
+    });
+}
+
+
++ (void)_downloadFileWithUrl:(NSString *)fileUrl
+              toSandboxType:(CQTSSandboxType)sandboxType
+               subDirectory:(nullable NSString *)subDirectory
+                   fileName:(nullable NSString *)fileNameWithExtension
+                    success:(void (^)(NSDictionary *fileDictionary))success
+                    failure:(void (^)(NSString *errorMessage))failure
+{
     NSURL *fileURL = [NSURL URLWithString:fileUrl];
     if (!fileURL) {
         failure(@"fileUrl错误");
@@ -152,7 +178,7 @@
             failure(fileError.cqtsErrorString);
             
         } else {
-            NSLog(@"File download to shared directory: %@", destinationURL.path);
+            NSLog(@"File download to directory: %@", destinationURL.path);
             success(@{
                 @"fileName": fileName,
                 @"fileExtension": fileExtension,

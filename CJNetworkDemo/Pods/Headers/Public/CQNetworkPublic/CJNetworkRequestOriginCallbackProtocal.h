@@ -1,1 +1,0 @@
-../../../../../CQNetworkPublic/Request/Client/CJNetworkRequestOriginCallbackProtocal.h

@@ -1,0 +1,6 @@
+framework module CJNetworkSimulate {
+  umbrella header "CJNetworkSimulate-umbrella.h"
+
+  export *
+  module * { export * }
+}

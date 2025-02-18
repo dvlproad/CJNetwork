@@ -7,8 +7,11 @@
 //
 
 #import "DownloadHomeViewController.h"
+#import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/CJUIKitAlertUtil.h>
 #import <CQDemoKit/CQTSSandboxFileUtil.h>
+#import <CQDemoKit/CQTSSandboxPathUtil.h>
+#import <CJNetwork_Swift/CJNetwork_Swift-Swift.h>
 
 //断点续传
 #import "AFDownloadViewController.h"
@@ -124,6 +127,56 @@
             toastUtilModule.classEntry = [AFNDemoViewController class];
             toastUtilModule.isCreateByXib = YES;
             [sectionDataModel.values addObject:toastUtilModule];
+        }
+        [sectionDataModels addObject:sectionDataModel];
+    }
+    
+    // 使用 zip
+    {
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
+        sectionDataModel.theme = @"普通文件、json、zip等文件的下载和解析";
+        {
+            CQDMModuleModel *module = [[CQDMModuleModel alloc] init];
+            module.title = @"下载普通文件";
+            module.actionBlock = ^{
+                NSString *mp4Url = @"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/1de60c07fba6fa5d29a49e982a4fc02f22e21d9d/CQDemoKit/Demo_Resource/LocDataModel/Resources/mp4/vap.mp4";
+                NSString *directoryUrl = [CQTSSandboxPathUtil sandboxPath:CQTSSandboxTypeDocuments];
+                NSURL *directoryURL = [NSURL fileURLWithPath:directoryUrl];
+                [CJDownloadUtil downloadFileUrl:mp4Url fileDataDecryptHandle:^NSData * _Nullable(NSData * _Nonnull serviceData) {
+                    return serviceData;
+                } saveToDirectoryURL:directoryURL saveWithFileName:@"vap.mp4"  success:^(NSURL * _Nonnull unzipLocalURL) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSString *message = [NSString stringWithFormat:@"file解压后的地址: %@", unzipLocalURL.path];
+                        [CJUIKitToastUtil showMessage:message];
+                    });
+                } failure:^(NSString * _Nonnull errorMessage) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [CJUIKitToastUtil showMessage:errorMessage];
+                    });
+                }];
+            };
+            [sectionDataModel.values addObject:module];
+        }
+        {
+            CQDMModuleModel *module = [[CQDMModuleModel alloc] init];
+            module.title = @"下载zip文件";
+            module.actionBlock = ^{
+                NSString *zipUrl = @"http://shs4ggs0e.hd-bkt.clouddn.com/symbol/TestDownloadBundle.bundle.zip";
+                NSString *directoryUrl = [CQTSSandboxPathUtil sandboxPath:CQTSSandboxTypeDocuments];
+                NSURL *directoryURL = [NSURL fileURLWithPath:directoryUrl];
+                
+                [CJDownloadUtil downloadZipUrl:zipUrl zipDataDecryptHandle:nil saveToDirectoryURL:directoryURL saveWithZipName:nil upzipFileName:@"TestDownloadBundle.bundle" zipProgressHandler:nil success:^(NSURL * _Nonnull unzipLocalURL) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSString *message = [NSString stringWithFormat:@"zip解压后的地址: %@", unzipLocalURL.path];
+                        [CJUIKitToastUtil showMessage:message];
+                    });
+                } failure:^(NSString * _Nonnull errorMessage) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [CJUIKitToastUtil showMessage:errorMessage];
+                    });
+                }];
+            };
+            [sectionDataModel.values addObject:module];
         }
         [sectionDataModels addObject:sectionDataModel];
     }

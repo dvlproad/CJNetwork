@@ -65,7 +65,7 @@
         default:
             break;
     }
-    return NSHomeDirectory();
+    return sandboxPath;
 }
 
 + (NSString *)homeDirectory {
