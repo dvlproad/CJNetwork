@@ -25,7 +25,7 @@ end
 target 'CJNetworkDemo' do
 #  plugin 'cocoapods-hmap-prebuilt'
   
-  pod 'CQDemoKit',              '~> 0.7.4',      :subspecs => ['BaseVC', 'Demo_Resource']
+  pod 'CQDemoKit',              '~> 0.7.5',      :subspecs => ['BaseVC', 'Demo_Resource']
   pod 'CQDemoKit-Swift',        '~> 0.0.1'
   
   pod 'CJNetwork-Swift',        :path => '../'
@@ -51,7 +51,6 @@ target 'CJNetworkDemo' do
   pod 'CJNetwork',              :path => '../',     :subspecs => ['CJRequestUtil', 'CJCacheManager']
   
   pod 'CocoaAsyncSocket',       '~> 7.4.1'
-  pod 'MJExtension'
 
   pod 'CJBaseUtil',     :subspecs => ['CJIndentedStringUtil']
   pod 'CJBaseHelper',   :subspecs => ['DeviceCJHelper', 'NSObjectCJHelper']

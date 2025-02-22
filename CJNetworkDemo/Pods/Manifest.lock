@@ -27,24 +27,23 @@ PODS:
   - CJNetwork-Swift/Download (0.0.1):
     - Moya
     - SSZipArchive
-  - CJNetwork/AFNetworkingMethodEncrypt (0.9.0):
+  - CJNetwork/AFNetworkingMethodEncrypt (0.9.1):
     - AFNetworking
     - CJNetwork/CJNetworkCommon
-  - CJNetwork/AFNetworkingSerializerEncrypt (0.9.0):
+  - CJNetwork/AFNetworkingSerializerEncrypt (0.9.1):
     - AFNetworking
     - CJNetwork/CJNetworkCommon
-  - CJNetwork/AFNetworkingUploadComponent (0.9.0):
+  - CJNetwork/AFNetworkingUploadComponent (0.9.1):
     - AFNetworking
     - CJNetwork/CJNetworkCommon
     - CJNetworkFileModel
-  - CJNetwork/CJCacheManager (0.9.0)
-  - CJNetwork/CJNetworkCommon (0.9.0):
+  - CJNetwork/CJCacheManager (0.9.1)
+  - CJNetwork/CJNetworkCommon (0.9.1):
     - CQNetworkPublic/Base
-    - MJExtension
     - YYCache
-  - CJNetwork/CJRequestUtil (0.9.0):
+  - CJNetwork/CJRequestUtil (0.9.1):
     - CJNetwork/CJNetworkCommon
-  - CJNetwork/Demo (0.9.0):
+  - CJNetwork/Demo (0.9.1):
     - AFNetworking
   - CJNetworkClient/Base (1.5.0):
     - AFNetworking
@@ -72,16 +71,16 @@ PODS:
     - CocoaAsyncSocket/RunLoop
   - CocoaAsyncSocket/GCD (7.4.3)
   - CocoaAsyncSocket/RunLoop (7.4.3)
-  - CQDemoKit (0.7.4):
-    - CQDemoKit/Auxiliary (= 0.7.4)
-    - CQDemoKit/BaseUIKit (= 0.7.4)
-    - CQDemoKit/BaseUtil (= 0.7.4)
-    - CQDemoKit/BaseVC (= 0.7.4)
-    - CQDemoKit/Demo_DataSourceAndDelegate (= 0.7.4)
-    - CQDemoKit/Demo_Resource (= 0.7.4)
-    - CQDemoKit/Demo_RipeView (= 0.7.4)
-    - CQDemoKit/Helper (= 0.7.4)
-    - CQDemoKit/Monitor (= 0.7.4)
+  - CQDemoKit (0.7.5):
+    - CQDemoKit/Auxiliary (= 0.7.5)
+    - CQDemoKit/BaseUIKit (= 0.7.5)
+    - CQDemoKit/BaseUtil (= 0.7.5)
+    - CQDemoKit/BaseVC (= 0.7.5)
+    - CQDemoKit/Demo_DataSourceAndDelegate (= 0.7.5)
+    - CQDemoKit/Demo_Resource (= 0.7.5)
+    - CQDemoKit/Demo_RipeView (= 0.7.5)
+    - CQDemoKit/Helper (= 0.7.5)
+    - CQDemoKit/Monitor (= 0.7.5)
   - CQDemoKit-Swift (0.0.1):
     - CQDemoKit
     - CQDemoKit-Swift/CQDemoKit-OC (= 0.0.1)
@@ -90,51 +89,51 @@ PODS:
     - CQDemoKit
   - CQDemoKit-Swift/SwiftUI (0.0.1):
     - CQDemoKit
-  - CQDemoKit/Auxiliary (0.7.4):
+  - CQDemoKit/Auxiliary (0.7.5):
     - Masonry
-  - CQDemoKit/BaseUIKit (0.7.4):
+  - CQDemoKit/BaseUIKit (0.7.5):
     - Masonry
-  - CQDemoKit/BaseUtil (0.7.4)
-  - CQDemoKit/BaseVC (0.7.4):
-    - CQDemoKit/BaseVC/Base (= 0.7.4)
-    - CQDemoKit/BaseVC/Collection (= 0.7.4)
-    - CQDemoKit/BaseVC/ScrollView (= 0.7.4)
-    - CQDemoKit/BaseVC/TabBar (= 0.7.4)
-    - CQDemoKit/BaseVC/TableView (= 0.7.4)
-    - CQDemoKit/BaseVC/TextView (= 0.7.4)
+  - CQDemoKit/BaseUtil (0.7.5)
+  - CQDemoKit/BaseVC (0.7.5):
+    - CQDemoKit/BaseVC/Base (= 0.7.5)
+    - CQDemoKit/BaseVC/Collection (= 0.7.5)
+    - CQDemoKit/BaseVC/ScrollView (= 0.7.5)
+    - CQDemoKit/BaseVC/TabBar (= 0.7.5)
+    - CQDemoKit/BaseVC/TableView (= 0.7.5)
+    - CQDemoKit/BaseVC/TextView (= 0.7.5)
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/Base (0.7.4):
+  - CQDemoKit/BaseVC/Base (0.7.5):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/Helper
     - Masonry
-  - CQDemoKit/BaseVC/Collection (0.7.4):
+  - CQDemoKit/BaseVC/Collection (0.7.5):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/ScrollView (0.7.4):
+  - CQDemoKit/BaseVC/ScrollView (0.7.5):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TabBar (0.7.4):
+  - CQDemoKit/BaseVC/TabBar (0.7.5):
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TableView (0.7.4):
+  - CQDemoKit/BaseVC/TableView (0.7.5):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TextView (0.7.4):
+  - CQDemoKit/BaseVC/TextView (0.7.5):
     - CQDemoKit/BaseUtil
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/Demo_DataSourceAndDelegate (0.7.4):
+  - CQDemoKit/Demo_DataSourceAndDelegate (0.7.5):
     - CQDemoKit/BaseVC
     - CQDemoKit/Demo_Resource
-  - CQDemoKit/Demo_Resource (0.7.4):
+  - CQDemoKit/Demo_Resource (0.7.5):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/Helper
-  - CQDemoKit/Demo_RipeView (0.7.4):
+  - CQDemoKit/Demo_RipeView (0.7.5):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/BaseUtil
     - CQDemoKit/Demo_DataSourceAndDelegate
     - CQDemoKit/Demo_Resource
-  - CQDemoKit/Helper (0.7.4)
-  - CQDemoKit/Monitor (0.7.4)
+  - CQDemoKit/Helper (0.7.5)
+  - CQDemoKit/Monitor (0.7.5)
   - CQNetworkPublic/Base (0.3.0)
   - CQNetworkPublic/Request (0.3.0):
     - CQNetworkPublic/Request/Base (= 0.3.0)
@@ -167,7 +166,6 @@ PODS:
     - CJNetwork-Swift/Download
     - CJNetworkClient/Request
   - Masonry (1.1.0)
-  - MJExtension (3.3.0)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
   - Moya/Core (13.0.1):
@@ -196,12 +194,11 @@ DEPENDENCIES:
   - CJNetworkSimulate (from `../`)
   - CocoaAsyncSocket (~> 7.4.1)
   - CQDemoKit-Swift (~> 0.0.1)
-  - CQDemoKit/BaseVC (~> 0.7.4)
-  - CQDemoKit/Demo_Resource (~> 0.7.4)
+  - CQDemoKit/BaseVC (~> 0.7.5)
+  - CQDemoKit/Demo_Resource (~> 0.7.5)
   - CQNetworkPublic/Request (from `../`)
   - CQNetworkPublic/Upload (from `../`)
   - CQVideoUrlAnalyze-Swift (from `../`)
-  - MJExtension
   - OpenUDID (~> 1.0.0)
 
 SPEC REPOS:
@@ -215,7 +212,6 @@ SPEC REPOS:
     - CQDemoKit
     - CQDemoKit-Swift
     - Masonry
-    - MJExtension
     - Moya
     - OpenUDID
     - Result
@@ -244,24 +240,23 @@ SPEC CHECKSUMS:
   CJBaseHelper: 71c9d695c76736b2fc66123157d5626da4556177
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
   CJMonitor: cbec62179b877a476f84249ff268c765a66d6687
-  CJNetwork: 17b309bb333a6243e17cebd6f6a15e0377f03692
+  CJNetwork: f26cc1962645817ed6ec99d0de126b430af22f83
   CJNetwork-Swift: 322f72ff0056bb87eab1bf41d791e195cf312636
   CJNetworkClient: ddfe9fc5062d2d9950ed0ca3cb89299fe56ee398
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
   CJNetworkSimulate: 0c8e89ee82db12816cabdce4f3d6dcab1d30ee5b
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
-  CQDemoKit: 2df9632969710cb3c8b8090746985247208145f0
+  CQDemoKit: 1c1e5b27b6a973ab0b6535f4c3df3164e6c82285
   CQDemoKit-Swift: 28d06bf24cbcc84c9651e0ffe607bffdd57863b6
   CQNetworkPublic: daa95989c1d6d8f2d1d50f97285f4b88f0e664d3
   CQVideoUrlAnalyze-Swift: 93f961bafc55d1ea389ce42b95a42279fbf760f1
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MJExtension: 01704cca2b60a214c10761b6491eab74069d68a9
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: ac4e89161c2e38426d4ce028960b4e79d6510e01
+PODFILE CHECKSUM: bf3a987dcd839cfa99b2d97a3cacc35426ad8193
 
 COCOAPODS: 1.16.2

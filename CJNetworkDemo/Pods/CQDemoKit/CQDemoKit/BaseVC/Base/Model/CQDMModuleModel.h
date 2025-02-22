@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, strong) NSBundle *xibBundle;    /**< 控制器由interface生成时候所在的bundle（默认nil，表示是xib的时候，该xib在mainBundle中） */
 @property (nullable, nonatomic, copy) NSString *xibBundleName;  /**< bundle名字(xibBundle为nil时候，才会使用这个值) */
 
-// 视图
+// 视图（如果要测试 SwiftUI ,请参考主工程中的 TSTSSwiftUIView.swift 先将 swiftui 的 view 转成 UIView/UIViewController )
 @property (nullable, nonatomic, copy) UIView*(^viewGetterHandle)(void);       /**< 点击后进入的控制器 里面显示的视图 */
 
 

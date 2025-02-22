@@ -7,7 +7,7 @@
 //
 
 #import "CQTSSandboxFileUtil.h"
-#import "CQTSResourceUtil.h"
+#import "CQTSSandboxPathUtil.h"
 #import "NSError+CQTSErrorString.h"
 
 @implementation CQTSSandboxFileUtil
@@ -17,20 +17,29 @@
 ///
 /// @param fileNameWithExtension        要拷贝的文件
 /// @param inBundle                                     从项目中的哪个bundle中拷贝（nil时候为 [NSBundle mainBundle] ）
-/// @param sandboxType                               要放到的沙盒位置
+/// @param sandboxURL                                要放到的沙盒位置
 /// @param subDirectory                             要放到的沙盒的子目录
 ///
 /// @return 返回存放后的文件路径信息（存放失败，返回nil）
 + (nullable NSDictionary *)copyFile:(NSString *)fileNameWithExtension
                            inBundle:(nullable NSBundle *)bundle
-                      toSandboxType:(CQTSSandboxType)sandboxType
+                       toSandboxURL:(nonnull NSURL *)sandboxURL
                        subDirectory:(nullable NSString *)subDirectory
 {
-    NSDictionary *result = [CQTSResourceUtil extractFileNameAndExtensionFromFileName:fileNameWithExtension];
-    NSString *fileName = result[@"fileName"];
-    NSString *fileExtension = result[@"fileExtension"];
+    if (sandboxURL == nil) {
+        NSLog(@"失败");
+        return nil;
+    }
     
-    // 获取原始图片的路径
+    NSDictionary *pathInfo = [CQTSSandboxPathUtil pathInfoWithHostSandboxURL:sandboxURL
+                                                                subDirectory:subDirectory
+                                                       fileNameWithExtension:fileNameWithExtension
+                                         shouldCreateIntermediateDirectories:YES];
+    
+    NSString *fileName = pathInfo[@"fileName"];
+    NSString *fileExtension = pathInfo[@"fileExtension"];
+    
+    // 获取项目工程中要拷贝的文件的路径
     if (bundle == nil) {
         bundle = [NSBundle mainBundle];
     }
@@ -41,16 +50,8 @@
     }
 
     // 创建目标路径（共享资源目录下的目标文件路径）:相对路径
-    NSString *relativePath = @"";
-    if (subDirectory != nil && subDirectory.length > 0) {
-        relativePath = subDirectory;
-    }
-    NSString *newFileName = [NSString stringWithFormat:@"%@.%@", fileName, fileExtension];
-    relativePath = [relativePath stringByAppendingPathComponent:newFileName];
-    // 绝对路径
-    NSString *sandboxPath = [CQTSSandboxPathUtil sandboxPath:sandboxType];
-    NSURL *sandboxURL = [NSURL fileURLWithPath:sandboxPath];
-    NSURL *destinationURL = [sandboxURL URLByAppendingPathComponent:relativePath];
+    NSURL *destinationPath = pathInfo[@"absoluteFilePath"];
+    NSURL *destinationURL = [NSURL fileURLWithPath:destinationPath];
 
     NSError *error = nil;
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -58,17 +59,6 @@
     if ([fileManager fileExistsAtPath:destinationURL.path]) {
         if (![fileManager removeItemAtURL:destinationURL error:&error]) {
             NSLog(@"Failed to remove existing file: %@", error.localizedDescription);
-            return nil;
-        }
-    }
-
-    // 检查并创建目标路径的父目录（一次性创建所有中间目录）
-    NSURL *parentDirectory = [destinationURL URLByDeletingLastPathComponent];
-    if (![fileManager fileExistsAtPath:parentDirectory.path]) {
-        if (![fileManager createDirectoryAtURL:parentDirectory
-                   withIntermediateDirectories:YES attributes:nil error:&error])
-        {
-            NSLog(@"Failed to create directory: %@", error.localizedDescription);
             return nil;
         }
     }
@@ -80,17 +70,12 @@
     }
 
     NSLog(@"File copied to shared directory: %@", destinationURL.path);
-    return @{
-        @"fileName": fileName,
-        @"fileExtension": fileExtension,
-        @"absoluteFilePath": destinationURL.path,
-        @"relativeFilePath": relativePath
-    };
+    return pathInfo;
 }
 
 
 + (void)downloadFileWithUrl:(NSString *)fileUrl
-              toSandboxType:(CQTSSandboxType)sandboxType
+               toSandboxURL:(NSURL *)sandboxURL
                subDirectory:(nullable NSString *)subDirectory
                    fileName:(nullable NSString *)fileNameWithExtension
                     success:(void (^)(NSDictionary *fileDictionary))success
@@ -99,7 +84,7 @@
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [weakSelf _downloadFileWithUrl:fileUrl
-                        toSandboxType:sandboxType
+                          toSandboxURL:sandboxURL
                          subDirectory:subDirectory
                              fileName:fileNameWithExtension
                               success:^(NSDictionary * _Nonnull fileDictionary) {
@@ -116,7 +101,7 @@
 
 
 + (void)_downloadFileWithUrl:(NSString *)fileUrl
-              toSandboxType:(CQTSSandboxType)sandboxType
+                toSandboxURL:(NSURL *)sandboxURL
                subDirectory:(nullable NSString *)subDirectory
                    fileName:(nullable NSString *)fileNameWithExtension
                     success:(void (^)(NSDictionary *fileDictionary))success
@@ -141,50 +126,22 @@
             return;
         }
         
-        NSDictionary *result;
-        if (fileNameWithExtension == nil) {
-            NSString *lastPathComponent = fileUrl.lastPathComponent;
-            result = [CQTSResourceUtil extractFileNameAndExtensionFromFileName:lastPathComponent];
-        } else {
-            result = [CQTSResourceUtil extractFileNameAndExtensionFromFileName:fileNameWithExtension];
-        }
-        NSString *fileName = result[@"fileName"];
-        NSString *fileExtension = result[@"fileExtension"];
+        NSString *lastFileNameWithExtension = fileNameWithExtension == nil ? fileUrl.lastPathComponent : fileNameWithExtension;
+
         
-        // 创建目标路径（共享资源目录下的目标文件路径）:相对路径
-        NSString *relativePath = @"";
-        if (subDirectory != nil && subDirectory.length > 0) {
-            relativePath = subDirectory;
+        NSDictionary *pathInfo = [CQTSSandboxPathUtil pathInfoWithHostSandboxURL:sandboxURL subDirectory:subDirectory fileNameWithExtension:lastFileNameWithExtension shouldCreateIntermediateDirectories:YES];
+        if (pathInfo == nil) {
+            failure(@"获取路径信息失败");
+            return;
         }
-        NSString *newFileName = [NSString stringWithFormat:@"%@.%@", fileName, fileExtension];
-        relativePath = [relativePath stringByAppendingPathComponent:newFileName];
-        // 绝对路径
-        NSString *sandboxPath = [CQTSSandboxPathUtil sandboxPath:sandboxType];
-        NSURL *sandboxURL = [NSURL fileURLWithPath:sandboxPath];
-        NSURL *destinationURL = [sandboxURL URLByAppendingPathComponent:relativePath];
-        NSString *directory = [destinationURL.URLByDeletingLastPathComponent path];
-        BOOL isDirectory;
-        if (![[NSFileManager defaultManager] fileExistsAtPath:directory isDirectory:&isDirectory] || !isDirectory) {
-            NSError *createDirError;
-            [[NSFileManager defaultManager] createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:&createDirError];
-            if (createDirError) {
-                failure(createDirError.cqtsErrorString);
-                return;
-            }
-        }
-        
-        [data writeToFile:destinationURL.path options:0 error:&fileError];
+        NSString *destinationPath = pathInfo[@"absoluteFilePath"];
+        [data writeToFile:destinationPath options:0 error:&fileError];
         if (fileError) {
             failure(fileError.cqtsErrorString);
             
         } else {
-            NSLog(@"File download to directory: %@", destinationURL.path);
-            success(@{
-                @"fileName": fileName,
-                @"fileExtension": fileExtension,
-                @"absoluteFilePath": destinationURL.path,
-                @"relativeFilePath": relativePath
-            });
+            NSLog(@"File success download to directory: %@", destinationPath);
+            success(pathInfo);
         }
     }];
     

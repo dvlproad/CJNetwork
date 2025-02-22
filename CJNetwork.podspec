@@ -57,7 +57,7 @@ Pod::Spec.new do |s|
     ss.source_files = "CJNetwork/CJNetworkCommon/**/*.{h,m}"
 
     ss.dependency 'YYCache'
-    ss.dependency 'MJExtension'
+    # ss.dependency 'MJExtension'
     ss.dependency 'CQNetworkPublic/Base'  # 不要依赖太大，避免只想进行普通请求，却把上传请求相关的模型等也依赖进来
     # 只是为了 #import <CQNetworkPublic/CJRequestNetworkEnum.h> 和 #import <CQNetworkPublic/CJRequestSettingModel.h>
   end

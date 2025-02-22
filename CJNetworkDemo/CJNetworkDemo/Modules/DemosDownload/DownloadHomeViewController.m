@@ -53,7 +53,8 @@
             toastUtilModule.content = self.realDownloadZipRelativePath;
             toastUtilModule.actionBlock = ^{
                 NSString *Url = @"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/1de60c07fba6fa5d29a49e982a4fc02f22e21d9d/CQDemoKit/Demo_Resource/LocDataModel/Resources/mp4/vap.mp4";
-                [CQTSSandboxFileUtil downloadFileWithUrl:Url toSandboxType:CQTSSandboxTypeDocuments
+                NSURL *sandboxURL = [CQTSSandboxPathUtil sandboxURL:CQTSSandboxTypeDocuments];
+                [CQTSSandboxFileUtil downloadFileWithUrl:Url toSandboxURL:sandboxURL
                                                 subDirectory:@"downloadMp4" fileName:nil success:^(NSDictionary *dict) {
                     NSString *absoluteFilePath = dict[@"absoluteFilePath"];
                     NSString *relativeFilePath = dict[@"relativeFilePath"];
