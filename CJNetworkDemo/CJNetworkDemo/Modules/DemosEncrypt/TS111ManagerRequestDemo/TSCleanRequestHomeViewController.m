@@ -11,7 +11,7 @@
 //#import <CQDemoKit/CJUIKitToastUtil.h>
 
 #import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
-#import "TSCleanHTTPSessionManager.h"
+#import <CJNetwork/CQDemoHTTPSessionManager.h>
 
 @interface TSCleanRequestHomeViewController ()
 
@@ -64,7 +64,7 @@
 // 测试GET网络请求
 - (void)__testGetRequest {
     // [淘宝宝贝名称查询GET](https://api.you-fire.com/youapi/api/detail/b5d2217f923e11e986e700163e0e0ef0)
-    AFHTTPSessionManager *manager = [TSCleanHTTPSessionManager sharedInstance];
+    AFHTTPSessionManager *manager = [CQDemoHTTPSessionManager sharedInstance];
     NSString *Url = @"https://suggest.taobao.com/sug";
     NSDictionary *allParams = @{
         @"code": @"utf-8",
@@ -85,7 +85,7 @@
 - (void)__testPostRequest {
     // [网易新闻POST](https://api.you-fire.com/youapi/api/detail/63c85ba5a38d40418a786d90c194679b)
     
-    AFHTTPSessionManager *manager = [TSCleanHTTPSessionManager sharedInstance];
+    AFHTTPSessionManager *manager = [CQDemoHTTPSessionManager sharedInstance];
     NSString *Url = @"https://api.apiopen.top/getWangYiNews";
     NSDictionary *allParams = @{
         @"page": @(1),

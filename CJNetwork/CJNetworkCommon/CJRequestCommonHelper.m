@@ -38,7 +38,7 @@
                                      params:(nullable NSDictionary *)params
                           cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                     logType:(CJRequestLogType)logType
-                                    success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+                                    success:(nullable void (^)(CJSuccessRequestInfo * _Nonnull successRequestInfo))success
 {
     CJRequestCacheStrategy cacheStrategy = cacheSettingModel.cacheStrategy;
     BOOL beforeStartRequestWillShowCache = YES; //在开始请求之前是否会先用缓存数据做一次快速显示
@@ -76,7 +76,7 @@
                                         forUrl:(NSString *)Url
                                         params:(nullable id)params
                                        logType:(CJRequestLogType)logType
-                                       success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+                                       success:(nullable void (^)(CJSuccessRequestInfo * _Nonnull successRequestInfo))success
 {
     NSURLRequest *request = nil;
     
@@ -95,7 +95,7 @@
                             params:(nullable id)params
                  cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                            logType:(CJRequestLogType)logType
-                           success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
+                           success:(nullable void (^)(CJSuccessRequestInfo * _Nonnull successRequestInfo))success
 {
     CJRequestCacheStrategy cacheStrategy = cacheSettingModel.cacheStrategy;
     if (cacheStrategy != CJRequestCacheStrategyNoneCache) {  //是否需要本地缓存现在请求下来的网络数据

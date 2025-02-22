@@ -140,9 +140,28 @@
 
 
 
-
-
-
-
+#pragma mark - 短链
+/* 完整的描述请参见文件头部 */
++ (void)expandShortenedUrl:(NSString *)shortenedUrl
+                   success:(void (^)(NSString *expandedUrl))success
+                   failure:(void (^)(NSString *errorMessage))failure {
+    NSURL *url = [NSURL URLWithString:shortenedUrl];
+    if (!url) {
+        return;
+    }
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            failure([NSString stringWithFormat:@"短链重定向/扩展失败: %@", error.localizedDescription]);
+        } else if (response.URL) {
+            // 获取扩展后的 URL
+            NSString *expandedUrl = response.URL.absoluteString;
+            success(expandedUrl);
+        }
+    }];
+    
+    [dataTask resume];
+}
 
 @end

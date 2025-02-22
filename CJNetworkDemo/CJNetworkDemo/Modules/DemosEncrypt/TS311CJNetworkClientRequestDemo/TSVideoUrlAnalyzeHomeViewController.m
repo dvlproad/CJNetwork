@@ -10,9 +10,10 @@
 #import "TSVideoUrlAnalyzeHomeViewController.h"
 #import <CJMonitor/CJLogSuspendWindow.h>
 //#import <CQDemoKit/CJUIKitToastUtil.h>
+#import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
 
 #import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
-#import "TSCleanHTTPSessionManager.h"
+#import <CJNetwork/CQDemoHTTPSessionManager.h>
 
 #import "TestNetworkClient.h"
 
@@ -31,32 +32,56 @@
     // Do any additional setup after loading the view.
     
     self.navigationItem.title = NSLocalizedString(@"抖音解析 无水印", nil);
-    
+    __weak typeof(self)weakSelf = self;
     
     NSMutableArray *sectionDataModels = [[NSMutableArray alloc] init];
     
-    // 单个请求
+    // Douyin
     {
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = @"抖音解析 无水印";
+        sectionDataModel.theme = @"Douyin 视频地址解析";
         
         {
             CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
-            loginModule.title = @"获取抖音解析的api";
+            loginModule.title = @"抖音解析 无水印";
+            loginModule.content = @"获取抖音解析的api，并利用api解析出视频地址";
+            loginModule.contentLines = 2;
             loginModule.actionBlock = ^{
-                [self __testGetRequest];
-            };
-            [sectionDataModel.values addObject:loginModule];
-        }
-        {
-            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
-            loginModule.title = @"利用api解析出视频地址";
-            loginModule.actionBlock = ^{
-                [self __testPostRequest];
+                [CQVideoUrlAnalyze_Douyin analyzeUrl:@"https://v.douyin.com/iPY4TLua/" success:^(NSArray<NSString *> * _Nonnull videoResultUrls) {
+                    if (videoResultUrls.count > 0) {
+                        weakSelf.videoResultUrl = videoResultUrls[0];
+                        [weakSelf __showResponseLogMessage:weakSelf.videoResultUrl];
+                    }
+                    
+                } failure:^(NSString * _Nonnull errorMessage) {
+                    [weakSelf __showResponseLogMessage:errorMessage];
+                }];
             };
             [sectionDataModel.values addObject:loginModule];
         }
         
+        [sectionDataModels addObject:sectionDataModel];
+    }
+    
+    // Tiktok
+    {
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
+        sectionDataModel.theme = @"Tiktok 视频地址解析";
+        {
+            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
+            loginModule.title = @"解析tiktok视频地址";
+            loginModule.content = @"无水印";
+            loginModule.actionBlock = ^{
+                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
+                [CQVideoUrlAnalyze_Tiktok requestUrlFromShortenedUrl:shortenedUrl type:CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD success:^(NSString * _Nonnull expandedUrl, NSString * _Nonnull videoId, NSString * _Nonnull videoUrl) {
+                    NSString *message = [NSString stringWithFormat:@"expandedUrl=%@\nvideoId=%@\nvideoUrl=%@", expandedUrl, videoId, videoUrl];
+                    [self __showResponseLogMessage:message];
+                } failure:^(NSString * _Nonnull errorMessage) {
+                    [self __showResponseLogMessage:errorMessage];
+                }];
+            };
+            [sectionDataModel.values addObject:loginModule];
+        }
         [sectionDataModels addObject:sectionDataModel];
     }
 
@@ -66,96 +91,46 @@
 
 
 #pragma mark - Private Method
-// 测试GET网络请求
-- (void)__testGetRequest {
-    AFHTTPSessionManager *manager = [TSCleanHTTPSessionManager sharedInstance];
-    NSString *Url = @"http://i.rcuts.com/update/247";   // 快捷指令：抖音解析 无水印
-    NSDictionary *allParams = @{
-//        @"code": @"utf-8",
-//        @"q": @"玩具车"
-    };
-    NSDictionary<NSString *, NSString *> *headers = @{};
+- (void)fetchTikTokData {
+    // 设置 API URL（这是你提供的 URL）
+    NSString *urlString = @"https://tiktok-api23.p.rapidapi.com/your-endpoint";
     
-    __weak typeof(self)weakSelf = self;
-    [manager cj_requestUrl:Url params:allParams headers:headers method:CJRequestMethodGET cacheSettingModel:nil logType:CJRequestLogTypeSuppendWindow progress:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
-        //NSString *message = [NSString stringWithFormat:@"GET请求测试成功。。。\n%@", successRequestInfo.networkLogString];
-        //[self __showResponseLogMessage:message];
-        
-        NSDictionary *responseDictionary = successRequestInfo.responseObject;
-        weakSelf.api = [responseDictionary objectForKey:@"api"];
-        
-    } failure:^(CJFailureRequestInfo * _Nullable failureRequestInfo) {
-        NSString *message = [NSString stringWithFormat:@"GET请求测试失败。。。\n%@", failureRequestInfo.errorMessage];
-        [self __showResponseLogMessage:message];
+    // 创建 NSURL 对象
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    // 创建 NSMutableURLRequest 对象
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    // 设置 HTTP 方法为 GET
+    [request setHTTPMethod:@"GET"];
+    
+    // 添加 RapidAPI 的认证头
+    [request setValue:@"your-rapidapi-key" forHTTPHeaderField:@"X-RapidAPI-Key"];
+    [request setValue:@"tiktok-api23.p.rapidapi.com" forHTTPHeaderField:@"X-RapidAPI-Host"];
+    
+    // 创建 URLSession
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    // 创建数据任务
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            // 处理响应数据
+            NSError *jsonError;
+            NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+            if (jsonError) {
+                NSLog(@"JSON Parsing Error: %@", jsonError.localizedDescription);
+            } else {
+                NSLog(@"Response: %@", jsonResponse);
+            }
+        }
     }];
+    
+    // 启动请求
+    [dataTask resume];
 }
 
-// 测试POST网络请求
-- (void)__testPostRequest {
-    __weak typeof(self)weakSelf = self;
-    
-    /*
-    AFHTTPSessionManager *manager = [TSCleanHTTPSessionManager sharedInstance];
-//    NSString *Url = @"http://api.rcuts.com/Video/DouYin.php";
-    NSString *Url = self.api;
-    NSDictionary *allParams = @{
-        @"url": @"https://v.douyin.com/iPY4TLua/",
-        @"token": @"rcuts"
-    };
-    NSDictionary<NSString *, NSString *> *headers = @{};
-    
-    
-    [manager cj_requestUrl:Url params:allParams headers:headers method:CJRequestMethodPOST cacheSettingModel:nil logType:CJRequestLogTypeSuppendWindow progress:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {
-        //NSString *message = [NSString stringWithFormat:@"POST请求测试成功。。。\n%@", successRequestInfo.networkLogString];
-        //[self __showResponseLogMessage:message];
-        
-        NSDictionary *responseDictionary = successRequestInfo.responseObject;
-        NSArray *videoResultUrls = [responseDictionary objectForKey:@"video_url"];
-        if (videoResultUrls.count > 0) {
-            weakSelf.videoResultUrl = videoResultUrls[0];
-        }
-        [self __showResponseLogMessage:weakSelf.videoResultUrl];
-        
-        
-    } failure:^(CJFailureRequestInfo * _Nullable failureRequestInfo) {
-        NSString *message = [NSString stringWithFormat:@"POST请求测试失败。。。\n%@", failureRequestInfo.errorMessage];
-        [self __showResponseLogMessage:message];
-    }];
-    */
-
-    CJRequestBaseModel *requestModel = [[CJRequestBaseModel alloc] init];
-    requestModel.ownBaseUrl = @"http://api.rcuts.com";
-    requestModel.apiSuffix = @"Video/DouYin.php";
-    requestModel.customParams = @{
-        @"url": @"https://v.douyin.com/iPY4TLua/",
-        @"token": @"rcuts"
-    };
-    requestModel.requestMethod = CJRequestMethodPOST;
-    
-    CJRequestSettingModel *settingModel = [[CJRequestSettingModel alloc] init];
-//    CJRequestCacheSettingModel *requestCacheModel = [[CJRequestCacheSettingModel alloc] init];
-//    requestCacheModel.cacheStrategy = CJRequestCacheStrategyEndWithCacheIfExist;
-//    requestCacheModel.cacheTimeInterval = 10;
-//    settingModel.requestCacheModel = requestCacheModel;
-    settingModel.logType = CJRequestLogTypeConsoleLog;
-    requestModel.settingModel = settingModel;
-    
-    
-    [[TestNetworkClient sharedInstance] requestModel:requestModel success:^(CJResponseModel *responseModel) {
-        //NSString *message = [NSString stringWithFormat:@"POST请求测试成功。。。\n%@", successRequestInfo.networkLogString];
-        //[self __showResponseLogMessage:message];
-        
-        NSDictionary *responseDictionary = responseModel.result;
-        NSArray *videoResultUrls = [responseDictionary objectForKey:@"video_url"];
-        if (videoResultUrls.count > 0) {
-            weakSelf.videoResultUrl = videoResultUrls[0];
-        }
-        [self __showResponseLogMessage:weakSelf.videoResultUrl];
-        
-    } failure:^(BOOL isRequestFailure, NSString *errorMessage) {
-        //
-    }];
-}
 
 /// 显示返回结果log
 - (void)__showResponseLogMessage:(NSString *)message {

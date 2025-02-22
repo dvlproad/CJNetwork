@@ -63,6 +63,8 @@
     return self;
 }
 
+#pragma mark - 设置
+// 必须实现：执行请求的Manager(一定要执行)
 - (void)setupCleanHTTPSessionManager:(AFHTTPSessionManager *)cleanHTTPSessionManager
              cryptHTTPSessionManager:(AFHTTPSessionManager *)cryptHTTPSessionManager
 {

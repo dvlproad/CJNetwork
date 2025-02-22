@@ -7,7 +7,7 @@
 //
 
 #import "TestNetworkClient+MethodEncrypt.h"
-#import "TestHTTPSessionManager.h"
+#import <CJNetwork/CQDemoHTTPSessionManager.h>
 
 @implementation TestNetworkClient (MethodEncrypt)
 
@@ -20,7 +20,7 @@
     NSString *domain = @"https://localhost/simulateApi/CJDemoDataSimulationDemo";
     NSString *Url = [domain stringByAppendingString:apiSuffix];
     
-    AFHTTPSessionManager *manager = [TestHTTPSessionManager sharedInstance];
+    AFHTTPSessionManager *manager = [CQDemoHTTPSessionManager sharedInstance];
     
     NSURLSessionDataTask *URLSessionDataTask =
     [manager cjMethodEncrypt_postUrl:Url params:params cacheSettingModel:cacheSettingModel logType:logType encrypt:NO encryptBlock:nil decryptBlock:nil success:^(CJSuccessRequestInfo * _Nullable successRequestInfo) {

@@ -20,6 +20,15 @@
   "requires_arc": true,
   "subspecs": [
     {
+      "name": "Demo",
+      "source_files": "CJNetwork/Demo/**/*.{h,m}",
+      "dependencies": {
+        "AFNetworking": [
+
+        ]
+      }
+    },
+    {
       "name": "CJNetworkCommon",
       "source_files": "CJNetwork/CJNetworkCommon/**/*.{h,m}",
       "dependencies": {

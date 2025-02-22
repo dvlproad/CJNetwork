@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.name         = "CJNetwork-Swift"
   s.version      = "0.0.1"
   s.summary      = "主工程和其他Target某些工程下(WidgetExtension等)都需要依赖的库"
-  s.homepage     = "https://github.com/dvlproad/CJUIKit.git"
+  s.homepage     = "https://github.com/dvlproad/CJNetwork.git"
   s.license      = "MIT"
   s.author       = "dvlproad"
 

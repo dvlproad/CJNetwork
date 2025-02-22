@@ -14,7 +14,7 @@
 
 #import "TestConcurrenceModel.h"
 #import "TestConcurrenceManager.h"
-#import "TestHTTPSessionManager.h"
+#import <CJNetwork/CQDemoHTTPSessionManager.h>
 #import "TestNetworkClient+TestConcurrence.h"
 
 @interface SemaphoreHomeViewController ()
@@ -564,8 +564,8 @@ NSInteger total = 0;
     }
     
     
-    [TestHTTPSessionManager sharedInstance].completionQueue = dispatch_queue_create("realNetwork.testConcurrenceCount.queue", DISPATCH_QUEUE_CONCURRENT); //如果没设置成并发队列就不能测试
-    [[TestHTTPSessionManager sharedInstance] allowMaxConcurrenceCount:3];
+    [CQDemoHTTPSessionManager sharedInstance].completionQueue = dispatch_queue_create("realNetwork.testConcurrenceCount.queue", DISPATCH_QUEUE_CONCURRENT); //如果没设置成并发队列就不能测试
+    [[CQDemoHTTPSessionManager sharedInstance] allowMaxConcurrenceCount:3];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSInteger i = 0; i < 4; i++) {

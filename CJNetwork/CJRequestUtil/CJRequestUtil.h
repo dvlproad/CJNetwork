@@ -69,6 +69,18 @@ NS_ASSUME_NONNULL_BEGIN
           success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
           failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
 
+#pragma mark - 短链
+/*
+ *  重定向/扩展 短链
+ *
+ *  @param shortenedUrl 要重定向/扩展的短链
+ *  @param success      请求成功的回调failure
+ *  @param failure      请求失败的回调failure
+ */
++ (void)expandShortenedUrl:(NSString *)shortenedUrl
+                   success:(void (^)(NSString *expandedUrl))success
+                   failure:(void (^)(NSString *errorMessage))failure;
+
 NS_ASSUME_NONNULL_END
 
 @end

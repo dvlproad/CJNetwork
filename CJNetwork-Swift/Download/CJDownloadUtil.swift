@@ -72,9 +72,9 @@ import SSZipArchive
         }
         
         // 下载部分
-        let downloadTask = URLSession.shared.downloadTask(with: fileNetworkURL, completionHandler: { (URL, response: URLResponse?, error) in
-            guard let URL = URL, (response as? HTTPURLResponse)?.statusCode == 200 else {
-                failure("下载文件失败，请检查:\(fileNetworkUrl)")
+        let downloadTask = URLSession.shared.downloadTask(with: fileNetworkURL, completionHandler: { (location: URL?, response: URLResponse?, error: Error?) in
+            guard let URL = location, let response = response, error == nil, (response as? HTTPURLResponse)?.statusCode == 200 else {
+                failure("下载文件失败:\(error?.localizedDescription ?? "Unknown error") ,想要下载的文件\(fileNetworkUrl)")
                 return
             }
             

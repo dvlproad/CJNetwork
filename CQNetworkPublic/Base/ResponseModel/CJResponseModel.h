@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 额外自己增加
 @property (nonatomic, strong) NSDictionary *responseDictionary; /**< 返回的总信息(请自己完善该属性的赋值) */
-@property (nonatomic, copy) NSString *cjNetworkLog;
+@property (nullable, nonatomic, copy) NSString *cjNetworkLog;
 @property (nonatomic, assign) BOOL isCacheData;
 
 /*

@@ -121,8 +121,8 @@
         
         {
             CQDMModuleModel *requestModule = [[CQDMModuleModel alloc] init];
-            requestModule.title = @"抖音解析 无水印";
-            requestModule.content = @"快捷指令：抖音解析 无水印";
+            requestModule.title = @"视频地址解析";
+            requestModule.content = @"抖音、Tiktok";
             requestModule.classEntry = [TSVideoUrlAnalyzeHomeViewController class];
             [sectionDataModel.values addObject:requestModule];
         }

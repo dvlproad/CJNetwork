@@ -1,0 +1,6 @@
+framework module CQVideoUrlAnalyze_Swift {
+  umbrella header "CQVideoUrlAnalyze-Swift-umbrella.h"
+
+  export *
+  module * { export * }
+}

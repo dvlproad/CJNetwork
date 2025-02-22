@@ -25,6 +25,9 @@
 #import "CJNetworkCacheUtil.h"
 #import "CJRequestCommonHelper.h"
 #import "CJRequestUtil.h"
+#import "NSString+CJNetworkUrl.h"
+#import "AFHTTPSessionManager+CQDemo.h"
+#import "CQDemoHTTPSessionManager.h"
 
 FOUNDATION_EXPORT double CJNetworkVersionNumber;
 FOUNDATION_EXPORT const unsigned char CJNetworkVersionString[];

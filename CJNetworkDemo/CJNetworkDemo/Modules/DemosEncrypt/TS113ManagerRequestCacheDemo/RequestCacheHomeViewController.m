@@ -13,7 +13,7 @@
 
 #import <CJNetwork/CJNetworkCacheUtil.h>
 #import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
-#import "TSCleanHTTPSessionManager.h"
+#import <CJNetwork/CQDemoHTTPSessionManager.h>
 #import "TS113CacheResponseModel.h"
 
 #import <CJNetwork/CJNetworkCacheUtil.h>
@@ -193,7 +193,7 @@
                           failure:(void (^)(BOOL isRequestFailure, NSString *errorMessage))failure
 {
     // [淘宝宝贝名称查询GET](https://api.you-fire.com/youapi/api/detail/b5d2217f923e11e986e700163e0e0ef0)
-    AFHTTPSessionManager *manager = [TSCleanHTTPSessionManager sharedInstance];
+    AFHTTPSessionManager *manager = [CQDemoHTTPSessionManager sharedInstance];
     NSString *Url = @"https://suggest.taobao.com/sug";
     NSDictionary *allParams = @{
         @"code": @"utf-8",

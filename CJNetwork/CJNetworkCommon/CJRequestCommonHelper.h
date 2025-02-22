@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
                                      params:(nullable NSDictionary *)params
                           cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                     logType:(CJRequestLogType)logType
-                                    success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success;
+                                    success:(nullable void (^)(CJSuccessRequestInfo * _Nonnull successRequestInfo))success;
 
 ///网络请求获取到数据时候执行的方法(responseObject必须是解密后的数据)
 + (void)__didRequestSuccessForTask:(NSURLSessionDataTask * _Nonnull)task
@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
                             params:(nullable id)params
                  cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                            logType:(CJRequestLogType)logType
-                           success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success;
+                           success:(nullable void (^)(CJSuccessRequestInfo * _Nonnull successRequestInfo))success;
 
 ///网络请求不到数据的时候（无网 或者 有网但服务器异常等无数据时候）执行的方法
 + (void)__didRequestFailureForTask:(NSURLSessionDataTask * _Nonnull)task
@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
                             forUrl:(NSString *)Url
                             params:(nullable id)params
                            logType:(CJRequestLogType)logType
-                           failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure;
+                           failure:(nullable void (^)(CJFailureRequestInfo * _Nonnull failureRequestInfo))failure;
 
 NS_ASSUME_NONNULL_END
 

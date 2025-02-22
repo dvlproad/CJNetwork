@@ -7,7 +7,7 @@
 //
 
 #import "TestNetworkClient.h"
-#import "TestHTTPSessionManager.h"
+#import <CJNetwork/CQDemoHTTPSessionManager.h>
 
 @implementation TestNetworkClient
 
@@ -23,8 +23,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        AFHTTPSessionManager *cleanHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
-        AFHTTPSessionManager *cryptHTTPSessionManager = [TestHTTPSessionManager sharedInstance];
+        AFHTTPSessionManager *cleanHTTPSessionManager = [CQDemoHTTPSessionManager sharedInstance];
+        AFHTTPSessionManager *cryptHTTPSessionManager = [CQDemoHTTPSessionManager sharedInstance];
         [self setupCleanHTTPSessionManager:cleanHTTPSessionManager cryptHTTPSessionManager:cryptHTTPSessionManager];
         
         [self setupGetSuccessResponseModelBlock:^CJResponseModel *(CJSuccessRequestInfo *successNetworkInfo) {

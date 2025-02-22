@@ -60,8 +60,8 @@
                               cacheSettingModel:(nullable CJRequestCacheSettingModel *)cacheSettingModel
                                          logType:(CJRequestLogType)logType
                                         progress:(nullable void (^)(NSProgress * _Nonnull))progress
-                                         success:(nullable void (^)(CJSuccessRequestInfo * _Nullable successRequestInfo))success
-                                         failure:(nullable void (^)(CJFailureRequestInfo * _Nullable failureRequestInfo))failure
+                                         success:(nullable void (^)(CJSuccessRequestInfo * _Nonnull successRequestInfo))success
+                                         failure:(nullable void (^)(CJFailureRequestInfo * _Nonnull failureRequestInfo))failure
 {
     BOOL shouldStartRequestNetworkData = [CJRequestCommonHelper __didEventBeforeStartRequestWithUrl:Url params:allParams cacheSettingModel:cacheSettingModel logType:logType success:success];
     if (shouldStartRequestNetworkData == NO) {

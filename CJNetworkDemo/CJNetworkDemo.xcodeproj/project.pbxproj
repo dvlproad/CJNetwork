@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		158259DA2484E8F500BA4B3D /* TestNetworkClient+TestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259BC2484E8F500BA4B3D /* TestNetworkClient+TestCache.m */; };
-		158259DB2484E8F500BA4B3D /* TestHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259BD2484E8F500BA4B3D /* TestHTTPSessionManager.m */; };
 		158259DC2484E8F500BA4B3D /* TestNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259BF2484E8F500BA4B3D /* TestNetworkClient.m */; };
 		158259DD2484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259C32484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.m */; };
 		158259DE2484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259C62484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.m */; };
 		158259DF2484E8F500BA4B3D /* TSCleanRequestHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259C82484E8F500BA4B3D /* TSCleanRequestHomeViewController.m */; };
-		158259E02484E8F500BA4B3D /* TSCleanHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259C92484E8F500BA4B3D /* TSCleanHTTPSessionManager.m */; };
 		158259E12484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259CE2484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.m */; };
 		158259E22484E8F500BA4B3D /* HealthyNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259D12484E8F500BA4B3D /* HealthyNetworkClient.m */; };
 		158259E32484E8F500BA4B3D /* HealthResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 158259D32484E8F500BA4B3D /* HealthResponseModel.m */; };
@@ -93,19 +91,15 @@
 /* Begin PBXFileReference section */
 		14F9F176A0D55BE473A8078D /* Pods_CJNetworkDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CJNetworkDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		158259BC2484E8F500BA4B3D /* TestNetworkClient+TestCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TestNetworkClient+TestCache.m"; sourceTree = "<group>"; };
-		158259BD2484E8F500BA4B3D /* TestHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHTTPSessionManager.m; sourceTree = "<group>"; };
 		158259BE2484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS31CJNetworkClientHomeViewController.h; sourceTree = "<group>"; };
 		158259BF2484E8F500BA4B3D /* TestNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNetworkClient.m; sourceTree = "<group>"; };
-		158259C02484E8F500BA4B3D /* TestHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHTTPSessionManager.h; sourceTree = "<group>"; };
 		158259C12484E8F500BA4B3D /* TestNetworkClient+TestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestNetworkClient+TestCache.h"; sourceTree = "<group>"; };
 		158259C22484E8F500BA4B3D /* TestNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNetworkClient.h; sourceTree = "<group>"; };
 		158259C32484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TS31CJNetworkClientHomeViewController.m; sourceTree = "<group>"; };
 		158259C52484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS11CleanRequestRepeatHomeViewController.h; sourceTree = "<group>"; };
 		158259C62484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TS11CleanRequestRepeatHomeViewController.m; sourceTree = "<group>"; };
 		158259C82484E8F500BA4B3D /* TSCleanRequestHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCleanRequestHomeViewController.m; sourceTree = "<group>"; };
-		158259C92484E8F500BA4B3D /* TSCleanHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCleanHTTPSessionManager.m; sourceTree = "<group>"; };
 		158259CA2484E8F500BA4B3D /* TSCleanRequestHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCleanRequestHomeViewController.h; sourceTree = "<group>"; };
-		158259CB2484E8F500BA4B3D /* TSCleanHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCleanHTTPSessionManager.h; sourceTree = "<group>"; };
 		158259CD2484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS12MyNetworkClientHomeViewController.h; sourceTree = "<group>"; };
 		158259CE2484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TS12MyNetworkClientHomeViewController.m; sourceTree = "<group>"; };
 		158259D02484E8F500BA4B3D /* HealthyHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthyHTTPSessionManager.h; sourceTree = "<group>"; };
@@ -249,8 +243,6 @@
 		158259BB2484E8F500BA4B3D /* TS311CJNetworkClientRequestDemo */ = {
 			isa = PBXGroup;
 			children = (
-				158259C02484E8F500BA4B3D /* TestHTTPSessionManager.h */,
-				158259BD2484E8F500BA4B3D /* TestHTTPSessionManager.m */,
 				158259C22484E8F500BA4B3D /* TestNetworkClient.h */,
 				158259BF2484E8F500BA4B3D /* TestNetworkClient.m */,
 				158259C12484E8F500BA4B3D /* TestNetworkClient+TestCache.h */,
@@ -275,8 +267,6 @@
 		158259C72484E8F500BA4B3D /* TS111ManagerRequestDemo */ = {
 			isa = PBXGroup;
 			children = (
-				158259CB2484E8F500BA4B3D /* TSCleanHTTPSessionManager.h */,
-				158259C92484E8F500BA4B3D /* TSCleanHTTPSessionManager.m */,
 				158259CA2484E8F500BA4B3D /* TSCleanRequestHomeViewController.h */,
 				158259C82484E8F500BA4B3D /* TSCleanRequestHomeViewController.m */,
 			);
@@ -893,7 +883,9 @@
 				"${BUILT_PRODUCTS_DIR}/CJNetworkFileModel/CJNetworkFileModel.framework",
 				"${BUILT_PRODUCTS_DIR}/CJNetworkSimulate/CJNetworkSimulate.framework",
 				"${BUILT_PRODUCTS_DIR}/CQDemoKit/CQDemoKit.framework",
+				"${BUILT_PRODUCTS_DIR}/CQDemoKit-Swift/CQDemoKit_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/CQNetworkPublic/CQNetworkPublic.framework",
+				"${BUILT_PRODUCTS_DIR}/CQVideoUrlAnalyze-Swift/CQVideoUrlAnalyze_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
@@ -916,7 +908,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJNetworkFileModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJNetworkSimulate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CQDemoKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CQDemoKit_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CQNetworkPublic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CQVideoUrlAnalyze_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
@@ -986,7 +980,6 @@
 				785AB2F821C01318009938A4 /* TestNetworkEnvironmentModel.m in Sources */,
 				7868F18A2121C79A00A283EB /* EncryptHomeViewController.m in Sources */,
 				7868F1922121C80500A283EB /* DownloadHomeViewController.m in Sources */,
-				158259DB2484E8F500BA4B3D /* TestHTTPSessionManager.m in Sources */,
 				7868F1782121C79A00A283EB /* UploadHomeViewController.m in Sources */,
 				7868F17B2121C79A00A283EB /* SocketDemoViewController.m in Sources */,
 				97216B0B2570AAC60006E1C2 /* SimulationHomeViewController.m in Sources */,
@@ -997,7 +990,6 @@
 				784653781F544A0100E20A27 /* NSString+Hash.m in Sources */,
 				7846E38B21A6A56900D73F51 /* TestConcurrenceManager.m in Sources */,
 				784653751F544A0100E20A27 /* MQLResumeManager.m in Sources */,
-				158259E02484E8F500BA4B3D /* TSCleanHTTPSessionManager.m in Sources */,
 				158259DD2484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.m in Sources */,
 				158259E22484E8F500BA4B3D /* HealthyNetworkClient.m in Sources */,
 				158259E42484E8F500BA4B3D /* HealthyHTTPSessionManager.m in Sources */,

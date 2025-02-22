@@ -1,0 +1,46 @@
+{
+  "name": "CQVideoUrlAnalyze-Swift",
+  "version": "0.0.1",
+  "summary": "视频地址解析库",
+  "homepage": "https://github.com/dvlproad/CJNetwork",
+  "license": "MIT",
+  "authors": "dvlproad",
+  "description": "A longer description of CQVideoUrlAnalyze-Swift in Markdown format.\n\n* Think: Why did you write this? What is the focus? What does it do?\n* CocoaPods will be using this to generate tags, and improve search results.\n* Try to keep it short, snappy and to the point.\n* Finally, don't worry about the indent, CocoaPods strips it!",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "swift_versions": "5.0",
+  "source": {
+    "git": "https://github.com/dvlproad/CJUIKit.git",
+    "tag": "CQVideoUrlAnalyze-Swift_0.0.1"
+  },
+  "frameworks": "UIKit",
+  "requires_arc": true,
+  "subspecs": [
+    {
+      "name": "Douyin",
+      "source_files": "CQVideoUrlAnalyze-Swift/Douyin/**/*.{swift}",
+      "dependencies": {
+        "CJNetworkClient/Request": [
+
+        ],
+        "CJNetwork-Swift/Download": [
+
+        ]
+      }
+    },
+    {
+      "name": "Tiktok",
+      "source_files": "CQVideoUrlAnalyze-Swift/Tiktok/**/*.{swift}",
+      "dependencies": {
+        "CJNetworkClient/Request": [
+
+        ],
+        "CJNetwork-Swift/Download": [
+
+        ]
+      }
+    }
+  ],
+  "swift_version": "5.0"
+}

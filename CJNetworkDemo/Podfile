@@ -25,16 +25,20 @@ end
 target 'CJNetworkDemo' do
 #  plugin 'cocoapods-hmap-prebuilt'
   
-  pod 'CQDemoKit',          '~> 0.7.4',      :subspecs => ['BaseVC', 'Demo_Resource']
+  pod 'CQDemoKit',              '~> 0.7.4',      :subspecs => ['BaseVC', 'Demo_Resource']
+  pod 'CQDemoKit-Swift',        '~> 0.0.1'
   
   pod 'CJNetwork-Swift',        :path => '../'
+  
+  # 视频地址解析
+  pod 'CQVideoUrlAnalyze-Swift',:path => '../'
   
   # 模拟请求
   pod 'CJNetworkSimulate',  :path => '../'
 
   # 普通请求
   pod 'CQNetworkPublic',        :path => '../',     :subspecs => ['Request']
-  pod 'CJNetwork',              :path => '../',     :subspecs => ['AFNetworkingSerializerEncrypt', 'AFNetworkingMethodEncrypt']
+  pod 'CJNetwork',              :path => '../',     :subspecs => ['Demo', 'AFNetworkingSerializerEncrypt', 'AFNetworkingMethodEncrypt']
   pod 'CJNetworkClient',        :path => '../',     :subspecs => ['Request']
 
   # 上传请求
