@@ -55,6 +55,15 @@
 - (BOOL)isCompletion:(NSString *)url;
 
 /**
+ *  已下载完成的资源的本地绝对路径
+ *
+ *  @param Url 下载地址
+ *
+ *  @return 已下载完成的资源的本地绝对路径
+ */
+- (NSString *)fileLocalAbsPathForUrl:(NSString *)Url;
+
+/**
  *  删除该资源
  *
  *  @param url 下载地址

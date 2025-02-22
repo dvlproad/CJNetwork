@@ -111,6 +111,7 @@
         {
             CQDMModuleModel *alertUtilModule = [[CQDMModuleModel alloc] init];
             alertUtilModule.title = @"断点续传(HSDownloadManager)";
+            alertUtilModule.content = @"包含保存下载状态等(不会重复下载)";
             alertUtilModule.classEntry = [DownloadListViewController class];
             alertUtilModule.isCreateByXib = YES;
             [sectionDataModel.values addObject:alertUtilModule];
@@ -143,9 +144,7 @@
                 NSString *mp4Url = @"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/1de60c07fba6fa5d29a49e982a4fc02f22e21d9d/CQDemoKit/Demo_Resource/LocDataModel/Resources/mp4/vap.mp4";
                 NSString *directoryUrl = [CQTSSandboxPathUtil sandboxPath:CQTSSandboxTypeDocuments];
                 NSURL *directoryURL = [NSURL fileURLWithPath:directoryUrl];
-                [CJDownloadUtil downloadFileUrl:mp4Url fileDataDecryptHandle:^NSData * _Nullable(NSData * _Nonnull serviceData) {
-                    return serviceData;
-                } saveToDirectoryURL:directoryURL saveWithFileName:@"vap.mp4"  success:^(NSURL * _Nonnull unzipLocalURL) {
+                [CJDownloadUtil downloadFileUrl:mp4Url fileDataDecryptHandle:nil saveToDirectoryURL:directoryURL saveWithFileName:@"vap.mp4" success:^(NSURL * _Nonnull unzipLocalURL) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         NSString *message = [NSString stringWithFormat:@"file解压后的地址: %@", unzipLocalURL.path];
                         [CJUIKitToastUtil showMessage:message];

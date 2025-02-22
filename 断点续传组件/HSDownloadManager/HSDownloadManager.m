@@ -223,6 +223,18 @@ static HSDownloadManager *_downloadManager;
     return [[NSDictionary dictionaryWithContentsOfFile:HSTotalLengthFullpath][HSFileName(url)] integerValue];
 }
 
+/**
+ *  已下载完成的资源的本地绝对路径
+ *
+ *  @param Url 下载地址
+ *
+ *  @return 已下载完成的资源的本地绝对路径
+ */
+- (NSString *)fileLocalAbsPathForUrl:(NSString *)Url {
+    NSString *filePath = HSFileFullpath(Url);
+    return filePath;
+}
+
 #pragma mark - 删除
 /**
  *  删除该资源
@@ -230,10 +242,11 @@ static HSDownloadManager *_downloadManager;
 - (void)deleteFile:(NSString *)url
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:HSFileFullpath(url)]) {
+    NSString *filePath = HSFileFullpath(url);
+    if ([fileManager fileExistsAtPath:filePath]) {
 
         // 删除沙盒中的资源
-        [fileManager removeItemAtPath:HSFileFullpath(url) error:nil];
+        [fileManager removeItemAtPath:filePath error:nil];
         // 删除任务
         [self.tasks removeObjectForKey:HSFileName(url)];
         [self.sessionModels removeObjectForKey:@([self getTask:url].taskIdentifier).stringValue];

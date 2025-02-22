@@ -41,7 +41,7 @@
         
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = [NSString stringWithFormat:@"section %d", section];
-        sectionDataModel.values = [CQTSLocImagesUtil __getTestLocalImageDataModelsWithCount:iRowCount randomOrder:NO];
+        sectionDataModel.values = [CQTSLocImagesUtil dataModelsWithCount:iRowCount randomOrder:NO changeImageNameToNetworkUrl:NO];
         for (int item = 0; item < iRowCount; item++) {
             CQTSLocImageDataModel *module = [sectionDataModel.values objectAtIndex:item];
             module.name = [NSString stringWithFormat:@"%d-%02zd", section, item];
@@ -116,7 +116,12 @@
     CQTSLocImageDataModel *moduleModel = [self dataModelAtIndexPath:indexPath];
     
     CJUIKitCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    cell.imageView.image = moduleModel.image;
+    
+    UIImage *image = [UIImage cqdemokit_xcassetImageNamed:moduleModel.imageName];
+    if (image == nil) {
+        image = [[UIImage alloc] init];
+    }
+    cell.imageView.image = image;
     cell.textLabel.text = moduleModel.name;
     
     return cell;

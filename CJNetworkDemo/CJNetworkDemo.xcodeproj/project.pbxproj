@@ -68,6 +68,7 @@
 		97216B0B2570AAC60006E1C2 /* SimulationHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97216B092570AAC60006E1C2 /* SimulationHomeViewController.m */; };
 		97216B112570AC4D0006E1C2 /* api:card:cardlist in Resources */ = {isa = PBXBuildFile; fileRef = 97216B102570AC4D0006E1C2 /* api:card:cardlist */; };
 		9730F3AC2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9730F3AB2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */; };
+		97F61D0C2D6A475900E1CBBE /* CJBaseDownloadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F61D0B2D6A475900E1CBBE /* CJBaseDownloadView.m */; };
 		9AFB06163CD7B080017D3F18 /* Pods_CJNetworkDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4C6E5834142F4905C92DC /* Pods_CJNetworkDemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -209,6 +210,8 @@
 		97216B102570AC4D0006E1C2 /* api:card:cardlist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "api:card:cardlist"; sourceTree = "<group>"; };
 		9730F3AA2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSVideoUrlAnalyzeHomeViewController.h; sourceTree = "<group>"; };
 		9730F3AB2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSVideoUrlAnalyzeHomeViewController.m; sourceTree = "<group>"; };
+		97F61D0A2D6A475900E1CBBE /* CJBaseDownloadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJBaseDownloadView.h; sourceTree = "<group>"; };
+		97F61D0B2D6A475900E1CBBE /* CJBaseDownloadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJBaseDownloadView.m; sourceTree = "<group>"; };
 		C11239993D822E171AABD0F4 /* Pods-CJNetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F1F8B8F4FF9EBFC0F62ED2D0 /* Pods-CJNetworkDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemoTests/Pods-CJNetworkDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -503,6 +506,11 @@
 				7868F1652121C79A00A283EB /* DownloadListViewController.h */,
 				7868F1622121C79A00A283EB /* DownloadListViewController.m */,
 				7868F1662121C79A00A283EB /* DownloadListViewController.xib */,
+				97F61D0A2D6A475900E1CBBE /* CJBaseDownloadView.h */,
+				97F61D0B2D6A475900E1CBBE /* CJBaseDownloadView.m */,
+				7868F1632121C79A00A283EB /* DownloadTableViewCell.h */,
+				7868F1672121C79A00A283EB /* DownloadTableViewCell.m */,
+				7868F1642121C79A00A283EB /* DownloadTableViewCell.xib */,
 			);
 			path = DownloadListViewController;
 			sourceTree = "<group>";
@@ -679,9 +687,6 @@
 				7868F15A2121C79A00A283EB /* CQTSBaseDownloadViewController.h */,
 				7868F1572121C79A00A283EB /* CQTSBaseDownloadViewController.m */,
 				7868F15E2121C79A00A283EB /* CQTSBaseDownloadViewController.xib */,
-				7868F1632121C79A00A283EB /* DownloadTableViewCell.h */,
-				7868F1672121C79A00A283EB /* DownloadTableViewCell.m */,
-				7868F1642121C79A00A283EB /* DownloadTableViewCell.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -972,6 +977,7 @@
 				78EB551F21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m in Sources */,
 				158259DE2484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.m in Sources */,
 				78715CC82559771100E32CD1 /* MainViewController.m in Sources */,
+				97F61D0C2D6A475900E1CBBE /* CJBaseDownloadView.m in Sources */,
 				78715CC92559771100E32CD1 /* AppDelegate+StartUp.m in Sources */,
 				7846E38821A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.m in Sources */,
 				784653771F544A0100E20A27 /* HSSessionModel.m in Sources */,

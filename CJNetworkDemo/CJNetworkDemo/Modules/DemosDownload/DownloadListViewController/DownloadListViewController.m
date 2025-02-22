@@ -8,11 +8,12 @@
 
 #import "DownloadListViewController.h"
 #import "DownloadTableViewCell.h"
+#import <CQDemoKit/CQTSLocImagesUtil.h>
 
 @interface DownloadListViewController () <UITableViewDataSource, UITableViewDelegate> {
     
 }
-@property (nonatomic, strong) NSArray *datas;
+@property (nonatomic, strong) NSArray<CQTSLocImageDataModel *> *downloadModles;
 
 @end
 
@@ -26,11 +27,10 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    [self.tableView registerNib:[UINib nibWithNibName:@"DownloadTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-    
-    self.datas = @[@"http://120.25.226.186:32812/resources/videos/minion_01.mp4",
-                   @"http://box.9ku.com/download.aspx?from=9ku",
-                   @"http://pic6.nipic.com/20100330/4592428_113348097000_2.jpg"];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"DownloadTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerClass:[DownloadTableViewCell class] forCellReuseIdentifier:@"cell"];
+
+    self.downloadModles = [CQTSLocImagesUtil dataModelsWithCount:10 randomOrder:NO changeImageNameToNetworkUrl:YES];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清空" style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllFiles)];
 }
@@ -46,14 +46,20 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.datas count];
+    return [self.downloadModles count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 68;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DownloadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     //cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row];
-    cell.downloadUrl = [self.datas objectAtIndex:indexPath.row];
+    CQTSLocImageDataModel *downloadModel = [self.downloadModles objectAtIndex:indexPath.row];
+    cell.downloadView.downloadUrl = downloadModel.imageName;
+    cell.downloadView.downloadUrlLabel.text = downloadModel.name;
     
     return cell;
 }
