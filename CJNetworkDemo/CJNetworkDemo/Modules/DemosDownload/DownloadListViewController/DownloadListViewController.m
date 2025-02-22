@@ -24,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = NSLocalizedString(@"断点续传", nil);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清空" style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllFiles)];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -31,8 +32,6 @@
     [self.tableView registerClass:[DownloadTableViewCell class] forCellReuseIdentifier:@"cell"];
 
     self.downloadModles = [CQTSLocImagesUtil dataModelsWithCount:10 randomOrder:NO changeImageNameToNetworkUrl:YES];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清空" style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllFiles)];
 }
 
 - (void)deleteAllFiles {

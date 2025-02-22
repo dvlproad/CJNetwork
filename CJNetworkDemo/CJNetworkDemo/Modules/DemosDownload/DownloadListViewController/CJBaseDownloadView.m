@@ -151,6 +151,13 @@
     [self initData];
 }
 
+#pragma mark Setter
+- (void)setDownloadUrl:(NSString *)downloadUrl {
+    _downloadUrl = downloadUrl;
+    
+    [self initData];
+}
+
 #pragma mark 刷新数据
 - (void)initData {
     CGFloat progress = [[HSDownloadManager sharedInstance] progress:self.downloadUrl];
