@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DownloadListViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TSDownloadTableViewController">
             <connections>
                 <outlet property="tableView" destination="9XL-DH-LLs" id="y1G-dF-FQW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -32,7 +30,7 @@
                 <constraint firstItem="9XL-DH-LLs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="axE-sr-ZyR"/>
                 <constraint firstItem="9XL-DH-LLs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uN9-cm-Q0t"/>
             </constraints>
-            <point key="canvasLocation" x="35.5" y="80.5"/>
+            <point key="canvasLocation" x="56.799999999999997" y="72.413793103448285"/>
         </view>
     </objects>
 </document>

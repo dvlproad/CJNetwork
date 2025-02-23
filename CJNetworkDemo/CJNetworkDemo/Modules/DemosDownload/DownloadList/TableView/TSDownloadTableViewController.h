@@ -1,5 +1,5 @@
 //
-//  DownloadListViewController.h
+//  TSDownloadTableViewController.h
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2017/3/31.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DownloadListViewController : UIViewController
+@interface TSDownloadTableViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 

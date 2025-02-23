@@ -1,19 +1,19 @@
 //
-//  DownloadTableViewCell.m
+//  TSDownloadTableViewCell.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2017/3/31.
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
-#import "DownloadTableViewCell.h"
+#import "TSDownloadTableViewCell.h"
 
-@interface DownloadTableViewCell ()
+@interface TSDownloadTableViewCell ()
 
 @end
 
 
-@implementation DownloadTableViewCell
+@implementation TSDownloadTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -43,8 +43,8 @@
     self.previewImageView = [[UIImageView alloc] init];
     [parentView addSubview:self.previewImageView];
     
-    self.downloadView = [[CJBaseDownloadView alloc] initWithStateChangeBlock:^(DownloadState downloadState, NSString * _Nullable localAbsPath) {
-        if (downloadState == DownloadStateCompleted) {
+    self.downloadView = [[TSDownloadTableViewCellOverlay alloc] initWithStateChangeBlock:^(CJFileDownloadState downloadState, NSString * _Nullable localAbsPath) {
+        if (downloadState == CJFileDownloadStateSuccess) {
             self.previewImageView.image = [UIImage imageWithContentsOfFile:localAbsPath];
         } else {
             self.previewImageView.image = nil;

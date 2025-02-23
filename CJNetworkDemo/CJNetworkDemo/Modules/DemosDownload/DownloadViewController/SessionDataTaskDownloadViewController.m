@@ -69,7 +69,7 @@
         
         NSLog(@"success");
         self.imageView.image = [UIImage imageWithContentsOfFile:self.targetPath];
-        [self updateButtonByDownloadState:CJFileDownloadStateDownloadFinish];
+        [self updateButtonByDownloadState:CJFileDownloadStateSuccess];
         
     } failure:^(NSError *error) {
         NSLog(@"failure");
@@ -94,7 +94,7 @@
     if (error == nil) {
         self.imageView.image = [UIImage imageWithContentsOfFile:self.targetPath];
         [self updateProgress:0];
-        [self updateButtonByDownloadState:CJFileDownloadStateDownloadReadyOrPause];
+        [self updateButtonByDownloadState:CJFileDownloadStateReady];
     }
 }
 

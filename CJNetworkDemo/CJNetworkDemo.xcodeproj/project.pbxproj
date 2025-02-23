@@ -43,10 +43,10 @@
 		7868F1822121C79A00A283EB /* SessionDataTaskDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F15C2121C79A00A283EB /* SessionDataTaskDownloadViewController.m */; };
 		7868F1832121C79A00A283EB /* SessionDownloadTaskDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F15D2121C79A00A283EB /* SessionDownloadTaskDownloadViewController.xib */; };
 		7868F1842121C79A00A283EB /* CQTSBaseDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F15E2121C79A00A283EB /* CQTSBaseDownloadViewController.xib */; };
-		7868F1862121C79A00A283EB /* DownloadListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1622121C79A00A283EB /* DownloadListViewController.m */; };
-		7868F1872121C79A00A283EB /* DownloadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1642121C79A00A283EB /* DownloadTableViewCell.xib */; };
-		7868F1882121C79A00A283EB /* DownloadListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1662121C79A00A283EB /* DownloadListViewController.xib */; };
-		7868F1892121C79A00A283EB /* DownloadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1672121C79A00A283EB /* DownloadTableViewCell.m */; };
+		7868F1862121C79A00A283EB /* TSDownloadTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1622121C79A00A283EB /* TSDownloadTableViewController.m */; };
+		7868F1872121C79A00A283EB /* TSDownloadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1642121C79A00A283EB /* TSDownloadTableViewCell.xib */; };
+		7868F1882121C79A00A283EB /* TSDownloadTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7868F1662121C79A00A283EB /* TSDownloadTableViewController.xib */; };
+		7868F1892121C79A00A283EB /* TSDownloadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1672121C79A00A283EB /* TSDownloadTableViewCell.m */; };
 		7868F18A2121C79A00A283EB /* EncryptHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F16A2121C79A00A283EB /* EncryptHomeViewController.m */; };
 		7868F1922121C80500A283EB /* DownloadHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1902121C80500A283EB /* DownloadHomeViewController.m */; };
 		7868F1A82121D06C00A283EB /* AFNDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7868F1A42121D06C00A283EB /* AFNDemoViewController.m */; };
@@ -68,7 +68,12 @@
 		97216B0B2570AAC60006E1C2 /* SimulationHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97216B092570AAC60006E1C2 /* SimulationHomeViewController.m */; };
 		97216B112570AC4D0006E1C2 /* api:card:cardlist in Resources */ = {isa = PBXBuildFile; fileRef = 97216B102570AC4D0006E1C2 /* api:card:cardlist */; };
 		9730F3AC2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9730F3AB2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */; };
-		97F61D0C2D6A475900E1CBBE /* CJBaseDownloadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F61D0B2D6A475900E1CBBE /* CJBaseDownloadView.m */; };
+		9740B61E2D6B26A700193499 /* TSDownloadCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B61D2D6B26A700193499 /* TSDownloadCollectionView.m */; };
+		9740B62F2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B62E2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.m */; };
+		9740B6322D6B330C00193499 /* TSDownloadCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6312D6B330C00193499 /* TSDownloadCollectionViewCell.m */; };
+		9740B6432D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */; };
+		9740B6462D6B427900193499 /* TSDownloadCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */; };
+		97F61D0C2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F61D0B2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m */; };
 		9AFB06163CD7B080017D3F18 /* Pods_CJNetworkDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4C6E5834142F4905C92DC /* Pods_CJNetworkDemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -161,12 +166,12 @@
 		7868F15C2121C79A00A283EB /* SessionDataTaskDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDataTaskDownloadViewController.m; sourceTree = "<group>"; };
 		7868F15D2121C79A00A283EB /* SessionDownloadTaskDownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SessionDownloadTaskDownloadViewController.xib; sourceTree = "<group>"; };
 		7868F15E2121C79A00A283EB /* CQTSBaseDownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CQTSBaseDownloadViewController.xib; sourceTree = "<group>"; };
-		7868F1622121C79A00A283EB /* DownloadListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadListViewController.m; sourceTree = "<group>"; };
-		7868F1632121C79A00A283EB /* DownloadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTableViewCell.h; sourceTree = "<group>"; };
-		7868F1642121C79A00A283EB /* DownloadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadTableViewCell.xib; sourceTree = "<group>"; };
-		7868F1652121C79A00A283EB /* DownloadListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadListViewController.h; sourceTree = "<group>"; };
-		7868F1662121C79A00A283EB /* DownloadListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownloadListViewController.xib; sourceTree = "<group>"; };
-		7868F1672121C79A00A283EB /* DownloadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTableViewCell.m; sourceTree = "<group>"; };
+		7868F1622121C79A00A283EB /* TSDownloadTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDownloadTableViewController.m; sourceTree = "<group>"; };
+		7868F1632121C79A00A283EB /* TSDownloadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDownloadTableViewCell.h; sourceTree = "<group>"; };
+		7868F1642121C79A00A283EB /* TSDownloadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSDownloadTableViewCell.xib; sourceTree = "<group>"; };
+		7868F1652121C79A00A283EB /* TSDownloadTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSDownloadTableViewController.h; sourceTree = "<group>"; };
+		7868F1662121C79A00A283EB /* TSDownloadTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSDownloadTableViewController.xib; sourceTree = "<group>"; };
+		7868F1672121C79A00A283EB /* TSDownloadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSDownloadTableViewCell.m; sourceTree = "<group>"; };
 		7868F1692121C79A00A283EB /* EncryptHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptHomeViewController.h; sourceTree = "<group>"; };
 		7868F16A2121C79A00A283EB /* EncryptHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptHomeViewController.m; sourceTree = "<group>"; };
 		7868F1902121C80500A283EB /* DownloadHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadHomeViewController.m; sourceTree = "<group>"; };
@@ -210,8 +215,18 @@
 		97216B102570AC4D0006E1C2 /* api:card:cardlist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "api:card:cardlist"; sourceTree = "<group>"; };
 		9730F3AA2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSVideoUrlAnalyzeHomeViewController.h; sourceTree = "<group>"; };
 		9730F3AB2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSVideoUrlAnalyzeHomeViewController.m; sourceTree = "<group>"; };
-		97F61D0A2D6A475900E1CBBE /* CJBaseDownloadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJBaseDownloadView.h; sourceTree = "<group>"; };
-		97F61D0B2D6A475900E1CBBE /* CJBaseDownloadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJBaseDownloadView.m; sourceTree = "<group>"; };
+		9740B61C2D6B26A700193499 /* TSDownloadCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionView.h; sourceTree = "<group>"; };
+		9740B61D2D6B26A700193499 /* TSDownloadCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionView.m; sourceTree = "<group>"; };
+		9740B62D2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionViewDataSource.h; sourceTree = "<group>"; };
+		9740B62E2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewDataSource.m; sourceTree = "<group>"; };
+		9740B6302D6B330C00193499 /* TSDownloadCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionViewCell.h; sourceTree = "<group>"; };
+		9740B6312D6B330C00193499 /* TSDownloadCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewCell.m; sourceTree = "<group>"; };
+		9740B6412D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionViewCellOverlay.h; sourceTree = "<group>"; };
+		9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewCellOverlay.m; sourceTree = "<group>"; };
+		9740B6442D6B427900193499 /* TSDownloadCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionViewController.h; sourceTree = "<group>"; };
+		9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewController.m; sourceTree = "<group>"; };
+		97F61D0A2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadTableViewCellOverlay.h; sourceTree = "<group>"; };
+		97F61D0B2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadTableViewCellOverlay.m; sourceTree = "<group>"; };
 		C11239993D822E171AABD0F4 /* Pods-CJNetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F1F8B8F4FF9EBFC0F62ED2D0 /* Pods-CJNetworkDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemoTests/Pods-CJNetworkDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -480,7 +495,7 @@
 				7868F1902121C80500A283EB /* DownloadHomeViewController.m */,
 				9730F3AD2D58EDEB008AF628 /* Base */,
 				7868F1A22121D06C00A283EB /* AFNTest */,
-				7868F1612121C79A00A283EB /* DownloadListViewController */,
+				7868F1612121C79A00A283EB /* DownloadList */,
 				7868F1542121C79A00A283EB /* DownloadViewController */,
 			);
 			path = DemosDownload;
@@ -500,19 +515,13 @@
 			path = DownloadViewController;
 			sourceTree = "<group>";
 		};
-		7868F1612121C79A00A283EB /* DownloadListViewController */ = {
+		7868F1612121C79A00A283EB /* DownloadList */ = {
 			isa = PBXGroup;
 			children = (
-				7868F1652121C79A00A283EB /* DownloadListViewController.h */,
-				7868F1622121C79A00A283EB /* DownloadListViewController.m */,
-				7868F1662121C79A00A283EB /* DownloadListViewController.xib */,
-				97F61D0A2D6A475900E1CBBE /* CJBaseDownloadView.h */,
-				97F61D0B2D6A475900E1CBBE /* CJBaseDownloadView.m */,
-				7868F1632121C79A00A283EB /* DownloadTableViewCell.h */,
-				7868F1672121C79A00A283EB /* DownloadTableViewCell.m */,
-				7868F1642121C79A00A283EB /* DownloadTableViewCell.xib */,
+				9740B6482D6B453B00193499 /* TableView */,
+				9740B6492D6B454E00193499 /* CollectionView */,
 			);
-			path = DownloadListViewController;
+			path = DownloadList;
 			sourceTree = "<group>";
 		};
 		7868F1682121C79A00A283EB /* DemosEncrypt */ = {
@@ -691,6 +700,38 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		9740B6482D6B453B00193499 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				7868F1632121C79A00A283EB /* TSDownloadTableViewCell.h */,
+				7868F1672121C79A00A283EB /* TSDownloadTableViewCell.m */,
+				7868F1642121C79A00A283EB /* TSDownloadTableViewCell.xib */,
+				97F61D0A2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.h */,
+				97F61D0B2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m */,
+				7868F1652121C79A00A283EB /* TSDownloadTableViewController.h */,
+				7868F1622121C79A00A283EB /* TSDownloadTableViewController.m */,
+				7868F1662121C79A00A283EB /* TSDownloadTableViewController.xib */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		9740B6492D6B454E00193499 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				9740B61C2D6B26A700193499 /* TSDownloadCollectionView.h */,
+				9740B61D2D6B26A700193499 /* TSDownloadCollectionView.m */,
+				9740B6302D6B330C00193499 /* TSDownloadCollectionViewCell.h */,
+				9740B6312D6B330C00193499 /* TSDownloadCollectionViewCell.m */,
+				9740B6412D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.h */,
+				9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */,
+				9740B6442D6B427900193499 /* TSDownloadCollectionViewController.h */,
+				9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */,
+				9740B62D2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.h */,
+				9740B62E2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.m */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		B62537BB601228A564AEACA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -826,9 +867,9 @@
 				7842989F21C1F991003198FB /* AppAssets.xcassets in Resources */,
 				784298A021C1F991003198FB /* MainAsset.xcassets in Resources */,
 				97216B112570AC4D0006E1C2 /* api:card:cardlist in Resources */,
-				7868F1872121C79A00A283EB /* DownloadTableViewCell.xib in Resources */,
+				7868F1872121C79A00A283EB /* TSDownloadTableViewCell.xib in Resources */,
 				7868F1832121C79A00A283EB /* SessionDownloadTaskDownloadViewController.xib in Resources */,
-				7868F1882121C79A00A283EB /* DownloadListViewController.xib in Resources */,
+				7868F1882121C79A00A283EB /* TSDownloadTableViewController.xib in Resources */,
 				7868F1AA2121D06C00A283EB /* AFNDemoViewController.xib in Resources */,
 				78FC92031F54481E00033DEF /* Main.storyboard in Resources */,
 				7868F1842121C79A00A283EB /* CQTSBaseDownloadViewController.xib in Resources */,
@@ -957,6 +998,7 @@
 				8050036921192C1E002A2306 /* CJObjectConvertUtil.m in Sources */,
 				7846E38E21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m in Sources */,
 				7868F1792121C79A00A283EB /* SocketHomeViewController.m in Sources */,
+				9740B6462D6B427900193499 /* TSDownloadCollectionViewController.m in Sources */,
 				158259DA2484E8F500BA4B3D /* TestNetworkClient+TestCache.m in Sources */,
 				78FC92001F54481E00033DEF /* ViewController.m in Sources */,
 				7868F1812121C79A00A283EB /* AFDownloadViewController.m in Sources */,
@@ -967,22 +1009,25 @@
 				80E7E62920ABCFBC000F762D /* AppInfoManager.m in Sources */,
 				78FF35E721A91F07006DCEE7 /* SemaphoreHomeViewController.m in Sources */,
 				78FC91FA1F54481E00033DEF /* main.m in Sources */,
+				9740B61E2D6B26A700193499 /* TSDownloadCollectionView.m in Sources */,
 				7868F1822121C79A00A283EB /* SessionDataTaskDownloadViewController.m in Sources */,
 				7801C0D721ABE04400045114 /* NSString+URLEncoding.m in Sources */,
 				785AB2FD21C013B6009938A4 /* TestNetworkEnvironmentManager.m in Sources */,
 				158259E32484E8F500BA4B3D /* HealthResponseModel.m in Sources */,
+				9740B6432D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m in Sources */,
 				158259DC2484E8F500BA4B3D /* TestNetworkClient.m in Sources */,
 				78715CCB2559771100E32CD1 /* AppDelegate.m in Sources */,
-				7868F1892121C79A00A283EB /* DownloadTableViewCell.m in Sources */,
+				7868F1892121C79A00A283EB /* TSDownloadTableViewCell.m in Sources */,
 				78EB551F21A29AC700EEB853 /* TestNetworkClient+TestConcurrence.m in Sources */,
 				158259DE2484E8F500BA4B3D /* TS11CleanRequestRepeatHomeViewController.m in Sources */,
 				78715CC82559771100E32CD1 /* MainViewController.m in Sources */,
-				97F61D0C2D6A475900E1CBBE /* CJBaseDownloadView.m in Sources */,
+				97F61D0C2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m in Sources */,
 				78715CC92559771100E32CD1 /* AppDelegate+StartUp.m in Sources */,
 				7846E38821A6925400D73F51 /* AFHTTPSessionManager+CJRequestConcurrence.m in Sources */,
 				784653771F544A0100E20A27 /* HSSessionModel.m in Sources */,
 				785AB2F821C01318009938A4 /* TestNetworkEnvironmentModel.m in Sources */,
 				7868F18A2121C79A00A283EB /* EncryptHomeViewController.m in Sources */,
+				9740B6322D6B330C00193499 /* TSDownloadCollectionViewCell.m in Sources */,
 				7868F1922121C80500A283EB /* DownloadHomeViewController.m in Sources */,
 				7868F1782121C79A00A283EB /* UploadHomeViewController.m in Sources */,
 				7868F17B2121C79A00A283EB /* SocketDemoViewController.m in Sources */,
@@ -995,13 +1040,14 @@
 				7846E38B21A6A56900D73F51 /* TestConcurrenceManager.m in Sources */,
 				784653751F544A0100E20A27 /* MQLResumeManager.m in Sources */,
 				158259DD2484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.m in Sources */,
+				9740B62F2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.m in Sources */,
 				158259E22484E8F500BA4B3D /* HealthyNetworkClient.m in Sources */,
 				158259E42484E8F500BA4B3D /* HealthyHTTPSessionManager.m in Sources */,
 				7868F1A82121D06C00A283EB /* AFNDemoViewController.m in Sources */,
 				158259E52484E8F500BA4B3D /* RequestCacheHomeViewController.m in Sources */,
 				9730F3AC2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m in Sources */,
 				789486272486BE330067AEE3 /* TS113CacheResponseModel.m in Sources */,
-				7868F1862121C79A00A283EB /* DownloadListViewController.m in Sources */,
+				7868F1862121C79A00A283EB /* TSDownloadTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

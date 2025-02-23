@@ -1,5 +1,5 @@
 //
-//  CQTSRipeBaseCollectionViewDataSource.h
+//  TSDownloadCollectionViewDataSource.h
 //  CJComplexUIKitDemo
 //
 //  Created by ciyouzen on 2017/2/25.
@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CQTSRipeBaseCollectionViewDataSource : NSObject<UICollectionViewDataSource> {
+@interface TSDownloadCollectionViewDataSource : NSObject<UICollectionViewDataSource> {
     
 }
 @property (nonatomic, strong) NSArray<CQDMSectionDataModel *> *sectionDataModels;    /**< 每个section的数据 */

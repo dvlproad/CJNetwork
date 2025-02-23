@@ -19,7 +19,8 @@
 #import "SessionDataTaskDownloadViewController.h"
 
 //downloadList
-#import "DownloadListViewController.h"
+#import "TSDownloadTableViewController.h"
+#import "TSDownloadCollectionViewController.h"
 
 #import "AFNDemoViewController.h"
 
@@ -50,6 +51,7 @@
         {
             CQDMModuleModel *toastUtilModule = [[CQDMModuleModel alloc] init];
             toastUtilModule.title = @"单个文件：使用系统进行下载";
+            toastUtilModule.content = @"点击直接下载";
             toastUtilModule.content = self.realDownloadZipRelativePath;
             toastUtilModule.actionBlock = ^{
                 NSString *Url = @"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/1de60c07fba6fa5d29a49e982a4fc02f22e21d9d/CQDemoKit/Demo_Resource/LocDataModel/Resources/mp4/vap.mp4";
@@ -109,12 +111,21 @@
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"文件列表下载";
         {
-            CQDMModuleModel *alertUtilModule = [[CQDMModuleModel alloc] init];
-            alertUtilModule.title = @"断点续传(HSDownloadManager)";
-            alertUtilModule.content = @"包含保存下载状态等(不会重复下载)";
-            alertUtilModule.classEntry = [DownloadListViewController class];
-            alertUtilModule.isCreateByXib = YES;
-            [sectionDataModel.values addObject:alertUtilModule];
+            CQDMModuleModel *dataModel = [[CQDMModuleModel alloc] init];
+            dataModel.title = @"文件列表下载--TableView";
+            dataModel.content = @"断点续传(HSDownloadManager),包含保存下载状态等(不会重复下载)";
+            dataModel.contentLines = 2;
+            dataModel.classEntry = [TSDownloadTableViewController class];
+            dataModel.isCreateByXib = YES;
+            [sectionDataModel.values addObject:dataModel];
+        }
+        {
+            CQDMModuleModel *dataModel = [[CQDMModuleModel alloc] init];
+            dataModel.title = @"文件列表下载--CollectionView";
+            dataModel.content = @"断点续传(HSDownloadManager),包含保存下载状态等(不会重复下载)";
+            dataModel.contentLines = 2;
+            dataModel.classEntry = [TSDownloadCollectionViewController class];
+            [sectionDataModel.values addObject:dataModel];
         }
         
         [sectionDataModels addObject:sectionDataModel];
@@ -140,6 +151,7 @@
         {
             CQDMModuleModel *module = [[CQDMModuleModel alloc] init];
             module.title = @"下载普通文件";
+            module.content = @"点击直接下载";
             module.actionBlock = ^{
                 NSString *mp4Url = @"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/1de60c07fba6fa5d29a49e982a4fc02f22e21d9d/CQDemoKit/Demo_Resource/LocDataModel/Resources/mp4/vap.mp4";
                 NSString *directoryUrl = [CQTSSandboxPathUtil sandboxPath:CQTSSandboxTypeDocuments];
@@ -160,6 +172,7 @@
         {
             CQDMModuleModel *module = [[CQDMModuleModel alloc] init];
             module.title = @"下载zip文件";
+            module.content = @"点击直接下载";
             module.actionBlock = ^{
                 NSString *zipUrl = @"http://shs4ggs0e.hd-bkt.clouddn.com/symbol/TestDownloadBundle.bundle.zip";
                 NSString *directoryUrl = [CQTSSandboxPathUtil sandboxPath:CQTSSandboxTypeDocuments];

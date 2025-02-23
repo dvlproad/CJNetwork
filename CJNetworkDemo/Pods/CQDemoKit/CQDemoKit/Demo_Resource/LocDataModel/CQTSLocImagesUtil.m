@@ -118,12 +118,12 @@
         
         if (changeImageNameToNetworkUrl) {
             NSString *imageUrl = [NSString stringWithFormat:@"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/616ceb45522fd6c11d03237d5e2eb24a5d3a85d5/CQDemoKit/Demo_Resource/LocDataModel/Resources/%@?raw=true", imageName];
-            dataModel.name = [NSString stringWithFormat:@"%02zd%@", i+1, imageName];
+            dataModel.name = [NSString stringWithFormat:@"%02zd %@", i+1, imageName];
             dataModel.imageName = imageUrl;
         } else {
             //NSString *title = [NSString stringWithFormat:@"%zd:第index=%zd张", i, lastImageSelIndex];
             NSString *title = [titles objectAtIndex:lastTitleSelIndex];
-            dataModel.name = [NSString stringWithFormat:@"%02zd%@", i+1, title];
+            dataModel.name = [NSString stringWithFormat:@"%02zd %@", i+1, title];
             dataModel.imageName = imageName;
         }
         

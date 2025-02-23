@@ -1,14 +1,14 @@
 //
-//  CJBaseDownloadView.m
+//  TSDownloadCollectionViewCellOverlay.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2017/3/31.
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
-#import "CJBaseDownloadView.h"
+#import "TSDownloadCollectionViewCellOverlay.h"
 
-@interface CJBaseDownloadView ()
+@interface TSDownloadCollectionViewCellOverlay ()
 
 @property (nonatomic, strong) UIProgressView *progressView;  /** 进度UIProgressView */
 @property (nonatomic, strong) UILabel *progressLabel;        /** 进度UILabel */
@@ -17,14 +17,14 @@
 
 //@property (nonatomic, strong) UILabel *downloadUrlLabel;     /** 下载文件的Url */
 
-@property (nonatomic, copy) void (^stateChangeBlock)(DownloadState downloadState, NSString * _Nullable localAbsPath);
+@property (nonatomic, copy) void (^stateChangeBlock)(CJFileDownloadState downloadState, NSString * _Nullable localAbsPath);
 
 @end
 
 
-@implementation CJBaseDownloadView
+@implementation TSDownloadCollectionViewCellOverlay
 
-- (instancetype)initWithStateChangeBlock:(void (^)(DownloadState downloadState, NSString * _Nullable localAbsPath))stateChangeBlock {
+- (instancetype)initWithStateChangeBlock:(void (^)(CJFileDownloadState downloadState, NSString * _Nullable localAbsPath))stateChangeBlock {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.stateChangeBlock = stateChangeBlock;
@@ -113,25 +113,25 @@
         
     // 下载按钮约束
     [NSLayoutConstraint activateConstraints:@[
-        [self.downloadButton.trailingAnchor constraintEqualToAnchor:self.deleteButton.leadingAnchor constant:-10],
+        [self.downloadButton.centerXAnchor constraintEqualToAnchor:parentView.centerXAnchor constant:0],
+        [self.downloadButton.centerYAnchor constraintEqualToAnchor:parentView.centerYAnchor constant:-20],
         [self.downloadButton.widthAnchor constraintEqualToConstant:60],
-        [self.downloadButton.topAnchor constraintEqualToAnchor:self.deleteButton.topAnchor constant:0],
         [self.downloadButton.heightAnchor constraintEqualToConstant:headerHeight]
     ]];
     
     // 进度标签约束
     [NSLayoutConstraint activateConstraints:@[
-        [self.progressLabel.trailingAnchor constraintEqualToAnchor:self.downloadButton.leadingAnchor constant:-10],
+        [self.progressLabel.trailingAnchor constraintEqualToAnchor:parentView.trailingAnchor constant:-10],
         [self.progressLabel.widthAnchor constraintEqualToConstant:44],
-        [self.progressLabel.topAnchor constraintEqualToAnchor:self.downloadButton.topAnchor constant:0],
+        [self.progressLabel.topAnchor constraintEqualToAnchor:self.downloadButton.bottomAnchor constant:0],
         [self.progressLabel.heightAnchor constraintEqualToConstant:headerHeight]
     ]];
     
     // 进度条约束
     [NSLayoutConstraint activateConstraints:@[
-        [self.progressView.leadingAnchor constraintEqualToAnchor:parentView.leadingAnchor constant:20],
+        [self.progressView.leadingAnchor constraintEqualToAnchor:parentView.leadingAnchor constant:0],
         [self.progressView.trailingAnchor constraintEqualToAnchor:self.progressLabel.leadingAnchor constant:-20],
-        [self.progressView.topAnchor constraintEqualToAnchor:parentView.topAnchor constant:20],
+        [self.progressView.centerYAnchor constraintEqualToAnchor:self.progressLabel.centerYAnchor constant:0],
         [self.progressView.heightAnchor constraintEqualToConstant:2]
     ]];
     
@@ -165,19 +165,40 @@
     self.progressView.progress = progress;
     NSLog(@"progress-----%f", progress);
     if (progress == 1.0) {
-        [self __changeState:DownloadStateCompleted];
+        [self __changeState:CJFileDownloadStateSuccess];
+    } else if (progress > 0.0) {
+        [self __changeState:CJFileDownloadStatePause];
     } else {
-        [self __changeState:DownloadStateSuspended];
+        [self __changeState:CJFileDownloadStateReady];
     }
 }
 
-- (void)__changeState:(DownloadState)state {
+- (void)__changeState:(CJFileDownloadState)state {
     [self.downloadButton setTitle:[self getTitleWithDownloadState:state] forState:UIControlStateNormal];
-    if (state == DownloadStateCompleted) {
-        self.deleteButton.enabled = YES;
-    } else {
-        self.deleteButton.enabled = NO;
-    }
+    
+    BOOL isCompleted = state == CJFileDownloadStateSuccess;
+    self.deleteButton.hidden = !isCompleted;
+    self.downloadButton.hidden = isCompleted;
+    
+    CGFloat progress = [[HSDownloadManager sharedInstance] progress:self.downloadUrl];
+    self.progressLabel.hidden = isCompleted || progress == 0.0;
+    self.progressView.hidden = isCompleted || progress == 0.0;
+    
+//    switch (state) {
+//        case CJFileDownloadStateReady:
+//            return @"开始";
+//        case CJFileDownloadStateing:
+//            return @"暂停";
+//        case CJFileDownloadStatePause:
+//            return @"继续";
+//        case CJFileDownloadStateSuccess:
+//            return @"完成";
+//        case CJFileDownloadStateFailure:
+//            return @"重下";
+//        default:
+//            break;
+//    }
+    
     NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:self.downloadUrl];
     self.stateChangeBlock(state, localAbsPath);
 }
@@ -190,7 +211,7 @@
             self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
             self.progressView.progress = progress;
         });
-    } state:^(DownloadState state) {
+    } state:^(CJFileDownloadState state) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self __changeState:state];
         });
@@ -208,21 +229,24 @@
     self.progressView.progress = progress;
     NSLog(@"progress-----%f", progress);
 
-    [self __changeState:DownloadStateSuspended];
+    [self __changeState:CJFileDownloadStateReady];
 }
 
 
 #pragma mark 按钮状态
-- (NSString *)getTitleWithDownloadState:(DownloadState)state
+- (NSString *)getTitleWithDownloadState:(CJFileDownloadState)state
 {
     switch (state) {
-        case DownloadStateDownloading:
-            return @"暂停";
-        case DownloadStateSuspended:
-        case DownloadStateFailed:
+        case CJFileDownloadStateReady:
             return @"开始";
-        case DownloadStateCompleted:
+        case CJFileDownloadStateing:
+            return @"暂停";
+        case CJFileDownloadStatePause:
+            return @"继续";
+        case CJFileDownloadStateSuccess:
             return @"完成";
+        case CJFileDownloadStateFailure:
+            return @"重下";
         default:
             break;
     }

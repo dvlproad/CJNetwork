@@ -1,5 +1,5 @@
 //
-//  CQTSRipeButtonCollectionView.h
+//  TSDownloadCollectionView.h
 //  CJUIKitDemo
 //
 //  Created by ciyouzen on 8/10/15.
@@ -9,31 +9,33 @@
 //  为了提供给某些例子需要有多种情况的测试时候，而快速构建的【单排或单列的按钮组合CollectionView】
 
 #import <UIKit/UIKit.h>
+#import <CQDemoKit/CQTSLocImageDataModel.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CQTSRipeButtonCollectionView : UICollectionView {
+@interface TSDownloadCollectionView : UICollectionView {
     
 }
 @property (nullable, nonatomic, copy) void(^cellConfigBlock)(UICollectionViewCell *bCell); /**< cell的UI定制（有时候需要cell和其所在列表的背景色为透明） */
 
 #pragma mark - Init
 /*
- *  初始化 单行或单列的CollectionView
+ *  初始化 CollectionView
  *
- *  @param buttonTitles                 按钮的标题数组
- *  @param scrollDirection              集合视图的滚动方向
  *  @param didSelectItemAtIndexHandle   点击item的回调
  *
  *  @return CollectionView
  */
-- (instancetype)initWithTitles:(NSArray<NSString *> *)buttonTitles
-               scrollDirection:(UICollectionViewScrollDirection)scrollDirection
-    didSelectItemAtIndexHandle:(void(^)(NSInteger index))didSelectItemAtIndexHandle NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDidSelectItemAtIndexHandle:(void(^)(CQTSLocImageDataModel *downloadModel))didSelectItemAtIndexHandle NS_DESIGNATED_INITIALIZER;
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 
 /* 初始化示例
 NSArray<NSString *> *buttonTitles = @[@"按钮01", @"按钮02", @"按钮03", @"按钮04", @"按钮05", @"按钮06", @"按钮07", @"按钮08", @"按钮09", @"按钮10"];
-CQTSRipeButtonCollectionView *collectionView = [[CQTSRipeButtonCollectionView alloc] initWithTitles:buttonTitles scrollDirection:UICollectionViewScrollDirectionHorizontal didSelectItemAtIndexHandle:^(NSInteger index) {
+TSDownloadCollectionView *collectionView = [[TSDownloadCollectionView alloc] initWithTitles:buttonTitles scrollDirection:UICollectionViewScrollDirectionHorizontal didSelectItemAtIndexHandle:^(NSInteger index) {
     NSString *title = buttonTitles[index];
     NSLog(@"点击了“%@”", title);
 }];

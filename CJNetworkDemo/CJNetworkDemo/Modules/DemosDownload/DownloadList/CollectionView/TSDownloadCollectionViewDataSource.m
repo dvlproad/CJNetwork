@@ -1,16 +1,16 @@
 //
-//  CQTSRipeBaseCollectionViewDataSource.m
+//  TSDownloadCollectionViewDataSource.m
 //  CJComplexUIKitDemo
 //
 //  Created by ciyouzen on 2017/2/25.
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
-#import "CQTSRipeBaseCollectionViewDataSource.h"
+#import "TSDownloadCollectionViewDataSource.h"
 #import "UIImageView+CQTSBaseUtil.h"
 #import "CQTSLocImagesUtil.h"
 
-@interface CQTSRipeBaseCollectionViewDataSource () {
+@interface TSDownloadCollectionViewDataSource () {
     
 }
 
@@ -19,7 +19,7 @@
 @end
 
 
-@implementation CQTSRipeBaseCollectionViewDataSource
+@implementation TSDownloadCollectionViewDataSource
 
 #pragma mark - Init
 /*
@@ -44,10 +44,11 @@
         
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = [NSString stringWithFormat:@"section %d", section];
-        sectionDataModel.values = [CQTSLocImagesUtil dataModelsWithCount:iRowCount randomOrder:NO changeImageNameToNetworkUrl:NO];
+        sectionDataModel.values = [CQTSLocImagesUtil dataModelsWithCount:iRowCount randomOrder:NO changeImageNameToNetworkUrl:YES];
         for (int item = 0; item < iRowCount; item++) {
             CQTSLocImageDataModel *module = [sectionDataModel.values objectAtIndex:item];
-            module.name = [NSString stringWithFormat:@"%d-%02zd", section, item];
+            NSString *originalName = module.name;
+            module.name = [NSString stringWithFormat:@"%d-%@", section, originalName];
             
             BOOL isSelected = [selectedIndexPaths containsObject:[NSIndexPath indexPathForItem:item inSection:section]];
             module.selected = isSelected;
@@ -71,7 +72,7 @@
  *
  *  @return CollectionView 的 dataSource
  */
-- (instancetype)initWithSectionDataModels:(NSArray<CQTSLocImageDataModel *> *)sectionDataModels
+- (instancetype)initWithSectionDataModels:(NSArray<CQDMSectionDataModel *> *)sectionDataModels
                           registerHandler:(void(^)(void))registerHandler
                    cellForItemAtIndexPath:(UICollectionViewCell *(^)(UICollectionView *bCollectionView, NSIndexPath *bIndexPath, CQTSLocImageDataModel *dataModel))cellForItemAtIndexPath
 {

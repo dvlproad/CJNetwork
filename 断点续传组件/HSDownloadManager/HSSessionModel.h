@@ -6,14 +6,9 @@
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
-typedef enum {
-    DownloadStateDownloading = 0,     /** 下载中 */
-    DownloadStateSuspended,     /** 下载暂停 */
-    DownloadStateCompleted,     /** 下载完成 */
-    DownloadStateFailed         /** 下载失败 */
-}DownloadState;
-
 #import <UIKit/UIKit.h>
+#import "CQTSBaseDownloadViewController.h"
+
 @interface HSSessionModel : NSObject
 
 /** 流 */
@@ -29,6 +24,6 @@ typedef enum {
 @property (nonatomic, copy) void(^progressBlock)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress);
 
 /** 下载状态 */
-@property (nonatomic, copy) void(^stateBlock)(DownloadState state);
+@property (nonatomic, copy) void(^stateBlock)(CJFileDownloadState state);
 
 @end

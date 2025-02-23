@@ -73,15 +73,16 @@
 
 - (IBAction)downloadButtonClick:(UIButton *)button {
     switch (self.downloadState) {
-        case CJFileDownloadStateDownloadReadyOrPause:   //准备下载，点击之后开始下载
+        case CJFileDownloadStateReady:   //准备下载，点击之后开始下载
+        case CJFileDownloadStatePause:   //暂停下载，点击之后继续下载
         {
-            [self updateButtonByDownloadState:CJFileDownloadStateDownloading];
+            [self updateButtonByDownloadState:CJFileDownloadStateing];
             self.downloadHandle();
             break;
         }
-        case CJFileDownloadStateDownloading: //正在下载，点击之后变成暂停
+        case CJFileDownloadStateing: //正在下载，点击之后变成暂停
         {
-            [self updateButtonByDownloadState:CJFileDownloadStateDownloadReadyOrPause];
+            [self updateButtonByDownloadState:CJFileDownloadStatePause];
             self.pauseHandle();
             break;
         }
@@ -94,21 +95,22 @@
 - (void)updateButtonByDownloadState:(CJFileDownloadState)downloadState {
     self.downloadState = downloadState;
     switch (downloadState) {
-        case CJFileDownloadStateDownloadReadyOrPause:
+        case CJFileDownloadStateReady:   //准备下载，点击之后开始下载
+        case CJFileDownloadStatePause:   //暂停下载，点击之后继续下载
         {
-            [self.downloadButton setTitle:@"下载" forState:UIControlStateNormal];
+            [self.downloadButton setTitle:downloadState == CJFileDownloadStateReady ? @"下载" : @"继续" forState:UIControlStateNormal];
             [self.downloadButton setEnabled:YES];
             self.deleteButton.hidden = YES;
             break;
         }
-        case CJFileDownloadStateDownloading:
+        case CJFileDownloadStateing:
         {
             [self.downloadButton setTitle:@"暂停" forState:UIControlStateNormal];
             [self.downloadButton setEnabled:YES];
             self.deleteButton.hidden = YES;
             break;
         }
-        case CJFileDownloadStateDownloadFinish:
+        case CJFileDownloadStateSuccess:
         {
             [self.downloadButton setTitle:@"完成" forState:UIControlStateNormal];
             [self.downloadButton setEnabled:NO];

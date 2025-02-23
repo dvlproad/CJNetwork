@@ -88,7 +88,7 @@
         //NSString *imgFilePath = [filePath path];// 将NSURL转成NSString
         //UIImage *img = [UIImage imageWithContentsOfFile:imgFilePath];
         //self.imageView.image = img;
-        [self updateButtonByDownloadState:CJFileDownloadStateDownloadFinish];
+        [self updateButtonByDownloadState:CJFileDownloadStateSuccess];
     }];
 }
 

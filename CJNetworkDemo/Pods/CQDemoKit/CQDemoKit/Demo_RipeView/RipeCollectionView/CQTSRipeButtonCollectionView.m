@@ -7,6 +7,10 @@
 //
 
 #import "CQTSRipeButtonCollectionView.h"
+#import "CQTSLocImagesUtil.h"
+#import "CQTSRipeBaseCollectionViewDelegate.h"
+#import "CQTSRipeBaseCollectionViewDataSource.h"
+
 #import "CQTSRipeButtonCollectionViewCell.h"
 
 @interface CQTSRipeButtonCollectionView () {
@@ -14,6 +18,9 @@
 }
 @property (nonatomic, strong) NSMutableArray<NSString *> *buttonTitles;
 @property (nullable, nonatomic, copy, readonly) void(^didSelectItemAtIndexHandle)(NSInteger index); /**< 点击item的回调 */
+
+@property (nonatomic, strong, readonly) CQTSRipeBaseCollectionViewDelegate *ripeCollectionViewDelegate;   /**< collectionView的delegate */
+@property (nonatomic, strong, readonly) CQTSRipeBaseCollectionViewDataSource *ripeCollectionViewDataSource;   /**< collectionView的dataSource */
 
 @end
 
@@ -37,30 +44,34 @@
     NSNumber *number = [NSNumber numberWithInteger:buttonTitles.count];
     NSArray<NSNumber *> *sectionRowCounts = @[number];
     NSInteger perMaxCount = 1;
-    
-    __weak typeof(self) weakSelf = self;
-    self = [super initWithSectionRowCounts:sectionRowCounts perMaxCount:perMaxCount scrollDirection:scrollDirection cellClass:[CQTSRipeButtonCollectionViewCell class] cellAtIndexPathConfigBlock:^(UICollectionViewCell * _Nonnull bCollectionViewCell, NSIndexPath * _Nonnull bIndexPath) {
-        CQTSRipeButtonCollectionViewCell *cell = (CQTSRipeButtonCollectionViewCell *)bCollectionViewCell;
-        
-        NSString *title = buttonTitles[bIndexPath.item];
-        cell.text = title;
-        
-        !weakSelf.cellConfigBlock ?: weakSelf.cellConfigBlock(cell);
-    }];
+
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.scrollDirection = scrollDirection;
+    self = [super initWithFrame:CGRectZero collectionViewLayout:layout];
     if (self) {
-        _didSelectItemAtIndexHandle = didSelectItemAtIndexHandle;
+        __weak typeof(self) weakSelf = self;
+        _ripeCollectionViewDelegate = [[CQTSRipeBaseCollectionViewDelegate alloc] initWithPerMaxCount:perMaxCount didSelectItemHandle:^(UICollectionView * _Nonnull bCollectionView, NSIndexPath * _Nonnull bIndexPath) {
+            !didSelectItemAtIndexHandle ?: didSelectItemAtIndexHandle(bIndexPath.item);
+        }];
+        
+        _ripeCollectionViewDataSource = [[CQTSRipeBaseCollectionViewDataSource alloc] initWithSectionRowCounts:sectionRowCounts selectedIndexPaths:nil registerHandler:^{
+            [weakSelf registerClass:[CQTSRipeButtonCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+            
+        } cellForItemAtIndexPath:^UICollectionViewCell * _Nonnull(UICollectionView * _Nonnull bCollectionView, NSIndexPath * _Nonnull bIndexPath, CQTSLocImageDataModel * _Nonnull dataModel) {
+            CQTSRipeButtonCollectionViewCell *cell = [bCollectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:bIndexPath];
+            
+            NSString *title = buttonTitles[bIndexPath.item];
+            cell.text = title;
+            
+            !weakSelf.cellConfigBlock ?: weakSelf.cellConfigBlock(cell);
+            
+            return cell;
+        }];
+        
+        self.dataSource = self.ripeCollectionViewDataSource;
+        self.delegate = self.ripeCollectionViewDelegate;
     }
     return self;
-}
-
-#pragma mark - UICollectionViewDelegate
-////“点到”item时候执行的时间(allowsMultipleSelection为默认的NO的时候，只有选中，而为YES的时候有选中和取消选中两种操作)
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    !self.didSelectItemAtIndexHandle ?: self.didSelectItemAtIndexHandle(indexPath.item);
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
 }
 
 

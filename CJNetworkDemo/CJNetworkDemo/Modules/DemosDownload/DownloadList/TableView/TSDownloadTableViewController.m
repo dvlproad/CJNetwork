@@ -1,16 +1,16 @@
 //
-//  DownloadListViewController.m
+//  TSDownloadTableViewController.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2017/3/31.
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
 
-#import "DownloadListViewController.h"
-#import "DownloadTableViewCell.h"
+#import "TSDownloadTableViewController.h"
+#import "TSDownloadTableViewCell.h"
 #import <CQDemoKit/CQTSLocImagesUtil.h>
 
-@interface DownloadListViewController () <UITableViewDataSource, UITableViewDelegate> {
+@interface TSDownloadTableViewController () <UITableViewDataSource, UITableViewDelegate> {
     
 }
 @property (nonatomic, strong) NSArray<CQTSLocImageDataModel *> *downloadModles;
@@ -18,7 +18,7 @@
 @end
 
 
-@implementation DownloadListViewController
+@implementation TSDownloadTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,8 +28,8 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-//    [self.tableView registerNib:[UINib nibWithNibName:@"DownloadTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-    [self.tableView registerClass:[DownloadTableViewCell class] forCellReuseIdentifier:@"cell"];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"TSDownloadTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerClass:[TSDownloadTableViewCell class] forCellReuseIdentifier:@"cell"];
 
     self.downloadModles = [CQTSLocImagesUtil dataModelsWithCount:10 randomOrder:NO changeImageNameToNetworkUrl:YES];
 }
@@ -53,7 +53,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DownloadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    TSDownloadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     //cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row];
     CQTSLocImageDataModel *downloadModel = [self.downloadModles objectAtIndex:indexPath.row];

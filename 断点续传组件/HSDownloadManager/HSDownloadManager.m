@@ -94,7 +94,7 @@ static HSDownloadManager *_downloadManager;
 /**
  *  开启任务下载资源
  */
-- (void)download:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(DownloadState state))stateBlock
+- (void)download:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state))stateBlock
 {
     if (!url) {
         NSLog(@"要下载的文件地址不能为空");
@@ -102,7 +102,7 @@ static HSDownloadManager *_downloadManager;
     }
     
     if ([self isCompletion:url]) {
-        stateBlock(DownloadStateCompleted);
+        stateBlock(CJFileDownloadStateSuccess);
         NSLog(@"----该资源已下载完成");
         return;
     }
@@ -166,7 +166,7 @@ static HSDownloadManager *_downloadManager;
     NSURLSessionDataTask *task = [self getTask:url];
     [task resume];
 
-    [self getSessionModel:task.taskIdentifier].stateBlock(DownloadStateDownloading);
+    [self getSessionModel:task.taskIdentifier].stateBlock(CJFileDownloadStateing);
 }
 
 /**
@@ -177,7 +177,7 @@ static HSDownloadManager *_downloadManager;
     NSURLSessionDataTask *task = [self getTask:url];
     [task suspend];
 
-    [self getSessionModel:task.taskIdentifier].stateBlock(DownloadStateSuspended);
+    [self getSessionModel:task.taskIdentifier].stateBlock(CJFileDownloadStatePause);
 }
 
 /**
@@ -342,9 +342,9 @@ static HSDownloadManager *_downloadManager;
     }
     
     if ([self isCompletion:sessionModel.url]) {
-        sessionModel.stateBlock(DownloadStateCompleted);    //下载完成
+        sessionModel.stateBlock(CJFileDownloadStateSuccess);    //下载完成
     } else if (error){
-        sessionModel.stateBlock(DownloadStateFailed);   //下载失败
+        sessionModel.stateBlock(CJFileDownloadStateFailure);   //下载失败
     }
     
     // 关闭流
