@@ -2,7 +2,7 @@
 //  CQTSLocImagesUtil.m
 //  CJComplexUIKitDemo
 //
-//  Created by lcQian on 2020/4/7.
+//  Created by ciyouzen on 2020/4/7.
 //  Copyright © 2020 dvlproad. All rights reserved.
 //
 
@@ -43,7 +43,7 @@
 + (NSArray<UIImage *> *)cjts_localImages {
     NSMutableArray<UIImage *> *images = [[NSMutableArray alloc] init];
     
-    NSArray<NSString *> *imageNames = [self cjts_localImageNames:CQTSLocImageCategoryJPG];
+    NSArray<NSString *> *imageNames = [self cjts_localFileNames:CQTSLocalFileOptionJPG];
     NSInteger imageCount = [imageNames count];
     for (int i = 0; i < imageCount; i++) {
         NSString *imageName = [imageNames objectAtIndex:i];
@@ -57,10 +57,6 @@
     return images;
 }
 
-/// 所有的本地测试图片的名称
-+ (NSArray<NSString *> *)cjts_localImageNames {
-    return [self cjts_localImageNames:CQTSLocImageCategoryAll];
-}
 
 /// 随机的本地测试图片
 + (UIImage *)cjts_localImageRandom {
@@ -84,7 +80,7 @@
     return image;
 }
 
-#pragma mark - test Images
+#pragma mark - test Files
 /// 获取测试用的数据
 /// （为本地图片名时候，UIImage *image = [UIImage cqdemokit_xcassetImageNamed:imageName]; ）
 ///
@@ -93,11 +89,29 @@
 /// @param changeImageNameToNetworkUrl      是否将本地图片名转为其所在的网络地址
 ///
 /// @return 返回图片数据
-+ (NSMutableArray<CQTSLocImageDataModel *> *)dataModelsWithCount:(NSInteger)count
-                                                     randomOrder:(BOOL)randomOrder
-                                     changeImageNameToNetworkUrl:(BOOL)changeImageNameToNetworkUrl
++ (NSMutableArray<CQTSLocImageDataModel *> *)imageModelsWithCount:(NSInteger)count
+                                                      randomOrder:(BOOL)randomOrder
+                                      changeImageNameToNetworkUrl:(BOOL)changeImageNameToNetworkUrl
 {
-    NSArray<NSString *> *imageNames = [self cjts_localImageNames];
+    CQTSLocalFileOption options = CQTSLocalFileOptionJPG | CQTSLocalFileOptionGIF | CQTSLocalFileOptionWebP | CQTSLocalFileOptionSVG;
+    return [self fileModelsWithOptions:options count:count randomOrder:randomOrder changeImageNameToNetworkUrl:changeImageNameToNetworkUrl];
+}
+
+/// 获取测试用的数据
+/// （为本地图片名时候，UIImage *image = [UIImage cqdemokit_xcassetImageNamed:imageName]; ）
+///
+/// @param options                                                    文件类型
+/// @param count                                                        文件个数
+/// @param randomOrder                                          顺序是否随机
+/// @param changeImageNameToNetworkUrl      是否将本地图片名转为其所在的网络地址
+///
+/// @return 返回图片数据
++ (NSMutableArray<CQTSLocImageDataModel *> *)fileModelsWithOptions:(CQTSLocalFileOption)options
+                                                             count:(NSInteger)count
+                                                       randomOrder:(BOOL)randomOrder
+                                       changeImageNameToNetworkUrl:(BOOL)changeImageNameToNetworkUrl
+{
+    NSArray<NSString *> *imageNames = [self cjts_localFileNames:options];
     
     NSMutableArray<CQTSLocImageDataModel *> *dataModels = [[NSMutableArray alloc] init];
     NSArray<NSString *> *titles = @[@"X透社", @"新鲜事", @"XX信", @"X角信", @"蓝精灵", @"年轻范", @"XX福", @"X之语"];
@@ -111,10 +125,10 @@
         NSString *imageName = [imageNames objectAtIndex:lastImageSelIndex];
         
         
-//        UIImage *image = [UIImage cqdemokit_xcassetImageNamed:imageName];
-//        if (image == nil) {
-//            image = [[UIImage alloc] init];
-//        }
+        //        UIImage *image = [UIImage cqdemokit_xcassetImageNamed:imageName];
+        //        if (image == nil) {
+        //            image = [[UIImage alloc] init];
+        //        }
         
         if (changeImageNameToNetworkUrl) {
             NSString *imageUrl = [NSString stringWithFormat:@"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/616ceb45522fd6c11d03237d5e2eb24a5d3a85d5/CQDemoKit/Demo_Resource/LocDataModel/Resources/%@?raw=true", imageName];
@@ -133,50 +147,76 @@
     return dataModels;
 }
 
++ (NSArray<NSString *> *)cjts_localImageNames {
+    CQTSLocalFileOption options = CQTSLocalFileOptionJPG | CQTSLocalFileOptionGIF | CQTSLocalFileOptionWebP | CQTSLocalFileOptionSVG;
+    return [self cjts_localFileNames:options];
+}
 
-+ (NSArray<NSString *> *)cjts_localImageNames:(CQTSLocImageCategory)category {
-    NSArray<NSString *> *imagesNames_jpg = @[
-        @"cqts_1.jpg",
-        @"cqts_2.jpg",
-        @"cqts_3.jpg",
-        @"cqts_4.jpg",
-        @"cqts_5.jpg",
-        @"cqts_6.jpg",
-        @"cqts_7.jpg",
-        @"cqts_8.jpg",
-        @"cqts_9.jpg",
-        @"cqts_10.jpg",
-        @"cqts_long_horizontal_1.jpg",
-        @"cqts_long_vertical_1.jpg",
-        @"cqts_bgCar@2x.jpg",
-        @"cqts_bgSky@2x.jpg",
-        @"cqts_big_15M.jpg",
-        @"cqts_big_22M.jpg",
-    ];
++ (NSArray<NSString *> *)cjts_localFileNames:(CQTSLocalFileOption)options {
+    NSMutableArray *resultImagesNames = [[NSMutableArray alloc] init];
+    if (options & CQTSLocalFileOptionJPG) {
+        [resultImagesNames addObjectsFromArray:@[
+            @"cqts_1.jpg",
+            @"cqts_2.jpg",
+            @"cqts_3.jpg",
+            @"cqts_4.jpg",
+            @"cqts_5.jpg",
+            @"cqts_6.jpg",
+            @"cqts_7.jpg",
+            @"cqts_8.jpg",
+            @"cqts_9.jpg",
+            @"cqts_10.jpg",
+            @"cqts_long_horizontal_1.jpg",
+            @"cqts_long_vertical_1.jpg",
+            @"cqts_bgCar@2x.jpg",
+            @"cqts_bgSky@2x.jpg",
+            @"cqts_big_15M.jpg",
+            @"cqts_big_22M.jpg",
+        ]];
+    }
     
-    NSArray<NSString *> *imagesNames_gif = @[
-        @"cqts_wp_1.webp",
-        @"cqts_01.gif",
-        @"cqts_02.gif",
-        @"cqts_03.gif",
-        @"cqts_04.gif",
-    ];
+    if (options & CQTSLocalFileOptionGIF) {
+        [resultImagesNames addObjectsFromArray:@[
+            @"cqts_01.gif",
+            @"cqts_02.gif",
+            @"cqts_03.gif",
+            @"cqts_04.gif",
+        ]];
+    }
     
-    NSMutableArray *imagesNames_all = [[NSMutableArray alloc] init];
-    [imagesNames_all addObjectsFromArray:imagesNames_jpg];
-    [imagesNames_all addObjectsFromArray:imagesNames_gif];
+    if (options & CQTSLocalFileOptionWebP) {
+        [resultImagesNames addObjectsFromArray:@[
+            @"cqts_wp_1.webp",
+        ]];
+    }
     
-    NSArray<NSString *> *resultImagesNames = nil;
-    switch (category) {
-        case CQTSLocImageCategoryJPG:
-            resultImagesNames = imagesNames_jpg;
-            break;
-        case CQTSLocImageCategoryGIF:
-            resultImagesNames = imagesNames_gif;
-            break;
-        default:
-            resultImagesNames = imagesNames_all;
-            break;
+    if (options & CQTSLocalFileOptionSVG) {
+        [resultImagesNames addObjectsFromArray:@[
+            @"cqts_normal_svg_01.svg",
+            @"cqts_normal_svg_02.svg",
+            @"cqts_normal_animation_svg_01.svg",
+            @"cqts_symbol_svg_01.svg",              // symbol 图标
+        ]];
+    }
+    
+    if (options & CQTSLocalFileOptionAudio) {
+        [resultImagesNames addObjectsFromArray:@[
+//            @"cqts_normal_audio_01.mp3",
+//            @"cqts_normal_audio_02.mp3",
+        ]];
+    }
+    
+    if (options & CQTSLocalFileOptionVideoNormal) {
+        [resultImagesNames addObjectsFromArray:@[
+//            @"cqts_normal_video_01.mp4",
+//            @"cqts_normal_video_02.mp4",
+        ]];
+    }
+    
+    if (options & CQTSLocalFileOptionVideoVap) {
+        [resultImagesNames addObjectsFromArray:@[
+            @"cqts_vap_01.mp4",
+        ]];
     }
     
     return resultImagesNames;

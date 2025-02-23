@@ -76,11 +76,11 @@
         case CJFileDownloadStateReady:   //准备下载，点击之后开始下载
         case CJFileDownloadStatePause:   //暂停下载，点击之后继续下载
         {
-            [self updateButtonByDownloadState:CJFileDownloadStateing];
+            [self updateButtonByDownloadState:CJFileDownloadStateDoing];
             self.downloadHandle();
             break;
         }
-        case CJFileDownloadStateing: //正在下载，点击之后变成暂停
+        case CJFileDownloadStateDoing: //正在下载，点击之后变成暂停
         {
             [self updateButtonByDownloadState:CJFileDownloadStatePause];
             self.pauseHandle();
@@ -103,7 +103,7 @@
             self.deleteButton.hidden = YES;
             break;
         }
-        case CJFileDownloadStateing:
+        case CJFileDownloadStateDoing:
         {
             [self.downloadButton setTitle:@"暂停" forState:UIControlStateNormal];
             [self.downloadButton setEnabled:YES];

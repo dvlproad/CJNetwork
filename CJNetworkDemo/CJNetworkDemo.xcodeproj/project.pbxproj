@@ -73,6 +73,7 @@
 		9740B6322D6B330C00193499 /* TSDownloadCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6312D6B330C00193499 /* TSDownloadCollectionViewCell.m */; };
 		9740B6432D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */; };
 		9740B6462D6B427900193499 /* TSDownloadCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */; };
+		9740B64D2D6B490300193499 /* CQDemoPhotoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B64C2D6B490300193499 /* CQDemoPhotoUtil.m */; };
 		97F61D0C2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F61D0B2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m */; };
 		9AFB06163CD7B080017D3F18 /* Pods_CJNetworkDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4C6E5834142F4905C92DC /* Pods_CJNetworkDemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -225,6 +226,8 @@
 		9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewCellOverlay.m; sourceTree = "<group>"; };
 		9740B6442D6B427900193499 /* TSDownloadCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionViewController.h; sourceTree = "<group>"; };
 		9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewController.m; sourceTree = "<group>"; };
+		9740B64B2D6B490300193499 /* CQDemoPhotoUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CQDemoPhotoUtil.h; sourceTree = "<group>"; };
+		9740B64C2D6B490300193499 /* CQDemoPhotoUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CQDemoPhotoUtil.m; sourceTree = "<group>"; };
 		97F61D0A2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadTableViewCellOverlay.h; sourceTree = "<group>"; };
 		97F61D0B2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadTableViewCellOverlay.m; sourceTree = "<group>"; };
 		C11239993D822E171AABD0F4 /* Pods-CJNetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -720,6 +723,8 @@
 			children = (
 				9740B61C2D6B26A700193499 /* TSDownloadCollectionView.h */,
 				9740B61D2D6B26A700193499 /* TSDownloadCollectionView.m */,
+				9740B64B2D6B490300193499 /* CQDemoPhotoUtil.h */,
+				9740B64C2D6B490300193499 /* CQDemoPhotoUtil.m */,
 				9740B6302D6B330C00193499 /* TSDownloadCollectionViewCell.h */,
 				9740B6312D6B330C00193499 /* TSDownloadCollectionViewCell.m */,
 				9740B6412D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.h */,
@@ -998,6 +1003,7 @@
 				8050036921192C1E002A2306 /* CJObjectConvertUtil.m in Sources */,
 				7846E38E21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m in Sources */,
 				7868F1792121C79A00A283EB /* SocketHomeViewController.m in Sources */,
+				9740B64D2D6B490300193499 /* CQDemoPhotoUtil.m in Sources */,
 				9740B6462D6B427900193499 /* TSDownloadCollectionViewController.m in Sources */,
 				158259DA2484E8F500BA4B3D /* TestNetworkClient+TestCache.m in Sources */,
 				78FC92001F54481E00033DEF /* ViewController.m in Sources */,

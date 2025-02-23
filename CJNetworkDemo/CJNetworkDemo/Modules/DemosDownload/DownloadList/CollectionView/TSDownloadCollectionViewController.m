@@ -9,6 +9,7 @@
 #import "TSDownloadCollectionViewController.h"
 #import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CQDemoKit/CJUIKitToastUtil.h>
+#import "CQDemoPhotoUtil.h"
 
 #import "TSDownloadCollectionView.h"
 #import "HSDownloadManager.h"
@@ -37,7 +38,20 @@
     }];
     
     TSDownloadCollectionView *collectionView = [[TSDownloadCollectionView alloc] initWithDidSelectItemAtIndexHandle:^(CQTSLocImageDataModel * _Nonnull downloadModel) {
-        [CJUIKitToastUtil showMessage:[NSString stringWithFormat:@"点击了 %@", downloadModel.name]];
+        //[CJUIKitToastUtil showMessage:[NSString stringWithFormat:@"点击了 %@", downloadModel.name]];
+        
+        NSString *downloadUrl = downloadModel.imageName;
+        NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadUrl];
+        NSURL *mediaLocalURL = [NSURL fileURLWithPath:localAbsPath];
+        [CQDemoPhotoUtil saveImageToPhotoAlbum:mediaLocalURL success:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [CJUIKitToastUtil showMessage:@"保存成功"];
+            });
+        } failure:^(NSString * _Nonnull errorMessage) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [CJUIKitToastUtil showMessage:errorMessage];
+            });
+        }];
     }];
     collectionView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
     [self.view addSubview:collectionView];

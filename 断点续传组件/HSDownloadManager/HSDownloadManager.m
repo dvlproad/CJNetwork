@@ -166,7 +166,7 @@ static HSDownloadManager *_downloadManager;
     NSURLSessionDataTask *task = [self getTask:url];
     [task resume];
 
-    [self getSessionModel:task.taskIdentifier].stateBlock(CJFileDownloadStateing);
+    [self getSessionModel:task.taskIdentifier].stateBlock(CJFileDownloadStateDoing);
 }
 
 /**

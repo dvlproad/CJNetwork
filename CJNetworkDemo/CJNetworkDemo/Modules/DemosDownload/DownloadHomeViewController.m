@@ -50,8 +50,7 @@
         
         {
             CQDMModuleModel *toastUtilModule = [[CQDMModuleModel alloc] init];
-            toastUtilModule.title = @"单个文件：使用系统进行下载";
-            toastUtilModule.content = @"点击直接下载";
+            toastUtilModule.title = @"单个文件：点击直接使用系统进行下载";
             toastUtilModule.content = self.realDownloadZipRelativePath;
             toastUtilModule.actionBlock = ^{
                 NSString *Url = @"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/1de60c07fba6fa5d29a49e982a4fc02f22e21d9d/CQDemoKit/Demo_Resource/LocDataModel/Resources/mp4/vap.mp4";

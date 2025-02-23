@@ -2,7 +2,7 @@
 //  CQTSLocImagesUtil.h
 //  CJComplexUIKitDemo
 //
-//  Created by lcQian on 2020/4/7.
+//  Created by ciyouzen on 2020/4/7.
 //  Copyright © 2020 dvlproad. All rights reserved.
 //
 
@@ -13,11 +13,15 @@
 NS_ASSUME_NONNULL_BEGIN
 
 // 辅助文本的移除顺序（当有多个相同tag的辅助文本的时候需要）
-typedef NS_ENUM(NSInteger, CQTSLocImageCategory) {
-    CQTSLocImageCategoryAll,    // 所有
-    CQTSLocImageCategoryJPG,    // jpg
-    CQTSLocImageCategoryGIF,    // gif
-    CQTSLocImageCategoryWebP,   // webp
+typedef NS_OPTIONS(NSInteger, CQTSLocalFileOption) {
+//    CQTSLocalFileOptionAll    = 0,       // 所有
+    CQTSLocalFileOptionJPG          = 1 << 0,  // jpg
+    CQTSLocalFileOptionGIF          = 1 << 1,  // gif
+    CQTSLocalFileOptionWebP         = 1 << 2,  // webp
+    CQTSLocalFileOptionSVG          = 1 << 3,  // svg
+    CQTSLocalFileOptionAudio        = 1 << 4,  // audio
+    CQTSLocalFileOptionVideoNormal  = 1 << 5,  // video
+    CQTSLocalFileOptionVideoVap     = 1 << 6,  // video
 };
 
 @interface CQTSLocImagesUtil : NSObject
@@ -39,15 +43,13 @@ typedef NS_ENUM(NSInteger, CQTSLocImageCategory) {
 #pragma mark - local Image
 /// 所有的本地测试图片
 + (NSArray<UIImage *> *)cjts_localImages;
-/// 所有的本地测试图片的名称
-+ (NSArray<NSString *> *)cjts_localImageNames;
 /// 随机的本地测试图片
 + (UIImage *)cjts_localImageRandom;
 /// 获取指定位置的图片(为了cell显示的图片不会一直变化)
 + (UIImage *)cjts_localImageAtIndex:(NSInteger)selIndex;
 
 
-#pragma mark - test Images
+#pragma mark - test Files
 /// 获取测试用的数据
 /// （为本地图片名时候，UIImage *image = [UIImage cqdemokit_xcassetImageNamed:imageName]; ）
 ///
@@ -56,9 +58,23 @@ typedef NS_ENUM(NSInteger, CQTSLocImageCategory) {
 /// @param changeImageNameToNetworkUrl      是否将本地图片名转为其所在的网络地址
 ///
 /// @return 返回图片数据
-+ (NSMutableArray<CQTSLocImageDataModel *> *)dataModelsWithCount:(NSInteger)count
-                                                     randomOrder:(BOOL)randomOrder
-                                     changeImageNameToNetworkUrl:(BOOL)changeImageNameToNetworkUrl;
++ (NSMutableArray<CQTSLocImageDataModel *> *)imageModelsWithCount:(NSInteger)count
+                                                      randomOrder:(BOOL)randomOrder
+                                      changeImageNameToNetworkUrl:(BOOL)changeImageNameToNetworkUrl;
+
+/// 获取测试用的数据
+/// （为本地图片名时候，UIImage *image = [UIImage cqdemokit_xcassetImageNamed:imageName]; ）
+///
+/// @param options                                                    文件类型
+/// @param count                                                        文件个数
+/// @param randomOrder                                          顺序是否随机
+/// @param changeImageNameToNetworkUrl      是否将本地图片名转为其所在的网络地址
+///
+/// @return 返回图片数据
++ (NSMutableArray<CQTSLocImageDataModel *> *)fileModelsWithOptions:(CQTSLocalFileOption)options
+                                                             count:(NSInteger)count
+                                                       randomOrder:(BOOL)randomOrder
+                                       changeImageNameToNetworkUrl:(BOOL)changeImageNameToNetworkUrl;
 
 @end
 

@@ -44,7 +44,10 @@
         
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = [NSString stringWithFormat:@"section %d", section];
-        sectionDataModel.values = [CQTSLocImagesUtil dataModelsWithCount:iRowCount randomOrder:NO changeImageNameToNetworkUrl:YES];
+        
+        CQTSLocalFileOption options = CQTSLocalFileOptionJPG | CQTSLocalFileOptionGIF | CQTSLocalFileOptionWebP | CQTSLocalFileOptionSVG;
+        //CQTSLocalFileOption options = CQTSLocalFileOptionVideoNormal | CQTSLocalFileOptionVideoVap;
+        sectionDataModel.values = [CQTSLocImagesUtil fileModelsWithOptions:options count:iRowCount randomOrder:NO changeImageNameToNetworkUrl:YES];
         for (int item = 0; item < iRowCount; item++) {
             CQTSLocImageDataModel *module = [sectionDataModel.values objectAtIndex:item];
             NSString *originalName = module.name;

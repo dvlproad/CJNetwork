@@ -44,10 +44,10 @@
         
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = [NSString stringWithFormat:@"section %d", section];
-        sectionDataModel.values = [CQTSLocImagesUtil dataModelsWithCount:iRowCount randomOrder:NO changeImageNameToNetworkUrl:NO];
+        sectionDataModel.values = [CQTSLocImagesUtil imageModelsWithCount:iRowCount randomOrder:NO changeImageNameToNetworkUrl:NO];
         for (int item = 0; item < iRowCount; item++) {
             CQTSLocImageDataModel *module = [sectionDataModel.values objectAtIndex:item];
-            module.name = [NSString stringWithFormat:@"%d-%02zd", section, item];
+            module.name = [NSString stringWithFormat:@"%d-", section, module.name];
             
             BOOL isSelected = [selectedIndexPaths containsObject:[NSIndexPath indexPathForItem:item inSection:section]];
             module.selected = isSelected;
@@ -71,7 +71,7 @@
  *
  *  @return CollectionView 的 dataSource
  */
-- (instancetype)initWithSectionDataModels:(NSArray<CQTSLocImageDataModel *> *)sectionDataModels
+- (instancetype)initWithSectionDataModels:(NSArray<CQDMSectionDataModel *> *)sectionDataModels
                           registerHandler:(void(^)(void))registerHandler
                    cellForItemAtIndexPath:(UICollectionViewCell *(^)(UICollectionView *bCollectionView, NSIndexPath *bIndexPath, CQTSLocImageDataModel *dataModel))cellForItemAtIndexPath
 {

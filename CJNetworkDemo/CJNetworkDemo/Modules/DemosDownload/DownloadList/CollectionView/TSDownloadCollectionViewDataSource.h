@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return CollectionView 的 dataSource
  */
-- (instancetype)initWithSectionDataModels:(NSArray<CQTSLocImageDataModel *> *)sectionDataModels
+- (instancetype)initWithSectionDataModels:(NSArray<CQDMSectionDataModel *> *)sectionDataModels
                           registerHandler:(void(^)(void))registerHandler
                    cellForItemAtIndexPath:(UICollectionViewCell *(^)(UICollectionView *bCollectionView, NSIndexPath *bIndexPath, CQTSLocImageDataModel *dataModel))cellForItemAtIndexPath NS_DESIGNATED_INITIALIZER;
 + (instancetype)new NS_UNAVAILABLE;

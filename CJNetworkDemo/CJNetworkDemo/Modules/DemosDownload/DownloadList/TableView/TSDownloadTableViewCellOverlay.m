@@ -163,7 +163,6 @@
     CGFloat progress = [[HSDownloadManager sharedInstance] progress:self.downloadUrl];
     self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
     self.progressView.progress = progress;
-    NSLog(@"progress-----%f", progress);
     if (progress == 1.0) {
         [self __changeState:CJFileDownloadStateSuccess];
     } else if (progress > 0.0) {
@@ -208,7 +207,6 @@
     CGFloat progress = [[HSDownloadManager sharedInstance] progress:self.downloadUrl];
     self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
     self.progressView.progress = progress;
-    NSLog(@"progress-----%f", progress);
 
     [self __changeState:CJFileDownloadStateReady];
 }
@@ -220,7 +218,7 @@
     switch (state) {
         case CJFileDownloadStateReady:
             return @"开始";
-        case CJFileDownloadStateing:
+        case CJFileDownloadStateDoing:
             return @"暂停";
         case CJFileDownloadStatePause:
             return @"继续";
