@@ -9,7 +9,7 @@
 #import "TSDownloadCollectionViewController.h"
 #import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CQDemoKit/CJUIKitToastUtil.h>
-#import "CQDemoPhotoUtil.h"
+#import <CQDemoKit/CQTSPhotoUtil.h>
 
 #import "TSDownloadCollectionView.h"
 #import "HSDownloadManager.h"
@@ -43,7 +43,7 @@
         NSString *downloadUrl = downloadModel.imageName;
         NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadUrl];
         NSURL *mediaLocalURL = [NSURL fileURLWithPath:localAbsPath];
-        [CQDemoPhotoUtil saveImageToPhotoAlbum:mediaLocalURL success:^{
+        [CQTSPhotoUtil saveImageToPhotoAlbum:mediaLocalURL success:^{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [CJUIKitToastUtil showMessage:@"保存成功"];
             });
