@@ -18,22 +18,6 @@ import Foundation
     case videoWithoutWatermark      // 视频有视频
     case videoWithoutWatermarkHD    // 视频无视频
     case imageCover  // 封面图片
-    
-    // 为了确保所有枚举都有合适的 URL 模式
-    var urlPattern: String {
-        switch self {
-        case .audio:
-            return "https://www.tikwm.com/video/music/"
-        case .originalVideo:
-            return "https://www.tikwm.com/video/media/wmplay/"
-        case .videoWithoutWatermark:
-            return "https://www.tikwm.com/video/media/play/"
-        case .videoWithoutWatermarkHD:
-            return "https://www.tikwm.com/video/media/hdplay/"
-        case .imageCover:
-            return "https://www.tikwm.com/video/cover/"
-        }
-    }
 }
 
 @objc public class CQVideoUrlAnalyze_Tiktok: NSObject {
@@ -46,7 +30,7 @@ import Foundation
     ) {
         CJRequestUtil.expandShortenedUrl(shortenedUrl) { expandedUrl in
             if let videoId = (expandedUrl as NSString).cjnetworkUrl_Value(forKey: "video") {
-                let resultUrl = type.urlPattern + videoId    // 获取对应类型的 URL 模式并拼接视频 ID
+                let resultUrl = getVideoUrl(for: type, videoId: videoId)    // 获取对应类型的 URL 模式并拼接视频 ID
                 success(expandedUrl, videoId, resultUrl)
             } else {
                 failure("获取短链重定向/扩展后的videoId失败")
@@ -56,6 +40,24 @@ import Foundation
         }
     }
     
-    
-    
+    @objc public static func getVideoUrl(for type: CQAnalyzeVideoUrlType, videoId: String) -> String {
+        let baseUrl = "https://www.tikwm.com/video"
+        
+        switch type {
+        case .audio:
+            return "\(baseUrl)/music/\(videoId).mp3"
+            
+        case .originalVideo:
+            return "\(baseUrl)/media/play/\(videoId).mp4"
+            
+        case .videoWithoutWatermark:
+            return "\(baseUrl)/media/wmplay/\(videoId).mp4"
+            
+        case .videoWithoutWatermarkHD:
+            return "\(baseUrl)/media/hdplay/\(videoId).mp4"
+            
+        case .imageCover:
+            return "\(baseUrl)/cover/\(videoId).webp"
+        }
+    }
 }

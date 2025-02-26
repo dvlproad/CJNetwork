@@ -10,6 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, CQFileType) {
+    CQFileTypeUnknown,          // 未知
+    CQFileTypeImage,            // 图片
+    CQFileTypeAudio,            // 音频
+    CQFileTypeVideo,            // 视频
+};
+
 @interface CQTSPhotoUtil : NSObject
 
 + (void)saveImageToPhotoAlbum:(NSURL *)mediaLocalURL
@@ -24,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)saveMediaByFileExtensionToPhotoAlbum:(NSURL *)mediaLocalURL
                                      success:(void (^)(void))success
                                      failure:(void (^)(NSString *errorMessage))failure;
+
++ (CQFileType)fileTypeForFilePathOrUrl:(NSString *)pathOrUrl;
 
 @end
 

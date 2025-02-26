@@ -115,12 +115,24 @@
     
     NSMutableArray<CQTSLocImageDataModel *> *dataModels = [[NSMutableArray alloc] init];
     NSArray<NSString *> *titles = @[@"X透社", @"新鲜事", @"XX信", @"X角信", @"蓝精灵", @"年轻范", @"XX福", @"X之语"];
+    NSArray<NSString *> *imageUrls = @[
+        @"https://globalimg.sucai999.com/uploadfile/20211209/267440/132835268627695428.mp4",
+        @"https://globalimg.sucai999.com/uploadfile/20211209/267440/132835061687725817.mp4",
+        @"https://globalimg.sucai999.com/uploadfile/20211209/267440/132834902379083456.mp4",
+        @"https://globalimg.sucai999.com/uploadfile/20211209/267440/132835249502522915.mp4",
+        
+        @"https://www.tikwm.com/video/music/7465611957203160340.mp3",
+        @"https://www.tikwm.com/video/media/wmplay/7465611957203160340.mp4",
+        @"https://www.tikwm.com/video/media/play/7465611957203160340.mp4",
+        @"https://www.tikwm.com/video/media/hdplay/7465611957203160340.mp4",
+    ];
     
     for (NSInteger i = 0; i < count; i++) {
         CQTSLocImageDataModel *dataModel = [[CQTSLocImageDataModel alloc] init];
         NSInteger maySelIndex = randomOrder ? random() : i;
         NSInteger lastImageSelIndex = maySelIndex%imageNames.count;
         NSInteger lastTitleSelIndex = maySelIndex%titles.count;
+        NSInteger lastImageUrlSelIndex = maySelIndex%imageUrls.count;
         
         NSString *imageName = [imageNames objectAtIndex:lastImageSelIndex];
         
@@ -132,6 +144,8 @@
         
         if (changeImageNameToNetworkUrl) {
             NSString *imageUrl = [NSString stringWithFormat:@"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/616ceb45522fd6c11d03237d5e2eb24a5d3a85d5/CQDemoKit/Demo_Resource/LocDataModel/Resources/%@?raw=true", imageName];
+            imageUrl = @"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/616ceb45522fd6c11d03237d5e2eb24a5d3a85d5/CQDemoKit/Demo_Resource/LocDataModel/Resources/mp4/vap.mp4";
+            imageUrl = [imageUrls objectAtIndex:lastImageUrlSelIndex];
             dataModel.name = [NSString stringWithFormat:@"%02zd %@", i+1, imageName];
             dataModel.imageName = imageUrl;
         } else {
@@ -149,6 +163,7 @@
 
 + (NSArray<NSString *> *)cjts_localImageNames {
     CQTSLocalFileOption options = CQTSLocalFileOptionJPG | CQTSLocalFileOptionGIF | CQTSLocalFileOptionWebP | CQTSLocalFileOptionSVG;
+//    CQTSLocalFileOption options = CQTSLocalFileOptionVideoNormal | CQTSLocalFileOptionVideoVap;
     return [self cjts_localFileNames:options];
 }
 

@@ -7,16 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CJDownloadEnumUtil.h"
 
 #define PKGURL  @"http://big1.wy119.com/droid4X.pkg"
-
-typedef NS_ENUM(NSUInteger, CJFileDownloadState) {
-    CJFileDownloadStateReady,           // 可以下载（显示开始下载）
-    CJFileDownloadStatePause,           // 暂停下载（显示继续下载）
-    CJFileDownloadStateDoing,           // 下载中（显示暂停下载）
-    CJFileDownloadStateSuccess,         // 下载完成（显示删除下载）
-    CJFileDownloadStateFailure,         // 下载失败（显示重新下载）
-};
 
 @interface CQTSBaseDownloadViewController : UIViewController {
     

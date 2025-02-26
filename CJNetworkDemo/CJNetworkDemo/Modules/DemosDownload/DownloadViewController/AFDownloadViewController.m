@@ -64,6 +64,8 @@
     
     
     NSString *movieUrl = @"https://github.com/dvlproad/001-UIKit-CQDemo-iOS/blob/1de60c07fba6fa5d29a49e982a4fc02f22e21d9d/CQDemoKit/Demo_Resource/LocDataModel/Resources/mp4/vap.mp4";
+    movieUrl = @"https://globalimg.sucai999.com/uploadfile/20211209/267440/132835061687725817.mp4";
+    movieUrl = @"https://www.tikwm.com/video/media/hdplay/7465611957203160340.mp4";
     _downloadTask =
     [self createDownloadTaskWithUrl:movieUrl progress:^(NSProgress *downloadProgress) {
         NSLog(@"%f",1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);//当前已经下载的大小/文件的总大小

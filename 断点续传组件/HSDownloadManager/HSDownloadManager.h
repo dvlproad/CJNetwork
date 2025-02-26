@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "HSSessionModel.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface HSDownloadManager : NSObject
 
 /**
@@ -25,7 +27,7 @@
  *  @param progressBlock 回调下载进度
  *  @param stateBlock    下载状态
  */
-- (void)download:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state))stateBlock;
+- (void)download:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock;
 
 /**
  *  查询该资源的下载进度值
@@ -76,3 +78,5 @@
 - (void)deleteAllFile;
 
 @end
+
+NS_ASSUME_NONNULL_END

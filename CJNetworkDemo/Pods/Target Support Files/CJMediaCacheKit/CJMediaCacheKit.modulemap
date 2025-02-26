@@ -1,0 +1,6 @@
+framework module CJMediaCacheKit {
+  umbrella header "CJMediaCacheKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

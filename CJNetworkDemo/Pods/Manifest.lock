@@ -17,7 +17,14 @@ PODS:
   - Alamofire (4.9.1)
   - CJBaseHelper/DeviceCJHelper (0.1.7)
   - CJBaseHelper/NSObjectCJHelper (0.1.7)
+  - CJBaseUIKit/CJSlider (0.8.0)
   - CJBaseUtil/CJIndentedStringUtil (0.5.1)
+  - CJMediaCacheKit (0.0.1)
+  - CJMediaPlayer (0.0.1):
+    - CJBaseUIKit/CJSlider (~> 0.8.0)
+    - CJMediaCacheKit
+    - PureLayout
+    - TransitionKit
   - CJMonitor (0.0.2):
     - CJMonitor/CJLog (= 0.0.2)
   - CJMonitor/CJLog (0.0.2):
@@ -64,6 +71,8 @@ PODS:
     - CJNetworkFileModel/Upload (= 0.1.0)
   - CJNetworkFileModel/Upload (0.1.0)
   - CJNetworkSimulate (0.2.2)
+  - CJPlayer (0.0.1):
+    - CJMediaCacheKit
   - CocoaAsyncSocket (7.4.3):
     - CocoaAsyncSocket/All (= 7.4.3)
   - CocoaAsyncSocket/All (7.4.3):
@@ -172,14 +181,18 @@ PODS:
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
   - OpenUDID (1.0.0)
+  - PureLayout (3.1.9)
   - Result (4.1.0)
   - SSZipArchive (2.4.3)
+  - TransitionKit (2.2.1)
   - YYCache (1.0.4)
 
 DEPENDENCIES:
   - CJBaseHelper/DeviceCJHelper
   - CJBaseHelper/NSObjectCJHelper
   - CJBaseUtil/CJIndentedStringUtil
+  - CJMediaCacheKit (from `../../CJMediaPlayer`)
+  - CJMediaPlayer (from `../../CJMediaPlayer`)
   - CJMonitor
   - CJNetwork-Swift (from `../`)
   - CJNetwork/AFNetworkingMethodEncrypt (from `../`)
@@ -192,6 +205,7 @@ DEPENDENCIES:
   - CJNetworkClient/Upload (from `../`)
   - CJNetworkFileModel (from `../`)
   - CJNetworkSimulate (from `../`)
+  - CJPlayer (from `../../CJMediaPlayer`)
   - CocoaAsyncSocket (~> 7.4.1)
   - CQDemoKit-Swift (~> 0.0.1)
   - CQDemoKit/BaseVC (~> 0.7.5)
@@ -206,6 +220,7 @@ SPEC REPOS:
     - AFNetworking
     - Alamofire
     - CJBaseHelper
+    - CJBaseUIKit
     - CJBaseUtil
     - CJMonitor
     - CocoaAsyncSocket
@@ -214,11 +229,17 @@ SPEC REPOS:
     - Masonry
     - Moya
     - OpenUDID
+    - PureLayout
     - Result
     - SSZipArchive
+    - TransitionKit
     - YYCache
 
 EXTERNAL SOURCES:
+  CJMediaCacheKit:
+    :path: "../../CJMediaPlayer"
+  CJMediaPlayer:
+    :path: "../../CJMediaPlayer"
   CJNetwork:
     :path: "../"
   CJNetwork-Swift:
@@ -229,6 +250,8 @@ EXTERNAL SOURCES:
     :path: "../"
   CJNetworkSimulate:
     :path: "../"
+  CJPlayer:
+    :path: "../../CJMediaPlayer"
   CQNetworkPublic:
     :path: "../"
   CQVideoUrlAnalyze-Swift:
@@ -238,13 +261,17 @@ SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   CJBaseHelper: 71c9d695c76736b2fc66123157d5626da4556177
+  CJBaseUIKit: 1aae41e618536f39628c79a7461f48e6979b8a5e
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
+  CJMediaCacheKit: 0cb62830e0e8364f7a897e1036308e613d53f2e8
+  CJMediaPlayer: d0fe29ed73a4bae153fa6971b2d5017c0b4b7bdf
   CJMonitor: cbec62179b877a476f84249ff268c765a66d6687
   CJNetwork: f26cc1962645817ed6ec99d0de126b430af22f83
   CJNetwork-Swift: 322f72ff0056bb87eab1bf41d791e195cf312636
   CJNetworkClient: ddfe9fc5062d2d9950ed0ca3cb89299fe56ee398
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
   CJNetworkSimulate: 0c8e89ee82db12816cabdce4f3d6dcab1d30ee5b
+  CJPlayer: e29c9823449224daa93c46f666f52b310fe30168
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQDemoKit: 1c1e5b27b6a973ab0b6535f4c3df3164e6c82285
   CQDemoKit-Swift: 28d06bf24cbcc84c9651e0ffe607bffdd57863b6
@@ -253,10 +280,12 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
+  PureLayout: 5fb5e5429519627d60d079ccb1eaa7265ce7cf88
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
+  TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: bf3a987dcd839cfa99b2d97a3cacc35426ad8193
+PODFILE CHECKSUM: 62eba4ec4c3727cec58a6fbffb86b39e5ad62f91
 
 COCOAPODS: 1.16.2

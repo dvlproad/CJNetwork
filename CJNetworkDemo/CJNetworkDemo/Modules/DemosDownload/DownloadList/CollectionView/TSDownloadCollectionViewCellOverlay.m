@@ -173,7 +173,8 @@
 }
 
 - (void)__changeState:(CJFileDownloadState)state {
-    [self.downloadButton setTitle:[self getTitleWithDownloadState:state] forState:UIControlStateNormal];
+    NSString *title = [CJDownloadEnumUtil nextStateTextForState:state];
+    [self.downloadButton setTitle:title forState:UIControlStateNormal];
     
     BOOL isCompleted = state == CJFileDownloadStateSuccess;
     self.deleteButton.hidden = !isCompleted;
@@ -182,21 +183,6 @@
     CGFloat progress = [[HSDownloadManager sharedInstance] progress:self.downloadUrl];
     self.progressLabel.hidden = isCompleted || progress == 0.0;
     self.progressView.hidden = isCompleted || progress == 0.0;
-    
-//    switch (state) {
-//        case CJFileDownloadStateReady:
-//            return @"开始";
-//        case CJFileDownloadStateDoing:
-//            return @"暂停";
-//        case CJFileDownloadStatePause:
-//            return @"继续";
-//        case CJFileDownloadStateSuccess:
-//            return @"完成";
-//        case CJFileDownloadStateFailure:
-//            return @"重下";
-//        default:
-//            break;
-//    }
     
     NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:self.downloadUrl];
     self.stateChangeBlock(state, localAbsPath);
@@ -210,7 +196,7 @@
             self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
             self.progressView.progress = progress;
         });
-    } state:^(CJFileDownloadState state) {
+    } state:^(CJFileDownloadState state, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self __changeState:state];
         });
@@ -230,24 +216,5 @@
     [self __changeState:CJFileDownloadStateReady];
 }
 
-
-#pragma mark 按钮状态
-- (NSString *)getTitleWithDownloadState:(CJFileDownloadState)state
-{
-    switch (state) {
-        case CJFileDownloadStateReady:
-            return @"开始";
-        case CJFileDownloadStateDoing:
-            return @"暂停";
-        case CJFileDownloadStatePause:
-            return @"继续";
-        case CJFileDownloadStateSuccess:
-            return @"完成";
-        case CJFileDownloadStateFailure:
-            return @"重下";
-        default:
-            break;
-    }
-}
 
 @end

@@ -90,7 +90,8 @@
         }
         
         UIImage *watiToSaveImage = nil;
-        if ([self isImageFileExtension:fileExtension]) {    // 如果是图片
+        CQFileType fileType = [self fileTypeForFilePathOrUrl:fileExtension];
+        if (fileType == CQFileTypeImage) {    // 如果是图片
             watiToSaveImage = [UIImage imageWithContentsOfFile:mediaLocalURL.path];
             if (watiToSaveImage == nil) {
                 NSString *errorMessage = [NSString stringWithFormat:@"图片数据获取失败"];
@@ -98,7 +99,7 @@
                 return;
             }
             
-        } else if ([self isVideoFileExtension:fileExtension]) {
+        } else if (fileType == CQFileTypeVideo) {
             
         } else {
             NSString *errorMessage = [NSString stringWithFormat:@"暂时不支持的文件类型: %@", fileExtension];
@@ -112,7 +113,7 @@
             if (watiToSaveImage != nil) {   // 如果是图片
                 [PHAssetChangeRequest creationRequestForAssetFromImage:watiToSaveImage];
                 
-            } else if ([self isVideoFileExtension:fileExtension]) { // 如果是视频
+            } else if (fileType == CQFileTypeVideo) { // 如果是视频
                 [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:mediaLocalURL];
             }
             
@@ -135,17 +136,21 @@
     }];
 }
 
-
-+ (BOOL)isImageFileExtension:(NSString *)extension {
-    NSArray *imageExtensions = @[@"jpg", @"jpeg", @"png", @"gif", @"bmp"];
-    return [imageExtensions containsObject:extension];
-}
-
-+ (BOOL)isVideoFileExtension:(NSString *)extension {
++ (CQFileType)fileTypeForFilePathOrUrl:(NSString *)pathOrUrl {
+    NSString *extension = [pathOrUrl pathExtension].lowercaseString;
+    NSArray *imageExtensions = @[@"jpg", @"jpeg", @"png", @"gif", @"bmp", @"webp"];
+    NSArray *audioExtensions = @[@"mp3", @"wav", @"m4a", @"aac", @"ogg"];
     NSArray *videoExtensions = @[@"mp4", @"mov", @"avi", @"mkv", @"flv"];
-    return [videoExtensions containsObject:extension];
+    if ([imageExtensions containsObject:extension]) {
+        return CQFileTypeImage;
+    } else if ([audioExtensions containsObject:extension]) {
+        return CQFileTypeAudio;
+    } else if ([videoExtensions containsObject:extension]) {
+        return CQFileTypeVideo;
+    } else {
+        return CQFileTypeUnknown;
+    }
 }
-
 
 
 @end

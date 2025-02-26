@@ -8,6 +8,8 @@
 //  快捷指令：抖音解析 无水印;
 
 #import "TSVideoUrlAnalyzeHomeViewController.h"
+#import <CQDemoKit/CJUIKitAlertUtil.h>
+#import <CQDemoKit/NSError+CQTSErrorString.h>
 #import <CJMonitor/CJLogSuspendWindow.h>
 //#import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
@@ -16,6 +18,9 @@
 #import <CJNetwork/CQDemoHTTPSessionManager.h>
 
 #import "TestNetworkClient.h"
+
+// 下载
+#import "HSDownloadManager.h"
 
 @interface TSVideoUrlAnalyzeHomeViewController ()
 
@@ -73,9 +78,17 @@
             loginModule.content = @"无水印";
             loginModule.actionBlock = ^{
                 NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
-                [CQVideoUrlAnalyze_Tiktok requestUrlFromShortenedUrl:shortenedUrl type:CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD success:^(NSString * _Nonnull expandedUrl, NSString * _Nonnull videoId, NSString * _Nonnull videoUrl) {
-                    NSString *message = [NSString stringWithFormat:@"expandedUrl=%@\nvideoId=%@\nvideoUrl=%@", expandedUrl, videoId, videoUrl];
+//                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
+                CQAnalyzeVideoUrlType type = CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD;
+                [CQVideoUrlAnalyze_Tiktok requestUrlFromShortenedUrl:shortenedUrl type:type success:^(NSString * _Nonnull expandedUrl, NSString * _Nonnull videoId, NSString * _Nonnull videoUrl) {
+                    NSString *message = [NSString stringWithFormat:@"解析结果如下:\nexpandedUrl=%@\nvideoId=%@\nvideoUrl=%@", expandedUrl, videoId, videoUrl];
                     [self __showResponseLogMessage:message];
+                    
+                    dispatch_async(dispatch_get_main_queue(),^{
+                        [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
+                            [self downloadFileUrl:videoUrl];
+                        }];
+                    });
                 } failure:^(NSString * _Nonnull errorMessage) {
                     [self __showResponseLogMessage:errorMessage];
                 }];
@@ -86,6 +99,45 @@
     }
 
     self.sectionDataModels = sectionDataModels;
+}
+
+- (void)downloadFileUrl:(NSString *)downloadUrl {
+    [[HSDownloadManager sharedInstance] download:downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
+            NSString *message = [NSString stringWithFormat:@"当前下载进度:=========%@", progressValue];
+            [self __showResponseLogMessage:message];
+        });
+    } state:^(CJFileDownloadState state, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self __showResponseLogMessage:[CJDownloadEnumUtil currentStateTextForState:state]];
+            
+            switch (state) {
+                case CJFileDownloadStateReady:{
+                    break;
+                }
+                case CJFileDownloadStateDoing: {
+                    break;
+                }
+                case CJFileDownloadStatePause: {
+                    break;
+                }
+                case CJFileDownloadStateSuccess: {
+                    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadUrl];
+                    NSString *message = [NSString stringWithFormat:@"下载完成，存放在:%@", localAbsPath];
+                    [self __showResponseLogMessage:message];
+                    break;
+                }
+                case CJFileDownloadStateFailure: {
+                    [self __showResponseLogMessage:error.cqtsErrorString];
+                    break;
+                }
+                default:
+                    break;
+            }
+            
+        });
+    }];
 }
 
 

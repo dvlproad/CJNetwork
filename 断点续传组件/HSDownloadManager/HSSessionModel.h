@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "CQTSBaseDownloadViewController.h"
 
-@interface HSSessionModel : NSObject
+NS_ASSUME_NONNULL_BEGIN
+
+@interface HSSessionModel : NSObject {
+    
+}
 
 /** 流 */
 @property (nonatomic, strong) NSOutputStream *stream;
@@ -24,6 +28,8 @@
 @property (nonatomic, copy) void(^progressBlock)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress);
 
 /** 下载状态 */
-@property (nonatomic, copy) void(^stateBlock)(CJFileDownloadState state);
+@property (nonatomic, copy) void(^stateBlock)(CJFileDownloadState state, NSError * _Nullable error);
 
 @end
+
+NS_ASSUME_NONNULL_END

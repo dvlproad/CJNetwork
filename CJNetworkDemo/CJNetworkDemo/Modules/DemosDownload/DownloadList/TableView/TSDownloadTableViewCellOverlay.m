@@ -173,7 +173,8 @@
 }
 
 - (void)__changeState:(CJFileDownloadState)state {
-    [self.downloadButton setTitle:[self getTitleWithDownloadState:state] forState:UIControlStateNormal];
+    NSString *title = [CJDownloadEnumUtil nextStateTextForState:state];
+    [self.downloadButton setTitle:title forState:UIControlStateNormal];
     if (state == CJFileDownloadStateSuccess) {
         self.deleteButton.enabled = YES;
     } else {
@@ -191,7 +192,7 @@
             self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
             self.progressView.progress = progress;
         });
-    } state:^(CJFileDownloadState state) {
+    } state:^(CJFileDownloadState state, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self __changeState:state];
         });
@@ -209,26 +210,6 @@
     self.progressView.progress = progress;
 
     [self __changeState:CJFileDownloadStateReady];
-}
-
-
-#pragma mark 按钮状态
-- (NSString *)getTitleWithDownloadState:(CJFileDownloadState)state
-{
-    switch (state) {
-        case CJFileDownloadStateReady:
-            return @"开始";
-        case CJFileDownloadStateDoing:
-            return @"暂停";
-        case CJFileDownloadStatePause:
-            return @"继续";
-        case CJFileDownloadStateSuccess:
-            return @"完成";
-        case CJFileDownloadStateFailure:
-            return @"重下";
-        default:
-            break;
-    }
 }
 
 @end

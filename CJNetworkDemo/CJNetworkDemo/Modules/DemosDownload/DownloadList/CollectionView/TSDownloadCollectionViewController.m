@@ -9,6 +9,7 @@
 #import "TSDownloadCollectionViewController.h"
 #import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CQDemoKit/CJUIKitToastUtil.h>
+#import <CQDemoKit/CJUIKitAlertUtil.h>
 #import <CQDemoKit/CQTSPhotoUtil.h>
 
 #import "TSDownloadCollectionView.h"
@@ -43,14 +44,33 @@
         NSString *downloadUrl = downloadModel.imageName;
         NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadUrl];
         NSURL *mediaLocalURL = [NSURL fileURLWithPath:localAbsPath];
-        [CQTSPhotoUtil saveImageToPhotoAlbum:mediaLocalURL success:^{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [CJUIKitToastUtil showMessage:@"保存成功"];
-            });
-        } failure:^(NSString * _Nonnull errorMessage) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [CJUIKitToastUtil showMessage:errorMessage];
-            });
+        CQFileType fileType = [CQTSPhotoUtil fileTypeForFilePathOrUrl:mediaLocalURL.path];
+        
+        NSString *title = [NSString stringWithFormat:@"是否要保存【%@】到相册", fileType == CQFileTypeVideo ? @"视频" : @"图片"];
+        NSString *message = downloadModel.imageName;
+        [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:title message:message cancleBlock:nil okBlock:^{
+            if (fileType == CQFileTypeVideo) {
+                [CQTSPhotoUtil saveVideoToPhotoAlbum:mediaLocalURL success:^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [CJUIKitToastUtil showMessage:@"保存成功"];
+                    });
+                } failure:^(NSString * _Nonnull errorMessage) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [CJUIKitAlertUtil showIKnowAlertInViewController:self withTitle:errorMessage iKnowBlock:nil];
+                    });
+                }];
+                return;
+            } else {
+                [CQTSPhotoUtil saveImageToPhotoAlbum:mediaLocalURL success:^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [CJUIKitToastUtil showMessage:@"保存成功"];
+                    });
+                } failure:^(NSString * _Nonnull errorMessage) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [CJUIKitAlertUtil showIKnowAlertInViewController:self withTitle:errorMessage iKnowBlock:nil];
+                    });
+                }];
+            }
         }];
     }];
     collectionView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];

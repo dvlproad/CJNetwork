@@ -28,6 +28,10 @@ target 'CJNetworkDemo' do
   pod 'CQDemoKit',              '~> 0.7.5',      :subspecs => ['BaseVC', 'Demo_Resource']
   pod 'CQDemoKit-Swift',        '~> 0.0.1'
   
+  pod 'CJPlayer',           :path => '../../CJMediaPlayer'
+  pod 'CJMediaPlayer',      :path => '../../CJMediaPlayer'
+  pod 'CJMediaCacheKit',    :path => '../../CJMediaPlayer'
+  
   pod 'CJNetwork-Swift',        :path => '../'
   
   # 视频地址解析

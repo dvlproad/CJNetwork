@@ -10,7 +10,7 @@
 #define HSCachesDirectory [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"HSCache"]
 
 // 保存文件名
-#define HSFileName(url) url.md5String
+#define HSFileName(url) [NSString stringWithFormat:@"%@_%@", url.md5String, [url lastPathComponent]]
 
 // 文件的存放路径（caches）
 #define HSFileFullpath(url) [HSCachesDirectory stringByAppendingPathComponent:HSFileName(url)]
@@ -94,7 +94,7 @@ static HSDownloadManager *_downloadManager;
 /**
  *  开启任务下载资源
  */
-- (void)download:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state))stateBlock
+- (void)download:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock
 {
     if (!url) {
         NSLog(@"要下载的文件地址不能为空");
@@ -102,7 +102,7 @@ static HSDownloadManager *_downloadManager;
     }
     
     if ([self isCompletion:url]) {
-        stateBlock(CJFileDownloadStateSuccess);
+        stateBlock(CJFileDownloadStateSuccess, nil);
         NSLog(@"----该资源已下载完成");
         return;
     }
@@ -166,7 +166,7 @@ static HSDownloadManager *_downloadManager;
     NSURLSessionDataTask *task = [self getTask:url];
     [task resume];
 
-    [self getSessionModel:task.taskIdentifier].stateBlock(CJFileDownloadStateDoing);
+    [self getSessionModel:task.taskIdentifier].stateBlock(CJFileDownloadStateDoing, nil);
 }
 
 /**
@@ -177,7 +177,7 @@ static HSDownloadManager *_downloadManager;
     NSURLSessionDataTask *task = [self getTask:url];
     [task suspend];
 
-    [self getSessionModel:task.taskIdentifier].stateBlock(CJFileDownloadStatePause);
+    [self getSessionModel:task.taskIdentifier].stateBlock(CJFileDownloadStatePause, nil);
 }
 
 /**
@@ -300,7 +300,15 @@ static HSDownloadManager *_downloadManager;
     [sessionModel.stream open];
     
     // 获得服务器这次请求 返回数据的总长度
-    NSInteger totalLength = [response.allHeaderFields[@"Content-Length"] integerValue] + HSDownloadLength(sessionModel.url);
+    NSString *contentLengthStr = response.allHeaderFields[@"Content-Length"];
+    if (contentLengthStr == nil) {
+        NSLog(@"No Content-Length header returned from the server.");
+        // 在这里处理没有 Content-Length 的情况
+        completionHandler(NSURLSessionResponseCancel);
+        return;
+    }
+    NSUInteger receivedSize = HSDownloadLength(sessionModel.url);
+    NSInteger totalLength = [contentLengthStr integerValue] + receivedSize;
     sessionModel.totalLength = totalLength;
     
     // 存储总长度
@@ -326,6 +334,7 @@ static HSDownloadManager *_downloadManager;
     // 下载进度
     NSUInteger receivedSize = HSDownloadLength(sessionModel.url);
     NSUInteger expectedSize = sessionModel.totalLength;
+   
     CGFloat progress = 1.0 * receivedSize / expectedSize;
 
     sessionModel.progressBlock(receivedSize, expectedSize, progress);
@@ -342,9 +351,9 @@ static HSDownloadManager *_downloadManager;
     }
     
     if ([self isCompletion:sessionModel.url]) {
-        sessionModel.stateBlock(CJFileDownloadStateSuccess);    //下载完成
+        sessionModel.stateBlock(CJFileDownloadStateSuccess, nil);    //下载完成
     } else if (error){
-        sessionModel.stateBlock(CJFileDownloadStateFailure);   //下载失败
+        sessionModel.stateBlock(CJFileDownloadStateFailure, error);   //下载失败
     }
     
     // 关闭流

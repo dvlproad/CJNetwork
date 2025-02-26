@@ -48,9 +48,10 @@
         } cellForItemAtIndexPath:^UICollectionViewCell * _Nonnull(UICollectionView * _Nonnull bCollectionView, NSIndexPath * _Nonnull bIndexPath, CQTSLocImageDataModel * _Nonnull downloadModel) {
             TSDownloadCollectionViewCell *cell = [bCollectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:bIndexPath];
             
-            
+//            cell.previewImageView.image = [UIImage imageWithContentsOfFile:downloadModel.imageName]; // 视频的预览图
             cell.downloadView.downloadUrl = downloadModel.imageName;
             cell.downloadView.downloadUrlLabel.text = downloadModel.name;
+            
             
             
             !weakSelf.cellConfigBlock ?: weakSelf.cellConfigBlock(cell);

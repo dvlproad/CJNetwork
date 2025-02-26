@@ -7,6 +7,8 @@
 //
 
 #import "TSDownloadCollectionViewCell.h"
+#import <CQDemoKit/CJUIKitToastUtil.h>
+#import <CQDemoKit/CQTSPhotoUtil.h>
 
 @interface TSDownloadCollectionViewCell ()
 
@@ -33,7 +35,10 @@
 }
 
 - (void)commonInit {
-    
+//    __weak typeof(self) weakSelf = self;
+//    _playerView.getVideoUrl = ^NSString *{
+//        return [weakSelf.videoModel.videoFile.absoluteURL absoluteString];
+//    };
 }
 
 - (void)setupViews {
@@ -44,13 +49,28 @@
     parentView.layer.cornerRadius = 5.0;
     parentView.backgroundColor = [UIColor lightGrayColor];
     
-    self.previewImageView = [[UIImageView alloc] init];
+    [parentView addSubview:self.playerView];
+    
     [parentView addSubview:self.previewImageView];
+    
     
     self.downloadView = [[TSDownloadCollectionViewCellOverlay alloc] initWithStateChangeBlock:^(CJFileDownloadState downloadState, NSString * _Nullable localAbsPath) {
         if (downloadState == CJFileDownloadStateSuccess) {
-            self.previewImageView.image = [UIImage imageWithContentsOfFile:localAbsPath];
+            CQFileType fileType = [CQTSPhotoUtil fileTypeForFilePathOrUrl:localAbsPath];
+            if (fileType == CQFileTypeVideo) {
+                self.previewImageView.hidden = YES;
+                self.playerView.getVideoPlayURL = ^NSURL *{
+                    return [NSURL fileURLWithPath:localAbsPath];
+                };
+                [self.playerView playOrPause];
+                [CJUIKitToastUtil showMessage:[NSString stringWithFormat:@"视频下载完成，存放于:%@", localAbsPath]];
+            } else {
+                self.previewImageView.hidden = NO;
+                self.previewImageView.image = [UIImage imageWithContentsOfFile:localAbsPath];
+                [CJUIKitToastUtil showMessage:[NSString stringWithFormat:@"图片下载完成，存放于:%@", localAbsPath]];
+            }
         } else {
+            self.previewImageView.hidden = NO;
             self.previewImageView.image = nil;
         }
     }];
@@ -68,9 +88,25 @@
     return _previewImageView;
 }
 
+- (CJAVPlayerView *)playerView {
+    if (!_playerView) {
+        _playerView = [[CJAVPlayerView alloc] initWithFrame:CGRectZero];
+        _playerView.backgroundColor = [UIColor redColor];
+    }
+    return _playerView;
+}
+
 // 设置 Auto Layout 约束
 - (void)setupConstraints {
     UIView *parentView = self.contentView;
+    
+    self.playerView.translatesAutoresizingMaskIntoConstraints = NO;
+    [NSLayoutConstraint activateConstraints:@[
+        [self.playerView.topAnchor constraintEqualToAnchor:parentView.topAnchor constant:0],
+        [self.playerView.bottomAnchor constraintEqualToAnchor:parentView.bottomAnchor constant:0],
+        [self.playerView.trailingAnchor constraintEqualToAnchor:parentView.trailingAnchor constant:0],
+        [self.playerView.leadingAnchor constraintEqualToAnchor:parentView.leadingAnchor constant:0]
+    ]];
     
     self.previewImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [NSLayoutConstraint activateConstraints:@[

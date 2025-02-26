@@ -73,6 +73,7 @@
 		9740B6322D6B330C00193499 /* TSDownloadCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6312D6B330C00193499 /* TSDownloadCollectionViewCell.m */; };
 		9740B6432D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */; };
 		9740B6462D6B427900193499 /* TSDownloadCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */; };
+		97CE37C12D6F4F9B0064D675 /* CJDownloadEnumUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CE37C02D6F4F9B0064D675 /* CJDownloadEnumUtil.m */; };
 		97F61D0C2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F61D0B2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m */; };
 		9AFB06163CD7B080017D3F18 /* Pods_CJNetworkDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4C6E5834142F4905C92DC /* Pods_CJNetworkDemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -225,6 +226,8 @@
 		9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewCellOverlay.m; sourceTree = "<group>"; };
 		9740B6442D6B427900193499 /* TSDownloadCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionViewController.h; sourceTree = "<group>"; };
 		9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewController.m; sourceTree = "<group>"; };
+		97CE37BF2D6F4F9B0064D675 /* CJDownloadEnumUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJDownloadEnumUtil.h; sourceTree = "<group>"; };
+		97CE37C02D6F4F9B0064D675 /* CJDownloadEnumUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJDownloadEnumUtil.m; sourceTree = "<group>"; };
 		97F61D0A2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadTableViewCellOverlay.h; sourceTree = "<group>"; };
 		97F61D0B2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadTableViewCellOverlay.m; sourceTree = "<group>"; };
 		C11239993D822E171AABD0F4 /* Pods-CJNetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -693,6 +696,8 @@
 		9730F3AD2D58EDEB008AF628 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				97CE37BF2D6F4F9B0064D675 /* CJDownloadEnumUtil.h */,
+				97CE37C02D6F4F9B0064D675 /* CJDownloadEnumUtil.m */,
 				7868F15A2121C79A00A283EB /* CQTSBaseDownloadViewController.h */,
 				7868F1572121C79A00A283EB /* CQTSBaseDownloadViewController.m */,
 				7868F15E2121C79A00A283EB /* CQTSBaseDownloadViewController.xib */,
@@ -921,13 +926,17 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CJBaseHelper/CJBaseHelper.framework",
+				"${BUILT_PRODUCTS_DIR}/CJBaseUIKit/CJBaseUIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/CJBaseUtil/CJBaseUtil.framework",
+				"${BUILT_PRODUCTS_DIR}/CJMediaCacheKit/CJMediaCacheKit.framework",
+				"${BUILT_PRODUCTS_DIR}/CJMediaPlayer/CJMediaPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/CJMonitor/CJMonitor.framework",
 				"${BUILT_PRODUCTS_DIR}/CJNetwork-Swift/CJNetwork_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/CJNetwork/CJNetwork.framework",
 				"${BUILT_PRODUCTS_DIR}/CJNetworkClient/CJNetworkClient.framework",
 				"${BUILT_PRODUCTS_DIR}/CJNetworkFileModel/CJNetworkFileModel.framework",
 				"${BUILT_PRODUCTS_DIR}/CJNetworkSimulate/CJNetworkSimulate.framework",
+				"${BUILT_PRODUCTS_DIR}/CJPlayer/CJPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/CQDemoKit/CQDemoKit.framework",
 				"${BUILT_PRODUCTS_DIR}/CQDemoKit-Swift/CQDemoKit_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/CQNetworkPublic/CQNetworkPublic.framework",
@@ -936,8 +945,10 @@
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/OpenUDID/OpenUDID.framework",
+				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionKit/TransitionKit.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -945,13 +956,17 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJBaseHelper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJBaseUIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJBaseUtil.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJMediaCacheKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJMediaPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJMonitor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJNetwork_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJNetwork.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJNetworkClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJNetworkFileModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJNetworkSimulate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CQDemoKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CQDemoKit_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CQNetworkPublic.framework",
@@ -960,8 +975,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenUDID.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1011,6 +1028,7 @@
 				78FC91FA1F54481E00033DEF /* main.m in Sources */,
 				9740B61E2D6B26A700193499 /* TSDownloadCollectionView.m in Sources */,
 				7868F1822121C79A00A283EB /* SessionDataTaskDownloadViewController.m in Sources */,
+				97CE37C12D6F4F9B0064D675 /* CJDownloadEnumUtil.m in Sources */,
 				7801C0D721ABE04400045114 /* NSString+URLEncoding.m in Sources */,
 				785AB2FD21C013B6009938A4 /* TestNetworkEnvironmentManager.m in Sources */,
 				158259E32484E8F500BA4B3D /* HealthResponseModel.m in Sources */,
