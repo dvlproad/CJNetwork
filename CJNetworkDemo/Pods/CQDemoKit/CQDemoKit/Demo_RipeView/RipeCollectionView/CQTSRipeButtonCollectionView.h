@@ -22,12 +22,14 @@ NS_ASSUME_NONNULL_BEGIN
  *  初始化 单行或单列的CollectionView
  *
  *  @param buttonTitles                 按钮的标题数组
+ *  @param perMaxCount                  当滚动方向为①水平时,每列显示几个；②竖直时,每行显示几个；
  *  @param scrollDirection              集合视图的滚动方向
  *  @param didSelectItemAtIndexHandle   点击item的回调
  *
  *  @return CollectionView
  */
 - (instancetype)initWithTitles:(NSArray<NSString *> *)buttonTitles
+                   perMaxCount:(NSInteger)perMaxCount
                scrollDirection:(UICollectionViewScrollDirection)scrollDirection
     didSelectItemAtIndexHandle:(void(^)(NSInteger index))didSelectItemAtIndexHandle NS_DESIGNATED_INITIALIZER;
 + (instancetype)new NS_UNAVAILABLE;

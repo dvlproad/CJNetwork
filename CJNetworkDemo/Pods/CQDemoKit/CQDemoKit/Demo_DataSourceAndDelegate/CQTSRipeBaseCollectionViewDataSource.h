@@ -21,20 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 /*
  *  初始化 CollectionView 的 dataSource
  *
- *  @param sectionRowCounts             每个section的rowCount个数(数组有多少个就多少个section，数组里的元素值为该section的row行数)
- *  @param selectedIndexPaths           选中的indexPath数组
- *  @param registerHandler              集合视图cell等的注册
- *  @param cellForItemAtIndexPath       获取指定indexPath的cell
- *
- *  @return CollectionView 的 dataSource
- */
-- (instancetype)initWithSectionRowCounts:(NSArray<NSNumber *> *)sectionRowCounts
-                      selectedIndexPaths:(nullable NSArray<NSIndexPath *> *)selectedIndexPaths
-                         registerHandler:(void(^)(void))registerHandler
-                  cellForItemAtIndexPath:(UICollectionViewCell *(^)(UICollectionView *bCollectionView, NSIndexPath *bIndexPath, CQTSLocImageDataModel *dataModel))cellForItemAtIndexPath;
-/*
- *  初始化 CollectionView 的 dataSource
- *
  *  @param sectionDataModels            每个section的数据(section中的数据元素必须是 CQDMModuleModel )
  *  @param registerHandler              集合视图cell等的注册
  *  @param cellForItemAtIndexPath       获取指定indexPath的cell

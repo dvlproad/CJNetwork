@@ -45,4 +45,19 @@
     return sectionDataModels;
 }
 
+
+/*
+ *  获取 sectionModels
+ *
+ *  @param buttonTitles                 按钮的标题数组
+ *
+ *  @return sectionModels
+ */
++ (NSMutableArray<CQDMSectionDataModel *> *)sectionModelsWithTitles:(NSArray<NSString *> *)buttonTitles
+{
+    NSNumber *number = [NSNumber numberWithInteger:buttonTitles.count];
+    NSArray<NSNumber *> *sectionRowCounts = @[number];
+    
+    return [self sectionModelsWithSectionRowCounts:sectionRowCounts selectedIndexPaths:nil];
+}
 @end

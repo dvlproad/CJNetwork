@@ -9,6 +9,7 @@
 #import "TSDownloadCollectionViewCell.h"
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/CQTSPhotoUtil.h>
+#import <CQDemoKit/CQTSResourceUtil.h>
 
 @interface TSDownloadCollectionViewCell ()
 
@@ -56,8 +57,8 @@
     
     self.downloadView = [[TSDownloadCollectionViewCellOverlay alloc] initWithStateChangeBlock:^(CJFileDownloadState downloadState, NSString * _Nullable localAbsPath) {
         if (downloadState == CJFileDownloadStateSuccess) {
-            CQFileType fileType = [CQTSPhotoUtil fileTypeForFilePathOrUrl:localAbsPath];
-            if (fileType == CQFileTypeVideo) {
+            CQTSFileType fileType = [CQTSResourceUtil fileTypeForFilePathOrUrl:localAbsPath];
+            if (fileType == CQTSFileTypeVideo) {
                 self.previewImageView.hidden = YES;
                 self.playerView.getVideoPlayURL = ^NSURL *{
                     return [NSURL fileURLWithPath:localAbsPath];

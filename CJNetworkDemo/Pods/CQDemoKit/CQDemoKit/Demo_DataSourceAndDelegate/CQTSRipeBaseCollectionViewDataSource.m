@@ -25,46 +25,6 @@
 /*
  *  初始化 CollectionView 的 dataSource
  *
- *  @param sectionRowCounts             每个section的rowCount个数(数组有多少个就多少个section，数组里的元素值为该section的row行数)
- *  @param selectedIndexPaths           选中的indexPath数组
- *  @param registerHandler              集合视图cell等的注册
- *  @param cellForItemAtIndexPath       获取指定indexPath的cell
- *
- *  @return CollectionView 的 dataSource
- */
-- (instancetype)initWithSectionRowCounts:(NSArray<NSNumber *> *)sectionRowCounts
-                      selectedIndexPaths:(nullable NSArray<NSIndexPath *> *)selectedIndexPaths
-                         registerHandler:(void(^)(void))registerHandler
-                  cellForItemAtIndexPath:(UICollectionViewCell *(^)(UICollectionView *bCollectionView, NSIndexPath *bIndexPath, CQTSLocImageDataModel *dataModel))cellForItemAtIndexPath
-{
-    NSMutableArray<CQDMSectionDataModel *> *sectionDataModels = [[NSMutableArray alloc] init];
-    for (int section = 0; section < sectionRowCounts.count; section++) {
-        NSNumber *nRowCount = [sectionRowCounts objectAtIndex:section];
-        NSInteger iRowCount = [nRowCount integerValue];
-        
-        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = [NSString stringWithFormat:@"section %d", section];
-        sectionDataModel.values = [CQTSLocImagesUtil imageModelsWithCount:iRowCount randomOrder:NO changeImageNameToNetworkUrl:NO];
-        for (int item = 0; item < iRowCount; item++) {
-            CQTSLocImageDataModel *module = [sectionDataModel.values objectAtIndex:item];
-            module.name = [NSString stringWithFormat:@"%d-", section, module.name];
-            
-            BOOL isSelected = [selectedIndexPaths containsObject:[NSIndexPath indexPathForItem:item inSection:section]];
-            module.selected = isSelected;
-        }
-        [sectionDataModels addObject:sectionDataModel];
-    }
-
-    self = [self initWithSectionDataModels:sectionDataModels registerHandler:registerHandler cellForItemAtIndexPath:cellForItemAtIndexPath];
-    if (self) {
-        
-    }
-    return self;
-}
-
-/*
- *  初始化 CollectionView 的 dataSource
- *
  *  @param sectionDataModels            每个section的数据(section中的数据元素必须是 CQDMModuleModel )
  *  @param registerHandler              集合视图cell等的注册
  *  @param cellForItemAtIndexPath       获取指定indexPath的cell

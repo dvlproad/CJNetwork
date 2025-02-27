@@ -12,6 +12,7 @@
 #import "CQTSRipeBaseCollectionViewDataSource.h"
 
 #import "CQTSRipeButtonCollectionViewCell.h"
+#import "CQTSRipeSectionDataUtil.h"
 
 @interface CQTSRipeButtonCollectionView () {
     
@@ -32,19 +33,17 @@
  *  初始化 单行或单列的CollectionView
  *
  *  @param buttonTitles                 按钮的标题数组
+ *  @param perMaxCount                  当滚动方向为①水平时,每列显示几个；②竖直时,每行显示几个；
  *  @param scrollDirection              集合视图的滚动方向
  *  @param didSelectItemAtIndexHandle   点击item的回调
  *
  *  @return CollectionView
  */
 - (instancetype)initWithTitles:(NSArray<NSString *> *)buttonTitles
+                   perMaxCount:(NSInteger)perMaxCount
                scrollDirection:(UICollectionViewScrollDirection)scrollDirection
     didSelectItemAtIndexHandle:(void(^)(NSInteger index))didSelectItemAtIndexHandle
 {
-    NSNumber *number = [NSNumber numberWithInteger:buttonTitles.count];
-    NSArray<NSNumber *> *sectionRowCounts = @[number];
-    NSInteger perMaxCount = 1;
-
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = scrollDirection;
     self = [super initWithFrame:CGRectZero collectionViewLayout:layout];
@@ -53,8 +52,10 @@
         _ripeCollectionViewDelegate = [[CQTSRipeBaseCollectionViewDelegate alloc] initWithPerMaxCount:perMaxCount didSelectItemHandle:^(UICollectionView * _Nonnull bCollectionView, NSIndexPath * _Nonnull bIndexPath) {
             !didSelectItemAtIndexHandle ?: didSelectItemAtIndexHandle(bIndexPath.item);
         }];
+        self.delegate = self.ripeCollectionViewDelegate;
         
-        _ripeCollectionViewDataSource = [[CQTSRipeBaseCollectionViewDataSource alloc] initWithSectionRowCounts:sectionRowCounts selectedIndexPaths:nil registerHandler:^{
+        NSMutableArray<CQDMSectionDataModel *> *sectionDataModels = [CQTSRipeSectionDataUtil sectionModelsWithTitles:buttonTitles];
+        _ripeCollectionViewDataSource = [[CQTSRipeBaseCollectionViewDataSource alloc] initWithSectionDataModels:sectionDataModels registerHandler:^{
             [weakSelf registerClass:[CQTSRipeButtonCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
             
         } cellForItemAtIndexPath:^UICollectionViewCell * _Nonnull(UICollectionView * _Nonnull bCollectionView, NSIndexPath * _Nonnull bIndexPath, CQTSLocImageDataModel * _Nonnull dataModel) {
@@ -62,14 +63,14 @@
             
             NSString *title = buttonTitles[bIndexPath.item];
             cell.text = title;
+            //cell.text = [NSString stringWithFormat:@"%zd", bIndexPath.item];
             
             !weakSelf.cellConfigBlock ?: weakSelf.cellConfigBlock(cell);
             
             return cell;
         }];
-        
         self.dataSource = self.ripeCollectionViewDataSource;
-        self.delegate = self.ripeCollectionViewDelegate;
+        
     }
     return self;
 }

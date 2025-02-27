@@ -10,6 +10,7 @@
 #import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/CJUIKitAlertUtil.h>
+#import <CQDemoKit/CQTSResourceUtil.h>
 #import <CQDemoKit/CQTSPhotoUtil.h>
 
 #import "TSDownloadCollectionView.h"
@@ -44,12 +45,12 @@
         NSString *downloadUrl = downloadModel.imageName;
         NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadUrl];
         NSURL *mediaLocalURL = [NSURL fileURLWithPath:localAbsPath];
-        CQFileType fileType = [CQTSPhotoUtil fileTypeForFilePathOrUrl:mediaLocalURL.path];
+        CQTSFileType fileType = [CQTSResourceUtil fileTypeForFilePathOrUrl:mediaLocalURL.path];
         
-        NSString *title = [NSString stringWithFormat:@"是否要保存【%@】到相册", fileType == CQFileTypeVideo ? @"视频" : @"图片"];
+        NSString *title = [NSString stringWithFormat:@"是否要保存【%@】到相册", fileType == CQTSFileTypeVideo ? @"视频" : @"图片"];
         NSString *message = downloadModel.imageName;
         [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:title message:message cancleBlock:nil okBlock:^{
-            if (fileType == CQFileTypeVideo) {
+            if (fileType == CQTSFileTypeVideo) {
                 [CQTSPhotoUtil saveVideoToPhotoAlbum:mediaLocalURL success:^{
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [CJUIKitToastUtil showMessage:@"保存成功"];

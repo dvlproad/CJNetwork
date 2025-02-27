@@ -80,16 +80,16 @@ PODS:
     - CocoaAsyncSocket/RunLoop
   - CocoaAsyncSocket/GCD (7.4.3)
   - CocoaAsyncSocket/RunLoop (7.4.3)
-  - CQDemoKit (0.7.5):
-    - CQDemoKit/Auxiliary (= 0.7.5)
-    - CQDemoKit/BaseUIKit (= 0.7.5)
-    - CQDemoKit/BaseUtil (= 0.7.5)
-    - CQDemoKit/BaseVC (= 0.7.5)
-    - CQDemoKit/Demo_DataSourceAndDelegate (= 0.7.5)
-    - CQDemoKit/Demo_Resource (= 0.7.5)
-    - CQDemoKit/Demo_RipeView (= 0.7.5)
-    - CQDemoKit/Helper (= 0.7.5)
-    - CQDemoKit/Monitor (= 0.7.5)
+  - CQDemoKit (0.7.6):
+    - CQDemoKit/Auxiliary (= 0.7.6)
+    - CQDemoKit/BaseUIKit (= 0.7.6)
+    - CQDemoKit/BaseUtil (= 0.7.6)
+    - CQDemoKit/BaseVC (= 0.7.6)
+    - CQDemoKit/Demo_DataSourceAndDelegate (= 0.7.6)
+    - CQDemoKit/Demo_Resource (= 0.7.6)
+    - CQDemoKit/Demo_RipeView (= 0.7.6)
+    - CQDemoKit/Helper (= 0.7.6)
+    - CQDemoKit/Monitor (= 0.7.6)
   - CQDemoKit-Swift (0.0.1):
     - CQDemoKit
     - CQDemoKit-Swift/CQDemoKit-OC (= 0.0.1)
@@ -98,51 +98,51 @@ PODS:
     - CQDemoKit
   - CQDemoKit-Swift/SwiftUI (0.0.1):
     - CQDemoKit
-  - CQDemoKit/Auxiliary (0.7.5):
+  - CQDemoKit/Auxiliary (0.7.6):
     - Masonry
-  - CQDemoKit/BaseUIKit (0.7.5):
+  - CQDemoKit/BaseUIKit (0.7.6):
     - Masonry
-  - CQDemoKit/BaseUtil (0.7.5)
-  - CQDemoKit/BaseVC (0.7.5):
-    - CQDemoKit/BaseVC/Base (= 0.7.5)
-    - CQDemoKit/BaseVC/Collection (= 0.7.5)
-    - CQDemoKit/BaseVC/ScrollView (= 0.7.5)
-    - CQDemoKit/BaseVC/TabBar (= 0.7.5)
-    - CQDemoKit/BaseVC/TableView (= 0.7.5)
-    - CQDemoKit/BaseVC/TextView (= 0.7.5)
+  - CQDemoKit/BaseUtil (0.7.6)
+  - CQDemoKit/BaseVC (0.7.6):
+    - CQDemoKit/BaseVC/Base (= 0.7.6)
+    - CQDemoKit/BaseVC/Collection (= 0.7.6)
+    - CQDemoKit/BaseVC/ScrollView (= 0.7.6)
+    - CQDemoKit/BaseVC/TabBar (= 0.7.6)
+    - CQDemoKit/BaseVC/TableView (= 0.7.6)
+    - CQDemoKit/BaseVC/TextView (= 0.7.6)
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/Base (0.7.5):
+  - CQDemoKit/BaseVC/Base (0.7.6):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/Helper
     - Masonry
-  - CQDemoKit/BaseVC/Collection (0.7.5):
+  - CQDemoKit/BaseVC/Collection (0.7.6):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/ScrollView (0.7.5):
+  - CQDemoKit/BaseVC/ScrollView (0.7.6):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TabBar (0.7.5):
+  - CQDemoKit/BaseVC/TabBar (0.7.6):
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TableView (0.7.5):
+  - CQDemoKit/BaseVC/TableView (0.7.6):
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TextView (0.7.5):
+  - CQDemoKit/BaseVC/TextView (0.7.6):
     - CQDemoKit/BaseUtil
     - CQDemoKit/BaseVC/Base
     - CQDemoKit/Helper
-  - CQDemoKit/Demo_DataSourceAndDelegate (0.7.5):
+  - CQDemoKit/Demo_DataSourceAndDelegate (0.7.6):
     - CQDemoKit/BaseVC
     - CQDemoKit/Demo_Resource
-  - CQDemoKit/Demo_Resource (0.7.5):
+  - CQDemoKit/Demo_Resource (0.7.6):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/Helper
-  - CQDemoKit/Demo_RipeView (0.7.5):
+  - CQDemoKit/Demo_RipeView (0.7.6):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/BaseUtil
     - CQDemoKit/Demo_DataSourceAndDelegate
     - CQDemoKit/Demo_Resource
-  - CQDemoKit/Helper (0.7.5)
-  - CQDemoKit/Monitor (0.7.5)
+  - CQDemoKit/Helper (0.7.6)
+  - CQDemoKit/Monitor (0.7.6)
   - CQNetworkPublic/Base (0.3.0)
   - CQNetworkPublic/Request (0.3.0):
     - CQNetworkPublic/Request/Base (= 0.3.0)
@@ -208,8 +208,8 @@ DEPENDENCIES:
   - CJPlayer (from `../../CJMediaPlayer`)
   - CocoaAsyncSocket (~> 7.4.1)
   - CQDemoKit-Swift (~> 0.0.1)
-  - CQDemoKit/BaseVC (~> 0.7.5)
-  - CQDemoKit/Demo_Resource (~> 0.7.5)
+  - CQDemoKit/BaseVC (~> 0.7.6)
+  - CQDemoKit/Demo_Resource (~> 0.7.6)
   - CQNetworkPublic/Request (from `../`)
   - CQNetworkPublic/Upload (from `../`)
   - CQVideoUrlAnalyze-Swift (from `../`)
@@ -273,7 +273,7 @@ SPEC CHECKSUMS:
   CJNetworkSimulate: 0c8e89ee82db12816cabdce4f3d6dcab1d30ee5b
   CJPlayer: e29c9823449224daa93c46f666f52b310fe30168
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
-  CQDemoKit: 1c1e5b27b6a973ab0b6535f4c3df3164e6c82285
+  CQDemoKit: fe9351204eeaeba1af1687972aeffaf084b32191
   CQDemoKit-Swift: 28d06bf24cbcc84c9651e0ffe607bffdd57863b6
   CQNetworkPublic: daa95989c1d6d8f2d1d50f97285f4b88f0e664d3
   CQVideoUrlAnalyze-Swift: 93f961bafc55d1ea389ce42b95a42279fbf760f1
@@ -286,6 +286,6 @@ SPEC CHECKSUMS:
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 62eba4ec4c3727cec58a6fbffb86b39e5ad62f91
+PODFILE CHECKSUM: d8087f8b90928248a4e04504e1a874bbdcde0b95
 
 COCOAPODS: 1.16.2
