@@ -69,7 +69,6 @@
 		97216B112570AC4D0006E1C2 /* api:card:cardlist in Resources */ = {isa = PBXBuildFile; fileRef = 97216B102570AC4D0006E1C2 /* api:card:cardlist */; };
 		9730F3AC2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9730F3AB2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */; };
 		9740B61E2D6B26A700193499 /* TSDownloadCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B61D2D6B26A700193499 /* TSDownloadCollectionView.m */; };
-		9740B62F2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B62E2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.m */; };
 		9740B6322D6B330C00193499 /* TSDownloadCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6312D6B330C00193499 /* TSDownloadCollectionViewCell.m */; };
 		9740B6432D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */; };
 		9740B6462D6B427900193499 /* TSDownloadCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */; };
@@ -218,8 +217,6 @@
 		9730F3AB2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSVideoUrlAnalyzeHomeViewController.m; sourceTree = "<group>"; };
 		9740B61C2D6B26A700193499 /* TSDownloadCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionView.h; sourceTree = "<group>"; };
 		9740B61D2D6B26A700193499 /* TSDownloadCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionView.m; sourceTree = "<group>"; };
-		9740B62D2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionViewDataSource.h; sourceTree = "<group>"; };
-		9740B62E2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewDataSource.m; sourceTree = "<group>"; };
 		9740B6302D6B330C00193499 /* TSDownloadCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionViewCell.h; sourceTree = "<group>"; };
 		9740B6312D6B330C00193499 /* TSDownloadCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewCell.m; sourceTree = "<group>"; };
 		9740B6412D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionViewCellOverlay.h; sourceTree = "<group>"; };
@@ -731,8 +728,6 @@
 				9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */,
 				9740B6442D6B427900193499 /* TSDownloadCollectionViewController.h */,
 				9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */,
-				9740B62D2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.h */,
-				9740B62E2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.m */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -1058,7 +1053,6 @@
 				7846E38B21A6A56900D73F51 /* TestConcurrenceManager.m in Sources */,
 				784653751F544A0100E20A27 /* MQLResumeManager.m in Sources */,
 				158259DD2484E8F500BA4B3D /* TS31CJNetworkClientHomeViewController.m in Sources */,
-				9740B62F2D6B2CA400193499 /* TSDownloadCollectionViewDataSource.m in Sources */,
 				158259E22484E8F500BA4B3D /* HealthyNetworkClient.m in Sources */,
 				158259E42484E8F500BA4B3D /* HealthyHTTPSessionManager.m in Sources */,
 				7868F1A82121D06C00A283EB /* AFNDemoViewController.m in Sources */,

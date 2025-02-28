@@ -9,6 +9,7 @@
 //  为了提供给某些例子需要有多种情况的测试时候，而快速构建的【单排或单列的按钮组合CollectionView】
 
 #import <UIKit/UIKit.h>
+#import <CQDemoKit/CQDMSectionDataModel+CJDealTextModel.h>
 #import <CQDemoKit/CQTSLocImageDataModel.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
     
 }
 @property (nullable, nonatomic, copy) void(^cellConfigBlock)(UICollectionViewCell *bCell); /**< cell的UI定制（有时候需要cell和其所在列表的背景色为透明） */
+@property (nonatomic, strong) NSArray<CQDMSectionDataModel *> *sectionDataModels;    /**< 每个section的数据 */
 
 #pragma mark - Init
 /*

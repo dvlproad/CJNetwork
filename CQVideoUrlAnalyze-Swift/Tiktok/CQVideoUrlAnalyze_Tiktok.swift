@@ -14,7 +14,7 @@ import Foundation
 
 @objc public enum CQAnalyzeVideoUrlType: Int {
     case audio                      // 音频
-    case originalVideo              // 原始视频
+    case videoOriginal              // 原始视频
     case videoWithoutWatermark      // 视频有视频
     case videoWithoutWatermarkHD    // 视频无视频
     case imageCover  // 封面图片
@@ -30,7 +30,7 @@ import Foundation
     ) {
         CJRequestUtil.expandShortenedUrl(shortenedUrl) { expandedUrl in
             if let videoId = (expandedUrl as NSString).cjnetworkUrl_Value(forKey: "video") {
-                let resultUrl = getVideoUrl(for: type, videoId: videoId)    // 获取对应类型的 URL 模式并拼接视频 ID
+                let resultUrl = getVideoInfo(for: type, videoId: videoId)    // 获取对应类型的 URL 模式并拼接视频 ID
                 success(expandedUrl, videoId, resultUrl)
             } else {
                 failure("获取短链重定向/扩展后的videoId失败")
@@ -40,14 +40,14 @@ import Foundation
         }
     }
     
-    @objc public static func getVideoUrl(for type: CQAnalyzeVideoUrlType, videoId: String) -> String {
+    @objc public static func getVideoInfo(for type: CQAnalyzeVideoUrlType, videoId: String) -> String {
         let baseUrl = "https://www.tikwm.com/video"
         
         switch type {
         case .audio:
             return "\(baseUrl)/music/\(videoId).mp3"
             
-        case .originalVideo:
+        case .videoOriginal:
             return "\(baseUrl)/media/play/\(videoId).mp4"
             
         case .videoWithoutWatermark:

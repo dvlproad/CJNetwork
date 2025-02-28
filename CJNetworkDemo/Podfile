@@ -25,7 +25,7 @@ end
 target 'CJNetworkDemo' do
 #  plugin 'cocoapods-hmap-prebuilt'
   
-  pod 'CQDemoKit',              '~> 0.7.6',      :subspecs => ['BaseVC', 'Demo_Resource']
+  pod 'CQDemoKit',              '~> 0.7.7',      :subspecs => ['BaseVC', 'Demo_Resource']
   pod 'CQDemoKit-Swift',        '~> 0.0.1'
   
   pod 'CJPlayer',           :path => '../../CJMediaPlayer'

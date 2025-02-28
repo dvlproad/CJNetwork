@@ -31,9 +31,9 @@
 //    [self.tableView registerNib:[UINib nibWithNibName:@"TSDownloadTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     [self.tableView registerClass:[TSDownloadTableViewCell class] forCellReuseIdentifier:@"cell"];
 
-    CQTSLocalFileOption options = CQTSLocalFileOptionJPG | CQTSLocalFileOptionGIF | CQTSLocalFileOptionWebP | CQTSLocalFileOptionSVG;
-    //CQTSLocalFileOption options = CQTSLocalFileOptionVideoNormal | CQTSLocalFileOptionVideoVap;
-    self.downloadModles = [CQTSLocImagesUtil fileModelsWithOptions:options count:10 randomOrder:NO changeImageNameToNetworkUrl:YES];
+    //NSArray<NSString *> *imageExtensions = @[@"png", @"jpg", @"gif", @"webp", @"svg"];
+    NSArray<NSString *> *videoExtensions = @[@"mp4", @"mov"];
+    self.downloadModles = [CQTSLocImagesUtil fileModelsWithExtensions:videoExtensions count:10 randomOrder:NO changeImageNameToNetworkUrl:YES];
 }
 
 - (void)deleteAllFiles {
