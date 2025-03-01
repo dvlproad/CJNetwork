@@ -93,38 +93,21 @@ import SSZipArchive
                     unencryptData = serviceData
                 }
                 
-                
-                let cacheURL = saveToDirectoryURL.appendingPathComponent(saveWithFileName)
-                do {
-                    try ensureDirectoryExists(for: cacheURL)  // 确保文件夹存在
-                    try unencryptData?.write(to: cacheURL)  // 写入到缓存
-                    success(cacheURL)  // 成功回调
-                } catch {
-                    failure("文件下载后，写入/保存失败:\(error) 想要写入的位置:\(cacheURL)")  // 写入失败
+                guard let unencryptData = unencryptData else {
+                    failure("要保存的数据不能为空，请检查:\(URL)")
+                    return
                 }
-                
+                let cacheURL = saveToDirectoryURL.appendingPathComponent(saveWithFileName)
+                CJDownloadDataSaveUtil.downloadFileData(unencryptData, fileLocalURL: cacheURL) { cacheURL in
+                    success(cacheURL)  // 成功回调
+                } failure: { errorMessage in
+                    failure(errorMessage)
+                }
                 
             } catch {
                 failure("文件下载后，读取失败，请检查:\(URL)")
             }
         })
         downloadTask.resume()
-    }
-    
-    // 确保文件夹存在
-    @objc public static func ensureDirectoryExists(for fileLocalURL: URL) throws {
-        let directoryURL = fileLocalURL.deletingLastPathComponent()  // 获取目录路径
-        let fileManager = FileManager.default
-        
-        // 检查目录是否存在
-        if !fileManager.fileExists(atPath: directoryURL.path) {
-            do {
-                // 如果目录不存在，则创建目录
-                try fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)
-            } catch {
-                // 目录创建失败，抛出错误
-                throw error
-            }
-        }
     }
 }

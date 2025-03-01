@@ -74,7 +74,7 @@
         sectionDataModel.theme = @"Tiktok 视频地址解析";
         {
             CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
-            loginModule.title = @"解析tiktok视频地址";
+            loginModule.title = @"解析tiktok视频地址，videoId https://www.tikwm.com";
             loginModule.content = @"无水印";
             loginModule.actionBlock = ^{
                 NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
@@ -91,6 +91,57 @@
                     });
                 } failure:^(NSString * _Nonnull errorMessage) {
                     [self __showResponseLogMessage:errorMessage];
+                }];
+            };
+            [sectionDataModel.values addObject:loginModule];
+        }
+        [sectionDataModels addObject:sectionDataModel];
+    }
+    
+    
+    // Tiktok
+    {
+        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
+        sectionDataModel.theme = @"Tiktok 视频地址本地解析";
+        {
+            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
+            loginModule.title = @"解析tiktok视频地址 错误下载无法访问的数据";
+            loginModule.content = @"无水印";
+            loginModule.actionBlock = ^{
+//                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
+                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
+                [TikTokService getActualVideoUrlFromShortenedUrl:shortenedUrl success:^(NSString * _Nonnull videoUrl) {
+                    dispatch_async(dispatch_get_main_queue(),^{
+                        [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
+                            [self downloadFileUrl:videoUrl];
+                        }];
+                    });
+                } failure:^(NSError * _Nonnull error) {
+                    [self __showResponseLogMessage:error.localizedDescription];
+                }];
+            };
+            [sectionDataModel.values addObject:loginModule];
+        }
+        {
+            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
+            loginModule.title = @"解析tiktok视频地址 正确下载无法访问的数据";
+            loginModule.content = @"无水印";
+            loginModule.actionBlock = ^{
+//                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
+                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
+                [TikTokService getActualVideoUrlFromShortenedUrl:shortenedUrl success:^(NSString * _Nonnull videoUrl) {
+                    dispatch_async(dispatch_get_main_queue(),^{
+                        [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
+                            [TikTokService downloadAccessRestrictedDataFromActualVideoUrl:videoUrl success:^(NSURL * _Nonnull cacheURL) {
+                                NSString *message = [NSString stringWithFormat:@"解析并且下载成功:\n视频短链=%@\n视频地址=%@\n保存位置=%@", shortenedUrl, videoUrl, cacheURL.absoluteString];
+                                [self __showResponseLogMessage:message];
+                            } failure:^(NSError * _Nonnull error) {
+                                [self __showResponseLogMessage:error.localizedDescription];
+                            }];
+                        }];
+                    });
+                } failure:^(NSError * _Nonnull error) {
+                    [self __showResponseLogMessage:error.localizedDescription];
                 }];
             };
             [sectionDataModel.values addObject:loginModule];
