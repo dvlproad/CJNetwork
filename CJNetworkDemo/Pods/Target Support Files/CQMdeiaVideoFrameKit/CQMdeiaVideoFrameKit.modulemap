@@ -1,0 +1,6 @@
+framework module CQMdeiaVideoFrameKit {
+  umbrella header "CQMdeiaVideoFrameKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

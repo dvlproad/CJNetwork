@@ -73,6 +73,13 @@
 		9740B6432D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */; };
 		9740B6462D6B427900193499 /* TSDownloadCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */; };
 		97CE37C12D6F4F9B0064D675 /* CJDownloadEnumUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CE37C02D6F4F9B0064D675 /* CJDownloadEnumUtil.m */; };
+		97CEFB1C2D743F4B00FFBD1D /* TSDownloadInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CEFB192D743F4B00FFBD1D /* TSDownloadInputView.m */; };
+		97CEFB1D2D743F4B00FFBD1D /* TSDownloadInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CEFB1B2D743F4B00FFBD1D /* TSDownloadInputViewController.m */; };
+		97CEFB1E2D743F4B00FFBD1D /* CQVideoAnalyzeMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CEFB172D743F4B00FFBD1D /* CQVideoAnalyzeMainViewController.m */; };
+		97CEFB212D7444B800FFBD1D /* TSDownloadVideoIdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CEFB202D7444B800FFBD1D /* TSDownloadVideoIdManager.m */; };
+		97CEFB242D74936A00FFBD1D /* TSDownloadPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CEFB232D74936A00FFBD1D /* TSDownloadPlayViewController.m */; };
+		97CEFB272D7494B900FFBD1D /* TSDownloadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CEFB262D7494B900FFBD1D /* TSDownloadUtil.m */; };
+		97CEFB2A2D74C2DE00FFBD1D /* CQDownloadSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CEFB292D74C2DE00FFBD1D /* CQDownloadSettingViewController.m */; };
 		97F61D0C2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F61D0B2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m */; };
 		9AFB06163CD7B080017D3F18 /* Pods_CJNetworkDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4C6E5834142F4905C92DC /* Pods_CJNetworkDemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -225,6 +232,20 @@
 		9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewController.m; sourceTree = "<group>"; };
 		97CE37BF2D6F4F9B0064D675 /* CJDownloadEnumUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJDownloadEnumUtil.h; sourceTree = "<group>"; };
 		97CE37C02D6F4F9B0064D675 /* CJDownloadEnumUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJDownloadEnumUtil.m; sourceTree = "<group>"; };
+		97CEFB162D743F4B00FFBD1D /* CQVideoAnalyzeMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CQVideoAnalyzeMainViewController.h; sourceTree = "<group>"; };
+		97CEFB172D743F4B00FFBD1D /* CQVideoAnalyzeMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CQVideoAnalyzeMainViewController.m; sourceTree = "<group>"; };
+		97CEFB182D743F4B00FFBD1D /* TSDownloadInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadInputView.h; sourceTree = "<group>"; };
+		97CEFB192D743F4B00FFBD1D /* TSDownloadInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadInputView.m; sourceTree = "<group>"; };
+		97CEFB1A2D743F4B00FFBD1D /* TSDownloadInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadInputViewController.h; sourceTree = "<group>"; };
+		97CEFB1B2D743F4B00FFBD1D /* TSDownloadInputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadInputViewController.m; sourceTree = "<group>"; };
+		97CEFB1F2D7444B800FFBD1D /* TSDownloadVideoIdManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadVideoIdManager.h; sourceTree = "<group>"; };
+		97CEFB202D7444B800FFBD1D /* TSDownloadVideoIdManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadVideoIdManager.m; sourceTree = "<group>"; };
+		97CEFB222D74936A00FFBD1D /* TSDownloadPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadPlayViewController.h; sourceTree = "<group>"; };
+		97CEFB232D74936A00FFBD1D /* TSDownloadPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadPlayViewController.m; sourceTree = "<group>"; };
+		97CEFB252D7494B900FFBD1D /* TSDownloadUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadUtil.h; sourceTree = "<group>"; };
+		97CEFB262D7494B900FFBD1D /* TSDownloadUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadUtil.m; sourceTree = "<group>"; };
+		97CEFB282D74C2DE00FFBD1D /* CQDownloadSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CQDownloadSettingViewController.h; sourceTree = "<group>"; };
+		97CEFB292D74C2DE00FFBD1D /* CQDownloadSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CQDownloadSettingViewController.m; sourceTree = "<group>"; };
 		97F61D0A2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadTableViewCellOverlay.h; sourceTree = "<group>"; };
 		97F61D0B2D6A475900E1CBBE /* TSDownloadTableViewCellOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadTableViewCellOverlay.m; sourceTree = "<group>"; };
 		C11239993D822E171AABD0F4 /* Pods-CJNetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemo/Pods-CJNetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -518,6 +539,20 @@
 		7868F1612121C79A00A283EB /* DownloadList */ = {
 			isa = PBXGroup;
 			children = (
+				97CEFB1F2D7444B800FFBD1D /* TSDownloadVideoIdManager.h */,
+				97CEFB202D7444B800FFBD1D /* TSDownloadVideoIdManager.m */,
+				97CEFB162D743F4B00FFBD1D /* CQVideoAnalyzeMainViewController.h */,
+				97CEFB172D743F4B00FFBD1D /* CQVideoAnalyzeMainViewController.m */,
+				97CEFB282D74C2DE00FFBD1D /* CQDownloadSettingViewController.h */,
+				97CEFB292D74C2DE00FFBD1D /* CQDownloadSettingViewController.m */,
+				97CEFB1A2D743F4B00FFBD1D /* TSDownloadInputViewController.h */,
+				97CEFB1B2D743F4B00FFBD1D /* TSDownloadInputViewController.m */,
+				97CEFB182D743F4B00FFBD1D /* TSDownloadInputView.h */,
+				97CEFB192D743F4B00FFBD1D /* TSDownloadInputView.m */,
+				97CEFB222D74936A00FFBD1D /* TSDownloadPlayViewController.h */,
+				97CEFB232D74936A00FFBD1D /* TSDownloadPlayViewController.m */,
+				97CEFB252D7494B900FFBD1D /* TSDownloadUtil.h */,
+				97CEFB262D7494B900FFBD1D /* TSDownloadUtil.m */,
 				9740B6482D6B453B00193499 /* TableView */,
 				9740B6492D6B454E00193499 /* CollectionView */,
 			);
@@ -934,6 +969,7 @@
 				"${BUILT_PRODUCTS_DIR}/CJPlayer/CJPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/CQDemoKit/CQDemoKit.framework",
 				"${BUILT_PRODUCTS_DIR}/CQDemoKit-Swift/CQDemoKit_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/CQMdeiaVideoFrameKit/CQMdeiaVideoFrameKit.framework",
 				"${BUILT_PRODUCTS_DIR}/CQNetworkPublic/CQNetworkPublic.framework",
 				"${BUILT_PRODUCTS_DIR}/CQVideoUrlAnalyze-Swift/CQVideoUrlAnalyze_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
@@ -964,6 +1000,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CQDemoKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CQDemoKit_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CQMdeiaVideoFrameKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CQNetworkPublic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CQVideoUrlAnalyze_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
@@ -1011,8 +1048,11 @@
 				7846E38E21A6AACB00D73F51 /* NSObject+CJConcurrenceControl.m in Sources */,
 				7868F1792121C79A00A283EB /* SocketHomeViewController.m in Sources */,
 				9740B6462D6B427900193499 /* TSDownloadCollectionViewController.m in Sources */,
+				97CEFB242D74936A00FFBD1D /* TSDownloadPlayViewController.m in Sources */,
 				158259DA2484E8F500BA4B3D /* TestNetworkClient+TestCache.m in Sources */,
 				78FC92001F54481E00033DEF /* ViewController.m in Sources */,
+				97CEFB272D7494B900FFBD1D /* TSDownloadUtil.m in Sources */,
+				97CEFB212D7444B800FFBD1D /* TSDownloadVideoIdManager.m in Sources */,
 				7868F1812121C79A00A283EB /* AFDownloadViewController.m in Sources */,
 				7801C0DA21AD1EA100045114 /* TestNetworkClient+MethodEncrypt.m in Sources */,
 				7801C0D621ABE04400045114 /* CJJSONResponseSerializer.m in Sources */,
@@ -1041,6 +1081,7 @@
 				785AB2F821C01318009938A4 /* TestNetworkEnvironmentModel.m in Sources */,
 				7868F18A2121C79A00A283EB /* EncryptHomeViewController.m in Sources */,
 				9740B6322D6B330C00193499 /* TSDownloadCollectionViewCell.m in Sources */,
+				97CEFB2A2D74C2DE00FFBD1D /* CQDownloadSettingViewController.m in Sources */,
 				7868F1922121C80500A283EB /* DownloadHomeViewController.m in Sources */,
 				7868F1782121C79A00A283EB /* UploadHomeViewController.m in Sources */,
 				7868F17B2121C79A00A283EB /* SocketDemoViewController.m in Sources */,
@@ -1056,6 +1097,9 @@
 				158259E22484E8F500BA4B3D /* HealthyNetworkClient.m in Sources */,
 				158259E42484E8F500BA4B3D /* HealthyHTTPSessionManager.m in Sources */,
 				7868F1A82121D06C00A283EB /* AFNDemoViewController.m in Sources */,
+				97CEFB1C2D743F4B00FFBD1D /* TSDownloadInputView.m in Sources */,
+				97CEFB1D2D743F4B00FFBD1D /* TSDownloadInputViewController.m in Sources */,
+				97CEFB1E2D743F4B00FFBD1D /* CQVideoAnalyzeMainViewController.m in Sources */,
 				158259E52484E8F500BA4B3D /* RequestCacheHomeViewController.m in Sources */,
 				9730F3AC2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m in Sources */,
 				789486272486BE330067AEE3 /* TS113CacheResponseModel.m in Sources */,

@@ -1,0 +1,26 @@
+{
+  "name": "CQMdeiaVideoFrameKit",
+  "version": "0.1.0",
+  "summary": "视频取任意帧(Toast、Alert、ActionSheet、HUD)",
+  "homepage": "https://gitee.com/dvlpMedia/013-Mdeia_Video_Frame.git",
+  "license": {
+    "type": "Copyright",
+    "text": "              © 2008-2020 dvlproad. All rights reserved.\n"
+  },
+  "authors": {
+    "dvlproad": ""
+  },
+  "description": "-、Toast:\n                  -、Alert:\n                  -、ActionSheet:\n                  -、HUD:\n\n                   A longer description of CQMdeiaVideoFrameKit in Markdown format.\n\n                   * Think: Why did you write this? What is the focus? What does it do?\n                   * CocoaPods will be using this to generate tags, and improve search results.\n                   * Try to keep it short, snappy and to the point.\n                   * Finally, don't worry about the indent, CocoaPods strips it!",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "swift_versions": "5.0",
+  "source": {
+    "git": "https://gitee.com/dvlpMedia/013-Mdeia_Video_Frame.git",
+    "tag": "CQMdeiaVideoFrameKit_0.1.0"
+  },
+  "frameworks": "UIKit",
+  "requires_arc": true,
+  "source_files": "CQMdeiaVideoFrameKit/*.{h,m}",
+  "swift_version": "5.0"
+}

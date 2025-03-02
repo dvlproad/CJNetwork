@@ -137,6 +137,7 @@ PODS:
     - CQDemoKit/Demo_Resource
   - CQDemoKit/Helper (0.7.7)
   - CQDemoKit/Monitor (0.7.7)
+  - CQMdeiaVideoFrameKit (0.1.0)
   - CQNetworkPublic/Base (0.3.0)
   - CQNetworkPublic/Request (0.3.0):
     - CQNetworkPublic/Request/Base (= 0.3.0)
@@ -204,6 +205,7 @@ DEPENDENCIES:
   - CQDemoKit-Swift (~> 0.0.1)
   - CQDemoKit/BaseVC (~> 0.7.7)
   - CQDemoKit/Demo_Resource (~> 0.7.7)
+  - CQMdeiaVideoFrameKit (from `../../013-Mdeia_Video_Frame/iOS`)
   - CQNetworkPublic/Request (from `../`)
   - CQNetworkPublic/Upload (from `../`)
   - CQVideoUrlAnalyze-Swift (from `../`)
@@ -246,6 +248,8 @@ EXTERNAL SOURCES:
     :path: "../"
   CJPlayer:
     :path: "../../CJMediaPlayer"
+  CQMdeiaVideoFrameKit:
+    :path: "../../013-Mdeia_Video_Frame/iOS"
   CQNetworkPublic:
     :path: "../"
   CQVideoUrlAnalyze-Swift:
@@ -269,6 +273,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQDemoKit: 6d8cda4fd4dd4d798a6507a656141278f6b22d30
   CQDemoKit-Swift: 28d06bf24cbcc84c9651e0ffe607bffdd57863b6
+  CQMdeiaVideoFrameKit: fe3f12617aa42f8382f15521e1d333f7695b989f
   CQNetworkPublic: daa95989c1d6d8f2d1d50f97285f4b88f0e664d3
   CQVideoUrlAnalyze-Swift: 93f961bafc55d1ea389ce42b95a42279fbf760f1
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -280,6 +285,6 @@ SPEC CHECKSUMS:
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 656339246381603e5db7fcd9b382f8d21c9632ea
+PODFILE CHECKSUM: 0ed9a13f1a0509ba2aa56cea0270486af008b700
 
 COCOAPODS: 1.16.2

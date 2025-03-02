@@ -24,11 +24,13 @@ NS_ASSUME_NONNULL_BEGIN
 /*
  *  初始化 CollectionView
  *
- *  @param didSelectItemAtIndexHandle   点击item的回调
+ *  @param didSelectItemAtIndexHandle       下载完成时候点击item的回调
+ *  @param cellOverlayCustomDeleteHandler   cell上overlay视图里的删除按钮的自定义的删除事件
  *
  *  @return CollectionView
  */
-- (instancetype)initWithDidSelectItemAtIndexHandle:(void(^)(CQTSLocImageDataModel *downloadModel))didSelectItemAtIndexHandle NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDidSelectItemAtIndexHandle:(void(^)(NSIndexPath *indexPath, CQTSLocImageDataModel *downloadModel))didSelectItemAtIndexHandle
+                cellOverlayCustomDeleteHandler:(void(^ _Nullable)(NSIndexPath *indexPath))cellOverlayCustomDeleteHandler NS_DESIGNATED_INITIALIZER;
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;

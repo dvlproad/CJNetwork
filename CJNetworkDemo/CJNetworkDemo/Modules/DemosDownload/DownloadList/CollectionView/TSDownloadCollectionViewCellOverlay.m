@@ -160,29 +160,27 @@
 
 #pragma mark 刷新数据
 - (void)initData {
+    CJFileDownloadState downloadState = [[HSDownloadManager sharedInstance] downloadStateForUrl:self.downloadUrl];
+    [self __changeState:downloadState];
+    
     CGFloat progress = [[HSDownloadManager sharedInstance] progress:self.downloadUrl];
     self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
     self.progressView.progress = progress;
-    if (progress == 1.0) {
-        [self __changeState:CJFileDownloadStateSuccess];
-    } else if (progress > 0.0) {
-        [self __changeState:CJFileDownloadStatePause];
-    } else {
-        [self __changeState:CJFileDownloadStateReady];
-    }
+    
 }
 
 - (void)__changeState:(CJFileDownloadState)state {
+    _currentDownloadState = state;
+    
     NSString *title = [CJDownloadEnumUtil nextStateTextForState:state];
     [self.downloadButton setTitle:title forState:UIControlStateNormal];
     
     BOOL isCompleted = state == CJFileDownloadStateSuccess;
-    self.deleteButton.hidden = !isCompleted;
+    self.deleteButton.hidden = state == CJFileDownloadStateReady;
     self.downloadButton.hidden = isCompleted;
     
-    CGFloat progress = [[HSDownloadManager sharedInstance] progress:self.downloadUrl];
-    self.progressLabel.hidden = isCompleted || progress == 0.0;
-    self.progressView.hidden = isCompleted || progress == 0.0;
+    self.progressLabel.hidden = isCompleted || state == CJFileDownloadStateReady;
+    self.progressView.hidden = isCompleted || state == CJFileDownloadStateReady;
     
     NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:self.downloadUrl];
     self.stateChangeBlock(state, localAbsPath);
@@ -191,9 +189,17 @@
 
 /** 下载文件 */
 - (void)downloadButtonTapped:(UIButton *)button {
-    [[HSDownloadManager sharedInstance] download:self.downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+    [self startDownload];
+}
+
+- (void)setupDownloadBlock {
+    [self initData];
+    [[HSDownloadManager sharedInstance] setupUrl:self.downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
+            NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
+            NSString *message = [NSString stringWithFormat:@"当前下载进度:=========%@", progressValue];
+            [self __showResponseLogMessage:message];
+            self.progressLabel.text = progressValue;
             self.progressView.progress = progress;
         });
     } state:^(CJFileDownloadState state, NSError * _Nullable error) {
@@ -203,17 +209,50 @@
     }];
 }
 
+- (void)startDownload {
+    [[HSDownloadManager sharedInstance] download:self.downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
+            NSString *message = [NSString stringWithFormat:@"当前下载进度:=========%@", progressValue];
+            [self __showResponseLogMessage:message];
+            self.progressLabel.text = progressValue;
+            self.progressView.progress = progress;
+        });
+    } state:^(CJFileDownloadState state, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self __changeState:state];
+        });
+    }];
+}
+
+/// 是否现在完成
+- (BOOL)isDownloadComplete {
+    return [[HSDownloadManager sharedInstance] isCompletion:self.downloadUrl];
+}
+
 
 /** 删除文件 */
 - (void)deleteButtonTapped:(UIButton *)sender {
-    [[HSDownloadManager sharedInstance] deleteFile:self.downloadUrl];
+    if (self.customDeleteHandler != nil) {
+        self.customDeleteHandler();
+        return;
+    }
     
-   
+    
+    [[HSDownloadManager sharedInstance] deleteFile:self.downloadUrl];
     CGFloat progress = [[HSDownloadManager sharedInstance] progress:self.downloadUrl];
     self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
     self.progressView.progress = progress;
 
     [self __changeState:CJFileDownloadStateReady];
+}
+
+
+/// 显示返回结果log
+- (void)__showResponseLogMessage:(NSString *)message {
+    //[CJUIKitToastUtil showMessage:message];
+//    [CJLogViewWindow appendObject:message];
+    NSLog(@"%@", message);
 }
 
 

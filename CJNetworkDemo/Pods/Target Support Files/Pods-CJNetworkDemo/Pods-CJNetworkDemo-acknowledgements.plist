@@ -516,6 +516,17 @@ SOFTWARE.
 			<key>License</key>
 			<string>Copyright</string>
 			<key>Title</key>
+			<string>CQMdeiaVideoFrameKit</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
+			<string>© 2008-2020 dvlproad. All rights reserved.
+</string>
+			<key>License</key>
+			<string>Copyright</string>
+			<key>Title</key>
 			<string>CQNetworkPublic</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>

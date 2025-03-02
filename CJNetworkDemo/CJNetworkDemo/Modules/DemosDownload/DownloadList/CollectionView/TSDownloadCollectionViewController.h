@@ -8,12 +8,14 @@
 //  测试 为了快速构建完整 Demo 工程提供的一些DemoView之CQTSRipeTableView
 
 #import "CJUIKitBaseViewController.h"
+#import "TSDownloadCollectionView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TSDownloadCollectionViewController : CJUIKitBaseViewController {
     
 }
+@property (nonatomic, strong) TSDownloadCollectionView *collectionView;
 
 @end
 

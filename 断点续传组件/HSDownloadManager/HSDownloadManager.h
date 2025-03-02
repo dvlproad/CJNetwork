@@ -29,6 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)download:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock;
 
+/*
+ *  更改url的各种回调（场景：在输入界面开启了下载，但回调信息需要用在列表上）
+ *
+ *  @param url           下载地址
+ *  @param progressBlock 回调下载进度
+ *  @param stateBlock    下载状态
+ */
+- (void)setupUrl:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock;
+
 /**
  *  查询该资源的下载进度值
  *
@@ -47,6 +56,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSInteger)fileTotalLength:(NSString *)url;
 
+/**
+ *  判断该文件的下载状态
+ */
+- (CJFileDownloadState)downloadStateForUrl:(NSString *)url;
 /**
  *  判断该资源是否下载完成
  *

@@ -10,6 +10,7 @@
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/CQTSPhotoUtil.h>
 #import <CQDemoKit/CQTSResourceUtil.h>
+#import <CQMdeiaVideoFrameKit/VideoFrameCQHelper.h>
 
 @interface TSDownloadCollectionViewCell ()
 
@@ -59,17 +60,29 @@
         if (downloadState == CJFileDownloadStateSuccess) {
             CQTSFileType fileType = [CQTSResourceUtil fileTypeForFilePathOrUrl:localAbsPath];
             if (fileType == CQTSFileTypeVideo) {
-                self.previewImageView.hidden = YES;
-                self.playerView.getVideoPlayURL = ^NSURL *{
-                    return [NSURL fileURLWithPath:localAbsPath];
-                };
-                [self.playerView playOrPause];
-                [CJUIKitToastUtil showMessage:[NSString stringWithFormat:@"视频下载完成，存放于:%@", localAbsPath]];
+                //                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                //                    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadUrl];
+                NSURL *URL = [NSURL fileURLWithPath:localAbsPath];
+                UIImage *image =  [VideoFrameCQHelper frameImageFromVideoURL:URL];
+                //                    dispatch_async(dispatch_get_main_queue(), ^{
+                self.previewImageView.image = image;
+                //                    });
+                //                });
+                
+                //TODO: qian
+//                self.previewImageView.hidden = NO;
+//                self.playerView.getVideoPlayURL = ^NSURL *{
+//                    return [NSURL fileURLWithPath:localAbsPath];
+//                };
+//                [self.playerView playOrPause];
+                //[CJUIKitToastUtil showMessage:[NSString stringWithFormat:@"视频下载完成，存放于:%@", localAbsPath]];
             } else {
                 self.previewImageView.hidden = NO;
                 self.previewImageView.image = [UIImage imageWithContentsOfFile:localAbsPath];
-                [CJUIKitToastUtil showMessage:[NSString stringWithFormat:@"图片下载完成，存放于:%@", localAbsPath]];
+                //[CJUIKitToastUtil showMessage:[NSString stringWithFormat:@"图片下载完成，存放于:%@", localAbsPath]];
             }
+//        } else if (downloadState == CJFileDownloadStateDownloading) {
+//            
         } else {
             self.previewImageView.hidden = NO;
             self.previewImageView.image = nil;
@@ -79,12 +92,14 @@
     
     // 设置 Auto Layout 约束
     [self setupConstraints];
+    
+//    self.downloadView.backgroundColor = UIColor.clearColor;
 }
 
 - (UIImageView *)previewImageView {
     if (!_previewImageView) {
         _previewImageView = [[UIImageView alloc] init];
-        _previewImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _previewImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _previewImageView;
 }
@@ -92,7 +107,7 @@
 - (CJAVPlayerView *)playerView {
     if (!_playerView) {
         _playerView = [[CJAVPlayerView alloc] initWithFrame:CGRectZero];
-        _playerView.backgroundColor = [UIColor redColor];
+        //_playerView.backgroundColor = [UIColor redColor];
     }
     return _playerView;
 }

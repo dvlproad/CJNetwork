@@ -17,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *downloadUrl;
 @property (nonatomic, strong) UILabel *downloadUrlLabel;     /** 下载文件的Url */
 
+@property (nonatomic, assign, readonly) CJFileDownloadState currentDownloadState;
+
+@property (nonatomic, copy) void(^ _Nullable customDeleteHandler)(void); // 自定义的删除事件（有时候下载数据不删除，但是关联的数据删除，其就不会展示）
+
 #pragma mark - Init
 /*
  *  初始化文件上传时候的上传模型
@@ -30,7 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
 
-
+#pragma mark - Event
+- (void)startDownload;
+- (void)setupDownloadBlock;
 
 @end
 

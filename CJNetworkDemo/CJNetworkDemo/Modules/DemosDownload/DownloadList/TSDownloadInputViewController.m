@@ -1,16 +1,17 @@
 //
-//  TSVideoUrlAnalyzeHomeViewController.m
+//  TSDownloadInputViewController.m
 //  CJNetworkDemo
 //
 //  Created by ciyouzen on 2016/3/26.
 //  Copyright © 2016年 dvlproad. All rights reserved.
 //
-//  快捷指令：抖音解析 无水印;
+//  要解析的地址的输入界面
 
-#import "TSVideoUrlAnalyzeHomeViewController.h"
+#import "TSDownloadInputViewController.h"
 #import <CQDemoKit/CJUIKitAlertUtil.h>
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/NSError+CQTSErrorString.h>
+#import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CJMonitor/CJLogSuspendWindow.h>
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
 
@@ -24,26 +25,31 @@
 
 #import "TSDownloadInputView.h"
 
+#import "TSDownloadVideoIdManager.h"
 
-#import "CQVideoAnalyzeMainViewController.h"
+#import "TSDownloadCollectionViewController.h"
+#import "TSDownloadCollectionViewCell.h"
 
-@interface TSVideoUrlAnalyzeHomeViewController () {
+@interface TSDownloadInputViewController () {
     
 }
+@property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) TSDownloadInputView *downloadInputView;
-@property (nonatomic, strong) UIButton *fetchButton;
-
-@property (nonatomic, strong) dispatch_queue_t commonConcurrentQueue; //创建并发队列
-@property (nonatomic, copy) NSString *api;
-@property (nonatomic, copy) NSString *videoResultUrl;
 
 @end
 
-@implementation TSVideoUrlAnalyzeHomeViewController
+@implementation TSDownloadInputViewController
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //[self.downloadInputView pasteClipboard];
+}
+
+- (UIImageView *)imageView {
+    if (_imageView == nil) {
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    }
+    return _imageView;
 }
 
 - (TSDownloadInputView *)downloadInputView {
@@ -54,7 +60,34 @@
 //            [CJUIKitToastUtil showMessage:@"可在此执行下载"];
 //            NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
 //            NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
-            [weakSelf analyzeTiktokShortenedUrl:text];
+//            [weakSelf analyzeTiktokShortenedUrl:text];
+            
+            NSString *shortenedUrl = text;
+            CQAnalyzeVideoUrlType type = CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD;
+            [CQVideoUrlAnalyze_Tiktok requestUrlFromShortenedUrl:shortenedUrl type:type success:^(NSString * _Nonnull expandedUrl, NSString * _Nonnull videoId, NSString * _Nonnull videoUrl) {
+                NSString *message = [NSString stringWithFormat:@"解析结果如下:\nexpandedUrl=%@\nvideoId=%@\nvideoUrl=%@", expandedUrl, videoId, videoUrl];
+                [self __showResponseLogMessage:message];
+                
+                // 添加数据
+                [TSDownloadVideoIdManager.sharedInstance addVideoByVideoId:videoId];
+                
+                // 跳转到"已解析"Tab
+                dispatch_async(dispatch_get_main_queue(),^{
+//                    [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
+                        [weakSelf.tabBarController setSelectedIndex:1];
+                        UINavigationController *rootVC = [self.tabBarController selectedViewController];
+                        TSDownloadCollectionViewController *vc = rootVC.childViewControllers.firstObject;
+                        vc.collectionView.sectionDataModels = [TSDownloadVideoIdManager.sharedInstance sectionDataModels];
+                        
+                        // addVideoByVideoId 插入在第一个位置
+//                        TSDownloadCollectionViewCell *cell = [vc.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+//                        [cell.downloadView startDownload];
+                        [weakSelf downloadFileUrl:videoUrl];
+//                    }];
+                });
+            } failure:^(NSString * _Nonnull errorMessage) {
+                [self __showResponseLogMessage:errorMessage];
+            }];
         }];
     }
     return _downloadInputView;
@@ -64,135 +97,47 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.title = NSLocalizedString(@"抖音解析 无水印", nil);
+//    self.navigationItem.title = NSLocalizedString(@"视频解析", nil);
     __weak typeof(self)weakSelf = self;
+    
+    [self.view addSubview:self.imageView];
+    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.view);
+//        make.height.mas_equalTo(200);
+        make.top.mas_equalTo(self.mas_topLayoutGuide);
+        make.bottom.mas_equalTo(self.mas_bottomLayoutGuide).offset(-0);
+    }];
+    UIImage *image = [UIImage cqdemokit_xcassetImageNamed:@"cqts_icon_01.png" withCache:YES];
+    [self.imageView setImage:image];
     
     [self.view addSubview:self.downloadInputView];
     [self.downloadInputView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.view);
         //make.top.mas_equalTo(self.mas_topLayoutGuide);
         make.height.mas_equalTo(110);
-        make.bottom.mas_equalTo(self.mas_bottomLayoutGuide);
+        make.bottom.mas_equalTo(self.mas_bottomLayoutGuide).offset(-30);
     }];
     
-    NSMutableArray *sectionDataModels = [[NSMutableArray alloc] init];
-    
-    // Douyin
-    {
-        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = @"Douyin 视频地址解析";
-        
-        {
-            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
-            loginModule.title = @"抖音解析 无水印";
-            loginModule.content = @"获取抖音解析的api，并利用api解析出视频地址";
-            loginModule.contentLines = 2;
-            loginModule.actionBlock = ^{
-                [CQVideoUrlAnalyze_Douyin analyzeUrl:@"https://v.douyin.com/iPY4TLua/" success:^(NSArray<NSString *> * _Nonnull videoResultUrls) {
-                    if (videoResultUrls.count > 0) {
-                        weakSelf.videoResultUrl = videoResultUrls[0];
-                        [weakSelf __showResponseLogMessage:weakSelf.videoResultUrl];
-                    }
-                    
-                } failure:^(NSString * _Nonnull errorMessage) {
-                    [weakSelf __showResponseLogMessage:errorMessage];
-                }];
-            };
-            [sectionDataModel.values addObject:loginModule];
-        }
-        
-        [sectionDataModels addObject:sectionDataModel];
-    }
-    
-    // Tiktok
-    {
-        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = @"Tiktok 视频地址解析";
-        {
-            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
-            loginModule.title = @"解析tiktok视频地址，videoId tikwm.com";
-            loginModule.content = @"无水印";
-            loginModule.actionBlock = ^{
-                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
-//                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
-                CQAnalyzeVideoUrlType type = CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD;
-                [CQVideoUrlAnalyze_Tiktok requestUrlFromShortenedUrl:shortenedUrl type:type success:^(NSString * _Nonnull expandedUrl, NSString * _Nonnull videoId, NSString * _Nonnull videoUrl) {
-                    NSString *message = [NSString stringWithFormat:@"解析结果如下:\nexpandedUrl=%@\nvideoId=%@\nvideoUrl=%@", expandedUrl, videoId, videoUrl];
-                    [self __showResponseLogMessage:message];
-                    
-                    dispatch_async(dispatch_get_main_queue(),^{
-                        [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
-                            [self downloadFileUrl:videoUrl];
-                        }];
-                    });
-                } failure:^(NSString * _Nonnull errorMessage) {
-                    [self __showResponseLogMessage:errorMessage];
-                }];
-            };
-            [sectionDataModel.values addObject:loginModule];
-        }
-        [sectionDataModels addObject:sectionDataModel];
-    }
-    
-    
-    // Tiktok
-    {
-        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = @"Tiktok 视频地址本地解析";
-        {
-            CQDMModuleModel *dataModel = [[CQDMModuleModel alloc] init];
-            dataModel.title = @"Tiktok 视频地址本地解析";
-            dataModel.contentLines = 2;
-            dataModel.classEntry = [CQVideoAnalyzeMainViewController class];
-            [sectionDataModel.values addObject:dataModel];
-        }
-        {
-            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
-            loginModule.title = @"解析tiktok视频地址 错误下载无法访问的数据";
-            loginModule.content = @"无水印";
-            loginModule.actionBlock = ^{
-//                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
-                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
-                [TikTokService getActualVideoUrlFromShortenedUrl:shortenedUrl success:^(NSString * _Nonnull videoUrl) {
-                    dispatch_async(dispatch_get_main_queue(),^{
-                        [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
-                            [self downloadFileUrl:videoUrl];
-                        }];
-                    });
-                } failure:^(NSError * _Nonnull error) {
-                    [self __showResponseLogMessage:error.localizedDescription];
-                }];
-            };
-            [sectionDataModel.values addObject:loginModule];
-        }
-        {
-            CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
-            loginModule.title = @"解析tiktok视频地址 正确下载无法访问的数据";
-            loginModule.content = @"无水印";
-            loginModule.actionBlock = ^{
-//                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
-                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
-                [weakSelf analyzeTiktokShortenedUrl:shortenedUrl];
-            };
-            [sectionDataModel.values addObject:loginModule];
-        }
-        [sectionDataModels addObject:sectionDataModel];
-    }
-
-    self.sectionDataModels = sectionDataModels;
+//    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
+//    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
+//    self.downloadInputView.textField.text = shortenedUrl;
 }
 
 - (void)analyzeTiktokShortenedUrl:(NSString *)shortenedUrl {
     [TikTokService getActualVideoUrlFromShortenedUrl:shortenedUrl success:^(NSString * _Nonnull videoUrl) {
         dispatch_async(dispatch_get_main_queue(),^{
-            [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
+            //[CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
                 [TikTokService downloadAccessRestrictedDataFromActualVideoUrl:videoUrl success:^(NSURL * _Nonnull cacheURL) {
+                    
+                    
                     NSString *message = [NSString stringWithFormat:@"解析并且下载成功:\n视频短链=%@\n视频地址=%@\n保存位置=%@", shortenedUrl, videoUrl, cacheURL.absoluteString];
                     [self __showResponseLogMessage:message];
+                    
+                    
                 } failure:^(NSError * _Nonnull error) {
                     [self __showResponseLogMessage:error.localizedDescription];
                 }];
-            }];
+            //}];
         });
     } failure:^(NSError * _Nonnull error) {
         [self __showResponseLogMessage:error.localizedDescription];
@@ -200,13 +145,17 @@
 }
 
 - (void)downloadFileUrl:(NSString *)downloadUrl {
+    __weak typeof(self)weakSelf = self;
     [[HSDownloadManager sharedInstance] download:downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+        /*
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
             NSString *message = [NSString stringWithFormat:@"当前下载进度:=========%@", progressValue];
             [self __showResponseLogMessage:message];
         });
+        */
     } state:^(CJFileDownloadState state, NSError * _Nullable error) {
+        /*
         dispatch_async(dispatch_get_main_queue(), ^{
             [self __showResponseLogMessage:[CJDownloadEnumUtil currentStateTextForState:state]];
             
@@ -224,6 +173,14 @@
                     NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadUrl];
                     NSString *message = [NSString stringWithFormat:@"下载完成，存放在:%@", localAbsPath];
                     [self __showResponseLogMessage:message];
+                    
+                    
+                    if (weakSelf.tabBarController.selectedIndex == 1) {
+                        UINavigationController *rootVC = [self.tabBarController selectedViewController];
+                        TSDownloadCollectionViewController *vc = rootVC.childViewControllers.firstObject;
+                        [vc.collectionView reloadData];
+                    }
+                    
                     break;
                 }
                 case CJFileDownloadStateFailure: {
@@ -233,8 +190,8 @@
                 default:
                     break;
             }
-            
         });
+        */
     }];
 }
 
@@ -285,7 +242,7 @@
 /// 显示返回结果log
 - (void)__showResponseLogMessage:(NSString *)message {
     //[CJUIKitToastUtil showMessage:message];
-    [CJLogViewWindow appendObject:message];
+//    [CJLogViewWindow appendObject:message];
     NSLog(@"%@", message);
 }
 

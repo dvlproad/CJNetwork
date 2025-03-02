@@ -91,10 +91,25 @@ static HSDownloadManager *_downloadManager;
     }
 }
 
+/*
+ *  更改url的各种回调（场景：在输入界面开启了下载，但回调信息需要用在列表上）
+ *
+ *  @param url           下载地址
+ *  @param progressBlock 回调下载进度
+ *  @param stateBlock    下载状态
+ */
+- (void)setupUrl:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock
+{
+    HSSessionModel *sessionModel = [self getSessionModelFromUrl:url];
+    
+    sessionModel.progressBlock = progressBlock;
+    sessionModel.stateBlock = stateBlock;
+}
+
 /**
  *  开启任务下载资源
  */
-- (void)download:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock
+- (void)downloadOrPause:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock
 {
     if (!url) {
         NSLog(@"要下载的文件地址不能为空");
@@ -166,7 +181,8 @@ static HSDownloadManager *_downloadManager;
     NSURLSessionDataTask *task = [self getTask:url];
     [task resume];
 
-    [self getSessionModel:task.taskIdentifier].stateBlock(CJFileDownloadStateDoing, nil);
+    HSSessionModel *sessionModel = [self getSessionModel:task.taskIdentifier];
+    [sessionModel updateDownloadState:CJFileDownloadStateDownloading error:nil];
 }
 
 /**
@@ -177,7 +193,8 @@ static HSDownloadManager *_downloadManager;
     NSURLSessionDataTask *task = [self getTask:url];
     [task suspend];
 
-    [self getSessionModel:task.taskIdentifier].stateBlock(CJFileDownloadStatePause, nil);
+    HSSessionModel *sessionModel = [self getSessionModel:task.taskIdentifier];
+    [sessionModel updateDownloadState:CJFileDownloadStatePause error:nil];
 }
 
 /**
@@ -194,6 +211,32 @@ static HSDownloadManager *_downloadManager;
 - (HSSessionModel *)getSessionModel:(NSUInteger)taskIdentifier
 {
     return (HSSessionModel *)[self.sessionModels valueForKey:@(taskIdentifier).stringValue];
+}
+
+/**
+ *  根据url获得对应的下载任务
+ */
+- (HSSessionModel *)getSessionModelFromUrl:(NSString *)url {
+    NSURLSessionDataTask *task = [self getTask:url];
+    return [self getSessionModel:task.taskIdentifier];
+}
+
+/**
+ *  判断该文件的下载状态
+ */
+- (CJFileDownloadState)downloadStateForUrl:(NSString *)url {
+    HSSessionModel *sessionModel = [self getSessionModelFromUrl:url];
+    if (sessionModel != nil) {
+        return sessionModel.downloadState;
+    } else {
+        // 下载完成的就不在task里了，就只能通过 progress 来判断了
+        CGFloat progress = [self progress:url];
+        if (progress == 1.0) {
+            return CJFileDownloadStateSuccess;
+        } else {
+            return CJFileDownloadStateUnknown;
+        }
+    }
 }
 
 /**
@@ -351,9 +394,9 @@ static HSDownloadManager *_downloadManager;
     }
     
     if ([self isCompletion:sessionModel.url]) {
-        sessionModel.stateBlock(CJFileDownloadStateSuccess, nil);    //下载完成
+        [sessionModel updateDownloadState:CJFileDownloadStateSuccess error:nil];    //下载完成
     } else if (error){
-        sessionModel.stateBlock(CJFileDownloadStateFailure, error);   //下载失败
+        [sessionModel updateDownloadState:CJFileDownloadStateFailure error:error];   //下载失败
     }
     
     // 关闭流

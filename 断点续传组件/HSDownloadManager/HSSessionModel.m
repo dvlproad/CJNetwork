@@ -9,5 +9,14 @@
 #import "HSSessionModel.h"
 
 @implementation HSSessionModel
+//void updateDownloadState(CJFileDownloadState downloadState, NSError * _Nullable error) {
+//    
+//}
+- (void)updateDownloadState:(CJFileDownloadState)downloadState error:(NSError * _Nullable)error {
+    _downloadState = downloadState;
+    if (self.stateBlock) {
+        self.stateBlock(downloadState, error);
+    }
+}
 
 @end

@@ -69,12 +69,36 @@ public class VideoFileUrl: NSObject {
         })
     }
     
+    @objc public static func analyzeTiktokShortenedUrl(_ shortenedUrl: String) -> String? {
+        if shortenedUrl.isEmpty {
+            return "❌ 短链接不能为空，请先输入"
+        }
+        // 1. 确保 URL 是合法的
+        guard let url = URL(string: shortenedUrl), let host = url.host, let scheme = url.scheme else {
+            return "❌ 无效的 URL: \(shortenedUrl)"
+        }
+
+        // 2. 验证是否符合 TikTok 短链接格式
+        let expectedHost = "www.tiktok.com"
+        let expectedPathPrefix = "/t"
+
+        guard host == expectedHost, url.path.hasPrefix(expectedPathPrefix) else {
+            return "⚠️ 不符合 TikTok 短链接格式: \(shortenedUrl)"
+        }
+        
+        return nil
+    }
     
     @objc public static func getActualVideoUrlFromShortenedUrl(
         _ shortenedUrl: String,
         success: @escaping (_ actualVideoUrl: NSString) -> Void,
         failure: @escaping (NSError) -> Void
     ) {
+        if let errorMessage = analyzeTiktokShortenedUrl(shortenedUrl) {
+            failure(NSError(domain: "VideoParsingError", code: 1001, userInfo: [NSLocalizedDescriptionKey: (errorMessage as NSString)]))
+            return
+        }
+        
         getContentActualUrlAndCookie(tiktokLink: shortenedUrl) { htmlInfo, error in
             if let error = error as? NSError {
                 failure(error)

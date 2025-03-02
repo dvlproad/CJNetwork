@@ -10,16 +10,17 @@
 #import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/CJUIKitAlertUtil.h>
-#import <CQDemoKit/CQTSResourceUtil.h>
-#import <CQDemoKit/CQTSPhotoUtil.h>
 
-#import "TSDownloadCollectionView.h"
+
+#import "TSDownloadPlayViewController.h"
 #import "HSDownloadManager.h"
+#import "TSDownloadVideoIdManager.h"
+
+#import "TSDownloadUtil.h"
 
 @interface TSDownloadCollectionViewController () {
     
 }
-@property (nonatomic, strong) TSDownloadCollectionView *collectionView;
 
 @end
 
@@ -28,8 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = NSLocalizedString(@"测试CQTSRipeCollectionView", nil);
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清空" style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllFiles)];
+//    self.navigationItem.title = NSLocalizedString(@"TSDownloadCollectionViewController", nil);
+    
+    __weak typeof(self)weakSelf = self;
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[CQTSLocImagesUtil cjts_localImageAtIndex:2]];
     [self.view addSubview:imageView];
@@ -39,42 +41,19 @@
         make.bottom.mas_equalTo(self.mas_bottomLayoutGuide);
     }];
     
-    TSDownloadCollectionView *collectionView = [[TSDownloadCollectionView alloc] initWithDidSelectItemAtIndexHandle:^(CQTSLocImageDataModel * _Nonnull downloadModel) {
+    TSDownloadCollectionView *collectionView = [[TSDownloadCollectionView alloc] initWithDidSelectItemAtIndexHandle:^(NSIndexPath *indexPath, CQTSLocImageDataModel * _Nonnull downloadModel) {
         //[CJUIKitToastUtil showMessage:[NSString stringWithFormat:@"点击了 %@", downloadModel.name]];
         
-        NSString *downloadUrl = downloadModel.imageName;
-        NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadUrl];
-        NSURL *mediaLocalURL = [NSURL fileURLWithPath:localAbsPath];
-        CQTSFileType fileType = [CQTSResourceUtil fileTypeForFilePathOrUrl:mediaLocalURL.path];
-        
-        NSString *title = [NSString stringWithFormat:@"是否要保存【%@】到相册", fileType == CQTSFileTypeVideo ? @"视频" : @"图片"];
-        NSString *message = downloadModel.imageName;
-        [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:title message:message cancleBlock:nil okBlock:^{
-            if (fileType == CQTSFileTypeVideo) {
-                [CQTSPhotoUtil saveVideoToPhotoAlbum:mediaLocalURL success:^{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [CJUIKitToastUtil showMessage:@"保存成功"];
-                    });
-                } failure:^(NSString * _Nonnull errorMessage) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [CJUIKitAlertUtil showIKnowAlertInViewController:self withTitle:errorMessage iKnowBlock:nil];
-                    });
-                }];
-                return;
-            } else {
-                [CQTSPhotoUtil saveImageToPhotoAlbum:mediaLocalURL success:^{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [CJUIKitToastUtil showMessage:@"保存成功"];
-                    });
-                } failure:^(NSString * _Nonnull errorMessage) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [CJUIKitAlertUtil showIKnowAlertInViewController:self withTitle:errorMessage iKnowBlock:nil];
-                    });
-                }];
-            }
+        TSDownloadPlayViewController *viewController = [[TSDownloadPlayViewController alloc] initWithDownloadModel:downloadModel deleteCompleteBlock:^{
+            [weakSelf deleteFileAtIndexPath:indexPath];
         }];
+        viewController.modalPresentationStyle = UIModalPresentationFullScreen; // 设置全屏模式
+        viewController.modalPresentationCapturesStatusBarAppearance = YES;
+        [weakSelf presentViewController:viewController animated:YES completion:nil]; // 只有 present,系统的播放器上的按钮才能设置显示
+    } cellOverlayCustomDeleteHandler:^(NSIndexPath * _Nonnull indexPath) {
+        [weakSelf deleteFileAtIndexPath:indexPath];
     }];
-    collectionView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
+    //collectionView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
     [self.view addSubview:collectionView];
     [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        if #available(iOS 11.0, *) {
@@ -87,23 +66,64 @@
 //            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-10)
 //        }
         if (@available(iOS 11.0, *)) {
-            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(10);
-            make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(-10);
+            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(0);
+            make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(-0);
         } else {
             // Fallback on earlier versions
             // topLayoutGuide\bottomLayoutGuide iOS11已经被弃用
-            make.top.equalTo(self.mas_topLayoutGuideBottom).offset(10);
-            make.bottom.equalTo(self.mas_bottomLayoutGuideTop).offset(-10);
+            make.top.equalTo(self.mas_topLayoutGuideBottom).offset(0);
+            make.bottom.equalTo(self.mas_bottomLayoutGuideTop).offset(-0);
         }
-        make.left.mas_equalTo(self.view).mas_offset(10);
+        make.left.mas_equalTo(self.view).mas_offset(0);
         make.centerX.mas_equalTo(self.view);
     }];
     self.collectionView = collectionView;
+    
+    self.collectionView.sectionDataModels = [TSDownloadVideoIdManager.sharedInstance sectionDataModels];
+    
+    // 监听
+    [self tryCheckDeleteAllButtonShow];
+}
+
+- (void)tryCheckDeleteAllButtonShow {
+    NSMutableArray *dataModels = self.collectionView.sectionDataModels.firstObject.values;
+    BOOL show = dataModels.count > 0;
+    if (show) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清空" style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllFiles)];
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+}
+
+- (void)deleteFileAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *dataModels = self.collectionView.sectionDataModels.firstObject.values;
+    
+    //TODO: qian
+//    CQTSLocImageDataModel *downloadModel = [dataModels objectAtIndex:indexPath.item];
+//    NSString *downloadUrl = downloadModel.imageName;
+//    [[HSDownloadManager sharedInstance] deleteFile:downloadUrl]; // 视频本身不删除，万一下次也是下载这个呢？而且外部可能重复下载
+    
+    NSMutableArray *shouldRemoveDataModels = [[NSMutableArray alloc] init];
+    for (CQTSLocImageDataModel *model in dataModels) {
+        NSString *iDownloadUrl = model.imageName;
+        if ([iDownloadUrl isEqualToString:downloadUrl]) {
+            [shouldRemoveDataModels addObject:model];
+        }
+    }
+    //[dataModels removeObjectAtIndex:indexPath.item];
+    [dataModels removeObjectsInArray:shouldRemoveDataModels];
+    [self.collectionView reloadData];
+    
+    [self tryCheckDeleteAllButtonShow];
 }
 
 - (void)deleteAllFiles {
-    [[HSDownloadManager sharedInstance] deleteAllFile];
+    //[[HSDownloadManager sharedInstance] deleteAllFile];
+//    NSMutableArray *dataModels = self.collectionView.sectionDataModels.firstObject.values;
+//    [dataModels removeAllObjects];
     [self.collectionView reloadData];
+    
+    [self tryCheckDeleteAllButtonShow];
 }
 
 /*

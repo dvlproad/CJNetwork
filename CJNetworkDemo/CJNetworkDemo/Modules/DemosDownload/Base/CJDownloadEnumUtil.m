@@ -14,7 +14,7 @@
     switch (state) {
         case CJFileDownloadStateReady:
             return @"下载准备";
-        case CJFileDownloadStateDoing:
+        case CJFileDownloadStateDownloading:
             return @"下载中";
         case CJFileDownloadStatePause:
             return @"暂停";
@@ -23,6 +23,7 @@
         case CJFileDownloadStateFailure:
             return @"下载失败";
         default:
+            return @"未知";
             break;
     }
 }
@@ -31,7 +32,7 @@
     switch (state) {
         case CJFileDownloadStateReady:
             return @"开始";
-        case CJFileDownloadStateDoing:
+        case CJFileDownloadStateDownloading:
             return @"暂停";
         case CJFileDownloadStatePause:
             return @"继续";
@@ -40,6 +41,7 @@
         case CJFileDownloadStateFailure:
             return @"重下";
         default:
+            return @"未知";
             break;
     }
 }

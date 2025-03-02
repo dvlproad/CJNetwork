@@ -10,14 +10,17 @@
 #import <CQDemoKit/CQTSRipeBaseCollectionViewDelegate.h>
 #import <CQDemoKit/CQTSRipeSectionDataUtil.h>
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
+#import <CQMdeiaVideoFrameKit/VideoFrameCQHelper.h>
 
 #import "TSDownloadCollectionViewCell.h"
+#import "TSDownloadVideoIdManager.h"
 
 @interface TSDownloadCollectionView ()<UICollectionViewDataSource> {
     
 }
 @property (nonatomic, strong, readonly) CQTSRipeBaseCollectionViewDelegate *ripeCollectionViewDelegate;   /**< collectionView的delegate */
-@property (nullable, nonatomic, copy, readonly) void(^didSelectItemAtIndexHandle)(NSInteger index); /**< 点击item的回调 */
+@property (nullable, nonatomic, copy, readonly) void(^didSelectItemHandle)(NSIndexPath *indexPath, CQTSLocImageDataModel *downloadModel); /**< 点击item的回调 */
+@property (nonatomic, copy) void(^cellOverlayCustomDeleteHandler)(NSIndexPath *indexPath); // cell上overlay视图里的删除按钮的自定义的删除事件（有时候下载数据不删除，但是关联的数据删除，其就不会展示）
 
 @end
 
@@ -28,11 +31,13 @@
 /*
  *  初始化 CollectionView
  *
- *  @param didSelectItemAtIndexHandle   点击item的回调
+ *  @param didSelectItemAtIndexHandle       下载完成时候点击item的回调
+ *  @param cellOverlayCustomDeleteHandler   cell上overlay视图里的删除按钮的自定义的删除事件
  *
  *  @return CollectionView
  */
-- (instancetype)initWithDidSelectItemAtIndexHandle:(void(^)(CQTSLocImageDataModel *downloadModel))didSelectItemAtIndexHandle
+- (instancetype)initWithDidSelectItemAtIndexHandle:(void(^)(NSIndexPath *indexPath, CQTSLocImageDataModel *downloadModel))didSelectItemAtIndexHandle
+                cellOverlayCustomDeleteHandler:(void(^ _Nullable)(NSIndexPath *indexPath))cellOverlayCustomDeleteHandler
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
@@ -40,56 +45,43 @@
     if (self) {
         __weak typeof(self) weakSelf = self;
         
-        _ripeCollectionViewDelegate = [[CQTSRipeBaseCollectionViewDelegate alloc] initWithPerMaxCount:2 widthHeightRatio: 1.0 didSelectItemHandle:^(UICollectionView * _Nonnull bCollectionView, NSIndexPath * _Nonnull bIndexPath) {
+        _didSelectItemHandle = didSelectItemAtIndexHandle;
+        _cellOverlayCustomDeleteHandler = cellOverlayCustomDeleteHandler;
+        _ripeCollectionViewDelegate = [[CQTSRipeBaseCollectionViewDelegate alloc] initWithPerMaxCount:2 widthHeightRatio: 140/220.0 didSelectItemHandle:^(UICollectionView * _Nonnull bCollectionView, NSIndexPath * _Nonnull bIndexPath) {
             CQTSLocImageDataModel *downloadModel = [weakSelf dataModelAtIndexPath:bIndexPath];
-            !didSelectItemAtIndexHandle ?: didSelectItemAtIndexHandle(downloadModel);
+            NSString *downloadUrl = downloadModel.imageName;
+            
+            TSDownloadCollectionViewCell *cell = (TSDownloadCollectionViewCell *)[bCollectionView cellForItemAtIndexPath:bIndexPath];
+            CJFileDownloadState currentDownloadState = [cell.downloadView currentDownloadState];
+            switch (currentDownloadState) {
+                case CJFileDownloadStateSuccess: {
+                    !didSelectItemAtIndexHandle ?: didSelectItemAtIndexHandle(bIndexPath, downloadModel);
+                    break;
+                }
+                case CJFileDownloadStateFailure: {
+                    [cell.downloadView startDownload];
+                    break;
+                }
+                case CJFileDownloadStateReady:
+                case CJFileDownloadStatePause:
+                {
+                    [cell.downloadView startDownload];
+                    break;
+                }
+                case CJFileDownloadStateDownloading: {
+                    break;
+                }
+                default:
+                    break;
+            }
         }];
         self.delegate = self.ripeCollectionViewDelegate;
         
         
         [self registerClass:[TSDownloadCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
         self.dataSource = self;
-        
-        CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = [NSString stringWithFormat:@"section %d", 0];
-        sectionDataModel.values = [[NSMutableArray alloc] init];
-        self.sectionDataModels = @[sectionDataModel];
-        
-        [self addVideoByVideoId:@"7465611957203160340"];
     }
     return self;
-}
-
-- (void)addVideoByVideoId:(NSString *)videoId {
-//    NSString *cover = [CQVideoUrlAnalyze_Tiktok getVideoInfoFor:CQAnalyzeVideoUrlTypeImageCover videoId:videoId];
-    
-    NSString *videoOriginal = [CQVideoUrlAnalyze_Tiktok getVideoInfoFor:CQAnalyzeVideoUrlTypeVideoOriginal videoId:videoId];
-    NSString *videoWithoutWatermark = [CQVideoUrlAnalyze_Tiktok getVideoInfoFor:CQAnalyzeVideoUrlTypeVideoWithoutWatermark videoId:videoId];
-    NSString *videoWithoutWatermarkHD = [CQVideoUrlAnalyze_Tiktok getVideoInfoFor:CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD videoId:videoId];
-    
-    
-    NSMutableArray<CQTSLocImageDataModel *> *dataModels = [[NSMutableArray alloc] init];
-    {
-        CQTSLocImageDataModel *dataModel = [[CQTSLocImageDataModel alloc] init];
-        dataModel.name = [NSString stringWithFormat:@"videoOriginal %@", videoId];
-        dataModel.imageName = videoOriginal;
-        [dataModels addObject:dataModel];
-    }
-    {
-        CQTSLocImageDataModel *dataModel = [[CQTSLocImageDataModel alloc] init];
-        dataModel.name = [NSString stringWithFormat:@"videoWithoutWatermark %@", videoId];
-        dataModel.imageName = videoWithoutWatermark;
-        [dataModels addObject:dataModel];
-    }
-    {
-        CQTSLocImageDataModel *dataModel = [[CQTSLocImageDataModel alloc] init];
-        dataModel.name = [NSString stringWithFormat:@"videoWithoutWatermarkHD %@", videoId];
-        dataModel.imageName = videoWithoutWatermarkHD;
-        [dataModels addObject:dataModel];
-    }
-    
-    [self.sectionDataModels.firstObject.values addObjectsFromArray:dataModels];
-    [self reloadData];
 }
 
 #pragma mark - Setter
@@ -132,9 +124,15 @@
     TSDownloadCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
 //            cell.previewImageView.image = [UIImage imageWithContentsOfFile:downloadModel.imageName]; // 视频的预览图
-    cell.downloadView.downloadUrl = downloadModel.imageName;
+    NSString *downloadUrl = downloadModel.imageName;
+    cell.downloadView.downloadUrl = downloadUrl;
     cell.downloadView.downloadUrlLabel.text = downloadModel.name;
-
+    __weak typeof(self)weakSelf = self;
+    cell.downloadView.customDeleteHandler = ^{
+        weakSelf.cellOverlayCustomDeleteHandler(indexPath);
+    };
+    [cell.downloadView setupDownloadBlock];
+    
     return cell;
 }
 

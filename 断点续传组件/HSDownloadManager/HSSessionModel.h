@@ -27,8 +27,13 @@ NS_ASSUME_NONNULL_BEGIN
 /** 下载进度 */
 @property (nonatomic, copy) void(^progressBlock)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress);
 
+
 /** 下载状态 */
+@property (nonatomic, assign, readonly) CJFileDownloadState downloadState;
 @property (nonatomic, copy) void(^stateBlock)(CJFileDownloadState state, NSError * _Nullable error);
+
+//void updateDownloadState(CJFileDownloadState downloadState, NSError * _Nullable error);
+- (void)updateDownloadState:(CJFileDownloadState)downloadState error:(NSError * _Nullable)error;
 
 @end
 
