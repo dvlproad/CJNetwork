@@ -72,6 +72,7 @@
 		9740B6322D6B330C00193499 /* TSDownloadCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6312D6B330C00193499 /* TSDownloadCollectionViewCell.m */; };
 		9740B6432D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */; };
 		9740B6462D6B427900193499 /* TSDownloadCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */; };
+		978265E92D75ECA000F6353B /* CQDownloadRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 978265E82D75ECA000F6353B /* CQDownloadRecordModel.m */; };
 		97CE37C12D6F4F9B0064D675 /* CJDownloadEnumUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CE37C02D6F4F9B0064D675 /* CJDownloadEnumUtil.m */; };
 		97CEFB1C2D743F4B00FFBD1D /* TSDownloadInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CEFB192D743F4B00FFBD1D /* TSDownloadInputView.m */; };
 		97CEFB1D2D743F4B00FFBD1D /* TSDownloadInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CEFB1B2D743F4B00FFBD1D /* TSDownloadInputViewController.m */; };
@@ -230,6 +231,8 @@
 		9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewCellOverlay.m; sourceTree = "<group>"; };
 		9740B6442D6B427900193499 /* TSDownloadCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionViewController.h; sourceTree = "<group>"; };
 		9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewController.m; sourceTree = "<group>"; };
+		978265E72D75ECA000F6353B /* CQDownloadRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CQDownloadRecordModel.h; sourceTree = "<group>"; };
+		978265E82D75ECA000F6353B /* CQDownloadRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CQDownloadRecordModel.m; sourceTree = "<group>"; };
 		97CE37BF2D6F4F9B0064D675 /* CJDownloadEnumUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJDownloadEnumUtil.h; sourceTree = "<group>"; };
 		97CE37C02D6F4F9B0064D675 /* CJDownloadEnumUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJDownloadEnumUtil.m; sourceTree = "<group>"; };
 		97CEFB162D743F4B00FFBD1D /* CQVideoAnalyzeMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CQVideoAnalyzeMainViewController.h; sourceTree = "<group>"; };
@@ -432,6 +435,8 @@
 				7846536F1F544A0100E20A27 /* HSDownloadManager.m */,
 				784653701F544A0100E20A27 /* HSSessionModel.h */,
 				784653711F544A0100E20A27 /* HSSessionModel.m */,
+				978265E72D75ECA000F6353B /* CQDownloadRecordModel.h */,
+				978265E82D75ECA000F6353B /* CQDownloadRecordModel.m */,
 				784653721F544A0100E20A27 /* MD5 */,
 			);
 			path = HSDownloadManager;
@@ -1099,6 +1104,7 @@
 				7868F1A82121D06C00A283EB /* AFNDemoViewController.m in Sources */,
 				97CEFB1C2D743F4B00FFBD1D /* TSDownloadInputView.m in Sources */,
 				97CEFB1D2D743F4B00FFBD1D /* TSDownloadInputViewController.m in Sources */,
+				978265E92D75ECA000F6353B /* CQDownloadRecordModel.m in Sources */,
 				97CEFB1E2D743F4B00FFBD1D /* CQVideoAnalyzeMainViewController.m in Sources */,
 				158259E52484E8F500BA4B3D /* RequestCacheHomeViewController.m in Sources */,
 				9730F3AC2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m in Sources */,

@@ -152,7 +152,7 @@
 }
 
 #pragma mark Setter
-- (void)setDownloadUrl:(NSString *)downloadUrl {
+- (void)setDownloadUrl:(NSObject<CJDownloadRecordModelProtocol> *)downloadUrl {
     _downloadUrl = downloadUrl;
     
     [self initData];
@@ -197,7 +197,7 @@
     [[HSDownloadManager sharedInstance] setupUrl:self.downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
-            NSString *message = [NSString stringWithFormat:@"当前下载进度:=========%@", progressValue];
+            NSString *message = [NSString stringWithFormat:@"3当前下载进度:=========%@", progressValue];
             [self __showResponseLogMessage:message];
             self.progressLabel.text = progressValue;
             self.progressView.progress = progress;
@@ -210,10 +210,10 @@
 }
 
 - (void)startDownload {
-    [[HSDownloadManager sharedInstance] download:self.downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+    [[HSDownloadManager sharedInstance] downloadOrPause:self.downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
-            NSString *message = [NSString stringWithFormat:@"当前下载进度:=========%@", progressValue];
+            NSString *message = [NSString stringWithFormat:@"2当前下载进度:=========%@", progressValue];
             [self __showResponseLogMessage:message];
             self.progressLabel.text = progressValue;
             self.progressView.progress = progress;

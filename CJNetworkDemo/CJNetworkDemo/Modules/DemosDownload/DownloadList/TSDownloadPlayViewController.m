@@ -33,7 +33,7 @@
 
 @implementation TSDownloadPlayViewController
 
-- (instancetype)initWithDownloadModel:(CQTSLocImageDataModel *)downloadModel
+- (instancetype)initWithDownloadModel:(CQDownloadRecordModel *)downloadModel
                   deleteCompleteBlock:(void(^)(void))deleteCompleteBlock
 {
     self = [super init];
@@ -194,9 +194,8 @@
 }
 
 - (void)addPlayView {
-    NSString *videoUrl = self.downloadModel.imageName;
 //    NSURL *videoURL = [NSURL URLWithString:videoUrl];
-    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:videoUrl];
+    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:self.downloadModel];
     NSURL *videoURL = [NSURL fileURLWithPath:localAbsPath];
     self.videoURL = videoURL;
     
@@ -294,9 +293,9 @@
 
 #pragma mark - 分享视频
 - (void)shareVideo {
-    NSString *videoUrl = self.downloadModel.imageName;
+//    NSString *videoUrl = self.downloadModel.url;
 //    NSURL *videoURL = [NSURL URLWithString:videoUrl];
-    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:videoUrl];
+    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:self.downloadModel];
     NSURL *videoURL = [NSURL fileURLWithPath:localAbsPath];
     
     NSArray *itemsToShare = @[videoURL];

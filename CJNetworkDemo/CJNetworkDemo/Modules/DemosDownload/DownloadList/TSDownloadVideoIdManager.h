@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CQDemoKit/CQDMSectionDataModel.h>
-#import <CQDemoKit/CQTSLocImageDataModel.h>
+#import "CQDownloadRecordModel.h"
 
 /**
  *  存储网络状态的类
@@ -24,7 +24,11 @@
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Event
-- (void)addVideoByVideoId:(NSString *)videoId;
+- (CQDownloadRecordModel *)addVideoByVideoId:(NSString *)videoId;
+
+#pragma mark - 增删
+- (void)deleteAllFiles;
+- (void)deleteFileAtIndexPath:(NSIndexPath *)indexPath;
 
 
 @end

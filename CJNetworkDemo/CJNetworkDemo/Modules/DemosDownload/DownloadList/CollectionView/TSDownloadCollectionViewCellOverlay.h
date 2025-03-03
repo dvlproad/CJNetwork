@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "HSDownloadManager.h"
+#import "CQDownloadRecordModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TSDownloadCollectionViewCellOverlay: UIView {
     
 }
-@property (nonatomic, copy) NSString *downloadUrl;
+@property (nonatomic, copy) NSObject<CJDownloadRecordModelProtocol> *downloadUrl;
 @property (nonatomic, strong) UILabel *downloadUrlLabel;     /** 下载文件的Url */
 
 @property (nonatomic, assign, readonly) CJFileDownloadState currentDownloadState;

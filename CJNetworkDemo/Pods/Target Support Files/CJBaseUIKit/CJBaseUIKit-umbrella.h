@@ -20,6 +20,15 @@
 #import "CJSliderThumb.h"
 #import "CJSwitchSlider.h"
 #import "CJSwitchSliderStatusModel.h"
+#import "UIView+CJExclusiveTouch.h"
+#import "UIViewCJCategory.h"
+#import "UIView+CJRounderCorner.h"
+#import "UIView+CJAnimation.h"
+#import "UIView+CJAutoMoveUp.h"
+#import "UIView+CJDragAction.h"
+#import "UIView+CJPanAction.h"
+#import "UIView+CJGestureRecognizer.h"
+#import "UIView+CJShake.h"
 
 FOUNDATION_EXPORT double CJBaseUIKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char CJBaseUIKitVersionString[];

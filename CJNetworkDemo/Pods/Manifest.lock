@@ -18,6 +18,19 @@ PODS:
   - CJBaseHelper/DeviceCJHelper (0.1.7)
   - CJBaseHelper/NSObjectCJHelper (0.1.7)
   - CJBaseUIKit/CJSlider (0.8.0)
+  - CJBaseUIKit/UIView (0.8.0):
+    - CJBaseUIKit/UIView/CJAddCorner (= 0.8.0)
+    - CJBaseUIKit/UIView/CJAnimation (= 0.8.0)
+    - CJBaseUIKit/UIView/CJAutoMoveUp (= 0.8.0)
+    - CJBaseUIKit/UIView/CJDragAction (= 0.8.0)
+    - CJBaseUIKit/UIView/CJGestureRecognizer (= 0.8.0)
+    - CJBaseUIKit/UIView/CJShakeAction (= 0.8.0)
+  - CJBaseUIKit/UIView/CJAddCorner (0.8.0)
+  - CJBaseUIKit/UIView/CJAnimation (0.8.0)
+  - CJBaseUIKit/UIView/CJAutoMoveUp (0.8.0)
+  - CJBaseUIKit/UIView/CJDragAction (0.8.0)
+  - CJBaseUIKit/UIView/CJGestureRecognizer (0.8.0)
+  - CJBaseUIKit/UIView/CJShakeAction (0.8.0)
   - CJBaseUtil/CJIndentedStringUtil (0.5.1)
   - CJMediaCacheKit (0.0.1)
   - CJMediaPlayer (0.0.1):
@@ -185,6 +198,7 @@ PODS:
 DEPENDENCIES:
   - CJBaseHelper/DeviceCJHelper
   - CJBaseHelper/NSObjectCJHelper
+  - CJBaseUIKit/UIView
   - CJBaseUtil/CJIndentedStringUtil
   - CJMediaCacheKit (from `../../CJMediaPlayer`)
   - CJMediaPlayer (from `../../CJMediaPlayer`)
@@ -285,6 +299,6 @@ SPEC CHECKSUMS:
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 0ed9a13f1a0509ba2aa56cea0270486af008b700
+PODFILE CHECKSUM: 6d6ffc3c0e3bd35adf9fca0c88d5e3b4dfa13def
 
 COCOAPODS: 1.16.2

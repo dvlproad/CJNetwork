@@ -8,6 +8,7 @@
 
 #import "TSDownloadVideoIdManager.h"
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
+#import "HSDownloadManager.h"
 
 @interface TSDownloadVideoIdManager ()
 
@@ -34,7 +35,7 @@
 }
 
 #pragma mark - Event
-- (void)addVideoByVideoId:(NSString *)videoId {
+- (CQDownloadRecordModel *)addVideoByVideoId:(NSString *)videoId {
 //    [self addVideoByVideoId:@"7465611957203160340"];
 //    NSString *cover = [CQVideoUrlAnalyze_Tiktok getVideoInfoFor:CQAnalyzeVideoUrlTypeImageCover videoId:videoId];
     
@@ -43,41 +44,44 @@
     NSString *videoWithoutWatermarkHD = [CQVideoUrlAnalyze_Tiktok getVideoInfoFor:CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD videoId:videoId];
     
     
-    NSMutableArray<CQTSLocImageDataModel *> *dataModels = [[NSMutableArray alloc] init];
+    NSMutableArray<CQDownloadRecordModel *> *dataModels = [[NSMutableArray alloc] init];
     /*
     {
-        CQTSLocImageDataModel *dataModel = [[CQTSLocImageDataModel alloc] init];
+        CQDownloadRecordModel *dataModel = [[CQDownloadRecordModel alloc] init];
         dataModel.name = [NSString stringWithFormat:@"videoOriginal %@", videoId];
         dataModel.imageName = videoOriginal;
         [dataModels addObject:dataModel];
     }
     {
-        CQTSLocImageDataModel *dataModel = [[CQTSLocImageDataModel alloc] init];
+        CQDownloadRecordModel *dataModel = [[CQDownloadRecordModel alloc] init];
         dataModel.name = [NSString stringWithFormat:@"videoWithoutWatermark %@", videoId];
         dataModel.imageName = videoWithoutWatermark;
         [dataModels addObject:dataModel];
     }
     */
-    {
-        CQTSLocImageDataModel *dataModel = [[CQTSLocImageDataModel alloc] init];
+    
+        CQDownloadRecordModel *dataModel = [[CQDownloadRecordModel alloc] init];
         dataModel.name = [NSString stringWithFormat:@"videoWithoutWatermarkHD %@", videoId];
-        dataModel.imageName = videoWithoutWatermarkHD;
+        dataModel.url = videoWithoutWatermarkHD;
         [dataModels addObject:dataModel];
-    }
+    
     
 //    [self.sectionDataModels.firstObject.values addObjectsFromArray:dataModels];
     NSMutableArray *values = self.sectionDataModels.firstObject.values;
-    for (CQTSLocImageDataModel *dataModel in dataModels) {
+    for (CQDownloadRecordModel *dataModel in dataModels) {
         [values insertObject:dataModel atIndex:0];
     }
     
     // 保存 sectionDataModels 到 UserDefault
     [self saveSectionDataModelsToUserDefault];
+    
+    return dataModel;
 }
 
 - (void)saveSectionDataModelsToUserDefault {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.sectionDataModels];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"sectionDataModels_downloadVideoId"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)getSectionDataModelsFromUserDefault {
@@ -93,11 +97,35 @@
 }
 
 #pragma mark - 增删
-- (void)deleteAll {
+- (void)deleteAllFiles {
     [self.sectionDataModels.firstObject.values removeAllObjects];
+    [[HSDownloadManager sharedInstance] deleteAllFile];
     
     [self saveSectionDataModelsToUserDefault];
 }
+
+- (void)deleteFileAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *dataModels = self.sectionDataModels.firstObject.values;
+    
+    
+    CQDownloadRecordModel *downloadModel = [dataModels objectAtIndex:indexPath.item];
+    //TODO: qian
+    [[HSDownloadManager sharedInstance] deleteFile:downloadModel]; // 视频本身不删除，万一下次也是下载这个呢？而且外部可能重复下载
+    [dataModels removeObjectAtIndex:indexPath.item];
+    /*
+    NSMutableArray *shouldRemoveDataModels = [[NSMutableArray alloc] init];
+    for (CQDownloadRecordModel *model in dataModels) {
+        NSString *iDownloadUrl = model.url;
+        if ([iDownloadUrl isEqualToString:downloadUrl]) {
+            [shouldRemoveDataModels addObject:model];
+        }
+    }
+    [dataModels removeObjectsInArray:shouldRemoveDataModels];
+    */
+    
+    [self saveSectionDataModelsToUserDefault];
+}
+
 
 
 @end

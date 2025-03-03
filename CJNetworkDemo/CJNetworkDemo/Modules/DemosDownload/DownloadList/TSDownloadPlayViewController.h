@@ -7,8 +7,8 @@
 //
 
 #import "CJUIKitBaseHomeViewController.h"
-#import <CQDemoKit/CQTSLocImageDataModel.h>
 #import <AVKit/AVKit.h>
+#import "CQDownloadRecordModel.h"
 
 @interface TSDownloadPlayViewController : CJUIKitBaseViewController {
     
@@ -21,9 +21,9 @@
 @property (nonatomic, strong) UITextView *noteTextView; // 备注输入框
 @property (nonatomic, strong) AVPlayerViewController *fullScreenPlayerViewController; // 视频播放器
 
-@property (nonatomic, strong) CQTSLocImageDataModel *downloadModel;
+@property (nonatomic, strong) CQDownloadRecordModel *downloadModel;
 
-- (instancetype)initWithDownloadModel:(CQTSLocImageDataModel *)downloadModel deleteCompleteBlock:(void(^)(void))deleteCompleteBlock;
+- (instancetype)initWithDownloadModel:(CQDownloadRecordModel *)downloadModel deleteCompleteBlock:(void(^)(void))deleteCompleteBlock;
 
 
 @end

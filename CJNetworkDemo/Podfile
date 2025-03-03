@@ -34,6 +34,7 @@ target 'CJNetworkDemo' do
   pod 'CJMediaCacheKit',    :path => '../../CJMediaPlayer'
   
   pod 'CJNetwork-Swift',        :path => '../'
+  pod 'CJBaseUIKit',            :subspecs => ['UIView']
   
   # 视频地址解析
   pod 'CQVideoUrlAnalyze-Swift',:path => '../'

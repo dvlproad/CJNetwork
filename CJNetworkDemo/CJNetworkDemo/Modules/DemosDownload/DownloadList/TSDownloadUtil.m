@@ -23,14 +23,14 @@
 
 @implementation TSDownloadUtil
 
-+ (void)saveInViewController:(UIViewController *)vc forDownloadModel:(CQTSLocImageDataModel *)downloadModel {
-    NSString *downloadUrl = downloadModel.imageName;
-    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadUrl];
++ (void)saveInViewController:(UIViewController *)vc forDownloadModel:(CQDownloadRecordModel *)downloadModel {
+    NSString *downloadUrl = downloadModel.url;
+    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadModel];
     NSURL *mediaLocalURL = [NSURL fileURLWithPath:localAbsPath];
     CQTSFileType fileType = [CQTSResourceUtil fileTypeForFilePathOrUrl:mediaLocalURL.path];
     
     NSString *title = [NSString stringWithFormat:@"是否要保存【%@】到相册", fileType == CQTSFileTypeVideo ? @"视频" : @"图片"];
-    NSString *message = downloadModel.imageName;
+    NSString *message = downloadModel.url;
     [CJUIKitAlertUtil showCancleOKAlertInViewController:vc withTitle:title message:message cancleBlock:nil okBlock:^{
         if (fileType == CQTSFileTypeVideo) {
             [CQTSPhotoUtil saveVideoToPhotoAlbum:mediaLocalURL success:^{

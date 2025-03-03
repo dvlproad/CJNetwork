@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <CQDemoKit/CQTSLocImageDataModel.h>
+#import "CQDownloadRecordModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TSDownloadUtil : NSObject
 
-+ (void)saveInViewController:(UIViewController *)vc forDownloadModel:(CQTSLocImageDataModel *)downloadModel;
++ (void)saveInViewController:(UIViewController *)vc forDownloadModel:(CQDownloadRecordModel *)downloadModel;
 
 @end
 

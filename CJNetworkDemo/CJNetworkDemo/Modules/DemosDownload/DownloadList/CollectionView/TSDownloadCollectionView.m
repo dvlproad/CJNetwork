@@ -19,7 +19,7 @@
     
 }
 @property (nonatomic, strong, readonly) CQTSRipeBaseCollectionViewDelegate *ripeCollectionViewDelegate;   /**< collectionView的delegate */
-@property (nullable, nonatomic, copy, readonly) void(^didSelectItemHandle)(NSIndexPath *indexPath, CQTSLocImageDataModel *downloadModel); /**< 点击item的回调 */
+@property (nullable, nonatomic, copy, readonly) void(^didSelectItemHandle)(NSIndexPath *indexPath, CQDownloadRecordModel *downloadModel); /**< 点击item的回调 */
 @property (nonatomic, copy) void(^cellOverlayCustomDeleteHandler)(NSIndexPath *indexPath); // cell上overlay视图里的删除按钮的自定义的删除事件（有时候下载数据不删除，但是关联的数据删除，其就不会展示）
 
 @end
@@ -36,7 +36,7 @@
  *
  *  @return CollectionView
  */
-- (instancetype)initWithDidSelectItemAtIndexHandle:(void(^)(NSIndexPath *indexPath, CQTSLocImageDataModel *downloadModel))didSelectItemAtIndexHandle
+- (instancetype)initWithDidSelectItemAtIndexHandle:(void(^)(NSIndexPath *indexPath, CQDownloadRecordModel *downloadModel))didSelectItemAtIndexHandle
                 cellOverlayCustomDeleteHandler:(void(^ _Nullable)(NSIndexPath *indexPath))cellOverlayCustomDeleteHandler
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -48,8 +48,7 @@
         _didSelectItemHandle = didSelectItemAtIndexHandle;
         _cellOverlayCustomDeleteHandler = cellOverlayCustomDeleteHandler;
         _ripeCollectionViewDelegate = [[CQTSRipeBaseCollectionViewDelegate alloc] initWithPerMaxCount:2 widthHeightRatio: 140/220.0 didSelectItemHandle:^(UICollectionView * _Nonnull bCollectionView, NSIndexPath * _Nonnull bIndexPath) {
-            CQTSLocImageDataModel *downloadModel = [weakSelf dataModelAtIndexPath:bIndexPath];
-            NSString *downloadUrl = downloadModel.imageName;
+            CQDownloadRecordModel *downloadModel = [weakSelf dataModelAtIndexPath:bIndexPath];
             
             TSDownloadCollectionViewCell *cell = (TSDownloadCollectionViewCell *)[bCollectionView cellForItemAtIndexPath:bIndexPath];
             CJFileDownloadState currentDownloadState = [cell.downloadView currentDownloadState];
@@ -96,10 +95,10 @@
  *
  *  @return 指定位置的dataModel
  */
-- (CQTSLocImageDataModel *)dataModelAtIndexPath:(NSIndexPath *)indexPath {
+- (CQDownloadRecordModel *)dataModelAtIndexPath:(NSIndexPath *)indexPath {
     CQDMSectionDataModel *sectionDataModel = [self.sectionDataModels objectAtIndex:indexPath.section];
     NSArray *dataModels = sectionDataModel.values;
-    CQTSLocImageDataModel *moduleModel = [dataModels objectAtIndex:indexPath.row];
+    CQDownloadRecordModel *moduleModel = [dataModels objectAtIndex:indexPath.row];
     
     return moduleModel;
 }
@@ -119,13 +118,12 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CQTSLocImageDataModel *downloadModel = [self dataModelAtIndexPath:indexPath];
+    CQDownloadRecordModel *downloadModel = [self dataModelAtIndexPath:indexPath];
     
     TSDownloadCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
 //            cell.previewImageView.image = [UIImage imageWithContentsOfFile:downloadModel.imageName]; // 视频的预览图
-    NSString *downloadUrl = downloadModel.imageName;
-    cell.downloadView.downloadUrl = downloadUrl;
+    cell.downloadView.downloadUrl = downloadModel;
     cell.downloadView.downloadUrlLabel.text = downloadModel.name;
     __weak typeof(self)weakSelf = self;
     cell.downloadView.customDeleteHandler = ^{

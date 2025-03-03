@@ -7,7 +7,6 @@
 //
 
 #import "TSDownloadCollectionViewController.h"
-#import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/CJUIKitAlertUtil.h>
 
@@ -26,6 +25,12 @@
 
 @implementation TSDownloadCollectionViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.collectionView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -33,15 +38,15 @@
     
     __weak typeof(self)weakSelf = self;
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[CQTSLocImagesUtil cjts_localImageAtIndex:2]];
-    [self.view addSubview:imageView];
-    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.mas_topLayoutGuide);
-        make.bottom.mas_equalTo(self.mas_bottomLayoutGuide);
-    }];
-    
-    TSDownloadCollectionView *collectionView = [[TSDownloadCollectionView alloc] initWithDidSelectItemAtIndexHandle:^(NSIndexPath *indexPath, CQTSLocImageDataModel * _Nonnull downloadModel) {
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[CQTSLocImagesUtil cjts_localImageAtIndex:2]];
+//    [self.view addSubview:imageView];
+//    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.mas_equalTo(self.view);
+//        make.top.mas_equalTo(self.mas_topLayoutGuide);
+//        make.bottom.mas_equalTo(self.mas_bottomLayoutGuide);
+//    }];
+//    
+    TSDownloadCollectionView *collectionView = [[TSDownloadCollectionView alloc] initWithDidSelectItemAtIndexHandle:^(NSIndexPath *indexPath, CQDownloadRecordModel * _Nonnull downloadModel) {
         //[CJUIKitToastUtil showMessage:[NSString stringWithFormat:@"点击了 %@", downloadModel.name]];
         
         TSDownloadPlayViewController *viewController = [[TSDownloadPlayViewController alloc] initWithDownloadModel:downloadModel deleteCompleteBlock:^{
@@ -96,33 +101,16 @@
 }
 
 - (void)deleteFileAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableArray *dataModels = self.collectionView.sectionDataModels.firstObject.values;
-    
-    //TODO: qian
-//    CQTSLocImageDataModel *downloadModel = [dataModels objectAtIndex:indexPath.item];
-//    NSString *downloadUrl = downloadModel.imageName;
-//    [[HSDownloadManager sharedInstance] deleteFile:downloadUrl]; // 视频本身不删除，万一下次也是下载这个呢？而且外部可能重复下载
-    
-    NSMutableArray *shouldRemoveDataModels = [[NSMutableArray alloc] init];
-    for (CQTSLocImageDataModel *model in dataModels) {
-        NSString *iDownloadUrl = model.imageName;
-        if ([iDownloadUrl isEqualToString:downloadUrl]) {
-            [shouldRemoveDataModels addObject:model];
-        }
-    }
-    //[dataModels removeObjectAtIndex:indexPath.item];
-    [dataModels removeObjectsInArray:shouldRemoveDataModels];
+    [TSDownloadVideoIdManager.sharedInstance deleteFileAtIndexPath:indexPath];
+
     [self.collectionView reloadData];
-    
     [self tryCheckDeleteAllButtonShow];
 }
 
 - (void)deleteAllFiles {
-    //[[HSDownloadManager sharedInstance] deleteAllFile];
-//    NSMutableArray *dataModels = self.collectionView.sectionDataModels.firstObject.values;
-//    [dataModels removeAllObjects];
-    [self.collectionView reloadData];
+    [TSDownloadVideoIdManager.sharedInstance deleteAllFiles];
     
+    [self.collectionView reloadData];
     [self tryCheckDeleteAllButtonShow];
 }
 

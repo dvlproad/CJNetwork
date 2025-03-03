@@ -12,6 +12,7 @@
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/NSError+CQTSErrorString.h>
 #import <CQDemoKit/CQTSLocImagesUtil.h>
+#import <CJBaseUIKit/UIView+CJAutoMoveUp.h>
 #import <CJMonitor/CJLogSuspendWindow.h>
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
 
@@ -48,6 +49,7 @@
 - (UIImageView *)imageView {
     if (_imageView == nil) {
         _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _imageView;
 }
@@ -69,8 +71,7 @@
                 [self __showResponseLogMessage:message];
                 
                 // 添加数据
-                [TSDownloadVideoIdManager.sharedInstance addVideoByVideoId:videoId];
-                
+                CQDownloadRecordModel *downloadRecordModel = [TSDownloadVideoIdManager.sharedInstance addVideoByVideoId:videoId];
                 // 跳转到"已解析"Tab
                 dispatch_async(dispatch_get_main_queue(),^{
 //                    [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
@@ -82,7 +83,7 @@
                         // addVideoByVideoId 插入在第一个位置
 //                        TSDownloadCollectionViewCell *cell = [vc.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
 //                        [cell.downloadView startDownload];
-                        [weakSelf downloadFileUrl:videoUrl];
+                        [weakSelf downloadFileUrlRecord:downloadRecordModel];
 //                    }];
                 });
             } failure:^(NSString * _Nonnull errorMessage) {
@@ -91,6 +92,19 @@
         }];
     }
     return _downloadInputView;
+}
+
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+//    [self.autoMoveUpView cj_registerKeyboardNotificationWithAutoMoveUpSpacing:0 hasSpacing:YES];
+    __weak typeof(self)weakSelf = self;
+    [self.downloadInputView cj_registerKeyboardNotificationWithWillShowBlock:nil willHideBlock:nil willChangeFrameBlock:^(CGFloat keyboardHeight, CGFloat keyboardTopY, CGFloat duration) {
+        [weakSelf.downloadInputView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(weakSelf.view).offset(-keyboardHeight);
+        }];
+    }];
 }
 
 - (void)viewDidLoad {
@@ -121,6 +135,15 @@
 //    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
 //    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
 //    self.downloadInputView.textField.text = shortenedUrl;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tapGesture];
+    
+    [self.downloadInputView cj_registerKeyboardNotificationWithAutoMoveUpSpacing:0 hasSpacing:NO];
+}
+
+- (void)dismissKeyboard {
+    [self.view endEditing:YES]; // 让当前 view 内的所有子视图（如 UITextField）失去第一响应者，从而关闭键盘
 }
 
 - (void)analyzeTiktokShortenedUrl:(NSString *)shortenedUrl {
@@ -144,13 +167,13 @@
     }];
 }
 
-- (void)downloadFileUrl:(NSString *)downloadUrl {
+- (void)downloadFileUrlRecord:(CQDownloadRecordModel *)downloadRecordModel {
     __weak typeof(self)weakSelf = self;
-    [[HSDownloadManager sharedInstance] download:downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+    [[HSDownloadManager sharedInstance] downloadOrPause:downloadRecordModel progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
         /*
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
-            NSString *message = [NSString stringWithFormat:@"当前下载进度:=========%@", progressValue];
+            NSString *message = [NSString stringWithFormat:@"1当前下载进度:=========%@", progressValue];
             [self __showResponseLogMessage:message];
         });
         */

@@ -46,20 +46,20 @@
 #pragma mark - Private Method
 - (void)appDidBecomeActive {
     //[self.textField becomeFirstResponder];
-    [self pasteClipboard];
+    [self pasteClipboardWithMustChange:YES];
 }
 
 - (void)setupViews {
     // 创建输入框
     self.textField = [[UITextField alloc] initWithFrame:CGRectZero];
-    self.textField.backgroundColor = [UIColor darkGrayColor];
+    self.textField.backgroundColor = [UIColor lightGrayColor];
     self.textField.textColor = [UIColor whiteColor];
     self.textField.font = [UIFont systemFontOfSize:12];
     self.textField.contentScaleFactor = 0.5;
-    self.textField.placeholder = @"粘贴TikTok视频链接...";
+    self.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"粘贴TikTok视频链接..." attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     self.textField.layer.cornerRadius = 10;
     self.textField.layer.masksToBounds = YES;
-    self.textField.leftView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 30)];
     self.textField.leftViewMode = UITextFieldViewModeAlways;
     [self addSubview:self.textField];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,7 +82,12 @@
 //        make.width.mas_equalTo(30);
 //        make.height.mas_equalTo(30);
 //    }];
-    self.textField.rightView = pasteButton;
+    UIView *rightPaddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+//    UIImageView *iconView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 15, 20, 20)];
+//    iconView.image = [UIImage imageNamed:@"your_icon"];
+//    iconView.contentMode = UIViewContentModeScaleAspectFit;
+    [rightPaddingView addSubview:pasteButton];
+    self.textField.rightView = rightPaddingView;
     self.textField.rightViewMode = UITextFieldViewModeAlways;
     
     // 创建按钮
@@ -101,6 +106,10 @@
         make.left.mas_equalTo(self).offset(20);
         make.height.mas_equalTo(50);
     }];
+    
+    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
+//    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
+    self.textField.text = shortenedUrl;
 }
 
 
@@ -109,15 +118,18 @@
 
 
 #pragma mark - Event
-// 处理粘贴板粘贴功能
 - (void)pasteClipboard {
+    [self pasteClipboardWithMustChange:NO];
+}
+// 处理粘贴板粘贴功能
+- (void)pasteClipboardWithMustChange:(BOOL)mustChange {
     BOOL hasAgree = [[NSUserDefaults standardUserDefaults] boolForKey:@"has_agreed_privacy_policy"];
     if (hasAgree != true) {
         return;
     }
     
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    if (pasteboard.changeCount == _changeCount) {
+    if (mustChange == true && pasteboard.changeCount == _changeCount) {
         return;
     }
     _changeCount = pasteboard.changeCount;

@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CQDemoKit/CQDMSectionDataModel+CJDealTextModel.h>
-#import <CQDemoKit/CQTSLocImageDataModel.h>
+#import "CQDownloadRecordModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return CollectionView
  */
-- (instancetype)initWithDidSelectItemAtIndexHandle:(void(^)(NSIndexPath *indexPath, CQTSLocImageDataModel *downloadModel))didSelectItemAtIndexHandle
+- (instancetype)initWithDidSelectItemAtIndexHandle:(void(^)(NSIndexPath *indexPath, CQDownloadRecordModel *downloadModel))didSelectItemAtIndexHandle
                 cellOverlayCustomDeleteHandler:(void(^ _Nullable)(NSIndexPath *indexPath))cellOverlayCustomDeleteHandler NS_DESIGNATED_INITIALIZER;
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;

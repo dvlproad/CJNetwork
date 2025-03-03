@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CQDownloadRecordModel.h"
 #import "HSSessionModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -20,70 +21,70 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (instancetype)sharedInstance;
 
-/**
- *  开启任务下载资源
+/*
+ *  开启或暂停任务下载资源
  *
- *  @param url           下载地址
+ *  @param record        下载地址
  *  @param progressBlock 回调下载进度
  *  @param stateBlock    下载状态
  */
-- (void)download:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock;
+- (void)downloadOrPause:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock;
 
 /*
  *  更改url的各种回调（场景：在输入界面开启了下载，但回调信息需要用在列表上）
  *
- *  @param url           下载地址
+ *  @param record        下载地址
  *  @param progressBlock 回调下载进度
  *  @param stateBlock    下载状态
  */
-- (void)setupUrl:(NSString *)url progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock;
+- (void)setupUrl:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock;
 
 /**
  *  查询该资源的下载进度值
  *
- *  @param url 下载地址
+ *  @param record 下载地址
  *
  *  @return 返回下载进度值
  */
-- (CGFloat)progress:(NSString *)url;
+- (CGFloat)progress:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record;
 
 /**
  *  获取该资源总大小
  *
- *  @param url 下载地址
+ *  @param record 下载地址
  *
  *  @return 资源总大小
  */
-- (NSInteger)fileTotalLength:(NSString *)url;
+- (NSInteger)fileTotalLength:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record;
 
 /**
  *  判断该文件的下载状态
  */
-- (CJFileDownloadState)downloadStateForUrl:(NSString *)url;
+- (CJFileDownloadState)downloadStateForUrl:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record;
 /**
  *  判断该资源是否下载完成
  *
- *  @param url 下载地址
+ *  @param record 下载地址
  *
  *  @return YES: 完成
  */
-- (BOOL)isCompletion:(NSString *)url;
+- (BOOL)isCompletion:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record;
 
 /**
  *  已下载完成的资源的本地绝对路径
  *
- *  @param Url 下载地址
+ *  @param url 下载地址
  *
  *  @return 已下载完成的资源的本地绝对路径
  */
-- (NSString *)fileLocalAbsPathForUrl:(NSString *)Url;
+- (NSString *)fileLocalAbsPathForUrl:(__kindof NSObject<CJDownloadRecordModelProtocol> *)url;
 
 /**
  *  删除该资源
  *
- *  @param url 下载地址
+ *  @param record 下载地址
  */
-- (void)deleteFile:(NSString *)url;
+- (void)deleteFile:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record;
 
 /**
  *  清空所有下载资源

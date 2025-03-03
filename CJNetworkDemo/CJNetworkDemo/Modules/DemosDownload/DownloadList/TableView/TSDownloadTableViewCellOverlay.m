@@ -187,7 +187,7 @@
 
 /** 下载文件 */
 - (void)downloadButtonTapped:(UIButton *)button {
-    [[HSDownloadManager sharedInstance] download:self.downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+    [[HSDownloadManager sharedInstance] downloadOrPause:self.downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
             self.progressView.progress = progress;

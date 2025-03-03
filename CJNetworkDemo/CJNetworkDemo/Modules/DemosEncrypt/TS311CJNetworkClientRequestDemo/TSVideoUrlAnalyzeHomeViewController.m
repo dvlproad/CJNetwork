@@ -200,10 +200,10 @@
 }
 
 - (void)downloadFileUrl:(NSString *)downloadUrl {
-    [[HSDownloadManager sharedInstance] download:downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+    [[HSDownloadManager sharedInstance] downloadOrPause:downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
-            NSString *message = [NSString stringWithFormat:@"当前下载进度:=========%@", progressValue];
+            NSString *message = [NSString stringWithFormat:@"0当前下载进度:=========%@", progressValue];
             [self __showResponseLogMessage:message];
         });
     } state:^(CJFileDownloadState state, NSError * _Nullable error) {

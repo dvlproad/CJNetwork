@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CQTSBaseDownloadViewController.h"
+#import "CJDownloadEnumUtil.h"
+#import "CQDownloadRecordModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,10 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 /** 流 */
-@property (nonatomic, strong) NSOutputStream *stream;
+@property (nullable, nonatomic, strong) NSOutputStream *stream;
 
 /** 下载地址 */
-@property (nonatomic, copy) NSString *url;
+//@property (nonatomic, copy) NSString *url;
+@property (nonatomic, strong) NSObject<CJDownloadRecordModelProtocol> *url;
 
 /** 获得服务器这次请求 返回数据的总长度 */
 @property (nonatomic, assign) NSInteger totalLength;
