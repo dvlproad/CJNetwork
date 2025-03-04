@@ -48,5 +48,7 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>我们需要访问您的相册来保存图片或视频</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
