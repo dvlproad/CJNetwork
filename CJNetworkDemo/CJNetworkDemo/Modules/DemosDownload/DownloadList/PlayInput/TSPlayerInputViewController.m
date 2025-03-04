@@ -112,6 +112,9 @@
     
     [self.downloadInputView cj_registerKeyboardNotificationWithAutoMoveUpSpacing:0 hasSpacing:NO];
     
+//    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
+    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
+    self.downloadInputView.textField.text = shortenedUrl;
     self.downloadInputView.textField.text = @"https://www.tikwm.com/video/media/hdplay/7465611957203160340.mp4";
 }
 

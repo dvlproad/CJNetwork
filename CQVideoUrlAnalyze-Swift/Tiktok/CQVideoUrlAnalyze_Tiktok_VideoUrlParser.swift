@@ -51,13 +51,18 @@ public class VideoFileUrl: NSObject {
     /// 下载没有访问权限的数据（即把视频地址复制到浏览器没法浏览的）
     @objc public static func downloadAccessRestrictedDataFromActualVideoUrl(
         _ actualVideoUrl: String,
+        saveToLocalURLGetter: @escaping (_ videoFileExtension: String) -> URL, // 视频存放到的本地地址
         success: @escaping (_ cacheURL: URL) -> Void,
         failure: @escaping (NSError) -> Void
     ) {
         getVideoDataFromActualVideoUrl(actualVideoUrl, success: { contentType, videoData in
             let videoFileExtension = contentType?.subtype ?? "mp4"
             let fileName = CJDownloadDataSaveUtil.generateVideoFileName(actualVideoUrl: actualVideoUrl, fileExtension: videoFileExtension)
-            VideoDownloader.saveVideoDataToFile(videoData: videoData, fileName: fileName, success: { cacheURL in
+            
+            let fileManager = FileManager.default
+            let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let fileLocalURL = documentDirectory.appendingPathComponent(fileName)
+            CJDownloadDataSaveUtil.downloadFileData(videoData, fileLocalURL: fileLocalURL, success: { cacheURL in
                 success(cacheURL)
             }, failure: { errorMessage in
                 let error = NSError(domain: "VideoDownloaderSaveError", code: 1001, userInfo: [NSLocalizedDescriptionKey: errorMessage])
@@ -365,22 +370,6 @@ public class VideoResponse: NSObject {
         self.videoData = videoData
     }
 }
-
-@objc public class VideoDownloader: NSObject {
-    @objc public static func saveVideoDataToFile(
-        videoData: Data,
-        fileName: String,
-        success: @escaping ((_ cacheURL: URL) -> Void),
-        failure: @escaping ((_ errorMessage: String) -> Void)
-    ) {
-        let fileManager = FileManager.default
-        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let fileLocalURL = documentDirectory.appendingPathComponent(fileName)
-        
-        CJDownloadDataSaveUtil.downloadFileData(videoData, fileLocalURL: fileLocalURL, success: success, failure: failure)
-    }
-}
-
 
 
 // 定义 ContentType

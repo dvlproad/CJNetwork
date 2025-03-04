@@ -15,6 +15,8 @@
 #import <CJBaseUIKit/UIView+CJAutoMoveUp.h>
 #import <CJMonitor/CJLogSuspendWindow.h>
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
+#import <CJNetwork_Swift/CJNetwork_Swift-Swift.h>
+#import <CQDemoKit/CQTSSandboxPathUtil.h>
 
 #import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
 #import <CJNetwork/CQDemoHTTPSessionManager.h>
@@ -60,35 +62,8 @@
         _downloadInputView = [[TSDownloadInputView alloc] initWithFetchVideoHandle:^(NSString * _Nonnull text) {
 //            [self fetchVideo];
 //            [CJUIKitToastUtil showMessage:@"可在此执行下载"];
-//            NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
-//            NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
-//            [weakSelf analyzeTiktokShortenedUrl:text];
-            
-            NSString *shortenedUrl = text;
-            CQAnalyzeVideoUrlType type = CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD;
-            [CQVideoUrlAnalyze_Tiktok requestUrlFromShortenedUrl:shortenedUrl type:type success:^(NSString * _Nonnull expandedUrl, NSString * _Nonnull videoId, NSString * _Nonnull videoUrl) {
-                NSString *message = [NSString stringWithFormat:@"解析结果如下:\nexpandedUrl=%@\nvideoId=%@\nvideoUrl=%@", expandedUrl, videoId, videoUrl];
-                [self __showResponseLogMessage:message];
-                
-                // 添加数据
-                CQDownloadRecordModel *downloadRecordModel = [TSDownloadVideoIdManager.sharedInstance addVideoByVideoId:videoId];
-                // 跳转到"已解析"Tab
-                dispatch_async(dispatch_get_main_queue(),^{
-//                    [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
-                        [weakSelf.tabBarController setSelectedIndex:1];
-                        UINavigationController *rootVC = [self.tabBarController selectedViewController];
-                        TSDownloadCollectionViewController *vc = rootVC.childViewControllers.firstObject;
-                        vc.collectionView.sectionDataModels = [TSDownloadVideoIdManager.sharedInstance sectionDataModels];
-                        
-                        // addVideoByVideoId 插入在第一个位置
-//                        TSDownloadCollectionViewCell *cell = [vc.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-//                        [cell.downloadView startDownload];
-                        [weakSelf downloadFileUrlRecord:downloadRecordModel];
-//                    }];
-                });
-            } failure:^(NSString * _Nonnull errorMessage) {
-                [self __showResponseLogMessage:errorMessage];
-            }];
+            [weakSelf tikwm_analyzeTiktokShortenedUrl:text];
+//            [weakSelf local_analyzeTiktokShortenedUrl:text];
         }];
     }
     return _downloadInputView;
@@ -112,7 +87,6 @@
     // Do any additional setup after loading the view.
     
 //    self.navigationItem.title = NSLocalizedString(@"视频解析", nil);
-    __weak typeof(self)weakSelf = self;
     
     [self.view addSubview:self.imageView];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -132,30 +106,71 @@
         make.bottom.mas_equalTo(self.mas_bottomLayoutGuide).offset(-30);
     }];
     
-//    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
-//    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
-//    self.downloadInputView.textField.text = shortenedUrl;
-    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tapGesture];
     
     [self.downloadInputView cj_registerKeyboardNotificationWithAutoMoveUpSpacing:0 hasSpacing:NO];
+    
+//    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
+    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
+    self.downloadInputView.textField.text = shortenedUrl;
 }
 
 - (void)dismissKeyboard {
     [self.view endEditing:YES]; // 让当前 view 内的所有子视图（如 UITextField）失去第一响应者，从而关闭键盘
 }
 
-- (void)analyzeTiktokShortenedUrl:(NSString *)shortenedUrl {
+- (void)tikwm_analyzeTiktokShortenedUrl:(NSString *)shortenedUrl {
+    __weak typeof(self)weakSelf = self;
+    
+    CQAnalyzeVideoUrlType type = CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD;
+    [CQVideoUrlAnalyze_Tiktok requestUrlFromShortenedUrl:shortenedUrl type:type success:^(NSString * _Nonnull expandedUrl, NSString * _Nonnull videoId, NSString * _Nonnull videoUrl) {
+        NSString *message = [NSString stringWithFormat:@"解析结果如下:\nexpandedUrl=%@\nvideoId=%@\nvideoUrl=%@", expandedUrl, videoId, videoUrl];
+        [self __showResponseLogMessage:message];
+        
+        // 添加数据
+        NSArray *records = [TSDownloadVideoIdManager.sharedInstance getRecordsForVideoId:videoId];
+        CQDownloadRecordModel *downloadRecordModel = records.firstObject;
+        [TSDownloadVideoIdManager.sharedInstance addDownloadRecoredModels:@[downloadRecordModel]];
+        // 跳转到"已解析"Tab
+        dispatch_async(dispatch_get_main_queue(),^{
+            //[CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
+                [weakSelf __goRecordsPage];
+                
+                // addVideoByVideoId 插入在第一个位置
+//                TSDownloadCollectionViewCell *cell = [vc.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+//                [cell.downloadView startDownload];
+                [weakSelf downloadFileUrlRecord:downloadRecordModel];
+            //}];
+        });
+    } failure:^(NSString * _Nonnull errorMessage) {
+        [self __showResponseLogMessage:errorMessage];
+    }];
+}
+
+- (void)local_analyzeTiktokShortenedUrl:(NSString *)shortenedUrl {
+    __weak typeof(self)weakSelf = self;
+    
+    CQDownloadRecordModel *downloadRecordModel = [[CQDownloadRecordModel alloc] init];
+    downloadRecordModel.url = shortenedUrl;
+    
     [TikTokService getActualVideoUrlFromShortenedUrl:shortenedUrl success:^(NSString * _Nonnull videoUrl) {
         dispatch_async(dispatch_get_main_queue(),^{
             //[CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
-                [TikTokService downloadAccessRestrictedDataFromActualVideoUrl:videoUrl success:^(NSURL * _Nonnull cacheURL) {
+                [TikTokService downloadAccessRestrictedDataFromActualVideoUrl:videoUrl saveToLocalURLGetter:^NSURL * _Nonnull(NSString * _Nonnull videoFileExtension) {
+                    NSString *saveToAbsPath = downloadRecordModel.saveToAbsPath;
+                    return [NSURL fileURLWithPath:saveToAbsPath];
                     
-                    
-                    NSString *message = [NSString stringWithFormat:@"解析并且下载成功:\n视频短链=%@\n视频地址=%@\n保存位置=%@", shortenedUrl, videoUrl, cacheURL.absoluteString];
-                    [self __showResponseLogMessage:message];
-                    
+                } success:^(NSURL * _Nonnull cacheURL) {
+                    dispatch_async(dispatch_get_main_queue(),^{
+                        NSString *message = [NSString stringWithFormat:@"解析并且下载成功:\n视频短链=%@\n视频地址=%@\n保存位置=%@", shortenedUrl, videoUrl, cacheURL.absoluteString];
+                        [self __showResponseLogMessage:message];
+                        
+                        downloadRecordModel.downloadState = CJFileDownloadStateSuccess;
+                        [TSDownloadVideoIdManager.sharedInstance addDownloadRecoredModels:@[downloadRecordModel]];
+                        
+                        [weakSelf __goRecordsPage];
+                    });
                     
                 } failure:^(NSError * _Nonnull error) {
                     [self __showResponseLogMessage:error.localizedDescription];
@@ -167,8 +182,15 @@
     }];
 }
 
+- (void)__goRecordsPage {
+    [self.tabBarController setSelectedIndex:1];
+    UINavigationController *rootVC = [self.tabBarController selectedViewController];
+    TSDownloadCollectionViewController *vc = rootVC.childViewControllers.firstObject;
+    vc.collectionView.sectionDataModels = [TSDownloadVideoIdManager.sharedInstance sectionDataModels];
+}
+
 - (void)downloadFileUrlRecord:(CQDownloadRecordModel *)downloadRecordModel {
-    __weak typeof(self)weakSelf = self;
+    //__weak typeof(self)weakSelf = self;
     [[HSDownloadManager sharedInstance] downloadOrPause:downloadRecordModel progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
         /*
         dispatch_async(dispatch_get_main_queue(), ^{

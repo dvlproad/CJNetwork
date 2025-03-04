@@ -13,6 +13,8 @@
 #import <CQDemoKit/NSError+CQTSErrorString.h>
 #import <CJMonitor/CJLogSuspendWindow.h>
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
+#import <CJNetwork_Swift/CJNetwork_Swift-Swift.h>
+#import <CQDemoKit/CQTSSandboxPathUtil.h>
 
 #import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
 #import <CJNetwork/CQDemoHTTPSessionManager.h>
@@ -26,6 +28,7 @@
 
 
 #import "CQVideoAnalyzeMainViewController.h"
+#import "CQDownloadRecordModel.h"
 
 @interface TSVideoUrlAnalyzeHomeViewController () {
     
@@ -54,7 +57,7 @@
 //            [CJUIKitToastUtil showMessage:@"可在此执行下载"];
 //            NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
 //            NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
-            [weakSelf analyzeTiktokShortenedUrl:text];
+            [weakSelf local_analyzeTiktokShortenedUrl:text];
         }];
     }
     return _downloadInputView;
@@ -115,21 +118,16 @@
             loginModule.actionBlock = ^{
                 NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
 //                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
-                CQAnalyzeVideoUrlType type = CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD;
-                [CQVideoUrlAnalyze_Tiktok requestUrlFromShortenedUrl:shortenedUrl type:type success:^(NSString * _Nonnull expandedUrl, NSString * _Nonnull videoId, NSString * _Nonnull videoUrl) {
-                    NSString *message = [NSString stringWithFormat:@"解析结果如下:\nexpandedUrl=%@\nvideoId=%@\nvideoUrl=%@", expandedUrl, videoId, videoUrl];
-                    [self __showResponseLogMessage:message];
-                    
-                    dispatch_async(dispatch_get_main_queue(),^{
-                        [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
-                            [self downloadFileUrl:videoUrl];
-                        }];
-                    });
-                } failure:^(NSString * _Nonnull errorMessage) {
-                    [self __showResponseLogMessage:errorMessage];
-                }];
+                [weakSelf tikwm_analyzeTiktokShortenedUrl:shortenedUrl];
             };
             [sectionDataModel.values addObject:loginModule];
+        }
+        {
+            CQDMModuleModel *dataModel = [[CQDMModuleModel alloc] init];
+            dataModel.title = @"解析tiktok视频地址，videoId tikwm.com 案例";
+            dataModel.contentLines = 2;
+            dataModel.classEntry = [CQVideoAnalyzeMainViewController class];
+            [sectionDataModel.values addObject:dataModel];
         }
         [sectionDataModels addObject:sectionDataModel];
     }
@@ -140,18 +138,11 @@
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = @"Tiktok 视频地址本地解析";
         {
-            CQDMModuleModel *dataModel = [[CQDMModuleModel alloc] init];
-            dataModel.title = @"Tiktok 视频地址本地解析";
-            dataModel.contentLines = 2;
-            dataModel.classEntry = [CQVideoAnalyzeMainViewController class];
-            [sectionDataModel.values addObject:dataModel];
-        }
-        {
             CQDMModuleModel *loginModule = [[CQDMModuleModel alloc] init];
             loginModule.title = @"解析tiktok视频地址 错误下载无法访问的数据";
             loginModule.content = @"无水印";
             loginModule.actionBlock = ^{
-//                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
+                //                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
                 NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
                 [TikTokService getActualVideoUrlFromShortenedUrl:shortenedUrl success:^(NSString * _Nonnull videoUrl) {
                     dispatch_async(dispatch_get_main_queue(),^{
@@ -170,23 +161,44 @@
             loginModule.title = @"解析tiktok视频地址 正确下载无法访问的数据";
             loginModule.content = @"无水印";
             loginModule.actionBlock = ^{
-//                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
+                //                NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
                 NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
-                [weakSelf analyzeTiktokShortenedUrl:shortenedUrl];
+                [weakSelf local_analyzeTiktokShortenedUrl:shortenedUrl];
             };
             [sectionDataModel.values addObject:loginModule];
         }
         [sectionDataModels addObject:sectionDataModel];
     }
-
+    
     self.sectionDataModels = sectionDataModels;
 }
 
-- (void)analyzeTiktokShortenedUrl:(NSString *)shortenedUrl {
+- (void)tikwm_analyzeTiktokShortenedUrl:(NSString *)shortenedUrl {
+    CQAnalyzeVideoUrlType type = CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD;
+    [CQVideoUrlAnalyze_Tiktok requestUrlFromShortenedUrl:shortenedUrl type:type success:^(NSString * _Nonnull expandedUrl, NSString * _Nonnull videoId, NSString * _Nonnull videoUrl) {
+        NSString *message = [NSString stringWithFormat:@"解析结果如下:\nexpandedUrl=%@\nvideoId=%@\nvideoUrl=%@", expandedUrl, videoId, videoUrl];
+        [self __showResponseLogMessage:message];
+        
+        dispatch_async(dispatch_get_main_queue(),^{
+            [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
+                [self downloadFileUrl:videoUrl];
+            }];
+        });
+    } failure:^(NSString * _Nonnull errorMessage) {
+        [self __showResponseLogMessage:errorMessage];
+    }];
+}
+
+- (void)local_analyzeTiktokShortenedUrl:(NSString *)shortenedUrl {
     [TikTokService getActualVideoUrlFromShortenedUrl:shortenedUrl success:^(NSString * _Nonnull videoUrl) {
         dispatch_async(dispatch_get_main_queue(),^{
             [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
-                [TikTokService downloadAccessRestrictedDataFromActualVideoUrl:videoUrl success:^(NSURL * _Nonnull cacheURL) {
+                [TikTokService downloadAccessRestrictedDataFromActualVideoUrl:videoUrl saveToLocalURLGetter:^NSURL * _Nonnull(NSString * _Nonnull videoFileExtension) {
+                    NSString *fileName = [CJDownloadDataSaveUtil generateVideoFileNameWithActualVideoUrl:videoUrl fileExtension:videoFileExtension];
+                    NSURL *documentDirectoryURL = [CQTSSandboxPathUtil sandboxURL:CQTSSandboxTypeDocuments];
+                    NSURL *fileLocalURL = [documentDirectoryURL URLByAppendingPathComponent:fileName];
+                    return fileLocalURL;
+                } success:^(NSURL * _Nonnull cacheURL) {
                     NSString *message = [NSString stringWithFormat:@"解析并且下载成功:\n视频短链=%@\n视频地址=%@\n保存位置=%@", shortenedUrl, videoUrl, cacheURL.absoluteString];
                     [self __showResponseLogMessage:message];
                 } failure:^(NSError * _Nonnull error) {
@@ -200,7 +212,10 @@
 }
 
 - (void)downloadFileUrl:(NSString *)downloadUrl {
-    [[HSDownloadManager sharedInstance] downloadOrPause:downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+    CQDownloadRecordModel *downloadModel = [[CQDownloadRecordModel alloc] init];
+    downloadModel.url = downloadUrl;
+    
+    [[HSDownloadManager sharedInstance] downloadOrPause:downloadModel progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
             NSString *message = [NSString stringWithFormat:@"0当前下载进度:=========%@", progressValue];
@@ -221,7 +236,7 @@
                     break;
                 }
                 case CJFileDownloadStateSuccess: {
-                    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadUrl];
+                    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadModel];
                     NSString *message = [NSString stringWithFormat:@"下载完成，存放在:%@", localAbsPath];
                     [self __showResponseLogMessage:message];
                     break;

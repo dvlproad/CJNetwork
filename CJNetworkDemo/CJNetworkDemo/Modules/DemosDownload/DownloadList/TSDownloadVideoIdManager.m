@@ -35,7 +35,7 @@
 }
 
 #pragma mark - Event
-- (CQDownloadRecordModel *)addVideoByVideoId:(NSString *)videoId {
+- (NSArray<CQDownloadRecordModel *> *)getRecordsForVideoId:(NSString *)videoId {
 //    [self addVideoByVideoId:@"7465611957203160340"];
 //    NSString *cover = [CQVideoUrlAnalyze_Tiktok getVideoInfoFor:CQAnalyzeVideoUrlTypeImageCover videoId:videoId];
     
@@ -64,8 +64,12 @@
         dataModel.name = [NSString stringWithFormat:@"videoWithoutWatermarkHD %@", videoId];
         dataModel.url = videoWithoutWatermarkHD;
         [dataModels addObject:dataModel];
-    
-    
+
+        return dataModels;
+ }
+
+
+ - (void)addDownloadRecoredModels:(NSArray<CQDownloadRecordModel *> *)dataModels {
 //    [self.sectionDataModels.firstObject.values addObjectsFromArray:dataModels];
     NSMutableArray *values = self.sectionDataModels.firstObject.values;
     for (CQDownloadRecordModel *dataModel in dataModels) {
@@ -74,8 +78,6 @@
     
     // 保存 sectionDataModels 到 UserDefault
     [self saveSectionDataModelsToUserDefault];
-    
-    return dataModel;
 }
 
 - (void)saveSectionDataModelsToUserDefault {

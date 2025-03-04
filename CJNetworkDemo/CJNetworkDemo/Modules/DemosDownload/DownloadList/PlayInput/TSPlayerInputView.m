@@ -106,10 +106,6 @@
         make.left.mas_equalTo(self).offset(20);
         make.height.mas_equalTo(50);
     }];
-    
-    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
-//    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
-    self.textField.text = shortenedUrl;
 }
 
 

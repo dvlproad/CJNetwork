@@ -7,6 +7,9 @@
 //
 
 #import "TSDownloadCollectionViewCellOverlay.h"
+#import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
+#import <CJNetwork_Swift/CJNetwork_Swift-Swift.h>
+#import <CQDemoKit/CQTSSandboxPathUtil.h>
 
 @interface TSDownloadCollectionViewCellOverlay ()
 
@@ -222,6 +225,27 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self __changeState:state];
         });
+    }];
+}
+
+- (void)local_analyzeTiktokShortenedUrl:(NSString *)shortenedUrl {
+    shortenedUrl = _downloadUrl.url;
+    
+    [TikTokService getActualVideoUrlFromShortenedUrl:shortenedUrl success:^(NSString * _Nonnull videoUrl) {
+        dispatch_async(dispatch_get_main_queue(),^{
+            [TikTokService downloadAccessRestrictedDataFromActualVideoUrl:videoUrl saveToLocalURLGetter:^NSURL * _Nonnull(NSString * _Nonnull videoFileExtension) {
+                NSString *saveToAbsPath = self.downloadUrl.saveToAbsPath;
+                return [NSURL fileURLWithPath:saveToAbsPath];
+                
+            } success:^(NSURL * _Nonnull cacheURL) {
+                NSString *message = [NSString stringWithFormat:@"解析并且下载成功:\n视频短链=%@\n视频地址=%@\n保存位置=%@", shortenedUrl, videoUrl, cacheURL.absoluteString];
+                [self __showResponseLogMessage:message];
+            } failure:^(NSError * _Nonnull error) {
+                [self __showResponseLogMessage:error.localizedDescription];
+            }];
+        });
+    } failure:^(NSError * _Nonnull error) {
+        [self __showResponseLogMessage:error.localizedDescription];
     }];
 }
 
