@@ -72,6 +72,9 @@
 		9740B6322D6B330C00193499 /* TSDownloadCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6312D6B330C00193499 /* TSDownloadCollectionViewCell.m */; };
 		9740B6432D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */; };
 		9740B6462D6B427900193499 /* TSDownloadCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */; };
+		9743BFA92D7734FB009677A8 /* TSPlayerInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9743BFA52D7734FB009677A8 /* TSPlayerInputView.m */; };
+		9743BFAA2D7734FB009677A8 /* TSPlayerInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9743BFA72D7734FB009677A8 /* TSPlayerInputViewController.m */; };
+		9743BFAF2D773B4D009677A8 /* TSInputPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9743BFAE2D773B4D009677A8 /* TSInputPlayerViewController.m */; };
 		978265E92D75ECA000F6353B /* CQDownloadRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 978265E82D75ECA000F6353B /* CQDownloadRecordModel.m */; };
 		97CE37C12D6F4F9B0064D675 /* CJDownloadEnumUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CE37C02D6F4F9B0064D675 /* CJDownloadEnumUtil.m */; };
 		97CEFB1C2D743F4B00FFBD1D /* TSDownloadInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CEFB192D743F4B00FFBD1D /* TSDownloadInputView.m */; };
@@ -231,6 +234,12 @@
 		9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewCellOverlay.m; sourceTree = "<group>"; };
 		9740B6442D6B427900193499 /* TSDownloadCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionViewController.h; sourceTree = "<group>"; };
 		9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewController.m; sourceTree = "<group>"; };
+		9743BFA42D7734FB009677A8 /* TSPlayerInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSPlayerInputView.h; sourceTree = "<group>"; };
+		9743BFA52D7734FB009677A8 /* TSPlayerInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSPlayerInputView.m; sourceTree = "<group>"; };
+		9743BFA62D7734FB009677A8 /* TSPlayerInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSPlayerInputViewController.h; sourceTree = "<group>"; };
+		9743BFA72D7734FB009677A8 /* TSPlayerInputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSPlayerInputViewController.m; sourceTree = "<group>"; };
+		9743BFAD2D773B4D009677A8 /* TSInputPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSInputPlayerViewController.h; sourceTree = "<group>"; };
+		9743BFAE2D773B4D009677A8 /* TSInputPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSInputPlayerViewController.m; sourceTree = "<group>"; };
 		978265E72D75ECA000F6353B /* CQDownloadRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CQDownloadRecordModel.h; sourceTree = "<group>"; };
 		978265E82D75ECA000F6353B /* CQDownloadRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CQDownloadRecordModel.m; sourceTree = "<group>"; };
 		97CE37BF2D6F4F9B0064D675 /* CJDownloadEnumUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJDownloadEnumUtil.h; sourceTree = "<group>"; };
@@ -550,14 +559,11 @@
 				97CEFB172D743F4B00FFBD1D /* CQVideoAnalyzeMainViewController.m */,
 				97CEFB282D74C2DE00FFBD1D /* CQDownloadSettingViewController.h */,
 				97CEFB292D74C2DE00FFBD1D /* CQDownloadSettingViewController.m */,
-				97CEFB1A2D743F4B00FFBD1D /* TSDownloadInputViewController.h */,
-				97CEFB1B2D743F4B00FFBD1D /* TSDownloadInputViewController.m */,
-				97CEFB182D743F4B00FFBD1D /* TSDownloadInputView.h */,
-				97CEFB192D743F4B00FFBD1D /* TSDownloadInputView.m */,
-				97CEFB222D74936A00FFBD1D /* TSDownloadPlayViewController.h */,
-				97CEFB232D74936A00FFBD1D /* TSDownloadPlayViewController.m */,
+				9743BFAC2D773A89009677A8 /* DownloadInput */,
+				9743BFAB2D773A2E009677A8 /* DownloadPlay */,
 				97CEFB252D7494B900FFBD1D /* TSDownloadUtil.h */,
 				97CEFB262D7494B900FFBD1D /* TSDownloadUtil.m */,
+				9743BFA82D7734FB009677A8 /* PlayInput */,
 				9740B6482D6B453B00193499 /* TableView */,
 				9740B6492D6B454E00193499 /* CollectionView */,
 			);
@@ -770,6 +776,39 @@
 				9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		9743BFA82D7734FB009677A8 /* PlayInput */ = {
+			isa = PBXGroup;
+			children = (
+				9743BFA42D7734FB009677A8 /* TSPlayerInputView.h */,
+				9743BFA52D7734FB009677A8 /* TSPlayerInputView.m */,
+				9743BFA62D7734FB009677A8 /* TSPlayerInputViewController.h */,
+				9743BFA72D7734FB009677A8 /* TSPlayerInputViewController.m */,
+				9743BFAD2D773B4D009677A8 /* TSInputPlayerViewController.h */,
+				9743BFAE2D773B4D009677A8 /* TSInputPlayerViewController.m */,
+			);
+			path = PlayInput;
+			sourceTree = "<group>";
+		};
+		9743BFAB2D773A2E009677A8 /* DownloadPlay */ = {
+			isa = PBXGroup;
+			children = (
+				97CEFB222D74936A00FFBD1D /* TSDownloadPlayViewController.h */,
+				97CEFB232D74936A00FFBD1D /* TSDownloadPlayViewController.m */,
+			);
+			path = DownloadPlay;
+			sourceTree = "<group>";
+		};
+		9743BFAC2D773A89009677A8 /* DownloadInput */ = {
+			isa = PBXGroup;
+			children = (
+				97CEFB1A2D743F4B00FFBD1D /* TSDownloadInputViewController.h */,
+				97CEFB1B2D743F4B00FFBD1D /* TSDownloadInputViewController.m */,
+				97CEFB182D743F4B00FFBD1D /* TSDownloadInputView.h */,
+				97CEFB192D743F4B00FFBD1D /* TSDownloadInputView.m */,
+			);
+			path = DownloadInput;
 			sourceTree = "<group>";
 		};
 		B62537BB601228A564AEACA5 /* Frameworks */ = {
@@ -1056,6 +1095,7 @@
 				97CEFB242D74936A00FFBD1D /* TSDownloadPlayViewController.m in Sources */,
 				158259DA2484E8F500BA4B3D /* TestNetworkClient+TestCache.m in Sources */,
 				78FC92001F54481E00033DEF /* ViewController.m in Sources */,
+				9743BFAF2D773B4D009677A8 /* TSInputPlayerViewController.m in Sources */,
 				97CEFB272D7494B900FFBD1D /* TSDownloadUtil.m in Sources */,
 				97CEFB212D7444B800FFBD1D /* TSDownloadVideoIdManager.m in Sources */,
 				7868F1812121C79A00A283EB /* AFDownloadViewController.m in Sources */,
@@ -1063,6 +1103,8 @@
 				7801C0D621ABE04400045114 /* CJJSONResponseSerializer.m in Sources */,
 				158259E12484E8F500BA4B3D /* TS12MyNetworkClientHomeViewController.m in Sources */,
 				7868F17F2121C79A00A283EB /* SessionDownloadTaskDownloadViewController.m in Sources */,
+				9743BFA92D7734FB009677A8 /* TSPlayerInputView.m in Sources */,
+				9743BFAA2D7734FB009677A8 /* TSPlayerInputViewController.m in Sources */,
 				80E7E62920ABCFBC000F762D /* AppInfoManager.m in Sources */,
 				78FF35E721A91F07006DCEE7 /* SemaphoreHomeViewController.m in Sources */,
 				78FC91FA1F54481E00033DEF /* main.m in Sources */,

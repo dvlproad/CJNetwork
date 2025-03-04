@@ -11,6 +11,7 @@
 
 #import "TSDownloadInputViewController.h"
 #import "TSDownloadCollectionViewController.h"
+#import "TSPlayerInputViewController.h"
 #import "CQDownloadSettingViewController.h"
 
 @interface CQVideoAnalyzeMainViewController ()
@@ -57,6 +58,13 @@
     UINavigationController *scrollViewHomeNavigationController = [[UINavigationController alloc] initWithRootViewController:scrollViewHomeViewController];
     [self addChildViewController:scrollViewHomeNavigationController];
     
+    TSPlayerInputViewController *playerInputViewController = [[TSPlayerInputViewController alloc] init];
+    playerInputViewController.view.backgroundColor = [UIColor whiteColor];
+    playerInputViewController.navigationItem.title = NSLocalizedString(@"播放器", nil);
+    playerInputViewController.tabBarItem.title = NSLocalizedString(@"播放器", nil);
+    playerInputViewController.tabBarItem.image = [[UIImage imageNamed:@"icons8-folder"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UINavigationController *navigationController3 = [[UINavigationController alloc] initWithRootViewController:playerInputViewController];
+    [self addChildViewController:navigationController3];
     
     CQDownloadSettingViewController *viewController6 = [[CQDownloadSettingViewController alloc] init];
     viewController6.view.backgroundColor = [UIColor whiteColor];

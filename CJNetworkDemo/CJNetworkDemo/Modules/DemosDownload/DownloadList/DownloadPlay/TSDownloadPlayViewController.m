@@ -55,11 +55,39 @@
     [self setupVideoThumbnail];
     
 //    [self setupNoteTextView];
+    
+    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:self.downloadModel];
+    //NSURL *videoURL = [NSURL fileURLWithPath:localAbsPath];
+    
+    NSString *videoUrl = localAbsPath;
+    NSURL *videoURL;
+    if ([videoUrl hasPrefix:@"http"] || [videoUrl hasPrefix:@"https"]) {
+        videoURL = [NSURL URLWithString:videoUrl];
+    } else {
+        videoURL = [NSURL fileURLWithPath:videoUrl];
+    }
+    self.videoURL = videoURL;
+    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:videoURL];
+    [self.player replaceCurrentItemWithPlayerItem:playerItem];
+    [self.player play];
+
 }
 
 #pragma mark - 设置导航栏
 - (void)setupNavigationBarAndButtons {
     UIView *navigationBarView = [[UIView alloc] init];
+    [self.view addSubview:navigationBarView];
+    [navigationBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        if (@available(iOS 11.0, *)) {
+            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(0);
+        } else {
+            // Fallback on earlier versions
+            // topLayoutGuide\bottomLayoutGuide iOS11已经被弃用
+            make.top.equalTo(self.mas_topLayoutGuideBottom).offset(0);
+        }
+        make.height.mas_equalTo(44);
+        make.left.right.mas_equalTo(self.view);
+    }];
     self.navigationBarView = navigationBarView;
     
     // 返回按钮
@@ -104,19 +132,6 @@
         make.height.mas_equalTo(44);
     }];
     self.deleteButton = deleteButton;
-    
-    [self.view addSubview:navigationBarView];
-    [navigationBarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        if (@available(iOS 11.0, *)) {
-            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(0);
-        } else {
-            // Fallback on earlier versions
-            // topLayoutGuide\bottomLayoutGuide iOS11已经被弃用
-            make.top.equalTo(self.mas_topLayoutGuideBottom).offset(0);
-        }
-        make.height.mas_equalTo(44);
-        make.left.right.mas_equalTo(self.view);
-    }];
     
 
     CGFloat buttonSize = 50;
@@ -195,14 +210,16 @@
 
 - (void)addPlayView {
 //    NSURL *videoURL = [NSURL URLWithString:videoUrl];
-    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:self.downloadModel];
-    NSURL *videoURL = [NSURL fileURLWithPath:localAbsPath];
-    self.videoURL = videoURL;
+//    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:self.downloadModel];
+//    NSURL *videoURL = [NSURL fileURLWithPath:localAbsPath];
+////    NSURL *videoURL = [NSURL URLWithString:@"https://www.tikwm.com/video/media/hdplay/7465611957203160340.mp4"];
+//    self.videoURL = videoURL;
     
     // 1. 创建播放器
 //    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:videoURL];
 //    self.player = [AVPlayer playerWithPlayerItem:playerItem];
-    self.player = [AVPlayer playerWithURL:videoURL];
+//    self.player = [AVPlayer playerWithURL:videoURL];
+    self.player = [[AVPlayer alloc] init]; // 先创建一个空的 AVPlayer，然后在获取到视频 URL 之后再设置 AVPlayerItem 进行播放
 
     // 2. 创建 `AVPlayerViewController`
     self.playerViewController = [[AVPlayerViewController alloc] init];

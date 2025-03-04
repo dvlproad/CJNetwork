@@ -17,7 +17,7 @@
     // 只直接测试某个页面
     UIViewController *rootViewController = [[UINavigationController alloc] initWithRootViewController:[[NSClassFromString(@"TSVideoUrlAnalyzeHomeViewController") alloc] init]];
     rootViewController = [[CQVideoAnalyzeMainViewController alloc] init];
-    //rootViewController = [[MainViewController alloc] init];
+    rootViewController = [[MainViewController alloc] init];
     
     self.rootViewController = rootViewController;
     [self makeKeyAndVisible];

@@ -23,7 +23,13 @@
 
 @property (nonatomic, strong) CQDownloadRecordModel *downloadModel;
 
-- (instancetype)initWithDownloadModel:(CQDownloadRecordModel *)downloadModel deleteCompleteBlock:(void(^)(void))deleteCompleteBlock;
+- (instancetype)initWithDownloadModel:(CQDownloadRecordModel *)downloadModel deleteCompleteBlock:(void(^)(void))deleteCompleteBlock NS_DESIGNATED_INITIALIZER;
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
+
 
 
 @end
