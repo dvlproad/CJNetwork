@@ -163,8 +163,17 @@
 
 #pragma mark 刷新数据
 - (void)initData {
-    CJFileDownloadState downloadState = [[HSDownloadManager sharedInstance] downloadStateForUrl:self.downloadModel];
-//    CJFileDownloadState downloadState = self.downloadModel.downloadState;
+    // 获取当前下载状态
+    CJFileDownloadState downloadState;
+    CJFileDownloadMethod downloadMethod = [CQDownloadCacheUtil getDownloadMethodForRecord:self.downloadModel];
+    if (downloadMethod == CJFileDownloadMethodProgress) {
+        downloadState = [[HSDownloadManager sharedInstance] downloadStateForUrl:self.downloadModel];
+    } else if (downloadMethod == CJFileDownloadMethodOneOff) {
+        downloadState = [CQDownloadCacheUtil nototal_downloadState:self.downloadModel];
+    } else {
+        downloadState = CJFileDownloadStateUnknown;
+    }
+    
     [self __changeState:downloadState];
     
     CGFloat progress = [CQDownloadCacheUtil progress:self.downloadModel];
@@ -198,19 +207,23 @@
 
 - (void)setupDownloadBlock {
     [self initData];
-    [[HSDownloadManager sharedInstance] setupUrl:self.downloadModel progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
-            NSString *message = [NSString stringWithFormat:@"3当前下载进度:=========%@", progressValue];
-            [self __showResponseLogMessage:message];
-            self.progressLabel.text = progressValue;
-            self.progressView.progress = progress;
-        });
-    } state:^(CJFileDownloadState state, NSError * _Nullable error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self __changeState:state];
-        });
-    }];
+    
+    CJFileDownloadMethod downloadMethod = [CQDownloadCacheUtil getDownloadMethodForRecord:self.downloadModel];
+    if (downloadMethod == CJFileDownloadMethodProgress) {
+        [[HSDownloadManager sharedInstance] setupUrl:self.downloadModel progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
+                NSString *message = [NSString stringWithFormat:@"3当前下载进度:=========%@", progressValue];
+                [self __showResponseLogMessage:message];
+                self.progressLabel.text = progressValue;
+                self.progressView.progress = progress;
+            });
+        } state:^(CJFileDownloadState state, NSError * _Nullable error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self __changeState:state];
+            });
+        }];
+    }
 }
 
 - (void)startDownload {

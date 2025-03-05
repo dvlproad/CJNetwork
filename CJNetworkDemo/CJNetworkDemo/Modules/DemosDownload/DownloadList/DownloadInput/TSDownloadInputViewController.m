@@ -62,8 +62,15 @@
         _downloadInputView = [[TSDownloadInputView alloc] initWithFetchVideoHandle:^(NSString * _Nonnull text) {
 //            [self fetchVideo];
 //            [CJUIKitToastUtil showMessage:@"可在此执行下载"];
-            [weakSelf tikwm_analyzeTiktokShortenedUrl:text];
-//            [weakSelf local_analyzeTiktokShortenedUrl:text];
+//            [weakSelf tikwm_analyzeTiktokShortenedUrl:text failure:^(NSString * _Nonnull errorMessage) {
+//                [CJUIKitToastUtil showMessage:errorMessage];
+//            }];
+            // 先本地解析，若失败再用第三方解析
+            [weakSelf local_analyzeTiktokShortenedUrl:text failure:^(NSError * _Nonnull error) {
+                [weakSelf tikwm_analyzeTiktokShortenedUrl:text failure:^(NSString * _Nonnull errorMessage) {
+                    [CJUIKitToastUtil showMessage:errorMessage];
+                }];
+            }];
         }];
     }
     return _downloadInputView;
@@ -112,7 +119,7 @@
     [self.view endEditing:YES]; // 让当前 view 内的所有子视图（如 UITextField）失去第一响应者，从而关闭键盘
 }
 
-- (void)tikwm_analyzeTiktokShortenedUrl:(NSString *)shortenedUrl {
+- (void)tikwm_analyzeTiktokShortenedUrl:(NSString *)shortenedUrl failure:(void (^)(NSString * _Nonnull))failure {
     __weak typeof(self)weakSelf = self;
     
     CQAnalyzeVideoUrlType type = CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD;
@@ -137,10 +144,11 @@
         });
     } failure:^(NSString * _Nonnull errorMessage) {
         [self __showResponseLogMessage:errorMessage];
+        failure(errorMessage);
     }];
 }
 
-- (void)local_analyzeTiktokShortenedUrl:(NSString *)shortenedUrl {
+- (void)local_analyzeTiktokShortenedUrl:(NSString *)shortenedUrl failure:(void (^)(NSError * _Nonnull))failure {
     __weak typeof(self)weakSelf = self;
     
     CQDownloadRecordModel *downloadRecordModel = [[CQDownloadRecordModel alloc] init];
@@ -158,7 +166,8 @@
                         NSString *message = [NSString stringWithFormat:@"解析并且下载成功:\n视频短链=%@\n视频地址=%@\n保存位置=%@", shortenedUrl, videoUrl, cacheURL.absoluteString];
                         [self __showResponseLogMessage:message];
                         
-                        downloadRecordModel.downloadState = CJFileDownloadStateSuccess;
+                        //downloadRecordModel.downloadState = CJFileDownloadStateSuccess;
+                        [CQDownloadCacheUtil nototal_addRecord:downloadRecordModel withDownloadState:CJFileDownloadStateSuccess];
                         [TSDownloadVideoIdManager.sharedInstance addDownloadRecoredModels:@[downloadRecordModel]];
                         
                         [weakSelf __goRecordsPage];
@@ -166,11 +175,13 @@
                     
                 } failure:^(NSError * _Nonnull error) {
                     [self __showResponseLogMessage:error.localizedDescription];
+                    failure(error);
                 }];
             //}];
         });
     } failure:^(NSError * _Nonnull error) {
         [self __showResponseLogMessage:error.localizedDescription];
+        failure(error);
     }];
 }
 

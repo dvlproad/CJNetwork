@@ -57,11 +57,7 @@ public class VideoFileUrl: NSObject {
     ) {
         getVideoDataFromActualVideoUrl(actualVideoUrl, success: { contentType, videoData in
             let videoFileExtension = contentType?.subtype ?? "mp4"
-            let fileName = CJDownloadDataSaveUtil.generateVideoFileName(actualVideoUrl: actualVideoUrl, fileExtension: videoFileExtension)
-            
-            let fileManager = FileManager.default
-            let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let fileLocalURL = documentDirectory.appendingPathComponent(fileName)
+            let fileLocalURL = saveToLocalURLGetter(videoFileExtension)
             CJDownloadDataSaveUtil.downloadFileData(videoData, fileLocalURL: fileLocalURL, success: { cacheURL in
                 success(cacheURL)
             }, failure: { errorMessage in

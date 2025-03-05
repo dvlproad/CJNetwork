@@ -18,12 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 下载记录的增删改查
 /*
- *  添加记录
- *
- *  @param record   要添加的记录
- */
-+ (void)addRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withTotalLength:(NSInteger)totalLength;
-/*
  *  删除指定记录
  *
  *  @param record   要删除的记录的文件名（目前以文件名为数据库中的主键）
@@ -40,6 +34,40 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSDictionary *)getAllRecord;
 
+/*
+ *  获取指定记录使用的下载方式
+ *
+ *  @param record   要查询的记录
+ */
++ (CJFileDownloadMethod)getDownloadMethodForRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record;
+
+
+
+#pragma mark - 无 Content-Length 则没有下载进度，即下载是一次性下载的
+/*
+ *  添加记录
+ *
+ *  @param record   要添加的记录
+ */
++ (void)nototal_addRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withDownloadState:(CJFileDownloadState)downloadState;
+
+/*
+ *  判断该文件的下载状态
+ *
+ *  @param record   要判断的记录
+ *
+ *  @return 下载状态
+ */
++ (CJFileDownloadState)nototal_downloadState:(__kindof NSObject<CJDownloadRecordModelProtocol> *)url;
+
+
+#pragma mark - 有 Content-Length 才有下载进度
+/*
+ *  添加记录
+ *
+ *  @param record   要添加的记录
+ */
++ (void)addRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withTotalLength:(NSInteger)totalLength;
 
 /*
  *  获取指定记录的大小（有些方式在请求的时候能通过 content-lenght 获取到文件大小）

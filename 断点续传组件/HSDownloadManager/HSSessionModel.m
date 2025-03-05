@@ -14,6 +14,8 @@
 //}
 - (void)updateDownloadState:(CJFileDownloadState)downloadState error:(NSError * _Nullable)error {
     _downloadState = downloadState;
+//    _url.downloadState = downloadState;
+    
     if (self.stateBlock) {
         self.stateBlock(downloadState, error);
     }

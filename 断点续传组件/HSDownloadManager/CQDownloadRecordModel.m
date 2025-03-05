@@ -7,6 +7,7 @@
 //
 
 #import "CQDownloadRecordModel.h"
+#import <CQDemoKit/CQTSResourceUtil.h>
 #import "NSString+Hash.h"
 
 
@@ -16,6 +17,7 @@
 
 // 使用 @synthesize 让编译器自动生成实例变量
 @synthesize url = _url;
+@synthesize downloadMethod = _downloadMethod;
 @synthesize downloadState = _downloadState;
 - (instancetype)init {
     self = [super init];
@@ -39,6 +41,10 @@
 
 - (NSString *)saveWithFileName {
     NSString *fileName = [NSString stringWithFormat:@"%@_%@_%@", self.url.md5String, self.createId, [self.url lastPathComponent]];
+    CQTSFileType fileType = [CQTSResourceUtil fileTypeForFilePathOrUrl:fileName];
+    if (fileType == CQTSFileTypeUnknown) {
+        fileName = [fileName stringByAppendingPathExtension:@"mp4"];
+    }
     return fileName;
 }
 
@@ -56,6 +62,7 @@
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:self.createId forKey:@"createId"];
     [coder encodeObject:self.url forKey:@"url"]; // 遵循协议的属性
+    [coder encodeInteger:(NSInteger)self.downloadMethod forKey:@"downloadMethod"];
     [coder encodeInteger:(NSInteger)self.downloadState forKey:@"downloadState"]; // 确保类型匹配
     [coder encodeObject:self.name forKey:@"name"]; // 自定义属性
 }
@@ -66,6 +73,7 @@
     if (self) {
         _createId = [[coder decodeObjectForKey:@"createId"] copy];
         _url = [[coder decodeObjectForKey:@"url"] copy]; // readonly 属性，使用 _url 赋值
+        _downloadMethod = (CJFileDownloadMethod)[coder decodeIntegerForKey:@"downloadMethod"];
         _downloadState = (CJFileDownloadState)[coder decodeIntegerForKey:@"downloadState"]; // 强制转换以匹配 NS_ENUM
         _name = [[coder decodeObjectForKey:@"name"] copy]; // 确保字符串安全性
     }
@@ -73,11 +81,16 @@
 }
 
 #pragma mark - 自定义初始化
-- (instancetype)initWithURL:(NSString *)url downloadState:(CJFileDownloadState)downloadState name:(NSString *)name {
+- (instancetype)initWithURL:(NSString *)url
+             downloadMethod:(CJFileDownloadMethod)downloadMethod
+              downloadState:(CJFileDownloadState)downloadState
+                       name:(NSString *)name
+{
     self = [super init];
     if (self) {
         _createId = [[NSUUID UUID] UUIDString];
         _url = [url copy]; // 直接赋值实例变量
+        _downloadMethod = downloadMethod;
         _downloadState = downloadState;
         self.name = [name copy];
     }

@@ -19,11 +19,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, CJFileDownloadMethod) {
+    CJFileDownloadMethodUnknown = 0,
+    CJFileDownloadMethodProgress = 1,       // 有进度（有 Content-Length 的时候）
+    CJFileDownloadMethodOneOff = 2,         // 一次性下载完（没有 Content-Length 的时候）
+};
+
 @protocol CJDownloadRecordModelProtocol <NSObject, NSCoding>
 
 @required
 @property (nonatomic, copy) NSString *url;;                                 /**< 下载地址 */
-@property (nonatomic, assign, readonly) CJFileDownloadState downloadState;  /**< 下载状态 */
+@property (nonatomic, assign) CJFileDownloadState downloadState;  /**< 下载状态 */
+@property (nonatomic, assign) CJFileDownloadMethod downloadMethod;  /**< 下载方法 */
 
 //#pragma mark - 状态变化
 //@property (nullable, nonatomic, copy) void (^uploadProgress)(NSProgress * _Nonnull progress);
