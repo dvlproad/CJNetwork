@@ -155,18 +155,19 @@
 }
 
 #pragma mark Setter
-- (void)setDownloadUrl:(NSObject<CJDownloadRecordModelProtocol> *)downloadUrl {
-    _downloadUrl = downloadUrl;
+- (void)setDownloadModel:(NSObject<CJDownloadRecordModelProtocol> *)downloadModel {
+    _downloadModel = downloadModel;
     
     [self initData];
 }
 
 #pragma mark 刷新数据
 - (void)initData {
-    CJFileDownloadState downloadState = [[HSDownloadManager sharedInstance] downloadStateForUrl:self.downloadUrl];
+    CJFileDownloadState downloadState = [[HSDownloadManager sharedInstance] downloadStateForUrl:self.downloadModel];
+//    CJFileDownloadState downloadState = self.downloadModel.downloadState;
     [self __changeState:downloadState];
     
-    CGFloat progress = [[HSDownloadManager sharedInstance] progress:self.downloadUrl];
+    CGFloat progress = [CQDownloadCacheUtil progress:self.downloadModel];
     self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
     self.progressView.progress = progress;
     
@@ -185,7 +186,7 @@
     self.progressLabel.hidden = isCompleted || state == CJFileDownloadStateReady;
     self.progressView.hidden = isCompleted || state == CJFileDownloadStateReady;
     
-    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:self.downloadUrl];
+    NSString *localAbsPath = [CQDownloadCacheUtil fileLocalAbsPathForUrl:self.downloadModel];
     self.stateChangeBlock(state, localAbsPath);
 }
 
@@ -197,7 +198,7 @@
 
 - (void)setupDownloadBlock {
     [self initData];
-    [[HSDownloadManager sharedInstance] setupUrl:self.downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+    [[HSDownloadManager sharedInstance] setupUrl:self.downloadModel progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
             NSString *message = [NSString stringWithFormat:@"3当前下载进度:=========%@", progressValue];
@@ -213,7 +214,7 @@
 }
 
 - (void)startDownload {
-    [[HSDownloadManager sharedInstance] downloadOrPause:self.downloadUrl progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+    [[HSDownloadManager sharedInstance] downloadOrPause:self.downloadModel progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
             NSString *message = [NSString stringWithFormat:@"2当前下载进度:=========%@", progressValue];
@@ -229,12 +230,12 @@
 }
 
 - (void)local_analyzeTiktokShortenedUrl:(NSString *)shortenedUrl {
-    shortenedUrl = _downloadUrl.url;
+    shortenedUrl = _downloadModel.url;
     
     [TikTokService getActualVideoUrlFromShortenedUrl:shortenedUrl success:^(NSString * _Nonnull videoUrl) {
         dispatch_async(dispatch_get_main_queue(),^{
             [TikTokService downloadAccessRestrictedDataFromActualVideoUrl:videoUrl saveToLocalURLGetter:^NSURL * _Nonnull(NSString * _Nonnull videoFileExtension) {
-                NSString *saveToAbsPath = self.downloadUrl.saveToAbsPath;
+                NSString *saveToAbsPath = self.downloadModel.saveToAbsPath;
                 return [NSURL fileURLWithPath:saveToAbsPath];
                 
             } success:^(NSURL * _Nonnull cacheURL) {
@@ -251,7 +252,7 @@
 
 /// 是否现在完成
 - (BOOL)isDownloadComplete {
-    return [[HSDownloadManager sharedInstance] isCompletion:self.downloadUrl];
+    return [CQDownloadCacheUtil isCompletion:self.downloadModel];
 }
 
 
@@ -263,8 +264,8 @@
     }
     
     
-    [[HSDownloadManager sharedInstance] deleteFile:self.downloadUrl];
-    CGFloat progress = [[HSDownloadManager sharedInstance] progress:self.downloadUrl];
+    [[HSDownloadManager sharedInstance] deleteFile:self.downloadModel];
+    CGFloat progress = [CQDownloadCacheUtil progress:self.downloadModel];
     self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
     self.progressView.progress = progress;
 

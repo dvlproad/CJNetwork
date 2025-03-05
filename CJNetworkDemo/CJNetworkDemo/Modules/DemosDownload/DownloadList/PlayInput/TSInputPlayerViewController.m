@@ -311,7 +311,7 @@
 - (void)shareVideo {
 //    NSString *videoUrl = self.downloadModel.url;
 //    NSURL *videoURL = [NSURL URLWithString:videoUrl];
-    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:self.downloadModel];
+    NSString *localAbsPath = [CQDownloadCacheUtil fileLocalAbsPathForUrl:self.downloadModel];
     NSURL *videoURL = [NSURL fileURLWithPath:localAbsPath];
     
     NSArray *itemsToShare = @[videoURL];

@@ -7,6 +7,7 @@
 //
 
 #import "TSDownloadTableViewCellOverlay.h"
+#import "CQDownloadCacheUtil.h"
 
 @interface TSDownloadTableViewCellOverlay ()
 
@@ -160,7 +161,7 @@
 
 #pragma mark 刷新数据
 - (void)initData {
-    CGFloat progress = [[HSDownloadManager sharedInstance] progress:self.downloadUrl];
+    CGFloat progress = [CQDownloadCacheUtil progress:self.downloadUrl];
     self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
     self.progressView.progress = progress;
     if (progress == 1.0) {
@@ -180,7 +181,7 @@
     } else {
         self.deleteButton.enabled = NO;
     }
-    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:self.downloadUrl];
+    NSString *localAbsPath = [CQDownloadCacheUtil fileLocalAbsPathForUrl:self.downloadUrl];
     self.stateChangeBlock(state, localAbsPath);
 }
 
@@ -205,7 +206,7 @@
     [[HSDownloadManager sharedInstance] deleteFile:self.downloadUrl];
     
    
-    CGFloat progress = [[HSDownloadManager sharedInstance] progress:self.downloadUrl];
+    CGFloat progress = [CQDownloadCacheUtil progress:self.downloadUrl];
     self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
     self.progressView.progress = progress;
 

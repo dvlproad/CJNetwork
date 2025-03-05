@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TSDownloadCollectionViewCellOverlay: UIView {
     
 }
-@property (nonatomic, copy) NSObject<CJDownloadRecordModelProtocol> *downloadUrl;
+@property (nonatomic, copy) NSObject<CJDownloadRecordModelProtocol> *downloadModel;
 @property (nonatomic, strong) UILabel *downloadUrlLabel;     /** 下载文件的Url */
 
 @property (nonatomic, assign, readonly) CJFileDownloadState currentDownloadState;

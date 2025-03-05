@@ -46,8 +46,7 @@ static HSDownloadManager *_downloadManager;
     return _downloadManager;
 }
 
-
-
+#pragma mark - 下载方法
 - (NSMutableDictionary *)tasks
 {
     if (!_tasks) {
@@ -100,7 +99,7 @@ static HSDownloadManager *_downloadManager;
         return;
     }
     
-    if ([self isCompletion:url]) {
+    if ([CQDownloadCacheUtil isCompletion:url]) {
         stateBlock(CJFileDownloadStateSuccess, nil);
         NSLog(@"----该资源已下载完成");
         return;
@@ -215,52 +214,13 @@ static HSDownloadManager *_downloadManager;
         return sessionModel.downloadState;
     } else {
         // 下载完成的就不在task里了，就只能通过 progress 来判断了
-        CGFloat progress = [self progress:url];
+        CGFloat progress = [CQDownloadCacheUtil progress:url];
         if (progress == 1.0) {
             return CJFileDownloadStateSuccess;
         } else {
             return CJFileDownloadStateUnknown;
         }
     }
-}
-
-/**
- *  判断该文件是否下载完成
- */
-- (BOOL)isCompletion:(__kindof NSObject<CJDownloadRecordModelProtocol> *)url
-{
-    if ([self fileTotalLength:url] && url.hasDownloadedLength == [self fileTotalLength:url]) {
-        return YES;
-    }
-    return NO;
-}
-
-/**
- *  查询该资源的下载进度值
- */
-- (CGFloat)progress:(__kindof NSObject<CJDownloadRecordModelProtocol> *)url
-{
-    return [self fileTotalLength:url] == 0 ? 0.0 : 1.0 * url.hasDownloadedLength /  [self fileTotalLength:url];
-}
-
-/**
- *  获取该资源总大小
- */
-- (NSInteger)fileTotalLength:(__kindof NSObject<CJDownloadRecordModelProtocol> *)url
-{
-    return [[NSDictionary dictionaryWithContentsOfFile:HSTotalLengthFullpath][url.saveWithFileName] integerValue];
-}
-
-/**
- *  已下载完成的资源的本地绝对路径
- *
- *  @param url 下载地址
- *
- *  @return 已下载完成的资源的本地绝对路径
- */
-- (NSString *)fileLocalAbsPathForUrl:(__kindof NSObject<CJDownloadRecordModelProtocol> *)url {
-    NSString *filePath = url.saveToAbsPath;
-    return filePath;
 }
 
 #pragma mark - 删除
@@ -279,13 +239,10 @@ static HSDownloadManager *_downloadManager;
         [self.tasks removeObjectForKey:fileName];
         [self.sessionModels removeObjectForKey:@([self getTask:url].taskIdentifier).stringValue];
         // 删除资源总长度
-        if ([fileManager fileExistsAtPath:HSTotalLengthFullpath]) {
-            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile:HSTotalLengthFullpath];
-            [dict removeObjectForKey:fileName];
-            [dict writeToFile:HSTotalLengthFullpath atomically:YES];
-        }
+        [CQDownloadCacheUtil deleteRecordByFileName:fileName];
     }
 }
+
 
 /**
  *  清空所有下载资源
@@ -306,11 +263,11 @@ static HSDownloadManager *_downloadManager;
         [self.sessionModels removeAllObjects];
         
         // 删除资源总长度
-        if ([fileManager fileExistsAtPath:HSTotalLengthFullpath]) {
-            [fileManager removeItemAtPath:HSTotalLengthFullpath error:nil];
-        }
+        [CQDownloadCacheUtil deleteAllRecord];
     }
 }
+
+
 
 #pragma mark - 代理
 #pragma mark NSURLSessionDataDelegate
@@ -338,14 +295,13 @@ static HSDownloadManager *_downloadManager;
     sessionModel.totalLength = totalLength;
     
     // 存储总长度
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile:HSTotalLengthFullpath];
-    if (dict == nil) dict = [NSMutableDictionary dictionary];
-    dict[sessionModel.url.saveWithFileName] = @(totalLength);
-    [dict writeToFile:HSTotalLengthFullpath atomically:YES];
+    [CQDownloadCacheUtil addRecord:sessionModel.url withTotalLength:totalLength];
     
     // 接收这个请求，允许接收服务器的数据
     completionHandler(NSURLSessionResponseAllow);
 }
+
+
 
 /**
  * 接收到服务器返回的数据
@@ -376,7 +332,7 @@ static HSDownloadManager *_downloadManager;
         return;
     }
     
-    if ([self isCompletion:sessionModel.url]) {
+    if ([CQDownloadCacheUtil isCompletion:sessionModel.url]) {
         [sessionModel updateDownloadState:CJFileDownloadStateSuccess error:nil];    //下载完成
     } else if (error){
         [sessionModel updateDownloadState:CJFileDownloadStateFailure error:error];   //下载失败

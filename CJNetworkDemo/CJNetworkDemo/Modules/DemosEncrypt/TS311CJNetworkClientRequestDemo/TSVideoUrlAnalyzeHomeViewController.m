@@ -236,7 +236,7 @@
                     break;
                 }
                 case CJFileDownloadStateSuccess: {
-                    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadModel];
+                    NSString *localAbsPath = [CQDownloadCacheUtil fileLocalAbsPathForUrl:downloadModel];
                     NSString *message = [NSString stringWithFormat:@"下载完成，存放在:%@", localAbsPath];
                     [self __showResponseLogMessage:message];
                     break;

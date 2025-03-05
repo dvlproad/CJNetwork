@@ -123,7 +123,7 @@
     TSDownloadCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
 //            cell.previewImageView.image = [UIImage imageWithContentsOfFile:downloadModel.imageName]; // 视频的预览图
-    cell.downloadView.downloadUrl = downloadModel;
+    cell.downloadView.downloadModel = downloadModel;
     cell.downloadView.downloadUrlLabel.text = downloadModel.name;
     __weak typeof(self)weakSelf = self;
     cell.downloadView.customDeleteHandler = ^{

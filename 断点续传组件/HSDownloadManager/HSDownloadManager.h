@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CQDownloadRecordModel.h"
+#import "CQDownloadCacheUtil.h"
 #import "HSSessionModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -39,45 +39,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setupUrl:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record progressBlock:(void(^)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock;
 
-/**
- *  查询该资源的下载进度值
- *
- *  @param record 下载地址
- *
- *  @return 返回下载进度值
- */
-- (CGFloat)progress:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record;
-
-/**
- *  获取该资源总大小
- *
- *  @param record 下载地址
- *
- *  @return 资源总大小
- */
-- (NSInteger)fileTotalLength:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record;
 
 /**
  *  判断该文件的下载状态
  */
 - (CJFileDownloadState)downloadStateForUrl:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record;
-/**
- *  判断该资源是否下载完成
- *
- *  @param record 下载地址
- *
- *  @return YES: 完成
- */
-- (BOOL)isCompletion:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record;
 
-/**
- *  已下载完成的资源的本地绝对路径
- *
- *  @param url 下载地址
- *
- *  @return 已下载完成的资源的本地绝对路径
- */
-- (NSString *)fileLocalAbsPathForUrl:(__kindof NSObject<CJDownloadRecordModelProtocol> *)url;
 
 /**
  *  删除该资源
