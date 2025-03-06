@@ -153,7 +153,21 @@
 // 从相册中选择视频
 - (void)chooseVideoFromSystem {
     if (@available(iOS 14, *)) { // （使用 PHPickerViewController）
-        [self chooseVideoFromSystemIOS14];
+        PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+        if (status == PHAuthorizationStatusDenied || status == PHAuthorizationStatusRestricted) {
+            [CJUIKitToastUtil showMessage:@"无访问相册权限"];
+        }
+        
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if (status == PHAuthorizationStatusAuthorized) {
+                NSLog(@"相册访问授权成功");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self chooseVideoFromSystemIOS14];
+                });
+            } else {
+                [CJUIKitToastUtil showMessage:@"相册访问授权失败"];
+            }
+        }];
         return;
     }
     
@@ -184,44 +198,38 @@
 - (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results API_AVAILABLE(ios(14)) {
     [picker dismissViewControllerAnimated:YES completion:nil]; // 立即关闭相册
 
-    if (results.count > 0) {
-        PHPickerResult *result = results.firstObject;
+    if (results.count == 0) {
+        return;
+    }
+    
+    PHPickerResult *result = results.firstObject;
 
-        if ([result.itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
-            // loadItemForTypeIdentifier 会自动将文件拷贝到临时目录（通常在 file://private/var/.../），而 loadFileRepresentationForTypeIdentifier 可能只是一个沙盒路径，不一定可访问。
-            /* 此方法无法拷贝
-            [result.itemProvider loadFileRepresentationForTypeIdentifier:(NSString *)kUTTypeMovie completionHandler:^(NSURL * _Nullable URL, NSError * _Nullable error) {
-                if (URL) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self playVideoURL:URL];
-                    });
-                }
-            }];
-            */
-            
-            [result.itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSURL * _Nullable URL, NSError * _Nullable error) {
-                if (URL) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        //iOS 14+ 使用 PHPickerViewController 选择视频时，获取的 NSURL 是沙盒临时路径，但默认没有拷贝到可访问的目录，导致 AVPlayer 无法正常播放。而 UIImagePickerController 直接提供的是一个可访问的本地文件路径，所以在 iOS 14 以下可以正常播放。
-                        NSURL *playableURL = [self copyVideoToTemporaryDirectory:URL];
-                        [self playVideoURL:playableURL];
-                    });
-                }
-            }];
-        }
+    if ([result.itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
+        // loadFileRepresentationForTypeIdentifier 可能只是一个沙盒路径，不一定可访问。
+        /* 此方法无法拷贝
+        [result.itemProvider loadFileRepresentationForTypeIdentifier:(NSString *)kUTTypeMovie completionHandler:^(NSURL * _Nullable URL, NSError * _Nullable error) {
+            if (URL && !error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+//                  [self playVideoURL:URL];
+                    NSURL *playableURL = [self copyVideoToTemporaryDirectory:URL];
+                    [self playVideoURL:playableURL];
+                });
+            } else {
+                NSLog(@"视频加载失败: %@", error.localizedDescription);
+            }
+        }];
+        //*/
         
-        if ([result.itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
-//            [result.itemProvider loadFileRepresentationForTypeIdentifier:(NSString *)kUTTypeMovie completionHandler:^(NSURL * _Nullable URL, NSError * _Nullable error) {
-            [result.itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSURL * _Nullable URL, NSError * _Nullable error) {
-                if (URL) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        //iOS 14+ 使用 PHPickerViewController 选择视频时，获取的 NSURL 是沙盒临时路径，但默认没有拷贝到可访问的目录，导致 AVPlayer 无法正常播放。而 UIImagePickerController 直接提供的是一个可访问的本地文件路径，所以在 iOS 14 以下可以正常播放。
-                        NSURL *playableURL = [self copyVideoToTemporaryDirectory:URL];
-                        [self playVideoURL:playableURL];
-                    });
-                }
-            }];
-        }
+        // loadItemForTypeIdentifier: 会自动将文件拷贝到临时目录（通常在 file://private/var/.../）
+        [result.itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSURL * _Nullable videoURL, NSError * _Nullable error) {
+            if (videoURL && !error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //iOS 14+ 使用 PHPickerViewController 选择视频时，获取的 NSURL 是沙盒临时路径，但默认没有拷贝到可访问的目录，导致 AVPlayer 无法正常播放。而 UIImagePickerController 直接提供的是一个可访问的本地文件路径，所以在 iOS 14 以下可以正常播放。
+                    NSURL *playableURL = [self copyVideoToTemporaryDirectory:videoURL];
+                    [self playVideoURL:videoURL];
+                });
+            }
+        }];
     }
 }
 
@@ -236,7 +244,6 @@
     // 使用 NSFileManager 复制文件
     NSError *error;
     [[NSFileManager defaultManager] copyItemAtURL:originalURL toURL:tempURL error:&error];
-    
     if (error) {
         NSLog(@"视频拷贝失败: %@", error.localizedDescription);
         return nil;

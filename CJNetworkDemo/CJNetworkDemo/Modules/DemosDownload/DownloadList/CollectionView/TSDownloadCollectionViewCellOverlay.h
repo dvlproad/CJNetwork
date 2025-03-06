@@ -37,7 +37,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Event
 - (void)startDownload;
-- (void)setupDownloadBlock;
 
 @end
 

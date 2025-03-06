@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CQDownloadCacheUtil : NSObject
 
-
++ (CQDownloadCacheUtil *)sharedInstance;
 
 #pragma mark - 下载记录的增删改查
 /*
@@ -52,6 +52,14 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)nototal_addRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withDownloadState:(CJFileDownloadState)downloadState;
 
 /*
+ *  更新记录的下载状态
+ *
+ *  @param record           要添加的记录
+ *  @param downloadState    新的下载状态
+ */
++ (void)nototal_updateRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withDownloadState:(CJFileDownloadState)downloadState;
+
+/*
  *  判断该文件的下载状态
  *
  *  @param record   要判断的记录
@@ -67,7 +75,15 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @param record   要添加的记录
  */
-+ (void)addRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withTotalLength:(NSInteger)totalLength;
++ (void)process_addRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record;
+
+/*
+ *  为指定记录添加下载总长度信息
+ *
+ *  @param record       要更新信息的记录
+ *  @param totalLength  要下载的文件的总大小
+ */
++ (void)process_updateRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withTotalLength:(NSInteger)totalLength;
 
 /*
  *  获取指定记录的大小（有些方式在请求的时候能通过 content-lenght 获取到文件大小）

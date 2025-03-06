@@ -66,11 +66,11 @@
 //                [CJUIKitToastUtil showMessage:errorMessage];
 //            }];
             // 先本地解析，若失败再用第三方解析
-            [weakSelf local_analyzeTiktokShortenedUrl:text failure:^(NSError * _Nonnull error) {
+//            [weakSelf local_analyzeTiktokShortenedUrl:text failure:^(NSError * _Nonnull error) {
                 [weakSelf tikwm_analyzeTiktokShortenedUrl:text failure:^(NSString * _Nonnull errorMessage) {
                     [CJUIKitToastUtil showMessage:errorMessage];
                 }];
-            }];
+//            }];
         }];
     }
     return _downloadInputView;
@@ -130,6 +130,8 @@
         // 添加数据
         NSArray *records = [TSDownloadVideoIdManager.sharedInstance getRecordsForVideoId:videoId];
         CQDownloadRecordModel *downloadRecordModel = records.firstObject;
+        downloadRecordModel.downloadMethod = CJFileDownloadMethodProgress;
+        [CQDownloadCacheUtil process_addRecord:downloadRecordModel];
         [TSDownloadVideoIdManager.sharedInstance addDownloadRecoredModels:@[downloadRecordModel]];
         // 跳转到"已解析"Tab
         dispatch_async(dispatch_get_main_queue(),^{
@@ -154,8 +156,16 @@
     CQDownloadRecordModel *downloadRecordModel = [[CQDownloadRecordModel alloc] init];
     downloadRecordModel.url = shortenedUrl;
     
+    // 添加数据
+    //downloadRecordModel.downloadState = CJFileDownloadStateSuccess;
+    [CQDownloadCacheUtil nototal_addRecord:downloadRecordModel withDownloadState:CJFileDownloadStateReady];
+    [TSDownloadVideoIdManager.sharedInstance addDownloadRecoredModels:@[downloadRecordModel]];
+    [weakSelf __goRecordsPage];
+    
     [TikTokService getActualVideoUrlFromShortenedUrl:shortenedUrl success:^(NSString * _Nonnull videoUrl) {
         dispatch_async(dispatch_get_main_queue(),^{
+            [CQDownloadCacheUtil nototal_updateRecord:downloadRecordModel withDownloadState:CJFileDownloadStateDownloading];
+            
             //[CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
                 [TikTokService downloadAccessRestrictedDataFromActualVideoUrl:videoUrl saveToLocalURLGetter:^NSURL * _Nonnull(NSString * _Nonnull videoFileExtension) {
                     NSString *saveToAbsPath = downloadRecordModel.saveToAbsPath;
@@ -166,11 +176,7 @@
                         NSString *message = [NSString stringWithFormat:@"解析并且下载成功:\n视频短链=%@\n视频地址=%@\n保存位置=%@", shortenedUrl, videoUrl, cacheURL.absoluteString];
                         [self __showResponseLogMessage:message];
                         
-                        //downloadRecordModel.downloadState = CJFileDownloadStateSuccess;
-                        [CQDownloadCacheUtil nototal_addRecord:downloadRecordModel withDownloadState:CJFileDownloadStateSuccess];
-                        [TSDownloadVideoIdManager.sharedInstance addDownloadRecoredModels:@[downloadRecordModel]];
-                        
-                        [weakSelf __goRecordsPage];
+                        [CQDownloadCacheUtil nototal_updateRecord:downloadRecordModel withDownloadState:CJFileDownloadStateSuccess];
                     });
                     
                 } failure:^(NSError * _Nonnull error) {

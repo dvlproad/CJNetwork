@@ -10,6 +10,14 @@
 
 @implementation CQDownloadCacheUtil
 
++ (CQDownloadCacheUtil *)sharedInstance {
+    static CQDownloadCacheUtil *_sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+    return _sharedInstance;
+}
 
 
 #pragma mark - 下载记录的增删改查
@@ -55,8 +63,12 @@
 + (CJFileDownloadMethod)getDownloadMethodForRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record {
     NSDictionary *allDict = [NSDictionary dictionaryWithContentsOfFile:HSTotalLengthFullpath];
     NSDictionary *dataDict = allDict[record.saveWithFileName];
-    CJFileDownloadMethod downloadState = (CJFileDownloadMethod)[dataDict[@"kDownloadMethod"] integerValue];
-    return downloadState;
+    // 将 dataDict 转为 CJDownloadRecordModelProtocol 的 object
+//    NSObject<CJDownloadRecordModelProtocol> *obj = []
+    
+    CJFileDownloadMethod downloadMethod = (CJFileDownloadMethod)[dataDict[@"kDownloadMethod"] integerValue];
+
+    return downloadMethod;
 }
 
 #pragma mark - 无 Content-Length 则没有下载进度，即下载是一次性下载的
@@ -66,6 +78,7 @@
  *  @param record   要添加的记录
  */
 + (void)nototal_addRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withDownloadState:(CJFileDownloadState)downloadState {
+    record.downloadMethod = CJFileDownloadMethodOneOff;
     record.downloadState = downloadState; // 此处将 downloadState 设给 record
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile:HSTotalLengthFullpath];
@@ -75,6 +88,22 @@
         @"kDownloadState": @(downloadState),
     };
     [dict writeToFile:HSTotalLengthFullpath atomically:YES];
+}
+
+/*
+ *  更新记录的下载状态
+ *
+ *  @param record           要添加的记录
+ *  @param downloadState    新的下载状态
+ */
++ (void)nototal_updateRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withDownloadState:(CJFileDownloadState)downloadState {
+    record.downloadState = downloadState; // 此处将 downloadState 设给 record
+    
+    NSMutableDictionary *allDict = [NSMutableDictionary dictionaryWithContentsOfFile:HSTotalLengthFullpath];
+    NSMutableDictionary *dataDict = allDict[record.saveWithFileName];
+    dataDict[@"kDownloadState"] = @(downloadState);
+    
+    [allDict writeToFile:HSTotalLengthFullpath atomically:YES];
 }
 
 /*
@@ -98,14 +127,29 @@
  *
  *  @param record   要添加的记录
  */
-+ (void)addRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withTotalLength:(NSInteger)totalLength {
++ (void)process_addRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record {
+    record.downloadMethod = CJFileDownloadMethodProgress;
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile:HSTotalLengthFullpath];
     if (dict == nil) dict = [NSMutableDictionary dictionary];
     dict[record.saveWithFileName] = @{
         @"kDownloadMethod": @(CJFileDownloadMethodProgress),
-        @"kTotalLength": @(totalLength),
     };
     [dict writeToFile:HSTotalLengthFullpath atomically:YES];
+}
+
+/*
+ *  为指定记录添加下载总长度信息
+ *
+ *  @param record       要更新信息的记录
+ *  @param totalLength  要下载的文件的总大小
+ */
++ (void)process_updateRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withTotalLength:(NSInteger)totalLength {
+    NSMutableDictionary *allDict = [NSMutableDictionary dictionaryWithContentsOfFile:HSTotalLengthFullpath];
+    NSMutableDictionary *dataDict = allDict[record.saveWithFileName];
+    dataDict[@"kTotalLength"] = @(totalLength);
+    
+    [allDict writeToFile:HSTotalLengthFullpath atomically:YES];
 }
 
 

@@ -158,7 +158,9 @@
 - (void)setDownloadModel:(NSObject<CJDownloadRecordModelProtocol> *)downloadModel {
     _downloadModel = downloadModel;
     
-    [self initData];
+    //self.downloadUrlLabel.text = downloadModel.name;
+    
+    [self __setupDownloadBlock];
 }
 
 #pragma mark 刷新数据
@@ -168,18 +170,20 @@
     CJFileDownloadMethod downloadMethod = [CQDownloadCacheUtil getDownloadMethodForRecord:self.downloadModel];
     if (downloadMethod == CJFileDownloadMethodProgress) {
         downloadState = [[HSDownloadManager sharedInstance] downloadStateForUrl:self.downloadModel];
+        
+        CGFloat progress = [CQDownloadCacheUtil progress:self.downloadModel];
+        self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
+        self.progressView.progress = progress;
+        
     } else if (downloadMethod == CJFileDownloadMethodOneOff) {
         downloadState = [CQDownloadCacheUtil nototal_downloadState:self.downloadModel];
+        
+        
     } else {
         downloadState = CJFileDownloadStateUnknown;
     }
     
     [self __changeState:downloadState];
-    
-    CGFloat progress = [CQDownloadCacheUtil progress:self.downloadModel];
-    self.progressLabel.text = [NSString stringWithFormat:@"%.f%%", progress * 100];
-    self.progressView.progress = progress;
-    
 }
 
 - (void)__changeState:(CJFileDownloadState)state {
@@ -205,7 +209,7 @@
     [self startDownload];
 }
 
-- (void)setupDownloadBlock {
+- (void)__setupDownloadBlock {
     [self initData];
     
     CJFileDownloadMethod downloadMethod = [CQDownloadCacheUtil getDownloadMethodForRecord:self.downloadModel];
@@ -223,6 +227,10 @@
                 [self __changeState:state];
             });
         }];
+    } else if (downloadMethod == CJFileDownloadMethodOneOff) {
+        
+    } else {
+        NSAssert(downloadMethod == CJFileDownloadMethodUnknown, @"下载方式不能未知，不然 CJFileDownloadMethodProgress 时候的下载会引起点击获取视频后，跳转到已解析页面上的回调没刷新");
     }
 }
 

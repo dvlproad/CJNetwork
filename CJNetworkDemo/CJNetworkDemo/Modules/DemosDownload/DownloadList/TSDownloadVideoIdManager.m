@@ -9,6 +9,7 @@
 #import "TSDownloadVideoIdManager.h"
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
 #import "HSDownloadManager.h"
+#import "CQDownloadCacheUtil.h"
 
 @interface TSDownloadVideoIdManager ()
 
@@ -96,6 +97,13 @@
     } else {
         self.sectionDataModels = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     }
+    
+    NSDictionary *allDict = [CQDownloadCacheUtil getAllRecord];
+    if (allDict == nil) {
+        return;
+    }
+    
+    NSLog(@"保存记录allDict = %@", allDict);
 }
 
 #pragma mark - 增删

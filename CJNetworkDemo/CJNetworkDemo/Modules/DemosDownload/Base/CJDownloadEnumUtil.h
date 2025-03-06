@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, CJFileDownloadState) {
-    CJFileDownloadStateUnknown,         // 未知
+    CJFileDownloadStateUnknown = 0,     // 未知
     CJFileDownloadStateReady,           // 可以下载（显示开始下载）
     CJFileDownloadStatePause,           // 暂停下载（显示继续下载）
     CJFileDownloadStateDownloading,     // 下载中（显示暂停下载）

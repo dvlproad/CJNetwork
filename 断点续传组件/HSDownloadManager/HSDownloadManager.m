@@ -295,7 +295,7 @@ static HSDownloadManager *_downloadManager;
     sessionModel.totalLength = totalLength;
     
     // 存储总长度
-    [CQDownloadCacheUtil addRecord:sessionModel.url withTotalLength:totalLength];
+    [CQDownloadCacheUtil process_updateRecord:sessionModel.url withTotalLength:totalLength]; // 请记得有先调用 process_addRecord
     
     // 接收这个请求，允许接收服务器的数据
     completionHandler(NSURLSessionResponseAllow);
