@@ -108,6 +108,8 @@
     NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
     self.downloadInputView.textField.text = shortenedUrl;
     self.downloadInputView.textField.text = @"https://www.tikwm.com/video/media/hdplay/7465611957203160340.mp4";
+    
+    [self configureAudioSession];
 }
 
 - (void)dismissKeyboard {
@@ -127,18 +129,53 @@
         return;
     }
     NSURL *videoURL = [NSURL URLWithString:networkUrl];
-    [self playVideoURL:videoURL];
+    [self playVideoWithURL:videoURL];
+}
+
+/// 配置音频会话，解决从相册中选择的视频播放没有声音的问题
+- (void)configureAudioSession {
+    NSError *error = nil;
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    
+    BOOL categorySet = [audioSession setCategory:AVAudioSessionCategoryPlayback
+                                          mode:AVAudioSessionModeMoviePlayback
+                                       options:0
+                                         error:&error];
+    
+    if (!categorySet || error) {
+        NSLog(@"配置音频会话失败: %@", error.localizedDescription);
+        return;
+    }
+    
+    BOOL activeSet = [audioSession setActive:YES error:&error];
+    
+    if (!activeSet || error) {
+        NSLog(@"激活音频会话失败: %@", error.localizedDescription);
+    }
 }
 
 /// 相册是 assets-library://asset/asset.MP4?id=4FA00137-ECF1-4693-A976-2605D12A207D&ext=MP4
-- (void)playVideoURL:(NSURL *)videoURL {
+- (void)playVideoWithURL:(NSURL *)videoURL {
     //__weak typeof(self)weakSelf = self;
     TSInputPlayerViewController *playerViewController = [[TSInputPlayerViewController alloc] initWithVideoURL:videoURL];
     playerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:playerViewController animated:YES completion:^{
         
     }];
+    
+//    [self playVideoWithAVPlayerLayer:videoURL];
+    
 }
+
+//- (void)playVideoWithAVPlayerLayer:(NSURL *)videoURL {
+//    AVPlayer *player = [AVPlayer playerWithURL:videoURL];
+//    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+//    playerLayer.frame = self.view.bounds;
+//    playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+//    [self.view.layer addSublayer:playerLayer];
+//
+//    [player play];
+//}
 
 
 /// 显示返回结果log
@@ -205,31 +242,54 @@
     PHPickerResult *result = results.firstObject;
 
     if ([result.itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeMovie]) {
-        // loadFileRepresentationForTypeIdentifier 可能只是一个沙盒路径，不一定可访问。
-        /* 此方法无法拷贝
-        [result.itemProvider loadFileRepresentationForTypeIdentifier:(NSString *)kUTTypeMovie completionHandler:^(NSURL * _Nullable URL, NSError * _Nullable error) {
-            if (URL && !error) {
+        [result.itemProvider loadFileRepresentationForTypeIdentifier:(NSString *)kUTTypeMovie completionHandler:^(NSURL * _Nullable sourceURL, NSError * _Nullable error) {
+            if (sourceURL) {
+                NSFileManager *fileManager = [NSFileManager defaultManager];
+                NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+                NSURL *destinationURL = [documentsDirectory URLByAppendingPathComponent:sourceURL.lastPathComponent];
+
+                NSError *copyError = nil;
+                if ([fileManager fileExistsAtPath:destinationURL.path]) {
+                    if (![fileManager removeItemAtURL:destinationURL error:&copyError]) {
+                        NSLog(@"删除旧文件失败: %@", copyError.localizedDescription);
+                        return;
+                    }
+                }
+
+                if (![fileManager copyItemAtURL:sourceURL toURL:destinationURL error:&copyError]) {
+                    NSLog(@"复制视频文件失败: %@", copyError.localizedDescription);
+                    return;
+                }
+
                 dispatch_async(dispatch_get_main_queue(), ^{
-//                  [self playVideoURL:URL];
-                    NSURL *playableURL = [self copyVideoToTemporaryDirectory:URL];
-                    [self playVideoURL:playableURL];
+                    [self playVideoWithURL:destinationURL];
                 });
+                
             } else {
                 NSLog(@"视频加载失败: %@", error.localizedDescription);
             }
         }];
-        //*/
         
         // loadItemForTypeIdentifier: 会自动将文件拷贝到临时目录（通常在 file://private/var/.../）
         [result.itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSURL * _Nullable videoURL, NSError * _Nullable error) {
             if (videoURL && !error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     //iOS 14+ 使用 PHPickerViewController 选择视频时，获取的 NSURL 是沙盒临时路径，但默认没有拷贝到可访问的目录，导致 AVPlayer 无法正常播放。而 UIImagePickerController 直接提供的是一个可访问的本地文件路径，所以在 iOS 14 以下可以正常播放。
-                    NSURL *playableURL = [self copyVideoToTemporaryDirectory:videoURL];
-                    [self playVideoURL:videoURL];
+//
+                    
+                    BOOL accessGranted = [videoURL startAccessingSecurityScopedResource];
+                    if (accessGranted) {
+                        NSURL *playableURL = [self copyVideoToTemporaryDirectory:videoURL];
+                        [self playVideoWithURL:playableURL];
+                        [videoURL stopAccessingSecurityScopedResource]; // 释放权限
+                    } else {
+                        NSString *errorMessage = [NSString stringWithFormat:@"无法访问 security-scoped URL: %@", videoURL];
+                        [CJUIKitToastUtil showMessage:errorMessage];
+                    }
                 });
             }
         }];
+        //*/
     }
 }
 
@@ -272,7 +332,7 @@
     
     [picker dismissViewControllerAnimated:YES completion:^{
         if (videoURL != nil) {
-            [self playVideoURL:videoURL];
+            [self playVideoWithURL:videoURL];
         }
     }];
 }

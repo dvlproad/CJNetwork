@@ -65,6 +65,8 @@
 		78FF35E721A91F07006DCEE7 /* SemaphoreHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FF35E521A91F06006DCEE7 /* SemaphoreHomeViewController.m */; };
 		8050036921192C1E002A2306 /* CJObjectConvertUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8050036721192C1E002A2306 /* CJObjectConvertUtil.m */; };
 		80E7E62920ABCFBC000F762D /* AppInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E7E62820ABCFBB000F762D /* AppInfoManager.m */; };
+		9701483A2D7CAC4C00EB8609 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 970148382D7CAC4C00EB8609 /* Localizable.strings */; };
+		970148402D7CB9F500EB8609 /* LocalizableDownloader.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9701483E2D7CB9F500EB8609 /* LocalizableDownloader.strings */; };
 		97216B0B2570AAC60006E1C2 /* SimulationHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97216B092570AAC60006E1C2 /* SimulationHomeViewController.m */; };
 		97216B112570AC4D0006E1C2 /* api:card:cardlist in Resources */ = {isa = PBXBuildFile; fileRef = 97216B102570AC4D0006E1C2 /* api:card:cardlist */; };
 		9730F3AC2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9730F3AB2D581E00008AF628 /* TSVideoUrlAnalyzeHomeViewController.m */; };
@@ -222,6 +224,11 @@
 		80E7E62720ABCFBB000F762D /* AppInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfoManager.h; sourceTree = "<group>"; };
 		80E7E62820ABCFBB000F762D /* AppInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfoManager.m; sourceTree = "<group>"; };
 		90255310EA6CED3E04FA1CEB /* Pods-CJNetworkDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJNetworkDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CJNetworkDemoTests/Pods-CJNetworkDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		970148392D7CAC4C00EB8609 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9701483C2D7CAD8100EB8609 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		9701483D2D7CAD8200EB8609 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9701483F2D7CB9F500EB8609 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LocalizableDownloader.strings; sourceTree = "<group>"; };
+		970148412D7CBA2000EB8609 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LocalizableDownloader.strings"; sourceTree = "<group>"; };
 		97216B092570AAC60006E1C2 /* SimulationHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulationHomeViewController.m; sourceTree = "<group>"; };
 		97216B0A2570AAC60006E1C2 /* SimulationHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationHomeViewController.h; sourceTree = "<group>"; };
 		97216B102570AC4D0006E1C2 /* api:card:cardlist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "api:card:cardlist"; sourceTree = "<group>"; };
@@ -681,6 +688,8 @@
 			children = (
 				78FC92011F54481E00033DEF /* Main.storyboard */,
 				78FC92091F54481E00033DEF /* Info.plist */,
+				970148382D7CAC4C00EB8609 /* Localizable.strings */,
+				9701483E2D7CB9F500EB8609 /* LocalizableDownloader.strings */,
 				78FC91F91F54481E00033DEF /* main.m */,
 				784653791F544A6400E20A27 /* PrefixHeader.pch */,
 			);
@@ -929,6 +938,7 @@
 				English,
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 78FC91EC1F54481E00033DEF;
 			productRefGroup = 78FC91F61F54481E00033DEF /* Products */;
@@ -949,6 +959,7 @@
 			files = (
 				7868F17A2121C79A00A283EB /* SocketDemoViewController.xib in Resources */,
 				7842989F21C1F991003198FB /* AppAssets.xcassets in Resources */,
+				9701483A2D7CAC4C00EB8609 /* Localizable.strings in Resources */,
 				784298A021C1F991003198FB /* MainAsset.xcassets in Resources */,
 				97216B112570AC4D0006E1C2 /* api:card:cardlist in Resources */,
 				7868F1872121C79A00A283EB /* TSDownloadTableViewCell.xib in Resources */,
@@ -956,6 +967,7 @@
 				7868F1882121C79A00A283EB /* TSDownloadTableViewController.xib in Resources */,
 				7868F1AA2121D06C00A283EB /* AFNDemoViewController.xib in Resources */,
 				78FC92031F54481E00033DEF /* Main.storyboard in Resources */,
+				970148402D7CB9F500EB8609 /* LocalizableDownloader.strings in Resources */,
 				7868F1842121C79A00A283EB /* CQTSBaseDownloadViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1197,8 +1209,27 @@
 			isa = PBXVariantGroup;
 			children = (
 				78FC92021F54481E00033DEF /* Base */,
+				9701483C2D7CAD8100EB8609 /* zh-Hans */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		970148382D7CAC4C00EB8609 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				970148392D7CAC4C00EB8609 /* en */,
+				9701483D2D7CAD8200EB8609 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		9701483E2D7CB9F500EB8609 /* LocalizableDownloader.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9701483F2D7CB9F500EB8609 /* en */,
+				970148412D7CBA2000EB8609 /* zh-Hans */,
+			);
+			name = LocalizableDownloader.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
