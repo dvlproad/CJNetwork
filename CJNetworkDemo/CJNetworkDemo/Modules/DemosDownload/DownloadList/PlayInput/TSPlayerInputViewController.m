@@ -289,27 +289,6 @@
                 NSLog(@"视频加载失败: %@", error.localizedDescription);
             }
         }];
-        
-        // loadItemForTypeIdentifier: 会自动将文件拷贝到临时目录（通常在 file://private/var/.../）
-        [result.itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeMovie options:nil completionHandler:^(NSURL * _Nullable videoURL, NSError * _Nullable error) {
-            if (videoURL && !error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    //iOS 14+ 使用 PHPickerViewController 选择视频时，获取的 NSURL 是沙盒临时路径，但默认没有拷贝到可访问的目录，导致 AVPlayer 无法正常播放。而 UIImagePickerController 直接提供的是一个可访问的本地文件路径，所以在 iOS 14 以下可以正常播放。
-//
-                    
-                    BOOL accessGranted = [videoURL startAccessingSecurityScopedResource];
-                    if (accessGranted) {
-                        NSURL *playableURL = [self copyVideoToTemporaryDirectory:videoURL];
-                        [self playVideoWithURL:playableURL];
-                        [videoURL stopAccessingSecurityScopedResource]; // 释放权限
-                    } else {
-                        NSString *errorMessage = [NSString stringWithFormat:@"无法访问 security-scoped URL: %@", videoURL];
-                        [CJUIKitToastUtil showMessage:errorMessage];
-                    }
-                });
-            }
-        }];
-        //*/
     }
 }
 

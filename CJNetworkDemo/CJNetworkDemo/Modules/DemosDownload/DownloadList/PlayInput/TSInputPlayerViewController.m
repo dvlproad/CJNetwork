@@ -71,15 +71,23 @@
 //    self.videoURL = videoURL;
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:self.videoURL];
     // 7. 监听 AVPlayerItem 状态变化
-    
-    [playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserveForPlayerItem:playerItem];
     [self.player replaceCurrentItemWithPlayerItem:playerItem];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [CQIndicatorHUDUtil showLoadingHUD:NSLocalizedStringFromTable(@"加载中...", @"LocalizableDownloader", nil)];
+    if ([self.videoURL.absoluteString hasPrefix:@"http"]) {
+        [CQIndicatorHUDUtil showLoadingHUD:NSLocalizedStringFromTable(@"加载中...", @"LocalizableDownloader", nil)];
+    }
+}
+
+- (void)addObserveForPlayerItem:(AVPlayerItem *)playerItem {
+    // 8. 监听 `AVPlayerItem` 状态
+    [playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    [playerItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
+    [playerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -89,15 +97,13 @@
     __weak typeof(self) weakSelf = self;
     if ([keyPath isEqualToString:@"status"]) {
         AVPlayerItem *playerItem = (AVPlayerItem *)object;
-        if (playerItem.status == AVPlayerItemStatusReadyToPlay) {
-            NSLog(@"✅ 可以开始播放了！");
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (playerItem.status == AVPlayerItemStatusReadyToPlay) {
+                NSLog(@"✅ 可以开始播放了！");
                 [CQIndicatorHUDUtil dismissLoadingHUD];
                 [self.player play]; // 开始播放
-            });
-        } else if (playerItem.status == AVPlayerItemStatusFailed) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+                
+            } else if (playerItem.status == AVPlayerItemStatusFailed) {
                 [CQIndicatorHUDUtil dismissLoadingHUD];
                 
                 NSString *message = [NSString stringWithFormat:@"❌ 播放失败：%@", playerItem.error.localizedDescription];
@@ -106,13 +112,11 @@
                         
                     }];
                 }];
-            });
-            
-        } else if (playerItem.status == AVPlayerItemStatusUnknown) {
-            dispatch_async(dispatch_get_main_queue(), ^{
                 
-            });
-        }
+            } else if (playerItem.status == AVPlayerItemStatusUnknown) {
+                
+            }
+        });
     }
 }
 
