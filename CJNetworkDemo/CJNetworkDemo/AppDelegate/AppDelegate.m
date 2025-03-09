@@ -40,9 +40,9 @@
     [self.window settingRoot];
     
     
-    [CJLogSuspendWindow showWithFrame:CGRectMake(10, 200, 100, 100) configBlock:^(CJLogSuspendWindow *bSuspendWindow) {
-        
-    }];
+//    [CJLogSuspendWindow showWithFrame:CGRectMake(10, 200, 100, 100) configBlock:^(CJLogSuspendWindow *bSuspendWindow) {
+//        
+//    }];
     
     return YES;
 }
