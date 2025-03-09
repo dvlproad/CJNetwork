@@ -21,8 +21,6 @@
 #import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
 #import <CJNetwork/CQDemoHTTPSessionManager.h>
 
-#import "TestNetworkClient.h"
-
 // 下载
 #import "HSDownloadManager.h"
 

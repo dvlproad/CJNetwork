@@ -7,17 +7,11 @@
 //
 
 #import "AppDelegate+StartUp.h"
-#import "TestNetworkClient.h"
-//#import "TestNetworkEnvironmentManager.h"
 
 @implementation AppDelegate (StartUp)
 
 - (void)startUp {
-    //TestNetworkEnvironmentManager *environmentManager = [TestNetworkEnvironmentManager sharedInstance];
-    //NSString *fullUrl = [environmentManager completeUrlWithApiSuffix:apiSuffix];
-    //NSMutableDictionary *allParams = [environmentManager completeParamsWithCustomParams:customParams];
-//    [TestNetworkClient sharedInstance].baseUrl = @"";
-    [TestNetworkClient sharedInstance].commonParams = [NSMutableDictionary dictionaryWithDictionary:@{}];
+    
 }
 
 @end
