@@ -21,6 +21,9 @@
 #import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
 #import <CJNetwork/CQDemoHTTPSessionManager.h>
 
+#import <CQOverlayKit/CQHUDUtil.h>
+#import <CQOverlayKit/CQIndicatorHUDUtil.h>
+
 // 下载
 #import "HSDownloadManager.h"
 
@@ -64,6 +67,8 @@
 //                [CJUIKitToastUtil showMessage:errorMessage];
 //            }];
             // 先本地解析，若失败再用第三方解析
+            //[CQHUDUtil showLoadingHUD];
+            [CQIndicatorHUDUtil showLoadingHUD:@"解析中"];
 //            [weakSelf local_analyzeTiktokShortenedUrl:text failure:^(NSError * _Nonnull error) {
                 [weakSelf tikwm_analyzeTiktokShortenedUrl:text failure:^(NSString * _Nonnull errorMessage) {
                     [CJUIKitToastUtil showMessage:errorMessage];
@@ -131,6 +136,8 @@
     
 //    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
     NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
+//    NSString *shortenedUrl = @"https://vt.tiktok.com/ZSMVE5Qdh/";
+//    NSString *shortenedUrl = @"https://vt.tiktok.com/ZSMVKbhkh/";
     self.downloadInputView.textField.text = shortenedUrl;
 }
 
@@ -211,6 +218,8 @@
 }
 
 - (void)__goRecordsPage {
+    [CQHUDUtil dismissLoadingHUD];
+    
     [self.tabBarController setSelectedIndex:1];
     UINavigationController *rootVC = [self.tabBarController selectedViewController];
     TSDownloadCollectionViewController *vc = rootVC.childViewControllers.firstObject;

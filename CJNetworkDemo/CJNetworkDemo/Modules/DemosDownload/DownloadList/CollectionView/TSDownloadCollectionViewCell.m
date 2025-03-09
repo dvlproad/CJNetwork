@@ -11,6 +11,7 @@
 #import <CQDemoKit/CQTSPhotoUtil.h>
 #import <CQDemoKit/CQTSResourceUtil.h>
 #import <CQMdeiaVideoFrameKit/VideoFrameCQHelper.h>
+#import "TSDownloadUtil.h"
 
 @interface TSDownloadCollectionViewCell ()
 
@@ -55,7 +56,7 @@
     
     [parentView addSubview:self.previewImageView];
     
-    
+    __weak typeof(self)weakSelf = self;
     self.downloadView = [[TSDownloadCollectionViewCellOverlay alloc] initWithStateChangeBlock:^(CJFileDownloadState downloadState, NSString * _Nullable localAbsPath) {
         if (downloadState == CJFileDownloadStateSuccess) {
             CQTSFileType fileType = [CQTSResourceUtil fileTypeForFilePathOrUrl:localAbsPath];

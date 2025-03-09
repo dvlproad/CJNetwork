@@ -217,6 +217,8 @@ static HSDownloadManager *_downloadManager;
         CGFloat progress = [CQDownloadCacheUtil progress:url];
         if (progress == 1.0) {
             return CJFileDownloadStateSuccess;
+        } else if (progress > 0.0) {
+            return CJFileDownloadStatePause;
         } else {
             return CJFileDownloadStateUnknown;
         }

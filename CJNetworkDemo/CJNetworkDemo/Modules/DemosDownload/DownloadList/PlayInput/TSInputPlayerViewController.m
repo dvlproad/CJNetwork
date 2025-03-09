@@ -10,6 +10,8 @@
 #import "TSInputPlayerViewController.h"
 #import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CQDemoKit/CQTSButtonFactory.h>
+#import <CQOverlayKit/CQIndicatorHUDUtil.h>
+#import <CQOverlayKit/CQAlertUtil.h>
 #import "TSDownloadUtil.h"
 
 #import "HSDownloadManager.h"
@@ -68,8 +70,50 @@
 //    }
 //    self.videoURL = videoURL;
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:self.videoURL];
+    // 7. 监听 AVPlayerItem 状态变化
+    
+    [playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     [self.player replaceCurrentItemWithPlayerItem:playerItem];
-    [self.player play];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [CQIndicatorHUDUtil showLoadingHUD:NSLocalizedStringFromTable(@"加载中...", @"LocalizableDownloader", nil)];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSKeyValueChangeKey,id> *)change
+                       context:(void *)context {
+    __weak typeof(self) weakSelf = self;
+    if ([keyPath isEqualToString:@"status"]) {
+        AVPlayerItem *playerItem = (AVPlayerItem *)object;
+        if (playerItem.status == AVPlayerItemStatusReadyToPlay) {
+            NSLog(@"✅ 可以开始播放了！");
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [CQIndicatorHUDUtil dismissLoadingHUD];
+                [self.player play]; // 开始播放
+            });
+        } else if (playerItem.status == AVPlayerItemStatusFailed) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [CQIndicatorHUDUtil dismissLoadingHUD];
+                
+                NSString *message = [NSString stringWithFormat:@"❌ 播放失败：%@", playerItem.error.localizedDescription];
+                [CQAlertUtil showIKnowAlertViewWithTitle:message message:nil okHandle:^{
+                    [weakSelf dismissViewControllerAnimated:YES completion:^{
+                        
+                    }];
+                }];
+            });
+            
+        } else if (playerItem.status == AVPlayerItemStatusUnknown) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+            });
+        }
+    }
 }
 
 #pragma mark - 设置导航栏
@@ -237,7 +281,7 @@
 
     // 6. 自动播放视频
     [self.player seekToTime:kCMTimeZero];
-    [self.player play];
+    //[self.player play];
     
     // 7. 监听播放完成通知，实现循环播放
     AVPlayerItem *playerItem = self.player.currentItem;

@@ -15,9 +15,12 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - Alamofire (4.9.1)
+  - CJBaseHelper/AuthorizationCJHelper (0.1.7)
   - CJBaseHelper/DeviceCJHelper (0.1.7)
   - CJBaseHelper/NSObjectCJHelper (0.1.7)
   - CJBaseUIKit/CJSlider (0.8.0)
+  - CJBaseUIKit/UIButton (0.8.0)
+  - CJBaseUIKit/UIColor (0.8.0)
   - CJBaseUIKit/UIView (0.8.0):
     - CJBaseUIKit/UIView/CJAddCorner (= 0.8.0)
     - CJBaseUIKit/UIView/CJAnimation (= 0.8.0)
@@ -32,6 +35,8 @@ PODS:
   - CJBaseUIKit/UIView/CJGestureRecognizer (0.8.0)
   - CJBaseUIKit/UIView/CJShakeAction (0.8.0)
   - CJBaseUtil/CJIndentedStringUtil (0.5.1)
+  - CJContainer (0.1.0):
+    - Masonry
   - CJMediaCacheKit (0.0.1)
   - CJMediaPlayer (0.0.1):
     - CJBaseUIKit/CJSlider (~> 0.8.0)
@@ -84,8 +89,55 @@ PODS:
     - CJNetworkFileModel/Upload (= 0.1.0)
   - CJNetworkFileModel/Upload (0.1.0)
   - CJNetworkSimulate (0.2.2)
+  - CJOverlayView/AlertView_Horizontal (0.5.0):
+    - CJOverlayView/CJBaseOverlayTheme
+    - Masonry
+  - CJOverlayView/AlertView_Image (0.5.0):
+    - CJContainer
+    - CJOverlayView/CJBaseOverlayTheme
+    - SnapKit
+  - CJOverlayView/AlertView_Normal (0.5.0):
+    - CJOverlayView/CJBaseOverlayTheme
+    - Masonry
+  - CJOverlayView/CJActionSheet (0.5.0):
+    - CJOverlayView/CJBaseOverlayTheme
+    - Masonry
+  - CJOverlayView/CJBaseOverlayTheme (0.5.0)
+  - CJOverlayView/CJProgressHUD (0.5.0):
+    - CJOverlayView/CJProgressHUD/Base (= 0.5.0)
+    - CJOverlayView/CJProgressHUD/IndicatorProgressHUD (= 0.5.0)
+    - CJOverlayView/CJProgressHUD/JSONProgressHUD (= 0.5.0)
+  - CJOverlayView/CJProgressHUD/Base (0.5.0):
+    - CJOverlayView/CJBaseOverlayTheme
+  - CJOverlayView/CJProgressHUD/IndicatorProgressHUD (0.5.0):
+    - CJOverlayView/CJBaseOverlayTheme
+  - CJOverlayView/CJProgressHUD/JSONProgressHUD (0.5.0):
+    - CJOverlayView/CJBaseOverlayTheme
+    - CQBridgeSTOLottie
+    - lottie-ios
+    - Masonry
+    - MBProgressHUD
+  - CJOverlayView/CJToast (0.5.0):
+    - CJOverlayView/CJBaseOverlayTheme
+    - Masonry
+    - MBProgressHUD
   - CJPlayer (0.0.1):
     - CJMediaCacheKit
+  - CJPopupAnimation/Toast (0.1.0)
+  - CJPopupCreater (0.1.1):
+    - CJPopupCreater/Base (= 0.1.1)
+    - CJPopupCreater/BottomBlank (= 0.1.1)
+    - CJPopupCreater/CenterBlank (= 0.1.1)
+    - CJPopupCreater/EffectAndCornerHelper (= 0.1.1)
+  - CJPopupCreater/Base (0.1.1)
+  - CJPopupCreater/BottomBlank (0.1.1):
+    - CJBaseUIKit/UIView/CJDragAction
+    - CJPopupCreater/Base
+    - Masonry
+  - CJPopupCreater/CenterBlank (0.1.1):
+    - CJPopupCreater/Base
+    - Masonry
+  - CJPopupCreater/EffectAndCornerHelper (0.1.1)
   - CocoaAsyncSocket (7.4.3):
     - CocoaAsyncSocket/All (= 7.4.3)
   - CocoaAsyncSocket/All (7.4.3):
@@ -93,6 +145,8 @@ PODS:
     - CocoaAsyncSocket/RunLoop
   - CocoaAsyncSocket/GCD (7.4.3)
   - CocoaAsyncSocket/RunLoop (7.4.3)
+  - CQBridgeSTOLottie (0.1.4):
+    - lottie-ios
   - CQDemoKit (0.7.7):
     - CQDemoKit/Auxiliary (= 0.7.7)
     - CQDemoKit/BaseUIKit (= 0.7.7)
@@ -173,6 +227,65 @@ PODS:
     - CQNetworkPublic/Upload/Base
   - CQNetworkPublic/Upload/Helper (0.3.0):
     - CQNetworkPublic/Upload/Base
+  - CQOverlayKit (0.7.2):
+    - CQOverlayKit/Base (= 0.7.2)
+    - CQOverlayKit/CQActionSheet (= 0.7.2)
+    - CQOverlayKit/CQAlert (= 0.7.2)
+    - CQOverlayKit/CQHUD (= 0.7.2)
+    - CQOverlayKit/CQToast (= 0.7.2)
+    - CQOverlayKit/Theme (= 0.7.2)
+    - CQOverlayKit/ThemeSetting (= 0.7.2)
+  - CQOverlayKit/Base (0.7.2):
+    - CJPopupCreater
+    - CQOverlayKit/Theme
+    - CQPopupCreater_Base/BaseBottom
+    - CQPopupCreater_Base/BaseCenter
+  - CQOverlayKit/CQActionSheet (0.7.2):
+    - CJOverlayView/CJActionSheet
+    - CQOverlayKit/Base
+    - CQOverlayKit/Theme
+  - CQOverlayKit/CQAlert (0.7.2):
+    - CJBaseHelper/AuthorizationCJHelper
+    - CJOverlayView/AlertView_Horizontal
+    - CJOverlayView/AlertView_Image
+    - CJOverlayView/AlertView_Normal
+    - CQOverlayKit/Base
+    - CQOverlayKit/Theme
+  - CQOverlayKit/CQHUD (0.7.2):
+    - CJOverlayView/CJProgressHUD
+    - CJOverlayView/CJToast
+    - CJPopupAnimation/Toast
+    - CQOverlayKit/Theme
+    - SVProgressHUD
+  - CQOverlayKit/CQToast (0.7.2):
+    - CJOverlayView/CJToast
+    - CJPopupAnimation/Toast
+    - CQOverlayKit/Theme
+  - CQOverlayKit/Theme (0.7.2):
+    - CJOverlayView/CJBaseOverlayTheme
+  - CQOverlayKit/ThemeSetting (0.7.2):
+    - CJOverlayView/CJActionSheet
+    - CQOverlayKit/Theme
+  - CQPopupCreater_Base/BaseBottom (0.6.4):
+    - CQPopupCreater_Base/BaseBottom/4ViewCategory (= 0.6.4)
+    - CQPopupCreater_Base/BaseBottom/PoupIsCustomAddPanline (= 0.6.4)
+  - CQPopupCreater_Base/BaseBottom/4ViewCategory (0.6.4):
+    - CQPopupCreater_Base/BaseBottom/PoupIsCustomAddPanline
+  - CQPopupCreater_Base/BaseBottom/PoupIsCustomAddPanline (0.6.4):
+    - CJBaseUIKit/UIButton
+    - CJBaseUIKit/UIColor
+    - CJBaseUIKit/UIView/CJDragAction
+    - CJPopupCreater/BottomBlank
+    - CJPopupCreater/EffectAndCornerHelper
+    - Masonry
+  - CQPopupCreater_Base/BaseCenter (0.6.4):
+    - CQPopupCreater_Base/BaseCenter/2BlankView (= 0.6.4)
+    - CQPopupCreater_Base/BaseCenter/4ViewCategory (= 0.6.4)
+  - CQPopupCreater_Base/BaseCenter/2BlankView (0.6.4):
+    - CJPopupCreater/CenterBlank
+    - CJPopupCreater/EffectAndCornerHelper
+  - CQPopupCreater_Base/BaseCenter/4ViewCategory (0.6.4):
+    - CQPopupCreater_Base/BaseCenter/2BlankView
   - CQVideoUrlAnalyze-Swift (0.0.1):
     - CQVideoUrlAnalyze-Swift/Douyin (= 0.0.1)
     - CQVideoUrlAnalyze-Swift/Tiktok (= 0.0.1)
@@ -182,7 +295,9 @@ PODS:
   - CQVideoUrlAnalyze-Swift/Tiktok (0.0.1):
     - CJNetwork-Swift/Download
     - CJNetworkClient/Request
+  - lottie-ios (3.2.3)
   - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
   - Moya/Core (13.0.1):
@@ -191,7 +306,9 @@ PODS:
   - OpenUDID (1.0.0)
   - PureLayout (3.1.9)
   - Result (4.1.0)
+  - SnapKit (4.2.0)
   - SSZipArchive (2.4.3)
+  - SVProgressHUD (2.2.5)
   - TransitionKit (2.2.1)
   - YYCache (1.0.4)
 
@@ -222,10 +339,24 @@ DEPENDENCIES:
   - CQMdeiaVideoFrameKit (from `../../013-Mdeia_Video_Frame/iOS`)
   - CQNetworkPublic/Request (from `../`)
   - CQNetworkPublic/Upload (from `../`)
+  - CQOverlayKit
   - CQVideoUrlAnalyze-Swift (from `../`)
   - OpenUDID (~> 1.0.0)
 
 SPEC REPOS:
+  https://gitee.com/dvlproad/dvlproadSpecs:
+    - CJContainer
+    - CJOverlayView
+    - CJPopupAnimation
+    - CJPopupCreater
+    - CQBridgeSTOLottie
+    - CQOverlayKit
+    - CQPopupCreater_Base
+  https://github.com/CocoaPods/Specs.git:
+    - lottie-ios
+    - MBProgressHUD
+    - SnapKit
+    - SVProgressHUD
   trunk:
     - AFNetworking
     - Alamofire
@@ -275,6 +406,7 @@ SPEC CHECKSUMS:
   CJBaseHelper: 71c9d695c76736b2fc66123157d5626da4556177
   CJBaseUIKit: 1aae41e618536f39628c79a7461f48e6979b8a5e
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
+  CJContainer: b7d5d626a05691c9107ce57b5991ab5c066f86a3
   CJMediaCacheKit: 0cb62830e0e8364f7a897e1036308e613d53f2e8
   CJMediaPlayer: d0fe29ed73a4bae153fa6971b2d5017c0b4b7bdf
   CJMonitor: cbec62179b877a476f84249ff268c765a66d6687
@@ -283,22 +415,32 @@ SPEC CHECKSUMS:
   CJNetworkClient: ddfe9fc5062d2d9950ed0ca3cb89299fe56ee398
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
   CJNetworkSimulate: 0c8e89ee82db12816cabdce4f3d6dcab1d30ee5b
+  CJOverlayView: 8d91c269de493b3d7e6d2dc09d32320406281b2e
   CJPlayer: 020e3416aafc40273a2dfb3b55da269daad60fc1
+  CJPopupAnimation: 6c2e5b66e37915dbb2c9bfb077b1c8f37e9a4b89
+  CJPopupCreater: 943809e3dce2a77a10b198104db069261360f7a1
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
+  CQBridgeSTOLottie: c02f7cb675105ab74b3ec8b1b9d0a1f148d9feea
   CQDemoKit: 6d8cda4fd4dd4d798a6507a656141278f6b22d30
   CQDemoKit-Swift: 28d06bf24cbcc84c9651e0ffe607bffdd57863b6
   CQMdeiaVideoFrameKit: fe3f12617aa42f8382f15521e1d333f7695b989f
   CQNetworkPublic: daa95989c1d6d8f2d1d50f97285f4b88f0e664d3
+  CQOverlayKit: 115903f079a02796d9ca711889b5d7dba5defbe6
+  CQPopupCreater_Base: 3ae1d7de8cf49ec78ba0c2be278a38da8134e48e
   CQVideoUrlAnalyze-Swift: 93f961bafc55d1ea389ce42b95a42279fbf760f1
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   PureLayout: 5fb5e5429519627d60d079ccb1eaa7265ce7cf88
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 6d6ffc3c0e3bd35adf9fca0c88d5e3b4dfa13def
+PODFILE CHECKSUM: c40c9a26f97e6701932c79e2b092aadd69ad3f48
 
 COCOAPODS: 1.16.2

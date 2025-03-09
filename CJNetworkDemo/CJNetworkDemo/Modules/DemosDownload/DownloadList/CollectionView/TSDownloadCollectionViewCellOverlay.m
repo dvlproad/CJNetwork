@@ -10,6 +10,7 @@
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
 #import <CJNetwork_Swift/CJNetwork_Swift-Swift.h>
 #import <CQDemoKit/CQTSSandboxPathUtil.h>
+#import "TSDownloadUtil.h"
 
 @interface TSDownloadCollectionViewCellOverlay ()
 
@@ -212,6 +213,7 @@
 - (void)__setupDownloadBlock {
     [self initData];
     
+    __weak typeof(self)weakSelf = self;
     CJFileDownloadMethod downloadMethod = [CQDownloadCacheUtil getDownloadMethodForRecord:self.downloadModel];
     if (downloadMethod == CJFileDownloadMethodProgress) {
         [[HSDownloadManager sharedInstance] setupUrl:self.downloadModel progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
@@ -225,6 +227,10 @@
         } state:^(CJFileDownloadState state, NSError * _Nullable error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self __changeState:state];
+                
+                if (state == CJFileDownloadStateSuccess) {
+                    [TSDownloadUtil askSaveDownloadModel:weakSelf.downloadModel];
+                }
             });
         }];
     } else if (downloadMethod == CJFileDownloadMethodOneOff) {

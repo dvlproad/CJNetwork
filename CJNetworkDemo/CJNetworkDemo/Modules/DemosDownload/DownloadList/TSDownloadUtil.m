@@ -21,7 +21,14 @@
 
 #import "HSDownloadManager.h"
 
+#import "AppInfoManager.h"
+
 @implementation TSDownloadUtil
+
++ (void)askSaveDownloadModel:(CQDownloadRecordModel *)downloadModel {
+    UIViewController *viewController = [AppInfoManager.sharedInstance getTopViewController];
+    [self saveInViewController:viewController forDownloadModel:downloadModel];
+}
 
 + (void)saveInViewController:(UIViewController *)vc forDownloadModel:(CQDownloadRecordModel *)downloadModel {
     NSString *localAbsPath = [CQDownloadCacheUtil fileLocalAbsPathForUrl:downloadModel];

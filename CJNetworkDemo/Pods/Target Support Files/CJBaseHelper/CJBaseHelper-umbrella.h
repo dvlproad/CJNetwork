@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "AuthorizationCJHelper.h"
 #import "DeviceCJHelper.h"
 #import "NSObjectCJHelper.h"
 

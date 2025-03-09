@@ -1,0 +1,6 @@
+framework module CJPopupAnimation {
+  umbrella header "CJPopupAnimation-umbrella.h"
+
+  export *
+  module * { export * }
+}

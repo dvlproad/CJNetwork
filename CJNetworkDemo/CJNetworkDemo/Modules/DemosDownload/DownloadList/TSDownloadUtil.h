@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TSDownloadUtil : NSObject
 
++ (void)askSaveDownloadModel:(CQDownloadRecordModel *)downloadModel;
+
 + (void)saveInViewController:(UIViewController *)vc forDownloadModel:(CQDownloadRecordModel *)downloadModel;
 
 @end

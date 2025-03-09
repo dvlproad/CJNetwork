@@ -127,6 +127,7 @@
     NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
     self.downloadInputView.textField.text = shortenedUrl;
     self.downloadInputView.textField.text = @"https://www.tikwm.com/video/media/hdplay/7465611957203160340.mp4";
+    self.downloadInputView.textField.text = @"https://www.sample-videos.com/video321/mp4/720/big_buck_bunny_720p_2mb.mp4";
     
     [self configureAudioSession];
 }
