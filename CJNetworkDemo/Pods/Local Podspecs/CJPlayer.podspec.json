@@ -18,13 +18,6 @@
   "source_files": "CJPlayer/**/*.{h,m}",
   "frameworks": "UIKit",
   "requires_arc": true,
-  "resource_bundles": {
-    "CQDemoKit": [
-      "CQDemoKit/Demo_Resource/**/*.{png,jpg,jpeg,gif,svg,mp4}",
-      "CQDemoKit/Demo_Resource/**/*.{xcassets}",
-      "CQDemoKit/BaseVC/**/*.{png,jpg,jpeg}"
-    ]
-  },
   "resources": [
     "CJPlayer/**/*.{png,jpg,jpeg,gif,svg,mp4}",
     "CJPlayer/**/*.{xcassets}"

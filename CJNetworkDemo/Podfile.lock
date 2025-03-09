@@ -283,7 +283,7 @@ SPEC CHECKSUMS:
   CJNetworkClient: ddfe9fc5062d2d9950ed0ca3cb89299fe56ee398
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
   CJNetworkSimulate: 0c8e89ee82db12816cabdce4f3d6dcab1d30ee5b
-  CJPlayer: e29c9823449224daa93c46f666f52b310fe30168
+  CJPlayer: 020e3416aafc40273a2dfb3b55da269daad60fc1
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQDemoKit: 6d8cda4fd4dd4d798a6507a656141278f6b22d30
   CQDemoKit-Swift: 28d06bf24cbcc84c9651e0ffe607bffdd57863b6

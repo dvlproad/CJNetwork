@@ -71,7 +71,26 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-    [self.downloadInputView cj_registerKeyboardNotificationWithAutoMoveUpSpacing:30 hasSpacing:YES];
+    // 监听键盘弹出
+    //[self.downloadInputView cj_registerKeyboardNotificationWithAutoMoveUpSpacing:30 hasSpacing:YES];
+}
+
+- (void)dealloc {
+    [self.downloadInputView cj_removeKeyboardNotification];
+}
+
+- (void)registerKeyboardNotification {
+    __weak typeof(self)weakSelf = self;
+    [self.downloadInputView cj_registerKeyboardNotificationWithWillShowBlock:nil willHideBlock:nil willChangeFrameBlock:^(CGFloat keyboardHeight, CGFloat keyboardTopY, CGFloat duration) {
+        [weakSelf.downloadInputView mas_updateConstraints:^(MASConstraintMaker *make) {
+            if (keyboardHeight > 0) {
+                CGFloat defaultTabBarHeight = 49.0;
+                make.bottom.mas_equalTo(weakSelf.mas_bottomLayoutGuide).offset(-keyboardHeight+defaultTabBarHeight);
+            } else {
+                make.bottom.mas_equalTo(weakSelf.mas_bottomLayoutGuideTop).offset(-30);
+            }
+        }];
+    }];
 }
 
 - (void)viewDidLoad {
@@ -103,6 +122,8 @@
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tapGesture];
+    
+    [self registerKeyboardNotification];
     
 //    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
     NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
