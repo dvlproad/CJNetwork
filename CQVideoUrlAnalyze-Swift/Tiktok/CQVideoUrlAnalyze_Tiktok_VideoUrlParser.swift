@@ -30,6 +30,9 @@ public class VideoFileUrl: NSObject {
 }
 
 @objc public class TikTokService: NSObject {
+    /// The global shared Cache.
+    public static let shared = TikTokService()
+    
 //    @objc public static func getAndDownloadFromShortenedUrl(
 //        _ shortenedUrl: String,
 //        success: @escaping (_ cacheURL: URL) -> Void,
@@ -56,10 +59,16 @@ public class VideoFileUrl: NSObject {
         success: @escaping (_ cacheURL: URL) -> Void,
         failure: @escaping (NSError) -> Void
     ) {
+        // 无法获取到 content-length 所以没有 progress
+        // 另写入几乎没耗时，耗时的是请求网络data数据
+//        TikTokService.shared.getVideoDataFromActualVideoUrl(actualVideoUrl, progress: { progressValue in
+//            progress?(0, 0, progressValue)
+//        , success: { contentType, videoData in
         getVideoDataFromActualVideoUrl(actualVideoUrl, success: { contentType, videoData in
             let videoFileExtension = contentType?.subtype ?? "mp4"
             let fileLocalURL = saveToLocalURLGetter(videoFileExtension)
-            CJDownloadDataSaveUtil.downloadFileData(videoData, fileLocalURL: fileLocalURL, progress: progress, success: { cacheURL in
+            debugPrint("获取视频数据成功，开始准备写入...")
+            CJDownloadDataSaveUtil.downloadFileData(videoData, fileLocalURL: fileLocalURL, success: { cacheURL in
                 success(cacheURL)
             }, failure: { errorMessage in
                 let error = NSError(domain: "VideoDownloaderSaveError", code: 1001, userInfo: [NSLocalizedDescriptionKey: errorMessage])
@@ -81,10 +90,10 @@ public class VideoFileUrl: NSObject {
         }
 
         // 2. 验证是否符合 TikTok 短链接格式
-        let expectedHost = "www.tiktok.com"
+        let expectedHosts = ["www.tiktok.com", "vt.tiktok.com"]
         let expectedPathPrefix = "/t"
 
-        guard host == expectedHost, url.path.hasPrefix(expectedPathPrefix) else {
+        guard expectedHosts.contains(host), url.path.hasPrefix(expectedPathPrefix) else {
             return "⚠️ 不符合 TikTok 短链接格式: \(shortenedUrl)"
         }
         
@@ -216,7 +225,79 @@ public class VideoFileUrl: NSObject {
         
         task.resume()
     }
+    
+    /*
+    private var expectedContentLength: Int64 = 0
+    private var receivedData = Data()
+    private var progressHandler: ((_ progress: CGFloat) -> Void)?
+    private var successHandler: ((_ contentType: VideoContentType?, _ videoData: Data) -> Void)?
+    private var failureHandler: ((_ error: NSError) -> Void)?
+    */
 }
+
+//extension TikTokService: URLSessionDataDelegate {
+//    private func getVideoDataFromActualVideoUrl(
+//        _ videoUrl: String,
+//        progress: @escaping (_ progress: CGFloat) -> Void,
+//        success: @escaping (_ contentType: VideoContentType?, _ videoData: Data) -> Void,
+//        failure: @escaping (NSError) -> Void
+//    ) {
+//        guard let url = URL(string: videoUrl as String) else {
+//            let error = NSError(domain: "VideoDownloaderError", code: 400, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
+//            failure(error)
+//            return
+//        }
+//        
+//        self.progressHandler = progress
+//        self.successHandler = success
+//        self.failureHandler = failure
+//        self.receivedData = Data()
+//        
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "GET"
+//        request.allHTTPHeaderFields = [
+//            "Referer": "https://www.tiktok.com/",
+//            "Sec-Fetch-Dest": "video",
+//            "Sec-Fetch-Mode": "no-cors",
+//            "Sec-Fetch-Site": "cross-site",
+//            "Accept": "*/*",
+//            "Accept-Encoding": "identity;q=1, *;q=0",
+//            "Accept-Language": "en-US,en;q=0.9,hu-HU;q=0.8,hu;q=0.7,ro;q=0.6",
+//            "Connection": "keep-alive",
+//            "Range": "bytes=0-",
+//            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36"
+//        ]
+//        
+//        let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+//        let task = session.dataTask(with: request)
+//        
+//        task.resume()
+//    }
+//    
+//    // 监听服务器响应，获取文件总大小
+//    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse) -> URLSession.ResponseDisposition {
+//        self.expectedContentLength = response.expectedContentLength
+//        return .allow
+//    }
+//    
+//    // 处理数据块，计算进度
+//    public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+//        receivedData.append(data)
+//        let progress = CGFloat(receivedData.count) / CGFloat(expectedContentLength)
+//        progressHandler?(progress)  // 更新进度
+//    }
+//    
+//    // 下载完成
+//    public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+//        if let error = error {
+//            failureHandler?(error as NSError)
+//            return
+//        }
+//        
+//        successHandler?(nil, receivedData)
+//    }
+//}
+
 
 @objc(VideoUrlParser)
 public class VideoUrlParser: NSObject {

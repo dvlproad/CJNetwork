@@ -134,11 +134,18 @@
     
     [self registerKeyboardNotification];
     
-//    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2fyo8FN/";
-    NSString *shortenedUrl = @"https://www.tiktok.com/t/ZT2mkNaFw/";
-//    NSString *shortenedUrl = @"https://vt.tiktok.com/ZSMVE5Qdh/";
-//    NSString *shortenedUrl = @"https://vt.tiktok.com/ZSMVKbhkh/";
-    self.downloadInputView.textField.text = shortenedUrl;
+    NSArray<NSString *> *shortenedUrls = @[
+//        @"https://www.tiktok.com/t/ZT2fyo8FN/",
+        @"https://www.tiktok.com/t/ZT2mkNaFw/",    //nezha2 shengaongbao
+        @"https://vt.tiktok.com/ZSMVE5Qdh/",
+        @"https://vt.tiktok.com/ZSMVKbhkh/",
+        @"https://www.tiktok.com/t/ZT2XuQNwY/", // nezha2 打斗1
+        @"https://www.tiktok.com/t/ZT2XuPETG/", // nezha2 打斗2
+    ];
+    // 获取随机值
+    NSInteger maySelIndex = random();
+    NSInteger lastImageSelIndex = maySelIndex%shortenedUrls.count;
+    self.downloadInputView.textField.text = shortenedUrls[lastImageSelIndex];
 }
 
 - (void)dismissKeyboard {

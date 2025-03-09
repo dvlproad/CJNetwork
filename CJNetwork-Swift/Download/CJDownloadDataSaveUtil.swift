@@ -26,6 +26,8 @@ import Foundation
         }
     }
     
+    /*
+//    实际没什么用，写入几乎没耗时，耗时的是请求网络data数据
 //    Data.write(to:) 方法是 同步执行 的，它会一次性将 Data 写入文件，因此无法直接获取 写入进度。但你可以通过 分块写入（chunked writing） 的方式实现写入进度回调。使用流式写入 + 进度回调。我们可以使用 OutputStream 逐步写入数据，并在写入过程中计算进度。
     @objc public static func downloadFileData(
         _ unencryptData: Data,
@@ -66,7 +68,7 @@ import Foundation
                 writtenBytes += Int64(bytesWritten)
                 let percentage = CGFloat(writtenBytes) / CGFloat(totalBytes) // 计算进度
                 progress?(writtenBytes, totalBytes, percentage) // 触发进度回调
-                
+                debugPrint("视频数据写入进度 percentage = \(percentage)")
                 offset += bytesWritten
             }
             
@@ -76,6 +78,7 @@ import Foundation
             failure("文件写入失败: \(error.localizedDescription)")
         }
     }
+    */
     
     // 确保文件夹存在
     @objc public static func ensureDirectoryExists(for fileLocalURL: URL) throws {
