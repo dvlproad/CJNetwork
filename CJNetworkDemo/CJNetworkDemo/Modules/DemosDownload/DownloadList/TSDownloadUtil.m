@@ -34,7 +34,7 @@
         if (fileType == CQTSFileTypeVideo) {
             [CQTSPhotoUtil saveVideoToPhotoAlbum:mediaLocalURL success:^{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [CJUIKitToastUtil showMessage:@"保存成功"];
+                    [CJUIKitToastUtil showMessage:NSLocalizedStringFromTable(@"保存成功", @"LocalizableDownloader", nil)];
                 });
             } failure:^(NSString * _Nonnull errorMessage) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -45,7 +45,7 @@
         } else {
             [CQTSPhotoUtil saveImageToPhotoAlbum:mediaLocalURL success:^{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [CJUIKitToastUtil showMessage:@"保存成功"];
+                    [CJUIKitToastUtil showMessage:NSLocalizedStringFromTable(@"保存成功", @"LocalizableDownloader", nil)];
                 });
             } failure:^(NSString * _Nonnull errorMessage) {
                 dispatch_async(dispatch_get_main_queue(), ^{

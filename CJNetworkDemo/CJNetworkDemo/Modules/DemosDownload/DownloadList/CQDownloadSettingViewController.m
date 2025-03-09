@@ -29,7 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.title = NSLocalizedString(@"更多", nil);
+    self.navigationItem.title = NSLocalizedStringFromTable(@"更多", @"LocalizableDownloader", nil);
     
     __weak typeof(self)weakSelf = self;
     
@@ -38,11 +38,11 @@
     // 单个文件下载
     {
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
-        sectionDataModel.theme = @"设置";
+        sectionDataModel.theme = NSLocalizedStringFromTable(@"设置", @"LocalizableDownloader", nil);
         
         {
             CQDMModuleModel *toastUtilModule = [[CQDMModuleModel alloc] init];
-            toastUtilModule.title = @"关于我们";
+            toastUtilModule.title = NSLocalizedStringFromTable(@"关于我们", @"LocalizableDownloader", nil);
             toastUtilModule.actionBlock = ^{
                 
             };
@@ -50,7 +50,7 @@
         }
         {
             CQDMModuleModel *toastUtilModule = [[CQDMModuleModel alloc] init];
-            toastUtilModule.title = @"打开设置";
+            toastUtilModule.title = NSLocalizedStringFromTable(@"打开设置", @"LocalizableDownloader", nil);
             toastUtilModule.actionBlock = ^{
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:nil];
             };

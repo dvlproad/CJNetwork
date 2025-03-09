@@ -43,8 +43,8 @@
     ③设置角标tabBarItem.badgeValue：如果没有设置图片，角标默认显示在左上角，设置了图片就会在图片的右上角显示
     */
     TSDownloadInputViewController *homeViewController = [[TSDownloadInputViewController alloc] init];
-    homeViewController.navigationItem.title = NSLocalizedString(@"解析输入", nil);
-    homeViewController.tabBarItem.title = NSLocalizedString(@"解析输入", nil);
+    homeViewController.navigationItem.title = NSLocalizedStringFromTable(@"解析输入", @"LocalizableDownloader", nil);
+    homeViewController.tabBarItem.title = NSLocalizedStringFromTable(@"解析输入", @"LocalizableDownloader", nil);
     homeViewController.tabBarItem.image = [[UIImage imageNamed:@"icons8-home"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     //homeViewController. = @"10";
     UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
@@ -52,24 +52,24 @@
     
     
     TSDownloadCollectionViewController *scrollViewHomeViewController = [[TSDownloadCollectionViewController alloc] init];
-    scrollViewHomeViewController.navigationItem.title = NSLocalizedString(@"已解析", nil);
-    scrollViewHomeViewController.tabBarItem.title = NSLocalizedString(@"已解析", nil);
+    scrollViewHomeViewController.navigationItem.title = NSLocalizedStringFromTable(@"已解析", @"LocalizableDownloader", nil);
+    scrollViewHomeViewController.tabBarItem.title = NSLocalizedStringFromTable(@"已解析", @"LocalizableDownloader", nil);
     scrollViewHomeViewController.tabBarItem.image = [[UIImage imageNamed:@"icons8-calendar"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UINavigationController *scrollViewHomeNavigationController = [[UINavigationController alloc] initWithRootViewController:scrollViewHomeViewController];
     [self addChildViewController:scrollViewHomeNavigationController];
     
     TSPlayerInputViewController *playerInputViewController = [[TSPlayerInputViewController alloc] init];
     playerInputViewController.view.backgroundColor = [UIColor whiteColor];
-    playerInputViewController.navigationItem.title = NSLocalizedString(@"播放器", nil);
-    playerInputViewController.tabBarItem.title = NSLocalizedString(@"播放器", nil);
+    playerInputViewController.navigationItem.title = NSLocalizedStringFromTable(@"播放器", @"LocalizableDownloader", nil);
+    playerInputViewController.tabBarItem.title = NSLocalizedStringFromTable(@"播放器", @"LocalizableDownloader", nil);
     playerInputViewController.tabBarItem.image = [[UIImage imageNamed:@"icons8-folder"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UINavigationController *navigationController3 = [[UINavigationController alloc] initWithRootViewController:playerInputViewController];
     [self addChildViewController:navigationController3];
     
     CQDownloadSettingViewController *viewController6 = [[CQDownloadSettingViewController alloc] init];
     viewController6.view.backgroundColor = [UIColor whiteColor];
-    viewController6.navigationItem.title = NSLocalizedString(@"更多", nil);
-    viewController6.tabBarItem.title = NSLocalizedString(@"更多", nil);
+    viewController6.navigationItem.title = NSLocalizedStringFromTable(@"更多", @"LocalizableDownloader", nil);
+    viewController6.tabBarItem.title = NSLocalizedStringFromTable(@"更多", @"LocalizableDownloader", nil);
     viewController6.tabBarItem.image = [[UIImage imageNamed:@"icons8-settings"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UINavigationController *navigationController6 = [[UINavigationController alloc] initWithRootViewController:viewController6];
     [self addChildViewController:navigationController6];

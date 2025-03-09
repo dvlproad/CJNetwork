@@ -61,7 +61,7 @@
         __weak typeof(self)weakSelf = self;
         _downloadInputView = [[TSDownloadInputView alloc] initWithFetchVideoHandle:^(NSString * _Nonnull text) {
 //            [self fetchVideo];
-//            [CJUIKitToastUtil showMessage:@"可在此执行下载"];
+//            [CJUIKitToastUtil showMessage:NSLocalizedStringFromTable(@"可在此执行下载", @"LocalizableDownloader", nil)];
 //            [weakSelf tikwm_analyzeTiktokShortenedUrl:text failure:^(NSString * _Nonnull errorMessage) {
 //                [CJUIKitToastUtil showMessage:errorMessage];
 //            }];
@@ -87,7 +87,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    self.navigationItem.title = NSLocalizedString(@"视频解析", nil);
+//    self.navigationItem.title = NSLocalizedStringFromTable(@"视频解析", @"LocalizableDownloader", nil);
     
     [self.view addSubview:self.imageView];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -166,7 +166,7 @@
         dispatch_async(dispatch_get_main_queue(),^{
             [CQDownloadCacheUtil nototal_updateRecord:downloadRecordModel withDownloadState:CJFileDownloadStateDownloading];
             
-            //[CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"解析成功，是否下载" message:videoUrl cancleBlock:nil okBlock:^{
+            //[CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:NSLocalizedStringFromTable(@"解析成功，是否下载", @"LocalizableDownloader", nil) message:videoUrl cancleBlock:nil okBlock:^{
                 [TikTokService downloadAccessRestrictedDataFromActualVideoUrl:videoUrl saveToLocalURLGetter:^NSURL * _Nonnull(NSString * _Nonnull videoFileExtension) {
                     NSString *saveToAbsPath = downloadRecordModel.saveToAbsPath;
                     return [NSURL fileURLWithPath:saveToAbsPath];

@@ -78,8 +78,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    self.navigationItem.title = NSLocalizedString(@"视频解析", nil);
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"从相册中选择" style:UIBarButtonItemStylePlain target:self action:@selector(chooseVideoFromSystem)];
+//    self.navigationItem.title = NSLocalizedStringFromTable(@"视频解析", @"LocalizableDownloader", nil);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"从相册中选择", @"LocalizableDownloader", nil) style:UIBarButtonItemStylePlain target:self action:@selector(chooseVideoFromSystem)];
     
     [self.view addSubview:self.imageView];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -120,12 +120,12 @@
 - (void)tryPlayNetworkUrl:(NSString *)networkUrl {
     // 判断 networkUrl 是不是有效的网络地址
     if (networkUrl.length == 0) {
-        [CJUIKitToastUtil showMessage:@"请先输入视频地址"];
+        [CJUIKitToastUtil showMessage:NSLocalizedStringFromTable(@"请输入视频地址", @"LocalizableDownloader", nil)];
         return;
     }
     
     if (![networkUrl hasPrefix:@"http://"] && ![networkUrl hasPrefix:@"https://"]) {
-        [CJUIKitToastUtil showMessage:@"请输入有效的视频地址"];
+        [CJUIKitToastUtil showMessage:NSLocalizedStringFromTable(@"请输入有效的视频地址", @"LocalizableDownloader", nil)];
         return;
     }
     NSURL *videoURL = [NSURL URLWithString:networkUrl];
@@ -192,7 +192,7 @@
     if (@available(iOS 14, *)) { // （使用 PHPickerViewController）
         PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
         if (status == PHAuthorizationStatusDenied || status == PHAuthorizationStatusRestricted) {
-            [CJUIKitToastUtil showMessage:@"无访问相册权限"];
+            [CJUIKitToastUtil showMessage:NSLocalizedStringFromTable(@"无访问相册权限", @"LocalizableDownloader", nil)];
         }
         
         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
@@ -202,7 +202,7 @@
                     [self chooseVideoFromSystemIOS14];
                 });
             } else {
-                [CJUIKitToastUtil showMessage:@"相册访问授权失败"];
+                [CJUIKitToastUtil showMessage:NSLocalizedStringFromTable(@"相册访问授权失败", @"LocalizableDownloader", nil)];
             }
         }];
         return;

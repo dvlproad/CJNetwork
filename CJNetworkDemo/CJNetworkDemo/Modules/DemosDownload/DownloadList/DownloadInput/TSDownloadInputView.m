@@ -56,7 +56,7 @@
     self.textField.textColor = [UIColor whiteColor];
     self.textField.font = [UIFont systemFontOfSize:12];
     self.textField.contentScaleFactor = 0.5;
-    self.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"粘贴TikTok视频链接..." attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
+    self.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedStringFromTable(@"粘贴TikTok视频链接...", @"LocalizableDownloader", nil) attributes:@{NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
     self.textField.layer.cornerRadius = 10;
     self.textField.layer.masksToBounds = YES;
     self.textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 30)];
@@ -94,7 +94,7 @@
     self.fetchButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.fetchButton.frame = CGRectZero;
     self.fetchButton.backgroundColor = [UIColor redColor];
-    [self.fetchButton setTitle:@"获取视频" forState:UIControlStateNormal];
+    [self.fetchButton setTitle:NSLocalizedStringFromTable(@"获取视频", @"LocalizableDownloader", nil) forState:UIControlStateNormal];
     self.fetchButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     self.fetchButton.layer.cornerRadius = 10;
     self.fetchButton.layer.masksToBounds = YES;

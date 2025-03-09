@@ -62,7 +62,7 @@
     
     // 创建并配置 下载按钮
     self.downloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.downloadButton setTitle:@"下载" forState:UIControlStateNormal];
+    [self.downloadButton setTitle:NSLocalizedStringFromTable(@"下载", @"LocalizableDownloader", nil) forState:UIControlStateNormal];
     [self.downloadButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.downloadButton setBackgroundColor:[UIColor redColor]];
     [self.downloadButton addTarget:self action:@selector(downloadButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -70,7 +70,7 @@
     
     // 创建并配置 删除按钮
     self.deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.deleteButton setTitle:@"删除" forState:UIControlStateNormal];
+    [self.deleteButton setTitle:NSLocalizedStringFromTable(@"删除", @"LocalizableDownloader", nil) forState:UIControlStateNormal];
     [self.deleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.deleteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     [self.deleteButton setBackgroundColor:[UIColor orangeColor]];

@@ -90,7 +90,7 @@
     self.navigationBarView = navigationBarView;
     
     // 返回按钮
-    UIButton *backButton = [self navigationButtonWithtTitle:@"返回"];
+    UIButton *backButton = [self navigationButtonWithtTitle:NSLocalizedStringFromTable(@"返回", @"LocalizableDownloader", nil)];
     [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     [navigationBarView addSubview:backButton];
     [backButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -119,7 +119,7 @@
     // 删除按钮
     UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     //UIImage *deleteImage = [CQTSLocImagesUtil cjts_localImageAtIndex:4];
-    [deleteButton setTitle:@"删除" forState:UIControlStateNormal];
+    [deleteButton setTitle:NSLocalizedStringFromTable(@"删除", @"LocalizableDownloader", nil) forState:UIControlStateNormal];
     deleteButton.frame = CGRectMake(screenWidth - 50, 0, 40, 44);
     deleteButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [deleteButton addTarget:self action:@selector(deleteVideo) forControlEvents:UIControlEventTouchUpInside];
@@ -136,7 +136,7 @@
     CGFloat buttonSize = 50;
     __weak typeof(self)weakSelf = self;
     // 播放按钮
-//    self.playButton = [CQTSButtonFactory themeBGButtonWithTitle:@"播放" actionBlock:^(UIButton * _Nonnull bButton) {
+//    self.playButton = [CQTSButtonFactory themeBGButtonWithTitle:NSLocalizedStringFromTable(@"播放", @"LocalizableDownloader", nil) actionBlock:^(UIButton * _Nonnull bButton) {
 //        [weakSelf playVideo];
 //    }];
 //    [self.videoThumbnailView addSubview:self.playButton];
@@ -148,7 +148,7 @@
 //    }];
     
     // 分享按钮
-    self.shareButton = [self navigationButtonWithtTitle:@"分享"];
+    self.shareButton = [self navigationButtonWithtTitle:NSLocalizedStringFromTable(@"分享", @"LocalizableDownloader", nil)];
     [self.shareButton addTarget:self action:@selector(shareVideo) forControlEvents:UIControlEventTouchUpInside];
     [navigationBarView addSubview:self.shareButton];
     [self.shareButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -159,7 +159,7 @@
     }];
     
     // 保存按钮
-    self.saveButton = [self navigationButtonWithtTitle:@"保存"];
+    self.saveButton = [self navigationButtonWithtTitle:NSLocalizedStringFromTable(@"保存", @"LocalizableDownloader", nil)];
     [self.saveButton addTarget:self action:@selector(saveVideo) forControlEvents:UIControlEventTouchUpInside];
     [navigationBarView addSubview:self.saveButton];
     [self.saveButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -288,7 +288,7 @@
 #pragma mark - 设置备注框
 - (void)setupNoteTextView {
     self.noteTextView = [[UITextView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(self.videoThumbnailView.frame) + 20, self.view.frame.size.width - 40, 80)];
-    self.noteTextView.text = @"添加备注 +";
+    self.noteTextView.text = NSLocalizedStringFromTable(@"添加备注 +", @"LocalizableDownloader", nil);
     self.noteTextView.textColor = [UIColor lightGrayColor];
     self.noteTextView.layer.borderColor = [UIColor grayColor].CGColor;
     self.noteTextView.layer.borderWidth = 1.0;
@@ -328,10 +328,10 @@
 #pragma mark - 删除视频
 - (void)deleteVideo {
     __weak typeof(self)weakSelf = self;
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"删除视频"
-                                                                   message:@"确定要删除该视频吗？"
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedStringFromTable(@"删除视频", @"LocalizableDownloader", nil)
+                                                                   message:NSLocalizedStringFromTable(@"确定要删除该视频吗？", @"LocalizableDownloader", nil)
                                                             preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"删除", @"LocalizableDownloader", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         //NSString *downloadUrl = self.downloadModel.imageName;
         //[[HSDownloadManager sharedInstance] deleteFile:downloadUrl]; // 视频本身不删除，万一下次也是下载这个呢？而且外部可能重复下载
         NSLog(@"视频已删除");
@@ -339,7 +339,7 @@
             !weakSelf.deleteCompleteBlock ?: weakSelf.deleteCompleteBlock();
         }];
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"取消", @"LocalizableDownloader", nil) style:UIAlertActionStyleCancel handler:nil];
     
     [alert addAction:confirmAction];
     [alert addAction:cancelAction];
