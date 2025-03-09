@@ -29,12 +29,28 @@ typedef NS_ENUM(NSUInteger, CJFileDownloadMethod) {
 
 @required
 @property (nonatomic, copy) NSString *url;;                                 /**< 下载地址 */
-@property (nonatomic, assign) CJFileDownloadState downloadState;  /**< 下载状态 */
 @property (nonatomic, assign) CJFileDownloadMethod downloadMethod;  /**< 下载方法 */
 
-//#pragma mark - 状态变化
-//@property (nullable, nonatomic, copy) void (^uploadProgress)(NSProgress * _Nonnull progress);
+#pragma mark - 下载变化
+@required
+@property (nonatomic, assign, readonly) CJFileDownloadState downloadState;  /**< 下载状态 */
+@optional
+@property (nonnull, nonatomic, copy, readonly) void(^stateBlock)(CJFileDownloadState state, NSError * _Nullable error);
+@property (nonatomic, copy, readonly) void (^ _Nullable progressBlock)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress);
+#pragma mark 触发变化
+@required
+- (void)updateDownloadState:(CJFileDownloadState)downloadState error:(NSError * _Nullable)error;
+#pragma mark 设置回调变化
+/*
+ *  更改本下载记录的各种回调（场景：在输入界面开启了下载，但回调信息需要用在列表上）
+ *
+ *  @param progressBlock 回调下载进度
+ *  @param stateBlock    下载状态
+ */
+- (void)setupProgressBlock:(void(^_Nullable)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock;
 
+
+#pragma mark - 获取下载/保存的信息
 /// 以什么文件名保存
 @required
 - (NSString *)saveWithFileName;
@@ -55,12 +71,6 @@ typedef NS_ENUM(NSUInteger, CJFileDownloadMethod) {
 }
 @property (nonatomic, copy, readonly) NSString *createId; // 唯一标识，使用场景多次重复下载的区分
 @property (nonatomic, copy) NSString *name;
-
-
-//@property (nonatomic, copy) void(^stateBlock)(CJFileDownloadState state, NSError * _Nullable error);
-//
-////void updateDownloadState(CJFileDownloadState downloadState, NSError * _Nullable error);
-//- (void)updateDownloadState:(CJFileDownloadState)downloadState error:(NSError * _Nullable)error;
 
 #pragma mark - 自定义初始化
 // 自定义初始化方法

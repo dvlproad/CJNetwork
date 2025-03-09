@@ -120,7 +120,20 @@
     
     CQDownloadRecordModel *downloadModel = [dataModels objectAtIndex:indexPath.item];
     //TODO: qian
-    [[HSDownloadManager sharedInstance] deleteFile:downloadModel]; // 视频本身不删除，万一下次也是下载这个呢？而且外部可能重复下载
+    CJFileDownloadMethod downloadMethod = downloadModel.downloadMethod;
+    if (downloadMethod == CJFileDownloadMethodProgress) {
+        [[HSDownloadManager sharedInstance] deleteFile:downloadModel]; // 视频本身不删除，万一下次也是下载这个呢？而且外部可能重复下载
+        
+    } else if (downloadMethod == CJFileDownloadMethodOneOff) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSString *filePath = downloadModel.saveToAbsPath;
+        NSString *fileName = downloadModel.saveWithFileName;
+        if ([fileManager fileExistsAtPath:filePath]) {
+            // 删除沙盒中的资源
+            [fileManager removeItemAtPath:filePath error:nil];
+            [CQDownloadCacheUtil deleteRecordByFileName:fileName];
+        }
+    }
     [dataModels removeObjectAtIndex:indexPath.item];
     /*
     NSMutableArray *shouldRemoveDataModels = [[NSMutableArray alloc] init];

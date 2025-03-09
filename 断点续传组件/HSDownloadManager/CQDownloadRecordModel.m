@@ -19,6 +19,8 @@
 @synthesize url = _url;
 @synthesize downloadMethod = _downloadMethod;
 @synthesize downloadState = _downloadState;
+@synthesize progressBlock = _progressBlock;
+@synthesize stateBlock = _stateBlock;
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -32,12 +34,22 @@
 //void updateDownloadState(CJFileDownloadState downloadState, NSError * _Nullable error) {
 //    
 //}
-//- (void)updateDownloadState:(CJFileDownloadState)downloadState error:(NSError * _Nullable)error {
-//    _downloadState = downloadState;
-//    if (self.stateBlock) {
-//        self.stateBlock(downloadState, error);
-//    }
-//}
+- (void)updateDownloadState:(CJFileDownloadState)downloadState error:(NSError * _Nullable)error {
+    _downloadState = downloadState;
+    !self.stateBlock ?: self.stateBlock(downloadState, error);
+}
+
+/*
+ *  更改本下载记录的各种回调（场景：在输入界面开启了下载，但回调信息需要用在列表上）
+ *
+ *  @param progressBlock 回调下载进度
+ *  @param stateBlock    下载状态
+ */
+- (void)setupProgressBlock:(void(^_Nullable)(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress))progressBlock state:(void(^)(CJFileDownloadState state, NSError * _Nullable error))stateBlock
+{
+    _progressBlock = progressBlock;
+    _stateBlock = stateBlock;
+}
 
 - (NSString *)saveWithFileName {
     NSString *fileName = [NSString stringWithFormat:@"%@_%@_%@", self.url.md5String, self.createId, [self.url lastPathComponent]];

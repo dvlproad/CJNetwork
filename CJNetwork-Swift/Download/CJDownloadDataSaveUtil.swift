@@ -26,6 +26,57 @@ import Foundation
         }
     }
     
+//    Data.write(to:) 方法是 同步执行 的，它会一次性将 Data 写入文件，因此无法直接获取 写入进度。但你可以通过 分块写入（chunked writing） 的方式实现写入进度回调。使用流式写入 + 进度回调。我们可以使用 OutputStream 逐步写入数据，并在写入过程中计算进度。
+    @objc public static func downloadFileData(
+        _ unencryptData: Data,
+        fileLocalURL: URL,
+        progress: ((_ written: Int64, _ total: Int64, _ percentage: CGFloat) -> Void)? = nil, // 进度回调
+        success: @escaping ((_ cacheURL: URL) -> Void),
+        failure: @escaping ((_ errorMessage: String) -> Void)
+    ) {
+        do {
+            try ensureDirectoryExists(for: fileLocalURL)  // 确保文件夹存在
+            
+            guard let outputStream = OutputStream(url: fileLocalURL, append: false) else {
+                failure("无法创建文件输出流")
+                return
+            }
+            
+            outputStream.open()  // 打开流
+            
+            let totalBytes = Int64(unencryptData.count)  // 总大小
+            var writtenBytes: Int64 = 0  // 已写入大小
+            
+            let bufferSize = 1024 * 16  // 16KB 分块写入
+            var offset = 0
+            
+            while offset < unencryptData.count {
+                let chunkSize = min(bufferSize, unencryptData.count - offset)
+                let chunk = unencryptData.subdata(in: offset..<offset + chunkSize) // 取出分块数据
+                let bytesWritten = chunk.withUnsafeBytes {
+                    outputStream.write($0.bindMemory(to: UInt8.self).baseAddress!, maxLength: chunkSize)
+                }
+                
+                if bytesWritten < 0 {
+                    failure("写入失败: \(outputStream.streamError?.localizedDescription ?? "未知错误")")
+                    outputStream.close()
+                    return
+                }
+                
+                writtenBytes += Int64(bytesWritten)
+                let percentage = CGFloat(writtenBytes) / CGFloat(totalBytes) // 计算进度
+                progress?(writtenBytes, totalBytes, percentage) // 触发进度回调
+                
+                offset += bytesWritten
+            }
+            
+            outputStream.close()
+            success(fileLocalURL) // 成功回调
+        } catch {
+            failure("文件写入失败: \(error.localizedDescription)")
+        }
+    }
+    
     // 确保文件夹存在
     @objc public static func ensureDirectoryExists(for fileLocalURL: URL) throws {
         let directoryURL = fileLocalURL.deletingLastPathComponent()  // 获取目录路径

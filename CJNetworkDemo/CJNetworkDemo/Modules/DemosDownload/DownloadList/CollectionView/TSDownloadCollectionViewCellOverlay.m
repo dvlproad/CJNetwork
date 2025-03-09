@@ -233,7 +233,27 @@
                 }
             });
         }];
+        
     } else if (downloadMethod == CJFileDownloadMethodOneOff) {
+        [self.downloadModel setupProgressBlock:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSString *progressValue = [NSString stringWithFormat:@"%.f%%", progress * 100];
+                NSString *message = [NSString stringWithFormat:@"4当前下载进度:=========%@", progressValue];
+                [self __showResponseLogMessage:message];
+                self.progressLabel.text = progressValue;
+                self.progressView.progress = progress;
+            });
+            
+        } state:^(CJFileDownloadState state, NSError * _Nullable error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self __changeState:state];
+                
+                if (state == CJFileDownloadStateSuccess) {
+                    [TSDownloadUtil askSaveDownloadModel:weakSelf.downloadModel];
+                }
+            });
+        }];
+        
         
     } else {
         NSAssert(downloadMethod == CJFileDownloadMethodUnknown, @"下载方式不能未知，不然 CJFileDownloadMethodProgress 时候的下载会引起点击获取视频后，跳转到已解析页面上的回调没刷新");
@@ -264,6 +284,8 @@
             [TikTokService downloadAccessRestrictedDataFromActualVideoUrl:videoUrl saveToLocalURLGetter:^NSURL * _Nonnull(NSString * _Nonnull videoFileExtension) {
                 NSString *saveToAbsPath = self.downloadModel.saveToAbsPath;
                 return [NSURL fileURLWithPath:saveToAbsPath];
+                
+            } progress:^(int64_t written, int64_t total, CGFloat percentage) {
                 
             } success:^(NSURL * _Nonnull cacheURL) {
                 NSString *message = [NSString stringWithFormat:@"解析并且下载成功:\n视频短链=%@\n视频地址=%@\n保存位置=%@", shortenedUrl, videoUrl, cacheURL.absoluteString];

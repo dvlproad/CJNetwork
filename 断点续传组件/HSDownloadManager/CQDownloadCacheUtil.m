@@ -79,7 +79,7 @@
  */
 + (void)nototal_addRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withDownloadState:(CJFileDownloadState)downloadState {
     record.downloadMethod = CJFileDownloadMethodOneOff;
-    record.downloadState = downloadState; // 此处将 downloadState 设给 record
+    [record updateDownloadState:downloadState error:nil];
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile:HSTotalLengthFullpath];
     if (dict == nil) dict = [NSMutableDictionary dictionary];
@@ -97,7 +97,7 @@
  *  @param downloadState    新的下载状态
  */
 + (void)nototal_updateRecord:(__kindof NSObject<CJDownloadRecordModelProtocol> *)record withDownloadState:(CJFileDownloadState)downloadState {
-    record.downloadState = downloadState; // 此处将 downloadState 设给 record
+    [record updateDownloadState:downloadState error:nil];
     
     NSMutableDictionary *allDict = [NSMutableDictionary dictionaryWithContentsOfFile:HSTotalLengthFullpath];
     NSMutableDictionary *dataDict = allDict[record.saveWithFileName];

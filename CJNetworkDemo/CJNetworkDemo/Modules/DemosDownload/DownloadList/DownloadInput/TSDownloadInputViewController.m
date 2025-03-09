@@ -69,11 +69,11 @@
             // 先本地解析，若失败再用第三方解析
             //[CQHUDUtil showLoadingHUD];
             [CQIndicatorHUDUtil showLoadingHUD:@"解析中"];
-//            [weakSelf local_analyzeTiktokShortenedUrl:text failure:^(NSError * _Nonnull error) {
+            [weakSelf local_analyzeTiktokShortenedUrl:text failure:^(NSError * _Nonnull error) {
                 [weakSelf tikwm_analyzeTiktokShortenedUrl:text failure:^(NSString * _Nonnull errorMessage) {
                     [CJUIKitToastUtil showMessage:errorMessage];
                 }];
-//            }];
+            }];
         }];
     }
     return _downloadInputView;
@@ -197,6 +197,10 @@
                     NSString *saveToAbsPath = downloadRecordModel.saveToAbsPath;
                     return [NSURL fileURLWithPath:saveToAbsPath];
                     
+                } progress:^(int64_t written, int64_t total, CGFloat percentage) {
+                    if (downloadRecordModel.progressBlock != nil) {
+                        downloadRecordModel.progressBlock(written, total, percentage);
+                    }
                 } success:^(NSURL * _Nonnull cacheURL) {
                     dispatch_async(dispatch_get_main_queue(),^{
                         NSString *message = [NSString stringWithFormat:@"解析并且下载成功:\n视频短链=%@\n视频地址=%@\n保存位置=%@", shortenedUrl, videoUrl, cacheURL.absoluteString];

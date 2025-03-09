@@ -52,13 +52,14 @@ public class VideoFileUrl: NSObject {
     @objc public static func downloadAccessRestrictedDataFromActualVideoUrl(
         _ actualVideoUrl: String,
         saveToLocalURLGetter: @escaping (_ videoFileExtension: String) -> URL, // 视频存放到的本地地址
+        progress: ((_ written: Int64, _ total: Int64, _ percentage: CGFloat) -> Void)? = nil, // 进度回调
         success: @escaping (_ cacheURL: URL) -> Void,
         failure: @escaping (NSError) -> Void
     ) {
         getVideoDataFromActualVideoUrl(actualVideoUrl, success: { contentType, videoData in
             let videoFileExtension = contentType?.subtype ?? "mp4"
             let fileLocalURL = saveToLocalURLGetter(videoFileExtension)
-            CJDownloadDataSaveUtil.downloadFileData(videoData, fileLocalURL: fileLocalURL, success: { cacheURL in
+            CJDownloadDataSaveUtil.downloadFileData(videoData, fileLocalURL: fileLocalURL, progress: progress, success: { cacheURL in
                 success(cacheURL)
             }, failure: { errorMessage in
                 let error = NSError(domain: "VideoDownloaderSaveError", code: 1001, userInfo: [NSLocalizedDescriptionKey: errorMessage])
