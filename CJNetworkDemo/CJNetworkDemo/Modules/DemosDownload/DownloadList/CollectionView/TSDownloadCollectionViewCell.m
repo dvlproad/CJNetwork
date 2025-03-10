@@ -13,7 +13,9 @@
 #import <CQMdeiaVideoFrameKit/VideoFrameCQHelper.h>
 #import "TSDownloadUtil.h"
 
-@interface TSDownloadCollectionViewCell ()
+@interface TSDownloadCollectionViewCell () {
+    
+}
 
 @end
 
@@ -42,6 +44,13 @@
 //    _playerView.getVideoUrl = ^NSString *{
 //        return [weakSelf.videoModel.videoFile.absoluteURL absoluteString];
 //    };
+}
+
+#pragma mark - Setter
+- (void)setDownloadModel:(NSObject<CJDownloadRecordModelProtocol> *)downloadModel {
+    _downloadModel = downloadModel;
+    
+    self.downloadView.downloadModel = downloadModel;
 }
 
 - (void)setupViews {

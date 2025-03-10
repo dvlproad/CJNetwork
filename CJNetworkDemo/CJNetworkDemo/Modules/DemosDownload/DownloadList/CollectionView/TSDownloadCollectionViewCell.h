@@ -17,4 +17,6 @@
 @property(nonatomic, strong) CJAVPlayerView *playerView;            /** 播放器 */
 @property (nonatomic, strong) TSDownloadCollectionViewCellOverlay *downloadView;     /** 下载文件的视图 */
 
+@property (nonatomic, copy) NSObject<CJDownloadRecordModelProtocol> *downloadModel;
+
 @end

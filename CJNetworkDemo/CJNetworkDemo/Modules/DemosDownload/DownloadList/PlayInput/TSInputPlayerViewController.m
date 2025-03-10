@@ -396,6 +396,8 @@
 
 #pragma mark - 返回上一级
 - (void)backAction {
+    [self.player pause];
+    self.player = nil;    // 释放播放器，修复iOS18返回界面还在播放音频
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

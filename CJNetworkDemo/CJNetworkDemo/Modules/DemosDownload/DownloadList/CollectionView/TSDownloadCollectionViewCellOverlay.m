@@ -82,7 +82,6 @@
     
     // 创建并配置 下载 URL 标签
     self.downloadUrlLabel = [[UILabel alloc] init];
-    self.downloadUrlLabel.text = @"https://www.example.com/download/file.zip";  // 设置下载地址
     self.downloadUrlLabel.textAlignment = NSTextAlignmentLeft;
     self.downloadUrlLabel.numberOfLines = 0;
     self.downloadUrlLabel.font = [UIFont systemFontOfSize:10.0];
@@ -159,8 +158,6 @@
 - (void)setDownloadModel:(NSObject<CJDownloadRecordModelProtocol> *)downloadModel {
     _downloadModel = downloadModel;
     
-    //self.downloadUrlLabel.text = downloadModel.name;
-    
     [self __setupDownloadBlock];
 }
 
@@ -189,6 +186,16 @@
 
 - (void)__changeState:(CJFileDownloadState)state {
     _currentDownloadState = state;
+    
+    if (state == CJFileDownloadStateSuccess) {
+        CGFloat sizeInMB = [self.downloadModel hasDownloadedLength] / (1024.0 * 1024.0);
+        NSString *sizeString = [NSString stringWithFormat:@"%.2fM", sizeInMB];
+        self.downloadUrlLabel.text = sizeString;
+        self.downloadUrlLabel.textColor = UIColor.whiteColor;
+        //self.downloadUrlLabel.backgroundColor = UIColor.redColor;
+    } else {
+        self.downloadUrlLabel.text = @"";
+    }
     
     NSString *title = [CJDownloadEnumUtil nextStateTextForState:state];
     [self.downloadButton setTitle:title forState:UIControlStateNormal];
