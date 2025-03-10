@@ -9,6 +9,7 @@
 #import "TSDownloadTableViewController.h"
 #import "TSDownloadTableViewCell.h"
 #import <CQDemoKit/CQTSLocImagesUtil.h>
+#import <CQDemoKit/CJUIKitAlertUtil.h>
 
 @interface TSDownloadTableViewController () <UITableViewDataSource, UITableViewDelegate> {
     
@@ -37,8 +38,10 @@
 }
 
 - (void)deleteAllFiles {
-    [[HSDownloadManager sharedInstance] deleteAllFile];
-    [self.tableView reloadData];
+    [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"是否确认清空所有下载" message:nil cancleBlock:nil okBlock:^{
+        [[HSDownloadManager sharedInstance] deleteAllFile];
+        [self.tableView reloadData];
+    }];
 }
 
 #pragma mark - UITableViewDataSource & UITableViewDelegate

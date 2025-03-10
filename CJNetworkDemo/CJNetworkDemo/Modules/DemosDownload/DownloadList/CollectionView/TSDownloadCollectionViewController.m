@@ -108,10 +108,12 @@
 }
 
 - (void)deleteAllFiles {
-    [TSDownloadVideoIdManager.sharedInstance deleteAllFiles];
-    
-    [self.collectionView reloadData];
-    [self tryCheckDeleteAllButtonShow];
+    [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"是否确认清空所有下载" message:nil cancleBlock:nil okBlock:^{
+        [TSDownloadVideoIdManager.sharedInstance deleteAllFiles];
+        
+        [self.collectionView reloadData];
+        [self tryCheckDeleteAllButtonShow];
+    }];
 }
 
 /*

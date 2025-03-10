@@ -71,8 +71,12 @@
         videoURL = [NSURL fileURLWithPath:videoUrl];
     }
     self.videoURL = videoURL;
+    /*
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:videoURL];
     [self.player replaceCurrentItemWithPlayerItem:playerItem];
+    */
+    self.player = [[AVPlayer alloc] initWithURL:self.videoURL]; // 避免多次初始化
+    self.playerViewController.player = self.player;
     [self.player play];
 
 }
@@ -223,11 +227,9 @@
 //    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:videoURL];
 //    self.player = [AVPlayer playerWithPlayerItem:playerItem];
 //    self.player = [AVPlayer playerWithURL:videoURL];
-    self.player = [[AVPlayer alloc] init]; // 先创建一个空的 AVPlayer，然后在获取到视频 URL 之后再设置 AVPlayerItem 进行播放
 
     // 2. 创建 `AVPlayerViewController`
     self.playerViewController = [[AVPlayerViewController alloc] init];
-    self.playerViewController.player = self.player;
     self.playerViewController.showsPlaybackControls = YES; // 显示或隐藏播放控制条（可选）
     
     // 3. 设置 `playerViewController.view` 的大小
@@ -242,7 +244,6 @@
 
     // 6. 自动播放视频
     [self.player seekToTime:kCMTimeZero];
-    [self.player play];
     
     // 7. 监听播放完成通知，实现循环播放
     AVPlayerItem *playerItem = self.player.currentItem;
@@ -254,6 +255,16 @@
     // 8. 添加点击手势
 //    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playFullScreen)];
 //    [self.videoThumbnailView addGestureRecognizer:tapGesture];
+    
+    [self.player.currentItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"status"]) {
+        if (self.player.currentItem.status == AVPlayerItemStatusReadyToPlay) {
+            [self.player play];
+        }
+    }
 }
 
 // 播放完成后重新播放
