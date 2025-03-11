@@ -147,16 +147,16 @@ PODS:
   - CocoaAsyncSocket/RunLoop (7.4.3)
   - CQBridgeSTOLottie (0.1.4):
     - lottie-ios
-  - CQDemoKit (0.7.7):
-    - CQDemoKit/Auxiliary (= 0.7.7)
-    - CQDemoKit/BaseUIKit (= 0.7.7)
-    - CQDemoKit/BaseUtil (= 0.7.7)
-    - CQDemoKit/BaseVC (= 0.7.7)
-    - CQDemoKit/Demo_DataSourceAndDelegate (= 0.7.7)
-    - CQDemoKit/Demo_Resource (= 0.7.7)
-    - CQDemoKit/Demo_RipeView (= 0.7.7)
-    - CQDemoKit/Helper (= 0.7.7)
-    - CQDemoKit/Monitor (= 0.7.7)
+  - CQDemoKit (0.8.0):
+    - CQDemoKit/Auxiliary (= 0.8.0)
+    - CQDemoKit/BaseUIKit (= 0.8.0)
+    - CQDemoKit/BaseUtil (= 0.8.0)
+    - CQDemoKit/BaseVC (= 0.8.0)
+    - CQDemoKit/Demo_DataSourceAndDelegate (= 0.8.0)
+    - CQDemoKit/Demo_Resource (= 0.8.0)
+    - CQDemoKit/Demo_RipeView (= 0.8.0)
+    - CQDemoKit/Helper (= 0.8.0)
+    - CQDemoKit/Monitor (= 0.8.0)
   - CQDemoKit-Swift (0.0.1):
     - CQDemoKit
     - CQDemoKit-Swift/CQDemoKit-OC (= 0.0.1)
@@ -165,45 +165,45 @@ PODS:
     - CQDemoKit
   - CQDemoKit-Swift/SwiftUI (0.0.1):
     - CQDemoKit
-  - CQDemoKit/Auxiliary (0.7.7):
+  - CQDemoKit/Auxiliary (0.8.0):
     - Masonry
-  - CQDemoKit/BaseUIKit (0.7.7):
+  - CQDemoKit/BaseUIKit (0.8.0):
     - Masonry
-  - CQDemoKit/BaseUtil (0.7.7)
-  - CQDemoKit/BaseVC (0.7.7):
-    - CQDemoKit/BaseVC/Base (= 0.7.7)
-    - CQDemoKit/BaseVC/Collection (= 0.7.7)
-    - CQDemoKit/BaseVC/ScrollView (= 0.7.7)
-    - CQDemoKit/BaseVC/TabBar (= 0.7.7)
-    - CQDemoKit/BaseVC/TableView (= 0.7.7)
-    - CQDemoKit/BaseVC/TextView (= 0.7.7)
-  - CQDemoKit/BaseVC/Base (0.7.7):
+  - CQDemoKit/BaseUtil (0.8.0)
+  - CQDemoKit/BaseVC (0.8.0):
+    - CQDemoKit/BaseVC/Base (= 0.8.0)
+    - CQDemoKit/BaseVC/Collection (= 0.8.0)
+    - CQDemoKit/BaseVC/ScrollView (= 0.8.0)
+    - CQDemoKit/BaseVC/TabBar (= 0.8.0)
+    - CQDemoKit/BaseVC/TableView (= 0.8.0)
+    - CQDemoKit/BaseVC/TextView (= 0.8.0)
+  - CQDemoKit/BaseVC/Base (0.8.0):
     - CQDemoKit/BaseUIKit
     - Masonry
-  - CQDemoKit/BaseVC/Collection (0.7.7):
+  - CQDemoKit/BaseVC/Collection (0.8.0):
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/BaseVC/ScrollView (0.7.7):
+  - CQDemoKit/BaseVC/ScrollView (0.8.0):
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/BaseVC/TabBar (0.7.7):
+  - CQDemoKit/BaseVC/TabBar (0.8.0):
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TableView (0.7.7):
+  - CQDemoKit/BaseVC/TableView (0.8.0):
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/BaseVC/TextView (0.7.7):
+  - CQDemoKit/BaseVC/TextView (0.8.0):
     - CQDemoKit/BaseUtil
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/Demo_DataSourceAndDelegate (0.7.7):
+  - CQDemoKit/Demo_DataSourceAndDelegate (0.8.0):
     - CQDemoKit/BaseVC
     - CQDemoKit/Demo_Resource
-  - CQDemoKit/Demo_Resource (0.7.7):
+  - CQDemoKit/Demo_Resource (0.8.0):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/Helper
-  - CQDemoKit/Demo_RipeView (0.7.7):
+  - CQDemoKit/Demo_RipeView (0.8.0):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/BaseUtil
     - CQDemoKit/Demo_DataSourceAndDelegate
     - CQDemoKit/Demo_Resource
-  - CQDemoKit/Helper (0.7.7)
-  - CQDemoKit/Monitor (0.7.7)
+  - CQDemoKit/Helper (0.8.0)
+  - CQDemoKit/Monitor (0.8.0)
   - CQMdeiaVideoFrameKit (0.1.0)
   - CQNetworkPublic/Base (0.3.0)
   - CQNetworkPublic/Request (0.3.0):
@@ -334,8 +334,8 @@ DEPENDENCIES:
   - CJPlayer (from `../../CJMediaPlayer`)
   - CocoaAsyncSocket (~> 7.4.1)
   - CQDemoKit-Swift (~> 0.0.1)
-  - CQDemoKit/BaseVC (~> 0.7.7)
-  - CQDemoKit/Demo_Resource (~> 0.7.7)
+  - CQDemoKit/BaseVC (~> 0.8.0)
+  - CQDemoKit/Demo_Resource (~> 0.8.0)
   - CQMdeiaVideoFrameKit (from `../../013-Mdeia_Video_Frame/iOS`)
   - CQNetworkPublic/Request (from `../`)
   - CQNetworkPublic/Upload (from `../`)
@@ -353,6 +353,7 @@ SPEC REPOS:
     - CQOverlayKit
     - CQPopupCreater_Base
   https://github.com/CocoaPods/Specs.git:
+    - CQDemoKit
     - lottie-ios
     - MBProgressHUD
     - SnapKit
@@ -365,7 +366,6 @@ SPEC REPOS:
     - CJBaseUtil
     - CJMonitor
     - CocoaAsyncSocket
-    - CQDemoKit
     - CQDemoKit-Swift
     - Masonry
     - Moya
@@ -421,7 +421,7 @@ SPEC CHECKSUMS:
   CJPopupCreater: 943809e3dce2a77a10b198104db069261360f7a1
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQBridgeSTOLottie: c02f7cb675105ab74b3ec8b1b9d0a1f148d9feea
-  CQDemoKit: 6d8cda4fd4dd4d798a6507a656141278f6b22d30
+  CQDemoKit: 1fea1039a960befe72d4452ff17827e2828b9501
   CQDemoKit-Swift: 28d06bf24cbcc84c9651e0ffe607bffdd57863b6
   CQMdeiaVideoFrameKit: fe3f12617aa42f8382f15521e1d333f7695b989f
   CQNetworkPublic: daa95989c1d6d8f2d1d50f97285f4b88f0e664d3
@@ -441,6 +441,6 @@ SPEC CHECKSUMS:
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: c40c9a26f97e6701932c79e2b092aadd69ad3f48
+PODFILE CHECKSUM: 48c0a1332bed265e3fe005f994a5083ff7122975
 
 COCOAPODS: 1.16.2

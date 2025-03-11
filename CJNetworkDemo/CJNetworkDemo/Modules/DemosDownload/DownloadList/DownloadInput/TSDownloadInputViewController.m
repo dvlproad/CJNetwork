@@ -11,7 +11,6 @@
 #import <CQDemoKit/CJUIKitAlertUtil.h>
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/NSError+CQTSErrorString.h>
-#import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CJBaseUIKit/UIView+CJAutoMoveUp.h>
 #import <CJMonitor/CJLogSuspendWindow.h>
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
@@ -69,11 +68,11 @@
             // 先本地解析，若失败再用第三方解析
             //[CQHUDUtil showLoadingHUD];
             [CQIndicatorHUDUtil showLoadingHUD:@"解析中"];
-            [weakSelf local_analyzeTiktokShortenedUrl:text failure:^(NSError * _Nonnull error) {
+//            [weakSelf local_analyzeTiktokShortenedUrl:text failure:^(NSError * _Nonnull error) {
                 [weakSelf tikwm_analyzeTiktokShortenedUrl:text failure:^(NSString * _Nonnull errorMessage) {
                     [CJUIKitToastUtil showMessage:errorMessage];
                 }];
-            }];
+//            }];
         }];
     }
     return _downloadInputView;
@@ -118,7 +117,7 @@
         make.top.mas_equalTo(self.mas_topLayoutGuide);
         make.bottom.mas_equalTo(self.mas_bottomLayoutGuide).offset(-0);
     }];
-    UIImage *image = [UIImage cqdemokit_xcassetImageNamed:@"cqts_icon_01.png" withCache:YES];
+    UIImage *image = [UIImage imageNamed:@"download_input_bg01.png"];
     [self.imageView setImage:image];
     
     [self.view addSubview:self.downloadInputView];

@@ -10,7 +10,6 @@
 #import <CQDemoKit/CQTSResourceUtil.h>
 #import <CQDemoKit/CQTSPhotoUtil.h>
 
-#import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/CJUIKitAlertUtil.h>
 

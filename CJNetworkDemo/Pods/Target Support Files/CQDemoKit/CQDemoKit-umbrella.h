@@ -11,6 +11,7 @@
 #endif
 
 #import "UIView+CQAuxiliaryText.h"
+#import "UIViewController+CQNavigationBar.h"
 #import "CQTSBorderStateButton.h"
 #import "CQTSButtonFactory.h"
 #import "CQTSContainerViewFactory.h"
@@ -41,9 +42,7 @@
 #import "CQDMSectionDataModel+CJDealTextModel.h"
 #import "CJValidateStringBigTableViewCell.h"
 #import "CJValidateStringTableViewCell.h"
-#import "CQTSRipeBaseCollectionViewDataSource.h"
 #import "CQTSRipeBaseCollectionViewDelegate.h"
-#import "CQTSRipeSectionDataUtil.h"
 #import "CQTSPhotoUtil.h"
 #import "CQTSResourceEnum.h"
 #import "CQTSResourceUtil.h"
@@ -51,19 +50,15 @@
 #import "CQTSSandboxPathUtil.h"
 #import "CQTSIconDataModel.h"
 #import "CQTSIconsUtil.h"
-#import "CQTSLocImageDataModel.h"
-#import "CQTSLocImagesUtil.h"
 #import "CQTSNetImageDataModel.h"
 #import "CQTSNetImagesUtil.h"
 #import "CJUIKitRandomUtil.h"
+#import "CQTSMediaPickerViewController.h"
 #import "CQTSRipeButton.h"
 #import "CQTSRipeTableView.h"
-#import "CQTSRipeButtonCollectionView.h"
 #import "CQTSRipeButtonCollectionViewCell.h"
-#import "CQTSRipeImageCollectionView.h"
 #import "CQTSRipeImageCollectionViewCell.h"
 #import "NSError+CQTSErrorString.h"
-#import "UIImage+CQDemoKit.h"
 #import "CQTSFPSView.h"
 
 FOUNDATION_EXPORT double CQDemoKitVersionNumber;

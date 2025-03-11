@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "FrameExtractor.h"
 #import "VideoFrameCQHelper.h"
 
 FOUNDATION_EXPORT double CQMdeiaVideoFrameKitVersionNumber;

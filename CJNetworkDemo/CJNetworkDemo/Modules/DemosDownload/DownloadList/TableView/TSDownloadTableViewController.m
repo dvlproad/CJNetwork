@@ -8,13 +8,13 @@
 
 #import "TSDownloadTableViewController.h"
 #import "TSDownloadTableViewCell.h"
-#import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CQDemoKit/CJUIKitAlertUtil.h>
+#import "TSDownloadVideoIdManager.h"
 
 @interface TSDownloadTableViewController () <UITableViewDataSource, UITableViewDelegate> {
     
 }
-@property (nonatomic, strong) NSArray<CQTSLocImageDataModel *> *downloadModles;
+@property (nonatomic, strong) NSArray<CQDownloadRecordModel *> *downloadModles;
 
 @end
 
@@ -34,7 +34,11 @@
 
     //NSArray<NSString *> *imageExtensions = @[@"png", @"jpg", @"gif", @"webp", @"svg"];
     NSArray<NSString *> *videoExtensions = @[@"mp4", @"mov"];
-    self.downloadModles = [CQTSLocImagesUtil fileModelsWithExtensions:videoExtensions count:10 randomOrder:NO changeImageNameToNetworkUrl:YES];
+    //self.downloadModles = [CQTSLocImagesUtil fileModelsWithExtensions:videoExtensions count:10 randomOrder:NO changeImageNameToNetworkUrl:YES];
+    
+    NSArray<CQDMSectionDataModel *> *sectionDataModels = [TSDownloadVideoIdManager.sharedInstance sectionDataModels];
+    self.downloadModles = sectionDataModels.firstObject.values;
+    
 }
 
 - (void)deleteAllFiles {
@@ -61,8 +65,8 @@
     TSDownloadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     //cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row];
-    CQTSLocImageDataModel *downloadModel = [self.downloadModles objectAtIndex:indexPath.row];
-    cell.downloadView.downloadUrl = downloadModel.imageName;
+    CQDownloadRecordModel *downloadModel = [self.downloadModles objectAtIndex:indexPath.row];
+    cell.downloadView.downloadUrl = downloadModel.url;
     cell.downloadView.downloadUrlLabel.text = downloadModel.name;
     
     return cell;

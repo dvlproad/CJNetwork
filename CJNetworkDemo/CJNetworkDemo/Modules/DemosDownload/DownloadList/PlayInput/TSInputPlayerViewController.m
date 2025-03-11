@@ -8,7 +8,6 @@
 //  要解析的视频的播放界面
 
 #import "TSInputPlayerViewController.h"
-#import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CQDemoKit/CQTSButtonFactory.h>
 #import <CQOverlayKit/CQIndicatorHUDUtil.h>
 #import <CQOverlayKit/CQAlertUtil.h>
@@ -234,7 +233,7 @@
 #pragma mark - 设置视频封面
 - (void)setupVideoThumbnail {
     self.videoThumbnailView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 100, self.view.frame.size.width - 40, 420)];
-    UIImage *placeholderImage = [CQTSLocImagesUtil cjts_localImageAtIndex:2];
+    UIImage *placeholderImage = [UIImage imageNamed:@"download_history_bgSky.jpg"];
     self.videoThumbnailView.image = placeholderImage; // 替换为视频封面
     self.videoThumbnailView.contentMode = UIViewContentModeScaleAspectFill;
     self.videoThumbnailView.userInteractionEnabled = YES;

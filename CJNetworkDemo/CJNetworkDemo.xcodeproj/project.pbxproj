@@ -35,6 +35,8 @@
 		9740B6322D6B330C00193499 /* TSDownloadCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6312D6B330C00193499 /* TSDownloadCollectionViewCell.m */; };
 		9740B6432D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */; };
 		9740B6462D6B427900193499 /* TSDownloadCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */; };
+		974295ED2D80284900DBCC12 /* download_history_bgSky.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 974295EA2D80284900DBCC12 /* download_history_bgSky.jpg */; };
+		974295EE2D80284900DBCC12 /* download_input_bg01.png in Resources */ = {isa = PBXBuildFile; fileRef = 974295EB2D80284900DBCC12 /* download_input_bg01.png */; };
 		9743BFA92D7734FB009677A8 /* TSPlayerInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9743BFA52D7734FB009677A8 /* TSPlayerInputView.m */; };
 		9743BFAA2D7734FB009677A8 /* TSPlayerInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9743BFA72D7734FB009677A8 /* TSPlayerInputViewController.m */; };
 		9743BFAF2D773B4D009677A8 /* TSInputPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9743BFAE2D773B4D009677A8 /* TSInputPlayerViewController.m */; };
@@ -127,6 +129,8 @@
 		9740B6422D6B391E00193499 /* TSDownloadCollectionViewCellOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewCellOverlay.m; sourceTree = "<group>"; };
 		9740B6442D6B427900193499 /* TSDownloadCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDownloadCollectionViewController.h; sourceTree = "<group>"; };
 		9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDownloadCollectionViewController.m; sourceTree = "<group>"; };
+		974295EA2D80284900DBCC12 /* download_history_bgSky.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = download_history_bgSky.jpg; sourceTree = "<group>"; };
+		974295EB2D80284900DBCC12 /* download_input_bg01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = download_input_bg01.png; sourceTree = "<group>"; };
 		9743BFA42D7734FB009677A8 /* TSPlayerInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSPlayerInputView.h; sourceTree = "<group>"; };
 		9743BFA52D7734FB009677A8 /* TSPlayerInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSPlayerInputView.m; sourceTree = "<group>"; };
 		9743BFA62D7734FB009677A8 /* TSPlayerInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSPlayerInputViewController.h; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 				97CEFB172D743F4B00FFBD1D /* CQVideoAnalyzeMainViewController.m */,
 				97CEFB282D74C2DE00FFBD1D /* CQDownloadSettingViewController.h */,
 				97CEFB292D74C2DE00FFBD1D /* CQDownloadSettingViewController.m */,
+				974295EC2D80284900DBCC12 /* Resources */,
 				9743BFAC2D773A89009677A8 /* DownloadInput */,
 				9743BFAB2D773A2E009677A8 /* DownloadPlay */,
 				97CEFB252D7494B900FFBD1D /* TSDownloadUtil.h */,
@@ -414,6 +419,15 @@
 				9740B6452D6B427900193499 /* TSDownloadCollectionViewController.m */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		974295EC2D80284900DBCC12 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				974295EA2D80284900DBCC12 /* download_history_bgSky.jpg */,
+				974295EB2D80284900DBCC12 /* download_input_bg01.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		9743BFA82D7734FB009677A8 /* PlayInput */ = {
@@ -581,6 +595,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				974295ED2D80284900DBCC12 /* download_history_bgSky.jpg in Resources */,
+				974295EE2D80284900DBCC12 /* download_input_bg01.png in Resources */,
 				7842989F21C1F991003198FB /* AppAssets.xcassets in Resources */,
 				9701483A2D7CAC4C00EB8609 /* Localizable.strings in Resources */,
 				784298A021C1F991003198FB /* MainAsset.xcassets in Resources */,

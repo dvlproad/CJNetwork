@@ -8,7 +8,6 @@
 
 #import "TSDownloadCollectionView.h"
 #import <CQDemoKit/CQTSRipeBaseCollectionViewDelegate.h>
-#import <CQDemoKit/CQTSRipeSectionDataUtil.h>
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
 #import <CQMdeiaVideoFrameKit/VideoFrameCQHelper.h>
 

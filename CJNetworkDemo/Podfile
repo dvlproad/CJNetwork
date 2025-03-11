@@ -27,7 +27,7 @@ source 'https://gitee.com/dvlproad/dvlproadSpecs'
 target 'CJNetworkDemo' do
 #  plugin 'cocoapods-hmap-prebuilt'
   
-  pod 'CQDemoKit',              '~> 0.7.7',      :subspecs => ['BaseVC', 'Demo_Resource']
+  pod 'CQDemoKit',              '~> 0.8.0',      :subspecs => ['BaseVC', 'Demo_Resource']
   pod 'CQDemoKit-Swift',        '~> 0.0.1'
   pod 'CQMdeiaVideoFrameKit',   :path => '../../013-Mdeia_Video_Frame/iOS'
   pod 'CQOverlayKit'

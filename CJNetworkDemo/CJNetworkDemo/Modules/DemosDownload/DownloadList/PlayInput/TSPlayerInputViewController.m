@@ -11,7 +11,6 @@
 #import <CQDemoKit/CJUIKitAlertUtil.h>
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/NSError+CQTSErrorString.h>
-#import <CQDemoKit/CQTSLocImagesUtil.h>
 #import <CJBaseUIKit/UIView+CJAutoMoveUp.h>
 #import <CJMonitor/CJLogSuspendWindow.h>
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
@@ -107,7 +106,7 @@
         make.bottom.mas_equalTo(self.mas_bottomLayoutGuide).offset(-0);
     }];
 //    UIImage *image = [UIImage cqdemokit_xcassetImageNamed:@"cqts_icon_01.png" withCache:YES];
-    UIImage *image = [CQTSLocImagesUtil cjts_localImageBG1];
+    UIImage *image = [UIImage imageNamed:@"download_history_bgSky.jpg"];
     [self.imageView setImage:image];
     
     [self.view addSubview:self.downloadInputView];
