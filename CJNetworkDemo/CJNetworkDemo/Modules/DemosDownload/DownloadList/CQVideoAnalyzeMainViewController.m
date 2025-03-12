@@ -57,7 +57,7 @@
     scrollViewHomeViewController.tabBarItem.image = [[UIImage imageNamed:@"icons8-calendar"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UINavigationController *scrollViewHomeNavigationController = [[UINavigationController alloc] initWithRootViewController:scrollViewHomeViewController];
     [self addChildViewController:scrollViewHomeNavigationController];
-    
+    /*
     TSPlayerInputViewController *playerInputViewController = [[TSPlayerInputViewController alloc] init];
     playerInputViewController.view.backgroundColor = [UIColor whiteColor];
     playerInputViewController.navigationItem.title = NSLocalizedStringFromTable(@"播放器", @"LocalizableDownloader", nil);
@@ -65,7 +65,7 @@
     playerInputViewController.tabBarItem.image = [[UIImage imageNamed:@"icons8-folder"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UINavigationController *navigationController3 = [[UINavigationController alloc] initWithRootViewController:playerInputViewController];
     [self addChildViewController:navigationController3];
-    
+    */
     CQDownloadSettingViewController *viewController6 = [[CQDownloadSettingViewController alloc] init];
     viewController6.view.backgroundColor = [UIColor whiteColor];
     viewController6.navigationItem.title = NSLocalizedStringFromTable(@"更多", @"LocalizableDownloader", nil);

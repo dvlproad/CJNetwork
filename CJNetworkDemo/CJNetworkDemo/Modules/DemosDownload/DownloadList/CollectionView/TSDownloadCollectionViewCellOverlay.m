@@ -10,6 +10,7 @@
 #import <CQVideoUrlAnalyze_Swift/CQVideoUrlAnalyze_Swift-Swift.h>
 #import <CJNetwork_Swift/CJNetwork_Swift-Swift.h>
 #import <CQDemoKit/CQTSSandboxPathUtil.h>
+#import <CQOverlayKit/CQAlertUtil.h>
 #import "TSDownloadUtil.h"
 
 @interface TSDownloadCollectionViewCellOverlay ()
@@ -267,7 +268,14 @@
         
         
     } else {
-        NSAssert(downloadMethod == CJFileDownloadMethodUnknown, @"下载方式不能未知，不然 CJFileDownloadMethodProgress 时候的下载会引起点击获取视频后，跳转到已解析页面上的回调没刷新");
+        NSLog(@"❌:下载方式不能未知，不然 CJFileDownloadMethodProgress 时候的下载会引起点击获取视频后，跳转到已解析页面上的回调没刷新");
+        if (downloadMethod == CJFileDownloadMethodUnknown) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [CQAlertUtil showIKnowAlertViewWithTitle:@"下载失败" message:nil okHandle:^{
+                    [self deleteButtonTapped:nil];
+                }];
+            });
+        }
     }
 }
 
