@@ -8,13 +8,14 @@
 //  用于下载列表的输入框
 
 #import <UIKit/UIKit.h>
+#import <CQTextInputKit/CQBlockTextView.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TSPlayerInputView : UIView {
     
 }
-@property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) CQBlockTextView *textField;
 @property (nonatomic, strong) UIButton *fetchButton;
 
 #pragma mark - Init

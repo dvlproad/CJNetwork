@@ -7,12 +7,16 @@
 //
 
 #import "UIWindow+RootSetting.h"
+#import <CQOverlayKit/CQOverlayThemeSetting.h>
 #import "CQVideoAnalyzeMainViewController.h"
 
 @implementation UIWindow (RootSetting)
 
 - (void)settingRoot {
     [self setBackgroundColor:[UIColor whiteColor]];
+    
+    [CQOverlayThemeSetting useThemeType:OverlayThemeTypeBiaoli];
+    
     // 只直接测试某个页面
     UIViewController *rootViewController = [[UINavigationController alloc] initWithRootViewController:[[NSClassFromString(@"TSVideoUrlAnalyzeHomeViewController") alloc] init]];
     rootViewController = [[CQVideoAnalyzeMainViewController alloc] init];

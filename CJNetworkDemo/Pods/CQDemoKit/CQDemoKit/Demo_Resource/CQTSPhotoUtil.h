@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
                       success:(void (^)(void))success
                       failure:(void (^)(NSString *errorMessage))failure;
 
++ (void)saveAudioToPhotoAlbum:(NSURL *)audioLocalURL
+                      success:(void (^)(void))success
+                      failure:(void (^)(NSString *errorMessage))failure;
+
 /// 根据路径的后缀名保存任意视频（此法不推荐，因为很多图片或视频的地址，并不一定是以其后缀名结尾）
 + (void)saveMediaByFileExtensionToPhotoAlbum:(NSURL *)mediaLocalURL
                                      success:(void (^)(void))success

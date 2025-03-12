@@ -15,12 +15,37 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - Alamofire (4.9.1)
+  - CJBaseHelper (0.1.7):
+    - CJBaseHelper/AppInfoCJHelper (= 0.1.7)
+    - CJBaseHelper/AuthorizationCJHelper (= 0.1.7)
+    - CJBaseHelper/DeviceCJHelper (= 0.1.7)
+    - CJBaseHelper/HookCJHelper (= 0.1.7)
+    - CJBaseHelper/NSCalendarCJHelper (= 0.1.7)
+    - CJBaseHelper/NSDateFormatterCJHelper (= 0.1.7)
+    - CJBaseHelper/NSObjectCJHelper (= 0.1.7)
+    - CJBaseHelper/NSOperationQueueCJHelper (= 0.1.7)
+    - CJBaseHelper/ServerCJHelper (= 0.1.7)
+    - CJBaseHelper/UIViewControllerCJHelper (= 0.1.7)
+    - CJBaseHelper/WebCJHelper (= 0.1.7)
+  - CJBaseHelper/AppInfoCJHelper (0.1.7)
   - CJBaseHelper/AuthorizationCJHelper (0.1.7)
   - CJBaseHelper/DeviceCJHelper (0.1.7)
+  - CJBaseHelper/HookCJHelper (0.1.7)
+  - CJBaseHelper/NSCalendarCJHelper (0.1.7)
+  - CJBaseHelper/NSDateFormatterCJHelper (0.1.7)
   - CJBaseHelper/NSObjectCJHelper (0.1.7)
+  - CJBaseHelper/NSOperationQueueCJHelper (0.1.7)
+  - CJBaseHelper/ServerCJHelper (0.1.7)
+  - CJBaseHelper/UIViewControllerCJHelper (0.1.7)
+  - CJBaseHelper/WebCJHelper (0.1.7)
   - CJBaseUIKit/CJSlider (0.8.0)
   - CJBaseUIKit/UIButton (0.8.0)
   - CJBaseUIKit/UIColor (0.8.0)
+  - CJBaseUIKit/UITextField (0.8.0)
+  - CJBaseUIKit/UITextHeightCenterCJHelper (0.8.0)
+  - CJBaseUIKit/UITextInputCJHelper (0.8.0)
+  - CJBaseUIKit/UITextView (0.8.0):
+    - CJBaseUIKit/UITextHeightCenterCJHelper
   - CJBaseUIKit/UIView (0.8.0):
     - CJBaseUIKit/UIView/CJAddCorner (= 0.8.0)
     - CJBaseUIKit/UIView/CJAnimation (= 0.8.0)
@@ -286,6 +311,12 @@ PODS:
     - CJPopupCreater/EffectAndCornerHelper
   - CQPopupCreater_Base/BaseCenter/4ViewCategory (0.6.4):
     - CQPopupCreater_Base/BaseCenter/2BlankView
+  - CQTextInputKit (0.1.3):
+    - CJBaseUIKit/UIColor
+    - CJBaseUIKit/UITextField
+    - CJBaseUIKit/UITextInputCJHelper
+    - CJBaseUIKit/UITextView
+    - Masonry
   - CQVideoUrlAnalyze-Swift (0.0.1):
     - CQVideoUrlAnalyze-Swift/Douyin (= 0.0.1)
     - CQVideoUrlAnalyze-Swift/Tiktok (= 0.0.1)
@@ -313,6 +344,7 @@ PODS:
   - YYCache (1.0.4)
 
 DEPENDENCIES:
+  - CJBaseHelper
   - CJBaseHelper/DeviceCJHelper
   - CJBaseHelper/NSObjectCJHelper
   - CJBaseUIKit/UIView
@@ -340,6 +372,7 @@ DEPENDENCIES:
   - CQNetworkPublic/Request (from `../`)
   - CQNetworkPublic/Upload (from `../`)
   - CQOverlayKit
+  - CQTextInputKit
   - CQVideoUrlAnalyze-Swift (from `../`)
   - OpenUDID (~> 1.0.0)
 
@@ -352,7 +385,9 @@ SPEC REPOS:
     - CQBridgeSTOLottie
     - CQOverlayKit
     - CQPopupCreater_Base
+    - CQTextInputKit
   https://github.com/CocoaPods/Specs.git:
+    - CJBaseHelper
     - CQDemoKit
     - lottie-ios
     - MBProgressHUD
@@ -361,7 +396,6 @@ SPEC REPOS:
   trunk:
     - AFNetworking
     - Alamofire
-    - CJBaseHelper
     - CJBaseUIKit
     - CJBaseUtil
     - CJMonitor
@@ -427,6 +461,7 @@ SPEC CHECKSUMS:
   CQNetworkPublic: daa95989c1d6d8f2d1d50f97285f4b88f0e664d3
   CQOverlayKit: 115903f079a02796d9ca711889b5d7dba5defbe6
   CQPopupCreater_Base: 3ae1d7de8cf49ec78ba0c2be278a38da8134e48e
+  CQTextInputKit: ddf925cd1a463427e6dfb1b60ba7fc7b0c604d5c
   CQVideoUrlAnalyze-Swift: 93f961bafc55d1ea389ce42b95a42279fbf760f1
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -441,6 +476,6 @@ SPEC CHECKSUMS:
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 48c0a1332bed265e3fe005f994a5083ff7122975
+PODFILE CHECKSUM: bb4a67e24c332dd1e9efee121bead6f1c481e911
 
 COCOAPODS: 1.16.2

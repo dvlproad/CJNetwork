@@ -26,17 +26,22 @@ import Foundation
         _ shortenedUrl: String,
         type: CQAnalyzeVideoUrlType,
         success: @escaping ((_ expandedUrl: String, _ videoId: String, _ resultUrl: String) -> Void),
-        failure: @escaping ((_ errorMessage: String) -> Void)
+        failure: @escaping ((_ error: NSError) -> Void)
     ) {
+        if let errorMessage = TikTokService.analyzeTiktokShortenedUrl(shortenedUrl) {
+            failure(NSError(domain: "VideoParsingError", code: 1001, userInfo: [NSLocalizedDescriptionKey: (errorMessage as NSString)]))
+            return
+        }
+        
         CJRequestUtil.expandShortenedUrl(shortenedUrl) { expandedUrl in
             if let videoId = (expandedUrl as NSString).cjnetworkUrl_Value(forKey: "video") {
                 let resultUrl = getVideoInfo(for: type, videoId: videoId)    // 获取对应类型的 URL 模式并拼接视频 ID
                 success(expandedUrl, videoId, resultUrl)
             } else {
-                failure("获取短链重定向/扩展后的videoId失败")
+                failure(NSError(domain: "ExpandShortenedUrlError", code: 1002, userInfo: [NSLocalizedDescriptionKey: "获取短链重定向/扩展后的videoId失败"]))
             }
         } failure: { errorMessage in
-            failure(errorMessage)
+            failure(NSError(domain: "ExpandShortenedUrlError", code: 1002, userInfo: [NSLocalizedDescriptionKey: (errorMessage as NSString)]))
         }
     }
     

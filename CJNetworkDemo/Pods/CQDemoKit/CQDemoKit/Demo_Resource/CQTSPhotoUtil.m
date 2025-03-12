@@ -69,6 +69,30 @@
     }];
 }
 
++ (void)saveAudioToPhotoAlbum:(NSURL *)audioLocalURL
+                      success:(void (^)(void))success
+                      failure:(void (^)(NSString *errorMessage))failure
+{
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        if (status != PHAuthorizationStatusAuthorized) {
+            failure(@"没有相册权限");
+            return;
+        }
+        
+        [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+            [PHAssetCreationRequest creationRequestForAssetFromVideoAtFileURL:audioLocalURL];
+        } completionHandler:^(BOOL isSuccess, NSError * _Nullable error) {
+            if (error != nil) {
+                NSString *errorMessage = [NSString stringWithFormat:@"保存失败，请确认您的文件是不是音频: %@", error.localizedDescription];
+                failure(errorMessage);
+                return;
+            }
+            
+            success();
+        }];
+    }];
+}
+
 
 
 /// 根据路径的后缀名保存任意视频（此法不推荐，因为很多图片或视频的地址，并不一定是以其后缀名结尾）

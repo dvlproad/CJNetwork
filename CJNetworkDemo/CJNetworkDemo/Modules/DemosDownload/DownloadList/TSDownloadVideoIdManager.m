@@ -36,40 +36,6 @@
 }
 
 #pragma mark - Event
-- (NSArray<CQDownloadRecordModel *> *)getRecordsForVideoId:(NSString *)videoId {
-//    [self addVideoByVideoId:@"7465611957203160340"];
-//    NSString *cover = [CQVideoUrlAnalyze_Tiktok getVideoInfoFor:CQAnalyzeVideoUrlTypeImageCover videoId:videoId];
-    
-    NSString *videoOriginal = [CQVideoUrlAnalyze_Tiktok getVideoInfoFor:CQAnalyzeVideoUrlTypeVideoOriginal videoId:videoId];
-    NSString *videoWithoutWatermark = [CQVideoUrlAnalyze_Tiktok getVideoInfoFor:CQAnalyzeVideoUrlTypeVideoWithoutWatermark videoId:videoId];
-    NSString *videoWithoutWatermarkHD = [CQVideoUrlAnalyze_Tiktok getVideoInfoFor:CQAnalyzeVideoUrlTypeVideoWithoutWatermarkHD videoId:videoId];
-    
-    
-    NSMutableArray<CQDownloadRecordModel *> *dataModels = [[NSMutableArray alloc] init];
-    /*
-    {
-        CQDownloadRecordModel *dataModel = [[CQDownloadRecordModel alloc] init];
-        dataModel.name = [NSString stringWithFormat:@"videoOriginal %@", videoId];
-        dataModel.imageName = videoOriginal;
-        [dataModels addObject:dataModel];
-    }
-    {
-        CQDownloadRecordModel *dataModel = [[CQDownloadRecordModel alloc] init];
-        dataModel.name = [NSString stringWithFormat:@"videoWithoutWatermark %@", videoId];
-        dataModel.imageName = videoWithoutWatermark;
-        [dataModels addObject:dataModel];
-    }
-    */
-    
-        CQDownloadRecordModel *dataModel = [[CQDownloadRecordModel alloc] init];
-        dataModel.name = [NSString stringWithFormat:@"videoWithoutWatermarkHD %@", videoId];
-        dataModel.url = videoWithoutWatermarkHD;
-        [dataModels addObject:dataModel];
-
-        return dataModels;
- }
-
-
  - (void)addDownloadRecoredModels:(NSArray<CQDownloadRecordModel *> *)dataModels {
 //    [self.sectionDataModels.firstObject.values addObjectsFromArray:dataModels];
     NSMutableArray *values = self.sectionDataModels.firstObject.values;

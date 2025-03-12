@@ -39,7 +39,7 @@
     {
         CQDMSectionDataModel *sectionDataModel = [[CQDMSectionDataModel alloc] init];
         sectionDataModel.theme = NSLocalizedStringFromTable(@"设置", @"LocalizableDownloader", nil);
-        
+        /*
         {
             CQDMModuleModel *toastUtilModule = [[CQDMModuleModel alloc] init];
             toastUtilModule.title = NSLocalizedStringFromTable(@"关于我们", @"LocalizableDownloader", nil);
@@ -48,6 +48,7 @@
             };
             [sectionDataModel.values addObject:toastUtilModule];
         }
+        */
         {
             CQDMModuleModel *toastUtilModule = [[CQDMModuleModel alloc] init];
             toastUtilModule.title = NSLocalizedStringFromTable(@"打开设置", @"LocalizableDownloader", nil);

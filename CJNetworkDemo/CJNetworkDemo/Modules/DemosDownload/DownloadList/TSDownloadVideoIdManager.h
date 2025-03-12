@@ -24,7 +24,6 @@
 - (instancetype)init NS_UNAVAILABLE;
 
 #pragma mark - Event
-- (NSArray<CQDownloadRecordModel *> *)getRecordsForVideoId:(NSString *)videoId;
 - (void)addDownloadRecoredModels:(NSArray<CQDownloadRecordModel *> *)dataModels;
 
 #pragma mark - 增删

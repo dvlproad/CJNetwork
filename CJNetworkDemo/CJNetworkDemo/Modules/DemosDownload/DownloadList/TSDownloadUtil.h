@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)askSaveDownloadModel:(CQDownloadRecordModel *)downloadModel;
 
-+ (void)saveInViewController:(UIViewController *)vc forDownloadModel:(CQDownloadRecordModel *)downloadModel;
++ (void)saveInViewController:(UIViewController *)vc forMediaLocalURL:(NSURL *)mediaLocalURL;
 
 @end
 

@@ -369,7 +369,7 @@
 
 #pragma mark - 保存视频
 - (void)saveVideo {
-    [TSDownloadUtil saveInViewController:self forDownloadModel:self.downloadModel];
+    [TSDownloadUtil askSaveDownloadModel:self.downloadModel];
 }
 
 #pragma mark - 删除视频

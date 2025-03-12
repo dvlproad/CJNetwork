@@ -9,6 +9,7 @@
 
 #import "TSDownloadInputView.h"
 #import <Masonry/Masonry.h>
+#import <CJBaseHelper/UIViewControllerCJHelper.h>
 
 @interface TSDownloadInputView () {
     
@@ -46,7 +47,9 @@
 #pragma mark - Private Method
 - (void)appDidBecomeActive {
     //[self.textField becomeFirstResponder];
-    [self pasteClipboardWithMustChange:YES];
+    if ([UIViewControllerCJHelper getVisibleRatioForView:self] > 0.0) {
+        [self pasteClipboardWithMustChange:YES];
+    }
 }
 
 - (void)setupViews {

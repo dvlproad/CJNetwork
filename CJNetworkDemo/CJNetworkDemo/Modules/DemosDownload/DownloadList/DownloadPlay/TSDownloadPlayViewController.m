@@ -9,6 +9,8 @@
 
 #import "TSDownloadPlayViewController.h"
 #import <CQDemoKit/CQTSButtonFactory.h>
+#import <CQOverlayKit/CQActionSheetUtil.h>
+#import <Photos/Photos.h>
 #import "TSDownloadUtil.h"
 
 #import "HSDownloadManager.h"
@@ -78,6 +80,12 @@
     self.playerViewController.player = self.player;
     [self.player play];
 
+    // PHPhotosErrorDomain错误3300 表示 无法将音频文件存入相册，因为 iOS 的相册 (Photos) 仅支持存储图片和视频，不支持音频文件（如 MP3、M4A）。
+    if ([@[@"mp3"] containsObject:[[videoURL absoluteString] pathExtension]]) {
+        self.saveButton.hidden = YES;
+    } else {
+        self.saveButton.hidden = NO;
+    }
 }
 
 #pragma mark - 设置导航栏
@@ -337,7 +345,79 @@
 
 #pragma mark - 保存视频
 - (void)saveVideo {
-    [TSDownloadUtil saveInViewController:self forDownloadModel:self.downloadModel];
+    [CQActionSheetUtil showNormalSheetWithTitle:NSLocalizedString(@"请选择您要保存的内容", nil) itemTitles:@[NSLocalizedStringFromTable(@"保存视频", @"LocalizableDownloader", nil), NSLocalizedStringFromTable(@"仅保存音频", @"LocalizableDownloader", nil)] showCancel:YES itemClickBlock:^(NSInteger selectIndex) {
+        NSLog(@"当前选择的是%zd", selectIndex);
+        
+        NSString *videoLocalAbsPath = self.downloadModel.saveToAbsPath;
+        NSURL *videoLocalURL = [NSURL fileURLWithPath:videoLocalAbsPath];
+        if (selectIndex == 0) {
+            [TSDownloadUtil saveInViewController:self forMediaLocalURL:videoLocalURL];
+        } else {
+            NSString *videoAudioOutputUrl = [[videoLocalAbsPath stringByDeletingPathExtension] stringByAppendingString:@"_audioOutput.m4a"];
+            NSURL *videoAudioOutputURL = [NSURL fileURLWithPath:videoAudioOutputUrl];
+            
+            [self extractAudioFromVideo:videoLocalURL outputURL:videoAudioOutputURL completion:^(BOOL success, NSError *error) {
+                [TSDownloadUtil saveInViewController:self forMediaLocalURL:videoAudioOutputURL];
+            }];
+        }
+    }];
+}
+
+
+#pragma mark - 提取音频
+//#import <AVFoundation/AVFoundation.h>
+
+- (void)extractAudioFromVideo:(NSURL *)videoURL outputURL:(NSURL *)outputURL completion:(void (^)(BOOL success, NSError *error))completion {
+    AVAsset *asset = [AVAsset assetWithURL:videoURL];
+    
+    // 检查视频是否包含音频轨道
+    NSArray *audioTracks = [asset tracksWithMediaType:AVMediaTypeAudio];
+    if (audioTracks.count == 0) {
+        if (completion) {
+            NSError *error = [NSError errorWithDomain:@"ExtractAudioError" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"视频中没有音频轨道"}];
+            completion(NO, error);
+        }
+        return;
+    }
+
+    // 检查音频轨道格式
+    AVAssetTrack *audioTrack = [audioTracks firstObject];
+    NSLog(@"音频轨道格式: %@", audioTrack.formatDescriptions);
+
+    // 删除已存在的输出文件
+    if ([[NSFileManager defaultManager] fileExistsAtPath:outputURL.path]) {
+        [[NSFileManager defaultManager] removeItemAtURL:outputURL error:nil];
+    }
+
+    // 创建导出会话
+    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetAppleM4A];
+    if (!exportSession) {
+        if (completion) {
+            NSError *error = [NSError errorWithDomain:@"ExtractAudioError" code:-2 userInfo:@{NSLocalizedDescriptionKey : @"无法创建导出会话"}];
+            completion(NO, error);
+        }
+        return;
+    }
+    
+    exportSession.outputFileType = AVFileTypeAppleM4A;
+    exportSession.outputURL = outputURL;
+    exportSession.shouldOptimizeForNetworkUse = YES;
+
+    // 异步导出
+    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (exportSession.status == AVAssetExportSessionStatusCompleted) {
+                if (completion) {
+                    completion(YES, nil);
+                }
+            } else {
+                if (completion) {
+                    NSLog(@"导出失败: %@", exportSession.error.localizedDescription);
+                    completion(NO, exportSession.error);
+                }
+            }
+        });
+    }];
 }
 
 #pragma mark - 删除视频

@@ -9,6 +9,7 @@
 
 #import "TSPlayerInputView.h"
 #import <Masonry/Masonry.h>
+#import <CJBaseHelper/UIViewControllerCJHelper.h>
 
 @interface TSPlayerInputView () {
     
@@ -46,11 +47,35 @@
 #pragma mark - Private Method
 - (void)appDidBecomeActive {
     //[self.textField becomeFirstResponder];
-    [self pasteClipboardWithMustChange:YES];
+    if ([UIViewControllerCJHelper getVisibleRatioForView:self] > 0.0) {
+        [self pasteClipboardWithMustChange:YES];
+    }
 }
 
+#pragma mark - SetupViews
 - (void)setupViews {
     // 创建输入框
+    self.textField = [[CQBlockTextView alloc] initWithFrame:CGRectZero];
+    self.textField.placeholder = NSLocalizedStringFromTable(@"请输入要播放的视频链接...", @"LocalizableDownloader", nil);
+    self.textField.textDidChangeBlock = ^(NSString * _Nonnull text) {
+        NSLog(@"当前文本是%@", text);
+    };
+    self.textField.backgroundColor = [UIColor lightGrayColor];
+    self.textField.textColor = [UIColor whiteColor];
+    self.textField.font = [UIFont systemFontOfSize:12];
+    self.textField.contentScaleFactor = 0.5;
+    self.textField.layer.cornerRadius = 10;
+    self.textField.layer.masksToBounds = YES;
+    [self addSubview:self.textField];
+    [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self);
+        make.height.mas_equalTo(50);
+        //make.centerX.mas_equalTo(self);
+        make.left.mas_equalTo(self).offset(10);
+        make.right.mas_equalTo(self).offset(-10);
+    }];
+    
+    /*
     self.textField = [[UITextField alloc] initWithFrame:CGRectZero];
     self.textField.backgroundColor = [UIColor lightGrayColor];
     self.textField.textColor = [UIColor whiteColor];
@@ -89,7 +114,7 @@
     [rightPaddingView addSubview:pasteButton];
     self.textField.rightView = rightPaddingView;
     self.textField.rightViewMode = UITextFieldViewModeAlways;
-    
+    */
     // 创建按钮
     self.fetchButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.fetchButton.frame = CGRectZero;

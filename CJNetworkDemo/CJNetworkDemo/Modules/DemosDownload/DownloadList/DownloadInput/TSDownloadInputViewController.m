@@ -20,8 +20,11 @@
 #import <CJNetwork/AFHTTPSessionManager+CJSerializerEncrypt.h>
 #import <CJNetwork/CQDemoHTTPSessionManager.h>
 
+#import <CQOverlayKit/CQToastUtil.h>
+#import <CQOverlayKit/CQAlertUtil.h>
 #import <CQOverlayKit/CQHUDUtil.h>
 #import <CQOverlayKit/CQIndicatorHUDUtil.h>
+
 
 // 下载
 #import "HSDownloadManager.h"
@@ -61,21 +64,61 @@
         __weak typeof(self)weakSelf = self;
         _downloadInputView = [[TSDownloadInputView alloc] initWithFetchVideoHandle:^(NSString * _Nonnull text) {
 //            [self fetchVideo];
+            [weakSelf tryAnalyzeShortenedUrl:text];
 //            [CJUIKitToastUtil showMessage:NSLocalizedStringFromTable(@"可在此执行下载", @"LocalizableDownloader", nil)];
 //            [weakSelf tikwm_analyzeTiktokShortenedUrl:text failure:^(NSString * _Nonnull errorMessage) {
 //                [CJUIKitToastUtil showMessage:errorMessage];
 //            }];
-            // 先本地解析，若失败再用第三方解析
-            //[CQHUDUtil showLoadingHUD];
-            [CQIndicatorHUDUtil showLoadingHUD:@"解析中"];
-//            [weakSelf local_analyzeTiktokShortenedUrl:text failure:^(NSError * _Nonnull error) {
-                [weakSelf tikwm_analyzeTiktokShortenedUrl:text failure:^(NSString * _Nonnull errorMessage) {
-                    [CJUIKitToastUtil showMessage:errorMessage];
-                }];
-//            }];
+
         }];
     }
     return _downloadInputView;
+}
+
+- (void)tryAnalyzeShortenedUrl:(NSString *)text {
+    if (text.length == 0) {
+        //NSString *title = NSLocalizedStringFromTable(@"粘贴TikTok视频链接...", @"LocalizableDownloader", nil)
+        NSString *title = NSLocalizedStringFromTable(@"TikTok视频链接，不能为空。", @"LocalizableDownloader", nil);
+        [CQAlertUtil showAlertViewWithFlagImage:nil title:title message:nil cancelButtonTitle:NSLocalizedStringFromTable(@"重新粘贴", @"LocalizableDownloader", nil) okButtonTitle:NSLocalizedStringFromTable(@"随机下载", @"LocalizableDownloader", nil) cancelHandle:nil okHandle:^{
+            NSArray<NSString *> *shortenedUrls = @[
+        //        @"https://www.tiktok.com/t/ZT2fyo8FN/",
+                @"https://www.tiktok.com/t/ZT2mkNaFw/",    //nezha2 shengaongbao
+//                @"https://vt.tiktok.com/ZSMVE5Qdh/",
+                @"https://www.tiktok.com/t/ZT2VmD3sP/",     // 蜜雪冰城
+                @"https://www.tiktok.com/t/ZT2VmapkQ/",     // 夕阳
+                @"https://www.tiktok.com/t/ZT2VmapkQ/",     // 云朵
+//                @"https://www.tiktok.com/t/ZT2XuQNwY/", // nezha2 打斗1
+//                @"https://www.tiktok.com/t/ZT2XuPETG/", // nezha2 打斗2
+            ];
+            // 获取随机值
+            NSInteger maySelIndex = random();
+            NSInteger lastImageSelIndex = maySelIndex%shortenedUrls.count;
+            NSString *shortenedUrl = shortenedUrls[lastImageSelIndex];
+            [self tryAnalyzeShortenedUrl:shortenedUrl];
+        }];
+        return;
+    }
+    /*
+    if (![text hasPrefix:@"http://"] && ![text hasPrefix:@"https://"]) {
+        [CJUIKitToastUtil showMessage:NSLocalizedStringFromTable(@"请输入有效的视频地址", @"LocalizableDownloader", nil)];
+        return;
+    }
+    */
+    __weak typeof(self)weakSelf = self;
+    // 先本地解析，若失败再用第三方解析
+    //[CQHUDUtil showLoadingHUD];
+    NSString *errorMessage = [TikTokService analyzeTiktokShortenedUrl:text];
+    if (errorMessage != nil) {
+        [CQToastUtil showMessage:errorMessage];
+        return;
+    }
+    
+    [CQIndicatorHUDUtil showLoadingHUD:@"解析中"];
+    //[weakSelf local_analyzeTiktokShortenedUrl:text failure:^(NSError * _Nonnull error) {
+        [weakSelf tikwm_analyzeTiktokShortenedUrl:text failure:^(NSString * _Nonnull errorMessage) {
+            [CQToastUtil showMessage:errorMessage];
+        }];
+    //}];
 }
 
 
@@ -132,19 +175,6 @@
     [self.view addGestureRecognizer:tapGesture];
     
     [self registerKeyboardNotification];
-    
-    NSArray<NSString *> *shortenedUrls = @[
-//        @"https://www.tiktok.com/t/ZT2fyo8FN/",
-        @"https://www.tiktok.com/t/ZT2mkNaFw/",    //nezha2 shengaongbao
-        @"https://vt.tiktok.com/ZSMVE5Qdh/",
-        @"https://vt.tiktok.com/ZSMVKbhkh/",
-        @"https://www.tiktok.com/t/ZT2XuQNwY/", // nezha2 打斗1
-        @"https://www.tiktok.com/t/ZT2XuPETG/", // nezha2 打斗2
-    ];
-    // 获取随机值
-    NSInteger maySelIndex = random();
-    NSInteger lastImageSelIndex = maySelIndex%shortenedUrls.count;
-    self.downloadInputView.textField.text = shortenedUrls[lastImageSelIndex];
 }
 
 - (void)dismissKeyboard {
@@ -160,8 +190,9 @@
         [self __showResponseLogMessage:message];
         
         // 添加数据
-        NSArray *records = [TSDownloadVideoIdManager.sharedInstance getRecordsForVideoId:videoId];
-        CQDownloadRecordModel *downloadRecordModel = records.firstObject;
+        CQDownloadRecordModel *downloadRecordModel = [[CQDownloadRecordModel alloc] init];
+        downloadRecordModel.name = [NSString stringWithFormat:@"%ld. %@", type, videoId];
+        downloadRecordModel.url = videoUrl;
         downloadRecordModel.downloadMethod = CJFileDownloadMethodProgress;
         [CQDownloadCacheUtil process_addRecord:downloadRecordModel];
         [TSDownloadVideoIdManager.sharedInstance addDownloadRecoredModels:@[downloadRecordModel]];
@@ -176,7 +207,8 @@
                 [weakSelf downloadFileUrlRecord:downloadRecordModel];
             //}];
         });
-    } failure:^(NSString * _Nonnull errorMessage) {
+    } failure:^(NSError * _Nonnull error) {
+        NSString *errorMessage = error.localizedDescription;
         [self __showResponseLogMessage:errorMessage];
         failure(errorMessage);
     }];

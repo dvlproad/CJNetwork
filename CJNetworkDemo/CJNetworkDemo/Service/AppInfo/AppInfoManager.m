@@ -8,7 +8,7 @@
 
 #import "AppInfoManager.h"
 #import <SystemConfiguration/CaptiveNetwork.h>
-
+#import <CJBaseHelper/UIViewControllerCJHelper.h>
 
 @interface AppInfoManager ()
 
@@ -43,16 +43,7 @@
 }
 
 - (UIViewController *)getTopViewController {
-    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-    
-    if ([rootViewController isKindOfClass:[UINavigationController class]]) {
-        UIViewController *topViewController = ((UINavigationController *)rootViewController).topViewController;
-        return topViewController;
-        
-    } else {
-        UIViewController *topViewController = rootViewController;
-        return topViewController;
-    }
+    return [UIViewControllerCJHelper findCurrentShowingViewController];
 }
 
 

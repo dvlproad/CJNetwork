@@ -427,6 +427,11 @@ SOFTWARE.
 © 2008-2020 dvlproad. All rights reserved.
 
 
+## CQTextInputKit
+
+© 2008-2020 dvlproad. All rights reserved.
+
+
 ## CQVideoUrlAnalyze-Swift
 
 The MIT License (MIT)

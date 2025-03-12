@@ -94,7 +94,7 @@
     NSMutableArray *dataModels = self.collectionView.sectionDataModels.firstObject.values;
     BOOL show = dataModels.count > 0;
     if (show) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清空" style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllFiles)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"清空", @"LocalizableDownloader", nil) style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllFiles)];
     } else {
         self.navigationItem.rightBarButtonItem = nil;
     }
@@ -108,7 +108,7 @@
 }
 
 - (void)deleteAllFiles {
-    [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:@"是否确认清空所有下载" message:nil cancleBlock:nil okBlock:^{
+    [CJUIKitAlertUtil showCancleOKAlertInViewController:self withTitle:NSLocalizedStringFromTable(@"是否确认清空所有下载", @"LocalizableDownloader", nil) message:nil cancleBlock:nil okBlock:^{
         [TSDownloadVideoIdManager.sharedInstance deleteAllFiles];
         
         [self.collectionView reloadData];

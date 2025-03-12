@@ -31,6 +31,8 @@ target 'CJNetworkDemo' do
   pod 'CQDemoKit-Swift',        '~> 0.0.1'
   pod 'CQMdeiaVideoFrameKit',   :path => '../../013-Mdeia_Video_Frame/iOS'
   pod 'CQOverlayKit'
+  pod 'CQTextInputKit'
+  pod 'CJBaseHelper'
   
   pod 'CJPlayer',           :path => '../../CJMediaPlayer'
   pod 'CJMediaPlayer',      :path => '../../CJMediaPlayer'
