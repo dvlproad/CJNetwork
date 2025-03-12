@@ -160,8 +160,8 @@
         make.top.mas_equalTo(self.mas_topLayoutGuide);
         make.bottom.mas_equalTo(self.mas_bottomLayoutGuide).offset(-0);
     }];
-    UIImage *image = [UIImage imageNamed:@"download_input_bg01.png"];
-    [self.imageView setImage:image];
+//    UIImage *image = [UIImage imageNamed:@"download_input_bg01.png"];
+//    [self.imageView setImage:image];
     
     [self.view addSubview:self.downloadInputView];
     [self.downloadInputView mas_makeConstraints:^(MASConstraintMaker *make) {

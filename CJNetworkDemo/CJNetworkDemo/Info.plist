@@ -50,5 +50,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 </dict>
 </plist>
