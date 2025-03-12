@@ -220,7 +220,7 @@ static HSDownloadManager *_downloadManager;
         } else if (progress > 0.0) {
             return CJFileDownloadStatePause;
         } else {
-            return CJFileDownloadStateUnknown;
+            return CJFileDownloadStateReady;
         }
     }
 }
