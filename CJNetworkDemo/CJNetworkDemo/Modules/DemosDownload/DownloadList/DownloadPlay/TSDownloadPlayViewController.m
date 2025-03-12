@@ -345,7 +345,7 @@
 
 #pragma mark - 保存视频
 - (void)saveVideo {
-    [CQActionSheetUtil showNormalSheetWithTitle:NSLocalizedString(@"请选择您要保存的内容", nil) itemTitles:@[NSLocalizedStringFromTable(@"保存视频", @"LocalizableDownloader", nil), NSLocalizedStringFromTable(@"仅保存音频", @"LocalizableDownloader", nil)] showCancel:YES itemClickBlock:^(NSInteger selectIndex) {
+    [CQActionSheetUtil showNormalSheetWithTitle:NSLocalizedStringFromTable(@"请选择您要保存的内容", @"LocalizableDownloader", nil) itemTitles:@[NSLocalizedStringFromTable(@"保存视频", @"LocalizableDownloader", nil), NSLocalizedStringFromTable(@"仅保存音频", @"LocalizableDownloader", nil)] showCancel:YES itemClickBlock:^(NSInteger selectIndex) {
         NSLog(@"当前选择的是%zd", selectIndex);
         
         NSString *videoLocalAbsPath = self.downloadModel.saveToAbsPath;

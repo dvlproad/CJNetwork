@@ -37,9 +37,9 @@
     
     NSString *typeString = @"";
     if (fileType == CQTSFileTypeVideo) {
-        typeString = @"视频";
+        typeString = NSLocalizedStringFromTable(@"视频", @"LocalizableDownloader", nil);
     } else if (fileType == CQTSFileTypeAudio) {
-        typeString = @"音频";
+        typeString = NSLocalizedStringFromTable(@"音频", @"LocalizableDownloader", nil);
         // PHPhotosErrorDomain错误3300 表示 无法将音频文件存入相册，因为 iOS 的相册 (Photos) 仅支持存储图片和视频，不支持音频文件（如 MP3、M4A）。
         NSArray *itemsToShare = @[mediaLocalURL];
         
@@ -49,9 +49,9 @@
         return;
         
     } else {
-        typeString = @"图片";
+        typeString = NSLocalizedStringFromTable(@"图片", @"LocalizableDownloader", nil);
     }
-    NSString *title = [NSString stringWithFormat:@"是否要保存【%@】到相册", typeString];
+    NSString *title = [NSString stringWithFormat:NSLocalizedStringFromTable(@"是否要保存【%@】到相册", @"LocalizableDownloader", nil), typeString];
     
     [CJUIKitAlertUtil showCancleOKAlertInViewController:vc withTitle:title message:nil cancleBlock:nil okBlock:^{
         if (fileType == CQTSFileTypeVideo) {

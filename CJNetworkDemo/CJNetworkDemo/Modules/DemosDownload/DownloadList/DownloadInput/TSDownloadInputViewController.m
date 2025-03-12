@@ -78,8 +78,8 @@
 - (void)tryAnalyzeShortenedUrl:(NSString *)text {
     if (text.length == 0) {
         //NSString *title = NSLocalizedStringFromTable(@"粘贴TikTok视频链接...", @"LocalizableDownloader", nil)
-        NSString *title = NSLocalizedStringFromTable(@"请先输入TikTok视频链接", @"LocalizableDownloader", nil);
-        [CQAlertUtil showAlertViewWithFlagImage:nil title:title message:nil cancelButtonTitle:NSLocalizedStringFromTable(@"重新输入", @"LocalizableDownloader", nil) okButtonTitle:NSLocalizedStringFromTable(@"随机下载", @"LocalizableDownloader", nil) cancelHandle:nil okHandle:^{
+        NSString *message = NSLocalizedStringFromTable(@"请先输入TikTok视频链接", @"LocalizableDownloader", nil);
+        [CQAlertUtil showAlertViewWithFlagImage:nil title:nil message:message cancelButtonTitle:NSLocalizedStringFromTable(@"重新输入", @"LocalizableDownloader", nil) okButtonTitle:NSLocalizedStringFromTable(@"随机下载", @"LocalizableDownloader", nil) cancelHandle:nil okHandle:^{
             NSArray<NSString *> *shortenedUrls = @[
         //        @"https://www.tiktok.com/t/ZT2fyo8FN/",
                 @"https://www.tiktok.com/t/ZT2mkNaFw/",    //nezha2 shengaongbao
@@ -113,7 +113,7 @@
         return;
     }
     
-    [CQIndicatorHUDUtil showLoadingHUD:@"解析中"];
+    [CQIndicatorHUDUtil showLoadingHUD:NSLocalizedStringFromTable(@"解析中", @"LocalizableDownloader", nil)];
     //[weakSelf local_analyzeTiktokShortenedUrl:text failure:^(NSError * _Nonnull error) {
         [weakSelf tikwm_analyzeTiktokShortenedUrl:text failure:^(NSString * _Nonnull errorMessage) {
             [CQToastUtil showMessage:errorMessage];

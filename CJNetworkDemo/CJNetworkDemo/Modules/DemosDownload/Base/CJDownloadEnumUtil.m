@@ -13,17 +13,17 @@
 + (NSString *)currentStateTextForState:(CJFileDownloadState)state {
     switch (state) {
         case CJFileDownloadStateReady:
-            return @"下载准备";
+            return NSLocalizedStringFromTable(@"下载准备", @"LocalizableDownloader", nil);
         case CJFileDownloadStateDownloading:
-            return @"下载中";
+            return NSLocalizedStringFromTable(@"下载中", @"LocalizableDownloader", nil);
         case CJFileDownloadStatePause:
-            return @"暂停";
+            return NSLocalizedStringFromTable(@"暂停", @"LocalizableDownloader", nil);
         case CJFileDownloadStateSuccess:
-            return @"下载成功";
+            return NSLocalizedStringFromTable(@"下载成功", @"LocalizableDownloader", nil);
         case CJFileDownloadStateFailure:
-            return @"下载失败";
+            return NSLocalizedStringFromTable(@"下载失败", @"LocalizableDownloader", nil);
         default:
-            return @"未知";
+            return NSLocalizedStringFromTable(@"未知", @"LocalizableDownloader", nil);
             break;
     }
 }
@@ -31,17 +31,17 @@
 + (NSString *)nextStateTextForState:(CJFileDownloadState)state {
     switch (state) {
         case CJFileDownloadStateReady:
-            return @"开始";
+            return NSLocalizedStringFromTable(@"开始", @"LocalizableDownloader", nil);
         case CJFileDownloadStateDownloading:
-            return @"暂停";
+            return NSLocalizedStringFromTable(@"暂停", @"LocalizableDownloader", nil);
         case CJFileDownloadStatePause:
-            return @"继续";
+            return NSLocalizedStringFromTable(@"继续", @"LocalizableDownloader", nil);
         case CJFileDownloadStateSuccess:
-            return @"完成";
+            return NSLocalizedStringFromTable(@"完成", @"LocalizableDownloader", nil);
         case CJFileDownloadStateFailure:
-            return @"重下";
+            return NSLocalizedStringFromTable(@"重下", @"LocalizableDownloader", nil);
         default:
-            return @"未知";
+            return NSLocalizedStringFromTable(@"未知", @"LocalizableDownloader", nil);
             break;
     }
 }
