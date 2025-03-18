@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '12.0'
 use_frameworks!
 inhibit_all_warnings!
 
@@ -26,6 +26,14 @@ source 'https://gitee.com/dvlproad/dvlproadSpecs'
 
 target 'CJNetworkDemo' do
 #  plugin 'cocoapods-hmap-prebuilt'
+
+  # PrivacyInfo.xcprivacy 库已添加隐私清单文件，但尚未发布新版本（如 MBProgressHUD）
+  # 指定具体 Commit
+  pod 'MBProgressHUD', :git => 'https://github.com/jdg/MBProgressHUD.git', :commit => '4a7c5f3e53cdea77c5dcb8578c2ee5acacdf6781'
+  # 或直接使用 master 分支
+  # pod 'MBProgressHUD', :git => 'https://github.com/jdg/MBProgressHUD.git', :branch => 'master'
+  pod 'SVProgressHUD',          '~> 2.3.1'
+  
   
   pod 'CQDemoKit',              '~> 0.8.0',      :subspecs => ['BaseVC', 'Demo_Resource']
   pod 'CQDemoKit-Swift',        '~> 0.0.1'

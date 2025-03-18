@@ -146,7 +146,7 @@
             [self _useThemeBiaoli];
             break;
         }
-        default:
+        default: // OverlayThemeTypeDefault
         {
             break;
         }

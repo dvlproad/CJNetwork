@@ -9,6 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CQBridgeSTOLottie/LOTAnimationView.h>
+#import <Lottie/Lottie-Swift.h>
 
 @interface CJJSONProgressHUDView : UIView {
     

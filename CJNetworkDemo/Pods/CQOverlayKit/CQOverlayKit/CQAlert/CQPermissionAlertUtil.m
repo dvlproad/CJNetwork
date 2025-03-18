@@ -37,16 +37,17 @@
     }];
     CGSize popupViewSize = [alertView alertSizeWithShouldAutoFitHeight:YES];
     
-    
+    /*
     // 样式2
-//    CQCancelOKImageAlertView *alertView = [[CQCancelOKImageAlertView alloc] init];
-//    [alertView configWithTitle:title desText:message flagImage:nil cancelTitle:cancelButtonTitle okTitle:okButtonTitle cancelHandel:^(CQCancelOKImageAlertView * _Nonnull bAlertView) {
-//        [bAlertView cqOverlay_alert_hide];
-//    } okHandel:^(CQCancelOKImageAlertView * _Nonnull bAlertView) {
-//        [bAlertView cqOverlay_alert_hide];
-//        cqalert_openSettingCJHelper(nil);   //无权限 引导去开启
-//    }];
-//    CGSize popupViewSize = CGSizeMake(290, 440);
+    CQCancelOKImageAlertView *alertView = [[CQCancelOKImageAlertView alloc] init];
+    [alertView configWithTitle:title desText:message flagImage:nil cancelTitle:cancelButtonTitle okTitle:okButtonTitle cancelHandel:^(CQCancelOKImageAlertView * _Nonnull bAlertView) {
+        [bAlertView cqOverlay_alert_hide];
+    } okHandel:^(CQCancelOKImageAlertView * _Nonnull bAlertView) {
+        [bAlertView cqOverlay_alert_hide];
+        cqalert_openSettingCJHelper(nil);   //无权限 引导去开启
+    }];
+    CGSize popupViewSize = CGSizeMake(290, 440);
+    */
     
     [alertView cqOverlay_alert_showWithSize:popupViewSize tapBlankShouldHide:NO];
 }

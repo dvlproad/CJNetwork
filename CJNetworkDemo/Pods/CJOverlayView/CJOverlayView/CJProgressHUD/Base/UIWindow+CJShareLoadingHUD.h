@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIWindow (CJShareLoadingHUD) {
     
 }
-@property (nonatomic, strong) UIView *cjShareProgressHUD;    /**< keywindow共享的hud */
+@property (nullable, nonatomic, strong) UIView *cjShareProgressHUD;    /**< keywindow共享的hud */
 
 /*
 *  为本view添加HUD

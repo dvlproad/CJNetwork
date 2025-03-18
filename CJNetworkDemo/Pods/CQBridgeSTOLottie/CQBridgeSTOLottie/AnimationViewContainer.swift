@@ -12,7 +12,7 @@ import Lottie
 
 public class AnimationViewContainer: UIView {
     
-    var animationView: AnimationView?
+    var animationView: LottieAnimationView?
 
     
     fileprivate var _animationProgress: CGFloat = 0
@@ -57,7 +57,7 @@ public class AnimationViewContainer: UIView {
     }
     
     func setupViews() -> Void {
-        let animationView:AnimationView = AnimationView()
+        let animationView:LottieAnimationView = LottieAnimationView()
         addSubview(animationView)
         self.animationView = animationView
     }
@@ -73,7 +73,7 @@ public class AnimationViewContainer: UIView {
     @objc open func configAnimation(name: String,
                                     bundle: Bundle = Bundle.main,
                                     subdirectory: String? = nil) {
-        let animation = Animation.named(name, bundle: bundle, subdirectory: subdirectory)
+        let animation = LottieAnimation.named(name, bundle: bundle, subdirectory: subdirectory)
         self.animationView?.animation = animation
     }
 }

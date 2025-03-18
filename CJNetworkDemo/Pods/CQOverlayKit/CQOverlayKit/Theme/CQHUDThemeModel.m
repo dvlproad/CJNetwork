@@ -33,7 +33,10 @@
 #pragma mark - Public
 /// 库中加载动画的json文件所在的bundle
 + (NSBundle *)currentHUDBundle {
-    NSString *refreshResourceBundlePath = [[NSBundle mainBundle] pathForResource:@"CQHUD" ofType:@"bundle"];
+//    NSBundle *bundle = [NSBundle mainBundle];
+    NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"CQJsonHUDUtil")];
+    
+    NSString *refreshResourceBundlePath = [bundle pathForResource:@"CQHUD" ofType:@"bundle"];
     NSBundle *refreshResourceBundle = [NSBundle bundleWithPath:refreshResourceBundlePath];
     return refreshResourceBundle;
 }
