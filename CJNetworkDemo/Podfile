@@ -33,7 +33,7 @@ target 'CJNetworkDemo' do
   # 或直接使用 master 分支
   # pod 'MBProgressHUD', :git => 'https://github.com/jdg/MBProgressHUD.git', :branch => 'master'
   pod 'SVProgressHUD',          '~> 2.3.1'
-  
+  pod 'AFNetworking', :git => 'https://gitee.com/Leonesir/afnetworking-dh.git', :branch => 'master'
   
   pod 'CQDemoKit',              '~> 0.8.0',      :subspecs => ['BaseVC', 'Demo_Resource']
   pod 'CQDemoKit-Swift',        '~> 0.0.1'

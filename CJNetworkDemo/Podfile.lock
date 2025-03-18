@@ -343,6 +343,7 @@ PODS:
   - YYCache (1.0.4)
 
 DEPENDENCIES:
+  - AFNetworking (from `https://gitee.com/Leonesir/afnetworking-dh.git`, branch `master`)
   - CJBaseHelper
   - CJBaseHelper/DeviceCJHelper
   - CJBaseHelper/NSObjectCJHelper
@@ -388,7 +389,6 @@ SPEC REPOS:
     - CQPopupCreater_Base
     - CQTextInputKit
   https://github.com/CocoaPods/Specs.git:
-    - AFNetworking
     - Alamofire
     - CJBaseHelper
     - CJBaseUIKit
@@ -409,6 +409,9 @@ SPEC REPOS:
     - YYCache
 
 EXTERNAL SOURCES:
+  AFNetworking:
+    :branch: master
+    :git: https://gitee.com/Leonesir/afnetworking-dh.git
   CJMediaCacheKit:
     :path: "../../CJMediaPlayer"
   CJMediaPlayer:
@@ -436,12 +439,15 @@ EXTERNAL SOURCES:
     :git: https://github.com/jdg/MBProgressHUD.git
 
 CHECKOUT OPTIONS:
+  AFNetworking:
+    :commit: 1d241de0b4e3ce8b578902af2c6b08a8fa4cc507
+    :git: https://gitee.com/Leonesir/afnetworking-dh.git
   MBProgressHUD:
     :commit: 4a7c5f3e53cdea77c5dcb8578c2ee5acacdf6781
     :git: https://github.com/jdg/MBProgressHUD.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  AFNetworking: 1e49f114ce59e7156e35761e03e1087f386689e2
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
   CJBaseHelper: 71c9d695c76736b2fc66123157d5626da4556177
   CJBaseUIKit: 1aae41e618536f39628c79a7461f48e6979b8a5e
@@ -481,6 +487,6 @@ SPEC CHECKSUMS:
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 7b063ee110ed98f5abf150274d474ad43c8c9720
+PODFILE CHECKSUM: f506a02c96405064d24294bed88718977f7c1dbd
 
 COCOAPODS: 1.16.2
