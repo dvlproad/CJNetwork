@@ -1,5 +1,6 @@
 Pod::Spec.new do |s|
-  #验证方法：pod lib lint CJNetwork-Swift.podspec --allow-warnings --use-libraries --verbose
+  # 验证方法：pod lib lint CJNetwork-Swift.podspec --allow-warnings --use-libraries --verbose
+  # 上传方法：pod trunk push CJNetwork-Swift.podspec --allow-warnings --use-libraries --verbose
   s.name         = "CJNetwork-Swift"
   s.version      = "0.0.1"
   s.summary      = "主工程和其他Target某些工程下(WidgetExtension等)都需要依赖的库"
@@ -21,7 +22,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "9.0"
   s.swift_version = '5.0'
 
-  s.source       = { :git => "https://github.com/dvlproad/CJUIKit.git", :tag => "CJNetwork-Swift_0.0.1" }
+  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork-Swift_0.0.1" }
   # s.source_files  = "CJBaseUtil/*.{h,m}"
   # s.resources = "CJBaseUtil/**/*.{png}"
   s.frameworks = 'UIKit'
@@ -38,7 +39,6 @@ Pod::Spec.new do |s|
   s.subspec 'Download' do |ss|
     ss.source_files = "CJNetwork-Swift/Download/**/*.{swift}"
     ss.dependency 'SSZipArchive'
-    ss.dependency 'Moya'
   end
 
 end
