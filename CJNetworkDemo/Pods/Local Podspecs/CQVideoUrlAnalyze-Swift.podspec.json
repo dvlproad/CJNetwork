@@ -21,24 +21,16 @@
       "name": "Douyin",
       "source_files": "CQVideoUrlAnalyze-Swift/Douyin/**/*.{swift}",
       "dependencies": {
-        "CJNetworkClient/Request": [
-
-        ],
-        "CJNetwork-Swift/Download": [
-
-        ]
+        "CJNetworkClient/Request": [],
+        "CJNetwork-Swift/Download": []
       }
     },
     {
       "name": "Tiktok",
       "source_files": "CQVideoUrlAnalyze-Swift/Tiktok/**/*.{swift}",
       "dependencies": {
-        "CJNetworkClient/Request": [
-
-        ],
-        "CJNetwork-Swift/Download": [
-
-        ]
+        "CJNetworkClient/Request": [],
+        "CJNetwork-Swift/Download": []
       }
     }
   ],

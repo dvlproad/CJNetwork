@@ -32,27 +32,21 @@
           "name": "Base",
           "source_files": "CQNetworkPublic/Request/Base/**/*.{h,m}",
           "dependencies": {
-            "CQNetworkPublic/Base": [
-
-            ]
+            "CQNetworkPublic/Base": []
           }
         },
         {
           "name": "Helper",
           "source_files": "CQNetworkPublic/Request/Helper/**/*.{h,m}",
           "dependencies": {
-            "CQNetworkPublic/Request/Base": [
-
-            ]
+            "CQNetworkPublic/Request/Base": []
           }
         },
         {
           "name": "Client",
           "source_files": "CQNetworkPublic/Request/Client/**/*.{h,m}",
           "dependencies": {
-            "CQNetworkPublic/Request/Base": [
-
-            ]
+            "CQNetworkPublic/Request/Base": []
           }
         }
       ]
@@ -64,30 +58,22 @@
           "name": "Base",
           "source_files": "CQNetworkPublic/Upload/Base/**/*.{h,m}",
           "dependencies": {
-            "CQNetworkPublic/Base": [
-
-            ],
-            "CJNetworkFileModel": [
-
-            ]
+            "CQNetworkPublic/Base": [],
+            "CJNetworkFileModel": []
           }
         },
         {
           "name": "Helper",
           "source_files": "CQNetworkPublic/Upload/Helper/**/*.{h,m}",
           "dependencies": {
-            "CQNetworkPublic/Upload/Base": [
-
-            ]
+            "CQNetworkPublic/Upload/Base": []
           }
         },
         {
           "name": "Client",
           "source_files": "CQNetworkPublic/Upload/Client/**/*.{h,m}",
           "dependencies": {
-            "CQNetworkPublic/Upload/Base": [
-
-            ]
+            "CQNetworkPublic/Upload/Base": []
           }
         }
       ]

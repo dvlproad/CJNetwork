@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/dvlproad/CJMediaPlayer.git",
-    "tag": "CJPlayer_0.9.1"
+    "tag": "CJPlayer_0.0.1"
   },
   "source_files": "CJPlayer/**/*.{h,m}",
   "frameworks": "UIKit",
@@ -23,8 +23,6 @@
     "CJPlayer/**/*.{xcassets}"
   ],
   "dependencies": {
-    "CJMediaCacheKit": [
-
-    ]
+    "CJMediaCacheKit": []
   }
 }

@@ -64,7 +64,7 @@ PODS:
     - Masonry
   - CJMediaCacheKit (0.0.1)
   - CJMediaPlayer (0.0.1):
-    - CJBaseUIKit/CJSlider (~> 0.8.0)
+    - CJBaseUIKit/CJSlider
     - CJMediaCacheKit
     - PureLayout
     - TransitionKit
@@ -368,7 +368,7 @@ DEPENDENCIES:
   - CQDemoKit-Swift (~> 0.0.1)
   - CQDemoKit/BaseVC (~> 0.8.0)
   - CQDemoKit/Demo_Resource (~> 0.8.0)
-  - CQMdeiaVideoFrameKit (from `../../013-Mdeia_Video_Frame/iOS`)
+  - CQMdeiaVideoFrameKit (~> 0.1.0)
   - CQNetworkPublic/Request (from `../`)
   - CQNetworkPublic/Upload (from `../`)
   - CQOverlayKit
@@ -385,6 +385,7 @@ SPEC REPOS:
     - CJPopupAnimation
     - CJPopupCreater
     - CQBridgeSTOLottie
+    - CQMdeiaVideoFrameKit
     - CQOverlayKit
     - CQPopupCreater_Base
     - CQTextInputKit
@@ -428,8 +429,6 @@ EXTERNAL SOURCES:
     :path: "../"
   CJPlayer:
     :path: "../../CJMediaPlayer"
-  CQMdeiaVideoFrameKit:
-    :path: "../../013-Mdeia_Video_Frame/iOS"
   CQNetworkPublic:
     :path: "../"
   CQVideoUrlAnalyze-Swift:
@@ -453,28 +452,28 @@ SPEC CHECKSUMS:
   CJBaseUIKit: 1aae41e618536f39628c79a7461f48e6979b8a5e
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
   CJContainer: b7d5d626a05691c9107ce57b5991ab5c066f86a3
-  CJMediaCacheKit: 0cb62830e0e8364f7a897e1036308e613d53f2e8
-  CJMediaPlayer: d0fe29ed73a4bae153fa6971b2d5017c0b4b7bdf
+  CJMediaCacheKit: e0957832a3a82a3cc949999e0d7a8ed38fddf05b
+  CJMediaPlayer: ec36b4db5d96d2249a36aa639897cfc2e478eec8
   CJMonitor: cbec62179b877a476f84249ff268c765a66d6687
-  CJNetwork: f26cc1962645817ed6ec99d0de126b430af22f83
-  CJNetwork-Swift: 322f72ff0056bb87eab1bf41d791e195cf312636
-  CJNetworkClient: ddfe9fc5062d2d9950ed0ca3cb89299fe56ee398
+  CJNetwork: 6ffd1cf3dbdb404822adea9cad2dfde1b4c427e2
+  CJNetwork-Swift: 3a10652bca29b883abb376207b95fabca35efa3a
+  CJNetworkClient: 84232ef676d8a565ccc65f504eaff48b4bd3ae93
   CJNetworkFileModel: 738b736e68e577b4affdf78f8a4a2ded4204364d
   CJNetworkSimulate: 0c8e89ee82db12816cabdce4f3d6dcab1d30ee5b
-  CJOverlayView: b280ead5307ba013873fc3413a20012a49e64073
-  CJPlayer: 020e3416aafc40273a2dfb3b55da269daad60fc1
-  CJPopupAnimation: 6c2e5b66e37915dbb2c9bfb077b1c8f37e9a4b89
-  CJPopupCreater: 943809e3dce2a77a10b198104db069261360f7a1
+  CJOverlayView: 74bcb599a967b8e0d64ee53d5a0cb1faf6000788
+  CJPlayer: a69645f35f99a9cf41a113eb55696a2ff65f708e
+  CJPopupAnimation: 6b372f73ef4fb6957e7e926aa96de34e3cf5a793
+  CJPopupCreater: eb8af290023be9aeaeb78165c9458d910d022ed3
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQBridgeSTOLottie: 02f5a2777ea5d81b76018e616ee6a1d206dac980
   CQDemoKit: 1fea1039a960befe72d4452ff17827e2828b9501
   CQDemoKit-Swift: 28d06bf24cbcc84c9651e0ffe607bffdd57863b6
-  CQMdeiaVideoFrameKit: fe3f12617aa42f8382f15521e1d333f7695b989f
-  CQNetworkPublic: daa95989c1d6d8f2d1d50f97285f4b88f0e664d3
-  CQOverlayKit: baaeef5f5b056068e76140765e2259ea9ce59c2a
-  CQPopupCreater_Base: 3ae1d7de8cf49ec78ba0c2be278a38da8134e48e
+  CQMdeiaVideoFrameKit: 1b8c95f70a83cb4a158976ad038b41717a4048c8
+  CQNetworkPublic: 4143e62525f605fd68fa54e7b4fa6b11d7748090
+  CQOverlayKit: 8b37dbc69779372a3c8f76e0b47d9d1a38e2aae0
+  CQPopupCreater_Base: 02ccdfff1637ec51aa27c1a544bf367a09250db2
   CQTextInputKit: ddf925cd1a463427e6dfb1b60ba7fc7b0c604d5c
-  CQVideoUrlAnalyze-Swift: 93f961bafc55d1ea389ce42b95a42279fbf760f1
+  CQVideoUrlAnalyze-Swift: 189385ab0546d5672c6ee5b23cc82985d92d7faf
   lottie-ios: e047b1d2e6239b787cc5e9755b988869cf190494
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 1b0fb447e80a0fda94808180750e8b78a07b3cd2
@@ -487,6 +486,6 @@ SPEC CHECKSUMS:
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: f506a02c96405064d24294bed88718977f7c1dbd
+PODFILE CHECKSUM: 1d569f7fdf9a36df4a059cea7ee4ff98fae1aac4
 
 COCOAPODS: 1.16.2

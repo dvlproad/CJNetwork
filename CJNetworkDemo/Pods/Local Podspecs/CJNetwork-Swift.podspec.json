@@ -21,12 +21,8 @@
       "name": "Download",
       "source_files": "CJNetwork-Swift/Download/**/*.{swift}",
       "dependencies": {
-        "SSZipArchive": [
-
-        ],
-        "Moya": [
-
-        ]
+        "SSZipArchive": [],
+        "Moya": []
       }
     }
   ],

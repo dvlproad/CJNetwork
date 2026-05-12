@@ -23,69 +23,47 @@
       "name": "Demo",
       "source_files": "CJNetwork/Demo/**/*.{h,m}",
       "dependencies": {
-        "AFNetworking": [
-
-        ]
+        "AFNetworking": []
       }
     },
     {
       "name": "CJNetworkCommon",
       "source_files": "CJNetwork/CJNetworkCommon/**/*.{h,m}",
       "dependencies": {
-        "YYCache": [
-
-        ],
-        "CQNetworkPublic/Base": [
-
-        ]
+        "YYCache": [],
+        "CQNetworkPublic/Base": []
       }
     },
     {
       "name": "AFNetworkingSerializerEncrypt",
       "source_files": "CJNetwork/AFNetworkingSerializerEncrypt/**/*.{h,m}",
       "dependencies": {
-        "CJNetwork/CJNetworkCommon": [
-
-        ],
-        "AFNetworking": [
-
-        ]
+        "CJNetwork/CJNetworkCommon": [],
+        "AFNetworking": []
       }
     },
     {
       "name": "AFNetworkingMethodEncrypt",
       "source_files": "CJNetwork/AFNetworkingMethodEncrypt/**/*.{h,m}",
       "dependencies": {
-        "CJNetwork/CJNetworkCommon": [
-
-        ],
-        "AFNetworking": [
-
-        ]
+        "CJNetwork/CJNetworkCommon": [],
+        "AFNetworking": []
       }
     },
     {
       "name": "AFNetworkingUploadComponent",
       "source_files": "CJNetwork/AFNetworkingUploadComponent/**/*.{h,m}",
       "dependencies": {
-        "CJNetwork/CJNetworkCommon": [
-
-        ],
-        "CJNetworkFileModel": [
-
-        ],
-        "AFNetworking": [
-
-        ]
+        "CJNetwork/CJNetworkCommon": [],
+        "CJNetworkFileModel": [],
+        "AFNetworking": []
       }
     },
     {
       "name": "CJRequestUtil",
       "source_files": "CJNetwork/CJRequestUtil/**/*.{h,m}",
       "dependencies": {
-        "CJNetwork/CJNetworkCommon": [
-
-        ]
+        "CJNetwork/CJNetworkCommon": []
       }
     },
     {

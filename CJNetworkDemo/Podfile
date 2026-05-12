@@ -37,7 +37,8 @@ target 'CJNetworkDemo' do
   
   pod 'CQDemoKit',              '~> 0.8.0',      :subspecs => ['BaseVC', 'Demo_Resource']
   pod 'CQDemoKit-Swift',        '~> 0.0.1'
-  pod 'CQMdeiaVideoFrameKit',   :path => '../../013-Mdeia_Video_Frame/iOS'
+#  pod 'CQMdeiaVideoFrameKit',   :path => '../../013-Mdeia_Video_Frame/iOS'
+  pod 'CQMdeiaVideoFrameKit',   '~> 0.1.0'
   pod 'CQOverlayKit'
   pod 'CQTextInputKit'
   pod 'CJBaseHelper'

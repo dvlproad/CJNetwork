@@ -22,54 +22,30 @@
       "name": "Base",
       "source_files": "CJNetworkClient/Base/**/*.{h,m}",
       "dependencies": {
-        "CJNetwork/CJNetworkCommon": [
-
-        ],
-        "AFNetworking": [
-
-        ],
-        "CJNetworkSimulate": [
-
-        ],
-        "CQNetworkPublic/Base": [
-
-        ]
+        "CJNetwork/CJNetworkCommon": [],
+        "AFNetworking": [],
+        "CJNetworkSimulate": [],
+        "CQNetworkPublic/Base": []
       }
     },
     {
       "name": "Request",
       "source_files": "CJNetworkClient/Request/**/*.{h,m}",
       "dependencies": {
-        "CJNetworkClient/Base": [
-
-        ],
-        "CJNetwork/AFNetworkingSerializerEncrypt": [
-
-        ],
-        "CQNetworkPublic/Request/Helper": [
-
-        ],
-        "CQNetworkPublic/Request/Client": [
-
-        ]
+        "CJNetworkClient/Base": [],
+        "CJNetwork/AFNetworkingSerializerEncrypt": [],
+        "CQNetworkPublic/Request/Helper": [],
+        "CQNetworkPublic/Request/Client": []
       }
     },
     {
       "name": "Upload",
       "source_files": "CJNetworkClient/Upload/**/*.{h,m}",
       "dependencies": {
-        "CJNetworkClient/Base": [
-
-        ],
-        "CJNetwork/AFNetworkingUploadComponent": [
-
-        ],
-        "CQNetworkPublic/Upload/Helper": [
-
-        ],
-        "CQNetworkPublic/Upload/Client": [
-
-        ]
+        "CJNetworkClient/Base": [],
+        "CJNetwork/AFNetworkingUploadComponent": [],
+        "CQNetworkPublic/Upload/Helper": [],
+        "CQNetworkPublic/Upload/Client": []
       }
     }
   ]
