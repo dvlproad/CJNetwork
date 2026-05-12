@@ -291,6 +291,27 @@
 
 
 
+
+
+## 常见问题
+
+### 1、AFNetworking 库问题
+
+#### 1.1、报错 netinet6/in6.h
+
+Xcode 新版本编译器认为 `<netinet6/in6.h>` 是一个模块内部的私有头文件，不允许在模块外部直接引入。AFNetworking 为了支持 IPv6，在 `AFNetworkReachabilityManager.m` 中引入了这个头文件，但在新的编译规则下这变成了非法操作。
+
+**最简单的临时修复方式**：找到 `AFNetworkReachabilityManager.m` 文件中的这一行引入语句并直接注释掉即可。
+记得右上角解锁再删，不影响debug。pod后会覆盖，需要再删除，或者脚本一下也可以。
+
+![pod_code_change1](README/pod_code_change1.png)
+
+![pod_code_change2](README/pod_code_change2.png)
+
+
+
+
+
 ## 版本介绍/更新记录
 
 * V1.5.0 2025-02-09
