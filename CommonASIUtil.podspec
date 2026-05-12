@@ -2,6 +2,12 @@ Pod::Spec.new do |s|
   s.name         = "CommonASIUtil"
   s.version      = "0.0.3"
   s.summary      = "easier to use ASI."
+  s.description  = <<-DESC
+                 easier to use ASI.，可按需独立引入：
+                 • CommonASIUtil/ServiceHelp - ServiceHelp
+
+                 每个子库可独立引入，详见各子库描述。
+                 DESC
   s.homepage     = "https://github.com/dvlproad/CommonAFNUtil"
   s.license      = "MIT"
   s.author             = { "dvlproad" => "913168921@qq.com" }
@@ -25,6 +31,7 @@ Pod::Spec.new do |s|
   s.dependency 'SVProgressHUD', '~> 1.1.3'
   s.dependency 'CommonDataCacheManager', '~> 0.0.2'
 
+  # ServiceHelp
   s.subspec 'ServiceHelp' do |ss|
     ss.source_files = "ServiceHelp/**/*.{h,m}"
   end

@@ -8,13 +8,12 @@ Pod::Spec.new do |s|
   s.author       = "dvlproad"
 
   s.description  = <<-DESC
-                   A longer description of CQVideoUrlAnalyze-Swift in Markdown format.
+                 视频地址解析库，可按需独立引入：
+                 • CQVideoUrlAnalyze-Swift/Douyin - 抖音
+                 • CQVideoUrlAnalyze-Swift/Tiktok - Tiktok
 
-                   * Think: Why did you write this? What is the focus? What does it do?
-                   * CocoaPods will be using this to generate tags, and improve search results.
-                   * Try to keep it short, snappy and to the point.
-                   * Finally, don't worry about the indent, CocoaPods strips it!
-                   DESC
+                 每个子库可独立引入，详见各子库描述。
+                 DESC
 
   # s.social_media_url   = "http://twitter.com/dvlproad"
 

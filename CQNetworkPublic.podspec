@@ -26,14 +26,19 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                   - Helper: 类方法
   				        - Client: 实例方法
+                 网络请求公共-可以解耦底层，使得底层使用任意的网络框架，可按需独立引入：
+                 • CQNetworkPublic/Base - 基础公共类
+                 • CQNetworkPublic/Request - Request 普通请求
+                 • CQNetworkPublic/Request/Base - Base
+                 • CQNetworkPublic/Request/Helper - Helper 帮助工具类方法
+                 • CQNetworkPublic/Request/Client - Client 实例类方法
+                 • CQNetworkPublic/Upload - Upload 上传请求
+                 • CQNetworkPublic/Upload/Base - Base
+                 • CQNetworkPublic/Upload/Helper - Helper 帮助工具类方法
+                 • CQNetworkPublic/Upload/Client - Client 实例类方法
 
-                   A longer description of CQNetworkPublic in Markdown format.
-
-                   * Think: Why did you write this? What is the focus? What does it do?
-                   * CocoaPods will be using this to generate tags, and improve search results.
-                   * Try to keep it short, snappy and to the point.
-                   * Finally, don't worry about the indent, CocoaPods strips it!
-                   DESC
+                 每个子库可独立引入，详见各子库描述。
+                 DESC
   
 
   s.platform     = :ios, "9.0"
@@ -60,6 +65,7 @@ Pod::Spec.new do |s|
 
   # Request 普通请求
   s.subspec 'Request' do |ss|
+    # Base
     ss.subspec 'Base' do |sss|
       sss.source_files = "CQNetworkPublic/Request/Base/**/*.{h,m}"
       sss.dependency 'CQNetworkPublic/Base'
@@ -83,6 +89,7 @@ Pod::Spec.new do |s|
   
   # Upload 上传请求
   s.subspec 'Upload' do |ss|
+    # Base
     ss.subspec 'Base' do |sss|
       sss.source_files = "CQNetworkPublic/Upload/Base/**/*.{h,m}"
       sss.dependency 'CQNetworkPublic/Base'

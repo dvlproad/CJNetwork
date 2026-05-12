@@ -9,19 +9,15 @@ Pod::Spec.new do |s|
   s.author             = { "dvlproad" => "studyroad@qq.com" }
   # s.social_media_url   = "http://twitter.com/dvlproad"
   s.description  = <<-DESC
-                  - CJNetworkFileModel/Upload：要上传的文件的数据模型
-                  会使用到该类的库目前有如下：
-                  ①网络请求库 CJNetwork
-                  ②图片选择上传库 CQImageAddDeleteListKit/AddDeletePickUpload
                   
+                 要上传的文件的数据模型，可按需独立引入：
+                 • CJNetworkFileModel/Upload - 要上传的文件的数据模型
+                  会使用到该类的库目前有如下：
+                      ①网络请求库 CJNetwork
+                      ②图片选择上传库 CQImageAddDeleteListKit/AddDeletePickUpload
 
-                   A longer description of CJNetworkFileModel in Markdown format.
-
-                   * Think: Why did you write this? What is the focus? What does it do?
-                   * CocoaPods will be using this to generate tags, and improve search results.
-                   * Try to keep it short, snappy and to the point.
-                   * Finally, don't worry about the indent, CocoaPods strips it!
-                   DESC
+                 每个子库可独立引入，详见各子库描述。
+                 DESC
 
   s.platform     = :ios, "9.0"
 

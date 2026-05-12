@@ -17,21 +17,17 @@ Pod::Spec.new do |s|
   s.author             = { "dvlproad" => "studyroad@qq.com" }
   # s.social_media_url   = "http://twitter.com/dvlproad"
   s.description  = <<-DESC
-                  - CJNetwork/CJNetworkCommon：AFN请求过程中需要的几个公共方法(包含请求前获取缓存、请求后成功与失败操作)
-                  - CJNetwork/AFNetworkingSerializerEncrypt：AFN的请求方法(加解密方法卸载Method方法中)
-                  - CJNetwork/AFNetworkingMethodEncrypt：AFN的请求方法(加解密方法卸载Method方法中)
-                  - CJNetwork/AFNetworkingUploadComponent：AFN的上传请求方法
-                  - CJNetwork/CJRequestUtil：原生(非AFN)的请求
-                  - CJNetwork/CJCacheManager：自己实现的非第三方的缓存机制
-                  
+                 一个AFNetworking应用的封装(支持加解密、缓存、并发数控制)，可按需独立引入：
+                 • CJNetwork/Demo - Demo(无特殊加密等要求时候，可以使用 [AFHTTPSessionManager cqdemoManager] 进行请求)
+                 • CJNetwork/CJNetworkCommon - AFN请求过程中需要的几个公共方法(包含请求前获取缓存、请求后成功与失败操作)
+                 • CJNetwork/AFNetworkingSerializerEncrypt - AFN的请求方法(加解密方法卸载Serializer方法中)
+                 • CJNetwork/AFNetworkingMethodEncrypt - AFN的请求方法(加解密方法卸载Method方法中)
+                 • CJNetwork/AFNetworkingUploadComponent - AFN的文件上传请求方法
+                 • CJNetwork/CJRequestUtil - 系统原生(非AFN)的请求方法
+                 • CJNetwork/CJCacheManager - 自己实现的非第三方的缓存机制
 
-                   A longer description of CJNetwork in Markdown format.
-
-                   * Think: Why did you write this? What is the focus? What does it do?
-                   * CocoaPods will be using this to generate tags, and improve search results.
-                   * Try to keep it short, snappy and to the point.
-                   * Finally, don't worry about the indent, CocoaPods strips it!
-                   DESC
+                 每个子库可独立引入，详见各子库描述。
+                 DESC
 
   s.platform     = :ios, "9.0"
 
@@ -47,12 +43,13 @@ Pod::Spec.new do |s|
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
 
-  # Demo
+  # Demo(无特殊加密等要求时候，可以使用 [AFHTTPSessionManager cqdemoManager] 进行请求)
   s.subspec 'Demo' do |ss|
     ss.source_files = "CJNetwork/Demo/**/*.{h,m}"
     ss.dependency 'AFNetworking'
   end
 
+  # AFN请求过程中需要的几个公共方法(包含请求前获取缓存、请求后成功与失败操作)
   s.subspec 'CJNetworkCommon' do |ss|
     ss.source_files = "CJNetwork/CJNetworkCommon/**/*.{h,m}"
 
@@ -77,7 +74,7 @@ Pod::Spec.new do |s|
     ss.dependency 'AFNetworking'
   end
 
-  # 文件的上传请求方法(使用AFN)（子类会自称父类的s.dependency）
+  # AFN的文件上传请求方法
   s.subspec 'AFNetworkingUploadComponent' do |ss|
     ss.source_files = "CJNetwork/AFNetworkingUploadComponent/**/*.{h,m}"
     ss.dependency 'CJNetwork/CJNetworkCommon'
@@ -86,14 +83,14 @@ Pod::Spec.new do |s|
   end
 
 
-  # 系统的请求方法
+  # 系统原生(非AFN)的请求方法
   s.subspec 'CJRequestUtil' do |ss|
     ss.source_files = "CJNetwork/CJRequestUtil/**/*.{h,m}"
 
     ss.dependency 'CJNetwork/CJNetworkCommon'
   end
 
-  # 数据的缓存
+  # 自己实现的非第三方的缓存机制
   s.subspec 'CJCacheManager' do |ss|
     ss.source_files = "CJCacheManager/**/*.{h,m}"
   end

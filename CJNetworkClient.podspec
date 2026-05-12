@@ -17,22 +17,19 @@ Pod::Spec.new do |s|
   
   s.name         = "CJNetworkClient"
   s.version      = "1.5.0"
-  s.summary      = "网络请求的管理类：一个基于CJNetwork而封装的网络请求接口管理库"
+  s.summary      = "网络请求的管理类：一个基于CJNetwork而封装的网络请求接口管理库(其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现)"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
   s.author             = { "dvlproad" => "studyroad@qq.com" }
   # s.social_media_url   = "http://twitter.com/dvlproad"
   s.description  = <<-DESC
-                  - CJNetworkClient：网络请求的管理类，其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现
-                  
+                 网络请求的管理类：一个基于CJNetwork而封装的网络请求接口管理库(其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现)，可按需独立引入：
+                 • CJNetworkClient/Base - 网络请求的管理类，其他NetworkClient可通过本CJNetworkClient继承，也可自己再实现
+                 • CJNetworkClient/Request - Request
+                 • CJNetworkClient/Upload - Upload
 
-                   A longer description of CJNetworkClient in Markdown format.
-
-                   * Think: Why did you write this? What is the focus? What does it do?
-                   * CocoaPods will be using this to generate tags, and improve search results.
-                   * Try to keep it short, snappy and to the point.
-                   * Finally, don't worry about the indent, CocoaPods strips it!
-                   DESC
+                 每个子库可独立引入，详见各子库描述。
+                 DESC
 
   s.platform     = :ios, "9.0"
 
