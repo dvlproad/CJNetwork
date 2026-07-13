@@ -1,5 +1,6 @@
-  #验证方法： pod lib lint CQDemoNetworkClient.podspec --allow-warnings --use-libraries --verbose
-  #提交方法： pod trunk push CQDemoNetworkClient.podspec --allow-warnings --use-libraries --verbose
+  #验证方法1：pod lib lint CQDemoNetworkClient.podspec --sources='https://github.com/CocoaPods/Specs.git,https://gitee.com/dvlproad/dvlproadSpecs' --allow-warnings --use-libraries --verbose
+  #验证方法2：pod lib lint CQDemoNetworkClient.podspec --sources=cocoapods,gitee-dvlproad-dvlproadspecs --allow-warnings --use-libraries --skip-import-validation --skip-tests --verbose
+  #提交方法： pod repo push gitee-dvlproad-dvlproadspecs CQDemoNetworkClient.podspec --sources=cocoapods,gitee-dvlproad-dvlproadspecs --allow-warnings --use-libraries --verbose
 
 Pod::Spec.new do |s|
   s.name         = "CQDemoNetworkClient"
