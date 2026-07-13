@@ -7,7 +7,7 @@
   "authors": {
     "dvlproad": "studyroad@qq.com"
   },
-  "description": "- CJNetworkFileModel/Upload：要上传的文件的数据模型\n会使用到该类的库目前有如下：\n①网络请求库 CJNetwork\n②图片选择上传库 CQImageAddDeleteListKit/AddDeletePickUpload\n\n\n A longer description of CJNetworkFileModel in Markdown format.\n\n * Think: Why did you write this? What is the focus? What does it do?\n * CocoaPods will be using this to generate tags, and improve search results.\n * Try to keep it short, snappy and to the point.\n * Finally, don't worry about the indent, CocoaPods strips it!",
+  "description": "要上传的文件的数据模型，可按需独立引入：\n• CJNetworkFileModel/Upload - 要上传的文件的数据模型 (CJUploadFileModelsOwner 里的属性 uploadFileModels 是本次要上传的文件数组)\n 会使用到该类的库目前有如下：\n     ①网络请求库 CJNetwork\n     ②图片选择上传库 CQImageAddDeleteListKit/AddDeletePickUpload\n\n每个子库可独立引入，详见各子库描述。",
   "platforms": {
     "ios": "9.0"
   },

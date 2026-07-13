@@ -65,32 +65,22 @@
     {
       "name": "NSURLSession",
       "dependencies": {
-        "AFNetworking/Serialization": [
-
-        ],
-        "AFNetworking/Security": [
-
-        ]
+        "AFNetworking/Serialization": [],
+        "AFNetworking/Security": []
       },
       "ios": {
         "dependencies": {
-          "AFNetworking/Reachability": [
-
-          ]
+          "AFNetworking/Reachability": []
         }
       },
       "osx": {
         "dependencies": {
-          "AFNetworking/Reachability": [
-
-          ]
+          "AFNetworking/Reachability": []
         }
       },
       "tvos": {
         "dependencies": {
-          "AFNetworking/Reachability": [
-
-          ]
+          "AFNetworking/Reachability": []
         }
       },
       "source_files": [
@@ -105,9 +95,7 @@
         "tvos": "9.0"
       },
       "dependencies": {
-        "AFNetworking/NSURLSession": [
-
-        ]
+        "AFNetworking/NSURLSession": []
       },
       "source_files": "UIKit+AFNetworking"
     }

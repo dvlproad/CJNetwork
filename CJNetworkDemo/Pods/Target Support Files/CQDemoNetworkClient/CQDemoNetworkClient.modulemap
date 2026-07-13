@@ -1,0 +1,6 @@
+framework module CQDemoNetworkClient {
+  umbrella header "CQDemoNetworkClient-umbrella.h"
+
+  export *
+  module * { export * }
+}

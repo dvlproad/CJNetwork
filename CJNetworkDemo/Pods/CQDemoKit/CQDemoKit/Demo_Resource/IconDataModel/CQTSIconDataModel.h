@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CQTSIconDataModel : NSObject<NSCoding>
 
+
 @property (nullable, nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *imageUrl;
 @property (nullable, nonatomic, strong) UIImage *imagePlaceholderImage;

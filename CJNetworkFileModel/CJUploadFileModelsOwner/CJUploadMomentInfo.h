@@ -5,6 +5,7 @@
 //  Created by ciyouzen on 2017/8/26.
 //  Copyright © 2017年 dvlproad. All rights reserved.
 //
+//  上传请求的时刻信息（已包括 CJUploadMomentState 和 responseModel）
 
 #import <Foundation/Foundation.h>
 

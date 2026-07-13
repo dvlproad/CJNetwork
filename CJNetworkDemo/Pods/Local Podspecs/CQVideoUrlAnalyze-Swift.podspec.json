@@ -5,7 +5,7 @@
   "homepage": "https://github.com/dvlproad/CJNetwork",
   "license": "MIT",
   "authors": "dvlproad",
-  "description": "A longer description of CQVideoUrlAnalyze-Swift in Markdown format.\n\n* Think: Why did you write this? What is the focus? What does it do?\n* CocoaPods will be using this to generate tags, and improve search results.\n* Try to keep it short, snappy and to the point.\n* Finally, don't worry about the indent, CocoaPods strips it!",
+  "description": "视频地址解析库，可按需独立引入：\n• CQVideoUrlAnalyze-Swift/Douyin - 抖音\n• CQVideoUrlAnalyze-Swift/Tiktok - Tiktok\n\n每个子库可独立引入，详见各子库描述。",
   "platforms": {
     "ios": "9.0"
   },

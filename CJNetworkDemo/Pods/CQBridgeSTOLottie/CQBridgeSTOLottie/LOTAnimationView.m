@@ -1,6 +1,6 @@
 //
 //  LOTAnimationView.m
-//  CQTabBarController
+//  UIKit-Overlay-iOS
 //
 //  Created by dvlproad on 2021/1/6.
 //  Copyright © 2021 ciyouzen. All rights reserved.
@@ -34,6 +34,7 @@
     self.animationView.animationProgress = animationProgress;
 }
 
+#pragma mark - Action
 - (void)forceDrawingUpdate {
     [self.animationView forceDrawingUpdate];
 }
@@ -46,42 +47,72 @@
     [self.animationView stop];
 }
 
+#pragma mark - Init
+// 如果需要支持从 xib/storyboard 加载
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
 
 - (instancetype)initWithContentsOfURL:(NSURL *)URL {
-    self = [super initWithFrame:CGRectZero];
+    self = [self initWithFrame:CGRectZero];
     if (self) {
-        self.animationView = [[AnimationViewContainer alloc] init];
-        [self addSubview:self.animationView];
-        
-        //[self.animationView configAnimationWithName:@"tab_search_animate" filePath:nil];
-        
-        NSString *filePath = [URL absoluteString];
-        NSString *jsonFileFullName = [filePath lastPathComponent];
-        NSString *jsonFileName;
-        NSArray *jsonFileFullNameComponent = [jsonFileFullName componentsSeparatedByString:@"."];
-        if ([jsonFileFullNameComponent count] != 2) {
-            jsonFileName = nil;
-        } else {
-            NSString *fileTitle = [jsonFileFullNameComponent objectAtIndex:0];
-            //NSString *fileType = [jsonFileFullNameComponent objectAtIndex:1];
-            jsonFileName = fileTitle;
-        }
-        
-        [self.animationView configAnimationWithName:jsonFileName bundle:nil subdirectory:nil];
+        [self setAnimationContentsOfURL:URL];
     }
     return self;
 }
 
 - (instancetype)initWithAnimationNamed:(nonnull NSString *)animationName inBundle:(nonnull NSBundle *)bundle {
-    self = [super initWithFrame:CGRectZero];
+    self = [self initWithFrame:CGRectZero];
     if (self) {
-        self.animationView = [[AnimationViewContainer alloc] init];
-        [self addSubview:self.animationView];
-        
-        [self.animationView configAnimationWithName:animationName bundle:bundle subdirectory:nil];
+        [self setAnimationNamed:animationName inBundle:bundle];
     }
     return self;
 }
+
+#pragma mark - Private Methods
+- (void)commonInit {
+    self.animationView = [[AnimationViewContainer alloc] init];
+    [self addSubview:self.animationView];
+}
+
+
+#pragma mark - Config
+- (void)setAnimationContentsOfURL:(NSURL *)URL {
+    //[self.animationView configAnimationWithName:@"tab_search_animate" filePath:nil];
+        
+    NSString *filePath = [URL absoluteString];
+    NSString *jsonFileFullName = [filePath lastPathComponent];
+    NSString *jsonFileName;
+    NSArray *jsonFileFullNameComponent = [jsonFileFullName componentsSeparatedByString:@"."];
+    if ([jsonFileFullNameComponent count] != 2) {
+        jsonFileName = nil;
+    } else {
+        NSString *fileTitle = [jsonFileFullNameComponent objectAtIndex:0];
+        //NSString *fileType = [jsonFileFullNameComponent objectAtIndex:1];
+        jsonFileName = fileTitle;
+    }
+    
+    [self setAnimationNamed:jsonFileName inBundle:nil];
+}
+
+- (void)setAnimationNamed:(NSString *)animationName inBundle:(nullable NSBundle *)bundle {
+    NSAssert(self.animationView != nil, @"self.animationView != nil");
+    [self.animationView configAnimationWithName:animationName bundle:bundle subdirectory:nil];
+}
+
+
 
 
 - (void)layoutSubviews {
@@ -95,15 +126,5 @@
 }
 
 
-
-+ (nonnull instancetype)animationNamed:(nonnull NSString *)animationName {
-  return [self animationNamed:animationName inBundle:[NSBundle mainBundle]];
-    
-    
-}
-
-+ (nonnull instancetype)animationNamed:(nonnull NSString *)animationName inBundle:(nonnull NSBundle *)bundle {
-    return [[LOTAnimationView alloc] initWithAnimationNamed:animationName inBundle:bundle];
-}
 
 @end

@@ -5,6 +5,7 @@
 //  Created by ciyouzen on 2016/11/23.
 //  Copyright © 2016年 dvlproad. All rights reserved.
 //
+//  测试数组数据的获取参考 CQTSRipeSectionDataUtil
 
 #import <Foundation/Foundation.h>
 

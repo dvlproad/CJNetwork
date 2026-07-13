@@ -27,6 +27,8 @@ source 'https://gitee.com/dvlproad/dvlproadSpecs'
 target 'CJNetworkDemo' do
 #  plugin 'cocoapods-hmap-prebuilt'
 
+  pod 'CQDemoNetworkClient',  :path => '../'
+
   # PrivacyInfo.xcprivacy 库已添加隐私清单文件，但尚未发布新版本（如 MBProgressHUD）
   # 指定具体 Commit
   pod 'MBProgressHUD', :git => 'https://github.com/jdg/MBProgressHUD.git', :commit => '4a7c5f3e53cdea77c5dcb8578c2ee5acacdf6781'
@@ -35,7 +37,7 @@ target 'CJNetworkDemo' do
   pod 'SVProgressHUD',          '~> 2.3.1'
   pod 'AFNetworking', :git => 'https://gitee.com/Leonesir/afnetworking-dh.git', :branch => 'master'
   
-  pod 'CQDemoKit',              '~> 0.8.0',      :subspecs => ['BaseVC', 'Demo_Resource']
+  pod 'CQDemoKit',              '~> 0.9.3',      :subspecs => ['BaseVC', 'Demo_Resource']
   pod 'CQDemoKit-Swift',        '~> 0.0.1'
 #  pod 'CQMdeiaVideoFrameKit',   :path => '../../013-Mdeia_Video_Frame/iOS'
   pod 'CQMdeiaVideoFrameKit',   '~> 0.1.0'

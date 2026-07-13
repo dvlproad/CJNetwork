@@ -23,9 +23,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CJNetworkInstance : NSObject {
     
 }
-// 执行请求的Manager(一定要执行)
-- (void)setupCleanHTTPSessionManager:(AFHTTPSessionManager *)cleanHTTPSessionManager
-             cryptHTTPSessionManager:(AFHTTPSessionManager *)cryptHTTPSessionManager;
+/*
+ *  必须实现：执行请求的Manager(一定要执行)，且无加密和有加密的不可以同时都没有
+ *
+ *  @param cleanHTTPSessionManager  无加密的 HTTPSessionManager
+ *  @param cryptHTTPSessionManager  有加密的 HTTPSessionManager
+ */
+- (void)setupCleanHTTPSessionManager:(nullable AFHTTPSessionManager *)cleanHTTPSessionManager
+             cryptHTTPSessionManager:(nullable AFHTTPSessionManager *)cryptHTTPSessionManager;
 
 //// 执行请求的Manager(一定要执行)
 //- (void)setupHTTPSessionManager:(AFHTTPSessionManager *)httpSessionManager

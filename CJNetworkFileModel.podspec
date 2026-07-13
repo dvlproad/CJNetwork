@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                   
                  要上传的文件的数据模型，可按需独立引入：
-                 • CJNetworkFileModel/Upload - 要上传的文件的数据模型
+                 • CJNetworkFileModel/Upload - 要上传的文件的数据模型 (CJUploadFileModelsOwner 里的属性 uploadFileModels 是本次要上传的文件数组)
                   会使用到该类的库目前有如下：
                       ①网络请求库 CJNetwork
                       ②图片选择上传库 CQImageAddDeleteListKit/AddDeletePickUpload
@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   # s.dependency "JSONKit", "~> 1.4"
 
 
-  # 要上传的文件的数据模型
+  # 要上传的文件的数据模型 (CJUploadFileModelsOwner 里的属性 uploadFileModels 是本次要上传的文件数组)
   s.subspec 'Upload' do |ss|
     ss.source_files = "CJNetworkFileModel/CJUploadFileModelsOwner/**/*.{h,m}"
     #ss.dependency 'CJNetworkFileModel/CJNetworkFileModelCommon'

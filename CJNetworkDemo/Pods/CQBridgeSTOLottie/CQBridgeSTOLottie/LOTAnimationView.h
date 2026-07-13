@@ -1,6 +1,6 @@
 //
 //  LOTAnimationView.h
-//  CQTabBarController
+//  UIKit-Overlay-iOS
 //
 //  Created by dvlproad on 2021/1/6.
 //  Copyright © 2021 ciyouzen. All rights reserved.
@@ -16,16 +16,21 @@ NS_ASSUME_NONNULL_BEGIN
     
 }
 @property (nonatomic, assign) CGFloat animationProgress;
+@property (nonatomic, assign) BOOL loopAnimation;
 
-- (instancetype)initWithContentsOfURL:(NSURL *)URL;
+#pragma mark - Action
 - (void)forceDrawingUpdate;
 - (void)play;
 - (void)stop;
 
+#pragma mark - Init
+- (instancetype)initWithFrame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithContentsOfURL:(NSURL *)URL;
+- (instancetype)initWithAnimationNamed:(nonnull NSString *)animationName inBundle:(nonnull NSBundle *)bundle;
 
-@property (nonatomic, assign) BOOL loopAnimation;
-+ (nonnull instancetype)animationNamed:(nonnull NSString *)animationName;
-+ (nonnull instancetype)animationNamed:(nonnull NSString *)animationName inBundle:(nonnull NSBundle *)bundle;
+#pragma mark - Config
+- (void)setAnimationContentsOfURL:(NSURL *)URL;
+- (void)setAnimationNamed:(NSString *)animationName inBundle:(nullable NSBundle *)bundle;
 
 @end
 

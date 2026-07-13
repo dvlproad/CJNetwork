@@ -217,8 +217,8 @@ public final class AuthenticationInterceptor<AuthenticatorType>: RequestIntercep
 
     /// The `Credential` used to authenticate requests.
     public var credential: Credential? {
-        get { mutableState.credential }
-        set { mutableState.credential = newValue }
+        get { mutableState.read(\.credential) }
+        set { mutableState.write { $0.credential = newValue } }
     }
 
     let authenticator: AuthenticatorType
@@ -361,9 +361,7 @@ public final class AuthenticationInterceptor<AuthenticatorType>: RequestIntercep
             attempts += 1
         }
 
-        let isRefreshExcessive = refreshAttemptsWithinWindow >= refreshWindow.maximumAttempts
-
-        return isRefreshExcessive
+        return refreshAttemptsWithinWindow >= refreshWindow.maximumAttempts
     }
 
     private func handleRefreshSuccess(_ credential: Credential, insideLock mutableState: inout MutableState) {

@@ -43,11 +43,10 @@
         
         CGFloat lotAnimationViewHeight = 40;
         
-        if (animationBundle) {
-            _lotAnimationView = [LOTAnimationView animationNamed:animationNamed inBundle:animationBundle];
-        } else {
-            _lotAnimationView = [LOTAnimationView animationNamed:animationNamed];
+        if (animationBundle == nil) {
+            animationBundle = [NSBundle mainBundle];
         }
+        _lotAnimationView = [[LOTAnimationView alloc] initWithAnimationNamed:animationNamed inBundle:animationBundle];
         
         //[_lotAnimationView setAnimationNamed:animationNamed inBundle:animationBundle];
         _lotAnimationView.loopAnimation = YES;

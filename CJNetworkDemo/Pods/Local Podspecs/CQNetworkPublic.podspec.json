@@ -10,7 +10,7 @@
   "authors": {
     "dvlproad": ""
   },
-  "description": "- Helper: 类方法\n- Client: 实例方法\n\n                   A longer description of CQNetworkPublic in Markdown format.\n\n                   * Think: Why did you write this? What is the focus? What does it do?\n                   * CocoaPods will be using this to generate tags, and improve search results.\n                   * Try to keep it short, snappy and to the point.\n                   * Finally, don't worry about the indent, CocoaPods strips it!",
+  "description": "- Helper: 类方法\n- Client: 实例方法\n                 网络请求公共-可以解耦底层，使得底层使用任意的网络框架，可按需独立引入：\n                 • CQNetworkPublic/Base - 基础公共类\n                 • CQNetworkPublic/Request - Request 普通请求\n                 • CQNetworkPublic/Request/Base - Base\n                 • CQNetworkPublic/Request/Helper - Helper 帮助工具类方法\n                 • CQNetworkPublic/Request/Client - Client 实例类方法\n                 • CQNetworkPublic/Upload - Upload 上传请求\n                 • CQNetworkPublic/Upload/Base - Base\n                 • CQNetworkPublic/Upload/Helper - Helper 帮助工具类方法\n                 • CQNetworkPublic/Upload/Client - Client 实例类方法\n\n                 每个子库可独立引入，详见各子库描述。",
   "platforms": {
     "ios": "9.0"
   },
