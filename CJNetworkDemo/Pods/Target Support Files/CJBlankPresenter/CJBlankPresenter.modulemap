@@ -1,0 +1,6 @@
+framework module CJBlankPresenter {
+  umbrella header "CJBlankPresenter-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -8,8 +8,8 @@
 
 #import "TSDownloadCollectionViewCell.h"
 #import <CQDemoKit/CJUIKitToastUtil.h>
-#import <CQDemoKit/CQTSPhotoUtil.h>
-#import <CQDemoKit/CQTSResourceUtil.h>
+#import <CQDemoKit/CQTSSandboxPhotoUtil.h>
+#import <CQDemoKit/CQTSResourceInfoUtil.h>
 #import <CQMdeiaVideoFrameKit/VideoFrameCQHelper.h>
 #import "TSDownloadUtil.h"
 
@@ -68,7 +68,7 @@
     __weak typeof(self)weakSelf = self;
     self.downloadView = [[TSDownloadCollectionViewCellOverlay alloc] initWithStateChangeBlock:^(CJFileDownloadState downloadState, NSString * _Nullable localAbsPath) {
         if (downloadState == CJFileDownloadStateSuccess) {
-            CQTSFileType fileType = [CQTSResourceUtil fileTypeForFilePathOrUrl:localAbsPath];
+            CQTSFileType fileType = [CQTSResourceInfoUtil fileTypeForFilePathOrUrl:localAbsPath];
             if (fileType == CQTSFileTypeVideo) {
                 //                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 //                    NSString *localAbsPath = [[HSDownloadManager sharedInstance] fileLocalAbsPathForUrl:downloadUrl];

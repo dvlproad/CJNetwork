@@ -388,15 +388,37 @@ public class Request: @unchecked Sendable {
     func didCreateTask(_ task: URLSessionTask) {
         dispatchPrecondition(condition: .onQueue(underlyingQueue))
 
-        mutableState.write { state in
-            state.tasks.append(task)
+        mutableState.write { mutableState in
+            mutableState.tasks.append(task)
 
-            guard let urlSessionTaskHandler = state.urlSessionTaskHandler else { return }
+            if let urlSessionTaskHandler = mutableState.urlSessionTaskHandler {
+                urlSessionTaskHandler.queue.async { urlSessionTaskHandler.handler(task) }
+            }
 
-            urlSessionTaskHandler.queue.async { urlSessionTaskHandler.handler(task) }
+            // Only safe because eventMonitor immediately enqueues.
+            // TODO: When switching to sync EventMonitor, restructure event order.
+            mutableState.eventMonitor?.request(self, didCreateTask: task)
+
+            // Should only have an effect if state was updated before the task was created and wasn't able update it.
+            // If this runs before a state update method (e.g. cancel()), it will still be in the initialized state and
+            // do nothing.
+            switch mutableState.state {
+            case .initialized, .finished:
+                // Do nothing.
+                break
+            case .resumed:
+                task.resume()
+                underlyingQueue.async { self.didResumeTask(task) }
+            case .suspended:
+                task.suspend()
+                underlyingQueue.async { self.didSuspendTask(task) }
+            case .cancelled:
+                // Resume to ensure metrics are gathered.
+                task.resume()
+                task.cancel()
+                underlyingQueue.async { self.didCancelTask(task) }
+            }
         }
-
-        eventMonitor?.request(self, didCreateTask: task)
     }
 
     /// Called when resumption is completed.
@@ -666,13 +688,6 @@ public class Request: @unchecked Sendable {
         uploadProgressHandler?.queue.async { self.uploadProgressHandler?.handler(self.uploadProgress) }
     }
 
-    /// Perform a closure on the current `state` while locked.
-    ///
-    /// - Parameter perform: The closure to perform.
-    func withState(perform: (State) -> Void) {
-        mutableState.withState(perform: perform)
-    }
-
     // MARK: Task Creation
 
     /// Called when creating a `URLSessionTask` for this `Request`. Subclasses must override.
@@ -704,10 +719,17 @@ public class Request: @unchecked Sendable {
 
             underlyingQueue.async { self.didCancel() }
 
-            guard let task = mutableState.tasks.last, task.state != .completed else {
+            // Ensure we have a task. If we do, didCreateTask has been called but wouldn't have changed the task state
+            // since we just transitioned to cancelled. If we don't, didCreateTask hasn't been called yet, so we can
+            // start the finish process and return early, as didCreateTask will perform the task changes but we won't
+            // receive any task delegate callback.
+            guard let task = mutableState.tasks.last else {
                 underlyingQueue.async { self.finish() }
                 return
             }
+            // We have a task, if it's completed, return early, as the delegate callbacks should be in flight and
+            // cancelling it will have no effect.
+            guard task.state != .completed else { return }
 
             // Resume to ensure metrics are gathered.
             task.resume()
@@ -751,11 +773,14 @@ public class Request: @unchecked Sendable {
 
             underlyingQueue.async { self.didResume() }
 
-            guard let task = mutableState.tasks.last, task.state != .completed else { return true }
+            // Ensure we have a task, otherwise Session hasn't called perform yet.
+            guard let task = mutableState.tasks.last else { return true }
+            // We have a task, so we shouldn't need to trigger perform again.
+            guard task.state != .completed else { return false }
 
             task.resume()
             underlyingQueue.async { self.didResumeTask(task) }
-            return true
+            return false
         }
 
         if needsToPerform {

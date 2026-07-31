@@ -7,7 +7,7 @@
 //
 
 #import "CQIndicatorHUDUtil.h"
-#import <CJPopupAnimation/UIView+CJToastInView.h>
+#import <CJPopupAction/UIView+CJToastAnimation.h>
 
 @interface CQIndicatorHUDUtil ()
 

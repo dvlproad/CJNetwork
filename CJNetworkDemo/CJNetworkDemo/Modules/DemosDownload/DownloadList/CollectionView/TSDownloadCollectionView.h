@@ -9,7 +9,7 @@
 //  为了提供给某些例子需要有多种情况的测试时候，而快速构建的【单排或单列的按钮组合CollectionView】
 
 #import <UIKit/UIKit.h>
-#import <CQDemoKit/CQDMSectionDataModel+CJDealTextModel.h>
+#import <CQDemoKit/CQDMSectionDataModel.h>
 #import "CQDownloadRecordModel.h"
 
 NS_ASSUME_NONNULL_BEGIN

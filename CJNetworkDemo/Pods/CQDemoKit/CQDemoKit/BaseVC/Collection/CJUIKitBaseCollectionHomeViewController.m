@@ -206,13 +206,16 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     //cell.imageView.image = nil;   // 1.解决图片重用问题(建议换在cell内部处理）
     
     if (moduleModel.imageUrl.length > 0) {
-        [cell.imageView cqdm_setImageWithUrl:moduleModel.imageUrl completed:nil];
+        [cell.imageView cqts_setImageWithUrl:moduleModel.imageUrl completed:nil];
     } else {
         UIImage *image = moduleModel.normalImage ? moduleModel.normalImage : [UIImage imageNamed:@"icon"];
         cell.imageView.image = image;
     }
     
     cell.textLabel.text = moduleModel.title;
+    cell.textLabel.numberOfLines = moduleModel.titleLines;
+    //cell.detailTextLabel.text = moduleModel.content;
+    //cell.detailTextLabel.numberOfLines = moduleModel.contentLines;
     
     return cell;
 }
@@ -233,18 +236,22 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
         
     } else {
         UIViewController *viewController = nil;
-        Class classEntry = moduleModel.classEntry;
-        NSString *clsString = NSStringFromClass(moduleModel.classEntry);
-        if ([clsString isEqualToString:NSStringFromClass([UIViewController class])]) {
-            viewController = [[classEntry alloc] init];
-            viewController.view.backgroundColor = [UIColor whiteColor];
-            
+        if (moduleModel.viewControllerGetterHandle != nil) {
+            viewController = moduleModel.viewControllerGetterHandle();
         } else {
-            if (moduleModel.isCreateByXib) {
-                NSBundle *xibBundle = moduleModel.xibBundle;
-                viewController = [[classEntry alloc] initWithNibName:clsString bundle:xibBundle];
-            } else {
+            Class classEntry = moduleModel.classEntry;
+            NSString *clsString = NSStringFromClass(moduleModel.classEntry);
+            if ([clsString isEqualToString:NSStringFromClass([UIViewController class])]) {
                 viewController = [[classEntry alloc] init];
+                viewController.view.backgroundColor = [UIColor whiteColor];
+                
+            } else {
+                if (moduleModel.isCreateByXib) {
+                    NSBundle *xibBundle = moduleModel.xibBundle;
+                    viewController = [[classEntry alloc] initWithNibName:clsString bundle:xibBundle];
+                } else {
+                    viewController = [[classEntry alloc] init];
+                }
             }
         }
         

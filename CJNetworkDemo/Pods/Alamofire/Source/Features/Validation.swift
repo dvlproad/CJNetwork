@@ -27,12 +27,12 @@ import Foundation
 extension Request {
     // MARK: Helper Types
 
-    fileprivate typealias ErrorReason = AFError.ResponseValidationFailureReason
+    typealias ErrorReason = AFError.ResponseValidationFailureReason
 
     /// Used to represent whether a validation succeeded or failed.
     public typealias ValidationResult = Result<Void, any(Error & Sendable)>
 
-    fileprivate struct MIMEType {
+    struct MIMEType {
         let type: String
         let subtype: String
 
@@ -46,7 +46,7 @@ extension Request {
                 return split.components(separatedBy: "/")
             }()
 
-            if let type = components.first, let subtype = components.last {
+            if components.count == 2, let type = components.first, let subtype = components.last {
                 self.type = type
                 self.subtype = subtype
             } else {

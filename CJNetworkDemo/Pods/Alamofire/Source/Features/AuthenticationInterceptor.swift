@@ -202,15 +202,33 @@ public final class AuthenticationInterceptor<AuthenticatorType>: RequestIntercep
         case adaptDeferred
     }
 
+    private enum RefreshState {
+        case idle
+        case refreshing
+        case failed(any Error)
+    }
+
     private struct MutableState {
         var credential: Credential?
+        var credentialVersion = 0
 
-        var isRefreshing = false
+        var refreshState: RefreshState = .idle
         var refreshTimestamps: [TimeInterval] = []
         var refreshWindow: RefreshWindow?
 
         var adaptOperations: [AdaptOperation] = []
         var requestsToRetry: [@Sendable (RetryResult) -> Void] = []
+
+        var isRefreshing: Bool {
+            if case .refreshing = refreshState { return true }
+            return false
+        }
+
+        mutating func updateCredential(_ credential: Credential?) {
+            self.credential = credential
+            credentialVersion += 1
+            refreshState = .idle
+        }
     }
 
     // MARK: Properties
@@ -218,7 +236,7 @@ public final class AuthenticationInterceptor<AuthenticatorType>: RequestIntercep
     /// The `Credential` used to authenticate requests.
     public var credential: Credential? {
         get { mutableState.read(\.credential) }
-        set { mutableState.write { $0.credential = newValue } }
+        set { mutableState.write { $0.updateCredential(newValue) } }
     }
 
     let authenticator: AuthenticatorType
@@ -248,25 +266,40 @@ public final class AuthenticationInterceptor<AuthenticatorType>: RequestIntercep
 
     public func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping @Sendable (Result<URLRequest, any Error>) -> Void) {
         let adaptResult: AdaptResult = mutableState.write { mutableState in
-            // Queue the adapt operation if a refresh is already in place.
-            guard !mutableState.isRefreshing else {
+            // Defer only when a proactive (requiresRefresh-driven) refresh is in progress. The triggering request
+            // always appends itself to adaptOperations before isRefreshing is set, so any concurrent adapt that
+            // observes isRefreshing == true also observes a non-empty queue.
+            //
+            // When adaptOperations is empty and isRefreshing is true, the refresh was triggered by the retry path. In
+            // that case, do not defer the adaptation and perform the request using the credential so the full adapter
+            // chain, including any non-idempotent adapters earlier in the chain, reruns from scratch on retry rather
+            // than replaying stale intermediate state.
+            if mutableState.isRefreshing, !mutableState.adaptOperations.isEmpty {
+                // Refresh from requiresRefresh is running, adaptation has been deferred.
                 let operation = AdaptOperation(urlRequest: urlRequest, session: session, completion: completion)
                 mutableState.adaptOperations.append(operation)
                 return .adaptDeferred
             }
 
-            // Throw missing credential error is the credential is missing.
+            // Produce a missing credential error if the credential is missing.
             guard let credential = mutableState.credential else {
                 let error = AuthenticationError.missingCredential
                 return .doNotAdapt(error)
             }
 
-            // Queue the adapt operation and trigger refresh operation if credential requires refresh.
-            guard !credential.requiresRefresh else {
+            // Queue the adapt operation and trigger a proactive refresh if the credential requires it and no refresh
+            // is already in progress.
+            if credential.requiresRefresh, !mutableState.isRefreshing {
                 let operation = AdaptOperation(urlRequest: urlRequest, session: session, completion: completion)
                 mutableState.adaptOperations.append(operation)
                 refresh(credential, for: session, insideLock: &mutableState)
                 return .adaptDeferred
+            }
+
+            // A new request reaching this point represents a fresh request lifecycle. Any prior refresh failure is
+            // stale with respect to this request. Clear it so a subsequent failure can trigger a new refresh.
+            if case .failed = mutableState.refreshState {
+                mutableState.refreshState = .idle
             }
 
             return .adapt(credential)
@@ -303,7 +336,13 @@ public final class AuthenticationInterceptor<AuthenticatorType>: RequestIntercep
         }
 
         // Do not attempt retry if there is no credential.
-        guard let credential else {
+        guard let (credential, credentialVersion): (Credential, Int) = mutableState.read({ mutableState in
+            if let credential = mutableState.credential {
+                (credential, mutableState.credentialVersion)
+            } else {
+                nil
+            }
+        }) else {
             let error = AuthenticationError.missingCredential
             completion(.doNotRetryWithError(error))
             return
@@ -315,13 +354,29 @@ public final class AuthenticationInterceptor<AuthenticatorType>: RequestIntercep
             return
         }
 
-        mutableState.write { mutableState in
-            mutableState.requestsToRetry.append(completion)
-
-            guard !mutableState.isRefreshing else { return }
-
-            refresh(credential, for: session, insideLock: &mutableState)
+        // Otherwise, enqueue the completion for the end of refresh, or immediately resolve if a prior attempt already
+        // determined the outcome for this credential version.
+        let retryResult: RetryResult? = mutableState.write { mutableState in
+            guard credentialVersion == mutableState.credentialVersion else {
+                // Credential was updated during the prechecks, so immediately retry the request with the new credential.
+                return .retry
+            }
+            switch mutableState.refreshState {
+            case let .failed(refreshError):
+                // A refresh was already attempted and failed for this credential version.
+                // Do not queue and do not trigger another refresh.
+                return .doNotRetryWithError(refreshError)
+            case .refreshing:
+                mutableState.requestsToRetry.append(completion)
+                return nil
+            case .idle:
+                mutableState.requestsToRetry.append(completion)
+                refresh(credential, for: session, insideLock: &mutableState)
+                return nil
+            }
         }
+
+        if let result = retryResult { completion(result) }
     }
 
     // MARK: Refresh
@@ -334,7 +389,7 @@ public final class AuthenticationInterceptor<AuthenticatorType>: RequestIntercep
         }
 
         mutableState.refreshTimestamps.append(ProcessInfo.processInfo.systemUptime)
-        mutableState.isRefreshing = true
+        mutableState.refreshState = .refreshing
 
         // Dispatch to queue to hop out of the lock in case authenticator.refresh is implemented synchronously.
         queue.async {
@@ -365,15 +420,13 @@ public final class AuthenticationInterceptor<AuthenticatorType>: RequestIntercep
     }
 
     private func handleRefreshSuccess(_ credential: Credential, insideLock mutableState: inout MutableState) {
-        mutableState.credential = credential
+        mutableState.updateCredential(credential)
 
         let adaptOperations = mutableState.adaptOperations
         let requestsToRetry = mutableState.requestsToRetry
 
         mutableState.adaptOperations.removeAll()
         mutableState.requestsToRetry.removeAll()
-
-        mutableState.isRefreshing = false
 
         // Dispatch to queue to hop out of the mutable state lock
         queue.async {
@@ -389,7 +442,7 @@ public final class AuthenticationInterceptor<AuthenticatorType>: RequestIntercep
         mutableState.adaptOperations.removeAll()
         mutableState.requestsToRetry.removeAll()
 
-        mutableState.isRefreshing = false
+        mutableState.refreshState = .failed(error)
 
         // Dispatch to queue to hop out of the mutable state lock
         queue.async {

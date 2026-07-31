@@ -7,7 +7,7 @@
 //
 
 #import "CQDownloadRecordModel.h"
-#import <CQDemoKit/CQTSResourceUtil.h>
+#import <CQDemoKit/CQTSResourceInfoUtil.h>
 #import "NSString+Hash.h"
 
 
@@ -53,7 +53,7 @@
 
 - (NSString *)saveWithFileName {
     NSString *fileName = [NSString stringWithFormat:@"%@_%@_%@", self.url.md5String, self.createId, [self.url lastPathComponent]];
-    CQTSFileType fileType = [CQTSResourceUtil fileTypeForFilePathOrUrl:fileName];
+    CQTSFileType fileType = [CQTSResourceInfoUtil fileTypeForFilePathOrUrl:fileName];
     if (fileType == CQTSFileTypeUnknown) {
         fileName = [fileName stringByAppendingPathExtension:@"mp4"];
     }

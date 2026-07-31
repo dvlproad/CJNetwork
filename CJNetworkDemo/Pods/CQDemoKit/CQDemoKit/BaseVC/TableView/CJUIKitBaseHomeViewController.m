@@ -134,8 +134,17 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     }
     cell.textLabel.text = moduleModel.title;
+    cell.textLabel.numberOfLines = moduleModel.titleLines;
     cell.detailTextLabel.text = moduleModel.content;
-    cell.detailTextLabel.numberOfLines = moduleModel.contentLines > 1 ? moduleModel.contentLines : 1;
+    cell.detailTextLabel.numberOfLines = moduleModel.contentLines;
+    
+    if (moduleModel.viewGetterHandle || moduleModel.viewControllerGetterHandle || moduleModel.classEntry) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else if (moduleModel.actionBlock || moduleModel.selector) {
+        cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
@@ -167,33 +176,37 @@
         [self.navigationController pushViewController:viewController animated:YES];
     } else {
         UIViewController *viewController = nil;
-        Class classEntry = moduleModel.classEntry;
-        NSString *clsString = NSStringFromClass(moduleModel.classEntry);
-        if ([clsString isEqualToString:NSStringFromClass([UIViewController class])]) {
-            viewController = [[classEntry alloc] init];
-            viewController.view.backgroundColor = [UIColor whiteColor];
-            
+        if (moduleModel.viewControllerGetterHandle != nil) {
+            viewController = moduleModel.viewControllerGetterHandle();
         } else {
-            if (moduleModel.isCreateByXib) {
-                NSBundle *xibBundle = moduleModel.xibBundle;
-                viewController = [[classEntry alloc] initWithNibName:clsString bundle:xibBundle];
-            } else {
+            Class classEntry = moduleModel.classEntry;
+            NSString *clsString = NSStringFromClass(moduleModel.classEntry);
+            if ([clsString isEqualToString:NSStringFromClass([UIViewController class])]) {
                 viewController = [[classEntry alloc] init];
+                viewController.view.backgroundColor = [UIColor whiteColor];
+                
+            } else {
+                if (moduleModel.isCreateByXib) {
+                    NSBundle *xibBundle = moduleModel.xibBundle;
+                    viewController = [[classEntry alloc] initWithNibName:clsString bundle:xibBundle];
+                } else {
+                    viewController = [[classEntry alloc] init];
+                }
             }
         }
-        
         viewController.title = NSLocalizedString(moduleModel.title, nil);
         
         // 如果是要跳到 UITabBarController 控制器
         if ([viewController isKindOfClass:[UITabBarController class]]) {
+            UIWindow *keyWindow = self.view.window;
             id<UIApplicationDelegate> appDelegate = [UIApplication sharedApplication].delegate;
-            UIViewController *originRootViewController = appDelegate.window.rootViewController;
+            UIViewController *originRootViewController = keyWindow.rootViewController;
             objc_setAssociatedObject(appDelegate, "originRootViewController", originRootViewController, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             
-            [UIApplication sharedApplication].delegate.window.rootViewController = viewController;
+            keyWindow.rootViewController = viewController;
             UIWindow *suspendButton = [CQTSSuspendWindowFactory showSuspendButtonWithSize:CGSizeMake(100, 44) title:NSLocalizedString(@"返回主页", nil) clickCompleteBlock:^{
                 UIViewController *bOriginRootViewController = objc_getAssociatedObject(appDelegate, "originRootViewController");
-                [UIApplication sharedApplication].delegate.window.rootViewController = bOriginRootViewController;
+                keyWindow.rootViewController = bOriginRootViewController;
             }];
             // 必须强引用，才能显示出来
             objc_setAssociatedObject(viewController, "suspendButton", suspendButton, OBJC_ASSOCIATION_RETAIN_NONATOMIC);

@@ -1,0 +1,6 @@
+framework module CJPopupContainer {
+  umbrella header "CJPopupContainer-umbrella.h"
+
+  export *
+  module * { export * }
+}

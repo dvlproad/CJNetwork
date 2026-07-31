@@ -9,7 +9,7 @@
 #import "CQToastUtil.h"
 #import <CJOverlayView/CJToast.h>
 #import <CJOverlayView/CJToastView.h>
-#import <CJPopupAnimation/UIView+CJToastInView.h>
+#import <CJPopupAction/UIView+CJToastAnimation.h>
 #import "CQOverlayTheme.h"
 
 @implementation CQToastUtil

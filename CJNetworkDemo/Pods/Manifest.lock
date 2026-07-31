@@ -14,52 +14,52 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - Alamofire (5.11.2)
-  - CJBaseHelper (0.1.8):
-    - CJBaseHelper/AppInfoCJHelper (= 0.1.8)
-    - CJBaseHelper/AuthorizationCJHelper (= 0.1.8)
-    - CJBaseHelper/DeviceCJHelper (= 0.1.8)
-    - CJBaseHelper/HookCJHelper (= 0.1.8)
-    - CJBaseHelper/NSCalendarCJHelper (= 0.1.8)
-    - CJBaseHelper/NSDateFormatterCJHelper (= 0.1.8)
-    - CJBaseHelper/NSObjectCJHelper (= 0.1.8)
-    - CJBaseHelper/NSOperationQueueCJHelper (= 0.1.8)
-    - CJBaseHelper/ServerCJHelper (= 0.1.8)
-    - CJBaseHelper/UIViewControllerCJHelper (= 0.1.8)
-    - CJBaseHelper/WebCJHelper (= 0.1.8)
-  - CJBaseHelper/AppInfoCJHelper (0.1.8)
-  - CJBaseHelper/AuthorizationCJHelper (0.1.8)
-  - CJBaseHelper/DeviceCJHelper (0.1.8)
-  - CJBaseHelper/HookCJHelper (0.1.8)
-  - CJBaseHelper/NSCalendarCJHelper (0.1.8)
-  - CJBaseHelper/NSDateFormatterCJHelper (0.1.8)
-  - CJBaseHelper/NSObjectCJHelper (0.1.8)
-  - CJBaseHelper/NSOperationQueueCJHelper (0.1.8)
-  - CJBaseHelper/ServerCJHelper (0.1.8)
-  - CJBaseHelper/UIViewControllerCJHelper (0.1.8)
-  - CJBaseHelper/WebCJHelper (0.1.8)
-  - CJBaseUIKit/CJSlider (0.8.1)
-  - CJBaseUIKit/UIButton (0.8.1)
-  - CJBaseUIKit/UIColor (0.8.1)
-  - CJBaseUIKit/UITextField (0.8.1)
-  - CJBaseUIKit/UITextHeightCenterCJHelper (0.8.1)
-  - CJBaseUIKit/UITextInputCJHelper (0.8.1)
-  - CJBaseUIKit/UITextView (0.8.1):
-    - CJBaseUIKit/UITextHeightCenterCJHelper
-  - CJBaseUIKit/UIView (0.8.1):
-    - CJBaseUIKit/UIView/CJAddCorner (= 0.8.1)
-    - CJBaseUIKit/UIView/CJAnimation (= 0.8.1)
-    - CJBaseUIKit/UIView/CJAutoMoveUp (= 0.8.1)
-    - CJBaseUIKit/UIView/CJDragAction (= 0.8.1)
-    - CJBaseUIKit/UIView/CJGestureRecognizer (= 0.8.1)
-    - CJBaseUIKit/UIView/CJShakeAction (= 0.8.1)
-  - CJBaseUIKit/UIView/CJAddCorner (0.8.1)
-  - CJBaseUIKit/UIView/CJAnimation (0.8.1)
-  - CJBaseUIKit/UIView/CJAutoMoveUp (0.8.1)
-  - CJBaseUIKit/UIView/CJDragAction (0.8.1)
-  - CJBaseUIKit/UIView/CJGestureRecognizer (0.8.1)
-  - CJBaseUIKit/UIView/CJShakeAction (0.8.1)
+  - Alamofire (5.12.0)
+  - CJBaseHelper (0.2.0):
+    - CJBaseHelper/AppInfoCJHelper (= 0.2.0)
+    - CJBaseHelper/AuthorizationCJHelper (= 0.2.0)
+    - CJBaseHelper/DeviceCJHelper (= 0.2.0)
+    - CJBaseHelper/HookCJHelper (= 0.2.0)
+    - CJBaseHelper/NSDateFormatterCJHelper (= 0.2.0)
+    - CJBaseHelper/NSObjectCJHelper (= 0.2.0)
+    - CJBaseHelper/NSOperationQueueCJHelper (= 0.2.0)
+    - CJBaseHelper/ServerCJHelper (= 0.2.0)
+    - CJBaseHelper/UIViewControllerCJHelper (= 0.2.0)
+    - CJBaseHelper/WebCJHelper (= 0.2.0)
+  - CJBaseHelper/AppInfoCJHelper (0.2.0)
+  - CJBaseHelper/AuthorizationCJHelper (0.2.0)
+  - CJBaseHelper/DeviceCJHelper (0.2.0)
+  - CJBaseHelper/HookCJHelper (0.2.0)
+  - CJBaseHelper/NSDateFormatterCJHelper (0.2.0)
+  - CJBaseHelper/NSObjectCJHelper (0.2.0)
+  - CJBaseHelper/NSOperationQueueCJHelper (0.2.0)
+  - CJBaseHelper/ServerCJHelper (0.2.0)
+  - CJBaseHelper/UIViewControllerCJHelper (0.2.0)
+  - CJBaseHelper/WebCJHelper (0.2.0)
+  - CJBaseUIKit/CJSlider (0.9.1)
+  - CJBaseUIKit/UIButton (0.9.1)
+  - CJBaseUIKit/UIColor (0.9.1)
+  - CJBaseUIKit/UIView (0.9.1):
+    - CJBaseUIKit/UIView/CJAddCorner (= 0.9.1)
+    - CJBaseUIKit/UIView/CJAnimation (= 0.9.1)
+    - CJBaseUIKit/UIView/CJAutoMoveUp (= 0.9.1)
+    - CJBaseUIKit/UIView/CJDragAction (= 0.9.1)
+    - CJBaseUIKit/UIView/CJGestureRecognizer (= 0.9.1)
+    - CJBaseUIKit/UIView/CJShakeAction (= 0.9.1)
+  - CJBaseUIKit/UIView/CJAddCorner (0.9.1)
+  - CJBaseUIKit/UIView/CJAnimation (0.9.1)
+  - CJBaseUIKit/UIView/CJAutoMoveUp (0.9.1)
+  - CJBaseUIKit/UIView/CJDragAction (0.9.1)
+  - CJBaseUIKit/UIView/CJGestureRecognizer (0.9.1)
+  - CJBaseUIKit/UIView/CJShakeAction (0.9.1)
   - CJBaseUtil/CJIndentedStringUtil (0.5.1)
+  - CJBlankPresenter (0.3.0):
+    - CJBlankPresenter/BlankHost (= 0.3.0)
+    - CJBlankPresenter/BlankPresenter (= 0.3.0)
+  - CJBlankPresenter/BlankHost (0.3.0)
+  - CJBlankPresenter/BlankPresenter (0.3.0):
+    - CJBlankPresenter/BlankHost
+    - CJProtocolKit/BlankPresenter
   - CJContainer (0.1.0):
     - Masonry
   - CJMediaCacheKit (0.0.1)
@@ -146,21 +146,105 @@ PODS:
     - MBProgressHUD
   - CJPlayer (0.0.1):
     - CJMediaCacheKit
-  - CJPopupAnimation/Toast (0.1.0)
-  - CJPopupCreater (0.1.1):
-    - CJPopupCreater/Base (= 0.1.1)
-    - CJPopupCreater/BottomBlank (= 0.1.1)
-    - CJPopupCreater/CenterBlank (= 0.1.1)
-    - CJPopupCreater/EffectAndCornerHelper (= 0.1.1)
-  - CJPopupCreater/Base (0.1.1)
-  - CJPopupCreater/BottomBlank (0.1.1):
+  - CJPopupAction/Toast (1.6.2)
+  - CJPopupContainer (0.7.3):
+    - CJPopupContainer/Assembly (= 0.7.3)
+    - CJPopupContainer/BlankContainer (= 0.7.3)
+    - CJPopupContainer/EffectAndCornerHelper (= 0.7.3)
+    - CJPopupContainer/PopupViewContainer (= 0.7.3)
+  - CJPopupContainer/Assembly (0.7.3):
+    - CJPopupContainer/Assembly/Bottom (= 0.7.3)
+    - CJPopupContainer/Assembly/Center (= 0.7.3)
+  - CJPopupContainer/Assembly/Bottom (0.7.3):
+    - CJPopupContainer/Assembly/Bottom/AgreeNo (= 0.7.3)
+    - CJPopupContainer/Assembly/Bottom/Close (= 0.7.3)
+    - CJPopupContainer/Assembly/Bottom/Exit (= 0.7.3)
+    - CJPopupContainer/Assembly/Bottom/Self (= 0.7.3)
+    - CJPopupContainer/Assembly/Bottom/Toolbar (= 0.7.3)
+  - CJPopupContainer/Assembly/Bottom/AgreeNo (0.7.3):
+    - CJPopupContainer/BlankContainer/Bottom/Base
+    - CJPopupContainer/EffectAndCornerHelper
+    - CJPopupContainer/PopupViewContainer/Bottom/AgreeNo
+  - CJPopupContainer/Assembly/Bottom/Close (0.7.3):
+    - CJPopupContainer/BlankContainer/Bottom/Panline
+    - CJPopupContainer/EffectAndCornerHelper
+    - CJPopupContainer/PopupViewContainer/Bottom/Close
+  - CJPopupContainer/Assembly/Bottom/Exit (0.7.3)
+  - CJPopupContainer/Assembly/Bottom/Self (0.7.3):
+    - CJPopupContainer/BlankContainer/Bottom/Panline
+  - CJPopupContainer/Assembly/Bottom/Toolbar (0.7.3):
+    - CJPopupContainer/BlankContainer/Bottom/Panline
+    - CJPopupContainer/BlankContainer/Bottom/PanlineAndToolbar
+  - CJPopupContainer/Assembly/Center (0.7.3):
+    - CJPopupContainer/Assembly/Center/Other (= 0.7.3)
+    - CJPopupContainer/Assembly/Center/Self (= 0.7.3)
+  - CJPopupContainer/Assembly/Center/Other (0.7.3):
+    - CJPopupContainer/BlankContainer/Center/Base
+    - CJPopupContainer/EffectAndCornerHelper
+    - CJPopupContainer/PopupViewContainer/Center/Close
+    - CJPopupContainer/PopupViewContainer/Center/IKnow
+  - CJPopupContainer/Assembly/Center/Self (0.7.3):
+    - CJPopupContainer/BlankContainer/Center/Base
+    - CJPopupContainer/EffectAndCornerHelper
+  - CJPopupContainer/BlankContainer (0.7.3):
+    - CJPopupContainer/BlankContainer/Base (= 0.7.3)
+    - CJPopupContainer/BlankContainer/Bottom (= 0.7.3)
+    - CJPopupContainer/BlankContainer/Center (= 0.7.3)
+  - CJPopupContainer/BlankContainer/Base (0.7.3):
+    - CJProtocolKit/BlankPresenter
+    - CJProtocolKit/BlankView
+  - CJPopupContainer/BlankContainer/Bottom (0.7.3):
+    - CJPopupContainer/BlankContainer/Bottom/Base (= 0.7.3)
+    - CJPopupContainer/BlankContainer/Bottom/Panline (= 0.7.3)
+    - CJPopupContainer/BlankContainer/Bottom/PanlineAndToolbar (= 0.7.3)
+  - CJPopupContainer/BlankContainer/Bottom/Base (0.7.3):
     - CJBaseUIKit/UIView/CJDragAction
-    - CJPopupCreater/Base
+    - CJPopupContainer/BlankContainer/Base
     - Masonry
-  - CJPopupCreater/CenterBlank (0.1.1):
-    - CJPopupCreater/Base
+  - CJPopupContainer/BlankContainer/Bottom/Panline (0.7.3):
+    - CJBaseUIKit/UIButton
+    - CJPopupContainer/BlankContainer/Bottom/Base
+    - CJPopupContainer/EffectAndCornerHelper
+  - CJPopupContainer/BlankContainer/Bottom/PanlineAndToolbar (0.7.3):
+    - CJPopupContainer/BlankContainer/Bottom/Panline
+  - CJPopupContainer/BlankContainer/Center (0.7.3):
+    - CJPopupContainer/BlankContainer/Center/Base (= 0.7.3)
+  - CJPopupContainer/BlankContainer/Center/Base (0.7.3):
+    - CJPopupContainer/BlankContainer/Base
+    - CJPopupContainer/EffectAndCornerHelper
     - Masonry
-  - CJPopupCreater/EffectAndCornerHelper (0.1.1)
+  - CJPopupContainer/EffectAndCornerHelper (0.7.3)
+  - CJPopupContainer/PopupViewContainer (0.7.3):
+    - CJPopupContainer/PopupViewContainer/Bottom (= 0.7.3)
+    - CJPopupContainer/PopupViewContainer/Center (= 0.7.3)
+  - CJPopupContainer/PopupViewContainer/Bottom (0.7.3):
+    - CJPopupContainer/PopupViewContainer/Bottom/AgreeNo (= 0.7.3)
+    - CJPopupContainer/PopupViewContainer/Bottom/Clear (= 0.7.3)
+    - CJPopupContainer/PopupViewContainer/Bottom/Close (= 0.7.3)
+  - CJPopupContainer/PopupViewContainer/Bottom/AgreeNo (0.7.3):
+    - CJBaseUIKit/UIButton
+    - CJBaseUIKit/UIColor
+    - Masonry
+  - CJPopupContainer/PopupViewContainer/Bottom/Clear (0.7.3):
+    - Masonry
+  - CJPopupContainer/PopupViewContainer/Bottom/Close (0.7.3):
+    - CJBaseUIKit/UIButton
+    - CJBaseUIKit/UIColor
+    - Masonry
+  - CJPopupContainer/PopupViewContainer/Center (0.7.3):
+    - CJPopupContainer/PopupViewContainer/Center/Close (= 0.7.3)
+    - CJPopupContainer/PopupViewContainer/Center/IKnow (= 0.7.3)
+  - CJPopupContainer/PopupViewContainer/Center/Close (0.7.3):
+    - CJBaseUIKit/UIButton
+    - CJBaseUIKit/UIColor
+    - Masonry
+  - CJPopupContainer/PopupViewContainer/Center/IKnow (0.7.3):
+    - CJBaseUIKit/UIButton
+    - CJBaseUIKit/UIColor
+    - Masonry
+  - CJProtocolKit/BlankPresenter (0.0.1):
+    - CJProtocolKit/BlankView
+  - CJProtocolKit/BlankView (0.0.1)
   - CocoaAsyncSocket (7.4.3):
     - CocoaAsyncSocket/All (= 7.4.3)
   - CocoaAsyncSocket/All (7.4.3):
@@ -170,78 +254,113 @@ PODS:
   - CocoaAsyncSocket/RunLoop (7.4.3)
   - CQBridgeSTOLottie (0.3.0):
     - lottie-ios
-  - CQDemoKit (0.9.3):
-    - CQDemoKit/Auxiliary (= 0.9.3)
-    - CQDemoKit/BaseUIKit (= 0.9.3)
-    - CQDemoKit/BaseUtil (= 0.9.3)
-    - CQDemoKit/BaseVC (= 0.9.3)
-    - CQDemoKit/Demo_DataSourceAndDelegate (= 0.9.3)
-    - CQDemoKit/Demo_Resource (= 0.9.3)
-    - CQDemoKit/Demo_RipeView (= 0.9.3)
-    - CQDemoKit/Helper (= 0.9.3)
-    - CQDemoKit/Monitor (= 0.9.3)
-  - CQDemoKit-Swift (0.0.1):
-    - CQDemoKit
-    - CQDemoKit-Swift/CQDemoKit-OC (= 0.0.1)
-    - CQDemoKit-Swift/SwiftUI (= 0.0.1)
-  - CQDemoKit-Swift/CQDemoKit-OC (0.0.1):
-    - CQDemoKit
-  - CQDemoKit-Swift/SwiftUI (0.0.1):
-    - CQDemoKit
-  - CQDemoKit/Auxiliary (0.9.3):
+  - CQDemoKit (0.9.15):
+    - CQDemoKit/Auxiliary (= 0.9.15)
+    - CQDemoKit/BaseUIKit (= 0.9.15)
+    - CQDemoKit/BaseUtil (= 0.9.15)
+    - CQDemoKit/BaseVC (= 0.9.15)
+    - CQDemoKit/Demo_DataSourceAndDelegate (= 0.9.15)
+    - CQDemoKit/Demo_Resource (= 0.9.15)
+    - CQDemoKit/Demo_RipeView (= 0.9.15)
+    - CQDemoKit/Helper (= 0.9.15)
+    - CQDemoKit/Monitor (= 0.9.15)
+    - CQDemoKit/StateUI (= 0.9.15)
+    - CQDemoKit/TestMethod (= 0.9.15)
+  - CQDemoKit-Swift (0.0.5):
+    - CQDemoKit-Swift/as (= 0.0.5)
+    - CQDemoKit-Swift/BaseVC (= 0.0.5)
+  - CQDemoKit-Swift/as (0.0.5)
+  - CQDemoKit-Swift/BaseVC (0.0.5)
+  - CQDemoKit/Auxiliary (0.9.15):
     - Masonry
-  - CQDemoKit/BaseUIKit (0.9.3):
+  - CQDemoKit/BaseUIKit (0.9.15):
+    - CQDemoKit/BaseUIKit/Button (= 0.9.15)
+    - CQDemoKit/BaseUIKit/Container (= 0.9.15)
+    - CQDemoKit/BaseUIKit/ImageLoader (= 0.9.15)
+    - CQDemoKit/BaseUIKit/Segment (= 0.9.15)
+    - CQDemoKit/BaseUIKit/Switch (= 0.9.15)
+  - CQDemoKit/BaseUIKit/Button (0.9.15):
     - Masonry
-  - CQDemoKit/BaseUtil (0.9.3)
-  - CQDemoKit/BaseVC (0.9.3):
-    - CQDemoKit/BaseVC/Base (= 0.9.3)
-    - CQDemoKit/BaseVC/Collection (= 0.9.3)
-    - CQDemoKit/BaseVC/ScrollView (= 0.9.3)
-    - CQDemoKit/BaseVC/TabBar (= 0.9.3)
-    - CQDemoKit/BaseVC/TableView (= 0.9.3)
-    - CQDemoKit/BaseVC/TextView (= 0.9.3)
-  - CQDemoKit/BaseVC/Base (0.9.3):
+  - CQDemoKit/BaseUIKit/Container (0.9.15):
+    - Masonry
+  - CQDemoKit/BaseUIKit/ImageLoader (0.9.15)
+  - CQDemoKit/BaseUIKit/Segment (0.9.15):
+    - Masonry
+  - CQDemoKit/BaseUIKit/Switch (0.9.15):
+    - Masonry
+  - CQDemoKit/BaseUtil (0.9.15)
+  - CQDemoKit/BaseVC (0.9.15):
+    - CQDemoKit/BaseVC/Base (= 0.9.15)
+    - CQDemoKit/BaseVC/Collection (= 0.9.15)
+    - CQDemoKit/BaseVC/ScrollView (= 0.9.15)
+    - CQDemoKit/BaseVC/TabBar (= 0.9.15)
+    - CQDemoKit/BaseVC/TableView (= 0.9.15)
+  - CQDemoKit/BaseVC/Base (0.9.15):
     - CQDemoKit/BaseUIKit
     - Masonry
-  - CQDemoKit/BaseVC/Collection (0.9.3):
+  - CQDemoKit/BaseVC/Collection (0.9.15):
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/BaseVC/ScrollView (0.9.3):
+  - CQDemoKit/BaseVC/ScrollView (0.9.15):
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/BaseVC/TabBar (0.9.3):
+  - CQDemoKit/BaseVC/TabBar (0.9.15):
     - CQDemoKit/Helper
-  - CQDemoKit/BaseVC/TableView (0.9.3):
+  - CQDemoKit/BaseVC/TableView (0.9.15):
     - CQDemoKit/BaseVC/Base
-  - CQDemoKit/BaseVC/TextView (0.9.3):
-    - CQDemoKit/BaseUtil
-    - CQDemoKit/BaseVC/Base
-  - CQDemoKit/Demo_DataSourceAndDelegate (0.9.3):
+  - CQDemoKit/Demo_DataSourceAndDelegate (0.9.15):
     - CQDemoKit/BaseVC
-  - CQDemoKit/Demo_Resource (0.9.3):
-    - CQDemoKit/BaseUIKit
+  - CQDemoKit/Demo_Resource (0.9.15):
+    - CQDemoKit/Demo_Resource/GitUtil (= 0.9.15)
+    - CQDemoKit/Demo_Resource/ImageModel (= 0.9.15)
+    - CQDemoKit/Demo_Resource/InFramework (= 0.9.15)
+    - CQDemoKit/Demo_Resource/RandomUtil (= 0.9.15)
+    - CQDemoKit/Demo_Resource/ResourceInfoUtil (= 0.9.15)
+    - CQDemoKit/Demo_Resource/SandboxFileUtil (= 0.9.15)
+    - CQDemoKit/Demo_Resource/SandboxPathUtil (= 0.9.15)
+    - CQDemoKit/Demo_Resource/SandboxPhotoUtil (= 0.9.15)
+  - CQDemoKit/Demo_Resource/GitUtil (0.9.15)
+  - CQDemoKit/Demo_Resource/ImageModel (0.9.15)
+  - CQDemoKit/Demo_Resource/InFramework (0.9.15)
+  - CQDemoKit/Demo_Resource/RandomUtil (0.9.15)
+  - CQDemoKit/Demo_Resource/ResourceInfoUtil (0.9.15)
+  - CQDemoKit/Demo_Resource/SandboxFileUtil (0.9.15):
+    - CQDemoKit/Demo_Resource/SandboxPathUtil
     - CQDemoKit/Helper
-  - CQDemoKit/Demo_RipeView (0.9.3):
+  - CQDemoKit/Demo_Resource/SandboxPathUtil (0.9.15):
+    - CQDemoKit/Demo_Resource/ResourceInfoUtil
+  - CQDemoKit/Demo_Resource/SandboxPhotoUtil (0.9.15):
+    - CQDemoKit/Demo_Resource/ResourceInfoUtil
+  - CQDemoKit/Demo_RipeView (0.9.15):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/BaseUtil
     - CQDemoKit/Demo_DataSourceAndDelegate
     - CQDemoKit/Demo_Resource
-    - CQDemoKit/Demo_RipeView/ImagePicker (= 0.9.3)
-    - CQDemoKit/Demo_RipeView/RipeCollectionView (= 0.9.3)
-  - CQDemoKit/Demo_RipeView/ImagePicker (0.9.3):
+    - CQDemoKit/Demo_RipeView/ImagePicker (= 0.9.15)
+    - CQDemoKit/Demo_RipeView/RipeCollectionView (= 0.9.15)
+  - CQDemoKit/Demo_RipeView/ImagePicker (0.9.15):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/BaseUtil
     - CQDemoKit/Demo_DataSourceAndDelegate
     - CQDemoKit/Demo_Resource
     - Masonry
-  - CQDemoKit/Demo_RipeView/RipeCollectionView (0.9.3):
+  - CQDemoKit/Demo_RipeView/RipeCollectionView (0.9.15):
     - CQDemoKit/BaseUIKit
     - CQDemoKit/BaseUtil
     - CQDemoKit/Demo_DataSourceAndDelegate
     - CQDemoKit/Demo_Resource
     - Masonry
-  - CQDemoKit/Helper (0.9.3)
-  - CQDemoKit/Monitor (0.9.3)
+  - CQDemoKit/Helper (0.9.15)
+  - CQDemoKit/Monitor (0.9.15)
+  - CQDemoKit/StateUI (0.9.15):
+    - Masonry
+  - CQDemoKit/TestMethod (0.9.15):
+    - CQDemoKit/BaseUtil
+    - CQDemoKit/BaseVC/Base
   - CQDemoNetworkClient (0.0.1):
     - CJNetworkClient/Base
+  - CQDemoResource/Core (0.3.2):
+    - CQDemoKit/Demo_Resource
+  - CQDemoResource/Images (0.3.2):
+    - CQDemoResource/Core
   - CQMdeiaVideoFrameKit (0.1.0)
   - CQNetworkPublic/Base (0.3.0)
   - CQNetworkPublic/Request (0.3.0):
@@ -265,71 +384,44 @@ PODS:
     - CQNetworkPublic/Upload/Base
   - CQNetworkPublic/Upload/Helper (0.3.0):
     - CQNetworkPublic/Upload/Base
-  - CQOverlayKit (0.8.0):
-    - CQOverlayKit/Base (= 0.8.0)
-    - CQOverlayKit/CQActionSheet (= 0.8.0)
-    - CQOverlayKit/CQAlert (= 0.8.0)
-    - CQOverlayKit/CQHUD (= 0.8.0)
-    - CQOverlayKit/CQToast (= 0.8.0)
-    - CQOverlayKit/Theme (= 0.8.0)
-    - CQOverlayKit/ThemeSetting (= 0.8.0)
-  - CQOverlayKit/Base (0.8.0):
-    - CJPopupCreater
+  - CQOverlayKit (0.9.0):
+    - CQOverlayKit/Base (= 0.9.0)
+    - CQOverlayKit/CQActionSheet (= 0.9.0)
+    - CQOverlayKit/CQAlert (= 0.9.0)
+    - CQOverlayKit/CQHUD (= 0.9.0)
+    - CQOverlayKit/CQToast (= 0.9.0)
+    - CQOverlayKit/Theme (= 0.9.0)
+    - CQOverlayKit/ThemeSetting (= 0.9.0)
+  - CQOverlayKit/Base (0.9.0):
+    - CJBlankPresenter
+    - CJPopupContainer
     - CQOverlayKit/Theme
-    - CQPopupCreater_Base/BaseBottom
-    - CQPopupCreater_Base/BaseCenter
-  - CQOverlayKit/CQActionSheet (0.8.0):
+  - CQOverlayKit/CQActionSheet (0.9.0):
     - CJOverlayView/CJActionSheet
     - CQOverlayKit/Base
     - CQOverlayKit/Theme
-  - CQOverlayKit/CQAlert (0.8.0):
+  - CQOverlayKit/CQAlert (0.9.0):
     - CJBaseHelper/AuthorizationCJHelper
     - CJOverlayView/AlertView_Horizontal
     - CJOverlayView/AlertView_Image
     - CJOverlayView/AlertView_Normal
     - CQOverlayKit/Base
     - CQOverlayKit/Theme
-  - CQOverlayKit/CQHUD (0.8.0):
+  - CQOverlayKit/CQHUD (0.9.0):
     - CJOverlayView/CJProgressHUD
     - CJOverlayView/CJToast
-    - CJPopupAnimation/Toast
+    - CJPopupAction/Toast
     - CQOverlayKit/Theme
     - SVProgressHUD
-  - CQOverlayKit/CQToast (0.8.0):
+  - CQOverlayKit/CQToast (0.9.0):
     - CJOverlayView/CJToast
-    - CJPopupAnimation/Toast
+    - CJPopupAction/Toast
     - CQOverlayKit/Theme
-  - CQOverlayKit/Theme (0.8.0):
+  - CQOverlayKit/Theme (0.9.0):
     - CJOverlayView/CJBaseOverlayTheme
-  - CQOverlayKit/ThemeSetting (0.8.0):
+  - CQOverlayKit/ThemeSetting (0.9.0):
     - CJOverlayView/CJActionSheet
     - CQOverlayKit/Theme
-  - CQPopupCreater_Base/BaseBottom (0.6.4):
-    - CQPopupCreater_Base/BaseBottom/4ViewCategory (= 0.6.4)
-    - CQPopupCreater_Base/BaseBottom/PoupIsCustomAddPanline (= 0.6.4)
-  - CQPopupCreater_Base/BaseBottom/4ViewCategory (0.6.4):
-    - CQPopupCreater_Base/BaseBottom/PoupIsCustomAddPanline
-  - CQPopupCreater_Base/BaseBottom/PoupIsCustomAddPanline (0.6.4):
-    - CJBaseUIKit/UIButton
-    - CJBaseUIKit/UIColor
-    - CJBaseUIKit/UIView/CJDragAction
-    - CJPopupCreater/BottomBlank
-    - CJPopupCreater/EffectAndCornerHelper
-    - Masonry
-  - CQPopupCreater_Base/BaseCenter (0.6.4):
-    - CQPopupCreater_Base/BaseCenter/2BlankView (= 0.6.4)
-    - CQPopupCreater_Base/BaseCenter/4ViewCategory (= 0.6.4)
-  - CQPopupCreater_Base/BaseCenter/2BlankView (0.6.4):
-    - CJPopupCreater/CenterBlank
-    - CJPopupCreater/EffectAndCornerHelper
-  - CQPopupCreater_Base/BaseCenter/4ViewCategory (0.6.4):
-    - CQPopupCreater_Base/BaseCenter/2BlankView
-  - CQTextInputKit (0.1.3):
-    - CJBaseUIKit/UIColor
-    - CJBaseUIKit/UITextField
-    - CJBaseUIKit/UITextInputCJHelper
-    - CJBaseUIKit/UITextView
-    - Masonry
   - CQVideoUrlAnalyze-Swift (0.0.1):
     - CQVideoUrlAnalyze-Swift/Douyin (= 0.0.1)
     - CQVideoUrlAnalyze-Swift/Tiktok (= 0.0.1)
@@ -363,8 +455,8 @@ DEPENDENCIES:
   - CJBaseHelper/NSObjectCJHelper
   - CJBaseUIKit/UIView
   - CJBaseUtil/CJIndentedStringUtil
-  - CJMediaCacheKit (from `../../CJMediaPlayer`)
-  - CJMediaPlayer (from `../../CJMediaPlayer`)
+  - CJMediaCacheKit
+  - CJMediaPlayer
   - CJMonitor
   - CJNetwork-Swift (from `../`)
   - CJNetwork/AFNetworkingMethodEncrypt (from `../`)
@@ -377,17 +469,16 @@ DEPENDENCIES:
   - CJNetworkClient/Upload (from `../`)
   - CJNetworkFileModel (from `../`)
   - CJNetworkSimulate (from `../`)
-  - CJPlayer (from `../../CJMediaPlayer`)
+  - CJPlayer
   - CocoaAsyncSocket (~> 7.4.1)
+  - CQDemoKit (~> 0.9.12)
   - CQDemoKit-Swift (~> 0.0.1)
-  - CQDemoKit/BaseVC (~> 0.9.2)
-  - CQDemoKit/Demo_Resource (~> 0.9.2)
   - CQDemoNetworkClient (from `../`)
+  - CQDemoResource/Images
   - CQMdeiaVideoFrameKit (~> 0.1.0)
   - CQNetworkPublic/Request (from `../`)
   - CQNetworkPublic/Upload (from `../`)
   - CQOverlayKit
-  - CQTextInputKit
   - CQVideoUrlAnalyze-Swift (from `../`)
   - MBProgressHUD (from `https://github.com/jdg/MBProgressHUD.git`, commit `4a7c5f3e53cdea77c5dcb8578c2ee5acacdf6781`)
   - OpenUDID (~> 1.0.0)
@@ -395,24 +486,28 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://gitee.com/dvlproad/dvlproadSpecs:
+    - CJBlankPresenter
     - CJContainer
     - CJOverlayView
-    - CJPopupAnimation
-    - CJPopupCreater
+    - CJPopupContainer
+    - CJProtocolKit
     - CQBridgeSTOLottie
     - CQMdeiaVideoFrameKit
     - CQOverlayKit
-    - CQPopupCreater_Base
-    - CQTextInputKit
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - CJBaseHelper
     - CJBaseUIKit
     - CJBaseUtil
+    - CJMediaCacheKit
+    - CJMediaPlayer
     - CJMonitor
+    - CJPlayer
+    - CJPopupAction
     - CocoaAsyncSocket
     - CQDemoKit
     - CQDemoKit-Swift
+    - CQDemoResource
     - lottie-ios
     - Masonry
     - Moya
@@ -428,10 +523,6 @@ EXTERNAL SOURCES:
   AFNetworking:
     :branch: master
     :git: https://gitee.com/Leonesir/afnetworking-dh.git
-  CJMediaCacheKit:
-    :path: "../../CJMediaPlayer"
-  CJMediaPlayer:
-    :path: "../../CJMediaPlayer"
   CJNetwork:
     :path: "../"
   CJNetwork-Swift:
@@ -442,8 +533,6 @@ EXTERNAL SOURCES:
     :path: "../"
   CJNetworkSimulate:
     :path: "../"
-  CJPlayer:
-    :path: "../../CJMediaPlayer"
   CQDemoNetworkClient:
     :path: "../"
   CQNetworkPublic:
@@ -464,13 +553,14 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 07fdd55e08bfc815311d558d62b0f9660ef83d1e
-  Alamofire: 400275dd1c6d87d95a041861d2a59da4b520a203
-  CJBaseHelper: 9a903eb83edd4e831e39c5112c6940e2559b79b7
-  CJBaseUIKit: 1445f55a4c9f942351fcd1964694f32196472837
+  Alamofire: ddb8d5201667b256dbc225f3fc6e835a0753186f
+  CJBaseHelper: 0345964a15b24131605a356f62e8c61d56222002
+  CJBaseUIKit: dda213f7e32ff0de2fc55f220e44e77a63162b30
   CJBaseUtil: 1bbf8d5f831dc12ae4bb06c8b5326bd39f3522e1
+  CJBlankPresenter: dd844bdb43bdb756ee4a128b284ea8f10fc9e0d7
   CJContainer: b7d5d626a05691c9107ce57b5991ab5c066f86a3
   CJMediaCacheKit: e0957832a3a82a3cc949999e0d7a8ed38fddf05b
-  CJMediaPlayer: ec36b4db5d96d2249a36aa639897cfc2e478eec8
+  CJMediaPlayer: 39f0afa58fcffa75a88c39d393854a06faa8ada3
   CJMonitor: cbec62179b877a476f84249ff268c765a66d6687
   CJNetwork: a61225917cb4e6a8bbee42abc8501d3d45470c82
   CJNetwork-Swift: 09844a35e55e59d9d7f4771e406374ba2daf271c
@@ -478,19 +568,19 @@ SPEC CHECKSUMS:
   CJNetworkFileModel: 5e5ebd5f15ebb5a33687fef9e7a40ebcf63e6496
   CJNetworkSimulate: 0c8e89ee82db12816cabdce4f3d6dcab1d30ee5b
   CJOverlayView: 35ff284fb9a9b1a21e0a2f4cb24193ed72fb5215
-  CJPlayer: a69645f35f99a9cf41a113eb55696a2ff65f708e
-  CJPopupAnimation: 6b372f73ef4fb6957e7e926aa96de34e3cf5a793
-  CJPopupCreater: eb8af290023be9aeaeb78165c9458d910d022ed3
+  CJPlayer: bf5ba25bd953511c21fa71ba14fab41b3b03b2d9
+  CJPopupAction: 16415caeafdd10c30b0969277dd359dba2441c6e
+  CJPopupContainer: 1384b903e3c3f28e6e3c583b7ab57e98015c0b55
+  CJProtocolKit: 7c20c29a17bc2eeb24a6447bd2518a3d9408f209
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   CQBridgeSTOLottie: 5e9bb0ab3b67570586d2ec5835c62e662e570371
-  CQDemoKit: 22fc91b3ab0b53b0de98e93eefe0c6778a211f2b
-  CQDemoKit-Swift: 28d06bf24cbcc84c9651e0ffe607bffdd57863b6
+  CQDemoKit: 174e2a414589bc4f1d860a7d94c633d312174ca0
+  CQDemoKit-Swift: 7d9c026dc37e64b13ddaa91c1b1df823e022781e
   CQDemoNetworkClient: ac96ecf012c4e90b6c20ca5d8e9b47cfe3bcca1d
+  CQDemoResource: efdf1a0231767f665f5e6e0df59ed8a5042680f7
   CQMdeiaVideoFrameKit: 1b8c95f70a83cb4a158976ad038b41717a4048c8
   CQNetworkPublic: a2b060da4bdc7e1e9b83ae79a95a41dfe7fc94a7
-  CQOverlayKit: 8b37dbc69779372a3c8f76e0b47d9d1a38e2aae0
-  CQPopupCreater_Base: 02ccdfff1637ec51aa27c1a544bf367a09250db2
-  CQTextInputKit: ddf925cd1a463427e6dfb1b60ba7fc7b0c604d5c
+  CQOverlayKit: d73b9c5d2a5a59c03e854d53e794b324abf737ed
   CQVideoUrlAnalyze-Swift: 459936888ffd6ad10f9803bbdfdf07608760108e
   lottie-ios: e047b1d2e6239b787cc5e9755b988869cf190494
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -504,6 +594,6 @@ SPEC CHECKSUMS:
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 8dc19d8eb4a8de37cd61331c081b5243a585d7ab
+PODFILE CHECKSUM: 6e00eb2fcc44a431dc9ccad520e85a243a104be3
 
 COCOAPODS: 1.16.2

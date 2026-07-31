@@ -7,8 +7,8 @@
 //
 
 #import "TSDownloadUtil.h"
-#import <CQDemoKit/CQTSResourceUtil.h>
-#import <CQDemoKit/CQTSPhotoUtil.h>
+#import <CQDemoKit/CQTSResourceInfoUtil.h>
+#import <CQDemoKit/CQTSSandboxPhotoUtil.h>
 
 #import <CQDemoKit/CJUIKitToastUtil.h>
 #import <CQDemoKit/CJUIKitAlertUtil.h>
@@ -33,7 +33,7 @@
 }
 
 + (void)saveInViewController:(UIViewController *)vc forMediaLocalURL:(NSURL *)mediaLocalURL {
-    CQTSFileType fileType = [CQTSResourceUtil fileTypeForFilePathOrUrl:mediaLocalURL.path];
+    CQTSFileType fileType = [CQTSResourceInfoUtil fileTypeForFilePathOrUrl:mediaLocalURL.path];
     
     NSString *typeString = @"";
     if (fileType == CQTSFileTypeVideo) {
@@ -55,7 +55,7 @@
     
     [CJUIKitAlertUtil showCancleOKAlertInViewController:vc withTitle:title message:nil cancleBlock:nil okBlock:^{
         if (fileType == CQTSFileTypeVideo) {
-            [CQTSPhotoUtil saveVideoToPhotoAlbum:mediaLocalURL success:^{
+            [CQTSSandboxPhotoUtil saveVideoToPhotoAlbum:mediaLocalURL success:^{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [CJUIKitToastUtil showMessage:NSLocalizedStringFromTable(@"保存成功", @"LocalizableDownloader", nil)];
                 });
@@ -66,7 +66,7 @@
             }];
             return;
         } else if (fileType == CQTSFileTypeAudio) {
-            [CQTSPhotoUtil saveAudioToPhotoAlbum:mediaLocalURL success:^{
+            [CQTSSandboxPhotoUtil saveAudioToPhotoAlbum:mediaLocalURL success:^{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [CJUIKitToastUtil showMessage:NSLocalizedStringFromTable(@"保存成功", @"LocalizableDownloader", nil)];
                 });
@@ -77,7 +77,7 @@
             }];
             return;
         } else {
-            [CQTSPhotoUtil saveImageToPhotoAlbum:mediaLocalURL success:^{
+            [CQTSSandboxPhotoUtil saveImageToPhotoAlbum:mediaLocalURL success:^{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [CJUIKitToastUtil showMessage:NSLocalizedStringFromTable(@"保存成功", @"LocalizableDownloader", nil)];
                 });

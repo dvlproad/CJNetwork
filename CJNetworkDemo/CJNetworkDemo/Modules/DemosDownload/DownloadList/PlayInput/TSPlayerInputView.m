@@ -55,19 +55,21 @@
 #pragma mark - SetupViews
 - (void)setupViews {
     // 创建输入框
-    self.textField = [[CQBlockTextView alloc] initWithFrame:CGRectZero];
-    self.textField.placeholder = NSLocalizedStringFromTable(@"请输入要播放的视频链接...", @"LocalizableDownloader", nil);
-    self.textField.textDidChangeBlock = ^(NSString * _Nonnull text) {
+    self.textView = [[UITextView alloc] initWithFrame:CGRectZero];
+    /* // 本来是使用 CQBlockTextView ，所以默认支持以下两个属性，不过其他在 CQTextInputKit 中，为减少依赖所以去掉
+    self.textView.placeholder = NSLocalizedStringFromTable(@"请输入要播放的视频链接...", @"LocalizableDownloader", nil);
+    self.textView.textDidChangeBlock = ^(NSString * _Nonnull text) {
         NSLog(@"当前文本是%@", text);
     };
-    self.textField.backgroundColor = [UIColor lightGrayColor];
-    self.textField.textColor = [UIColor whiteColor];
-    self.textField.font = [UIFont systemFontOfSize:12];
-    self.textField.contentScaleFactor = 0.5;
-    self.textField.layer.cornerRadius = 10;
-    self.textField.layer.masksToBounds = YES;
-    [self addSubview:self.textField];
-    [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
+    */
+    self.textView.backgroundColor = [UIColor lightGrayColor];
+    self.textView.textColor = [UIColor whiteColor];
+    self.textView.font = [UIFont systemFontOfSize:12];
+    self.textView.contentScaleFactor = 0.5;
+    self.textView.layer.cornerRadius = 10;
+    self.textView.layer.masksToBounds = YES;
+    [self addSubview:self.textView];
+    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self);
         make.height.mas_equalTo(50);
         //make.centerX.mas_equalTo(self);
@@ -127,7 +129,7 @@
     [self addSubview:self.fetchButton];
     [self.fetchButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self);
-        make.top.mas_equalTo(self.textField.mas_bottom).offset(10);
+        make.top.mas_equalTo(self.textView.mas_bottom).offset(10);
         make.left.mas_equalTo(self).offset(20);
         make.height.mas_equalTo(50);
     }];
@@ -156,14 +158,14 @@
     _changeCount = pasteboard.changeCount;
     
     if (pasteboard.string.length > 0) {
-        self.textField.text = pasteboard.string;
+        self.textView.text = pasteboard.string;
         [[NSUserDefaults standardUserDefaults] setInteger:pasteboard.changeCount forKey:@"old_changeCount"];
     }
 }
 
 // 处理获取视频点击事件
 - (void)fetchVideo {
-    NSString *text = self.textField.text;
+    NSString *text = self.textView.text;
     NSLog(@"获取视频: %@", text);
     
     if (self.fetchVideoHandle) {

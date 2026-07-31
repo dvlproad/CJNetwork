@@ -78,7 +78,7 @@ const CGFloat badgeLabelMargin = 4;         // badge与cell的距离
 /// 使用网络图片设置image
 - (void)setupImageWithImageUrl:(NSString *)imageUrl {
     // 修复使得在滑动过程中，不会因为cell的重用，而导致图片显示错位的问题
-    [self.iconImageView cqdm_setImageWithUrl:imageUrl completed:nil];
+    [self.iconImageView cqts_setImageWithUrl:imageUrl completed:nil];
     
     /*
     // 以下代码会发生因为cell重用，导致图片显示错位

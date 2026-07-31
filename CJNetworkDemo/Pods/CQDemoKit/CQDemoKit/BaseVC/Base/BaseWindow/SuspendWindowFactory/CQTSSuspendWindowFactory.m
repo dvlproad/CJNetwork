@@ -26,6 +26,15 @@
                       clickCompleteBlock:(void(^ _Nullable)(void))buttonClickCompleteBlock
 {
     CQTSSuspendWindow *suspendWindow = [[CQTSSuspendWindow alloc] initWithFrame:CGRectMake(100, 100, size.width, size.height)];
+    if (@available(iOS 13.0, *)) {
+        NSSet<UIScene *> *scenes = [UIApplication sharedApplication].connectedScenes;
+        for (UIWindowScene *windowScene in scenes) {
+            if (windowScene.activationState == UISceneActivationStateForegroundActive) {
+                suspendWindow.windowScene = windowScene;
+                break;
+            }
+        }
+    }
     // 设置 rootViewController
     __weak typeof(suspendWindow)weakSuspendWindow = suspendWindow;
     UIViewController *rootViewController = [[CQTSSuspendButtonRootViewController alloc] initWithButtonTitle:buttonTitle buttonClickHandle:^{

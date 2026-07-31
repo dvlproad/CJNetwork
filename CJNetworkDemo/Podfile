@@ -37,17 +37,18 @@ target 'CJNetworkDemo' do
   pod 'SVProgressHUD',          '~> 2.3.1'
   pod 'AFNetworking', :git => 'https://gitee.com/Leonesir/afnetworking-dh.git', :branch => 'master'
   
-  pod 'CQDemoKit',              '~> 0.9.3',      :subspecs => ['BaseVC', 'Demo_Resource']
+  pod 'CQDemoKit',              '~> 0.9.12'#,      :subspecs => ['BaseVC', 'BaseUtil', 'Demo_Resource']
   pod 'CQDemoKit-Swift',        '~> 0.0.1'
+  pod 'CQDemoResource',         :subspecs => ['Images']
+  
 #  pod 'CQMdeiaVideoFrameKit',   :path => '../../013-Mdeia_Video_Frame/iOS'
   pod 'CQMdeiaVideoFrameKit',   '~> 0.1.0'
   pod 'CQOverlayKit'
-  pod 'CQTextInputKit'
   pod 'CJBaseHelper'
   
-  pod 'CJPlayer',           :path => '../../CJMediaPlayer'
-  pod 'CJMediaPlayer',      :path => '../../CJMediaPlayer'
-  pod 'CJMediaCacheKit',    :path => '../../CJMediaPlayer'
+  pod 'CJPlayer'#,           :path => '../../CJMediaPlayer'
+  pod 'CJMediaPlayer'#,      :path => '../../CJMediaPlayer'
+  pod 'CJMediaCacheKit'#,    :path => '../../CJMediaPlayer'
   
   pod 'CJNetwork-Swift',        :path => '../'
   pod 'CJBaseUIKit',            :subspecs => ['UIView']

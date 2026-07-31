@@ -9,10 +9,11 @@
 #import "UIView+CQPopupOverlayAction.h"
 #import <CJOverlayView/CJBaseOverlayThemeManager.h>
 
-#import <CJPopupCreater/CJBottomBlankView+ShowHide.h>
-#import <CJPopupCreater/CJCenterBlankView+ShowHide.h>
-#import <CJPopupCreater/CQEffectAndCornerHelper.h>
-#import <CQPopupCreater_Base/CQBottomPanlineBlankView.h>
+#import <CJPopupContainer/CQBottomPanlineBlankView.h>
+#import <CJPopupContainer/CJCenterBlankView.h>
+#import <CJPopupContainer/CQEffectAndCornerHelper.h>
+
+#import <CJBlankPresenter/CJBlankDefaultPresenter.h>
 
 @implementation UIView (CQPopupOverlayAction)
 
@@ -47,9 +48,9 @@
     
     // 2、通过上述创建的视图创建【包含着有下拉线panline视图的popupView弹出视图的blankView空白视图】
     CQBottomPanlineBlankView *blankView = [[CQBottomPanlineBlankView alloc] initWithShowPanLine:shouldAddPanAction customViewWithoutPanline:withouPanlineView customViewWithoutPanlineHeight:withoutPanlineViewHeight panCompleteDismissBlock:^(CQBottomPanlineBlankView * _Nonnull bBlankView) {
-        [bBlankView hideBlankViewSelf];
+        [bBlankView hideBlankView];
     } tapBlankHandle:^(CQBottomPanlineBlankView * _Nonnull bBlankView) {
-        [bBlankView hideBlankViewSelf];
+        [bBlankView hideBlankView];
     }];
     //*/
     
@@ -63,7 +64,8 @@
     
     
     // 3、将【背景视图blankView】添加到【你想要显示在的视图popupSuperview】中
-    [blankView showBlankViewSelfInView:nil];
+    blankView.popupStrategy = [CJBlankDefaultPresenter new];
+    [blankView showBlankViewInView:nil];
 }
 
 
@@ -75,7 +77,7 @@
     UIView *popupView = self.superview;
     
     CJBottomBlankView *blankView = (CJBottomBlankView *)popupView.superview;
-    [blankView hideBlankViewSelf];
+    [blankView hideBlankView];
 }
 
 
@@ -112,7 +114,7 @@
     // 2、通过上述创建的视图创建【包含着popupView弹出视图的blankView空白视图】
     CJCenterBlankView *blankView = [[CJCenterBlankView alloc] initWithPopupView:popupView popupViewSize:popupViewSize popupCenterOffset:CGPointZero tapBlankHandle:^(CJCenterBlankView * _Nonnull bSelf) {
         if (tapBlankShouldHide) {
-            [bSelf hideBlankViewSelf];
+            [bSelf hideBlankView];
         }
     }];
     
@@ -122,7 +124,8 @@
                              newEffectViewCloseToViewSubView:blankView];
     
     // 3、将【背景视图blankView】添加到【你想要显示在的视图popupSuperview】中
-    [blankView showBlankViewSelfInView:nil];
+    blankView.popupStrategy = [CJBlankDefaultPresenter new];
+    [blankView showBlankViewInView:nil];
 }
 
 
@@ -132,7 +135,7 @@
 - (void)cqOverlay_alert_hide {
     UIView *popupView = self;
     CJBottomBlankView *blankView = (CJBottomBlankView *)popupView.superview;
-    [blankView hideBlankViewSelf];
+    [blankView hideBlankView];
 }
 
 @end
